@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 2 — История + Обществознание, 6 класс</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8; color: #2d3748; line-height: 1.75; padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* Навигация */
+        .nav {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px;
+            background: white; padding: 14px; border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+            position: sticky; top: 8px; z-index: 100;
+        }
+        .nav span { font-weight: bold; color: #718096; align-self: center; font-size: .9em; }
+        .nbtn { padding: 9px 18px; border: none; border-radius: 8px; cursor: pointer;
+                font-weight: bold; font-size: .88em; color: white; transition: all .25s; }
+        .nb-hi { background: #c05621; } .nb-hi:hover { background: #9c4221; }
+        .nb-ru { background: #276749; } .nb-ru:hover { background: #22543d; }
+        .nb-so { background: #553c9a; } .nb-so:hover { background: #44337a; }
+        .nbtn:hover { transform: translateY(-2px); }
+
+        /* Заголовки */
+        h1 { text-align: center; font-size: 1.9em; margin-bottom: 8px; padding-bottom: 13px; }
+        .h1-hi { color: #7b341e; border-bottom: 4px solid #dd6b20; }
+        .h1-ru { color: #22543d; border-bottom: 4px solid #38a169; }
+        .h1-so { color: #44337a; border-bottom: 4px solid #805ad5; }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 26px; font-size: 1em; }
+        h2 { font-size: 1.42em; margin-bottom: 13px; display: flex; align-items: center; gap: 10px; }
+        h3 { font-size: 1.1em; color: #2d3748; margin: 17px 0 7px;
+             padding-bottom: 4px; border-bottom: 2px dashed #e2e8f0; }
+        h4 { font-size: .98em; color: #4a5568; margin: 11px 0 5px; }
+
+        /* Блоки */
+        .lesson { background: white; border-radius: 16px; padding: 26px;
+                  margin-bottom: 24px; box-shadow: 0 4px 15px rgba(0,0,0,.07); }
+        .l-hi  { border-left: 6px solid #dd6b20; }
+        .l-hi2 { border-left: 6px solid #ed8936; }
+        .l-hi3 { border-left: 6px solid #f6ad55; }
+        .l-ru  { border-left: 6px solid #38a169; }
+        .l-ru2 { border-left: 6px solid #68d391; }
+        .l-so  { border-left: 6px solid #805ad5; }
+        .l-so2 { border-left: 6px solid #b794f4; }
+
+        .hc-hi  { color: #7b341e; } .hc-hi2 { color: #c05621; }
+        .hc-ru  { color: #22543d; }
+        .hc-so  { color: #44337a; }
+
+        /* Тетрадь */
+        .nb { background: #fffff0; border: 2px solid #ecc94b; border-radius: 12px;
+              padding: 20px 20px 13px; margin: 13px 0; position: relative; }
+        .nb::before { content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+                      position: absolute; top: -13px; left: 18px;
+                      background: #ecc94b; color: #744210;
+                      padding: 2px 13px; border-radius: 8px;
+                      font-weight: bold; font-size: .82em; }
+
+        /* Правила */
+        .rule { border-radius: 10px; padding: 13px 17px; margin: 10px 0; }
+        .r-b { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .r-g { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .r-y { background: #fffff0; border: 2px solid #f6e05e; }
+        .r-r { background: #fff5f5; border: 2px solid #fc8181; }
+        .r-p { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .r-o { background: #fffaf0; border: 2px solid #fbd38d; }
+        .r-t { background: #e6fffa; border: 2px solid #81e6d9; }
+        .r-pk { background: #fff5f7; border: 2px solid #fed7e2; }
+
+        /* Таблицы */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .92em; }
+        th { padding: 10px 12px; text-align: left; color: white; }
+        td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+        .th-hi { background: #c05621; } .th-hi2 { background: #dd6b20; }
+        .th-g  { background: #276749; }
+        .th-p  { background: #553c9a; }
+        .th-b  { background: #2b6cb0; }
+        .th-r  { background: #c53030; }
+
+        /* Упражнения */
+        .exer { background: #faf5ff; border: 2px solid #d6bcfa; border-radius: 12px;
+                padding: 18px 18px 12px; margin: 13px 0; position: relative; }
+        .exer::before { content: "✏️ ЗАДАНИЯ";
+                        position: absolute; top: -13px; left: 18px;
+                        background: #805ad5; color: white;
+                        padding: 2px 12px; border-radius: 8px;
+                        font-weight: bold; font-size: .82em; }
+        .task { background: white; border-radius: 10px; padding: 12px 14px;
+                margin: 9px 0; border-left: 4px solid #805ad5; }
+        .tn { font-weight: bold; color: #805ad5; }
+
+        /* Кнопки */
+        .btn { border: none; padding: 7px 15px; border-radius: 6px; cursor: pointer;
+               font-size: .87em; margin-top: 8px; transition: all .25s; color: white; }
+        .btn-o { background: #dd6b20; } .btn-o:hover { background: #c05621; }
+        .btn-g { background: #38a169; } .btn-g:hover { background: #2f855a; }
+        .btn-p { background: #805ad5; } .btn-p:hover { background: #6b46c1; }
+        .btn-b { background: #3182ce; } .btn-b:hover { background: #2b6cb0; }
+
+        .ans { display: none; border-radius: 8px; padding: 12px 14px;
+               margin-top: 8px; font-size: .91em; line-height: 1.8; }
+        .ans-o { background: #fffaf0; border: 1px solid #fbd38d; color: #7b341e; }
+        .ans-g { background: #f0fff4; border: 1px solid #9ae6b4; color: #22543d; }
+        .ans-p { background: #faf5ff; border: 1px solid #d6bcfa; color: #44337a; }
+
+        /* Видео */
+        .vid { background: #fff5f5; border: 2px solid #feb2b2;
+               border-radius: 12px; padding: 13px 17px; margin: 12px 0; }
+        .vid a { color: #c53030; text-decoration: none; font-weight: bold; }
+        .vid a:hover { text-decoration: underline; }
+
+        /* Хронология */
+        .timeline { position: relative; padding: 8px 0 8px 34px; margin: 13px 0; }
+        .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+                            width: 4px; background: linear-gradient(to bottom, #dd6b20, #f6ad55);
+                            border-radius: 2px; }
+        .tl { position: relative; margin: 12px 0; background: white; border-radius: 10px;
+              padding: 11px 14px; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+              border-left: 3px solid #dd6b20; }
+        .tl::before { content: ''; position: absolute; left: -24px; top: 12px;
+                      width: 15px; height: 15px; background: #dd6b20; border-radius: 50%;
+                      border: 3px solid white; box-shadow: 0 0 0 2px #dd6b20; }
+        .tl-y { font-weight: bold; color: #c05621; font-size: .97em; }
+        .tl-e { color: #2d3748; font-size: .91em; margin-top: 3px; }
+
+        /* Карточки */
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr));
+                 gap: 12px; margin: 12px 0; }
+        .card { border-radius: 12px; padding: 14px; }
+        .ct { font-weight: bold; font-size: .95em; margin-bottom: 5px; }
+        .cb { font-size: .85em; line-height: 1.55; }
+        .c-b  { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .c-g  { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .c-o  { background: #fffaf0; border: 2px solid #fbd38d; }
+        .c-p  { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .c-r  { background: #fff5f5; border: 2px solid #fc8181; }
+        .c-t  { background: #e6fffa; border: 2px solid #81e6d9; }
+        .c-y  { background: #fffff0; border: 2px solid #f6e05e; }
+        .c-pk { background: #fff5f7; border: 2px solid #fed7e2; }
+
+        /* Схема */
+        .scheme { background: #f7fafc; border: 2px solid #e2e8f0;
+                  border-radius: 12px; padding: 15px; margin: 12px 0; text-align: center; }
+        .sch-row { display: flex; justify-content: center; align-items: center;
+                   gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+        .sb { padding: 9px 13px; border-radius: 8px; font-size: .87em;
+              font-weight: bold; flex: 1; min-width: 120px; }
+        .sb-b { background: #bee3f8; color: #2a4365; }
+        .sb-g { background: #c6f6d5; color: #22543d; }
+        .sb-p { background: #e9d8fd; color: #44337a; }
+        .sb-o { background: #feebc8; color: #7b341e; }
+        .sb-r { background: #fed7d7; color: #742a2a; }
+        .sb-t { background: #b2f5ea; color: #234e52; }
+        .sb-y { background: #fefcbf; color: #744210; }
+        .arr  { font-size: 1.4em; color: #718096; flex: none; }
+
+        /* Термины */
+        .terms { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+                 gap: 11px; margin: 11px 0; }
+        .term { background: white; border-radius: 10px; padding: 12px 14px;
+                border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+        .tw { font-weight: bold; color: #2b6cb0; font-size: .94em; }
+        .td { font-size: .87em; color: #4a5568; margin-top: 3px; }
+
+        /* Пирамида */
+        .pyramid { margin: 14px auto; max-width: 480px; }
+        .pyr { text-align: center; padding: 9px 20px; margin: 4px auto;
+               border-radius: 8px; font-weight: bold; font-size: .93em; color: white; }
+
+        /* Карта */
+        .map-block { background: #e6fffa; border: 2px solid #81e6d9;
+                     border-radius: 12px; padding: 14px 17px; margin: 12px 0; }
+
+        /* Тест */
+        .quiz { background: #fffff0; border: 2px solid #f6ad55;
+                border-radius: 14px; padding: 24px; margin: 22px 0; }
+        .qt { font-size: 1.42em; font-weight: bold; margin-bottom: 6px; }
+        .qb { background: white; border-radius: 10px; padding: 15px 17px;
+              margin: 11px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+        .qb p { font-weight: bold; margin-bottom: 8px; }
+        .qo { display: block; padding: 8px 13px; margin: 4px 0; background: #f7fafc;
+              border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+              transition: all .25s; user-select: none; }
+        .qo:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .qo input { margin-right: 8px; }
+        .chk { padding: 11px 30px; border: none; border-radius: 8px; font-size: .97em;
+               font-weight: bold; cursor: pointer; margin-top: 13px; color: white;
+               transition: background .3s; }
+        .chk-hi { background: #dd6b20; } .chk-hi:hover { background: #c05621; }
+        .chk-ru { background: #38a169; } .chk-ru:hover { background: #2f855a; }
+        .chk-so { background: #805ad5; } .chk-so:hover { background: #6b46c1; }
+        .res { padding: 15px; border-radius: 10px; margin-top: 15px;
+               display: none; line-height: 1.9; }
+
+        /* Разделитель */
+        .sep { border: none; height: 4px; margin: 32px 0; border-radius: 2px; }
+        .sep-hi { background: linear-gradient(to right, #dd6b20, #f6ad55, #fefcbf); }
+        .sep-ru { background: linear-gradient(to right, #38a169, #68d391, #9ae6b4); }
+        .sep-so { background: linear-gradient(to right, #805ad5, #b794f4, #e9d8fd); }
+
+        /* Теги */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px;
+               font-size: .8em; font-weight: bold; margin: 2px; }
+        .t-th { background: #bee3f8; color: #2a4365; }
+        .t-pr { background: #c6f6d5; color: #22543d; }
+        .t-te { background: #fefcbf; color: #744210; }
+        .t-mp { background: #b2f5ea; color: #234e52; }
+        .dur  { background: #e2e8f0; color: #4a5568; padding: 5px 12px;
+                border-radius: 20px; font-size: .85em; float: right; }
+
+        ul, ol { padding-left: 22px; margin: 8px 0; }
+        li { margin: 5px 0; }
+        .hl  { background: #fefcbf; padding: 1px 5px; border-radius: 4px; }
+        .red { color: #e53e3e; font-weight: bold; }
+        .grn { color: #276749; font-weight: bold; }
+        .blu { color: #2b6cb0; font-weight: bold; }
+
+        /* Блок дат */
+        .dates-block { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+                       gap: 10px; margin: 12px 0; }
+        .date-item { background: white; border-radius: 10px; padding: 11px 14px;
+                     border-left: 4px solid #dd6b20;
+                     box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+        .date-y { font-weight: bold; color: #c05621; font-size: 1.05em; }
+        .date-e { font-size: .9em; color: #2d3748; margin-top: 3px; }
+
+        /* Конфликт-схема */
+        .conflict-scheme {
+            display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0;
+        }
+        .conf-card {
+            flex: 1; min-width: 180px; border-radius: 12px; padding: 14px;
+            text-align: center;
+        }
+        .conf-title { font-weight: bold; font-size: 1em; margin-bottom: 8px; }
+        .conf-body  { font-size: .87em; line-height: 1.6; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- Навигация -->
+<div class="nav">
+    <span>📌 Перейти:</span>
+    <button class="nbtn nb-hi" onclick="goTo('history')">⚔️ Всеобщая история</button>
+    <button class="nbtn nb-ru" onclick="goTo('russia')">🇷🇺 История России</button>
+    <button class="nbtn nb-so" onclick="goTo('social')">👥 Обществознание</button>
+</div>
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║        ВСЕОБЩАЯ ИСТОРИЯ                     ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="history">
+    <h1 class="h1-hi">⚔️ История — Расцвет Средневековья</h1>
+    <p class="subtitle">6 класс | 4 часа | Крестовые походы · Средневековый город · Столетняя война · Реконкиста</p>
+
+    <!-- ЗАНЯТИЕ 1 — КРЕСТОВЫЕ ПОХОДЫ -->
+    <div class="lesson l-hi">
+        <h2 class="hc-hi">📖 Занятие 1: Крестовые походы</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-mp">Карта</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=0bJHqrZKFQA" target="_blank">Крестовые походы — причины, ход, итоги (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=Z5Q6QiT7MUc" target="_blank">Первый крестовый поход — подробный разбор (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=9HaTjbWHQMg" target="_blank">Крестовые походы — кратко за 10 минут (Arzamas)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=t4gfJC_TBDE" target="_blank">Ричард Львиное Сердце и Саладин — история противостояния</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Крестовые походы (1096–1270)</h3>
+
+            <div class="rule r-o">
+                <strong>📌 Крестовые походы</strong> — военные экспедиции западноевропейских рыцарей и крестьян на Ближний Восток под лозунгом освобождения Святой земли (Иерусалима) от мусульман.<br><br>
+                <strong>Организатор:</strong> Католическая церковь во главе с Папой Римским.<br>
+                <strong>Участники:</strong> рыцари, крестьяне, горожане из разных стран Западной Европы.
+            </div>
+
+            <h3>Причины Крестовых походов</h3>
+            <div class="cards">
+                <div class="card c-r">
+                    <div class="ct">⛪ Религиозные</div>
+                    <div class="cb">Освобождение Иерусалима — «Гроба Господня» — от мусульман. Обещание папы отпустить грехи всем участникам.</div>
+                </div>
+                <div class="card c-o">
+                    <div class="ct">🏰 Политические</div>
+                    <div class="cb">Стремление папы усилить власть над европейскими монархами. Желание Byzantии вернуть утраченные земли.</div>
+                </div>
+                <div class="card c-b">
+                    <div class="ct">💰 Экономические</div>
+                    <div class="cb">Желание рыцарей получить новые земли и богатства на Востоке. Стремление купцов захватить торговые пути.</div>
+                </div>
+                <div class="card c-g">
+                    <div class="ct">🌾 Социальные</div>
+                    <div class="cb">Перенаселение Западной Европы. Нехватка земли для младших сыновей рыцарей. Голод и болезни.</div>
+                </div>
+            </div>
+
+            <h3>Основные крестовые походы</h3>
+            <table>
+                <tr>
+                    <th class="th-hi">Поход</th>
+                    <th class="th-hi">Годы</th>
+                    <th class="th-hi">Главные события</th>
+                    <th class="th-hi">Итог</th>
+                </tr>
+                <tr>
+                    <td><strong>I поход</strong></td>
+                    <td>1096–1099</td>
+                    <td>Народный поход (неудача). Рыцарский поход. Осада Иерусалима.</td>
+                    <td>✅ Захват Иерусалима (1099). Создание крестоносных государств.</td>
+                </tr>
+                <tr>
+                    <td><strong>II поход</strong></td>
+                    <td>1147–1149</td>
+                    <td>Поход под руководством французского и германского королей.</td>
+                    <td>❌ Полная неудача. Ничего не достигнуто.</td>
+                </tr>
+                <tr>
+                    <td><strong>III поход</strong></td>
+                    <td>1189–1192</td>
+                    <td>Повод: Саладин захватил Иерусалим (1187). Участники: Ричард I Львиное Сердце (Англия), Фридрих I Барбаросса (Германия), Филипп II (Франция).</td>
+                    <td>⚠️ Иерусалим не отвоёван. Договор с Саладином о доступе паломников к Гробу Господню.</td>
+                </tr>
+                <tr>
+                    <td><strong>IV поход</strong></td>
+                    <td>1202–1204</td>
+                    <td>Поход был отклонён в сторону! Крестоносцы разграбили христианский Константинополь.</td>
+                    <td>❌ Позор! Создана Латинская империя на месте Byzantии. Подрыв авторитета крестоносцев.</td>
+                </tr>
+                <tr>
+                    <td><strong>Детский поход</strong></td>
+                    <td>1212</td>
+                    <td>Тысячи детей пошли освобождать Иерусалим «силой молитвы».</td>
+                    <td>❌ Трагедия. Дети погибли или были проданы в рабство.</td>
+                </tr>
+                <tr>
+                    <td><strong>VIII поход (последний)</strong></td>
+                    <td>1270</td>
+                    <td>Людовик IX Французский (Святой) снова пытался завоевать Египет.</td>
+                    <td>❌ Король умер от чумы. Конец эпохи крестовых походов.</td>
+                </tr>
+            </table>
+
+            <h3>Итоги и последствия Крестовых походов</h3>
+            <div class="rule r-b">
+                <strong>Отрицательные последствия:</strong>
+                <ul>
+                    <li>Огромные человеческие жертвы с обеих сторон</li>
+                    <li>Разграбление Константинополя (IV поход) — ослабление Byzantии</li>
+                    <li>Усиление религиозной нетерпимости между христианами и мусульманами</li>
+                </ul>
+                <br>
+                <strong>Положительные последствия:</strong>
+                <ul>
+                    <li>🌍 Расширение географических знаний европейцев</li>
+                    <li>🔢 Заимствование с Востока: цифры, бумага, шёлк, пряности</li>
+                    <li>🏙️ Расцвет торговли: итальянские города (Венеция, Генуя) стали центрами торговли</li>
+                    <li>📚 Проникновение арабской науки: медицина, математика, философия</li>
+                    <li>⚔️ Появление рыцарских орденов: тамплиеры, госпитальеры, тевтонский орден</li>
+                </ul>
+            </div>
+
+            <h3>Рыцарские ордена — запомни!</h3>
+            <div class="cards">
+                <div class="card c-b">
+                    <div class="ct">⚔️ Тамплиеры</div>
+                    <div class="cb">«Храмовники». Основан в 1119 г. Богатейший орден Европы. Уничтожен в 1312 г. по обвинению в ереси.</div>
+                </div>
+                <div class="card c-r">
+                    <div class="ct">🏥 Госпитальеры</div>
+                    <div class="cb">«Иоанниты». Основан в 1099 г. Первоначально — уход за больными. Существует до наших дней (Мальтийский орден).</div>
+                </div>
+                <div class="card c-t">
+                    <div class="ct">🗡️ Тевтонский орден</div>
+                    <div class="cb">Немецкий орден. Основан в 1190 г. Действовал в Прибалтике. Потерпел поражение от Александра Невского (1242).</div>
+                </div>
+            </div>
+
+            <div class="map-block">
+                <h4>🗺️ Задание по карте (выполни в тетради):</h4>
+                <p>На контурной карте Ближнего Востока обозначь:</p>
+                <ol>
+                    <li>Маршруты I и III крестовых походов (разными цветами)</li>
+                    <li>Государства крестоносцев: Иерусалимское королевство, графство Триполи, княжество Антиохия, графство Эдесса</li>
+                    <li>Города: Иерусалим, Антиохия, Константинополь, Акра, Дамаск</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЗАНЯТИЕ 2 — СРЕДНЕВЕКОВЫЙ ГОРОД + КУЛЬТУРА -->
+    <div class="lesson l-hi2">
+        <h2 class="hc-hi2">📖 Занятие 2: Средневековый город. Культура Средневековья.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Конспект</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=YE9mQdJoBoE" target="_blank">Средневековый город — возникновение и устройство (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=GNLV1ZPBPLE" target="_blank">Цехи и гильдии — ремесло и торговля в Средневековье (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=W_KMzVWqreE" target="_blank">Культура Средневековья — архитектура, наука, университеты</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=hxf5N6kH8GU" target="_blank">Средневековый университет — как учились в Средние века</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Возникновение средневековых городов (X–XI вв.)</h3>
+
+            <div class="rule r-o">
+                <strong>📌 Причины возникновения городов:</strong>
+                <ul>
+                    <li>Развитие ремесла → ремесленники уходили из деревень</li>
+                    <li>Рост торговли → купцы нуждались в постоянных рынках</li>
+                    <li>Рост населения → нужны новые центры</li>
+                    <li>Безопасность → стены замков защищали жителей</li>
+                </ul>
+            </div>
+
+            <h3>Устройство средневекового города</h3>
+            <table>
+                <tr><th class="th-hi2">Часть города</th><th class="th-hi2">Описание</th></tr>
+                <tr><td><strong>Крепостные стены</strong></td><td>Окружали город, защищая от врагов. Имели ворота и башни.</td></tr>
+                <tr><td><strong>Замок / Цитадель</strong></td><td>Укреплённый центр, где жил владелец города или гарнизон.</td></tr>
+                <tr><td><strong>Рыночная площадь</strong></td><td>Центр торговли и общественной жизни. Здесь же — ратуша и собор.</td></tr>
+                <tr><td><strong>Ратуша</strong></td><td>Здание городского самоуправления. Символ свободы коммуны.</td></tr>
+                <tr><td><strong>Кафедральный собор</strong></td><td>Главный храм города. Нередко самое высокое здание.</td></tr>
+                <tr><td><strong>Кварталы</strong></td><td>Узкие улочки, плотные деревянные дома (пожароопасно!). Еврейский квартал (гетто).</td></tr>
+            </table>
+
+            <h3>Цехи и гильдии</h3>
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-o">
+                        <strong>ЦЕХ</strong><br>
+                        Союз городских ремесленников одной специальности<br><br>
+                        Мастер → Подмастерье → Ученик<br><br>
+                        Регулировал качество, цены, количество мастеров
+                    </div>
+                    <div class="arr">⟷</div>
+                    <div class="sb sb-b">
+                        <strong>ГИЛЬДИЯ</strong><br>
+                        Союз купцов для совместной торговли<br><br>
+                        Защищала от конкуренции и грабежей<br><br>
+                        Ганзейский союз — крупнейший торговый союз городов
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule r-y">
+                <strong>📌 Путь ремесленника:</strong><br>
+                🧒 <strong>Ученик</strong> (5–7 лет бесплатной работы у мастера) →
+                👨 <strong>Подмастерье</strong> (работал за плату, путешествовал) →
+                👑 <strong>Мастер</strong> (сдал экзамен, создал «шедевр» — образцовое изделие, открыл свою мастерскую)
+            </div>
+
+            <h3>Борьба городов за самоуправление</h3>
+            <div class="rule r-b">
+                <strong>📌 Коммуна</strong> — союз горожан, добившийся самоуправления от феодала.<br><br>
+                <strong>Способы получения прав:</strong>
+                <ul>
+                    <li>Выкуп у феодала (мирный путь)</li>
+                    <li>Вооружённая борьба (восстание)</li>
+                </ul>
+                <strong>Права коммуны:</strong> свой суд, казна, ополчение, выборный совет во главе с мэром.<br><br>
+                <em>«Городской воздух делает человека свободным»</em> — если крепостной год прожил в городе, он становился свободным!
+            </div>
+
+            <h3>Культура Средневековья</h3>
+            <table>
+                <tr><th class="th-hi2">Сфера</th><th class="th-hi2">Достижения</th><th class="th-hi2">Примеры</th></tr>
+                <tr>
+                    <td><strong>🏛️ Архитектура</strong></td>
+                    <td>Два стиля:<br>
+                        <strong>Романский</strong> (X–XII вв.) — толстые стены, полукруглые арки, тёмные интерьеры<br>
+                        <strong>Готический</strong> (XII–XV вв.) — стрельчатые арки, витражи, устремлённость ввысь</td>
+                    <td>Нотр-Дам де Пари, Кёльнский собор (готика)<br>Монастырь Клюни (романский)</td>
+                </tr>
+                <tr>
+                    <td><strong>📚 Образование</strong></td>
+                    <td>Первые университеты (XI–XIII вв.). Сословие школяров — студентов.</td>
+                    <td>Болонья (1088), Сорбонна — Париж (1215), Оксфорд (1167)</td>
+                </tr>
+                <tr>
+                    <td><strong>🔬 Наука</strong></td>
+                    <td>Схоластика — синтез религии и философии. Алхимия → химия. Астрология → астрономия.</td>
+                    <td>Фома Аквинский (философия), Роджер Бэкон (опыт)</td>
+                </tr>
+                <tr>
+                    <td><strong>📜 Литература</strong></td>
+                    <td>Рыцарский роман, героический эпос, лирика трубадуров.</td>
+                    <td>«Песнь о Роланде», «Тристан и Изольда», поэзия трубадуров</td>
+                </tr>
+                <tr>
+                    <td><strong>🖼️ Живопись</strong></td>
+                    <td>Иконопись, миниатюра (книжная иллюстрация), витражи.</td>
+                    <td>Готические витражи Шартрского собора</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ЗАНЯТИЕ 3 — СТОЛЕТНЯЯ ВОЙНА И РЕКОНКИСТА -->
+    <div class="lesson l-hi3">
+        <h2 class="hc-hi2">📖 Занятие 3: Столетняя война. Реконкиста.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Даты</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=C-5MRlRzL2g" target="_blank">Столетняя война — причины, ход, итоги (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=kU7cEdnZ8BQ" target="_blank">Жанна д'Арк — история героини Франции (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=Sz3Y7JOGUeA" target="_blank">Реконкиста — освобождение Испании от мавров</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=qwzxGMKBiSY" target="_blank">Столетняя война за 7 минут — кратко и понятно</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Столетняя война (1337–1453)</h3>
+
+            <div class="rule r-o">
+                <strong>📌 Столетняя война</strong> — серия военных конфликтов между Англией и Францией продолжительностью 116 лет.<br><br>
+                <strong>Причины:</strong>
+                <ul>
+                    <li>Претензии английских королей на французский престол (через родство с французскими королями)</li>
+                    <li>Спор за богатую область Фландрию (производство сукна)</li>
+                    <li>Желание Франции вернуть земли, занятые Англией</li>
+                </ul>
+            </div>
+
+            <h3>Ход войны — основные периоды</h3>
+            <div class="timeline">
+                <div class="tl">
+                    <div class="tl-y">1337 год</div>
+                    <div class="tl-e">Начало войны. Английский король Эдуард III объявляет себя королём Франции.</div>
+                </div>
+                <div class="tl">
+                    <div class="tl-y">1346 год — Битва при Креси</div>
+                    <div class="tl-e">Крупная победа англичан. Английские лучники разгромили французскую рыцарскую конницу. Впервые применены пушки.</div>
+                </div>
+                <div class="tl">
+                    <div class="tl-y">1356 год — Битва при Пуатье</div>
+                    <div class="tl-e">Новая победа англичан. Французский король Иоанн II взят в плен. Выкуп разорил Францию.</div>
+                </div>
+                <div class="tl">
+                    <div class="tl-y">1360 год</div>
+                    <div class="tl-e">Мир в Бретиньи — Англия получила треть Франции.</div>
+                </div>
+                <div class="tl">
+                    <div class="tl-y">1415 год — Битва при Азенкуре</div>
+                    <div class="tl-e">Сокрушительное поражение Франции. Генрих V Английский становится наследником французского трона.</div>
+                </div>
+                <div class="tl">
+                    <div class="tl-y">1428–1429 — Осада Орлеана</div>
+                    <div class="tl-e">Переломный момент. Появление Жанны д'Арк. Снятие осады с Орлеана. Коронация Карла VII в Реймсе.</div>
+                </div>
+                <div class="tl">
+                    <div class="tl-y">1431 год</div>
+                    <div class="tl-e">Жанна д'Арк захвачена бургундцами, продана англичанам и сожжена на костре как ведьма в Руане.</div>
+                </div>
+                <div class="tl">
+                    <div class="tl-y">1453 год</div>
+                    <div class="tl-e">Конец войны. Франция изгнала англичан. У Англии осталось только Кале. Формирование французской нации.</div>
+                </div>
+            </div>
+
+            <h3>Жанна д'Арк — национальная героиня Франции</h3>
+            <div class="rule r-g">
+                <strong>📌 Жанна д'Арк (1412–1431):</strong>
+                <ul>
+                    <li>Простая крестьянская девушка из деревни Домреми</li>
+                    <li>Утверждала, что слышит «голоса» святых, зовущих её спасти Францию</li>
+                    <li>В 17 лет добилась аудиенции у принца Карла и встала во главе войска</li>
+                    <li>Сняла осаду Орлеана (май 1429) → прозвана «Орлеанской девой»</li>
+                    <li>Обеспечила коронацию Карла VII</li>
+                    <li>Захвачена бургундцами, продана англичанам, осуждена церковным судом как ведьма</li>
+                    <li>Сожжена в 1431 году. В 1456 — оправдана. В 1920 — причислена к лику святых.</li>
+                </ul>
+            </div>
+
+            <h3>Реконкиста (718–1492)</h3>
+
+            <div class="rule r-b">
+                <strong>📌 Реконкиста</strong> (от исп. «отвоевание») — процесс освобождения Пиренейского полуострова от арабского (мавританского) владычества христианскими королевствами.<br><br>
+                <strong>Начало:</strong> 718 год — битва при Ковадонге (первая победа христиан над маврами)<br>
+                <strong>Конец:</strong> 1492 год — взятие Гранады королём Фердинандом и королевой Изабеллой<br><br>
+                <strong>Итог:</strong> Объединение Испании в единое государство. В том же 1492 году Колумб открыл Америку!
+            </div>
+
+            <h3>Ключевые даты для запоминания (Расцвет Средневековья)</h3>
+            <div class="dates-block">
+                <div class="date-item">
+                    <div class="date-y">1054 год</div>
+                    <div class="date-e">Великий раскол: разделение церквей на католическую и православную</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1066 год</div>
+                    <div class="date-e">Нормандское завоевание Англии (Вильгельм Завоеватель)</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1096–1099</div>
+                    <div class="date-e">Первый крестовый поход. Захват Иерусалима.</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1187 год</div>
+                    <div class="date-e">Саладин отвоёвывает Иерусалим</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1215 год</div>
+                    <div class="date-e">Великая хартия вольностей в Англии</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1337–1453</div>
+                    <div class="date-e">Столетняя война (Англия vs Франция)</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1429 год</div>
+                    <div class="date-e">Жанна д'Арк снимает осаду Орлеана</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1453 год</div>
+                    <div class="date-e">Конец Столетней войны. Падение Константинополя (Byzantия).</div>
+                </div>
+                <div class="date-item">
+                    <div class="date-y">1492 год</div>
+                    <div class="date-e">Конец Реконкисты. Открытие Америки Колумбом.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание 1: Ответь на вопросы письменно</span>
+                <ol>
+                    <li>Почему IV крестовый поход считается позором крестоносцев?</li>
+                    <li>Почему появление Жанны д'Арк стало переломом в Столетней войне?</li>
+                    <li>Сравни причины и итоги Крестовых походов и Реконкисты.</li>
+                </ol>
+                <button class="btn btn-o" onclick="tog('hi3_a1')">▶ Примерные ответы</button>
+                <div class="ans ans-o" id="hi3_a1">
+1. IV крестовый поход (1202-1204) вместо борьбы с
+   мусульманами напал на христианский Константинополь.
+   Крестоносцы разграбили православный город-союзник,
+   разрушили Byzantийскую империю и создали на её месте
+   Латинскую империю. Это полностью противоречило целям
+   крестовых походов.
+
+2. К 1428 г. Франция была на грани гибели — англичане
+   осадили Орлеан. Жанна подняла боевой дух войска,
+   убедив солдат, что сражается по воле Бога. После снятия
+   осады Орлеана (1429) последовала коронация Карла VII,
+   что объединило французов. Инициатива перешла к Франции.
+
+3. Крестовые походы: цель — освобождение Святой земли,
+   итог — неудача, но расширение торговли и обмен культурой.
+   Реконкиста: цель — освобождение собственной земли
+   от мавров, итог — успех, создание единой Испании.
+   Обе войны имели религиозный характер.
+                </div>
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 2: Заполни таблицу «Городское ремесло»</span><br>
+                Перерисуй в тетрадь и заполни:<br>
+                <table style="margin-top:8px;">
+                    <tr><th class="th-hi2">Ступень</th><th class="th-hi2">Кто это?</th><th class="th-hi2">Что делал?</th><th class="th-hi2">Сколько лет?</th></tr>
+                    <tr><td>Ученик</td><td>?</td><td>?</td><td>?</td></tr>
+                    <tr><td>Подмастерье</td><td>?</td><td>?</td><td>?</td></tr>
+                    <tr><td>Мастер</td><td>?</td><td>?</td><td>?</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ ПО ВСЕОБЩЕЙ ИСТОРИИ -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест: Расцвет Средневековья</div>
+        <p>10 вопросов | Крестовые походы · Город · Столетняя война · Реконкиста</p>
+        <form id="hiQuiz">
+            <div class="qb"><p>1. В каком году был взят Иерусалим в ходе Первого крестового похода?</p>
+                <label class="qo"><input type="radio" name="h1" value="a"> 1096</label>
+                <label class="qo"><input type="radio" name="h1" value="b"> 1099</label>
+                <label class="qo"><input type="radio" name="h1" value="c"> 1187</label>
+                <label class="qo"><input type="radio" name="h1" value="d"> 1204</label>
+            </div>
+            <div class="qb"><p>2. Какой крестовый поход завершился разграблением Константинополя?</p>
+                <label class="qo"><input type="radio" name="h2" value="a"> Первый (1096)</label>
+                <label class="qo"><input type="radio" name="h2" value="b"> Третий (1189)</label>
+                <label class="qo"><input type="radio" name="h2" value="c"> Четвёртый (1202)</label>
+                <label class="qo"><input type="radio" name="h2" value="d"> Восьмой (1270)</label>
+            </div>
+            <div class="qb"><p>3. Что такое «шедевр» в системе средневекового ремесла?</p>
+                <label class="qo"><input type="radio" name="h3" value="a"> Лучший рыцарский меч</label>
+                <label class="qo"><input type="radio" name="h3" value="b"> Образцовое изделие, созданное для получения звания мастера</label>
+                <label class="qo"><input type="radio" name="h3" value="c"> Главная картина художника</label>
+                <label class="qo"><input type="radio" name="h3" value="d"> Книга, написанная монахом</label>
+            </div>
+            <div class="qb"><p>4. Сколько лет длилась Столетняя война?</p>
+                <label class="qo"><input type="radio" name="h4" value="a"> 100 лет</label>
+                <label class="qo"><input type="radio" name="h4" value="b"> 116 лет</label>
+                <label class="qo"><input type="radio" name="h4" value="c"> 87 лет</label>
+                <label class="qo"><input type="radio" name="h4" value="d"> 150 лет</label>
+            </div>
+            <div class="qb"><p>5. Кем была Жанна д'Арк по происхождению?</p>
+                <label class="qo"><input type="radio" name="h5" value="a"> Принцессой</label>
+                <label class="qo"><input type="radio" name="h5" value="b"> Дочерью рыцаря</label>
+                <label class="qo"><input type="radio" name="h5" value="c"> Простой крестьянской девушкой</label>
+                <label class="qo"><input type="radio" name="h5" value="d"> Монахиней</label>
+            </div>
+            <div class="qb"><p>6. Что означает слово «Реконкиста»?</p>
+                <label class="qo"><input type="radio" name="h6" value="a"> Завоевание новых земель</label>
+                <label class="qo"><input type="radio" name="h6" value="b"> Отвоевание</label>
+                <label class="qo"><input type="radio" name="h6" value="c"> Освобождение заложников</label>
+                <label class="qo"><input type="radio" name="h6" value="d"> Религиозная реформа</label>
+            </div>
+            <div class="qb"><p>7. В каком году завершилась Реконкиста?</p>
+                <label class="qo"><input type="radio" name="h7" value="a"> 1453</label>
+                <label class="qo"><input type="radio" name="h7" value="b"> 1488</label>
+                <label class="qo"><input type="radio" name="h7" value="c"> 1492</label>
+                <label class="qo"><input type="radio" name="h7" value="d"> 1500</label>
+            </div>
+            <div class="qb"><p>8. Первый университет в Европе был открыт в:</p>
+                <label class="qo"><input type="radio" name="h8" value="a"> Оксфорде</label>
+                <label class="qo"><input type="radio" name="h8" value="b"> Болонье</label>
+                <label class="qo"><input type="radio" name="h8" value="c"> Париже</label>
+                <label class="qo"><input type="radio" name="h8" value="d"> Праге</label>
+            </div>
+            <div class="qb"><p>9. Ричард I Львиное Сердце участвовал в:</p>
+                <label class="qo"><input type="radio" name="h9" value="a"> Первом крестовом походе</label>
+                <label class="qo"><input type="radio" name="h9" value="b"> Втором крестовом походе</label>
+                <label class="qo"><input type="radio" name="h9" value="c"> Третьем крестовом походе</label>
+                <label class="qo"><input type="radio" name="h9" value="d"> Четвёртом крестовом походе</label>
+            </div>
+            <div class="qb"><p>10. «Городской воздух делает человека свободным» означает:</p>
+                <label class="qo"><input type="radio" name="h10" value="a"> В городе всегда чистый воздух</label>
+                <label class="qo"><input type="radio" name="h10" value="b"> Горожане могли дышать без масок</label>
+                <label class="qo"><input type="radio" name="h10" value="c"> Крепостной, проживший год в городе, становился свободным</label>
+                <label class="qo"><input type="radio" name="h10" value="d"> В городах не было феодалов</label>
+            </div>
+            <button type="button" class="chk chk-hi" onclick="runQuiz('hiQuiz',hiAns,hiExp,'hiRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="hiRes"></div>
+    </div>
+</div>
+
+<hr class="sep sep-hi">
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║         ИСТОРИЯ РОССИИ                      ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="russia">
+    <h1 class="h1-ru">🇷🇺 История России — Древняя Русь</h1>
+    <p class="subtitle">6 класс | Образование государства · Принятие христианства · Киевская Русь</p>
+
+    <div class="lesson l-ru">
+        <h2 class="hc-ru">📖 Древняя Русь — от призвания варягов до монгольского нашествия</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Даты</span>
+        <span class="tag t-mp">Карта</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=Qj-4j3zRD1M" target="_blank">Образование Древнерусского государства (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=BIbTPpBc2bU" target="_blank">Крещение Руси — 988 год (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=OaCzqR7UdtY" target="_blank">Киевская Русь при Ярославе Мудром</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=zE3bUTnqYJc" target="_blank">Монгольское нашествие на Русь — кратко</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Образование Древнерусского государства</h3>
+
+            <div class="rule r-g">
+                <strong>📌 Восточные славяне</strong> — предки русских, украинцев и белорусов.<br>
+                Жили племенами: поляне (Киев), новгородцы, древляне, вятичи, кривичи и др.<br><br>
+                <strong>Занятия:</strong> земледелие, скотоводство, охота, рыболовство, торговля по пути «из варяг в греки».
+            </div>
+
+            <h3>Ключевые правители Древней Руси</h3>
+            <table>
+                <tr>
+                    <th class="th-g">Правитель</th>
+                    <th class="th-g">Годы правления</th>
+                    <th class="th-g">Главные достижения</th>
+                </tr>
+                <tr>
+                    <td><strong>Рюрик</strong></td>
+                    <td>862–879</td>
+                    <td>Первый князь. Призван варягами в Новгород (862). Основатель династии Рюриковичей.</td>
+                </tr>
+                <tr>
+                    <td><strong>Олег (Вещий)</strong></td>
+                    <td>882–912</td>
+                    <td>Объединил Новгород и Киев (882) → начало единого государства. Поход на Царьград (907). «Прибил щит на врата Цареграда».</td>
+                </tr>
+                <tr>
+                    <td><strong>Ольга</strong></td>
+                    <td>945–964</td>
+                    <td>Первая правительница-женщина. Упорядочила сбор налогов (уроки и погосты). Первой приняла христианство среди правителей.</td>
+                </tr>
+                <tr>
+                    <td><strong>Святослав</strong></td>
+                    <td>964–972</td>
+                    <td>Великий полководец. Разгромил Хазарский каганат. Воевал с Byzantией. «Иду на вы!»</td>
+                </tr>
+                <tr>
+                    <td><strong>Владимир I (Красное Солнышко)</strong></td>
+                    <td>980–1015</td>
+                    <td><strong>988 год — Крещение Руси</strong>. Укрепил границы. Строительство церквей. Народные пиры — «Гридница».</td>
+                </tr>
+                <tr>
+                    <td><strong>Ярослав Мудрый</strong></td>
+                    <td>1019–1054</td>
+                    <td>«Золотой век» Киевской Руси. <strong>«Русская Правда»</strong> — первый свод законов. Строительство Софийского собора. Браки с европейскими правителями.</td>
+                </tr>
+                <tr>
+                    <td><strong>Владимир Мономах</strong></td>
+                    <td>1113–1125</td>
+                    <td>Последний расцвет единства. «Поучение детям». Борьба с половцами. Съезд князей в Любече (1097).</td>
+                </tr>
+            </table>
+
+            <h3>Крещение Руси — 988 год</h3>
+            <div class="rule r-b">
+                <strong>📌 Легенда о выборе веры:</strong> Владимир выслушал послов от мусульман, иудеев, католиков и православных. Послы, побывав в Константинополе, сказали: «Не знали — на небе мы или на земле, ибо нет такого зрелища и красоты такой». Владимир выбрал православие.<br><br>
+                <strong>Реальные причины выбора православия:</strong>
+                <ul>
+                    <li>Тесные связи с Byzantией (торговля, культура)</li>
+                    <li>Byzantийская принцесса Анна стала женой Владимира</li>
+                    <li>Православие не требовало подчинения Папе Римскому</li>
+                    <li>Богатое культурное наследие Byzantии</li>
+                </ul>
+                <br>
+                <strong>Значение принятия христианства:</strong>
+                <ul>
+                    <li>Укрепление государственной власти</li>
+                    <li>Развитие письменности, культуры, искусства</li>
+                    <li>Вхождение Руси в семью европейских народов</li>
+                    <li>Появление церкви как социального института</li>
+                </ul>
+            </div>
+
+            <h3>Русская Правда Ярослава Мудрого</h3>
+            <div class="rule r-y">
+                <strong>📌 «Русская Правда»</strong> — первый писаный свод законов Древней Руси, созданный при Ярославе Мудром (ок. 1016 г.).<br><br>
+                <strong>Особенности:</strong>
+                <ul>
+                    <li>Заменила кровную месть денежным штрафом (<strong>вирой</strong>)</li>
+                    <li>Определила систему наказаний в зависимости от происхождения</li>
+                    <li>Защищала имущество и жизнь разных категорий населения</li>
+                    <li>Впоследствии дополнена сыновьями и внуками Ярослава</li>
+                </ul>
+            </div>
+
+            <h3>Распад Киевской Руси и монгольское нашествие</h3>
+            <table>
+                <tr><th class="th-g">Событие</th><th class="th-g">Дата</th><th class="th-g">Значение</th></tr>
+                <tr>
+                    <td>Любечский съезд князей</td>
+                    <td>1097 год</td>
+                    <td>«Каждый да держит отчину свою» — закрепление раздробленности</td>
+                </tr>
+                <tr>
+                    <td>Начало феодальной раздробленности</td>
+                    <td>После 1132 года</td>
+                    <td>Распад на независимые княжества: Владимиро-Суздальское, Новгородское, Галицко-Волынское</td>
+                </tr>
+                <tr>
+                    <td>Битва на р. Калке</td>
+                    <td>1223 год</td>
+                    <td>Первое столкновение русских и половцев с монголами. Поражение.</td>
+                </tr>
+                <tr>
+                    <td>Нашествие Батыя на Русь</td>
+                    <td>1237–1241</td>
+                    <td>Разорение большинства городов. Установление монголо-татарского ига (1243).</td>
+                </tr>
+                <tr>
+                    <td>Невская битва</td>
+                    <td>1240 год</td>
+                    <td>Александр Невский разбил шведов на р. Неве. Прозван Невским.</td>
+                </tr>
+                <tr>
+                    <td>Ледовое побоище</td>
+                    <td>1242 год</td>
+                    <td>Александр Невский разбил тевтонских рыцарей на Чудском озере.</td>
+                </tr>
+            </table>
+
+            <div class="map-block">
+                <h4>🗺️ Задание по карте — История России:</h4>
+                <p>Обозначь на контурной карте:</p>
+                <ol>
+                    <li>Путь «Из варяг в греки» (синей стрелкой)</li>
+                    <li>Территорию Киевской Руси при Ярославе Мудром</li>
+                    <li>Главные города: Киев, Новгород, Владимир, Суздаль, Чернигов</li>
+                    <li>Направление нашествия Батыя (красными стрелками)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание: Составь хронологическую таблицу</span><br>
+                Запиши в тетрадь в хронологическом порядке и кратко объясни значение каждой даты:<br>
+                862, 882, 988, 1019, 1097, 1223, 1237, 1240, 1242<br><br>
+                <button class="btn btn-g" onclick="tog('ru_a1')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="ru_a1">
+862 — Призвание Рюрика, начало Рюриковичей
+882 — Олег объединил Новгород и Киев → Киевская Русь
+988 — Крещение Руси при Владимире I
+1019 — Начало правления Ярослава Мудрого, «золотой век»
+1097 — Любечский съезд → закрепление раздробленности
+1223 — Битва на р. Калке → первое столкновение с монголами
+1237 — Начало нашествия Батыя на Русь
+1240 — Невская битва (победа Александра Невского над шведами)
+1242 — Ледовое побоище (победа над тевтонцами)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ ПО ИСТОРИИ РУСИ -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест: Древняя Русь</div>
+        <p>10 вопросов | Ключевые события и даты</p>
+        <form id="ruQuiz">
+            <div class="qb"><p>1. В каком году началось Крещение Руси?</p>
+                <label class="qo"><input type="radio" name="r1" value="a"> 862</label>
+                <label class="qo"><input type="radio" name="r1" value="b"> 882</label>
+                <label class="qo"><input type="radio" name="r1" value="c"> 988</label>
+                <label class="qo"><input type="radio" name="r1" value="d"> 1019</label>
+            </div>
+            <div class="qb"><p>2. Кто объединил Новгород и Киев в единое государство?</p>
+                <label class="qo"><input type="radio" name="r2" value="a"> Рюрик</label>
+                <label class="qo"><input type="radio" name="r2" value="b"> Олег</label>
+                <label class="qo"><input type="radio" name="r2" value="c"> Владимир</label>
+                <label class="qo"><input type="radio" name="r2" value="d"> Ярослав</label>
+            </div>
+            <div class="qb"><p>3. «Русская Правда» — это:</p>
+                <label class="qo"><input type="radio" name="r3" value="a"> Летопись событий Киевской Руси</label>
+                <label class="qo"><input type="radio" name="r3" value="b"> Первый свод законов Древней Руси</label>
+                <label class="qo"><input type="radio" name="r3" value="c"> Договор с Byzantией</label>
+                <label class="qo"><input type="radio" name="r3" value="d"> Военный устав дружины</label>
+            </div>
+            <div class="qb"><p>4. Ледовое побоище (1242) — это победа над:</p>
+                <label class="qo"><input type="radio" name="r4" value="a"> Монголами</label>
+                <label class="qo"><input type="radio" name="r4" value="b"> Шведами</label>
+                <label class="qo"><input type="radio" name="r4" value="c"> Тевтонскими рыцарями</label>
+                <label class="qo"><input type="radio" name="r4" value="d"> Половцами</label>
+            </div>
+            <div class="qb"><p>5. При каком князе был «золотой век» Киевской Руси?</p>
+                <label class="qo"><input type="radio" name="r5" value="a"> Олег</label>
+                <label class="qo"><input type="radio" name="r5" value="b"> Владимир I</label>
+                <label class="qo"><input type="radio" name="r5" value="c"> Ярослав Мудрый</label>
+                <label class="qo"><input type="radio" name="r5" value="d"> Владимир Мономах</label>
+            </div>
+            <div class="qb"><p>6. Первой среди русских правителей христианство приняла:</p>
+                <label class="qo"><input type="radio" name="r6" value="a"> Рогнеда</label>
+                <label class="qo"><input type="radio" name="r6" value="b"> Ольга</label>
+                <label class="qo"><input type="radio" name="r6" value="c"> Анна Byzantийская</label>
+                <label class="qo"><input type="radio" name="r6" value="d"> Ярославна</label>
+            </div>
+            <div class="qb"><p>7. Путь «из варяг в греки» — это торговый путь из:</p>
+                <label class="qo"><input type="radio" name="r7" value="a"> Скандинавии в Byzantию по рекам</label>
+                <label class="qo"><input type="radio" name="r7" value="b"> Китая в Европу</label>
+                <label class="qo"><input type="radio" name="r7" value="c"> Арабии в Русь</label>
+                <label class="qo"><input type="radio" name="r7" value="d"> Польши в Литву</label>
+            </div>
+            <div class="qb"><p>8. Когда Батый совершил нашествие на Русь?</p>
+                <label class="qo"><input type="radio" name="r8" value="a"> 1223–1224</label>
+                <label class="qo"><input type="radio" name="r8" value="b"> 1237–1241</label>
+                <label class="qo"><input type="radio" name="r8" value="c"> 1242–1245</label>
+                <label class="qo"><input type="radio" name="r8" value="d"> 1256–1260</label>
+            </div>
+            <div class="qb"><p>9. «Иду на вы!» — это слова князя:</p>
+                <label class="qo"><input type="radio" name="r9" value="a"> Олега</label>
+                <label class="qo"><input type="radio" name="r9" value="b"> Ярослава</label>
+                <label class="qo"><input type="radio" name="r9" value="c"> Святослава</label>
+                <label class="qo"><input type="radio" name="r9" value="d"> Владимира</label>
+            </div>
+            <div class="qb"><p>10. Что закрепил Любечский съезд 1097 года?</p>
+                <label class="qo"><input type="radio" name="r10" value="a"> Единство Руси</label>
+                <label class="qo"><input type="radio" name="r10" value="b"> Принятие христианства</label>
+                <label class="qo"><input type="radio" name="r10" value="c"> Феодальную раздробленность («каждый держит отчину свою»)</label>
+                <label class="qo"><input type="radio" name="r10" value="d"> Союз с Byzantией</label>
+            </div>
+            <button type="button" class="chk chk-ru" onclick="runQuiz('ruQuiz',ruAns,ruExp,'ruRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="ruRes"></div>
+    </div>
+</div>
+
+<hr class="sep sep-ru">
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║           ОБЩЕСТВОЗНАНИЕ                    ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="social">
+    <h1 class="h1-so">👥 Обществознание — Неделя 2</h1>
+    <p class="subtitle">6 класс | 2 часа | Межличностные отношения · Группы · Общение · Конфликты</p>
+
+    <!-- ЗАНЯТИЕ 1 — ОТНОШЕНИЯ И ГРУППЫ -->
+    <div class="lesson l-so">
+        <h2 class="hc-so">📖 Занятие 1: Межличностные отношения. Человек в группе.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=8MmfAmZOUpo" target="_blank">Межличностные отношения — виды и особенности (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=RKBGV1QiMoA" target="_blank">Малые группы. Лидер в группе (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=vO3ckjFJTQo" target="_blank">Формальные и неформальные группы — чем отличаются</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Межличностные отношения</h3>
+
+            <div class="rule r-p">
+                <strong>📌 Межличностные отношения</strong> — взаимосвязи между людьми, возникающие в процессе общения и совместной деятельности.<br><br>
+                <strong>Виды межличностных отношений:</strong>
+            </div>
+
+            <table>
+                <tr>
+                    <th class="th-p">Вид</th>
+                    <th class="th-p">Характеристика</th>
+                    <th class="th-p">Примеры</th>
+                </tr>
+                <tr>
+                    <td><strong>Знакомство</strong></td>
+                    <td>Самый поверхностный уровень. Знаешь человека, но мало общаешься.</td>
+                    <td>Сосед по подъезду, одноклассник из параллельного класса</td>
+                </tr>
+                <tr>
+                    <td><strong>Приятельство</strong></td>
+                    <td>Регулярное общение, общие интересы, но без глубокой эмоциональной близости.</td>
+                    <td>Одноклассники, с кем играешь на перемене</td>
+                </tr>
+                <tr>
+                    <td><strong>Товарищество</strong></td>
+                    <td>Связь через общее дело, взаимопомощь в конкретных ситуациях.</td>
+                    <td>Одноклассники, члены спортивной команды</td>
+                </tr>
+                <tr>
+                    <td><strong>Дружба</strong></td>
+                    <td>Глубокая личная привязанность, доверие, взаимопонимание, поддержка.</td>
+                    <td>Лучший друг, с кем делишься секретами</td>
+                </tr>
+                <tr>
+                    <td><strong>Любовь</strong></td>
+                    <td>Глубокое чувство привязанности и единения. Бывает: к родителям, к Родине, романтическая.</td>
+                    <td>Любовь к маме, к другу, к стране</td>
+                </tr>
+            </table>
+
+            <div class="rule r-y">
+                <strong>📌 Симпатия и антипатия:</strong><br>
+                <strong>Симпатия</strong> — положительное отношение к человеку, желание общаться.<br>
+                <strong>Антипатия</strong> — отрицательное отношение, нежелание общаться.<br>
+                <strong>Эмпатия</strong> — способность понимать и разделять чувства другого человека.
+            </div>
+
+            <h3>Человек в группе</h3>
+            <div class="rule r-p">
+                <strong>📌 Группа</strong> — объединение людей, связанных общими целями, интересами или деятельностью.<br><br>
+                <strong>Классификация групп:</strong>
+            </div>
+
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-b" style="flex:1.5;">
+                        <strong>По размеру:</strong><br>
+                        Малые (2–30 чел.) — семья, класс<br>
+                        Большие (много людей) — нация, партия
+                    </div>
+                    <div class="sb sb-g" style="flex:1.5;">
+                        <strong>По характеру:</strong><br>
+                        Формальные — с официальными правилами (класс, армия)<br>
+                        Неформальные — без официальных правил (друзья)
+                    </div>
+                    <div class="sb sb-o" style="flex:1.5;">
+                        <strong>По принадлежности:</strong><br>
+                        Первичные — с непосредственными отношениями (семья)<br>
+                        Вторичные — через формальные связи (профсоюз)
+                    </div>
+                </div>
+            </div>
+
+            <h3>Лидер в группе</h3>
+            <div class="rule r-b">
+                <strong>📌 Лидер</strong> — человек, пользующийся авторитетом и способный организовать группу для достижения общих целей.<br><br>
+                <strong>Виды лидеров:</strong>
+                <ul>
+                    <li><strong>Формальный лидер</strong> — назначен официально (командир класса, директор)</li>
+                    <li><strong>Неформальный лидер</strong> — выдвинут группой за личные качества</li>
+                </ul>
+                <strong>Качества лидера:</strong> инициативность, ответственность, умение слушать, харизма, умение принимать решения.<br><br>
+                <strong>❗ Важно:</strong> лидер ≠ командир. Лидер ведёт за собой, а не приказывает.
+            </div>
+
+            <div class="rule r-r">
+                <strong>⚠️ Давление группы (конформизм):</strong><br>
+                <strong>Конформизм</strong> — подчинение мнению большинства даже вопреки собственным убеждениям.<br>
+                <em>Пример: все говорят, что фильм хорош, хотя он тебе не понравился — и ты соглашаешься, чтобы не выделяться.</em><br><br>
+                <strong>Нонконформизм</strong> — отстаивание собственной позиции вопреки давлению группы.<br><br>
+                Важно уметь: <strong>иметь своё мнение, но слышать других!</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЗАНЯТИЕ 2 — ОБЩЕНИЕ И КОНФЛИКТЫ -->
+    <div class="lesson l-so2">
+        <h2 class="hc-so">📖 Занятие 2: Общение. Конфликты и способы их решения.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=pRECthMcFKc" target="_blank">Общение — функции и виды (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=sE0DUPHgQMc" target="_blank">Конфликт — причины, виды, способы решения (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=7H7Q_kOF_EA" target="_blank">Как разрешать конфликты — практические советы (6 класс)</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Общение</h3>
+
+            <div class="rule r-p">
+                <strong>📌 Общение</strong> — процесс взаимодействия людей, в котором происходит обмен информацией, эмоциями и деятельностью.
+            </div>
+
+            <h3>Структура общения</h3>
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-b">
+                        <strong>Коммуникация</strong><br>
+                        Передача информации (что говорим)
+                    </div>
+                    <div class="arr">+</div>
+                    <div class="sb sb-g">
+                        <strong>Интеракция</strong><br>
+                        Взаимодействие (как действуем вместе)
+                    </div>
+                    <div class="arr">+</div>
+                    <div class="sb sb-p">
+                        <strong>Перцепция</strong><br>
+                        Восприятие друг друга (как понимаем)
+                    </div>
+                </div>
+            </div>
+
+            <h3>Виды общения</h3>
+            <table>
+                <tr><th class="th-p">Основание</th><th class="th-p">Виды</th><th class="th-p">Примеры</th></tr>
+                <tr>
+                    <td>По средствам</td>
+                    <td><strong>Вербальное</strong> — словами<br><strong>Невербальное</strong> — жесты, мимика, взгляд</td>
+                    <td>Разговор, письмо<br>Улыбка, кивок головы, поза</td>
+                </tr>
+                <tr>
+                    <td>По форме</td>
+                    <td><strong>Непосредственное</strong> — лицом к лицу<br><strong>Опосредованное</strong> — через что-то</td>
+                    <td>Беседа<br>Письмо, телефон, интернет</td>
+                </tr>
+                <tr>
+                    <td>По содержанию</td>
+                    <td><strong>Деловое</strong> — для работы<br><strong>Личное</strong> — для общения</td>
+                    <td>Урок, совещание<br>Дружеский разговор</td>
+                </tr>
+            </table>
+
+            <div class="rule r-y">
+                <strong>📌 Невербальное общение (55% информации!):</strong>
+                <ul>
+                    <li><strong>Мимика</strong> — выражение лица (улыбка, хмурость)</li>
+                    <li><strong>Жесты</strong> — движения рук, головы</li>
+                    <li><strong>Поза</strong> — положение тела (открытая/закрытая)</li>
+                    <li><strong>Взгляд</strong> — прямой, уклончивый, пристальный</li>
+                    <li><strong>Интонация</strong> — тон голоса (не слова, а КАК говоришь)</li>
+                    <li><strong>Дистанция</strong> — личное пространство (1–4 м — социальная зона)</li>
+                </ul>
+            </div>
+
+            <h3>Конфликты</h3>
+            <div class="rule r-r">
+                <strong>📌 Конфликт</strong> — столкновение противоположных интересов, взглядов или позиций двух и более людей.<br><br>
+                <strong>Конфликт = нормальное явление!</strong> Главное — умение его конструктивно решать.
+            </div>
+
+            <h3>Структура конфликта</h3>
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-r"><strong>Участники</strong><br>конфликтующие стороны</div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-o"><strong>Предмет</strong><br>из-за чего спор</div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-y"><strong>Повод</strong><br>что стало «спусковым крючком»</div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-p"><strong>Инцидент</strong><br>открытое столкновение</div>
+                </div>
+            </div>
+
+            <h3>Причины конфликтов</h3>
+            <div class="cards">
+                <div class="card c-r">
+                    <div class="ct">💬 Недопонимание</div>
+                    <div class="cb">Неверное истолкование слов или действий другого человека</div>
+                </div>
+                <div class="card c-o">
+                    <div class="ct">🎯 Разные цели</div>
+                    <div class="cb">Каждый хочет своего, интересы не совпадают</div>
+                </div>
+                <div class="card c-b">
+                    <div class="ct">💎 Ресурсы</div>
+                    <div class="cb">Борьба за ограниченные ресурсы: деньги, внимание, место</div>
+                </div>
+                <div class="card c-p">
+                    <div class="ct">😤 Эмоции</div>
+                    <div class="cb">Накопившееся раздражение, усталость, стресс</div>
+                </div>
+                <div class="card c-g">
+                    <div class="ct">⚖️ Несправедливость</div>
+                    <div class="cb">Ощущение, что обращаются несправедливо или нарушают права</div>
+                </div>
+                <div class="card c-t">
+                    <div class="ct">🌍 Ценности</div>
+                    <div class="cb">Принципиально разные взгляды на мир, жизнь, добро и зло</div>
+                </div>
+            </div>
+
+            <h3>Способы разрешения конфликтов</h3>
+            <div class="conflict-scheme">
+                <div class="conf-card" style="background:#fff5f5; border:2px solid #fc8181;">
+                    <div class="conf-title" style="color:#c53030;">⚔️ Конфронтация</div>
+                    <div class="conf-body">Каждый настаивает на своём. Один побеждает, другой проигрывает. Конфликт не решён — он подавлен.<br><br><em>Я выиграл — ты проиграл</em></div>
+                </div>
+                <div class="conf-card" style="background:#fff5f7; border:2px solid #fed7e2;">
+                    <div class="conf-title" style="color:#702459;">🏳️ Уступка</div>
+                    <div class="conf-body">Один полностью уступает другому. Быстрое решение, но неудовлетворённость у уступившего.<br><br><em>Ты выиграл — я проиграл</em></div>
+                </div>
+                <div class="conf-card" style="background:#fffff0; border:2px solid #f6e05e;">
+                    <div class="conf-title" style="color:#744210;">🤝 Компромисс</div>
+                    <div class="conf-body">Оба идут на частичные уступки. Оба что-то получают и что-то теряют. Чаще всего реальный выход.<br><br><em>Оба выигрывают немного</em></div>
+                </div>
+                <div class="conf-card" style="background:#f0fff4; border:2px solid #9ae6b4;">
+                    <div class="conf-title" style="color:#22543d;">💡 Сотрудничество</div>
+                    <div class="conf-body">Стороны совместно ищут решение, которое устроит всех. Лучший способ! Требует времени и желания.<br><br><em>Мы оба выигрываем</em></div>
+                </div>
+                <div class="conf-card" style="background:#ebf8ff; border:2px solid #90cdf4;">
+                    <div class="conf-title" style="color:#2a4365;">🚶 Избегание</div>
+                    <div class="conf-body">Один или оба уклоняются от конфликта. Конфликт не решается, откладывается.<br><br><em>Оба «проигрывают» — проблема остаётся</em></div>
+                </div>
+            </div>
+
+            <div class="rule r-g">
+                <strong>📌 Алгоритм конструктивного решения конфликта:</strong>
+                <ol>
+                    <li>🧘 <strong>Успокойся</strong> — не реагируй в состоянии злости</li>
+                    <li>👂 <strong>Выслушай</strong> — дай другому высказаться до конца</li>
+                    <li>🤔 <strong>Пойми позицию</strong> — чего хочет другой человек и почему</li>
+                    <li>💬 <strong>Выскажи своё</strong> — используй «я-сообщения» («Я чувствую...», а не «Ты виноват...»)</li>
+                    <li>🤝 <strong>Ищи компромисс</strong> — предложи решение, которое устроит обоих</li>
+                    <li>✅ <strong>Договорись</strong> — зафикси решение и выполни его</li>
+                </ol>
+            </div>
+
+            <div class="rule r-b">
+                <strong>📌 «Я-сообщения» vs «Ты-сообщения»:</strong><br><br>
+                ❌ <strong>«Ты-сообщение»:</strong> «Ты всегда опаздываешь! Ты меня не уважаешь!»<br>
+                — Вызывает защитную реакцию, обвиняет<br><br>
+                ✅ <strong>«Я-сообщение»:</strong> «Я расстраиваюсь, когда жду долго, потому что чувствую, что моё время не ценят»<br>
+                — Выражает чувства, не обвиняя, открывает диалог
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание 1: Практический анализ конфликта</span><br>
+                Прочитай ситуацию и ответь на вопросы:<br><br>
+                <em>«Антон и Сергей готовят совместный проект. Антон хочет сделать его про космос, Сергей — про спорт. Оба не уступают. Сдавать завтра.»</em>
+                <ol>
+                    <li>Определи участников, предмет и причину конфликта</li>
+                    <li>Предложи способ разрешения через компромисс</li>
+                    <li>Как мог бы выглядеть разговор с «я-сообщениями»?</li>
+                </ol>
+                <button class="btn btn-p" onclick="tog('so_a1')">▶ Примерный ответ</button>
+                <div class="ans ans-p" id="so_a1">
+1. Участники: Антон и Сергей.
+   Предмет: тема проекта (космос vs спорт).
+   Причина: разные интересы и цели.
+
+2. Компромисс: проект на тему «Физика в спорте и космосе»
+   или разделить проект на две части — каждый пишет
+   свою часть + общее введение и вывод.
+
+3. Антон: «Я очень хотел сделать про космос, потому что
+   давно мечтал об этой теме и уже нашёл материал.
+   Как думаешь, можем ли мы объединить темы?»
+   Сергей: «Я понимаю. Я выбрал спорт, потому что
+   хорошо в нём разбираюсь. Давай попробуем найти связь
+   между нашими темами».
+                </div>
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 2: Виды групп</span><br>
+                Определи вид группы (по размеру, по характеру, первичная/вторичная):<br>
+                1) Семья &nbsp; 2) Армия &nbsp; 3) Школьный класс &nbsp;
+                4) Болельщики футбольного клуба &nbsp; 5) Компания трёх друзей
+                <br><br>
+                <button class="btn btn-p" onclick="tog('so_a2')">▶ Ответ</button>
+                <div class="ans ans-p" id="so_a2">
+1) Семья — малая, неформальная, первичная
+2) Армия — большая, формальная, вторичная
+3) Школьный класс — малая, формальная, вторичная
+4) Болельщики — большая, неформальная, вторичная
+5) Компания друзей — малая, неформальная, первичная
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ ПО ОБЩЕСТВОЗНАНИЮ -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест по обществознанию — Неделя 2</div>
+        <p>10 вопросов | Отношения · Группы · Общение · Конфликты</p>
+        <form id="soQuiz">
+            <div class="qb"><p>1. Самый глубокий вид межличностных отношений:</p>
+                <label class="qo"><input type="radio" name="s1" value="a"> Знакомство</label>
+                <label class="qo"><input type="radio" name="s1" value="b"> Приятельство</label>
+                <label class="qo"><input type="radio" name="s1" value="c"> Дружба</label>
+                <label class="qo"><input type="radio" name="s1" value="d"> Товарищество</label>
+            </div>
+            <div class="qb"><p>2. Школьный класс — это группа:</p>
+                <label class="qo"><input type="radio" name="s2" value="a"> Большая, неформальная</label>
+                <label class="qo"><input type="radio" name="s2" value="b"> Малая, формальная</label>
+                <label class="qo"><input type="radio" name="s2" value="c"> Малая, неформальная</label>
+                <label class="qo"><input type="radio" name="s2" value="d"> Большая, формальная</label>
+            </div>
+            <div class="qb"><p>3. «Конформизм» — это:</p>
+                <label class="qo"><input type="radio" name="s3" value="a"> Умение отстаивать своё мнение</label>
+                <label class="qo"><input type="radio" name="s3" value="b"> Подчинение мнению большинства вопреки своим убеждениям</label>
+                <label class="qo"><input type="radio" name="s3" value="c"> Конфликт с группой</label>
+                <label class="qo"><input type="radio" name="s3" value="d"> Лидерство в группе</label>
+            </div>
+            <div class="qb"><p>4. «Эмпатия» — это:</p>
+                <label class="qo"><input type="radio" name="s4" value="a"> Нежелание общаться</label>
+                <label class="qo"><input type="radio" name="s4" value="b"> Способность понимать и разделять чувства другого</label>
+                <label class="qo"><input type="radio" name="s4" value="c"> Давление группы</label>
+                <label class="qo"><input type="radio" name="s4" value="d"> Положительное отношение к человеку</label>
+            </div>
+            <div class="qb"><p>5. Невербальное общение — это передача информации через:</p>
+                <label class="qo"><input type="radio" name="s5" value="a"> Слова и речь</label>
+                <label class="qo"><input type="radio" name="s5" value="b"> Письменный текст</label>
+                <label class="qo"><input type="radio" name="s5" value="c"> Жесты, мимику, позу, интонацию</label>
+                <label class="qo"><input type="radio" name="s5" value="d"> Только интернет</label>
+            </div>
+            <div class="qb"><p>6. Лучший способ разрешения конфликта:</p>
+                <label class="qo"><input type="radio" name="s6" value="a"> Конфронтация (один победил)</label>
+                <label class="qo"><input type="radio" name="s6" value="b"> Избегание (уйти от проблемы)</label>
+                <label class="qo"><input type="radio" name="s6" value="c"> Сотрудничество (найти решение для всех)</label>
+                <label class="qo"><input type="radio" name="s6" value="d"> Уступка (один всё отдал)</label>
+            </div>
+            <div class="qb"><p>7. «Я расстраиваюсь, когда...» — это пример:</p>
+                <label class="qo"><input type="radio" name="s7" value="a"> «Ты-сообщения»</label>
+                <label class="qo"><input type="radio" name="s7" value="b"> «Я-сообщения»</label>
+                <label class="qo"><input type="radio" name="s7" value="c"> Конфронтации</label>
+                <label class="qo"><input type="radio" name="s7" value="d"> Избегания</label>
+            </div>
+            <div class="qb"><p>8. Неформальный лидер — это человек, который:</p>
+                <label class="qo"><input type="radio" name="s8" value="a"> Назначен официально</label>
+                <label class="qo"><input type="radio" name="s8" value="b"> Выдвинут группой за личные качества</label>
+                <label class="qo"><input type="radio" name="s8" value="c"> Самый старший в группе</label>
+                <label class="qo"><input type="radio" name="s8" value="d"> Имеет лучшие оценки</label>
+            </div>
+            <div class="qb"><p>9. Семья — это группа:</p>
+                <label class="qo"><input type="radio" name="s9" value="a"> Вторичная</label>
+                <label class="qo"><input type="radio" name="s9" value="b"> Формальная</label>
+                <label class="qo"><input type="radio" name="s9" value="c"> Первичная</label>
+                <label class="qo"><input type="radio" name="s9" value="d"> Большая</label>
+            </div>
+            <div class="qb"><p>10. Что является первым шагом конструктивного решения конфликта?</p>
+                <label class="qo"><input type="radio" name="s10" value="a"> Громко высказать претензии</label>
+                <label class="qo"><input type="radio" name="s10" value="b"> Уйти и не разговаривать</label>
+                <label class="qo"><input type="radio" name="s10" value="c"> Успокоиться и не реагировать в состоянии злости</label>
+                <label class="qo"><input type="radio" name="s10" value="d"> Попросить учителя решить за тебя</label>
+            </div>
+            <button type="button" class="chk chk-so" onclick="runQuiz('soQuiz',soAns,soExp,'soRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="soRes"></div>
+    </div>
+
+</div><!-- /social -->
+</div><!-- /container -->
+
+<script>
+/* Навигация */
+function goTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+/* Показать/скрыть */
+function tog(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+/* Данные тестов */
+var hiAns = { h1:'b',h2:'c',h3:'b',h4:'b',h5:'c',h6:'b',h7:'c',h8:'b',h9:'c',h10:'c' };
+var hiExp = {
+    h1:'Иерусалим был взят крестоносцами в 1099 году, в конце Первого крестового похода.',
+    h2:'IV крестовый поход (1202–1204) завершился разграблением Константинополя — христианского города.',
+    h3:'Шедевр — образцовое изделие, которое подмастерье создавал для получения звания мастера.',
+    h4:'Война длилась с 1337 по 1453 год — итого 116 лет, хотя называется «Столетней».',
+    h5:'Жанна д\'Арк была дочерью простых крестьян из деревни Домреми.',
+    h6:'Реконкиста — от испанского «отвоевание» — процесс освобождения Пиренейского полуострова.',
+    h7:'Реконкиста завершилась в 1492 году взятием Гранады — последнего мавританского государства.',
+    h8:'Первый университет в Европе был открыт в Болонье (Италия) в 1088 году.',
+    h9:'Ричард I Львиное Сердце возглавил Третий крестовый поход (1189–1192) против Саладина.',
+    h10:'По средневековому обычаю: если крепостной прожил в городе год и один день — он становился свободным.'
+};
+
+var ruAns = { r1:'c',r2:'b',r3:'b',r4:'c',r5:'c',r6:'b',r7:'a',r8:'b',r9:'c',r10:'c' };
+var ruExp = {
+    r1:'988 год — Владимир I крестил Русь, погрузив жителей Киева в воды Днепра.',
+    r2:'882 год — Олег захватил Киев и объединил его с Новгородом, создав Киевскую Русь.',
+    r3:'«Русская Правда» — первый свод законов, составленный при Ярославе Мудром.',
+    r4:'Ледовое побоище 1242 года — победа Александра Невского над тевтонскими рыцарями на Чудском озере.',
+    r5:'Ярослав Мудрый (1019–1054) — время расцвета Киевской Руси, «Русская Правда», Софийский собор.',
+    r6:'Княгиня Ольга — первой из русских правителей приняла христианство, посетив Константинополь.',
+    r7:'Путь «из варяг в греки» — торговый маршрут из Скандинавии в Byzantию по рекам Восточной Европы.',
+    r8:'1237–1241 годы — нашествие хана Батыя, внука Чингисхана, разорившего большинство городов Руси.',
+    r9:'Святослав перед походом предупреждал врагов: «Иду на вы!» — проявление рыцарского духа.',
+    r10:'Любечский съезд 1097 г. закрепил принцип «каждый держит отчину свою» — начало раздробленности.'
+};
+
+var soAns = { s1:'c',s2:'b',s3:'b',s4:'b',s5:'c',s6:'c',s7:'b',s8:'b',s9:'c',s10:'c' };
+var soExp = {
+    s1:'Дружба — самый глубокий вид межличностных отношений (доверие, поддержка, взаимопонимание).',
+    s2:'Класс — малая группа (до 30 человек) и формальная (есть устав, правила, учитель как руководитель).',
+    s3:'Конформизм — подчинение мнению большинства даже вопреки собственным убеждениям.',
+    s4:'Эмпатия — способность понять и почувствовать то, что чувствует другой человек.',
+    s5:'Невербальное общение: жесты, мимика, поза, взгляд, интонация — составляют 55–93% общения!',
+    s6:'Сотрудничество — лучший способ: обе стороны ищут решение, выгодное для всех.',
+    s7:'«Я-сообщение» начинается с «Я чувствую/думаю/хочу» — выражает позицию без обвинений.',
+    s8:'Неформальный лидер выдвигается самой группой за личные качества (авторитет, харизма).',
+    s9:'Семья — первичная группа: отношения непосредственные, глубокие, личные.',
+    s10:'Первый шаг — успокоиться! В состоянии злости любой разговор только усугубит конфликт.'
+};
+
+/* Универсальная проверка теста */
+function runQuiz(formId, answers, explain, resId) {
+    var keys  = Object.keys(answers);
+    var pfx   = keys[0].replace(/\d+$/, '');
+    var total = keys.length;
+    var score = 0, html = '';
+
+    keys.forEach(function(q) {
+        var sel = document.querySelector('input[name="'+q+'"]:checked');
+        var n   = q.replace(pfx, '');
+        if (sel && sel.value === answers[q]) {
+            score++;
+            html += '<br>✅ ' + n + ': Верно! ' + explain[q];
+        } else if (sel) {
+            html += '<br>❌ ' + n + ': Неверно. ' + explain[q];
+        } else {
+            html += '<br>⚠️ ' + n + ': Нет ответа. ' + explain[q];
+        }
+    });
+
+    var pct = Math.round(score / total * 100);
+    var bg  = pct >= 80 ? '#c6f6d5' : pct >= 60 ? '#fefcbf' : '#fed7d7';
+    var em  = pct >= 80 ? '🎉 Отлично!' : pct >= 60 ? '👍 Хорошо!' : '📚 Повтори материал!';
+
+    var box = document.getElementById(resId);
+    box.style.background = bg;
+    box.style.display    = 'block';
+    box.innerHTML = em + ' <strong>' + score + '/' + total + ' (' + pct + '%)</strong>' + html;
+    box.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

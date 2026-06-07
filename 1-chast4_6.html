@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 1 — География, Английский, Литература, Итог</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* ===== НАВИГАЦИЯ ===== */
+        .nav-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            background: white;
+            padding: 16px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .nav-label { font-weight: bold; color: #718096; align-self: center; font-size: .9em; }
+        .nav-btn {
+            padding: 9px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: .88em;
+            transition: all .25s;
+            color: white;
+        }
+        .nb-geo  { background: #2b6cb0; }
+        .nb-eng  { background: #276749; }
+        .nb-lit  { background: #702459; }
+        .nb-fin  { background: #744210; }
+        .nav-btn:hover { opacity: .85; transform: translateY(-2px); }
+
+        /* ===== ЗАГОЛОВКИ ===== */
+        h1 {
+            text-align: center;
+            font-size: 1.9em;
+            margin-bottom: 8px;
+            padding-bottom: 13px;
+        }
+        .h1-geo { color: #2b6cb0; border-bottom: 4px solid #3182ce; }
+        .h1-eng { color: #22543d; border-bottom: 4px solid #38a169; }
+        .h1-lit { color: #702459; border-bottom: 4px solid #b83280; }
+        .h1-fin { color: #744210; border-bottom: 4px solid #dd6b20; }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 26px; font-size: 1em; }
+
+        h2 { font-size: 1.4em; margin-bottom: 13px; display: flex; align-items: center; gap: 10px; }
+        h2.geo-h { color: #2a4365; }
+        h2.eng-h { color: #22543d; }
+        h2.lit-h { color: #702459; }
+        h2.fin-h { color: #744210; }
+        h3 { font-size: 1.1em; color: #2d3748; margin: 17px 0 7px; padding-bottom: 4px; border-bottom: 2px dashed #e2e8f0; }
+        h4 { font-size: .98em; color: #4a5568; margin: 11px 0 5px; }
+
+        /* ===== БЛОКИ ===== */
+        .lesson-block {
+            background: white;
+            border-radius: 16px;
+            padding: 26px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .lb-geo    { border-left: 6px solid #3182ce; }
+        .lb-geo2   { border-left: 6px solid #63b3ed; }
+        .lb-eng    { border-left: 6px solid #38a169; }
+        .lb-eng2   { border-left: 6px solid #68d391; }
+        .lb-lit    { border-left: 6px solid #b83280; }
+        .lb-lit2   { border-left: 6px solid #d53f8c; }
+        .lb-fin    { border-left: 6px solid #dd6b20; }
+        .lb-final  { border-left: 6px solid #e53e3e; }
+
+        /* ===== ТЕТРАДЬ ===== */
+        .notebook {
+            background: #fffff0;
+            border: 2px solid #ecc94b;
+            border-radius: 12px;
+            padding: 20px 20px 14px;
+            margin: 13px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -13px; left: 18px;
+            background: #ecc94b; color: #744210;
+            padding: 2px 12px; border-radius: 8px;
+            font-weight: bold; font-size: .82em;
+        }
+
+        /* ===== ПРАВИЛА ===== */
+        .rule-box { border-radius: 10px; padding: 13px 17px; margin: 10px 0; }
+        .rb-blue   { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .rb-green  { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .rb-yellow { background: #fffff0; border: 2px solid #f6e05e; }
+        .rb-red    { background: #fff5f5; border: 2px solid #fc8181; }
+        .rb-purple { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .rb-orange { background: #fffaf0; border: 2px solid #fbd38d; }
+        .rb-pink   { background: #fff5f7; border: 2px solid #fed7e2; }
+        .rb-teal   { background: #e6fffa; border: 2px solid #81e6d9; }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .93em; }
+        th { padding: 10px 12px; text-align: left; color: white; }
+        td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+        .th-geo  { background: #2b6cb0; }
+        .th-eng  { background: #276749; }
+        .th-lit  { background: #702459; }
+        .th-fin  { background: #c05621; }
+        .th-red  { background: #c53030; }
+
+        /* ===== УПРАЖНЕНИЯ ===== */
+        .exercise-block {
+            background: #faf5ff;
+            border: 2px solid #d6bcfa;
+            border-radius: 12px;
+            padding: 18px 18px 12px;
+            margin: 13px 0;
+            position: relative;
+        }
+        .exercise-block::before {
+            content: "✏️ ЗАДАНИЯ";
+            position: absolute;
+            top: -13px; left: 18px;
+            background: #805ad5; color: white;
+            padding: 2px 12px; border-radius: 8px;
+            font-weight: bold; font-size: .82em;
+        }
+        .task {
+            background: white; border-radius: 10px;
+            padding: 13px 15px; margin: 10px 0;
+            border-left: 4px solid #805ad5;
+        }
+        .task-num { font-weight: bold; color: #805ad5; }
+
+        /* ===== КНОПКИ ===== */
+        .toggle-btn {
+            border: none; padding: 7px 15px;
+            border-radius: 6px; cursor: pointer;
+            font-size: .87em; margin-top: 8px;
+            transition: background .3s; color: white;
+        }
+        .tb-purple { background: #805ad5; }
+        .tb-purple:hover { background: #6b46c1; }
+        .tb-green  { background: #38a169; }
+        .tb-green:hover  { background: #2f855a; }
+        .tb-blue   { background: #3182ce; }
+        .tb-blue:hover   { background: #2b6cb0; }
+        .tb-pink   { background: #b83280; }
+        .tb-pink:hover   { background: #97266d; }
+        .tb-orange { background: #dd6b20; }
+        .tb-orange:hover { background: #c05621; }
+        .tb-red    { background: #e53e3e; }
+        .tb-red:hover    { background: #c53030; }
+
+        .answer {
+            display: none; border-radius: 8px;
+            padding: 12px 15px; margin-top: 8px;
+            font-size: .92em; line-height: 1.75;
+        }
+        .ans-green  { background: #f0fff4; border: 1px solid #9ae6b4; color: #22543d; }
+        .ans-blue   { background: #ebf8ff; border: 1px solid #90cdf4; color: #2a4365; }
+        .ans-purple { background: #faf5ff; border: 1px solid #d6bcfa; color: #44337a; }
+        .ans-pink   { background: #fff5f7; border: 1px solid #fed7e2; color: #702459; }
+        .ans-orange { background: #fffaf0; border: 1px solid #fbd38d; color: #7b341e; }
+
+        /* ===== ВИДЕО ===== */
+        .video-block {
+            background: #fff5f5; border: 2px solid #feb2b2;
+            border-radius: 12px; padding: 13px 17px; margin: 13px 0;
+        }
+        .video-block a { color: #c53030; text-decoration: none; font-weight: bold; }
+        .video-block a:hover { text-decoration: underline; }
+
+        /* ===== СХЕМА ===== */
+        .scheme {
+            background: #f7fafc; border: 2px solid #e2e8f0;
+            border-radius: 12px; padding: 16px; margin: 12px 0; text-align: center;
+        }
+        .scheme-row {
+            display: flex; justify-content: center;
+            align-items: center; gap: 10px;
+            flex-wrap: wrap; margin: 8px 0;
+        }
+        .scheme-box {
+            padding: 9px 15px; border-radius: 8px;
+            font-size: .88em; font-weight: bold; flex: 1; min-width: 140px;
+        }
+        .sb-blue   { background: #bee3f8; color: #2a4365; }
+        .sb-green  { background: #c6f6d5; color: #22543d; }
+        .sb-purple { background: #e9d8fd; color: #44337a; }
+        .sb-orange { background: #feebc8; color: #7b341e; }
+        .sb-red    { background: #fed7d7; color: #742a2a; }
+        .sb-teal   { background: #b2f5ea; color: #234e52; }
+        .sb-pink   { background: #fed7e2; color: #702459; }
+        .sb-yellow { background: #fefcbf; color: #744210; }
+        .arrow { font-size: 1.5em; color: #718096; flex: none; }
+
+        /* ===== КАРТОЧКИ ===== */
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 13px 0; }
+        .card { border-radius: 12px; padding: 15px; }
+        .card-title { font-weight: bold; font-size: .97em; margin-bottom: 6px; }
+        .card-body  { font-size: .86em; line-height: 1.5; }
+        .card-blue   { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .card-green  { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .card-orange { background: #fffaf0; border: 2px solid #fbd38d; }
+        .card-purple { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .card-pink   { background: #fff5f7; border: 2px solid #fed7e2; }
+        .card-teal   { background: #e6fffa; border: 2px solid #81e6d9; }
+        .card-yellow { background: #fffff0; border: 2px solid #f6e05e; }
+        .card-red    { background: #fff5f5; border: 2px solid #fc8181; }
+
+        /* ===== ТЕРМИНЫ ===== */
+        .terms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 11px; margin: 12px 0; }
+        .term-card { background: white; border-radius: 10px; padding: 12px 14px; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+        .term-word { font-weight: bold; color: #2b6cb0; font-size: .97em; }
+        .term-def  { font-size: .88em; color: #4a5568; margin-top: 3px; }
+
+        /* ===== ТЕГИ ===== */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: .79em; font-weight: bold; margin: 2px; }
+        .tag-theory   { background: #bee3f8; color: #2a4365; }
+        .tag-practice { background: #c6f6d5; color: #22543d; }
+        .tag-test     { background: #fefcbf; color: #744210; }
+        .tag-map      { background: #b2f5ea; color: #234e52; }
+        .tag-reading  { background: #fed7e2; color: #702459; }
+        .duration { background: #e2e8f0; color: #4a5568; padding: 5px 12px; border-radius: 20px; font-size: .84em; float: right; }
+
+        /* ===== РАЗДЕЛИТЕЛЬ ===== */
+        .separator { border: none; height: 4px; margin: 32px 0; border-radius: 2px; }
+        .sep-geo { background: linear-gradient(to right, #3182ce, #63b3ed); }
+        .sep-eng { background: linear-gradient(to right, #38a169, #68d391); }
+        .sep-lit { background: linear-gradient(to right, #b83280, #d53f8c); }
+        .sep-fin { background: linear-gradient(to right, #e53e3e, #fc8181); }
+
+        /* ===== ENGLISH SPECIFIC ===== */
+        .grammar-table th { background: #276749; }
+        .eng-example {
+            background: #f0fff4; border: 1px solid #9ae6b4;
+            border-radius: 8px; padding: 13px 16px; margin: 8px 0;
+            font-family: 'Courier New', monospace; font-size: .93em;
+        }
+        .eng-negative { color: #c53030; }
+        .eng-question { color: #2b6cb0; }
+        .eng-positive { color: #276749; }
+        .word-card {
+            display: inline-block; background: white;
+            border: 2px solid #9ae6b4; border-radius: 8px;
+            padding: 8px 13px; margin: 4px;
+            font-size: .9em; cursor: pointer;
+            transition: all .25s;
+        }
+        .word-card:hover { background: #f0fff4; transform: translateY(-2px); }
+        .word-en { font-weight: bold; color: #22543d; }
+        .word-ru { color: #718096; font-size: .85em; }
+        .fill-input {
+            border: 2px solid #90cdf4; border-radius: 6px;
+            padding: 5px 10px; font-size: .95em; width: 120px;
+            outline: none; transition: border .25s;
+        }
+        .fill-input:focus { border-color: #3182ce; }
+        .fill-input.correct { border-color: #38a169; background: #f0fff4; }
+        .fill-input.wrong   { border-color: #e53e3e; background: #fff5f5; }
+
+        /* ===== ЛИТЕРАТУРА ===== */
+        .book-card {
+            background: white; border-radius: 12px;
+            padding: 18px; margin: 12px 0;
+            border-left: 5px solid #b83280;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .book-title { font-weight: bold; font-size: 1.1em; color: #702459; margin-bottom: 8px; }
+        .book-author { color: #718096; font-size: .9em; margin-bottom: 10px; }
+        .plot-step {
+            background: #fff5f7; border-left: 3px solid #b83280;
+            border-radius: 6px; padding: 9px 13px; margin: 6px 0; font-size: .92em;
+        }
+
+        /* ===== ИТОГОВАЯ ПРОВЕРКА ===== */
+        .final-block {
+            background: white; border-radius: 16px;
+            padding: 28px; margin-bottom: 24px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border: 3px solid #e53e3e;
+        }
+        .final-title {
+            font-size: 1.7em; font-weight: bold;
+            color: #c53030; text-align: center;
+            margin-bottom: 8px;
+        }
+        .final-subtitle { text-align: center; color: #718096; margin-bottom: 20px; }
+        .timer-block {
+            background: #fff5f5; border: 2px solid #fc8181;
+            border-radius: 12px; padding: 16px; text-align: center; margin: 16px 0;
+        }
+        .timer-display {
+            font-size: 3em; font-weight: bold; color: #c53030;
+            font-family: 'Courier New', monospace; letter-spacing: 4px;
+        }
+        .timer-btn {
+            padding: 10px 24px; border: none; border-radius: 8px;
+            font-size: .95em; font-weight: bold; cursor: pointer;
+            margin: 6px; transition: all .25s; color: white;
+        }
+        .timer-start  { background: #38a169; }
+        .timer-start:hover  { background: #2f855a; }
+        .timer-pause  { background: #dd6b20; }
+        .timer-pause:hover  { background: #c05621; }
+        .timer-reset  { background: #718096; }
+        .timer-reset:hover  { background: #4a5568; }
+        .section-badge {
+            display: inline-block; padding: 6px 18px;
+            border-radius: 20px; font-weight: bold;
+            font-size: .95em; margin: 4px;
+        }
+        .badge-ru { background: #bee3f8; color: #2a4365; }
+        .badge-ma { background: #c6f6d5; color: #22543d; }
+        .badge-hi { background: #feebc8; color: #7b341e; }
+
+        /* ===== ТЕСТ ===== */
+        .quiz-wrap {
+            background: #fffff0; border: 2px solid #f6ad55;
+            border-radius: 14px; padding: 24px; margin: 24px 0;
+        }
+        .quiz-title { font-size: 1.4em; font-weight: bold; margin-bottom: 6px; }
+        .q-block {
+            background: white; border-radius: 10px;
+            padding: 15px 17px; margin: 12px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .q-block p { font-weight: bold; margin-bottom: 9px; color: #2d3748; }
+        .q-opt {
+            display: block; padding: 8px 13px; margin: 4px 0;
+            background: #f7fafc; border: 2px solid #e2e8f0;
+            border-radius: 8px; cursor: pointer;
+            transition: all .25s; user-select: none;
+        }
+        .q-opt:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .q-opt input { margin-right: 8px; }
+        .check-btn {
+            padding: 12px 30px; border: none; border-radius: 8px;
+            font-size: .97em; font-weight: bold; cursor: pointer;
+            margin-top: 14px; color: white; transition: background .3s;
+        }
+        .cb-geo { background: #3182ce; }
+        .cb-geo:hover { background: #2b6cb0; }
+        .cb-eng { background: #38a169; }
+        .cb-eng:hover { background: #2f855a; }
+        .cb-lit { background: #b83280; }
+        .cb-lit:hover { background: #97266d; }
+        .result-box { padding: 16px; border-radius: 10px; margin-top: 16px; display: none; line-height: 1.9; }
+
+        /* ===== ДИКТАНТ БЛОК ===== */
+        .dictant-block {
+            background: white; border: 3px dashed #3182ce;
+            border-radius: 12px; padding: 20px; margin: 14px 0;
+        }
+        .dictant-title { font-weight: bold; color: #2b6cb0; margin-bottom: 10px; font-size: 1.05em; }
+
+        /* ===== ПРОГРЕСС НЕДЕЛИ ===== */
+        .progress-wrap { margin: 20px 0; }
+        .progress-item { margin: 12px 0; }
+        .progress-label { font-weight: bold; font-size: .93em; color: #2d3748; margin-bottom: 4px; }
+        .progress-bar-bg { background: #e2e8f0; border-radius: 20px; height: 22px; overflow: hidden; }
+        .progress-bar { height: 100%; border-radius: 20px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-size: .8em; font-weight: bold; color: white; transition: width 1s ease; }
+        .pb-ru { background: linear-gradient(to right, #3182ce, #63b3ed); }
+        .pb-ma { background: linear-gradient(to right, #38a169, #68d391); }
+        .pb-hi { background: linear-gradient(to right, #dd6b20, #f6ad55); }
+        .pb-bi { background: linear-gradient(to right, #319795, #4fd1c5); }
+        .pb-ob { background: linear-gradient(to right, #805ad5, #b794f4); }
+        .pb-ge { background: linear-gradient(to right, #2b6cb0, #90cdf4); }
+        .pb-en { background: linear-gradient(to right, #276749, #68d391); }
+        .pb-li { background: linear-gradient(to right, #b83280, #f687b3); }
+
+        /* ===== ЧЕКБОКСЫ ===== */
+        .checklist { list-style: none; padding: 0; }
+        .checklist li {
+            padding: 8px 12px; margin: 5px 0;
+            background: #f7fafc; border-radius: 8px;
+            display: flex; align-items: center; gap: 10px;
+            font-size: .93em; cursor: pointer;
+            transition: background .2s;
+        }
+        .checklist li:hover { background: #ebf8ff; }
+        .checklist li input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+        .checklist li.done { background: #f0fff4; text-decoration: line-through; color: #718096; }
+
+        ul, ol { padding-left: 22px; margin: 8px 0; }
+        li { margin: 5px 0; }
+        .hl { background: #fefcbf; padding: 1px 5px; border-radius: 4px; }
+        .bold-c { font-weight: bold; }
+
+        /* ===== НАГРАДА ===== */
+        .achievement {
+            background: linear-gradient(135deg, #f6e05e, #ecc94b);
+            border-radius: 16px; padding: 24px; text-align: center;
+            margin: 20px 0; box-shadow: 0 4px 15px rgba(236,201,75,.4);
+        }
+        .achievement-icon { font-size: 4em; margin-bottom: 10px; }
+        .achievement-title { font-size: 1.5em; font-weight: bold; color: #744210; margin-bottom: 6px; }
+        .achievement-text  { color: #7b341e; font-size: .97em; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- НАВИГАЦИЯ -->
+    <div class="nav-bar">
+        <span class="nav-label">📌 Перейти:</span>
+        <button class="nav-btn nb-geo" onclick="goTo('geo')">🌍 География</button>
+        <button class="nav-btn nb-eng" onclick="goTo('eng')">🇬🇧 Английский</button>
+        <button class="nav-btn nb-lit" onclick="goTo('lit')">📚 Литература</button>
+        <button class="nav-btn nb-fin" onclick="goTo('fin')">🏆 Итоговая проверка</button>
+    </div>
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║              ГЕОГРАФИЯ                      ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div id="geo">
+        <h1 class="h1-geo">🌍 География — Неделя 1</h1>
+        <p class="subtitle">6 класс | 2 часа | Земля в Солнечной системе. План и карта.</p>
+
+        <!-- ЗАНЯТИЕ 1 — ЗЕМЛЯ В СОЛНЕЧНОЙ СИСТЕМЕ -->
+        <div class="lesson-block lb-geo">
+            <h2 class="geo-h">📖 Занятие 1: Земля — планета Солнечной системы</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-map">Карта</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=M3OgFNt5lmU" target="_blank">Земля в Солнечной системе — 6 класс (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=libKVRa01L8" target="_blank">Солнечная система — всё о планетах (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=n5e9sQkTh0E" target="_blank">Форма и размеры Земли — наглядно и интересно</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=GvnOf_E_HOM" target="_blank">Движение Земли: вращение и обращение вокруг Солнца</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема: Земля в Солнечной системе</h3>
+
+                <div class="rule-box rb-blue">
+                    <strong>📌 Солнечная система</strong> — система небесных тел, включающая Солнце и все объекты, вращающиеся вокруг него под действием гравитации.<br><br>
+                    <strong>Состав Солнечной системы:</strong>
+                    <ul>
+                        <li>☀️ Солнце (центральная звезда, 99,86% массы системы)</li>
+                        <li>🪐 8 планет + их спутники</li>
+                        <li>☄️ Астероиды, кометы, метеориты</li>
+                        <li>🌌 Межпланетное вещество</li>
+                    </ul>
+                </div>
+
+                <h3>Планеты Солнечной системы (по порядку от Солнца)</h3>
+                <div class="rule-box rb-yellow">
+                    <strong>📌 Мнемоническое правило — запомни порядок планет:</strong><br>
+                    <em><span class="hl">«Меня Венера Замучила — Марс, Юпитер, Сатурн, Уран, Нептун»</span></em><br>
+                    Меркурий — Венера — Земля — Марс — Юпитер — Сатурн — Уран — Нептун
+                </div>
+
+                <table>
+                    <tr>
+                        <th class="th-geo">Планета</th>
+                        <th class="th-geo">Тип</th>
+                        <th class="th-geo">Особенности</th>
+                        <th class="th-geo">Спутники</th>
+                    </tr>
+                    <tr><td>☿ Меркурий</td><td>Земная группа</td><td>Ближайшая к Солнцу, нет атмосферы</td><td>0</td></tr>
+                    <tr><td>♀ Венера</td><td>Земная группа</td><td>Самая горячая планета (CO₂ атмосфера)</td><td>0</td></tr>
+                    <tr><td>🌍 Земля</td><td>Земная группа</td><td>Жизнь! Гидросфера. 71% воды.</td><td>1 (Луна)</td></tr>
+                    <tr><td>♂ Марс</td><td>Земная группа</td><td>Красная планета (оксид железа)</td><td>2 (Фобос, Деймос)</td></tr>
+                    <tr><td>♃ Юпитер</td><td>Газовый гигант</td><td>Крупнейшая планета системы</td><td>95</td></tr>
+                    <tr><td>♄ Сатурн</td><td>Газовый гигант</td><td>Красивые кольца из льда и пыли</td><td>146</td></tr>
+                    <tr><td>⛢ Уран</td><td>Ледяной гигант</td><td>Вращается «лёжа на боку»</td><td>27</td></tr>
+                    <tr><td>♆ Нептун</td><td>Ледяной гигант</td><td>Самые сильные ветры в системе</td><td>16</td></tr>
+                </table>
+
+                <h3>Земля как планета — основные характеристики</h3>
+                <div class="cards">
+                    <div class="card card-blue">
+                        <div class="card-title">🌐 Форма</div>
+                        <div class="card-body">Геоид — сплюснутый у полюсов шар. Полярный радиус = 6357 км, экваториальный = 6378 км</div>
+                    </div>
+                    <div class="card card-green">
+                        <div class="card-title">📏 Размеры</div>
+                        <div class="card-body">Площадь = 510 млн км². Длина экватора = 40 075 км. Длина меридиана = 40 008 км</div>
+                    </div>
+                    <div class="card card-orange">
+                        <div class="card-title">🔄 Суточное вращение</div>
+                        <div class="card-body">Вокруг собственной оси. Период: 24 часа. Следствие: смена дня и ночи, пояса времени</div>
+                    </div>
+                    <div class="card card-purple">
+                        <div class="card-title">☀️ Годовое движение</div>
+                        <div class="card-body">Вокруг Солнца. Период: 365 дней 6 ч. Следствие: смена времён года</div>
+                    </div>
+                    <div class="card card-teal">
+                        <div class="card-title">📐 Наклон оси</div>
+                        <div class="card-body">23,5° к плоскости орбиты. Причина смены сезонов и существования тепловых поясов</div>
+                    </div>
+                    <div class="card card-yellow">
+                        <div class="card-title">🌙 Луна</div>
+                        <div class="card-body">Единственный естественный спутник. Расстояние: 384 400 км. Причина приливов и отливов</div>
+                    </div>
+                </div>
+
+                <h3>Движения Земли и их следствия</h3>
+                <div class="scheme">
+                    <div class="scheme-row">
+                        <div class="scheme-box sb-blue" style="flex:1;">
+                            <strong>🔄 Суточное вращение</strong><br>
+                            Вокруг своей оси → с запада на восток<br>
+                            Период: 24 часа (сутки)<br><br>
+                            Следствия:<br>
+                            ✦ Смена дня и ночи<br>
+                            ✦ Пояса времени (24 часовых пояса)<br>
+                            ✦ Отклонение движущихся тел (сила Кориолиса)<br>
+                            ✦ Смена приливов и отливов
+                        </div>
+                        <div class="arrow">⟷</div>
+                        <div class="scheme-box sb-orange" style="flex:1;">
+                            <strong>🌞 Годовое обращение</strong><br>
+                            Вокруг Солнца → против часовой стрелки<br>
+                            Период: 365 дней 5 ч 48 мин<br><br>
+                            Следствия:<br>
+                            ✦ Смена времён года<br>
+                            ✦ Тепловые пояса Земли<br>
+                            ✦ Разная длина дня и ночи<br>
+                            ✦ Полярный день и полярная ночь
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Важные даты — дни равноденствий и солнцестояний</h3>
+                <table>
+                    <tr><th class="th-geo">Дата</th><th class="th-geo">Событие</th><th class="th-geo">Что происходит</th></tr>
+                    <tr><td>21 марта</td><td>Весеннее равноденствие</td><td>День = Ночь = 12 ч везде. Солнце над экватором.</td></tr>
+                    <tr><td>22 июня</td><td>Летнее солнцестояние</td><td>Самый длинный день в сев. полушарии. Солнце над тропиком Рака.</td></tr>
+                    <tr><td>23 сентября</td><td>Осеннее равноденствие</td><td>День = Ночь = 12 ч везде. Солнце над экватором.</td></tr>
+                    <tr><td>22 декабря</td><td>Зимнее солнцестояние</td><td>Самый короткий день в сев. полушарии. Солнце над тропиком Козерога.</td></tr>
+                </table>
+
+                <h3>Ключевые термины</h3>
+                <div class="terms-grid">
+                    <div class="term-card"><div class="term-word">Геоид</div><div class="term-def">Истинная форма Земли — шар, сплюснутый у полюсов и вытянутый у экватора</div></div>
+                    <div class="term-card"><div class="term-word">Часовой пояс</div><div class="term-def">Условная полоса земной поверхности шириной 15° по долготе, в пределах которой установлено одинаковое время</div></div>
+                    <div class="term-card"><div class="term-word">Тропик Рака</div><div class="term-def">Параллель 23,5° с.ш. — самая северная точка, над которой бывает Солнце в зените (22 июня)</div></div>
+                    <div class="term-card"><div class="term-word">Тропик Козерога</div><div class="term-def">Параллель 23,5° ю.ш. — самая южная точка, над которой бывает Солнце в зените (22 декабря)</div></div>
+                    <div class="term-card"><div class="term-word">Полярный круг</div><div class="term-def">Параллель 66,5° с.ш. (или ю.ш.) — граница зоны полярного дня и ночи</div></div>
+                    <div class="term-card"><div class="term-word">Орбита</div><div class="term-def">Путь, по которому Земля движется вокруг Солнца (форма — эллипс)</div></div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1.</span> Ответь на вопросы письменно:
+                    <ol>
+                        <li>Почему на Земле сменяются времена года, а не только из-за расстояния до Солнца?</li>
+                        <li>Сколько часовых поясов на Земле и как это связано с суточным вращением?</li>
+                        <li>Что такое полярный день и где он наблюдается?</li>
+                    </ol>
+                    <button class="toggle-btn tb-blue" onclick="tog('geo_ans1')">▶ Показать ответы</button>
+                    <div class="answer ans-blue" id="geo_ans1">
+1. Времена года сменяются из-за НАКЛОНА оси Земли (23,5°),
+   а не из-за расстояния до Солнца. Когда сев. полушарие наклонено
+   к Солнцу → лето; когда отклонено → зима.
+   Если бы ось была вертикальной — времён года не было бы!
+
+2. На Земле 24 часовых пояса (360°÷24=15° на каждый пояс).
+   Полный оборот за 24 часа → каждый час Земля поворачивается
+   на 15°. Россия расположена в 11 часовых поясах!
+
+3. Полярный день — когда Солнце не заходит за горизонт сутки и более.
+   Наблюдается за Полярным кругом (66,5° с.ш. и ю.ш.).
+   В Арктике летом Солнце светит круглые сутки.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЗАНЯТИЕ 2 — ПЛАН И КАРТА -->
+        <div class="lesson-block lb-geo2">
+            <h2 class="geo-h">📖 Занятие 2: План и карта</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-map">Карта</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=3bEwfMIKp_Q" target="_blank">План местности и географическая карта — отличия (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=vZS3MXTYrPo" target="_blank">Масштаб — виды и задачи на масштаб (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=NpFRUa1XYHY" target="_blank">Параллели и меридианы. Градусная сеть (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=LY_JHcrPoQA" target="_blank">Как определить координаты на карте (наглядно)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема: План местности и географическая карта</h3>
+
+                <table>
+                    <tr>
+                        <th class="th-geo">Признак</th>
+                        <th class="th-geo">План местности</th>
+                        <th class="th-geo">Географическая карта</th>
+                    </tr>
+                    <tr><td>Охват территории</td><td>Небольшой участок</td><td>Большая территория (страна, континент, мир)</td></tr>
+                    <tr><td>Масштаб</td><td>Крупный (1:500 — 1:50 000)</td><td>Мелкий (1:1 000 000 и мельче)</td></tr>
+                    <tr><td>Линии направлений</td><td>Стрелка «Север-Юг»</td><td>Параллели и меридианы</td></tr>
+                    <tr><td>Искажения</td><td>Нет (или минимальные)</td><td>Есть (форма, площадь, расстояния)</td></tr>
+                    <tr><td>Изображение рельефа</td><td>Горизонтали (линии равных высот)</td><td>Горизонтали + цветовая шкала</td></tr>
+                    <tr><td>Условные знаки</td><td>Одинаковые для всех планов</td><td>Указаны в легенде карты</td></tr>
+                </table>
+
+                <h3>Масштаб — главный элемент плана и карты</h3>
+                <div class="rule-box rb-green">
+                    <strong>📌 Масштаб</strong> — отношение длины линии на карте к длине соответствующей линии на местности.<br><br>
+                    <strong>Виды масштаба:</strong><br>
+                    🔢 <strong>Численный:</strong> 1 : 10 000 (в 1 см карты — 10 000 см местности)<br>
+                    📏 <strong>Линейный:</strong> отрезок с делениями в единицах измерения<br>
+                    📝 <strong>Именованный:</strong> «в 1 см — 100 м» или «в 1 см — 1 км»
+                </div>
+                <div class="rule-box rb-orange">
+                    <strong>📌 Формулы для задач на масштаб:</strong><br>
+                    <strong>Расстояние на местности</strong> = расстояние на карте × знаменатель масштаба<br>
+                    <strong>Расстояние на карте</strong> = расстояние на местности ÷ знаменатель масштаба
+                </div>
+
+                <div class="task" style="margin:10px 0; border-left-color:#3182ce; background:#ebf8ff;">
+                    <strong>Пример решения задачи на масштаб:</strong><br>
+                    На карте масштаба 1:200 000 расстояние между городами = 3 см. Найдите реальное расстояние.<br><br>
+                    Решение: 3 см × 200 000 = 600 000 см = 6 000 м = <strong>6 км</strong>
+                </div>
+
+                <h3>Параллели и меридианы — градусная сеть</h3>
+                <table>
+                    <tr>
+                        <th class="th-geo">Характеристика</th>
+                        <th class="th-geo">Параллели</th>
+                        <th class="th-geo">Меридианы</th>
+                    </tr>
+                    <tr><td>Направление</td><td>Запад — Восток</td><td>Север — Юг</td></tr>
+                    <tr><td>Форма</td><td>Окружности разного размера</td><td>Полуокружности одинаковой длины</td></tr>
+                    <tr><td>Начало отсчёта</td><td>Экватор (0°)</td><td>Нулевой (Гринвичский) меридиан (0°)</td></tr>
+                    <tr><td>Что определяют</td><td>Широту (с.ш. / ю.ш.) 0°–90°</td><td>Долготу (з.д. / в.д.) 0°–180°</td></tr>
+                    <tr><td>Главная линия</td><td>Экватор (делит Землю на 2 полушария)</td><td>Гринвичский меридиан (начало долготы)</td></tr>
+                </table>
+
+                <div class="rule-box rb-blue">
+                    <strong>📌 Географические координаты</strong> — широта и долгота точки на карте.<br><br>
+                    <strong>Порядок определения координат:</strong><br>
+                    1️⃣ Определи <strong>широту</strong>: к северу или к югу от экватора (сев. ш. / юж. ш.)<br>
+                    2️⃣ Определи <strong>долготу</strong>: к востоку или к западу от Гринвича (вост. д. / зап. д.)<br><br>
+                    <strong>Пример:</strong> Москва — 55° с.ш., 37° в.д.
+                </div>
+
+                <h3>Условные знаки плана местности (запомни!)</h3>
+                <div class="cards">
+                    <div class="card card-green"><div class="card-title">🌲 Лес</div><div class="card-body">Значки деревьев (хвойных — ёлочки, лиственных — кружки)</div></div>
+                    <div class="card card-blue"><div class="card-title">〰️ Река</div><div class="card-body">Синяя извилистая линия. Стрелка показывает направление течения</div></div>
+                    <div class="card card-yellow"><div class="card-title">🏠 Населённый пункт</div><div class="card-body">Прямоугольники (кварталы). Кружок — небольшое село</div></div>
+                    <div class="card card-orange"><div class="card-title">📈 Горизонталь</div><div class="card-body">Линия, соединяющая точки с одинаковой высотой. Чем гуще — тем круче склон</div></div>
+                    <div class="card card-purple"><div class="card-title">🛤️ Дороги</div><div class="card-body">Красная = шоссе, чёрная прерывистая = грунтовая, параллельные = ж/д</div></div>
+                    <div class="card card-teal"><div class="card-title">💧 Болото</div><div class="card-body">Горизонтальные синие черточки с точками (камыши)</div></div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1: Задачи на масштаб</span><br>
+                    а) На карте масштаба 1:500 000 расстояние = 4,5 см. Найди реальное расстояние.<br>
+                    б) Реальное расстояние = 90 км. Масштаб 1:1 000 000. Найди длину на карте.<br>
+                    в) На плане масштаба 1:25 000 сторона квадратного поля = 2 см. Найди реальную площадь поля.<br><br>
+                    <button class="toggle-btn tb-blue" onclick="tog('geo_ans2')">▶ Показать решения</button>
+                    <div class="answer ans-blue" id="geo_ans2">
+а) 4,5 × 500 000 = 2 250 000 см = 22,5 км
+
+б) 90 км = 9 000 000 см
+   9 000 000 ÷ 1 000 000 = <strong>9 см</strong>
+
+в) Реальная сторона = 2 × 25 000 = 50 000 см = 500 м
+   Площадь = 500 × 500 = <strong>250 000 м² = 25 га</strong>
+                    </div>
+                </div>
+                <div class="task">
+                    <span class="task-num">📝 Задание 2: Координаты</span><br>
+                    Запиши координаты городов по атласу (или используй Google Maps):
+                    Лондон, Нью-Йорк, Сидней, Москва, Пекин
+                    <br><br>
+                    <button class="toggle-btn tb-blue" onclick="tog('geo_ans3')">▶ Показать ответы</button>
+                    <div class="answer ans-blue" id="geo_ans3">
+Москва:   55° с.ш., 37° в.д.
+Лондон:   51° с.ш.,  0° (Гринвич)
+Нью-Йорк: 41° с.ш., 74° з.д.
+Сидней:   34° ю.ш., 151° в.д.
+Пекин:    40° с.ш., 116° в.д.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ТЕСТ ГЕОГРАФИЯ -->
+        <div class="quiz-wrap">
+            <div class="quiz-title">🧪 Тест по географии</div>
+            <p>10 вопросов | Время: ~8 минут</p>
+            <form id="geoQuiz">
+                <div class="q-block">
+                    <p>1. Какая планета расположена третьей от Солнца?</p>
+                    <label class="q-opt"><input type="radio" name="gq1" value="a"> Венера</label>
+                    <label class="q-opt"><input type="radio" name="gq1" value="b"> Марс</label>
+                    <label class="q-opt"><input type="radio" name="gq1" value="c"> Земля</label>
+                    <label class="q-opt"><input type="radio" name="gq1" value="d"> Юпитер</label>
+                </div>
+                <div class="q-block">
+                    <p>2. Что является причиной смены времён года на Земле?</p>
+                    <label class="q-opt"><input type="radio" name="gq2" value="a"> Изменение расстояния от Земли до Солнца</label>
+                    <label class="q-opt"><input type="radio" name="gq2" value="b"> Наклон земной оси (23,5°)</label>
+                    <label class="q-opt"><input type="radio" name="gq2" value="c"> Суточное вращение Земли</label>
+                    <label class="q-opt"><input type="radio" name="gq2" value="d"> Притяжение Луны</label>
+                </div>
+                <div class="q-block">
+                    <p>3. Масштаб карты 1:100 000 означает, что в 1 см карты:</p>
+                    <label class="q-opt"><input type="radio" name="gq3" value="a"> 100 м</label>
+                    <label class="q-opt"><input type="radio" name="gq3" value="b"> 1 км</label>
+                    <label class="q-opt"><input type="radio" name="gq3" value="c"> 10 км</label>
+                    <label class="q-opt"><input type="radio" name="gq3" value="d"> 100 км</label>
+                </div>
+                <div class="q-block">
+                    <p>4. Параллели — это линии, которые проведены:</p>
+                    <label class="q-opt"><input type="radio" name="gq4" value="a"> От полюса до полюса</label>
+                    <label class="q-opt"><input type="radio" name="gq4" value="b"> Параллельно экватору (запад-восток)</label>
+                    <label class="q-opt"><input type="radio" name="gq4" value="c"> По диагонали карты</label>
+                    <label class="q-opt"><input type="radio" name="gq4" value="d"> По 0° долготы</label>
+                </div>
+                <div class="q-block">
+                    <p>5. Географическая широта отсчитывается от:</p>
+                    <label class="q-opt"><input type="radio" name="gq5" value="a"> Гринвичского меридиана</label>
+                    <label class="q-opt"><input type="radio" name="gq5" value="b"> Северного полюса</label>
+                    <label class="q-opt"><input type="radio" name="gq5" value="c"> Экватора</label>
+                    <label class="q-opt"><input type="radio" name="gq5" value="d"> Тропика Рака</label>
+                </div>
+                <div class="q-block">
+                    <p>6. Когда в Северном полушарии происходит летнее солнцестояние?</p>
+                    <label class="q-opt"><input type="radio" name="gq6" value="a"> 21 марта</label>
+                    <label class="q-opt"><input type="radio" name="gq6" value="b"> 22 июня</label>
+                    <label class="q-opt"><input type="radio" name="gq6" value="c"> 23 сентября</label>
+                    <label class="q-opt"><input type="radio" name="gq6" value="d"> 22 декабря</label>
+                </div>
+                <div class="q-block">
+                    <p>7. Сколько часовых поясов на Земле?</p>
+                    <label class="q-opt"><input type="radio" name="gq7" value="a"> 12</label>
+                    <label class="q-opt"><input type="radio" name="gq7" value="b"> 36</label>
+                    <label class="q-opt"><input type="radio" name="gq7" value="c"> 24</label>
+                    <label class="q-opt"><input type="radio" name="gq7" value="d"> 15</label>
+                </div>
+                <div class="q-block">
+                    <p>8. Горизонтали на плане — это линии, соединяющие точки:</p>
+                    <label class="q-opt"><input type="radio" name="gq8" value="a"> Одинаковой температуры</label>
+                    <label class="q-opt"><input type="radio" name="gq8" value="b"> Одинаковой высоты над уровнем моря</label>
+                    <label class="q-opt"><input type="radio" name="gq8" value="c"> Одинакового давления</label>
+                    <label class="q-opt"><input type="radio" name="gq8" value="d"> Одинакового расстояния от экватора</label>
+                </div>
+                <div class="q-block">
+                    <p>9. Координаты Москвы — приблизительно:</p>
+                    <label class="q-opt"><input type="radio" name="gq9" value="a"> 55° с.ш., 37° в.д.</label>
+                    <label class="q-opt"><input type="radio" name="gq9" value="b"> 37° с.ш., 55° в.д.</label>
+                    <label class="q-opt"><input type="radio" name="gq9" value="c"> 55° ю.ш., 37° з.д.</label>
+                    <label class="q-opt"><input type="radio" name="gq9" value="d"> 0° с.ш., 37° в.д.</label>
+                </div>
+                <div class="q-block">
+                    <p>10. Нулевой (Гринвичский) меридиан проходит через:</p>
+                    <label class="q-opt"><input type="radio" name="gq10" value="a"> Париж</label>
+                    <label class="q-opt"><input type="radio" name="gq10" value="b"> Москву</label>
+                    <label class="q-opt"><input type="radio" name="gq10" value="c"> Лондон (Гринвич)</label>
+                    <label class="q-opt"><input type="radio" name="gq10" value="d"> Нью-Йорк</label>
+                </div>
+                <button type="button" class="check-btn cb-geo" onclick="checkQuiz('geoQuiz', geoAns, geoExp, 'geoResult')">✅ Проверить</button>
+            </form>
+            <div class="result-box" id="geoResult"></div>
+        </div>
+    </div>
+
+    <hr class="separator sep-geo">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║           АНГЛИЙСКИЙ ЯЗЫК                   ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div id="eng">
+        <h1 class="h1-eng">🇬🇧 Английский язык — Неделя 1</h1>
+        <p class="subtitle">6 класс | 2 часа | Present Simple, Present Continuous, Family, Home</p>
+
+        <div class="lesson-block lb-eng">
+            <h2 class="eng-h">📖 Занятие 1: Present Simple и Present Continuous</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Грамматика</span>
+            <span class="tag tag-practice">Упражнения</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=R_MqEuAHXmo" target="_blank">Present Simple — полный разбор правила (EnglishMe)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=o4PZFpIJGPY" target="_blank">Present Continuous — образование и употребление (Skyeng)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=xjhUqbivHMk" target="_blank">Present Simple vs Present Continuous — разница (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=ZPXN5Ci7YbM" target="_blank">Family vocabulary — лексика семья (английский для детей)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Present Simple (Настоящее простое время)</h3>
+                <div class="rule-box rb-green">
+                    <strong>📌 Когда используем Present Simple:</strong>
+                    <ul>
+                        <li>✅ Регулярные, повторяющиеся действия: <em>I go to school every day.</em></li>
+                        <li>✅ Постоянные факты: <em>The sun rises in the east.</em></li>
+                        <li>✅ Расписания: <em>The train leaves at 7 pm.</em></li>
+                        <li>✅ Слова-маркеры: <strong>always, usually, often, sometimes, rarely, never, every day/week</strong></li>
+                    </ul>
+                </div>
+
+                <h3>Образование Present Simple</h3>
+                <table class="grammar-table">
+                    <tr><th class="th-eng">Лицо</th><th class="th-eng">Утверждение (+)</th><th class="th-eng">Отрицание (−)</th><th class="th-eng">Вопрос (?)</th></tr>
+                    <tr>
+                        <td>I / You / We / They</td>
+                        <td class="eng-positive">I <strong>play</strong> tennis.</td>
+                        <td class="eng-negative">I <strong>don't play</strong> tennis.</td>
+                        <td class="eng-question"><strong>Do</strong> you play?</td>
+                    </tr>
+                    <tr>
+                        <td>He / She / It</td>
+                        <td class="eng-positive">She <strong>plays</strong> tennis.</td>
+                        <td class="eng-negative">She <strong>doesn't play</strong> tennis.</td>
+                        <td class="eng-question"><strong>Does</strong> she play?</td>
+                    </tr>
+                </table>
+
+                <div class="rule-box rb-yellow">
+                    <strong>📌 Правила добавления -S/-ES для He/She/It:</strong>
+                    <ul>
+                        <li>Большинство глаголов: + <strong>s</strong> → play → play<strong>s</strong></li>
+                        <li>После -o, -ss, -ch, -sh, -x: + <strong>es</strong> → go → go<strong>es</strong>, watch → watch<strong>es</strong></li>
+                        <li>Согласная + y → убрать y + <strong>ies</strong>: study → stud<strong>ies</strong></li>
+                        <li>Исключения: have → <strong>has</strong>, be → <strong>is</strong>, do → <strong>does</strong></li>
+                    </ul>
+                </div>
+
+                <div class="eng-example">
+<span class="eng-positive">+ She reads books every evening.</span>
+<span class="eng-negative">− She doesn't read books every evening.</span>
+<span class="eng-question">? Does she read books every evening?</span>
+  ✓ Yes, she does. / ✗ No, she doesn't.
+                </div>
+
+                <h3>Present Continuous (Настоящее длительное время)</h3>
+                <div class="rule-box rb-teal">
+                    <strong>📌 Когда используем Present Continuous:</strong>
+                    <ul>
+                        <li>✅ Действие происходит ПРЯМО СЕЙЧАС: <em>I am reading now.</em></li>
+                        <li>✅ Временное действие, происходящее в данный период: <em>She is learning French this month.</em></li>
+                        <li>✅ Слова-маркеры: <strong>now, at the moment, right now, at present, Look! Listen!</strong></li>
+                    </ul>
+                </div>
+
+                <h3>Образование: am/is/are + глагол + -ING</h3>
+                <table class="grammar-table">
+                    <tr><th class="th-eng">Лицо</th><th class="th-eng">Утверждение (+)</th><th class="th-eng">Отрицание (−)</th><th class="th-eng">Вопрос (?)</th></tr>
+                    <tr>
+                        <td>I</td>
+                        <td class="eng-positive">I <strong>am playing</strong>.</td>
+                        <td class="eng-negative">I <strong>am not playing</strong>.</td>
+                        <td class="eng-question"><strong>Am</strong> I playing?</td>
+                    </tr>
+                    <tr>
+                        <td>He / She / It</td>
+                        <td class="eng-positive">She <strong>is playing</strong>.</td>
+                        <td class="eng-negative">She <strong>isn't playing</strong>.</td>
+                        <td class="eng-question"><strong>Is</strong> she playing?</td>
+                    </tr>
+                    <tr>
+                        <td>You / We / They</td>
+                        <td class="eng-positive">They <strong>are playing</strong>.</td>
+                        <td class="eng-negative">They <strong>aren't playing</strong>.</td>
+                        <td class="eng-question"><strong>Are</strong> they playing?</td>
+                    </tr>
+                </table>
+
+                <div class="rule-box rb-red">
+                    <strong>⚠️ Правила добавления -ING:</strong>
+                    <ul>
+                        <li>Большинство глаголов: + <strong>ing</strong> → play → play<strong>ing</strong></li>
+                        <li>Оканчивается на -e (немое): убрать -e + <strong>ing</strong> → make → mak<strong>ing</strong></li>
+                        <li>Короткий слог + согласная: удвоить согласную + <strong>ing</strong> → run → run<strong>n</strong>ing, swim → swim<strong>m</strong>ing</li>
+                        <li>-ie в конце → заменить на -y + <strong>ing</strong> → lie → ly<strong>ing</strong></li>
+                    </ul>
+                    <br>
+                    <strong>⚠️ Глаголы БЕЗ Continuous (не используются в -ing форме):</strong><br>
+                    like, love, hate, want, know, understand, believe, have (=иметь), see, hear, smell, taste, seem, need, prefer
+                </div>
+
+                <h3>Сравнение времён</h3>
+                <table class="grammar-table">
+                    <tr><th class="th-eng">Present Simple</th><th class="th-eng">Present Continuous</th></tr>
+                    <tr><td>I <strong>usually watch</strong> TV in the evening. <em>(обычно)</em></td><td>I <strong>am watching</strong> TV right now. <em>(прямо сейчас)</em></td></tr>
+                    <tr><td>She <strong>works</strong> in a bank. <em>(постоянно)</em></td><td>She <strong>is working</strong> from home today. <em>(временно)</em></td></tr>
+                    <tr><td>He <strong>plays</strong> football every Saturday.</td><td>He <strong>is playing</strong> football at the moment.</td></tr>
+                </table>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">✏️ Упражнение 1: Выбери правильное время</span><br>
+                    Подчеркни нужный вариант:
+                    <ol>
+                        <li>She always (reads / is reading) before bed.</li>
+                        <li>Look! The dog (runs / is running) in the garden.</li>
+                        <li>My father (works / is working) as a doctor.</li>
+                        <li>We (have / are having) lunch right now.</li>
+                        <li>They usually (don't eat / aren't eating) meat.</li>
+                        <li>Listen! Someone (knocks / is knocking) at the door.</li>
+                        <li>He (doesn't like / isn't liking) horror films.</li>
+                        <li>The children (play / are playing) football every weekend.</li>
+                    </ol>
+                    <button class="toggle-btn tb-green" onclick="tog('eng_ans1')">▶ Показать ответы</button>
+                    <div class="answer ans-green" id="eng_ans1">
+1. <strong>reads</strong>     — always = маркер PS
+2. <strong>is running</strong> — Look! = маркер PC
+3. <strong>works</strong>      — постоянный факт
+4. <strong>are having</strong> — right now = маркер PC
+5. <strong>don't eat</strong>  — usually = маркер PS
+6. <strong>is knocking</strong>— Listen! = маркер PC
+7. <strong>doesn't like</strong>— like — глагол без Continuous!
+8. <strong>play</strong>       — every weekend = маркер PS
+                    </div>
+                </div>
+
+                <div class="task">
+                    <span class="task-num">✏️ Упражнение 2: Поставь глагол в нужную форму</span><br>
+                    Раскрой скобки:
+                    <ol>
+                        <li>My sister _____ (study) English every day.</li>
+                        <li>They _____ (not / watch) TV now — they _____ (do) homework.</li>
+                        <li>_____ your brother _____ (play) the guitar? — Yes, he ______.</li>
+                        <li>It _____ (rain) outside at the moment.</li>
+                        <li>We _____ (visit) our grandparents every Sunday.</li>
+                    </ol>
+                    <button class="toggle-btn tb-green" onclick="tog('eng_ans2')">▶ Показать ответы</button>
+                    <div class="answer ans-green" id="eng_ans2">
+1. studies     (PS, he/she → -ies)
+2. aren't watching / are doing  (PC, now)
+3. Does … play / does   (PS вопрос)
+4. is raining   (PC, at the moment)
+5. visit        (PS, every Sunday)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЛЕКСИКА -->
+        <div class="lesson-block lb-eng2">
+            <h2 class="eng-h">📖 Занятие 2: Лексика — Family & Home</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-practice">Лексика</span>
+            <span class="tag tag-practice">Упражнения</span>
+
+            <div class="notebook">
+                <h3>🏠 Vocabulary: Family (Семья)</h3>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; margin:12px 0;">
+                    <div class="word-card"><div class="word-en">mother</div><div class="word-ru">мама</div></div>
+                    <div class="word-card"><div class="word-en">father</div><div class="word-ru">папа</div></div>
+                    <div class="word-card"><div class="word-en">sister</div><div class="word-ru">сестра</div></div>
+                    <div class="word-card"><div class="word-en">brother</div><div class="word-ru">брат</div></div>
+                    <div class="word-card"><div class="word-en">grandmother</div><div class="word-ru">бабушка</div></div>
+                    <div class="word-card"><div class="word-en">grandfather</div><div class="word-ru">дедушка</div></div>
+                    <div class="word-card"><div class="word-en">aunt</div><div class="word-ru">тётя</div></div>
+                    <div class="word-card"><div class="word-en">uncle</div><div class="word-ru">дядя</div></div>
+                    <div class="word-card"><div class="word-en">cousin</div><div class="word-ru">двоюродный брат/сестра</div></div>
+                    <div class="word-card"><div class="word-en">parents</div><div class="word-ru">родители</div></div>
+                    <div class="word-card"><div class="word-en">husband</div><div class="word-ru">муж</div></div>
+                    <div class="word-card"><div class="word-en">wife</div><div class="word-ru">жена</div></div>
+                    <div class="word-card"><div class="word-en">daughter</div><div class="word-ru">дочь</div></div>
+                    <div class="word-card"><div class="word-en">son</div><div class="word-ru">сын</div></div>
+                    <div class="word-card"><div class="word-en">nephew</div><div class="word-ru">племянник</div></div>
+                    <div class="word-card"><div class="word-en">niece</div><div class="word-ru">племянница</div></div>
+                </div>
+
+                <h3>🏡 Vocabulary: Home (Дом)</h3>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; margin:12px 0;">
+                    <div class="word-card"><div class="word-en">living room</div><div class="word-ru">гостиная</div></div>
+                    <div class="word-card"><div class="word-en">bedroom</div><div class="word-ru">спальня</div></div>
+                    <div class="word-card"><div class="word-en">kitchen</div><div class="word-ru">кухня</div></div>
+                    <div class="word-card"><div class="word-en">bathroom</div><div class="word-ru">ванная</div></div>
+                    <div class="word-card"><div class="word-en">hallway</div><div class="word-ru">прихожая</div></div>
+                    <div class="word-card"><div class="word-en">garden</div><div class="word-ru">сад, двор</div></div>
+                    <div class="word-card"><div class="word-en">flat / apartment</div><div class="word-ru">квартира</div></div>
+                    <div class="word-card"><div class="word-en">house</div><div class="word-ru">дом (отдельный)</div></div>
+                    <div class="word-card"><div class="word-en">floor</div><div class="word-ru">этаж / пол</div></div>
+                    <div class="word-card"><div class="word-en">ceiling</div><div class="word-ru">потолок</div></div>
+                    <div class="word-card"><div class="word-en">wall</div><div class="word-ru">стена</div></div>
+                    <div class="word-card"><div class="word-en">window</div><div class="word-ru">окно</div></div>
+                    <div class="word-card"><div class="word-en">stairs</div><div class="word-ru">лестница</div></div>
+                    <div class="word-card"><div class="word-en">garage</div><div class="word-ru">гараж</div></div>
+                    <div class="word-card"><div class="word-en">basement</div><div class="word-ru">подвал</div></div>
+                    <div class="word-card"><div class="word-en">attic</div><div class="word-ru">чердак</div></div>
+                </div>
+
+                <h3>Полезные фразы</h3>
+                <div class="eng-example">
+<span class="eng-positive">My family consists of 4 people.</span>  — В моей семье 4 человека.
+<span class="eng-positive">I have got a sister and a brother.</span> — У меня есть сестра и брат.
+<span class="eng-positive">My flat is on the third floor.</span>    — Моя квартира на третьем этаже.
+<span class="eng-positive">There is a sofa in the living room.</span>— В гостиной есть диван.
+<span class="eng-positive">There are two bedrooms in our flat.</span>— В нашей квартире две спальни.
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">✏️ Упражнение 3: Заполни пропуски (Family)</span><br>
+                    Вставь нужное слово:
+                    <ol>
+                        <li>My mother's mother is my ______.</li>
+                        <li>My father's brother is my ______.</li>
+                        <li>My uncle's daughter is my ______.</li>
+                        <li>My parents' son (not me) is my ______.</li>
+                        <li>The woman who is married to my brother is my ______.</li>
+                    </ol>
+                    <button class="toggle-btn tb-green" onclick="tog('eng_ans3')">▶ Показать ответы</button>
+                    <div class="answer ans-green" id="eng_ans3">
+1. grandmother
+2. uncle
+3. cousin
+4. brother
+5. sister-in-law
+                    </div>
+                </div>
+
+                <div class="task">
+                    <span class="task-num">✏️ Упражнение 4: Напиши 5 предложений о своей семье</span><br>
+                    Используй Present Simple и лексику темы. Пример:<br>
+                    <em>My family has four members. My mother works as a teacher. She usually wakes up at 7 o'clock. My father is an engineer. He often reads books in the evening.</em><br><br>
+                    <strong>Напиши в тетради свои 5 предложений!</strong>
+                </div>
+
+                <div class="task">
+                    <span class="task-num">✏️ Упражнение 5: Опиши свою комнату</span><br>
+                    Напиши 5–6 предложений о своей комнате (или идеальной комнате), используя:<br>
+                    <strong>There is / There are + предметы мебели + where</strong><br><br>
+                    <em>Пример: My room is small but cosy. There is a big window on the right. There are two shelves with books above my desk. My bed is near the wall...</em>
+                </div>
+            </div>
+        </div>
+
+        <!-- ТЕСТ АНГЛИЙСКИЙ -->
+        <div class="quiz-wrap">
+            <div class="quiz-title">🧪 Тест по английскому языку</div>
+            <p>10 вопросов | Grammar + Vocabulary</p>
+            <form id="engQuiz">
+                <div class="q-block">
+                    <p>1. She _____ to school every day.</p>
+                    <label class="q-opt"><input type="radio" name="eq1" value="a"> is going</label>
+                    <label class="q-opt"><input type="radio" name="eq1" value="b"> goes</label>
+                    <label class="q-opt"><input type="radio" name="eq1" value="c"> go</label>
+                    <label class="q-opt"><input type="radio" name="eq1" value="d"> are going</label>
+                </div>
+                <div class="q-block">
+                    <p>2. Look! The cat _____ on the sofa!</p>
+                    <label class="q-opt"><input type="radio" name="eq2" value="a"> sits</label>
+                    <label class="q-opt"><input type="radio" name="eq2" value="b"> is sitting</label>
+                    <label class="q-opt"><input type="radio" name="eq2" value="c"> sit</label>
+                    <label class="q-opt"><input type="radio" name="eq2" value="d"> was sitting</label>
+                </div>
+                <div class="q-block">
+                    <p>3. Какое слово — маркер Present Simple?</p>
+                    <label class="q-opt"><input type="radio" name="eq3" value="a"> now</label>
+                    <label class="q-opt"><input type="radio" name="eq3" value="b"> at the moment</label>
+                    <label class="q-opt"><input type="radio" name="eq3" value="c"> usually</label>
+                    <label class="q-opt"><input type="radio" name="eq3" value="d"> right now</label>
+                </div>
+                <div class="q-block">
+                    <p>4. He _____ (not play) football at the moment.</p>
+                    <label class="q-opt"><input type="radio" name="eq4" value="a"> doesn't play</label>
+                    <label class="q-opt"><input type="radio" name="eq4" value="b"> isn't playing</label>
+                    <label class="q-opt"><input type="radio" name="eq4" value="c"> not plays</label>
+                    <label class="q-opt"><input type="radio" name="eq4" value="d"> aren't playing</label>
+                </div>
+                <div class="q-block">
+                    <p>5. My father's sister is my _____ .</p>
+                    <label class="q-opt"><input type="radio" name="eq5" value="a"> cousin</label>
+                    <label class="q-opt"><input type="radio" name="eq5" value="b"> niece</label>
+                    <label class="q-opt"><input type="radio" name="eq5" value="c"> aunt</label>
+                    <label class="q-opt"><input type="radio" name="eq5" value="d"> grandmother</label>
+                </div>
+                <div class="q-block">
+                    <p>6. Как правильно образовать -ing от «swim»?</p>
+                    <label class="q-opt"><input type="radio" name="eq6" value="a"> swiming</label>
+                    <label class="q-opt"><input type="radio" name="eq6" value="b"> swimeing</label>
+                    <label class="q-opt"><input type="radio" name="eq6" value="c"> swimming</label>
+                    <label class="q-opt"><input type="radio" name="eq6" value="d"> swims</label>
+                </div>
+                <div class="q-block">
+                    <p>7. Комната, где готовят еду:</p>
+                    <label class="q-opt"><input type="radio" name="eq7" value="a"> bedroom</label>
+                    <label class="q-opt"><input type="radio" name="eq7" value="b"> hallway</label>
+                    <label class="q-opt"><input type="radio" name="eq7" value="c"> bathroom</label>
+                    <label class="q-opt"><input type="radio" name="eq7" value="d"> kitchen</label>
+                </div>
+                <div class="q-block">
+                    <p>8. _____ your parents work on Saturdays?</p>
+                    <label class="q-opt"><input type="radio" name="eq8" value="a"> Is</label>
+                    <label class="q-opt"><input type="radio" name="eq8" value="b"> Are</label>
+                    <label class="q-opt"><input type="radio" name="eq8" value="c"> Does</label>
+                    <label class="q-opt"><input type="radio" name="eq8" value="d"> Do</label>
+                </div>
+                <div class="q-block">
+                    <p>9. Какой глагол НЕЛЬЗЯ использовать в Present Continuous?</p>
+                    <label class="q-opt"><input type="radio" name="eq9" value="a"> run</label>
+                    <label class="q-opt"><input type="radio" name="eq9" value="b"> know</label>
+                    <label class="q-opt"><input type="radio" name="eq9" value="c"> eat</label>
+                    <label class="q-opt"><input type="radio" name="eq9" value="d"> play</label>
+                </div>
+                <div class="q-block">
+                    <p>10. «Двоюродный брат/сестра» по-английски:</p>
+                    <label class="q-opt"><input type="radio" name="eq10" value="a"> nephew</label>
+                    <label class="q-opt"><input type="radio" name="eq10" value="b"> niece</label>
+                    <label class="q-opt"><input type="radio" name="eq10" value="c"> cousin</label>
+                    <label class="q-opt"><input type="radio" name="eq10" value="d"> uncle</label>
+                </div>
+                <button type="button" class="check-btn cb-eng" onclick="checkQuiz('engQuiz', engAns, engExp, 'engResult')">✅ Проверить</button>
+            </form>
+            <div class="result-box" id="engResult"></div>
+        </div>
+    </div>
+
+    <hr class="separator sep-eng">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║              ЛИТЕРАТУРА                     ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div id="lit">
+        <h1 class="h1-lit">📚 Литература — Неделя 1</h1>
+        <p class="subtitle">6 класс | 2 часа | Мифы Древней Греции + А.С. Пушкин «Дубровский»</p>
+
+        <div class="lesson-block lb-lit">
+            <h2 class="lit-h">📖 Занятие 1: Мифы Древней Греции</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-reading">Чтение</span>
+            <span class="tag tag-theory">Теория</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=kkqpD_1HPAU" target="_blank">Мифы Древней Греции — кратко: боги Олимпа (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=Zi7a2pQSAuo" target="_blank">12 подвигов Геракла — краткое содержание (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=uqGXMsEVAss" target="_blank">Мифы Древней Греции — мультфильм (советский)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=psPL4cVDRi0" target="_blank">Что такое миф? Мифология как жанр литературы</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Что такое миф?</h3>
+                <div class="rule-box rb-pink">
+                    <strong>📌 Миф</strong> — древнее сказание о богах, героях и явлениях природы, объясняющее происхождение мира и человека.<br><br>
+                    <strong>Особенности мифов:</strong>
+                    <ul>
+                        <li>Передавались устно из поколения в поколение</li>
+                        <li>Боги похожи на людей (антропоморфизм) — имеют чувства, слабости</li>
+                        <li>Объясняют явления природы и законы общества</li>
+                        <li>Составляют основу культуры и искусства Античности</li>
+                    </ul>
+                </div>
+
+                <h3>Боги Древней Греции — Олимп (запомни!)</h3>
+                <div class="cards">
+                    <div class="card card-blue"><div class="card-title">⚡ Зевс</div><div class="card-body">Верховный бог. Повелитель неба, грома и молнии. Отец богов и людей.</div></div>
+                    <div class="card card-teal"><div class="card-title">🌊 Посейдон</div><div class="card-body">Бог морей и землетрясений. Брат Зевса. Трезубец — его оружие.</div></div>
+                    <div class="card card-purple"><div class="card-title">💀 Аид</div><div class="card-body">Бог подземного царства мёртвых. Брат Зевса. Живёт под землёй.</div></div>
+                    <div class="card card-yellow"><div class="card-title">☀️ Аполлон</div><div class="card-body">Бог света, музыки, поэзии и исцеления. Покровитель искусств.</div></div>
+                    <div class="card card-pink"><div class="card-title">🌙 Артемида</div><div class="card-body">Богиня охоты и луны. Сестра-близнец Аполлона.</div></div>
+                    <div class="card card-red"><div class="card-title">⚔️ Арес</div><div class="card-body">Бог войны. Жестокий и кровожадный. Сын Зевса.</div></div>
+                    <div class="card card-orange"><div class="card-title">❤️ Афродита</div><div class="card-body">Богиня любви и красоты. Вышла из морской пены.</div></div>
+                    <div class="card card-green"><div class="card-title">🦉 Афина</div><div class="card-body">Богиня мудрости и войны. Покровительница Афин. Символ — сова.</div></div>
+                    <div class="card card-teal"><div class="card-title">🔥 Гефест</div><div class="card-body">Бог огня и кузнечного дела. Хромой кузнец богов.</div></div>
+                    <div class="card card-purple"><div class="card-title">🎠 Гермес</div><div class="card-body">Бог торговли, воров и путников. Вестник богов. Крылатые сандалии.</div></div>
+                    <div class="card card-yellow"><div class="card-title">🌾 Деметра</div><div class="card-body">Богиня земледелия и плодородия. Мать Персефоны.</div></div>
+                    <div class="card card-pink"><div class="card-title">🦚 Гера</div><div class="card-body">Царица богов. Жена Зевса. Покровительница брака.</div></div>
+                </div>
+
+                <h3>Главные мифы — краткое содержание</h3>
+                <div class="book-card">
+                    <div class="book-title">💪 12 подвигов Геракла</div>
+                    <div class="book-author">Геракл — сын Зевса и смертной женщины Алкмены. Величайший герой Греции.</div>
+                    <div class="plot-step">📌 <strong>Геракл должен совершить 12 подвигов</strong> по приказу царя Эврисфея (по воле богини Геры, ненавидевшей его)</div>
+                    <div class="plot-step">1. Немейский лев — задушил руками</div>
+                    <div class="plot-step">2. Лернейская гидра — срубал головы и прижигал шеи</div>
+                    <div class="plot-step">3. Керинейская лань — поймал живой</div>
+                    <div class="plot-step">4. Эриманфский кабан — поймал в снегу</div>
+                    <div class="plot-step">5. Конюшни Авгия — за один день перенаправил реку</div>
+                    <div class="plot-step">6–12. Стимфалийские птицы, Критский бык, Кони Диомеда, Пояс Ипполиты, Коровы Гериона, Яблоки Гесперид, Цербер из подземного царства</div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-title">🌊 Миф об Одиссее (краткий обзор)</div>
+                    <div class="book-author">Одиссей — хитроумный царь Итаки, участник Троянской войны</div>
+                    <div class="plot-step">📌 После победы над Троей Одиссей 10 лет скитался по морям, прежде чем вернуться домой</div>
+                    <div class="plot-step">Встреча с циклопом Полифемом — ослепил его раскалённым колом</div>
+                    <div class="plot-step">Сирены — приказал привязать себя к мачте, чтобы не поддаться их пению</div>
+                    <div class="plot-step">Возвращение на Итаку — убил женихов жены Пенелопы из лука</div>
+                </div>
+
+                <h3>Значение мифов Древней Греции</h3>
+                <div class="rule-box rb-pink">
+                    <ul>
+                        <li>Легли в основу европейской литературы и искусства</li>
+                        <li>Дали имена планетам, созвездиям, химическим элементам (Меркурий, Марс, Нептун, гелий, титан)</li>
+                        <li>Многие выражения из мифов стали крылатыми: «ахиллесова пята», «троянский конь», «нить Ариадны»</li>
+                        <li>Послужили вдохновением для Пушкина, Шекспира, Гёте</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ДУБРОВСКИЙ -->
+        <div class="lesson-block lb-lit2">
+            <h2 class="lit-h">📖 Занятие 2: А.С. Пушкин «Дубровский»</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-reading">Чтение</span>
+            <span class="tag tag-theory">Анализ</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=N8eEYHxMTqc" target="_blank">Пушкин «Дубровский» — краткое содержание (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=BsAKYpXqrPc" target="_blank">Дубровский — анализ произведения, главные герои (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=TsyNKGRopAo" target="_blank">«Дубровский» — фильм 1936 года (полностью)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=Qdlc0Ot7q7o" target="_blank">История создания «Дубровского» — интересные факты</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Общие сведения о произведении</h3>
+                <table>
+                    <tr><th class="th-lit" colspan="2">А.С. Пушкин «Дубровский»</th></tr>
+                    <tr><td><strong>Автор</strong></td><td>Александр Сергеевич Пушкин (1799–1837)</td></tr>
+                    <tr><td><strong>Жанр</strong></td><td>Роман (незаконченный)</td></tr>
+                    <tr><td><strong>Год написания</strong></td><td>1832–1833 гг.</td></tr>
+                    <tr><td><strong>Эпоха</strong></td><td>Россия начала XIX века, крепостное право</td></tr>
+                    <tr><td><strong>Главная тема</strong></td><td>Несправедливость, честь, любовь, месть, благородство</td></tr>
+                    <tr><td><strong>Главная идея</strong></td><td>Произвол и беззаконие дворянства разрушают судьбы людей</td></tr>
+                </table>
+
+                <h3>Главные герои</h3>
+                <div class="cards">
+                    <div class="card card-blue">
+                        <div class="card-title">⚔️ Владимир Дубровский</div>
+                        <div class="card-body">Главный герой. Молодой дворянин, гвардейский офицер. Честный, смелый, благородный. Становится разбойником ради справедливости.</div>
+                    </div>
+                    <div class="card card-orange">
+                        <div class="card-title">👴 Андрей Дубровский</div>
+                        <div class="card-body">Отец Владимира. Бедный помещик. Гордый и честный человек. Умирает от горя после потери имения.</div>
+                    </div>
+                    <div class="card card-red">
+                        <div class="card-title">💰 Кирила Троекуров</div>
+                        <div class="card-body">Богатый помещик-самодур. Бывший друг Дубровского-отца. Жестокий, привыкший к безнаказанности.</div>
+                    </div>
+                    <div class="card card-pink">
+                        <div class="card-title">❤️ Маша Троекурова</div>
+                        <div class="card-body">Дочь Троекурова. Добрая, умная, воспитанная. Любит Дубровского, но вынуждена выйти замуж за старого князя.</div>
+                    </div>
+                    <div class="card card-purple">
+                        <div class="card-title">👨‍🏫 Дефорж (Дубровский)</div>
+                        <div class="card-body">Под этим именем Дубровский проник в дом Троекурова как учитель-француз, чтобы быть рядом с Машей.</div>
+                    </div>
+                    <div class="card card-yellow">
+                        <div class="card-title">💍 Князь Верейский</div>
+                        <div class="card-body">Пожилой богатый князь. Женится на Маше против её воли. Антагонист в любовной линии.</div>
+                    </div>
+                </div>
+
+                <h3>Сюжет — краткое содержание по главам (план)</h3>
+                <div class="book-card">
+                    <div class="book-title">Том I (Главы 1–9)</div>
+                    <div class="plot-step"><strong>Гл. 1–2:</strong> Знакомство с Троекуровым и Дубровским-старшим. Ссора из-за псаря, оскорбившего Дубровского.</div>
+                    <div class="plot-step"><strong>Гл. 3–4:</strong> Троекуров через суд отнимает у Дубровского имение Кистенёвку. Дубровский-отец теряет рассудок.</div>
+                    <div class="plot-step"><strong>Гл. 5–6:</strong> Владимир приезжает к умирающему отцу. Отец умирает. Чиновники приходят описывать имение.</div>
+                    <div class="plot-step"><strong>Гл. 7–8:</strong> Владимир сжигает Кистенёвку. Чиновники погибают в огне. Дубровский уходит в лес с крестьянами.</div>
+                    <div class="plot-step"><strong>Гл. 9:</strong> Следствие. Разбойники Дубровского действуют в округе, но щадят Троекурова.</div>
+                </div>
+                <div class="book-card">
+                    <div class="book-title">Том II (Главы 10–19)</div>
+                    <div class="plot-step"><strong>Гл. 10–11:</strong> Дубровский под видом французского учителя Дефоржа устраивается в дом Троекурова.</div>
+                    <div class="plot-step"><strong>Гл. 12–13:</strong> Дубровский и Маша сближаются. Он признаётся ей в любви и раскрывает свою тайну.</div>
+                    <div class="plot-step"><strong>Гл. 14–15:</strong> Троекуров решает выдать Машу замуж за богатого старика князя Верейского.</div>
+                    <div class="plot-step"><strong>Гл. 16–17:</strong> Маша пишет письмо Верейскому с просьбой отказаться, но безуспешно. Обращается за помощью к Дубровскому.</div>
+                    <div class="plot-step"><strong>Гл. 18:</strong> Дубровский опоздал — Маша уже обвенчана. Нападение на карету. Маша отказывается от побега: «Поздно, я жена другого».</div>
+                    <div class="plot-step"><strong>Гл. 19:</strong> Войска разгромили отряд Дубровского. Владимир распустил крестьян и уехал за границу. Конец.</div>
+                </div>
+
+                <h3>Проблематика романа</h3>
+                <div class="rule-box rb-pink">
+                    <ul>
+                        <li>🏛️ <strong>Проблема несправедливости</strong> — закон служит богатым, а не справедливости</li>
+                        <li>❤️ <strong>Проблема любви и долга</strong> — Маша вынуждена выбирать между чувством и обязанностью</li>
+                        <li>⚔️ <strong>Проблема чести и мести</strong> — может ли благородный человек стать разбойником?</li>
+                        <li>🌾 <strong>Проблема крепостного права</strong> — крестьяне как жертвы произвола помещиков</li>
+                    </ul>
+                </div>
+
+                <h3>Цитаты для запоминания</h3>
+                <div class="rule-box rb-yellow">
+                    <em>«Он был молод, здоров, сердечен, образован — всё это вместе делало его идеальным героем»</em><br><br>
+                    <em>«Поздно, я замужем, я жена князя Верейского» — Маша Дубровскому</em><br><br>
+                    <em>«Чем меньше мы любим женщину, тем легче нравимся мы ей» — Пушкин (другое произведение, но стиль мысли автора)</em>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1: Ответь на вопросы письменно</span>
+                    <ol>
+                        <li>Из-за чего поссорились Дубровский-старший и Троекуров?</li>
+                        <li>Почему Владимир Дубровский стал разбойником?</li>
+                        <li>Почему Маша не убежала с Дубровским в конце романа?</li>
+                        <li>Кем прикидывался Дубровский в доме Троекурова?</li>
+                    </ol>
+                    <button class="toggle-btn tb-pink" onclick="tog('lit_ans1')">▶ Показать ответы</button>
+                    <div class="answer ans-pink" id="lit_ans1">
+1. Псарь Троекурова оскорбил Дубровского-старшего, сказав,
+   что его псарня лучше, чем дом Дубровского.
+   Дубровский потребовал извинений, Троекуров отказал.
+
+2. После смерти отца и потери имения Владимиру некуда
+   было идти. Он сжёг Кистенёвку и возглавил своих
+   крепостных, отказавшихся принять нового хозяина.
+
+3. Маша сказала: «Поздно — я жена другого». Она считала,
+   что венчание — это священный обет, нарушить который
+   нельзя, даже если брак заключён против её воли.
+
+4. Дубровский прикидывался французским учителем
+   Дефоржем — учителем французского языка для маленького
+   сына Троекурова, Саши.
+                    </div>
+                </div>
+                <div class="task">
+                    <span class="task-num">📝 Задание 2: Характеристика героя</span><br>
+                    Напиши в тетради план-характеристику Владимира Дубровского (6–8 пунктов):
+                    происхождение, внешность, образование, характер, поступки, отношение к другим, твоё мнение о нём.
+                </div>
+            </div>
+        </div>
+
+        <!-- ТЕСТ ЛИТЕРАТУРА -->
+        <div class="quiz-wrap">
+            <div class="quiz-title">🧪 Тест по литературе</div>
+            <p>10 вопросов | Мифы Греции + Дубровский</p>
+            <form id="litQuiz">
+                <div class="q-block">
+                    <p>1. Кто такой Геракл?</p>
+                    <label class="q-opt"><input type="radio" name="lq1" value="a"> Бог войны</label>
+                    <label class="q-opt"><input type="radio" name="lq1" value="b"> Сын Зевса и смертной женщины, герой</label>
+                    <label class="q-opt"><input type="radio" name="lq1" value="c"> Вестник богов</label>
+                    <label class="q-opt"><input type="radio" name="lq1" value="d"> Бог морей</label>
+                </div>
+                <div class="q-block">
+                    <p>2. Сколько подвигов совершил Геракл?</p>
+                    <label class="q-opt"><input type="radio" name="lq2" value="a"> 7</label>
+                    <label class="q-opt"><input type="radio" name="lq2" value="b"> 10</label>
+                    <label class="q-opt"><input type="radio" name="lq2" value="c"> 12</label>
+                    <label class="q-opt"><input type="radio" name="lq2" value="d"> 9</label>
+                </div>
+                <div class="q-block">
+                    <p>3. Какой бог является верховным на Олимпе?</p>
+                    <label class="q-opt"><input type="radio" name="lq3" value="a"> Посейдон</label>
+                    <label class="q-opt"><input type="radio" name="lq3" value="b"> Арес</label>
+                    <label class="q-opt"><input type="radio" name="lq3" value="c"> Зевс</label>
+                    <label class="q-opt"><input type="radio" name="lq3" value="d"> Аполлон</label>
+                </div>
+                <div class="q-block">
+                    <p>4. Год написания романа «Дубровский»:</p>
+                    <label class="q-opt"><input type="radio" name="lq4" value="a"> 1825 год</label>
+                    <label class="q-opt"><input type="radio" name="lq4" value="b"> 1832–1833 годы</label>
+                    <label class="q-opt"><input type="radio" name="lq4" value="c"> 1799 год</label>
+                    <label class="q-opt"><input type="radio" name="lq4" value="d"> 1837 год</label>
+                </div>
+                <div class="q-block">
+                    <p>5. Из-за чего началась ссора Дубровского-старшего и Троекурова?</p>
+                    <label class="q-opt"><input type="radio" name="lq5" value="a"> Из-за земельного спора</label>
+                    <label class="q-opt"><input type="radio" name="lq5" value="b"> Из-за оскорбления псарём Дубровского</label>
+                    <label class="q-opt"><input type="radio" name="lq5" value="c"> Из-за любви к Маше</label>
+                    <label class="q-opt"><input type="radio" name="lq5" value="d"> Из-за долга денег</label>
+                </div>
+                <div class="q-block">
+                    <p>6. Под каким именем Дубровский проник в дом Троекурова?</p>
+                    <label class="q-opt"><input type="radio" name="lq6" value="a"> Дюбуа</label>
+                    <label class="q-opt"><input type="radio" name="lq6" value="b"> Верейский</label>
+                    <label class="q-opt"><input type="radio" name="lq6" value="c"> Дефорж</label>
+                    <label class="q-opt"><input type="radio" name="lq6" value="d"> Морель</label>
+                </div>
+                <div class="q-block">
+                    <p>7. Богиня мудрости в греческой мифологии:</p>
+                    <label class="q-opt"><input type="radio" name="lq7" value="a"> Гера</label>
+                    <label class="q-opt"><input type="radio" name="lq7" value="b"> Артемида</label>
+                    <label class="q-opt"><input type="radio" name="lq7" value="c"> Афродита</label>
+                    <label class="q-opt"><input type="radio" name="lq7" value="d"> Афина</label>
+                </div>
+                <div class="q-block">
+                    <p>8. Почему Маша не убежала с Дубровским в конце?</p>
+                    <label class="q-opt"><input type="radio" name="lq8" value="a"> Она его не любила</label>
+                    <label class="q-opt"><input type="radio" name="lq8" value="b"> Она побоялась отца</label>
+                    <label class="q-opt"><input type="radio" name="lq8" value="c"> Она была уже обвенчана и считала себя женой Верейского</label>
+                    <label class="q-opt"><input type="radio" name="lq8" value="d"> Дубровский передумал</label>
+                </div>
+                <div class="q-block">
+                    <p>9. Хитроумный герой мифов, скитавшийся 10 лет после Троянской войны:</p>
+                    <label class="q-opt"><input type="radio" name="lq9" value="a"> Геракл</label>
+                    <label class="q-opt"><input type="radio" name="lq9" value="b"> Ахилл</label>
+                    <label class="q-opt"><input type="radio" name="lq9" value="c"> Одиссей</label>
+                    <label class="q-opt"><input type="radio" name="lq9" value="d"> Персей</label>
+                </div>
+                <div class="q-block">
+                    <p>10. Главная тема романа «Дубровский»:</p>
+                    <label class="q-opt"><input type="radio" name="lq10" value="a"> Приключения разбойников</label>
+                    <label class="q-opt"><input type="radio" name="lq10" value="b"> Несправедливость, честь, любовь и произвол дворянства</label>
+                    <label class="q-opt"><input type="radio" name="lq10" value="c"> История Наполеоновских войн</label>
+                    <label class="q-opt"><input type="radio" name="lq10" value="d"> Крестьянское восстание</label>
+                </div>
+                <button type="button" class="check-btn cb-lit" onclick="checkQuiz('litQuiz', litAns, litExp, 'litResult')">✅ Проверить</button>
+            </form>
+            <div class="result-box" id="litResult"></div>
+        </div>
+    </div>
+
+    <hr class="separator sep-lit">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║         ИТОГОВАЯ ПРОВЕРКА НЕДЕЛИ            ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div id="fin">
+        <h1 class="h1-fin">🏆 Итоговая мини-проверка — День 8</h1>
+        <p class="subtitle">Русский язык + Математика + История | Время: 1,5 часа</p>
+
+        <!-- ТАЙМЕР -->
+        <div class="final-block">
+            <div class="final-title">⏱️ Таймер — 90 минут</div>
+            <div class="final-subtitle">Запусти таймер перед началом проверки!</div>
+            <div class="timer-block">
+                <div class="timer-display" id="timerDisplay">01:30:00</div>
+                <div style="margin-top:12px;">
+                    <button class="timer-btn timer-start" onclick="startTimer()">▶ Старт</button>
+                    <button class="timer-btn timer-pause" onclick="pauseTimer()">⏸ Пауза</button>
+                    <button class="timer-btn timer-reset" onclick="resetTimer()">🔄 Сброс</button>
+                </div>
+                <div id="timerMsg" style="margin-top:10px; font-weight:bold; color:#c53030;"></div>
+            </div>
+
+            <!-- ПРОГРЕСС НЕДЕЛИ -->
+            <h3 style="color:#744210; margin-top:20px;">📊 Прогресс за неделю</h3>
+            <div class="progress-wrap">
+                <div class="progress-item">
+                    <div class="progress-label">Русский язык (6 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-ru" style="width:100%">100%</div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">Математика (6 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-ma" style="width:100%">100%</div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">История (3 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-hi" style="width:100%">100%</div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">Биология (3 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-bi" style="width:100%">100%</div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">Обществознание (2 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-ob" style="width:100%">100%</div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">География (2 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-ge" style="width:100%">100%</div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">Английский язык (2 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-en" style="width:100%">100%</div></div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-label">Литература (2 ч)</div>
+                    <div class="progress-bar-bg"><div class="progress-bar pb-li" style="width:100%">100%</div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ДИКТАНТ -->
+        <div class="lesson-block lb-final">
+            <h2 class="fin-h">📝 Часть 1: Диктант по русскому языку</h2>
+            <span class="duration">⏱ 30 мин</span>
+            <span class="section-badge badge-ru">Русский язык</span>
+
+            <div class="rule-box rb-red">
+                <strong>📋 Инструкция:</strong>
+                <ol>
+                    <li>Попроси кого-нибудь прочитать текст вслух</li>
+                    <li>Запиши текст в тетрадь под диктовку</li>
+                    <li>Проверь по оригиналу — посчитай ошибки</li>
+                    <li>Выпиши слова с ошибками в столбик и объясни правило</li>
+                </ol>
+            </div>
+
+            <div class="dictant-block">
+                <div class="dictant-title">Текст диктанта (50 слов на изученные орфограммы)</div>
+                <button class="toggle-btn tb-red" onclick="tog('dictText')" style="margin-bottom:10px;">👁 Показать текст</button>
+                <div class="answer" id="dictText" style="font-family:Georgia,serif; font-size:1.05em; line-height:2; color:#2d3748;">
+                    <p>На <u>при</u>морском берегу <u>рас</u>кинулся небольшой городок. Рыбаки <u>при</u>плывали сюда на <u>рас</u>свете, <u>при</u>тягивали лодки к берегу и <u>рас</u>кладывали улов. Старый <u>пре</u>красный маяк <u>пре</u>граждал путь туманам. По ночам его огонь <u>оз</u>арял море. <u>Рас</u>тения у берега тихо <u>кач</u>ались. Вдруг <u>при</u>скакал всадник и <u>при</u>нёс <u>пре</u>отличные новости. Жители <u>со</u>брались на площади и стали <u>по</u>лагать, что <u>пре</u>одолели все трудности.</p>
+                    <br>
+                    <strong>Орфограммы в тексте:</strong><br>
+                    ПРИ-/ПРЕ-: приморском, приплывали, притягивали, прекрасный, преграждал, прискакал, принёс, преотличные, преодолели<br>
+                    РАС-/РАЗ-: раскинулся, рассвете, раскладывали, растения<br>
+                    Чередование: озарял (зар- без удар.→а), собрались (-бир-/-бер-), полагать (-лаг-/-лож-)
+                </div>
+            </div>
+
+            <div class="rule-box rb-green">
+                <strong>📊 Оценка диктанта:</strong>
+                <table>
+                    <tr><th class="th-eng">Ошибок</th><th class="th-eng">Оценка</th><th class="th-eng">Что делать</th></tr>
+                    <tr><td>0–1</td><td>⭐⭐⭐⭐⭐ «5»</td><td>Отлично! Переходи к следующему заданию</td></tr>
+                    <tr><td>2–3</td><td>⭐⭐⭐⭐ «4»</td><td>Хорошо! Повтори слова с ошибками</td></tr>
+                    <tr><td>4–5</td><td>⭐⭐⭐ «3»</td><td>Перечитай правила по ошибкам</td></tr>
+                    <tr><td>6+</td><td>⭐⭐ «2»</td><td>Вернись к теории — правила ПРЕ-/ПРИ- и чередования</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- МАТЕМАТИКА КОНТРОЛЬ -->
+        <div class="lesson-block lb-fin">
+            <h2 class="fin-h">🔢 Часть 2: Контрольные примеры по математике</h2>
+            <span class="duration">⏱ 30 мин</span>
+            <span class="section-badge badge-ma">Математика</span>
+
+            <div class="rule-box rb-orange">
+                <strong>📋 Инструкция:</strong> Реши все 10 примеров в тетради, показывая ВСЕ шаги. Затем проверь себя.
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <strong>10 итоговых примеров на дроби:</strong><br><br>
+                    1) НОД(48, 72) = ?<br>
+                    2) НОК(15, 25) = ?<br>
+                    3) Сократи дробь: 36/54<br>
+                    4) <span style="font-size:1.1em;">²⁄₅ + ³⁄₄</span> = ?<br>
+                    5) <span style="font-size:1.1em;">5½ − 2⅔</span> = ?<br>
+                    6) <span style="font-size:1.1em;">⁴⁄₉ × ³⁄₈</span> = ?<br>
+                    7) <span style="font-size:1.1em;">3¾ ÷ 1¼</span> = ?<br>
+                    8) <span style="font-size:1.1em;">2⅗ + 1⁷⁄₁₀</span> = ?<br>
+                    9) <span style="font-size:1.1em;">4⅙ × 2²⁄₅</span> = ?<br>
+                    10) Задача: Турист прошёл ³⁄₄ пути. Весь путь — 24 км. Сколько км осталось?<br><br>
+                    <button class="toggle-btn tb-orange" onclick="tog('finalMath')">▶ Показать все ответы</button>
+                    <div class="answer ans-orange" id="finalMath">
+1) НОД(48,72):
+   48 = 2⁴×3; 72 = 2³×3²
+   НОД = 2³×3 = <strong>24</strong>
+
+2) НОК(15,25):
+   15 = 3×5; 25 = 5²
+   НОК = 3×5² = <strong>75</strong>
+
+3) НОД(36,54)=18 → 36/54 = <strong>2/3</strong>
+
+4) НОК(5,4)=20: 8/20+15/20 = <strong>23/20 = 1 3/20</strong>
+
+5) НОК(2,3)=6: 5 3/6 − 2 4/6
+   Занимаем: 4 9/6 − 2 4/6 = <strong>2 5/6</strong>
+
+6) 4/9 × 3/8: сокращаем 4÷4=1,8÷4=2; 3÷3=1,9÷3=3
+   = 1/6 = <strong>1/6</strong>
+
+7) 15/4 ÷ 5/4 = 15/4 × 4/5: сокращаем
+   = 15/5 = <strong>3</strong>
+
+8) НОК(5,10)=10: 2 6/10 + 1 7/10 = 3 13/10
+   = 3+1 3/10 = <strong>4 3/10</strong>
+
+9) 25/6 × 12/5: сокращаем 25÷5=5,5÷5=1; 12÷6=2,6÷6=1
+   = 5×2 = <strong>10</strong>
+
+10) Прошёл: 24 × 3/4 = 18 км
+    Осталось: 24 − 18 = <strong>6 км</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-box rb-green">
+                <strong>📊 Оценка:</strong>
+                <table>
+                    <tr><th class="th-eng">Правильных</th><th class="th-eng">Оценка</th></tr>
+                    <tr><td>9–10</td><td>⭐⭐⭐⭐⭐ «5» — превосходно!</td></tr>
+                    <tr><td>7–8</td><td>⭐⭐⭐⭐ «4» — хорошо!</td></tr>
+                    <tr><td>5–6</td><td>⭐⭐⭐ «3» — повтори тему</td></tr>
+                    <tr><td>≤4</td><td>⭐⭐ «2» — нужно повторить всю тему дробей</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ИСТОРИЧЕСКИЙ ТЕСТ -->
+        <div class="lesson-block lb-final">
+            <h2 class="fin-h">⚔️ Часть 3: Итоговый тест по истории</h2>
+            <span class="duration">⏱ 20 мин</span>
+            <span class="section-badge badge-hi">История</span>
+
+            <div class="quiz-wrap" style="margin-top:0;">
+                <div class="quiz-title" style="color:#744210;">🗺️ Тест: Раннее Средневековье — 10 вопросов</div>
+                <p>Проверочный тест для итоговой оценки знаний за неделю</p>
+                <form id="finalHistQuiz">
+                    <div class="q-block">
+                        <p>1. Какое государство НЕ относится к Раннему Средневековью?</p>
+                        <label class="q-opt"><input type="radio" name="fhq1" value="a"> Byzantийская империя</label>
+                        <label class="q-opt"><input type="radio" name="fhq1" value="b"> Арабский халифат</label>
+                        <label class="q-opt"><input type="radio" name="fhq1" value="c"> Монгольская империя</label>
+                        <label class="q-opt"><input type="radio" name="fhq1" value="d"> Франкское государство</label>
+                    </div>
+                    <div class="q-block">
+                        <p>2. Что Юстиниан I построил в Константинополе как символ величия Byzantии?</p>
+                        <label class="q-opt"><input type="radio" name="fhq2" value="a"> Колизей</label>
+                        <label class="q-opt"><input type="radio" name="fhq2" value="b"> Храм Святой Софии</label>
+                        <label class="q-opt"><input type="radio" name="fhq2" value="c"> Парфенон</label>
+                        <label class="q-opt"><input type="radio" name="fhq2" value="d"> Версальский дворец</label>
+                    </div>
+                    <div class="q-block">
+                        <p>3. Кто короновал Карла Великого императором в 800 году?</p>
+                        <label class="q-opt"><input type="radio" name="fhq3" value="a"> Патриарх Константинополя</label>
+                        <label class="q-opt"><input type="radio" name="fhq3" value="b"> Папа Римский Лев III</label>
+                        <label class="q-opt"><input type="radio" name="fhq3" value="c"> Сам себя провозгласил</label>
+                        <label class="q-opt"><input type="radio" name="fhq3" value="d"> Сенат Рима</label>
+                    </div>
+                    <div class="q-block">
+                        <p>4. «Оброк» в феодальном обществе — это:</p>
+                        <label class="q-opt"><input type="radio" name="fhq4" value="a"> Военная служба вассала</label>
+                        <label class="q-opt"><input type="radio" name="fhq4" value="b"> Работа крестьянина на поле феодала</label>
+                        <label class="q-opt"><input type="radio" name="fhq4" value="c"> Отчисление части урожая или денег феодалу</label>
+                        <label class="q-opt"><input type="radio" name="fhq4" value="d"> Налог в пользу церкви</label>
+                    </div>
+                    <div class="q-block">
+                        <p>5. Мухаммед родился в городе:</p>
+                        <label class="q-opt"><input type="radio" name="fhq5" value="a"> Медина</label>
+                        <label class="q-opt"><input type="radio" name="fhq5" value="b"> Багдад</label>
+                        <label class="q-opt"><input type="radio" name="fhq5" value="c"> Мекка</label>
+                        <label class="q-opt"><input type="radio" name="fhq5" value="d"> Дамаск</label>
+                    </div>
+                    <div class="q-block">
+                        <p>6. Верденский договор 843 года разделил франкскую империю на сколько частей?</p>
+                        <label class="q-opt"><input type="radio" name="fhq6" value="a"> 2</label>
+                        <label class="q-opt"><input type="radio" name="fhq6" value="b"> 4</label>
+                        <label class="q-opt"><input type="radio" name="fhq6" value="c"> 3</label>
+                        <label class="q-opt"><input type="radio" name="fhq6" value="d"> 5</label>
+                    </div>
+                    <div class="q-block">
+                        <p>7. Что такое «десятина»?</p>
+                        <label class="q-opt"><input type="radio" name="fhq7" value="a"> Налог в размере 1/10 дохода в пользу церкви</label>
+                        <label class="q-opt"><input type="radio" name="fhq7" value="b"> Десятый год службы вассала</label>
+                        <label class="q-opt"><input type="radio" name="fhq7" value="c"> Земельный надел феодала</label>
+                        <label class="q-opt"><input type="radio" name="fhq7" value="d"> Вид барщины</label>
+                    </div>
+                    <div class="q-block">
+                        <p>8. Byzantийская империя просуществовала с 395 по:</p>
+                        <label class="q-opt"><input type="radio" name="fhq8" value="a"> 800 год</label>
+                        <label class="q-opt"><input type="radio" name="fhq8" value="b"> 1000 год</label>
+                        <label class="q-opt"><input type="radio" name="fhq8" value="c"> 1453 год</label>
+                        <label class="q-opt"><input type="radio" name="fhq8" value="d"> 1215 год</label>
+                    </div>
+                    <div class="q-block">
+                        <p>9. Столица Арабского халифата при Аббасидах:</p>
+                        <label class="q-opt"><input type="radio" name="fhq9" value="a"> Мекка</label>
+                        <label class="q-opt"><input type="radio" name="fhq9" value="b"> Дамаск</label>
+                        <label class="q-opt"><input type="radio" name="fhq9" value="c"> Каир</label>
+                        <label class="q-opt"><input type="radio" name="fhq9" value="d"> Багдад</label>
+                    </div>
+                    <div class="q-block">
+                        <p>10. Главный принцип феодальной лестницы:</p>
+                        <label class="q-opt"><input type="radio" name="fhq10" value="a"> Каждый подчиняется только королю</label>
+                        <label class="q-opt"><input type="radio" name="fhq10" value="b"> «Вассал моего вассала — не мой вассал»</label>
+                        <label class="q-opt"><input type="radio" name="fhq10" value="c"> Все равны перед законом</label>
+                        <label class="q-opt"><input type="radio" name="fhq10" value="d"> Церковь важнее короля</label>
+                    </div>
+                    <button type="button" class="check-btn cb-hist" style="background:#dd6b20;" onclick="checkQuiz('finalHistQuiz', finalHistAns, finalHistExp, 'finalHistResult')">✅ Проверить итоговый тест</button>
+                </form>
+                <div class="result-box" id="finalHistResult"></div>
+            </div>
+        </div>
+
+        <!-- ЧЕКЛИСТ НЕДЕЛИ -->
+        <div class="lesson-block lb-fin">
+            <h2 class="fin-h">✅ Чеклист — что сделано за неделю?</h2>
+            <p style="margin-bottom:12px; color:#718096;">Отметь галочкой всё, что ты выполнил:</p>
+            <ul class="checklist" id="weekChecklist">
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Русский язык: Фонетический разбор — 3 слова</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Русский язык: Разбор по составу — 6 слов</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Русский язык: Упражнения на чередование (10 слов)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Русский язык: Упражнения на ПРЕ-/ПРИ- (12 слов)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Русский язык: О/Ё после шипящих (10 слов)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Математика: НОД — 5 пар чисел</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Математика: НОК — 5 пар чисел</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Математика: Сложение/вычитание дробей — 8 примеров</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Математика: Умножение/деление дробей — 8 примеров</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> История: Конспект по трём государствам</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> История: Схема феодальной лестницы</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> История: Задание по контурной карте</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Биология: Схема строения клетки (зарисовка)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Биология: Таблица тканей растений</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Обществознание: Конспект личность/познание/деятельность</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> География: Задачи на масштаб (3 задачи)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> География: Определил координаты 5 городов</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Английский: Упражнения на PS/PC (5 заданий)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Английский: Выучил лексику Family + Home (32 слова)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Литература: Прочитал/посмотрел мифы Греции</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Литература: Прочитал «Дубровского» (краткое содержание)</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Итог: Диктант выполнен</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Итог: 10 примеров на дроби решены</li>
+                <li onclick="toggleCheck(this)"><input type="checkbox"> Итог: Тест по истории пройден</li>
+            </ul>
+            <div id="checkProgress" style="margin-top:16px; font-weight:bold; color:#276749; font-size:1.1em;"></div>
+        </div>
+
+        <!-- НАГРАДА -->
+        <div class="achievement" id="achievement" style="display:none;">
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-title">Неделя 1 пройдена!</div>
+            <div class="achievement-text">
+                Ты заложил фундамент знаний! Изучено 8 предметов за одну неделю.<br>
+                Общий налёт: ~26 часов занятий. Ты — молодец! 💪<br><br>
+                <strong>Следующий шаг:</strong> Неделя 2 — углубление и расширение тем.
+            </div>
+        </div>
+
+        <!-- ИТОГОВЫЕ СОВЕТЫ -->
+        <div class="lesson-block lb-fin" style="margin-bottom:40px;">
+            <h2 class="fin-h">💡 Советы для Недели 2</h2>
+            <div class="cards">
+                <div class="card card-blue">
+                    <div class="card-title">📚 Русский язык</div>
+                    <div class="card-body">Повтори слова с ошибками из диктанта. Переходи к теме «Имя существительное» и сложным орфограммам</div>
+                </div>
+                <div class="card card-green">
+                    <div class="card-title">🔢 Математика</div>
+                    <div class="card-body">Если «3» или «2» — повтори правила дробей. Переходи к отношениям и пропорциям</div>
+                </div>
+                <div class="card card-orange">
+                    <div class="card-title">⚔️ История</div>
+                    <div class="card-body">Составь сводную таблицу-сравнение трёх государств. Начинай изучать Крестовые походы</div>
+                </div>
+                <div class="card card-purple">
+                    <div class="card-title">🌿 Биология</div>
+                    <div class="card-body">Переходи к изучению органов растений: корень, стебель, лист</div>
+                </div>
+                <div class="card card-teal">
+                    <div class="card-title">🇬🇧 Английский</div>
+                    <div class="card-body">Повторяй лексику каждый день по 10 минут. Следующая тема — Past Simple</div>
+                </div>
+                <div class="card card-pink">
+                    <div class="card-title">📚 Литература</div>
+                    <div class="card-body">Прочитай несколько глав «Дубровского» в оригинале. Напиши сочинение-отзыв</div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /fin -->
+
+</div><!-- /container -->
+
+<script>
+    /* ── Навигация ── */
+    function goTo(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ── Показать/скрыть ── */
+    function tog(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    /* ── Чеклист ── */
+    function toggleCheck(li) {
+        var cb = li.querySelector('input[type="checkbox"]');
+        cb.checked = !cb.checked;
+        li.classList.toggle('done', cb.checked);
+        updateCheckProgress();
+    }
+    function updateCheckProgress() {
+        var all   = document.querySelectorAll('#weekChecklist li').length;
+        var done  = document.querySelectorAll('#weekChecklist li.done').length;
+        var pct   = Math.round(done / all * 100);
+        var el    = document.getElementById('checkProgress');
+        el.textContent = '✅ Выполнено: ' + done + ' из ' + all + ' (' + pct + '%)';
+        if (done === all) {
+            document.getElementById('achievement').style.display = 'block';
+            document.getElementById('achievement').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    /* ── Таймер ── */
+    var totalSeconds = 90 * 60;
+    var remaining   = totalSeconds;
+    var timerInt    = null;
+    var running     = false;
+
+    function pad(n) { return n < 10 ? '0' + n : n; }
+    function updateDisplay() {
+        var h = Math.floor(remaining / 3600);
+        var m = Math.floor((remaining % 3600) / 60);
+        var s = remaining % 60;
+        document.getElementById('timerDisplay').textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+        var msg = document.getElementById('timerMsg');
+        if (remaining <= 0) {
+            clearInterval(timerInt);
+            running = false;
+            document.getElementById('timerDisplay').textContent = '00:00:00';
+            document.getElementById('timerDisplay').style.color = '#e53e3e';
+            msg.textContent = '⏰ Время вышло! Сдавай работу!';
+        } else if (remaining <= 300) {
+            document.getElementById('timerDisplay').style.color = '#e53e3e';
+            msg.textContent = '⚠️ Осталось меньше 5 минут!';
+        } else if (remaining <= 900) {
+            document.getElementById('timerDisplay').style.color = '#dd6b20';
+            msg.textContent = '⏳ Осталось 15 минут — завершай!';
+        } else {
+            document.getElementById('timerDisplay').style.color = '#c53030';
+            msg.textContent = '';
+        }
+    }
+    function startTimer() {
+        if (running) return;
+        running = true;
+        timerInt = setInterval(function() { remaining--; updateDisplay(); }, 1000);
+    }
+    function pauseTimer() {
+        clearInterval(timerInt);
+        running = false;
+    }
+    function resetTimer() {
+        clearInterval(timerInt);
+        running = false;
+        remaining = totalSeconds;
+        document.getElementById('timerDisplay').style.color = '#c53030';
+        document.getElementById('timerMsg').textContent = '';
+        updateDisplay();
+    }
+    updateDisplay();
+
+    /* ══ Данные тестов ══ */
+    var geoAns = { gq1:'c', gq2:'b', gq3:'b', gq4:'b', gq5:'c', gq6:'b', gq7:'c', gq8:'b', gq9:'a', gq10:'c' };
+    var geoExp = {
+        gq1:  'Земля — третья планета от Солнца: Меркурий (1), Венера (2), Земля (3).',
+        gq2:  'Смена сезонов — следствие наклона оси (23,5°), а не изменения расстояния.',
+        gq3:  '1:100 000 → 100 000 см = 1 000 м = 1 км. В 1 см карты — 1 км местности.',
+        gq4:  'Параллели проведены параллельно экватору — с запада на восток.',
+        gq5:  'Широта отсчитывается от экватора (0°) к северу или к югу.',
+        gq6:  '22 июня — летнее солнцестояние, самый длинный день в Северном полушарии.',
+        gq7:  '360° ÷ 15° = 24 часовых пояса на Земле.',
+        gq8:  'Горизонтали — линии, соединяющие точки с одинаковой высотой над уровнем моря.',
+        gq9:  'Москва: 55° с.ш. (северная широта), 37° в.д. (восточная долгота).',
+        gq10: 'Нулевой меридиан проходит через Гринвичскую обсерваторию в Лондоне (Великобритания).'
+    };
+
+    var engAns = { eq1:'b', eq2:'b', eq3:'c', eq4:'b', eq5:'c', eq6:'c', eq7:'d', eq8:'d', eq9:'b', eq10:'c' };
+    var engExp = {
+        eq1:  'She/He/It + глагол с -s в Present Simple → goes (every day = маркер PS).',
+        eq2:  'Look! = маркер Present Continuous → is sitting (am/is/are + Ving).',
+        eq3:  'Usually — маркер Present Simple. Now, at the moment, right now — маркеры PC.',
+        eq4:  'At the moment = PC → isn\'t playing (he/she/it → is not + Ving).',
+        eq5:  'My father\'s sister = тётя = aunt.',
+        eq6:  'Swim — короткий слог + согласная m → удваиваем: swimm + ing = swimming.',
+        eq7:  'Kitchen — кухня, место приготовления пищи.',
+        eq8:  'Your parents (they) → вспомогательный глагол Do в вопросе PS.',
+        eq9:  'Know — глагол состояния, нельзя использовать в Continuous форме.',
+        eq10: 'Cousin — двоюродный брат или сестра.'
+    };
+
+    var litAns = { lq1:'b', lq2:'c', lq3:'c', lq4:'b', lq5:'b', lq6:'c', lq7:'d', lq8:'c', lq9:'c', lq10:'b' };
+    var litExp = {
+        lq1:  'Геракл — сын Зевса и смертной женщины Алкмены, величайший герой Греции.',
+        lq2:  'Геракл совершил ровно 12 подвигов по приказу царя Эврисфея.',
+        lq3:  'Зевс — верховный бог Олимпа, повелитель грома и молнии.',
+        lq4:  '«Дубровский» написан в 1832–1833 гг. Пушкин жил в 1799–1837 гг.',
+        lq5:  'Псарь Троекурова оскорбил Дубровского-старшего, это стало причиной ссоры.',
+        lq6:  'Дубровский проник в дом Троекурова под именем французского учителя Дефоржа.',
+        lq7:  'Афина — богиня мудрости и справедливой войны. Символ — сова.',
+        lq8:  'Маша сказала: «Поздно — я жена другого». Венчание для неё — священный обет.',
+        lq9:  'Одиссей — хитроумный царь Итаки, 10 лет скитался после Троянской войны.',
+        lq10: 'Главные темы «Дубровского»: несправедливость, честь, любовь и произвол дворянства.'
+    };
+
+    var finalHistAns = { fhq1:'c', fhq2:'b', fhq3:'b', fhq4:'c', fhq5:'c', fhq6:'c', fhq7:'a', fhq8:'c', fhq9:'d', fhq10:'b' };
+    var finalHistExp = {
+        fhq1:  'Монгольская империя — XIII–XIV века, это не Раннее Средневековье (V–X вв.).',
+        fhq2:  'Храм Святой Софии в Константинополе — шедевр архитектуры, построен при Юстиниане I.',
+        fhq3:  'В 800 г. папа Лев III короновал Карла в соборе Святого Петра в Риме.',
+        fhq4:  'Оброк — платёж феодалу частью урожая или деньгами. Барщина — работа на поле феодала.',
+        fhq5:  'Мухаммед родился около 570 года в Мекке (Аравийский полуостров).',
+        fhq6:  'Верденский договор разделил империю на 3 части между Лотарем, Карлом Лысым и Людовиком.',
+        fhq7:  'Десятина — 1/10 дохода, которую платили в пользу церкви.',
+        fhq8:  'Byzantия существовала с 395 по 1453 год (когда её захватили турки-османы).',
+        fhq9:  'При Аббасидах (750–1258 гг.) столицей халифата стал Багдад (Ирак).',
+        fhq10: '«Вассал моего вассала — не мой вассал» — главный принцип феодальной иерархии.'
+    };
+
+    /* ══ Универсальная проверка теста ══ */
+    function checkQuiz(formId, answers, explain, resultId) {
+        var keys    = Object.keys(answers);
+        var prefix  = keys[0].replace(/\d+$/, '');
+        var total   = keys.length;
+        var score   = 0;
+        var html    = '';
+
+        keys.forEach(function(q) {
+            var sel = document.querySelector('input[name="' + q + '"]:checked');
+            var num = q.replace(prefix, '');
+            if (sel && sel.value === answers[q]) {
+                score++;
+                html += '<br>✅ Вопрос ' + num + ': Верно! ' + explain[q];
+            } else if (sel) {
+                html += '<br>❌ Вопрос ' + num + ': Неверно. ' + explain[q];
+            } else {
+                html += '<br>⚠️ Вопрос ' + num + ': Нет ответа. ' + explain[q];
+            }
+        });
+
+        var pct = Math.round(score / total * 100);
+        var bg  = pct >= 80 ? '#c6f6d5' : pct >= 60 ? '#fefcbf' : '#fed7d7';
+        var em  = pct >= 80 ? '🎉' : pct >= 60 ? '👍' : '📚 Нужно повторить!';
+
+        var box = document.getElementById(resultId);
+        box.style.background = bg;
+        box.style.display    = 'block';
+        box.innerHTML = em + ' <strong>' + score + '/' + total + ' (' + pct + '%)</strong>' + html;
+        box.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

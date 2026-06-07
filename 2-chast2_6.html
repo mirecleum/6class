@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 2 — Математика, 6 класс</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.75;
+            padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* Заголовки */
+        h1 { text-align: center; color: #276749; font-size: 2em;
+             border-bottom: 4px solid #38a169; padding-bottom: 14px; margin-bottom: 8px; }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 28px; font-size: 1.05em; }
+        h2 { font-size: 1.45em; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        h3 { font-size: 1.12em; color: #2d3748; margin: 18px 0 8px;
+             padding-bottom: 4px; border-bottom: 2px dashed #e2e8f0; }
+
+        /* Блоки */
+        .lesson { background: white; border-radius: 16px; padding: 28px;
+                  margin-bottom: 26px; box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+        .l-green  { border-left: 6px solid #38a169; }
+        .l-blue   { border-left: 6px solid #3182ce; }
+        .l-purple { border-left: 6px solid #805ad5; }
+        .l-orange { border-left: 6px solid #dd6b20; }
+        .l-red    { border-left: 6px solid #e53e3e; }
+        .l-teal   { border-left: 6px solid #319795; }
+        .l-pink   { border-left: 6px solid #d53f8c; }
+
+        .hc-g { color: #22543d; }
+        .hc-b { color: #2a4365; }
+        .hc-p { color: #44337a; }
+        .hc-o { color: #7b341e; }
+        .hc-r { color: #742a2a; }
+        .hc-t { color: #234e52; }
+
+        /* Тетрадь */
+        .nb { background: #fffff0; border: 2px solid #ecc94b; border-radius: 12px;
+              padding: 22px 22px 14px; margin: 14px 0; position: relative; }
+        .nb::before { content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+                      position: absolute; top: -13px; left: 18px;
+                      background: #ecc94b; color: #744210;
+                      padding: 2px 13px; border-radius: 8px;
+                      font-weight: bold; font-size: .82em; }
+
+        /* Правила */
+        .rule { border-radius: 10px; padding: 13px 17px; margin: 10px 0; }
+        .r-g { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .r-b { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .r-y { background: #fffff0; border: 2px solid #f6e05e; }
+        .r-r { background: #fff5f5; border: 2px solid #fc8181; }
+        .r-p { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .r-o { background: #fffaf0; border: 2px solid #fbd38d; }
+        .r-t { background: #e6fffa; border: 2px solid #81e6d9; }
+
+        /* Таблицы */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .93em; }
+        th { padding: 10px 12px; text-align: left; color: white; }
+        td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+        .th-g { background: #276749; }
+        .th-b { background: #2b6cb0; }
+        .th-p { background: #553c9a; }
+        .th-o { background: #c05621; }
+        .th-t { background: #2c7a7b; }
+        .th-r { background: #c53030; }
+
+        /* Примеры */
+        .ex { background: #f0fff4; border: 1px solid #9ae6b4;
+              border-radius: 8px; padding: 13px 17px; margin: 8px 0;
+              font-family: 'Courier New', monospace; font-size: .95em; }
+        .ex-b { background: #ebf8ff; border-color: #90cdf4; }
+        .ex-o { background: #fffaf0; border-color: #fbd38d; }
+        .ex-p { background: #faf5ff; border-color: #d6bcfa; }
+
+        /* Упражнения */
+        .exer { background: #faf5ff; border: 2px solid #d6bcfa; border-radius: 12px;
+                padding: 20px 20px 12px; margin: 14px 0; position: relative; }
+        .exer::before { content: "✏️ ЗАДАЧИ И УПРАЖНЕНИЯ";
+                        position: absolute; top: -13px; left: 18px;
+                        background: #805ad5; color: white;
+                        padding: 2px 12px; border-radius: 8px;
+                        font-weight: bold; font-size: .82em; }
+        .task { background: white; border-radius: 10px; padding: 13px 15px;
+                margin: 10px 0; border-left: 4px solid #805ad5; }
+        .task-n { font-weight: bold; color: #805ad5; }
+
+        /* Кнопки */
+        .btn { border: none; padding: 7px 16px; border-radius: 6px; cursor: pointer;
+               font-size: .88em; margin-top: 8px; transition: all .25s; color: white; }
+        .btn-g { background: #38a169; } .btn-g:hover { background: #2f855a; }
+        .btn-b { background: #3182ce; } .btn-b:hover { background: #2b6cb0; }
+        .btn-p { background: #805ad5; } .btn-p:hover { background: #6b46c1; }
+        .btn-o { background: #dd6b20; } .btn-o:hover { background: #c05621; }
+        .btn-t { background: #319795; } .btn-t:hover { background: #2c7a7b; }
+        .btn-r { background: #e53e3e; } .btn-r:hover { background: #c53030; }
+
+        .ans { display: none; border-radius: 8px; padding: 12px 15px;
+               margin-top: 8px; font-size: .92em; line-height: 1.85;
+               font-family: 'Courier New', monospace; }
+        .ans-g { background: #f0fff4; border: 1px solid #9ae6b4; color: #22543d; }
+        .ans-b { background: #ebf8ff; border: 1px solid #90cdf4; color: #2a4365; }
+        .ans-p { background: #faf5ff; border: 1px solid #d6bcfa; color: #44337a; }
+        .ans-o { background: #fffaf0; border: 1px solid #fbd38d; color: #7b341e; }
+
+        /* Видео */
+        .vid { background: #fff5f5; border: 2px solid #feb2b2;
+               border-radius: 12px; padding: 13px 17px; margin: 13px 0; }
+        .vid a { color: #c53030; text-decoration: none; font-weight: bold; }
+        .vid a:hover { text-decoration: underline; }
+
+        /* Схема */
+        .scheme { background: #f7fafc; border: 2px solid #e2e8f0;
+                  border-radius: 12px; padding: 16px; margin: 12px 0; text-align: center; }
+        .sch-row { display: flex; justify-content: center; align-items: stretch;
+                   gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+        .sb { padding: 10px 14px; border-radius: 8px; font-size: .87em;
+              font-weight: bold; flex: 1; min-width: 120px; }
+        .sb-b { background: #bee3f8; color: #2a4365; }
+        .sb-g { background: #c6f6d5; color: #22543d; }
+        .sb-p { background: #e9d8fd; color: #44337a; }
+        .sb-o { background: #feebc8; color: #7b341e; }
+        .sb-r { background: #fed7d7; color: #742a2a; }
+        .sb-t { background: #b2f5ea; color: #234e52; }
+        .sb-y { background: #fefcbf; color: #744210; }
+        .arr { font-size: 1.4em; color: #718096; flex: none; align-self: center; }
+
+        /* Координатная плоскость SVG */
+        .coord-wrap { display: flex; justify-content: center; margin: 16px 0; }
+        svg text { font-family: 'Segoe UI', sans-serif; }
+
+        /* Числовая ось */
+        .num-line { display: flex; align-items: center; justify-content: center;
+                    margin: 16px 0; gap: 0; }
+        .nl-item { display: flex; flex-direction: column; align-items: center; }
+        .nl-tick { width: 2px; height: 12px; background: #2d3748; }
+        .nl-seg { height: 3px; background: #2d3748; }
+        .nl-label { font-size: .85em; margin-top: 3px; color: #2d3748; font-weight: bold; }
+        .nl-neg { color: #e53e3e; }
+        .nl-pos { color: #276749; }
+        .nl-zero { color: #2b6cb0; }
+        .nl-arrow { font-size: 1.3em; color: #2d3748; margin-bottom: 14px; }
+
+        /* Формула */
+        .formula { display: inline-block; background: #2d3748; color: #f6e05e;
+                   padding: 5px 14px; border-radius: 7px; font-family: 'Courier New', monospace;
+                   font-size: 1em; margin: 4px; }
+
+        /* Дробь */
+        .fr { display: inline-flex; flex-direction: column; align-items: center;
+              vertical-align: middle; margin: 0 3px; }
+        .fr span:first-child { border-bottom: 2px solid #2d3748; padding: 0 4px 1px; line-height: 1.2; }
+        .fr span:last-child  { padding: 1px 4px 0; line-height: 1.2; }
+
+        /* Теги и длительность */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px;
+               font-size: .8em; font-weight: bold; margin: 2px; }
+        .t-th { background: #bee3f8; color: #2a4365; }
+        .t-pr { background: #c6f6d5; color: #22543d; }
+        .t-te { background: #fefcbf; color: #744210; }
+        .dur  { background: #e2e8f0; color: #4a5568; padding: 5px 12px;
+                border-radius: 20px; font-size: .85em; float: right; }
+
+        /* Разделитель */
+        .sep { border: none; height: 3px; margin: 30px 0; border-radius: 2px;
+               background: linear-gradient(to right, #38a169, #3182ce, #805ad5); }
+
+        /* Тест */
+        .quiz { background: #fffff0; border: 2px solid #f6ad55;
+                border-radius: 14px; padding: 26px; margin: 24px 0; }
+        .quiz-t { font-size: 1.45em; font-weight: bold; margin-bottom: 6px; }
+        .qb { background: white; border-radius: 10px; padding: 16px 18px;
+              margin: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+        .qb p { font-weight: bold; margin-bottom: 9px; }
+        .qo { display: block; padding: 8px 14px; margin: 4px 0; background: #f7fafc;
+              border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+              transition: all .25s; user-select: none; }
+        .qo:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .qo input { margin-right: 8px; }
+        .chk-btn { padding: 12px 32px; border: none; border-radius: 8px; font-size: 1em;
+                   font-weight: bold; cursor: pointer; margin-top: 14px; color: white;
+                   background: #38a169; transition: background .3s; }
+        .chk-btn:hover { background: #2f855a; }
+        .res-box { padding: 16px; border-radius: 10px; margin-top: 16px;
+                   display: none; line-height: 1.9; }
+
+        /* Алгоритм */
+        .algo { background: #e6fffa; border: 2px solid #81e6d9;
+                border-radius: 10px; padding: 14px 18px; margin: 10px 0; }
+        .algo-t { font-weight: bold; color: #234e52; margin-bottom: 6px; }
+        .steps { counter-reset: step; list-style: none; padding: 0; margin: 8px 0; }
+        .steps li { counter-increment: step; padding: 7px 7px 7px 42px;
+                    position: relative; border-bottom: 1px dashed #e2e8f0; }
+        .steps li::before { content: counter(step); position: absolute;
+                            left: 6px; top: 5px; background: #319795; color: white;
+                            width: 24px; height: 24px; border-radius: 50%;
+                            display: flex; align-items: center; justify-content: center;
+                            font-weight: bold; font-size: .88em; }
+
+        /* Карточки */
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+                 gap: 13px; margin: 13px 0; }
+        .card { border-radius: 12px; padding: 15px; }
+        .card-t { font-weight: bold; font-size: .97em; margin-bottom: 5px; }
+        .card-b { font-size: .86em; line-height: 1.55; }
+        .c-g { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .c-b { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .c-p { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .c-o { background: #fffaf0; border: 2px solid #fbd38d; }
+        .c-r { background: #fff5f5; border: 2px solid #fc8181; }
+        .c-t { background: #e6fffa; border: 2px solid #81e6d9; }
+
+        ul, ol { padding-left: 22px; margin: 8px 0; }
+        li { margin: 5px 0; }
+        .hl { background: #fefcbf; padding: 1px 5px; border-radius: 4px; }
+        .red { color: #e53e3e; font-weight: bold; }
+        .grn { color: #276749; font-weight: bold; }
+        .blu { color: #2b6cb0; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔢 Математика — Неделя 2</h1>
+<p class="subtitle">6 класс | 7 часов | Десятичные дроби · Отношения и пропорции · Положительные и отрицательные числа</p>
+
+<!-- ══════════════════════════════════════════════
+     ЗАНЯТИЕ 1 — ДЕСЯТИЧНЫЕ ДРОБИ: ПОВТОРЕНИЕ
+══════════════════════════════════════════════ -->
+<div class="lesson l-green">
+    <h2 class="hc-g">📖 Занятие 1: Десятичные дроби — повторение и углубление</h2>
+    <span class="dur">⏱ 1 час</span>
+    <span class="tag t-th">Теория</span><span class="tag t-pr">Практика</span>
+
+    <div class="vid">
+        <h3>🎬 Видеоматериалы</h3>
+        <ul>
+            <li>📹 <a href="https://www.youtube.com/watch?v=d_T0P4BkTko" target="_blank">Десятичные дроби — повторение всего курса (Инфоурок)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=aTL06BFVoKs" target="_blank">Сложение и вычитание десятичных дробей (TutorOnline)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=Yz7R0n5VKCA" target="_blank">Умножение и деление десятичных дробей — все случаи (Матёрый математик)</a></li>
+        </ul>
+    </div>
+
+    <div class="nb">
+        <h3>Тема: Десятичные дроби — система записи и чтения</h3>
+
+        <div class="rule r-g">
+            <strong>📌 Десятичная дробь</strong> — запись числа, в которой целая и дробная части разделены <strong>запятой</strong>.<br><br>
+            <strong>Разрядная таблица:</strong>
+        </div>
+
+        <table>
+            <tr>
+                <th class="th-g">…</th><th class="th-g">Тысячи</th><th class="th-g">Сотни</th>
+                <th class="th-g">Десятки</th><th class="th-g">Единицы</th>
+                <th class="th-g" style="background:#744210;">,</th>
+                <th class="th-g" style="background:#2c7a7b;">Десятые</th>
+                <th class="th-g" style="background:#2c7a7b;">Сотые</th>
+                <th class="th-g" style="background:#2c7a7b;">Тысячные</th>
+                <th class="th-g" style="background:#2c7a7b;">Десятитысячные</th>
+            </tr>
+            <tr style="text-align:center; font-size:1.1em; font-weight:bold;">
+                <td>…</td><td>1000</td><td>100</td><td>10</td><td>1</td>
+                <td style="background:#fefcbf; font-size:1.3em;">,</td>
+                <td style="color:#2c7a7b;">0,1</td><td style="color:#2c7a7b;">0,01</td>
+                <td style="color:#2c7a7b;">0,001</td><td style="color:#2c7a7b;">0,0001</td>
+            </tr>
+        </table>
+
+        <div class="ex ex-b">
+<strong>Пример:</strong> 45,372
+• 4 — десятки
+• 5 — единицы
+• , — запятая
+• 3 — десятые (0,3)
+• 7 — сотые (0,07)
+• 2 — тысячные (0,002)
+Читаем: «сорок пять целых триста семьдесят две тысячных»
+        </div>
+
+        <h3>Сложение и вычитание десятичных дробей</h3>
+        <div class="algo">
+            <div class="algo-t">📋 Алгоритм:</div>
+            <ol class="steps">
+                <li>Запиши числа <strong>в столбик</strong>, выравнивая запятые строго друг под другом</li>
+                <li>Дополни число нулями справа, чтобы количество знаков после запятой совпало</li>
+                <li>Складывай/вычитай <strong>как целые числа</strong></li>
+                <li>Поставь запятую в результате под запятыми слагаемых</li>
+            </ol>
+        </div>
+
+        <div class="ex">
+<strong>Пример: 12,5 + 3,47</strong>
+
+  12,50       ← дописали 0
++  3,47
+————
+  15,97
+
+<strong>Пример: 8,3 − 2,645</strong>
+
+  8,300       ← дописали 00
+− 2,645
+————
+  5,655
+        </div>
+
+        <h3>Умножение десятичных дробей</h3>
+        <div class="rule r-b">
+            <strong>📌 Правило:</strong>
+            <ol>
+                <li>Умножай как целые числа (без учёта запятых)</li>
+                <li>Подсчитай суммарное количество знаков после запятой у обоих множителей</li>
+                <li>В результате отсчитай это количество цифр справа и поставь запятую</li>
+            </ol>
+        </div>
+        <div class="ex">
+<strong>Пример: 2,4 × 3,12</strong>
+
+1)  24 × 312 = 7488  (умножаем как целые)
+2)  1 знак + 2 знака = 3 знака после запятой
+3)  7488 → 7,488
+
+<strong>Ответ: 2,4 × 3,12 = 7,488</strong>
+
+<strong>Пример: 0,05 × 0,3</strong>
+
+1)  5 × 3 = 15
+2)  2 знака + 1 знак = 3 знака
+3)  15 → 0,015  (дописываем 0 спереди!)
+
+<strong>Ответ: 0,05 × 0,3 = 0,015</strong>
+        </div>
+
+        <h3>Умножение/деление на 10, 100, 1000…</h3>
+        <div class="rule r-y">
+            <strong>📌 Быстрое правило:</strong><br>
+            При <strong>умножении</strong> на 10<sup>n</sup> — запятая сдвигается вправо на n позиций<br>
+            При <strong>делении</strong> на 10<sup>n</sup> — запятая сдвигается влево на n позиций<br><br>
+            Примеры:<br>
+            3,7 × 10 = 37 &nbsp;&nbsp; 3,7 × 100 = 370 &nbsp;&nbsp; 3,7 × 1000 = 3700<br>
+            3,7 ÷ 10 = 0,37 &nbsp;&nbsp; 3,7 ÷ 100 = 0,037
+        </div>
+
+        <h3>Деление десятичных дробей</h3>
+        <div class="algo">
+            <div class="algo-t">📋 Алгоритм деления дроби на дробь:</div>
+            <ol class="steps">
+                <li>Умножь делитель и делимое на 10, 100 или 1000, чтобы делитель стал <strong>целым числом</strong></li>
+                <li>Делай деление «уголком» (столбиком)</li>
+                <li>Запятую в частном ставь, когда опускаешь первую цифру дробной части делимого</li>
+            </ol>
+        </div>
+        <div class="ex">
+<strong>Пример: 8,4 ÷ 0,12</strong>
+
+Умножаем оба числа на 100:
+8,4 → 840
+0,12 → 12
+
+840 ÷ 12 = <strong>70</strong>
+
+<strong>Пример: 7,35 ÷ 0,5</strong>
+
+Умножаем на 10:
+7,35 → 73,5
+0,5 → 5
+
+73,5 ÷ 5 = 14,7
+        </div>
+    </div>
+
+    <div class="exer">
+        <div class="task">
+            <span class="task-n">Задание 1: Сложение и вычитание</span><br>
+            а) 7,6 + 3,45 &nbsp;&nbsp; б) 12,08 − 4,7 &nbsp;&nbsp; в) 0,375 + 1,9 &nbsp;&nbsp; г) 100 − 0,001<br><br>
+            <button class="btn btn-g" onclick="tog('m1a1')">▶ Решение</button>
+            <div class="ans ans-g" id="m1a1">
+а) 7,60 + 3,45 = <strong>11,05</strong>
+б) 12,08 − 4,70 = <strong>7,38</strong>
+в) 0,375 + 1,900 = <strong>2,275</strong>
+г) 100,000 − 0,001 = <strong>99,999</strong>
+            </div>
+        </div>
+        <div class="task">
+            <span class="task-n">Задание 2: Умножение и деление</span><br>
+            а) 2,5 × 4,8 &nbsp;&nbsp; б) 0,06 × 0,4 &nbsp;&nbsp; в) 9,6 ÷ 0,4 &nbsp;&nbsp; г) 1,44 ÷ 0,12<br><br>
+            <button class="btn btn-g" onclick="tog('m1a2')">▶ Решение</button>
+            <div class="ans ans-g" id="m1a2">
+а) 25×48=1200 → 2 знака → <strong>12,00 = 12</strong>
+б) 6×4=24 → 3 знака → <strong>0,024</strong>
+в) 96÷4 = <strong>24</strong>     (умножили на 10)
+г) 144÷12 = <strong>12</strong>   (умножили на 100)
+            </div>
+        </div>
+        <div class="task">
+            <span class="task-n">Задание 3: Практическая задача</span><br>
+            Ткань стоит 285,5 руб. за метр. Купили 2,4 м.
+            Сколько заплатили? Дали 1000 руб. — найди сдачу.<br><br>
+            <button class="btn btn-g" onclick="tog('m1a3')">▶ Решение</button>
+            <div class="ans ans-g" id="m1a3">
+1) Стоимость = 285,5 × 2,4
+   2855 × 24 = 68520
+   3 знака → 685,20 = 685 руб. 20 коп.
+
+2) Сдача = 1000 − 685,20 = <strong>314,80 руб.</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="sep">
+
+<!-- ══════════════════════════════════════════════
+     ЗАНЯТИЕ 2 — ПЕРЕВОД ДРОБЕЙ
+══════════════════════════════════════════════ -->
+<div class="lesson l-blue">
+    <h2 class="hc-b">📖 Занятие 2: Перевод дробей. Сравнение дробей.</h2>
+    <span class="dur">⏱ 45 мин</span>
+    <span class="tag t-th">Теория</span><span class="tag t-pr">Практика</span>
+
+    <div class="vid">
+        <h3>🎬 Видеоматериалы</h3>
+        <ul>
+            <li>📹 <a href="https://www.youtube.com/watch?v=Yf1x_lMuUG4" target="_blank">Перевод обыкновенной дроби в десятичную (Инфоурок)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=gSb-Fn4bQHE" target="_blank">Бесконечные периодические дроби — что делать (TutorOnline)</a></li>
+        </ul>
+    </div>
+
+    <div class="nb">
+        <h3>Перевод обыкновенной дроби в десятичную</h3>
+        <div class="rule r-b">
+            <strong>📌 Способ 1:</strong> Если знаменатель = 10, 100, 1000 — сразу записываем<br>
+            <span class="fr"><span>3</span><span>10</span></span> = 0,3 &nbsp;&nbsp;
+            <span class="fr"><span>47</span><span>100</span></span> = 0,47 &nbsp;&nbsp;
+            <span class="fr"><span>9</span><span>1000</span></span> = 0,009<br><br>
+            <strong>📌 Способ 2:</strong> Делим числитель на знаменатель «в столбик»<br>
+            <span class="fr"><span>3</span><span>4</span></span> = 3 ÷ 4 = 0,75 &nbsp;&nbsp;
+            <span class="fr"><span>7</span><span>8</span></span> = 7 ÷ 8 = 0,875 &nbsp;&nbsp;
+            <span class="fr"><span>5</span><span>6</span></span> = 5 ÷ 6 = 0,8333… = 0,(3)
+        </div>
+
+        <div class="rule r-y">
+            <strong>📌 Периодические дроби</strong> — дроби, у которых дробная часть содержит повторяющийся период:<br>
+            <span class="fr"><span>1</span><span>3</span></span> = 0,3333… = 0,(3) — период (3)<br>
+            <span class="fr"><span>5</span><span>11</span></span> = 0,454545… = 0,(45) — период (45)<br>
+            <span class="fr"><span>1</span><span>7</span></span> = 0,142857142857… = 0,(142857) — период (142857)
+        </div>
+
+        <h3>Перевод десятичной дроби в обыкновенную</h3>
+        <div class="rule r-g">
+            <strong>📌 Алгоритм:</strong><br>
+            1) Записываем числитель — цифры после запятой (без нулей в начале)<br>
+            2) Знаменатель — единица с числом нулей = числу знаков после запятой<br>
+            3) Сокращаем дробь (делим на НОД)<br><br>
+            Примеры:<br>
+            0,4 = <span class="fr"><span>4</span><span>10</span></span> = <span class="fr"><span>2</span><span>5</span></span><br>
+            0,75 = <span class="fr"><span>75</span><span>100</span></span> = <span class="fr"><span>3</span><span>4</span></span><br>
+            1,25 = 1<span class="fr"><span>25</span><span>100</span></span> = 1<span class="fr"><span>1</span><span>4</span></span>
+        </div>
+
+        <h3>Сравнение десятичных дробей</h3>
+        <div class="rule r-b">
+            <strong>📌 Правило:</strong>
+            <ol>
+                <li>Сравни целые части — у кого больше, та дробь больше</li>
+                <li>Если целые части равны — сравни десятые (потом сотые и т.д.)</li>
+                <li>Можно уравнять количество знаков после запятой, дописав нули</li>
+            </ol>
+            <br>
+            <strong>Примеры:</strong><br>
+            3,7 и 3,65 → 3,70 и 3,65 → 70 > 65 → <strong>3,7 > 3,65</strong><br>
+            0,099 и 0,1 → 0,099 и 0,100 → 099 < 100 → <strong>0,099 < 0,1</strong>
+        </div>
+    </div>
+
+    <div class="exer">
+        <div class="task">
+            <span class="task-n">Задание: Переводы и сравнение</span><br>
+            а) Переведи в десятичную: 3/8, 7/20, 5/12<br>
+            б) Переведи в обыкновенную: 0,625; 2,4; 0,016<br>
+            в) Расставь по возрастанию: 3,14; 3,041; 3,1; 3,104<br><br>
+            <button class="btn btn-b" onclick="tog('m2a1')">▶ Решение</button>
+            <div class="ans ans-b" id="m2a1">
+<strong>а)</strong>
+3/8 = 3÷8 = 0,375
+7/20 = 7÷20 = 0,35
+5/12 = 5÷12 = 0,4166… = 0,41(6)
+
+<strong>б)</strong>
+0,625 = 625/1000 = <strong>5/8</strong>   (÷125)
+2,4   = 2 + 4/10 = 2<strong>2/5</strong>  (÷2)
+0,016 = 16/1000  = <strong>2/125</strong> (÷8)
+
+<strong>в)</strong>
+3,041 &lt; 3,1 &lt; 3,104 &lt; 3,14
+3,041 → 3,041
+3,1   → 3,100
+3,104 → 3,104
+3,14  → 3,140
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="sep">
+
+<!-- ══════════════════════════════════════════════
+     ЗАНЯТИЕ 3 — ОТНОШЕНИЯ И ПРОПОРЦИИ
+══════════════════════════════════════════════ -->
+<div class="lesson l-purple">
+    <h2 class="hc-p">📖 Занятие 3: Отношения и пропорции</h2>
+    <span class="dur">⏱ 1 час</span>
+    <span class="tag t-th">Теория</span><span class="tag t-pr">Практика</span>
+
+    <div class="vid">
+        <h3>🎬 Видеоматериалы</h3>
+        <ul>
+            <li>📹 <a href="https://www.youtube.com/watch?v=U7WR3mQbGW4" target="_blank">Отношение двух чисел — что это такое (Инфоурок)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=8qFfMpzWx-Y" target="_blank">Пропорция — основное свойство и задачи (TutorOnline)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=cHxkBvSxjYU" target="_blank">Прямая и обратная пропорциональность (Матёрый математик)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=zAoiCyFyq5M" target="_blank">Проценты через пропорции — решение задач</a></li>
+        </ul>
+    </div>
+
+    <div class="nb">
+        <h3>Отношение двух чисел</h3>
+        <div class="rule r-p">
+            <strong>📌 Отношение</strong> числа a к числу b — это результат деления a на b:<br>
+            <span class="formula">a : b = a/b</span><br><br>
+            <strong>Показывает:</strong> во сколько раз одно число больше или меньше другого.<br><br>
+            Пример: отношение 15 к 5 = 15 : 5 = 3 (15 в 3 раза больше 5)<br>
+            Пример: отношение 4 к 12 = 4 : 12 = 1/3 (4 в 3 раза меньше 12)
+        </div>
+
+        <div class="rule r-y">
+            <strong>📌 Свойство отношения:</strong> Отношение не изменится, если оба числа умножить или разделить на одно и то же ненулевое число.<br>
+            12 : 8 = 3 : 2 = 1,5 — все три отношения равны!
+        </div>
+
+        <h3>Пропорция</h3>
+        <div class="rule r-p">
+            <strong>📌 Пропорция</strong> — равенство двух отношений:<br>
+            <span class="formula">a : b = c : d</span> или <span class="formula">a/b = c/d</span><br><br>
+            <strong>Члены пропорции:</strong><br>
+            a, d — крайние члены (стоят по краям)<br>
+            b, c — средние члены (стоят в середине)
+        </div>
+
+        <div class="rule r-g">
+            <strong>📌 Основное свойство пропорции:</strong><br>
+            <span class="formula">a × d = b × c</span><br>
+            <em>«Произведение крайних членов = произведению средних»</em><br><br>
+            <strong>Проверка:</strong> 2 : 4 = 3 : 6<br>
+            2 × 6 = 12 = 4 × 3 ✅
+        </div>
+
+        <div class="rule r-b">
+            <strong>📌 Нахождение неизвестного члена пропорции:</strong><br>
+            Если <span class="formula">a : b = c : x</span>, то <span class="formula">x = b × c / a</span><br><br>
+            <strong>Правило:</strong> неизвестный крайний = произведение средних ÷ известный крайний<br>
+            Неизвестный средний = произведение крайних ÷ известный средний
+        </div>
+
+        <div class="ex ex-p">
+<strong>Пример 1:</strong> Найти x: 3 : x = 6 : 10
+
+Основное свойство: 3 × 10 = x × 6
+30 = 6x
+x = 30 ÷ 6 = <strong>5</strong>
+Проверка: 3:5 = 0,6; 6:10 = 0,6 ✅
+
+<strong>Пример 2:</strong> Найти x: x : 4 = 15 : 12
+
+x × 12 = 4 × 15
+12x = 60
+x = 60 ÷ 12 = <strong>5</strong>
+        </div>
+
+        <h3>Прямая и обратная пропорциональность</h3>
+        <table>
+            <tr>
+                <th class="th-p">Тип</th>
+                <th class="th-p">Что происходит</th>
+                <th class="th-p">Формула</th>
+                <th class="th-p">Примеры из жизни</th>
+            </tr>
+            <tr>
+                <td><strong>Прямая</strong></td>
+                <td>Если одна величина увеличивается в n раз → другая тоже увеличивается в n раз</td>
+                <td><span class="formula">y = kx</span><br>y/x = const</td>
+                <td>Скорость одна — расстояние и время; цена одна — стоимость и количество</td>
+            </tr>
+            <tr>
+                <td><strong>Обратная</strong></td>
+                <td>Если одна величина увеличивается в n раз → другая уменьшается в n раз</td>
+                <td><span class="formula">y = k/x</span><br>x·y = const</td>
+                <td>Расстояние одно — скорость и время; работа одна — число рабочих и дней</td>
+            </tr>
+        </table>
+
+        <div class="ex ex-o">
+<strong>Задача (прямая пропорция):</strong>
+5 кг яблок стоят 275 руб. Сколько стоят 8 кг?
+
+Способ через пропорцию:
+5 кг → 275 руб.
+8 кг → x руб.
+
+Прямая пропорция:  5/8 = 275/x
+5x = 8 × 275 = 2200
+x = 2200 ÷ 5 = <strong>440 руб.</strong>
+
+<strong>Задача (обратная пропорция):</strong>
+4 трактора вспашут поле за 6 дней.
+За сколько дней 8 тракторов?
+
+Обратная пропорция — чем больше тракторов, тем меньше дней:
+4 → 6
+8 → x
+
+4 × 6 = 8 × x  (произведения равны!)
+24 = 8x
+x = 3 дня ✅
+        </div>
+
+        <h3>Проценты — через пропорции</h3>
+        <div class="rule r-g">
+            <strong>📌 Процент</strong> = одна сотая часть: 1% = 1/100 = 0,01<br><br>
+            <strong>Три типа задач:</strong>
+        </div>
+
+        <table>
+            <tr><th class="th-g">Тип задачи</th><th class="th-g">Формула</th><th class="th-g">Пример</th></tr>
+            <tr>
+                <td>Найти % от числа</td>
+                <td><span class="formula">A × p% / 100</span></td>
+                <td>20% от 850 = 850×20/100 = <strong>170</strong></td>
+            </tr>
+            <tr>
+                <td>Число по его %</td>
+                <td><span class="formula">A = B × 100 / p%</span></td>
+                <td>Если 30% = 75, то целое = 75×100/30 = <strong>250</strong></td>
+            </tr>
+            <tr>
+                <td>% одного числа от другого</td>
+                <td><span class="formula">p% = B × 100 / A</span></td>
+                <td>Что % от 500 составляет 75? = 75×100/500 = <strong>15%</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="exer">
+        <div class="task">
+            <span class="task-n">Задание 1: Пропорции</span><br>
+            Найдите x:<br>
+            а) 4 : 6 = x : 15 &nbsp;&nbsp; б) x : 9 = 8 : 12 &nbsp;&nbsp; в) 2,5 : x = 5 : 8 &nbsp;&nbsp; г) x : 7 = 3 : 0,5<br><br>
+            <button class="btn btn-p" onclick="tog('m3a1')">▶ Решение</button>
+            <div class="ans ans-p" id="m3a1">
+а) 4×15 = 6×x → 60 = 6x → <strong>x = 10</strong>
+б) x×12 = 9×8 → 12x = 72 → <strong>x = 6</strong>
+в) 2,5×8 = x×5 → 20 = 5x → <strong>x = 4</strong>
+г) x×0,5 = 7×3 → 0,5x = 21 → <strong>x = 42</strong>
+            </div>
+        </div>
+        <div class="task">
+            <span class="task-n">Задание 2: Задачи на пропорции</span><br>
+            а) За 3 часа ехали 180 км. Сколько проедут за 5 часов (та же скорость)?<br>
+            б) 12 рабочих делают забор за 8 дней. За сколько дней 6 рабочих?<br>
+            в) Книга стоит 450 руб. Скидка 20%. Сколько платить?<br><br>
+            <button class="btn btn-p" onclick="tog('m3a2')">▶ Решение</button>
+            <div class="ans ans-p" id="m3a2">
+а) Прямая пропорция:
+   3 ч → 180 км
+   5 ч → x км
+   3/5 = 180/x → 3x = 900 → x = <strong>300 км</strong>
+
+б) Обратная пропорция:
+   12 рабочих → 8 дней
+    6 рабочих → x дней
+   12×8 = 6×x → 96 = 6x → x = <strong>16 дней</strong>
+
+в) Скидка = 450 × 20% = 450 × 0,20 = 90 руб.
+   Платить = 450 − 90 = <strong>360 руб.</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="sep">
+
+<!-- ══════════════════════════════════════════════
+     ЗАНЯТИЕ 4 — ПОЛОЖИТЕЛЬНЫЕ И ОТРИЦАТЕЛЬНЫЕ ЧИСЛА
+══════════════════════════════════════════════ -->
+<div class="lesson l-orange">
+    <h2 class="hc-o">📖 Занятие 4: Положительные и отрицательные числа</h2>
+    <span class="dur">⏱ 1 час</span>
+    <span class="tag t-th">Теория</span><span class="tag t-pr">Практика</span>
+
+    <div class="vid">
+        <h3>🎬 Видеоматериалы</h3>
+        <ul>
+            <li>📹 <a href="https://www.youtube.com/watch?v=OHW-wf5KoRg" target="_blank">Отрицательные числа — введение и числовая ось (Инфоурок)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=ZLGjRLqTlQM" target="_blank">Сравнение отрицательных чисел (TutorOnline)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=xBapvM7NHFU" target="_blank">Модуль числа — что это такое (Матёрый математик)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=4HqjrBzjTb8" target="_blank">Противоположные числа и числовая прямая</a></li>
+        </ul>
+    </div>
+
+    <div class="nb">
+        <h3>Числовая прямая (ось)</h3>
+
+        <!-- Числовая ось SVG -->
+        <div class="coord-wrap">
+            <svg width="600" height="80" viewBox="0 0 600 80">
+                <!-- Стрелка-ось -->
+                <line x1="30" y1="40" x2="570" y2="40" stroke="#2d3748" stroke-width="2.5"/>
+                <polygon points="570,35 585,40 570,45" fill="#2d3748"/>
+                <!-- Отметки и подписи -->
+                <!-- Отрицательные (красные) -->
+                <line x1="80"  y1="33" x2="80"  y2="47" stroke="#e53e3e" stroke-width="2"/>
+                <text x="77"  y="65" fill="#e53e3e" font-size="13" font-weight="bold">-5</text>
+                <line x1="135" y1="33" x2="135" y2="47" stroke="#e53e3e" stroke-width="2"/>
+                <text x="132" y="65" fill="#e53e3e" font-size="13" font-weight="bold">-4</text>
+                <line x1="190" y1="33" x2="190" y2="47" stroke="#e53e3e" stroke-width="2"/>
+                <text x="187" y="65" fill="#e53e3e" font-size="13" font-weight="bold">-3</text>
+                <line x1="245" y1="33" x2="245" y2="47" stroke="#e53e3e" stroke-width="2"/>
+                <text x="242" y="65" fill="#e53e3e" font-size="13" font-weight="bold">-2</text>
+                <line x1="300" y1="33" x2="300" y2="47" stroke="#e53e3e" stroke-width="2"/>
+                <text x="297" y="65" fill="#e53e3e" font-size="13" font-weight="bold">-1</text>
+                <!-- Ноль (синий) -->
+                <line x1="355" y1="28" x2="355" y2="52" stroke="#2b6cb0" stroke-width="3"/>
+                <text x="350" y="68" fill="#2b6cb0" font-size="14" font-weight="bold">0</text>
+                <!-- Положительные (зелёные) -->
+                <line x1="410" y1="33" x2="410" y2="47" stroke="#276749" stroke-width="2"/>
+                <text x="408" y="65" fill="#276749" font-size="13" font-weight="bold">1</text>
+                <line x1="465" y1="33" x2="465" y2="47" stroke="#276749" stroke-width="2"/>
+                <text x="463" y="65" fill="#276749" font-size="13" font-weight="bold">2</text>
+                <line x1="520" y1="33" x2="520" y2="47" stroke="#276749" stroke-width="2"/>
+                <text x="518" y="65" fill="#276749" font-size="13" font-weight="bold">3</text>
+                <!-- Подписи -->
+                <text x="40"  y="22" fill="#e53e3e" font-size="11">отрицательные</text>
+                <text x="400" y="22" fill="#276749" font-size="11">положительные</text>
+            </svg>
+        </div>
+
+        <div class="rule r-o">
+            <strong>📌 Важные определения:</strong><br>
+            <strong>Положительные числа</strong> — числа больше нуля (+1, +2,5, +100 …)<br>
+            <strong>Отрицательные числа</strong> — числа меньше нуля (−1, −2,5, −100 …)<br>
+            <strong>Нуль (0)</strong> — не является ни положительным, ни отрицательным!<br><br>
+            <strong>Из жизни:</strong> температура −15°С (ниже нуля), долг −500 руб., высота −50 м (глубина)
+        </div>
+
+        <h3>Противоположные числа</h3>
+        <div class="rule r-b">
+            <strong>📌 Противоположные числа</strong> — числа, которые находятся на одинаковом расстоянии от нуля, но по разные стороны.<br><br>
+            Противоположное к числу <strong>a</strong> = <strong>−a</strong><br><br>
+            Примеры: противоположное к 7 = −7 &nbsp;&nbsp; противоположное к −3 = 3<br>
+            <strong>Сумма противоположных чисел всегда = 0:</strong> 7 + (−7) = 0
+        </div>
+
+        <h3>Модуль числа</h3>
+        <div class="rule r-g">
+            <strong>📌 Модуль числа a</strong> — расстояние от нуля до точки a на числовой прямой.<br>
+            Обозначается: <strong>|a|</strong><br><br>
+            <span class="formula">|a| = a, если a ≥ 0</span><br>
+            <span class="formula">|a| = −a, если a &lt; 0</span><br><br>
+            Примеры:<br>
+            |7| = 7 &nbsp;&nbsp; |−7| = 7 &nbsp;&nbsp; |0| = 0 &nbsp;&nbsp; |−3,5| = 3,5<br><br>
+            <strong>Модуль всегда ≥ 0!</strong>
+        </div>
+
+        <h3>Сравнение чисел с разными знаками</h3>
+        <div class="rule r-y">
+            <strong>📌 Правила сравнения:</strong>
+            <ul>
+                <li>Любое положительное число <strong>больше</strong> любого отрицательного: 0,001 &gt; −1000</li>
+                <li>Нуль больше любого отрицательного: 0 &gt; −5</li>
+                <li>Из двух отрицательных чисел <strong>больше</strong> то, чей модуль <strong>меньше</strong>:<br>
+                    −2 &gt; −5, потому что |−2| = 2 &lt; 5 = |−5|</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="exer">
+        <div class="task">
+            <span class="task-n">Задание 1: Модуль</span><br>
+            Вычислите:<br>
+            а) |−8| + |3| &nbsp;&nbsp; б) |−5| − |−2| &nbsp;&nbsp; в) |−7| × |−4| &nbsp;&nbsp; г) |6| ÷ |−2|<br><br>
+            <button class="btn btn-o" onclick="tog('m4a1')">▶ Решение</button>
+            <div class="ans ans-o" id="m4a1">
+а) |−8| + |3| = 8 + 3 = <strong>11</strong>
+б) |−5| − |−2| = 5 − 2 = <strong>3</strong>
+в) |−7| × |−4| = 7 × 4 = <strong>28</strong>
+г) |6| ÷ |−2| = 6 ÷ 2 = <strong>3</strong>
+            </div>
+        </div>
+        <div class="task">
+            <span class="task-n">Задание 2: Сравнение</span><br>
+            Расставь знаки &lt;, &gt; или =:<br>
+            а) −7 ○ 2 &nbsp;&nbsp; б) −3 ○ −8 &nbsp;&nbsp; в) 0 ○ −0,001 &nbsp;&nbsp;
+            г) −4,5 ○ −4,05 &nbsp;&nbsp; д) |−6| ○ |6|<br><br>
+            <button class="btn btn-o" onclick="tog('m4a2')">▶ Решение</button>
+            <div class="ans ans-o" id="m4a2">
+а) −7 <strong>&lt;</strong> 2      (отриц. &lt; полож.)
+б) −3 <strong>&gt;</strong> −8     (|−3|=3 &lt; |−8|=8)
+в) 0  <strong>&gt;</strong> −0,001 (нуль &gt; любого отриц.)
+г) −4,5 <strong>&lt;</strong> −4,05 (|4,5| &gt; |4,05|)
+д) |−6| <strong>=</strong> |6|   (оба = 6)
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="sep">
+
+<!-- ══════════════════════════════════════════════
+     ЗАНЯТИЕ 5 — ДЕЙСТВИЯ С ОТРИЦАТЕЛЬНЫМИ ЧИСЛАМИ
+══════════════════════════════════════════════ -->
+<div class="lesson l-red">
+    <h2 class="hc-r">📖 Занятие 5: Действия с отрицательными числами</h2>
+    <span class="dur">⏱ 1,5 часа</span>
+    <span class="tag t-th">Теория</span><span class="tag t-pr">Практика</span>
+
+    <div class="vid">
+        <h3>🎬 Видеоматериалы</h3>
+        <ul>
+            <li>📹 <a href="https://www.youtube.com/watch?v=B9oBjTLKQxs" target="_blank">Сложение отрицательных чисел — правила (Инфоурок)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=iaxcHSH3pRM" target="_blank">Вычитание отрицательных чисел (TutorOnline)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=zQGhAHCraMY" target="_blank">Умножение и деление отрицательных чисел — правило знаков (Матёрый математик)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=9H9eRBpf-mU" target="_blank">Рациональные числа — все 4 действия (подробный разбор)</a></li>
+        </ul>
+    </div>
+
+    <div class="nb">
+        <h3>Сложение чисел с разными знаками</h3>
+
+        <div class="cards">
+            <div class="card c-r">
+                <div class="card-t">➕ Одинаковые знаки</div>
+                <div class="card-b">
+                    Складываем модули, сохраняем общий знак:<br>
+                    (+3) + (+5) = +(3+5) = <strong>+8</strong><br>
+                    (−3) + (−5) = −(3+5) = <strong>−8</strong>
+                </div>
+            </div>
+            <div class="card c-b">
+                <div class="card-t">➕ Разные знаки</div>
+                <div class="card-b">
+                    Вычитаем меньший модуль из большего, знак — у числа с большим модулем:<br>
+                    (−7) + (+4) = −(7−4) = <strong>−3</strong><br>
+                    (−3) + (+8) = +(8−3) = <strong>+5</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="ex">
+<strong>Алгоритм сложения (+) и (−):</strong>
+
+1) Найди модули обоих чисел
+2) Из большего вычти меньший
+3) Поставь знак числа с бо́льшим модулем
+
+Пример: (−12) + (+7)
+|−12| = 12,  |+7| = 7
+12 − 7 = 5
+Знак у (−12), т.к. 12 > 7 → ответ: <strong>−5</strong>
+        </div>
+
+        <h3>Вычитание — заменяем сложением!</h3>
+        <div class="rule r-r">
+            <strong>📌 Главное правило вычитания:</strong><br>
+            <span class="formula">a − b = a + (−b)</span><br>
+            <em>Вычесть число = прибавить противоположное!</em><br><br>
+            Примеры:<br>
+            5 − (−3) = 5 + 3 = <strong>8</strong><br>
+            −4 − (−7) = −4 + 7 = <strong>+3</strong><br>
+            −6 − (+2) = −6 + (−2) = <strong>−8</strong><br>
+            3 − (+8) = 3 + (−8) = <strong>−5</strong>
+        </div>
+
+        <h3>Умножение и деление: правило знаков</h3>
+        <div class="scheme">
+            <strong>Правило знаков при умножении и делении:</strong>
+            <div class="sch-row" style="margin-top:14px;">
+                <div class="sb sb-g"><strong>(+) × (+) = (+)</strong><br>2 × 3 = 6</div>
+                <div class="sb sb-r"><strong>(−) × (−) = (+)</strong><br>(−2)×(−3) = 6</div>
+                <div class="sb sb-r"><strong>(+) × (−) = (−)</strong><br>2×(−3) = −6</div>
+                <div class="sb sb-r"><strong>(−) × (+) = (−)</strong><br>(−2)×3 = −6</div>
+            </div>
+            <p style="margin-top:12px; font-size:.95em;">
+                <strong>Запомни:</strong> «минус на минус даёт плюс» ✅
+            </p>
+        </div>
+
+        <div class="rule r-g">
+            <strong>📌 Краткое правило знаков:</strong><br>
+            Чётное количество минусов → знак <strong>«+»</strong><br>
+            Нечётное количество минусов → знак <strong>«−»</strong><br><br>
+            Пример: (−2) × (−3) × (−1) × (−4) = +(2×3×1×4) = <strong>+24</strong> (4 минуса — чётное число)
+        </div>
+
+        <h3>Деление отрицательных чисел</h3>
+        <div class="rule r-b">
+            Правило знаков то же самое:<br>
+            (+) ÷ (+) = (+) &nbsp;&nbsp; (−) ÷ (−) = (+)<br>
+            (+) ÷ (−) = (−) &nbsp;&nbsp; (−) ÷ (+) = (−)<br><br>
+            Примеры:<br>
+            (−15) ÷ 3 = <strong>−5</strong><br>
+            (−18) ÷ (−6) = <strong>+3</strong><br>
+            20 ÷ (−4) = <strong>−5</strong>
+        </div>
+
+        <h3>Рациональные числа</h3>
+        <div class="rule r-y">
+            <strong>📌 Рациональное число</strong> — число, которое можно представить в виде дроби p/q, где p — целое, q — натуральное.<br><br>
+            К рациональным числам относятся:<br>
+            ✅ Натуральные числа (1, 2, 3, …)<br>
+            ✅ Нуль (0)<br>
+            ✅ Отрицательные целые (−1, −2, …)<br>
+            ✅ Обыкновенные дроби (1/2, 3/7, …)<br>
+            ✅ Десятичные дроби (конечные и периодические)<br><br>
+            <strong>Все вместе образуют множество рациональных чисел ℚ.</strong>
+        </div>
+    </div>
+
+    <div class="exer">
+        <div class="task">
+            <span class="task-n">Задание 1: Сложение и вычитание</span><br>
+            а) (−8) + (−5) &nbsp; б) (−7) + 12 &nbsp; в) 4 − (−9) &nbsp; г) (−3) − (−11) &nbsp;
+            д) −0,5 + (−1,7) &nbsp; е) −2,4 − (−0,6)<br><br>
+            <button class="btn btn-r" onclick="tog('m5a1')">▶ Решение</button>
+            <div class="ans ans-b" id="m5a1">
+а) (−8)+(−5) = −(8+5) = <strong>−13</strong>
+б) (−7)+12  = +(12−7) = <strong>+5</strong>
+в) 4−(−9)   = 4+9     = <strong>13</strong>
+г) (−3)−(−11) = −3+11 = <strong>+8</strong>
+д) −0,5+(−1,7) = −(0,5+1,7) = <strong>−2,2</strong>
+е) −2,4−(−0,6) = −2,4+0,6   = <strong>−1,8</strong>
+            </div>
+        </div>
+        <div class="task">
+            <span class="task-n">Задание 2: Умножение и деление</span><br>
+            а) (−6) × 4 &nbsp; б) (−3) × (−7) &nbsp; в) (−24) ÷ 8 &nbsp; г) (−36) ÷ (−9) &nbsp;
+            д) (−2) × (−5) × (−3) &nbsp; е) (−1,5) × (−4)<br><br>
+            <button class="btn btn-r" onclick="tog('m5a2')">▶ Решение</button>
+            <div class="ans ans-b" id="m5a2">
+а) (−6)×4 = <strong>−24</strong>
+б) (−3)×(−7) = <strong>+21</strong>
+в) (−24)÷8 = <strong>−3</strong>
+г) (−36)÷(−9) = <strong>+4</strong>
+д) (−2)×(−5)×(−3): 3 минуса (нечётно) → (−) → 2×5×3=30 → <strong>−30</strong>
+е) (−1,5)×(−4) = <strong>+6</strong>
+            </div>
+        </div>
+        <div class="task">
+            <span class="task-n">Задание 3: Смешанные примеры</span><br>
+            а) −5 + 3 × (−2) &nbsp;&nbsp; б) (−8 + 2) × (−3) &nbsp;&nbsp; в) (−4)² &nbsp;&nbsp; г) −4²<br><br>
+            <button class="btn btn-r" onclick="tog('m5a3')">▶ Решение</button>
+            <div class="ans ans-b" id="m5a3">
+а) −5 + 3×(−2) = −5 + (−6) = <strong>−11</strong>
+б) (−8+2)×(−3) = (−6)×(−3) = <strong>+18</strong>
+в) (−4)² = (−4)×(−4) = <strong>+16</strong>   ← скобки!
+г) −4²   = −(4×4)    = <strong>−16</strong>   ← без скобок!
+⚠️ (−4)² ≠ −4² — разные вещи!
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="sep">
+
+<!-- ══════════════════════════════════════════════
+     ЗАНЯТИЕ 6 — КООРДИНАТНАЯ ПЛОСКОСТЬ
+══════════════════════════════════════════════ -->
+<div class="lesson l-teal">
+    <h2 class="hc-t">📖 Занятие 6: Координатная плоскость</h2>
+    <span class="dur">⏱ 1 час</span>
+    <span class="tag t-th">Теория</span><span class="tag t-pr">Практика</span>
+
+    <div class="vid">
+        <h3>🎬 Видеоматериалы</h3>
+        <ul>
+            <li>📹 <a href="https://www.youtube.com/watch?v=DVS8VTMqgOM" target="_blank">Координатная плоскость — введение (Инфоурок)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=RrqPRmjxdeg" target="_blank">Как строить точки на координатной плоскости (TutorOnline)</a></li>
+            <li>📹 <a href="https://www.youtube.com/watch?v=Y6zMhPuPpvA" target="_blank">Четверти координатной плоскости и знаки координат (Матёрый математик)</a></li>
+        </ul>
+    </div>
+
+    <div class="nb">
+        <h3>Тема: Прямоугольная система координат</h3>
+
+        <div class="rule r-t">
+            <strong>📌 Координатная плоскость</strong> состоит из:<br>
+            <ul>
+                <li><strong>Ось X</strong> (абсцисс) — горизонтальная ось</li>
+                <li><strong>Ось Y</strong> (ординат) — вертикальная ось</li>
+                <li><strong>Начало координат O(0;0)</strong> — точка пересечения осей</li>
+            </ul>
+        </div>
+
+        <!-- Координатная плоскость SVG -->
+        <div class="coord-wrap">
+            <svg width="420" height="420" viewBox="-10 -10 420 420">
+                <!-- Сетка -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="400" height="400" fill="url(#grid)"/>
+
+                <!-- Оси -->
+                <line x1="0" y1="200" x2="400" y2="200" stroke="#2d3748" stroke-width="2.5"/>
+                <line x1="200" y1="400" x2="200" y2="0"   stroke="#2d3748" stroke-width="2.5"/>
+
+                <!-- Стрелки -->
+                <polygon points="395,195 410,200 395,205" fill="#2d3748"/>
+                <polygon points="195,5 200,-10 205,5"   fill="#2d3748"/>
+
+                <!-- Подписи осей -->
+                <text x="415" y="205" fill="#2d3748" font-size="16" font-weight="bold">X</text>
+                <text x="192" y="-15" fill="#2d3748" font-size="16" font-weight="bold">Y</text>
+                <text x="205" y="215" fill="#2b6cb0" font-size="13" font-weight="bold">O</text>
+
+                <!-- Отметки X -->
+                <g fill="#2d3748" font-size="11">
+                    <text x="232" y="215">1</text><line x1="240" y1="195" x2="240" y2="205" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="272" y="215">2</text><line x1="280" y1="195" x2="280" y2="205" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="312" y="215">3</text><line x1="320" y1="195" x2="320" y2="205" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="352" y="215">4</text><line x1="360" y1="195" x2="360" y2="205" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="150" y="215">-1</text><line x1="160" y1="195" x2="160" y2="205" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="110" y="215">-2</text><line x1="120" y1="195" x2="120" y2="205" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="70"  y="215">-3</text><line x1="80"  y1="195" x2="80"  y2="205" stroke="#2d3748" stroke-width="1.5"/>
+                </g>
+
+                <!-- Отметки Y -->
+                <g fill="#2d3748" font-size="11">
+                    <text x="205" y="165">1</text><line x1="195" y1="160" x2="205" y2="160" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="205" y="125">2</text><line x1="195" y1="120" x2="205" y2="120" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="205" y="85">3</text><line x1="195" y1="80"  x2="205" y2="80"  stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="205" y="255">-1</text><line x1="195" y1="240" x2="205" y2="240" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="205" y="295">-2</text><line x1="195" y1="280" x2="205" y2="280" stroke="#2d3748" stroke-width="1.5"/>
+                    <text x="205" y="335">-3</text><line x1="195" y1="320" x2="205" y2="320" stroke="#2d3748" stroke-width="1.5"/>
+                </g>
+
+                <!-- Четверти подписи -->
+                <text x="300" y="100" fill="#276749" font-size="18" font-weight="bold" opacity="0.5">I</text>
+                <text x="80"  y="100" fill="#805ad5" font-size="18" font-weight="bold" opacity="0.5">II</text>
+                <text x="72"  y="320" fill="#e53e3e" font-size="18" font-weight="bold" opacity="0.5">III</text>
+                <text x="290" y="320" fill="#dd6b20" font-size="18" font-weight="bold" opacity="0.5">IV</text>
+
+                <!-- Точки примеров -->
+                <circle cx="320" cy="120" r="5" fill="#276749"/>
+                <text x="326" y="115" fill="#276749" font-size="12" font-weight="bold">A(3;2)</text>
+
+                <circle cx="120" cy="80" r="5" fill="#805ad5"/>
+                <text x="70" y="75" fill="#805ad5" font-size="12" font-weight="bold">B(-2;3)</text>
+
+                <circle cx="80" cy="280" r="5" fill="#e53e3e"/>
+                <text x="30" y="295" fill="#e53e3e" font-size="12" font-weight="bold">C(-3;-2)</text>
+
+                <circle cx="360" cy="280" r="5" fill="#dd6b20"/>
+                <text x="366" y="295" fill="#dd6b20" font-size="12" font-weight="bold">D(4;-2)</text>
+            </svg>
+        </div>
+
+        <h3>Четверти координатной плоскости</h3>
+        <table>
+            <tr>
+                <th class="th-t">Четверть</th>
+                <th class="th-t">Знаки координат</th>
+                <th class="th-t">Где на плоскости</th>
+                <th class="th-t">Пример точки</th>
+            </tr>
+            <tr><td><strong class="grn">I</strong> (первая)</td>
+                <td><span class="grn">x &gt; 0, y &gt; 0</span></td>
+                <td>Правый верх</td><td>A(3; 2)</td></tr>
+            <tr><td><strong style="color:#805ad5">II</strong> (вторая)</td>
+                <td><span style="color:#805ad5">x &lt; 0, y &gt; 0</span></td>
+                <td>Левый верх</td><td>B(−2; 3)</td></tr>
+            <tr><td><strong class="red">III</strong> (третья)</td>
+                <td><span class="red">x &lt; 0, y &lt; 0</span></td>
+                <td>Левый низ</td><td>C(−3; −2)</td></tr>
+            <tr><td><strong style="color:#dd6b20">IV</strong> (четвёртая)</td>
+                <td><span style="color:#dd6b20">x &gt; 0, y &lt; 0</span></td>
+                <td>Правый низ</td><td>D(4; −2)</td></tr>
+        </table>
+
+        <div class="rule r-b">
+            <strong>📌 Как строить точку A(x; y):</strong>
+            <ol>
+                <li>Первая координата <strong>x</strong> — откладываем по оси OX (→ правее / ← левее)</li>
+                <li>Вторая координата <strong>y</strong> — откладываем по оси OY (↑ вверх / ↓ вниз)</li>
+                <li>На пересечении перпендикуляров ставим точку</li>
+            </ol>
+        </div>
+
+        <div class="rule r-y">
+            <strong>📌 Симметрия на координатной плоскости:</strong><br>
+            Точка A(x; y):<br>
+            • Симметрична оси X → A'(x; <strong>−y</strong>)<br>
+            • Симметрична оси Y → A''(<strong>−x</strong>; y)<br>
+            • Симметрична началу координат → A'''(<strong>−x</strong>; <strong>−y</strong>)<br><br>
+            Пример: A(3; 2) → A'(3; −2), A''(−3; 2), A'''(−3; −2)
+        </div>
+    </div>
+
+    <div class="exer">
+        <div class="task">
+            <span class="task-n">Задание 1: Определи четверть и нанеси точки</span><br>
+            В какой четверти лежат точки? (Начерти координатную плоскость в тетради!)<br>
+            A(−2; 5), B(3; −7), C(−4; −1), D(6; 8), E(0; −3), F(−2; 0)<br><br>
+            <button class="btn btn-t" onclick="tog('m6a1')">▶ Ответ</button>
+            <div class="ans ans-b" id="m6a1">
+A(−2; 5): x<0, y>0 → <strong>II четверть</strong>
+B(3; −7): x>0, y<0 → <strong>IV четверть</strong>
+C(−4; −1): x<0, y<0 → <strong>III четверть</strong>
+D(6; 8): x>0, y>0 → <strong>I четверть</strong>
+E(0; −3): лежит на оси OY — <strong>не в четверти!</strong>
+F(−2; 0): лежит на оси OX — <strong>не в четверти!</strong>
+            </div>
+        </div>
+        <div class="task">
+            <span class="task-n">Задание 2: Задача на координатной плоскости</span><br>
+            Постройте четырёхугольник ABCD с вершинами:<br>
+            A(2; 1), B(−2; 1), C(−2; −3), D(2; −3)<br>
+            Найдите: а) периметр; б) площадь; в) координаты центра фигуры<br><br>
+            <button class="btn btn-t" onclick="tog('m6a2')">▶ Решение</button>
+            <div class="ans ans-b" id="m6a2">
+AB: от x=−2 до x=2 при y=1 → длина = 4
+BC: от y=1 до y=−3 при x=−2 → длина = 4
+CD: от x=−2 до x=2 при y=−3 → длина = 4
+DA: от y=−3 до y=1 при x=2 → длина = 4
+
+→ Это квадрат!
+
+а) Периметр = 4 × 4 = <strong>16 единиц</strong>
+б) Площадь = 4 × 4 = <strong>16 кв.ед.</strong>
+в) Центр = ((2+(−2))/2 ; (1+(−3))/2) = (0; −1)
+   Центр: точка <strong>O'(0; −1)</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="sep">
+
+<!-- ══════════════════════════════════════════════
+     ЗАНЯТИЕ 7 — ИТОГОВОЕ ЗАКРЕПЛЕНИЕ
+══════════════════════════════════════════════ -->
+<div class="lesson l-pink">
+    <h2 class="hc-r">📖 Занятие 7: Контрольное закрепление — 15 заданий</h2>
+    <span class="dur">⏱ 45 мин</span>
+    <span class="tag t-te">Контрольная</span>
+
+    <div class="rule r-r">
+        <strong>📋 Инструкция:</strong> Реши все 15 заданий в тетради, показывая полные решения.
+        Затем проверь ответы. Норма времени: 40–45 минут.
+    </div>
+
+    <div class="exer">
+        <div class="task">
+            <span class="task-n">Контрольные 15 заданий:</span><br><br>
+            <strong>Десятичные дроби:</strong><br>
+            1) 45,07 − 18,9 &nbsp;&nbsp; 2) 1,25 × 0,08 &nbsp;&nbsp; 3) 7,56 ÷ 0,6<br><br>
+            <strong>Перевод и сравнение:</strong><br>
+            4) Переведи 3/8 в десятичную &nbsp;&nbsp; 5) Переведи 0,35 в обыкновенную<br>
+            6) Сравни: −0,5 ○ −0,48<br><br>
+            <strong>Отношения и пропорции:</strong><br>
+            7) Найди x: 5 : x = 15 : 9 &nbsp;&nbsp;
+            8) Найди 35% от 260 &nbsp;&nbsp;
+            9) Задача: 6 кг апельсинов стоят 360 руб. Сколько стоят 9 кг?<br><br>
+            <strong>Отрицательные числа:</strong><br>
+            10) (−15) + (−7) &nbsp;&nbsp; 11) −8 − (−13) &nbsp;&nbsp; 12) (−4) × (−9) &nbsp;&nbsp; 13) (−35) ÷ 7<br><br>
+            <strong>Координатная плоскость:</strong><br>
+            14) В какой четверти лежит точка M(−3; 7)?<br>
+            15) Найди точку, симметричную K(5; −2) относительно оси OY.<br><br>
+
+            <button class="btn btn-r" onclick="tog('m7ctrl')">▶ Все ответы</button>
+            <div class="ans ans-g" id="m7ctrl">
+1) 45,07 − 18,90 = <strong>26,17</strong>
+2) 125×8=1000 → 4 знака → <strong>0,1000 = 0,1</strong>
+3) 756÷6=126 → умножили на 10 → <strong>12,6</strong>
+4) 3÷8 = <strong>0,375</strong>
+5) 35/100 = 7/20 → <strong>7/20</strong>
+6) |−0,5|=0,5 > |−0,48|=0,48 → −0,5 <strong>&lt;</strong> −0,48
+7) 5×9 = x×15 → 45=15x → <strong>x = 3</strong>
+8) 260 × 35/100 = 260×0,35 = <strong>91</strong>
+9) 6→360, 9→x: прям. пропорц. 6/9=360/x → 6x=3240 → x=<strong>540 руб.</strong>
+10) (−15)+(−7) = <strong>−22</strong>
+11) −8−(−13) = −8+13 = <strong>+5</strong>
+12) (−4)×(−9) = <strong>+36</strong>
+13) (−35)÷7 = <strong>−5</strong>
+14) x=−3&lt;0, y=7&gt;0 → <strong>II четверть</strong>
+15) Симм. отн. OY: x → −x → K'(−5; −2)
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="sep">
+
+<!-- ══════════════════════════════════════════════
+     ИНТЕРАКТИВНЫЙ ТЕСТ — 15 ВОПРОСОВ
+══════════════════════════════════════════════ -->
+<div class="quiz">
+    <div class="quiz-t">🧪 Итоговый тест по математике — Неделя 2</div>
+    <p>15 вопросов | Десятичные дроби · Пропорции · Отрицательные числа · Координатная плоскость</p>
+
+    <form id="mathQuiz">
+        <div class="qb"><p>1. Результат: 3,7 + 0,45 = ?</p>
+            <label class="qo"><input type="radio" name="m1" value="a"> 4,15</label>
+            <label class="qo"><input type="radio" name="m1" value="b"> 3,115</label>
+            <label class="qo"><input type="radio" name="m1" value="c"> 4,20</label>
+            <label class="qo"><input type="radio" name="m1" value="d"> 8,2</label>
+        </div>
+
+        <div class="qb"><p>2. Результат: 0,04 × 0,5 = ?</p>
+            <label class="qo"><input type="radio" name="m2" value="a"> 0,2</label>
+            <label class="qo"><input type="radio" name="m2" value="b"> 0,002</label>
+            <label class="qo"><input type="radio" name="m2" value="c"> 0,020</label>
+            <label class="qo"><input type="radio" name="m2" value="d"> 2,0</label>
+        </div>
+
+        <div class="qb"><p>3. Результат: 5,6 ÷ 0,7 = ?</p>
+            <label class="qo"><input type="radio" name="m3" value="a"> 0,8</label>
+            <label class="qo"><input type="radio" name="m3" value="b"> 8</label>
+            <label class="qo"><input type="radio" name="m3" value="c"> 80</label>
+            <label class="qo"><input type="radio" name="m3" value="d"> 0,08</label>
+        </div>
+
+        <div class="qb"><p>4. 3/4 в виде десятичной дроби:</p>
+            <label class="qo"><input type="radio" name="m4" value="a"> 0,34</label>
+            <label class="qo"><input type="radio" name="m4" value="b"> 0,8</label>
+            <label class="qo"><input type="radio" name="m4" value="c"> 0,75</label>
+            <label class="qo"><input type="radio" name="m4" value="d"> 1,33</label>
+        </div>
+
+        <div class="qb"><p>5. Основное свойство пропорции a:b = c:d:</p>
+            <label class="qo"><input type="radio" name="m5" value="a"> a + d = b + c</label>
+            <label class="qo"><input type="radio" name="m5" value="b"> a × d = b × c</label>
+            <label class="qo"><input type="radio" name="m5" value="c"> a − d = b − c</label>
+            <label class="qo"><input type="radio" name="m5" value="d"> a / d = b / c</label>
+        </div>
+
+        <div class="qb"><p>6. Найдите x: 4 : 6 = x : 12</p>
+            <label class="qo"><input type="radio" name="m6" value="a"> 6</label>
+            <label class="qo"><input type="radio" name="m6" value="b"> 8</label>
+            <label class="qo"><input type="radio" name="m6" value="c"> 18</label>
+            <label class="qo"><input type="radio" name="m6" value="d"> 3</label>
+        </div>
+
+        <div class="qb"><p>7. Найдите 25% от 480:</p>
+            <label class="qo"><input type="radio" name="m7" value="a"> 12</label>
+            <label class="qo"><input type="radio" name="m7" value="b"> 100</label>
+            <label class="qo"><input type="radio" name="m7" value="c"> 120</label>
+            <label class="qo"><input type="radio" name="m7" value="d"> 1920</label>
+        </div>
+
+        <div class="qb"><p>8. |−9| = ?</p>
+            <label class="qo"><input type="radio" name="m8" value="a"> −9</label>
+            <label class="qo"><input type="radio" name="m8" value="b"> 9</label>
+            <label class="qo"><input type="radio" name="m8" value="c"> 0</label>
+            <label class="qo"><input type="radio" name="m8" value="d"> 1/9</label>
+        </div>
+
+        <div class="qb"><p>9. Результат: (−6) + (−4) = ?</p>
+            <label class="qo"><input type="radio" name="m9" value="a"> +10</label>
+            <label class="qo"><input type="radio" name="m9" value="b"> −2</label>
+            <label class="qo"><input type="radio" name="m9" value="c"> −10</label>
+            <label class="qo"><input type="radio" name="m9" value="d"> +2</label>
+        </div>
+
+        <div class="qb"><p>10. Результат: −3 − (−8) = ?</p>
+            <label class="qo"><input type="radio" name="m10" value="a"> −11</label>
+            <label class="qo"><input type="radio" name="m10" value="b"> +11</label>
+            <label class="qo"><input type="radio" name="m10" value="c"> −5</label>
+            <label class="qo"><input type="radio" name="m10" value="d"> +5</label>
+        </div>
+
+        <div class="qb"><p>11. Результат: (−5) × (−4) = ?</p>
+            <label class="qo"><input type="radio" name="m11" value="a"> −20</label>
+            <label class="qo"><input type="radio" name="m11" value="b"> −9</label>
+            <label class="qo"><input type="radio" name="m11" value="c"> +20</label>
+            <label class="qo"><input type="radio" name="m11" value="d"> +9</label>
+        </div>
+
+        <div class="qb"><p>12. Результат: (−27) ÷ (−3) = ?</p>
+            <label class="qo"><input type="radio" name="m12" value="a"> −9</label>
+            <label class="qo"><input type="radio" name="m12" value="b"> +9</label>
+            <label class="qo"><input type="radio" name="m12" value="c"> −81</label>
+            <label class="qo"><input type="radio" name="m12" value="d"> +81</label>
+        </div>
+
+        <div class="qb"><p>13. В какой четверти точка K(−3; −5)?</p>
+            <label class="qo"><input type="radio" name="m13" value="a"> I</label>
+            <label class="qo"><input type="radio" name="m13" value="b"> II</label>
+            <label class="qo"><input type="radio" name="m13" value="c"> III</label>
+            <label class="qo"><input type="radio" name="m13" value="d"> IV</label>
+        </div>
+
+        <div class="qb"><p>14. Точка симметричная A(2; −3) относительно оси OX:</p>
+            <label class="qo"><input type="radio" name="m14" value="a"> A'(−2; −3)</label>
+            <label class="qo"><input type="radio" name="m14" value="b"> A'(2; 3)</label>
+            <label class="qo"><input type="radio" name="m14" value="c"> A'(−2; 3)</label>
+            <label class="qo"><input type="radio" name="m14" value="d"> A'(3; −2)</label>
+        </div>
+
+        <div class="qb"><p>15. Что БОЛЬШЕ: −0,3 или −0,29?</p>
+            <label class="qo"><input type="radio" name="m15" value="a"> −0,3 больше</label>
+            <label class="qo"><input type="radio" name="m15" value="b"> −0,29 больше</label>
+            <label class="qo"><input type="radio" name="m15" value="c"> Они равны</label>
+        </div>
+
+        <button type="button" class="chk-btn" onclick="checkMath()">✅ Проверить ответы</button>
+    </form>
+    <div class="res-box" id="mathRes"></div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+function tog(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function checkMath() {
+    var correct = {
+        m1:'a',  // 4,15
+        m2:'c',  // 0,020 = 0,02
+        m3:'b',  // 8
+        m4:'c',  // 0,75
+        m5:'b',  // a×d = b×c
+        m6:'b',  // 8
+        m7:'c',  // 120
+        m8:'b',  // 9
+        m9:'c',  // −10
+        m10:'d', // +5
+        m11:'c', // +20
+        m12:'b', // +9
+        m13:'c', // III
+        m14:'b', // A'(2;3)
+        m15:'b'  // −0,29 больше
+    };
+    var explain = {
+        m1:  '3,70 + 0,45 = 4,15 (выравниваем по запятой)',
+        m2:  '4×5=20, 3 знака после запятой → 0,020 = 0,02',
+        m3:  '56÷7=8 (умножили оба на 10)',
+        m4:  '3÷4 = 0,75 (делим числитель на знаменатель)',
+        m5:  'Основное свойство: произведение крайних = произведению средних: a×d = b×c',
+        m6:  '4×12 = 6×x → 48 = 6x → x = 8',
+        m7:  '480 × 25 / 100 = 480 × 0,25 = 120',
+        m8:  'Модуль — расстояние от нуля, всегда ≥ 0. |−9| = 9',
+        m9:  'Одинаковые знаки: −(6+4) = −10',
+        m10: '−3−(−8) = −3+8 = +5 (вычесть = прибавить противоположное)',
+        m11: '(−)×(−) = (+): 5×4 = 20 → +20',
+        m12: '(−)÷(−) = (+): 27÷3 = 9 → +9',
+        m13: 'x<0 и y<0 → III четверть (левый нижний)',
+        m14: 'Симм. отн. оси OX: y меняет знак: A(2;−3) → A′(2;+3)',
+        m15: '|−0,3|=0,30 > |−0,29|=0,29 → из двух отриц. больше то, чей модуль МЕНЬШЕ → −0,29 > −0,3'
+    };
+
+    var score = 0, html = '', total = 15;
+    for (var q in correct) {
+        var sel = document.querySelector('input[name="'+q+'"]:checked');
+        var n = q.replace('m','');
+        if (sel && sel.value === correct[q]) {
+            score++;
+            html += '<br>✅ Вопрос ' + n + ': Верно! ' + explain[q];
+        } else if (sel) {
+            html += '<br>❌ Вопрос ' + n + ': Неверно. ' + explain[q];
+        } else {
+            html += '<br>⚠️ Вопрос ' + n + ': Нет ответа. ' + explain[q];
+        }
+    }
+    var pct = Math.round(score / total * 100);
+    var bg  = pct >= 80 ? '#c6f6d5' : pct >= 60 ? '#fefcbf' : '#fed7d7';
+    var em  = pct >= 80 ? '🎉 Отлично!' : pct >= 60 ? '👍 Хорошо!' : '📚 Нужно повторить!';
+    var box = document.getElementById('mathRes');
+    box.style.background = bg;
+    box.style.display    = 'block';
+    box.innerHTML = em + ' <strong>' + score + '/' + total + ' (' + pct + '%)</strong>' + html;
+    box.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

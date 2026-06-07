@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 1 — Математика, 6 класс</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            color: #276749;
+            font-size: 2em;
+            margin-bottom: 10px;
+            border-bottom: 4px solid #38a169;
+            padding-bottom: 15px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        /* ===== БЛОКИ ===== */
+        .lesson-block {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 6px solid #38a169;
+        }
+        .lesson-block.blue  { border-left-color: #3182ce; }
+        .lesson-block.purple{ border-left-color: #805ad5; }
+        .lesson-block.orange{ border-left-color: #dd6b20; }
+        .lesson-block.red   { border-left-color: #e53e3e; }
+        .lesson-block.teal  { border-left-color: #319795; }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #22543d;
+        }
+        .lesson-block.blue   h2 { color: #2a4365; }
+        .lesson-block.purple h2 { color: #44337a; }
+        .lesson-block.orange h2 { color: #7b341e; }
+        .lesson-block.red    h2 { color: #742a2a; }
+        .lesson-block.teal   h2 { color: #234e52; }
+
+        h3 {
+            color: #2d3748;
+            font-size: 1.15em;
+            margin: 20px 0 8px 0;
+            border-bottom: 2px dashed #e2e8f0;
+            padding-bottom: 4px;
+        }
+
+        /* ===== ТЕТРАДЬ ===== */
+        .notebook {
+            background: #fffff0;
+            border: 2px solid #ecc94b;
+            border-radius: 12px;
+            padding: 22px 22px 16px;
+            margin: 16px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -13px; left: 20px;
+            background: #ecc94b;
+            color: #744210;
+            padding: 2px 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.82em;
+        }
+
+        /* ===== ПРАВИЛО ===== */
+        .rule-box {
+            background: #ebf8ff;
+            border: 2px solid #90cdf4;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin: 10px 0;
+        }
+        .rule-box.warning {
+            background: #fff5f5;
+            border-color: #fc8181;
+        }
+        .rule-box.green {
+            background: #f0fff4;
+            border-color: #9ae6b4;
+        }
+        .rule-box.yellow {
+            background: #fffff0;
+            border-color: #f6e05e;
+        }
+
+        /* ===== ПРИМЕР ===== */
+        .example-box {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.97em;
+        }
+        .example-box.blue-ex {
+            background: #ebf8ff;
+            border-color: #90cdf4;
+        }
+
+        /* ===== ТАБЛИЦА ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.95em;
+        }
+        th {
+            background: #38a169;
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .blue th  { background: #3182ce; }
+        .purple th{ background: #805ad5; }
+        .orange th{ background: #dd6b20; }
+        td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+
+        /* ===== УПРАЖНЕНИЯ ===== */
+        .exercise-block {
+            background: #faf5ff;
+            border: 2px solid #d6bcfa;
+            border-radius: 12px;
+            padding: 20px 20px 14px;
+            margin: 16px 0;
+            position: relative;
+        }
+        .exercise-block::before {
+            content: "✏️ ЗАДАЧИ И УПРАЖНЕНИЯ";
+            position: absolute;
+            top: -13px; left: 20px;
+            background: #805ad5;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.82em;
+        }
+
+        .task {
+            background: white;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-left: 4px solid #805ad5;
+        }
+        .task-num {
+            font-weight: bold;
+            color: #805ad5;
+            font-size: 1em;
+        }
+
+        /* ===== КНОПКИ ===== */
+        .toggle-btn {
+            background: #805ad5;
+            color: white;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.88em;
+            margin-top: 8px;
+            transition: background .3s;
+        }
+        .toggle-btn:hover { background: #6b46c1; }
+        .toggle-btn.green-btn { background: #38a169; }
+        .toggle-btn.green-btn:hover { background: #2f855a; }
+        .toggle-btn.blue-btn { background: #3182ce; }
+        .toggle-btn.blue-btn:hover { background: #2b6cb0; }
+
+        .answer {
+            display: none;
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 8px;
+            color: #22543d;
+            font-family: 'Courier New', monospace;
+            font-size: 0.94em;
+            line-height: 1.8;
+        }
+        .answer.blue-ans {
+            background: #ebf8ff;
+            border-color: #90cdf4;
+            color: #2a4365;
+        }
+
+        /* ===== ВИДЕО ===== */
+        .video-block {
+            background: #fff5f5;
+            border: 2px solid #feb2b2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 14px 0;
+        }
+        .video-block a {
+            color: #c53030;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .video-block a:hover { text-decoration: underline; }
+
+        /* ===== ШАГИ РЕШЕНИЯ ===== */
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .steps li {
+            counter-increment: step;
+            padding: 8px 8px 8px 48px;
+            position: relative;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            background: #38a169;
+            color: white;
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .steps.blue-steps li::before { background: #3182ce; }
+        .steps.purple-steps li::before { background: #805ad5; }
+        .steps.orange-steps li::before { background: #dd6b20; }
+
+        /* ===== ТЕГИ ===== */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .tag-theory   { background: #bee3f8; color: #2a4365; }
+        .tag-practice { background: #c6f6d5; color: #22543d; }
+        .tag-test     { background: #fefcbf; color: #744210; }
+
+        .duration {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            float: right;
+        }
+
+        /* ===== РАЗДЕЛИТЕЛЬ ===== */
+        .separator {
+            border: none;
+            height: 3px;
+            background: linear-gradient(to right, #38a169, #3182ce, #805ad5);
+            margin: 30px 0;
+            border-radius: 2px;
+        }
+
+        /* ===== ФОРМУЛА ===== */
+        .formula {
+            display: inline-block;
+            background: #2d3748;
+            color: #f6e05e;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            margin: 6px 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== ДРОБЬ ===== */
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 4px;
+            font-size: 1em;
+        }
+        .frac span:first-child {
+            border-bottom: 2px solid #2d3748;
+            padding: 0 4px 2px;
+            line-height: 1.2;
+        }
+        .frac span:last-child {
+            padding: 2px 4px 0;
+            line-height: 1.2;
+        }
+
+        /* ===== ТЕСТ ===== */
+        .quiz-wrap {
+            background: #fffff0;
+            border: 2px solid #f6ad55;
+            border-radius: 14px;
+            padding: 26px;
+            margin: 24px 0;
+        }
+        .quiz-wrap h2 { color: #744210; }
+        .q-block {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 14px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .q-block p { font-weight: bold; margin-bottom: 10px; color: #2d3748; }
+        .q-opt {
+            display: block;
+            padding: 8px 14px;
+            margin: 4px 0;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .25s;
+            user-select: none;
+        }
+        .q-opt:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .q-opt input { margin-right: 8px; }
+
+        .check-btn {
+            background: #38a169;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: background .3s;
+        }
+        .check-btn:hover { background: #2f855a; }
+
+        .result-box {
+            padding: 16px;
+            border-radius: 10px;
+            margin-top: 16px;
+            display: none;
+            line-height: 1.9;
+        }
+
+        /* ===== СХЕМА НОД/НОК ===== */
+        .diagram {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 14px 0;
+        }
+        .diagram-card {
+            flex: 1;
+            min-width: 200px;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .diagram-card .card-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #2b6cb0;
+        }
+
+        /* Подсветка */
+        .hl { background: #fefcbf; padding: 1px 5px; border-radius: 4px; }
+        .red { color: #e53e3e; font-weight: bold; }
+        .green-t { color: #276749; font-weight: bold; }
+        .blue-t { color: #2b6cb0; font-weight: bold; }
+
+        ul, ol { padding-left: 24px; margin: 8px 0; }
+        li { margin: 5px 0; }
+
+        /* алгоритм-блок */
+        .algo {
+            background: #e6fffa;
+            border: 2px solid #81e6d9;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin: 10px 0;
+        }
+        .algo-title {
+            font-weight: bold;
+            color: #234e52;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>🔢 Математика — Неделя 1</h1>
+    <p class="subtitle">6 класс | 6 часов | Делимость чисел (НОД, НОК) + Обыкновенные дроби</p>
+
+    <!-- ══════════════════════════════════════════════════
+         ЗАНЯТИЕ 1 — ПРИЗНАКИ ДЕЛИМОСТИ
+    ══════════════════════════════════════════════════ -->
+    <div class="lesson-block blue">
+        <h2>📖 Занятие 1: Признаки делимости</h2>
+        <span class="duration">⏱ 45 мин</span>
+        <span class="tag tag-theory">Теория</span>
+        <span class="tag tag-practice">Практика</span>
+
+        <div class="video-block">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=l4RRzPIJaYw" target="_blank">Признаки делимости чисел — 6 класс (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=X7VRdQN8_2c" target="_blank">Признаки делимости на 2, 3, 5, 9, 10 — разбор с примерами (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=YRDKQLqV_8Q" target="_blank">Делимость — простые и составные числа (Матёрый математик)</a></li>
+            </ul>
+        </div>
+
+        <div class="notebook">
+            <h3>Тема: Признаки делимости</h3>
+
+            <div class="rule-box">
+                <strong>📌 Делитель</strong> — число, на которое делят.<br>
+                <strong>Кратное</strong> — число, которое делится на данное без остатка.<br>
+                <em>Пример: 12 кратно 3 (12 ÷ 3 = 4); 3 является делителем 12</em>
+            </div>
+
+            <table class="blue">
+                <tr><th>Признак делимости на…</th><th>Правило</th><th>Пример</th></tr>
+                <tr><td><strong>2</strong></td><td>Последняя цифра чётная (0, 2, 4, 6, 8)</td><td>374 ✅ (оканчив. на 4)<br>375 ❌</td></tr>
+                <tr><td><strong>3</strong></td><td>Сумма цифр делится на 3</td><td>261: 2+6+1=9 ✅<br>262: 2+6+2=10 ❌</td></tr>
+                <tr><td><strong>5</strong></td><td>Последняя цифра 0 или 5</td><td>485 ✅, 487 ❌</td></tr>
+                <tr><td><strong>9</strong></td><td>Сумма цифр делится на 9</td><td>918: 9+1+8=18 ✅</td></tr>
+                <tr><td><strong>10</strong></td><td>Последняя цифра 0</td><td>1230 ✅, 1235 ❌</td></tr>
+                <tr><td><strong>4</strong></td><td>Последние две цифры делятся на 4</td><td>1724: 24÷4=6 ✅</td></tr>
+                <tr><td><strong>25</strong></td><td>Последние две цифры: 00, 25, 50, 75</td><td>375 ✅, 380 ❌</td></tr>
+                <tr><td><strong>6</strong></td><td>Делится на 2 И на 3 одновременно</td><td>372: чётное + 3+7+2=12 ✅</td></tr>
+            </table>
+
+            <div class="rule-box yellow">
+                <strong>📌 Простые и составные числа:</strong><br>
+                <strong>Простое</strong> число — делится только на 1 и на себя: 2, 3, 5, 7, 11, 13, 17, 19, 23…<br>
+                <strong>Составное</strong> число — имеет другие делители: 4, 6, 8, 9, 10, 12…<br>
+                <span class="red">❗ Число 1 не является ни простым, ни составным!</span>
+            </div>
+        </div>
+
+        <div class="exercise-block">
+            <div class="task">
+                <span class="task-num">Задание 1.</span> Определите, на какие из чисел 2, 3, 5, 9, 10 делится каждое число:
+                <br>2 340; 7 815; 4 608; 10 125; 99 999
+                <br><br>
+                <button class="toggle-btn blue-btn" onclick="tog('e1a')">▶ Показать решение</button>
+                <div class="answer blue-ans" id="e1a">
+<strong>2 340:</strong>
+  На 2? Оканч. на 0 → ДА
+  На 3? 2+3+4+0=9 → ДА
+  На 5? Оканч. на 0 → ДА
+  На 9? 9÷9=1    → ДА
+  На 10? Оканч. на 0 → ДА
+  ✅ Делится на 2, 3, 5, 9, 10
+
+<strong>7 815:</strong>
+  На 2? Оканч. на 5 → НЕТ
+  На 3? 7+8+1+5=21 → ДА
+  На 5? Оканч. на 5 → ДА
+  На 9? 21÷9=2,3 → НЕТ
+  На 10? Оканч. не на 0 → НЕТ
+  ✅ Делится на 3, 5
+
+<strong>4 608:</strong>
+  На 2? Оканч. на 8 → ДА
+  На 3? 4+6+0+8=18 → ДА
+  На 5? Нет → НЕТ
+  На 9? 18÷9=2  → ДА
+  На 10? Нет → НЕТ
+  ✅ Делится на 2, 3, 9
+
+<strong>10 125:</strong>
+  На 2? Нет → НЕТ
+  На 3? 1+0+1+2+5=9 → ДА
+  На 5? Оканч. на 5 → ДА
+  На 9? 9÷9=1 → ДА
+  На 10? Нет → НЕТ
+  ✅ Делится на 3, 5, 9
+
+<strong>99 999:</strong>
+  На 2? Нет → НЕТ
+  На 3? 9×5=45 → ДА
+  На 5? Нет → НЕТ
+  На 9? 45÷9=5 → ДА
+  На 10? Нет → НЕТ
+  ✅ Делится на 3, 9
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 2.</span> Выпишите все простые числа от 1 до 50.
+                <br><br>
+                <button class="toggle-btn blue-btn" onclick="tog('e1b')">▶ Показать ответ</button>
+                <div class="answer blue-ans" id="e1b">
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47
+Итого: 15 простых чисел.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="separator">
+
+    <!-- ══════════════════════════════════════════════════
+         ЗАНЯТИЕ 2 — НОД
+    ══════════════════════════════════════════════════ -->
+    <div class="lesson-block">
+        <h2>📖 Занятие 2: Наибольший общий делитель (НОД)</h2>
+        <span class="duration">⏱ 45 мин</span>
+        <span class="tag tag-theory">Теория</span>
+        <span class="tag tag-practice">Практика</span>
+
+        <div class="video-block">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=cFTt9HMrl5Y" target="_blank">НОД — наибольший общий делитель. Два способа нахождения (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=Ai2V5vTAc3U" target="_blank">Алгоритм Евклида — нахождение НОД (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=4rn3BT0RJDI" target="_blank">НОД через разложение на простые множители (наглядно)</a></li>
+            </ul>
+        </div>
+
+        <div class="notebook">
+            <h3>Тема: НОД — наибольший общий делитель</h3>
+
+            <div class="rule-box green">
+                <strong>📌 НОД(a, b)</strong> — наибольшее натуральное число, на которое делятся оба числа a и b без остатка.
+            </div>
+
+            <h3>Способ 1: Разложение на простые множители</h3>
+            <div class="algo">
+                <div class="algo-title">📋 Алгоритм:</div>
+                <ol class="steps">
+                    <li>Разложи каждое число на простые множители</li>
+                    <li>Выпиши множители, которые входят в оба разложения</li>
+                    <li>Перемножь эти общие множители — это и есть НОД</li>
+                </ol>
+            </div>
+
+            <div class="example-box">
+<strong>Найти НОД(36, 48)</strong>
+
+36 = 2 × 2 × 3 × 3 = 2² × 3²
+48 = 2 × 2 × 2 × 2 × 3 = 2⁴ × 3
+
+Общие простые множители: 2² и 3¹
+НОД(36, 48) = 2² × 3 = 4 × 3 = <strong>12</strong>
+
+Проверка: 36÷12=3 ✅   48÷12=4 ✅
+            </div>
+
+            <h3>Способ 2: Алгоритм Евклида (деление с остатком)</h3>
+            <div class="algo">
+                <div class="algo-title">📋 Алгоритм:</div>
+                <ol class="steps">
+                    <li>Раздели большее число на меньшее, запиши остаток</li>
+                    <li>Делитель стал новым делимым, остаток — новым делителем</li>
+                    <li>Повторяй, пока остаток не станет равен 0</li>
+                    <li>Последний ненулевой делитель = НОД</li>
+                </ol>
+            </div>
+
+            <div class="example-box">
+<strong>Найти НОД(56, 84)</strong> алгоритмом Евклида:
+
+84 ÷ 56 = 1,  остаток 28
+56 ÷ 28 = 2,  остаток  0  ← стоп!
+
+НОД(56, 84) = <strong>28</strong>
+
+Проверка: 56÷28=2 ✅   84÷28=3 ✅
+            </div>
+
+            <div class="rule-box yellow">
+                <strong>📌 Зачем нужен НОД?</strong><br>
+                Используется для <strong>сокращения дробей</strong>: делим числитель и знаменатель на НОД — получаем несократимую дробь.<br>
+                <span class="frac"><span>36</span><span>48</span></span> → НОД=12 → 
+                <span class="frac"><span>36÷12</span><span>48÷12</span></span> = 
+                <span class="frac"><span>3</span><span>4</span></span>
+            </div>
+        </div>
+
+        <div class="exercise-block">
+            <div class="task">
+                <span class="task-num">Задание 1.</span> Найдите НОД, разложив на простые множители:
+                <br>(а) НОД(24, 36) &nbsp;&nbsp; (б) НОД(90, 60) &nbsp;&nbsp; (в) НОД(120, 180)
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e2a')">▶ Показать решение</button>
+                <div class="answer" id="e2a">
+<strong>а) НОД(24, 36)</strong>
+24 = 2³ × 3
+36 = 2² × 3²
+Общие: 2² и 3¹
+НОД = 4 × 3 = <strong>12</strong>
+
+<strong>б) НОД(90, 60)</strong>
+90 = 2 × 3² × 5
+60 = 2² × 3 × 5
+Общие: 2¹, 3¹, 5¹
+НОД = 2 × 3 × 5 = <strong>30</strong>
+
+<strong>в) НОД(120, 180)</strong>
+120 = 2³ × 3 × 5
+180 = 2² × 3² × 5
+Общие: 2², 3¹, 5¹
+НОД = 4 × 3 × 5 = <strong>60</strong>
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 2.</span> Найдите НОД алгоритмом Евклида:
+                <br>(а) НОД(45, 75) &nbsp;&nbsp; (б) НОД(128, 96)
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e2b')">▶ Показать решение</button>
+                <div class="answer" id="e2b">
+<strong>а) НОД(45, 75)</strong>
+75 ÷ 45 = 1,  ост. 30
+45 ÷ 30 = 1,  ост. 15
+30 ÷ 15 = 2,  ост.  0 ← стоп
+НОД(45, 75) = <strong>15</strong>
+
+<strong>б) НОД(128, 96)</strong>
+128 ÷ 96 = 1,  ост. 32
+ 96 ÷ 32 = 3,  ост.  0 ← стоп
+НОД(128, 96) = <strong>32</strong>
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 3 (практическое).</span> Сократите дроби с помощью НОД:
+                <br>
+                <span class="frac"><span>18</span><span>24</span></span> ;
+                <span class="frac"><span>35</span><span>56</span></span> ;
+                <span class="frac"><span>45</span><span>75</span></span> ;
+                <span class="frac"><span>84</span><span>120</span></span>
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e2c')">▶ Показать решение</button>
+                <div class="answer" id="e2c">
+НОД(18,24)=6  →  18/24 = <strong>3/4</strong>
+НОД(35,56)=7  →  35/56 = <strong>5/8</strong>
+НОД(45,75)=15 →  45/75 = <strong>3/5</strong>
+НОД(84,120)=12→  84/120= <strong>7/10</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="separator">
+
+    <!-- ══════════════════════════════════════════════════
+         ЗАНЯТИЕ 3 — НОК
+    ══════════════════════════════════════════════════ -->
+    <div class="lesson-block purple">
+        <h2>📖 Занятие 3: Наименьшее общее кратное (НОК)</h2>
+        <span class="duration">⏱ 45 мин</span>
+        <span class="tag tag-theory">Теория</span>
+        <span class="tag tag-practice">Практика</span>
+
+        <div class="video-block">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=GOkA2EUmhJA" target="_blank">НОК — наименьшее общее кратное. Нахождение через разложение (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=IJLpHCz_RI8" target="_blank">НОК и НОД — разница и связь (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=rS7VqVgkMYI" target="_blank">Как быстро найти НОК — лайфхаки (Матёрый математик)</a></li>
+            </ul>
+        </div>
+
+        <div class="notebook">
+            <h3>Тема: НОК — наименьшее общее кратное</h3>
+
+            <div class="rule-box">
+                <strong>📌 НОК(a, b)</strong> — наименьшее натуральное число, которое делится на оба числа a и b.
+            </div>
+
+            <div class="diagram">
+                <div class="diagram-card">
+                    <div class="card-title">НОД</div>
+                    Наибольший <em>общий</em> делитель<br>
+                    Берём <strong>минимальные</strong> степени общих простых множителей
+                </div>
+                <div class="diagram-card">
+                    <div class="card-title">НОК</div>
+                    Наименьшее общее <em>кратное</em><br>
+                    Берём <strong>максимальные</strong> степени всех простых множителей
+                </div>
+            </div>
+
+            <h3>Способ 1: Через разложение на простые множители</h3>
+            <div class="algo">
+                <div class="algo-title">📋 Алгоритм:</div>
+                <ol class="steps purple-steps">
+                    <li>Разложи каждое число на простые множители</li>
+                    <li>Выпиши ВСЕ простые множители, встречающиеся хотя бы в одном числе</li>
+                    <li>Каждый берём в <strong>наибольшей</strong> степени</li>
+                    <li>Перемножь — получишь НОК</li>
+                </ol>
+            </div>
+
+            <div class="example-box">
+<strong>Найти НОК(18, 24)</strong>
+
+18 = 2 × 3²
+24 = 2³ × 3
+
+Все простые множители: 2 и 3
+Наибольшие степени: 2³ и 3²
+НОК(18, 24) = 2³ × 3² = 8 × 9 = <strong>72</strong>
+
+Проверка: 72÷18=4 ✅   72÷24=3 ✅
+            </div>
+
+            <h3>Способ 2: Через НОД (быстрая формула)</h3>
+            <div class="rule-box">
+                <span class="formula">НОК(a, b) = (a × b) ÷ НОД(a, b)</span>
+            </div>
+
+            <div class="example-box">
+<strong>Найти НОК(36, 48) через формулу:</strong>
+
+НОД(36, 48) = 12  (находили раньше)
+НОК(36, 48) = (36 × 48) ÷ 12
+            = 1728 ÷ 12
+            = <strong>144</strong>
+
+Проверка: 144÷36=4 ✅   144÷48=3 ✅
+            </div>
+
+            <div class="rule-box yellow">
+                <strong>📌 Зачем нужен НОК?</strong><br>
+                Используется для <strong>приведения дробей к общему знаменателю</strong>:<br>
+                Чтобы сложить 
+                <span class="frac"><span>1</span><span>6</span></span> +
+                <span class="frac"><span>1</span><span>9</span></span>, 
+                нужно найти НОК(6,9) = 18 → общий знаменатель = 18
+            </div>
+        </div>
+
+        <div class="exercise-block">
+            <div class="task">
+                <span class="task-num">Задание 1.</span> Найдите НОК через разложение на простые множители:
+                <br>(а) НОК(12, 18) &nbsp; (б) НОК(15, 20) &nbsp; (в) НОК(8, 12, 18)
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e3a')">▶ Показать решение</button>
+                <div class="answer" id="e3a">
+<strong>а) НОК(12, 18)</strong>
+12 = 2² × 3
+18 = 2 × 3²
+Берём 2² и 3²
+НОК = 4 × 9 = <strong>36</strong>
+
+<strong>б) НОК(15, 20)</strong>
+15 = 3 × 5
+20 = 2² × 5
+Берём 2², 3, 5
+НОК = 4 × 3 × 5 = <strong>60</strong>
+
+<strong>в) НОК(8, 12, 18)</strong>
+ 8 = 2³
+12 = 2² × 3
+18 = 2 × 3²
+Берём 2³ и 3²
+НОК = 8 × 9 = <strong>72</strong>
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 2.</span> Найдите НОК по формуле НОК = (a×b)÷НОД:
+                <br>(а) НОК(21, 35) &nbsp; (б) НОК(45, 60)
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e3b')">▶ Показать решение</button>
+                <div class="answer" id="e3b">
+<strong>а) НОК(21, 35)</strong>
+НОД(21,35): 35÷21=1 ост.14; 21÷14=1 ост.7; 14÷7=2 ост.0 → НОД=7
+НОК = (21×35)÷7 = 735÷7 = <strong>105</strong>
+Проверка: 105÷21=5 ✅  105÷35=3 ✅
+
+<strong>б) НОК(45, 60)</strong>
+НОД(45,60): 60÷45=1 ост.15; 45÷15=3 ост.0 → НОД=15
+НОК = (45×60)÷15 = 2700÷15 = <strong>180</strong>
+Проверка: 180÷45=4 ✅  180÷60=3 ✅
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="separator">
+
+    <!-- ══════════════════════════════════════════════════
+         ЗАНЯТИЕ 4 — СЛОЖЕНИЕ И ВЫЧИТАНИЕ ДРОБЕЙ
+    ══════════════════════════════════════════════════ -->
+    <div class="lesson-block orange">
+        <h2>📖 Занятие 4: Сложение и вычитание дробей</h2>
+        <span class="duration">⏱ 1 час</span>
+        <span class="tag tag-theory">Теория</span>
+        <span class="tag tag-practice">Практика</span>
+
+        <div class="video-block">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=wE4mxbBi8nI" target="_blank">Сложение и вычитание обыкновенных дробей — полный разбор (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=OPv_-HuUV6Q" target="_blank">Дроби с разными знаменателями — как привести к общему (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=vYHf96KfX2c" target="_blank">Смешанные числа — сложение и вычитание (Матёрый математик)</a></li>
+            </ul>
+        </div>
+
+        <div class="notebook">
+            <h3>Случай 1: Одинаковые знаменатели</h3>
+            <div class="rule-box">
+                <span class="formula">a/n ± b/n = (a ± b) / n</span><br>
+                Знаменатель остаётся, складываем/вычитаем только числители.
+            </div>
+            <div class="example-box">
+<span class="frac"><span>3</span><span>7</span></span> + 
+<span class="frac"><span>2</span><span>7</span></span> = 
+<span class="frac"><span>3+2</span><span>7</span></span> = 
+<span class="frac"><span>5</span><span>7</span></span>
+
+<span class="frac"><span>8</span><span>11</span></span> − 
+<span class="frac"><span>3</span><span>11</span></span> = 
+<span class="frac"><span>8−3</span><span>11</span></span> = 
+<span class="frac"><span>5</span><span>11</span></span>
+            </div>
+
+            <h3>Случай 2: Разные знаменатели</h3>
+            <div class="algo">
+                <div class="algo-title">📋 Алгоритм приведения к общему знаменателю:</div>
+                <ol class="steps orange-steps">
+                    <li>Найди НОК знаменателей — это общий знаменатель</li>
+                    <li>Найди дополнительный множитель для каждой дроби: НОК ÷ знаменатель</li>
+                    <li>Умножь числитель и знаменатель каждой дроби на её доп. множитель</li>
+                    <li>Сложи/вычти числители, знаменатель оставь</li>
+                    <li>Сократи результат (если можно)</li>
+                </ol>
+            </div>
+
+            <div class="example-box">
+<strong>Вычислить: 3/4 + 5/6</strong>
+
+1) НОК(4, 6) = 12  — общий знаменатель
+2) Доп. множитель для 3/4: 12÷4 = 3
+   Доп. множитель для 5/6: 12÷6 = 2
+3) 3/4 = (3×3)/(4×3) = 9/12
+   5/6 = (5×2)/(6×2) = 10/12
+4) 9/12 + 10/12 = 19/12
+5) 19/12 = 1 целая 7/12
+
+<strong>Ответ: 1 7/12</strong>
+            </div>
+
+            <h3>Смешанные числа</h3>
+            <div class="rule-box green">
+                <strong>📌 Смешанное число</strong> = целая часть + дробная часть<br>
+                Пример: 2<span class="frac"><span>3</span><span>5</span></span> = 2 + <span class="frac"><span>3</span><span>5</span></span> = <span class="frac"><span>13</span><span>5</span></span>
+            </div>
+
+            <div class="example-box">
+<strong>Сложение смешанных чисел: 2⅗ + 1¾</strong>
+
+Способ 1 (складываем отдельно):
+  Целые: 2 + 1 = 3
+  Дроби: 3/5 + 3/4; НОК(5,4)=20
+         12/20 + 15/20 = 27/20 = 1 7/20
+  Итого: 3 + 1 7/20 = <strong>4 7/20</strong>
+
+<strong>Вычитание: 5⅓ − 2¾</strong>
+
+  НОК(3,4) = 12
+  5 4/12 − 2 9/12
+  Дробная часть: 4/12 < 9/12 → заимствуем 1 целую:
+  5 4/12 = 4 16/12
+  4 16/12 − 2 9/12 = <strong>2 7/12</strong>
+            </div>
+        </div>
+
+        <div class="exercise-block">
+            <div class="task">
+                <span class="task-num">Задание 1.</span> Вычислите (одинаковые знаменатели):
+                <br>
+                а) <span class="frac"><span>5</span><span>9</span></span> + <span class="frac"><span>2</span><span>9</span></span>
+                &nbsp;&nbsp;
+                б) <span class="frac"><span>11</span><span>13</span></span> − <span class="frac"><span>4</span><span>13</span></span>
+                &nbsp;&nbsp;
+                в) <span class="frac"><span>7</span><span>8</span></span> + <span class="frac"><span>5</span><span>8</span></span>
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e4a')">▶ Показать ответы</button>
+                <div class="answer" id="e4a">
+а) 5/9 + 2/9 = 7/9
+б) 11/13 − 4/13 = 7/13
+в) 7/8 + 5/8 = 12/8 = 3/2 = 1½
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 2.</span> Вычислите (разные знаменатели), покажите все шаги:
+                <br>
+                а) <span class="frac"><span>1</span><span>3</span></span> + <span class="frac"><span>1</span><span>4</span></span>
+                &nbsp;&nbsp;
+                б) <span class="frac"><span>3</span><span>5</span></span> − <span class="frac"><span>1</span><span>6</span></span>
+                &nbsp;&nbsp;
+                в) <span class="frac"><span>5</span><span>8</span></span> + <span class="frac"><span>7</span><span>12</span></span>
+                &nbsp;&nbsp;
+                г) <span class="frac"><span>7</span><span>10</span></span> − <span class="frac"><span>3</span><span>14</span></span>
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e4b')">▶ Показать решение</button>
+                <div class="answer" id="e4b">
+<strong>а) 1/3 + 1/4</strong>
+НОК(3,4) = 12
+1/3 = 4/12;  1/4 = 3/12
+4/12 + 3/12 = <strong>7/12</strong>
+
+<strong>б) 3/5 − 1/6</strong>
+НОК(5,6) = 30
+3/5 = 18/30;  1/6 = 5/30
+18/30 − 5/30 = <strong>13/30</strong>
+
+<strong>в) 5/8 + 7/12</strong>
+НОК(8,12) = 24
+5/8 = 15/24;  7/12 = 14/24
+15/24 + 14/24 = 29/24 = <strong>1 5/24</strong>
+
+<strong>г) 7/10 − 3/14</strong>
+НОК(10,14) = 70
+7/10 = 49/70;  3/14 = 15/70
+49/70 − 15/70 = 34/70 = <strong>17/35</strong>
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 3.</span> Смешанные числа:
+                <br>
+                а) 3<span class="frac"><span>1</span><span>4</span></span> + 2<span class="frac"><span>1</span><span>6</span></span>
+                &nbsp;&nbsp;
+                б) 5<span class="frac"><span>2</span><span>3</span></span> − 1<span class="frac"><span>3</span><span>4</span></span>
+                &nbsp;&nbsp;
+                в) 4<span class="frac"><span>5</span><span>6</span></span> + 3<span class="frac"><span>7</span><span>9</span></span>
+                <br><br>
+                <button class="toggle-btn" onclick="tog('e4c')">▶ Показать решение</button>
+                <div class="answer" id="e4c">
+<strong>а) 3¼ + 2⅙</strong>
+НОК(4,6)=12
+Дроби: 3/12 + 2/12 = 5/12
+Целые: 3+2=5
+Ответ: <strong>5 5/12</strong>
+
+<strong>б) 5⅔ − 1¾</strong>
+НОК(3,4)=12
+Дроби: 8/12 − 9/12 → надо занять 1 целую:
+5 8/12 = 4 20/12
+4 20/12 − 1 9/12 = <strong>3 11/12</strong>
+
+<strong>в) 4 5/6 + 3 7/9</strong>
+НОК(6,9)=18
+5/6=15/18; 7/9=14/18
+Дроби: 15/18+14/18=29/18 = 1 11/18
+Целые: 4+3+1=8
+Ответ: <strong>8 11/18</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="separator">
+
+    <!-- ══════════════════════════════════════════════════
+         ЗАНЯТИЕ 5 — УМНОЖЕНИЕ И ДЕЛЕНИЕ ДРОБЕЙ
+    ══════════════════════════════════════════════════ -->
+    <div class="lesson-block teal">
+        <h2>📖 Занятие 5: Умножение и деление дробей</h2>
+        <span class="duration">⏱ 1 час</span>
+        <span class="tag tag-theory">Теория</span>
+        <span class="tag tag-practice">Практика</span>
+
+        <div class="video-block">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=5k4KXqkPNFo" target="_blank">Умножение обыкновенных дробей — теория и задачи (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=O_CjHH7Ipao" target="_blank">Деление дробей — переворачиваем и умножаем (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=g8GczT5ZXLE" target="_blank">Деление дробей на целое число и смешанные числа (Матёрый математик)</a></li>
+            </ul>
+        </div>
+
+        <div class="notebook">
+            <h3>Умножение дробей</h3>
+            <div class="rule-box">
+                <span class="formula">a/b × c/d = (a×c) / (b×d)</span><br>
+                Числители перемножаем, знаменатели перемножаем.
+            </div>
+            <div class="example-box">
+<strong>3/4 × 5/7</strong> = (3×5)/(4×7) = <strong>15/28</strong>
+
+<strong>Сокращение ДО умножения (крест-накрест):</strong>
+4/9 × 3/8 = (4×3)/(9×8)
+Сокращаем 4 и 8 (÷4): 1 и 2
+Сокращаем 3 и 9 (÷3): 1 и 3
+= (1×1)/(3×2) = <strong>1/6</strong>  ← так быстрее!
+            </div>
+
+            <h3>Умножение смешанного числа на дробь</h3>
+            <div class="algo">
+                <div class="algo-title">📋 Алгоритм:</div>
+                <ol class="steps">
+                    <li>Переведи смешанное число в неправильную дробь: a b/c = (a×c + b)/c</li>
+                    <li>Умножь дроби по правилу</li>
+                    <li>Результат переведи обратно в смешанное число (если нужно)</li>
+                </ol>
+            </div>
+            <div class="example-box">
+<strong>2⅗ × 1⅔</strong>
+
+2 3/5 = (2×5+3)/5 = 13/5
+1 2/3 = (1×3+2)/3 = 5/3
+
+13/5 × 5/3 = (13×5)/(5×3)
+Сокращаем 5 и 5: = 13/3 = <strong>4⅓</strong>
+            </div>
+
+            <h3>Деление дробей</h3>
+            <div class="rule-box">
+                <span class="formula">a/b ÷ c/d = a/b × d/c</span><br>
+                Делим на дробь = умножаем на обратную (перевёрнутую) дробь!<br>
+                <em>Обратная дробь к c/d — это d/c</em>
+            </div>
+            <div class="example-box">
+<strong>5/6 ÷ 2/3</strong> = 5/6 × 3/2 = (5×3)/(6×2) = 15/12 = <strong>5/4 = 1¼</strong>
+
+<strong>3½ ÷ 1¾</strong>
+3½ = 7/2;  1¾ = 7/4
+7/2 ÷ 7/4 = 7/2 × 4/7
+Сокращаем 7 и 7, и 4 и 2:
+= 1/1 × 2/1 = <strong>2</strong>
+            </div>
+
+            <div class="rule-box warning">
+                <strong>⚠️ Частые ошибки:</strong>
+                <ul>
+                    <li>При умножении — <span class="red">НЕ нужно</span> приводить к общему знаменателю!</li>
+                    <li>При делении — переворачиваем <span class="red">только второй</span> множитель (делитель)</li>
+                    <li>Смешанное число сначала переводим в неправильную дробь, <span class="red">потом</span> умножаем/делим</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exercise-block">
+            <div class="task">
+                <span class="task-num">Задание 1.</span> Умножение дробей:
+                <br>
+                а) <span class="frac"><span>2</span><span>5</span></span> × <span class="frac"><span>3</span><span>7</span></span>
+                &nbsp;&nbsp;
+                б) <span class="frac"><span>4</span><span>9</span></span> × <span class="frac"><span>3</span><span>8</span></span>
+                &nbsp;&nbsp;
+                в) 2<span class="frac"><span>1</span><span>3</span></span> × 1<span class="frac"><span>1</span><span>2</span></span>
+                &nbsp;&nbsp;
+                г) 3<span class="frac"><span>3</span><span>4</span></span> × 2<span class="frac"><span>2</span><span>5</span></span>
+                <br><br>
+                <button class="toggle-btn green-btn" onclick="tog('e5a')">▶ Показать решение</button>
+                <div class="answer" id="e5a">
+а) 2/5 × 3/7 = 6/35
+
+б) 4/9 × 3/8:
+   Сокращаем: 4÷4=1, 8÷4=2; 3÷3=1, 9÷3=3
+   = 1/3 × 1/2 = <strong>1/6</strong>
+
+в) 2⅓ × 1½
+   7/3 × 3/2
+   Сокращаем 3 и 3: = 7/1 × 1/2 = <strong>7/2 = 3½</strong>
+
+г) 3¾ × 2⅖
+   15/4 × 12/5
+   Сокращаем 15 и 5 (÷5): 3 и 1
+   Сокращаем 12 и 4 (÷4): 3 и 1
+   = 3/1 × 3/1 = <strong>9</strong>
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 2.</span> Деление дробей:
+                <br>
+                а) <span class="frac"><span>3</span><span>4</span></span> ÷ <span class="frac"><span>1</span><span>2</span></span>
+                &nbsp;&nbsp;
+                б) <span class="frac"><span>5</span><span>6</span></span> ÷ <span class="frac"><span>5</span><span>9</span></span>
+                &nbsp;&nbsp;
+                в) 4<span class="frac"><span>1</span><span>2</span></span> ÷ 1<span class="frac"><span>1</span><span>2</span></span>
+                &nbsp;&nbsp;
+                г) 2<span class="frac"><span>2</span><span>3</span></span> ÷ 4
+                <br><br>
+                <button class="toggle-btn green-btn" onclick="tog('e5b')">▶ Показать решение</button>
+                <div class="answer" id="e5b">
+а) 3/4 ÷ 1/2 = 3/4 × 2/1 = 6/4 = <strong>3/2 = 1½</strong>
+
+б) 5/6 ÷ 5/9 = 5/6 × 9/5
+   Сокращаем 5 и 5, 9 и 6 (÷3): 3 и 2
+   = 1/2 × 3/1 = <strong>3/2 = 1½</strong>
+
+в) 4½ ÷ 1½
+   9/2 ÷ 3/2 = 9/2 × 2/3
+   Сокращаем: 9÷3=3, 2÷2=1
+   = 3/1 × 1/1 = <strong>3</strong>
+
+г) 2⅔ ÷ 4 = 8/3 ÷ 4/1 = 8/3 × 1/4
+   Сокращаем 8 и 4: = 2/3 × 1/1 = <strong>2/3</strong>
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="task-num">Задание 3 (задача).</span> 
+                Из куска ткани длиной 5<span class="frac"><span>1</span><span>4</span></span> м отрезали 
+                <span class="frac"><span>3</span><span>5</span></span> от его длины. Сколько метров отрезали? 
+                Сколько осталось?
+                <br><br>
+                <button class="toggle-btn green-btn" onclick="tog('e5c')">▶ Показать решение</button>
+                <div class="answer" id="e5c">
+Дано: длина = 5¼ м, отрезали 3/5 от длины
+
+<strong>Шаг 1: Сколько метров отрезали?</strong>
+5¼ × 3/5 = 21/4 × 3/5 = 63/20 = 3 3/20 (м)
+
+<strong>Шаг 2: Сколько осталось?</strong>
+5¼ − 3 3/20
+= 5 5/20 − 3 3/20 = <strong>2 2/20 = 2 1/10 (м)</strong>
+
+Ответ: отрезали 3 3/20 м, осталось 2 1/10 м.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="separator">
+
+    <!-- ══════════════════════════════════════════════════
+         ЗАНЯТИЕ 6 — ЗАКРЕПЛЕНИЕ + ИТОГОВЫЙ ТЕСТ
+    ══════════════════════════════════════════════════ -->
+    <div class="lesson-block red">
+        <h2>📖 Занятие 6: Итоговое закрепление</h2>
+        <span class="duration">⏱ 1 час</span>
+        <span class="tag tag-practice">Практика</span>
+        <span class="tag tag-test">Итоговый тест</span>
+
+        <div class="exercise-block">
+            <div class="task">
+                <span class="task-num">🏆 Контрольные 10 примеров на дроби (мини-проверка недели)</span>
+                <br>Выполните в тетради, покажи все шаги:
+                <br><br>
+                1) <span class="frac"><span>5</span><span>12</span></span> + <span class="frac"><span>7</span><span>18</span></span>
+                &nbsp;&nbsp;
+                2) 3<span class="frac"><span>2</span><span>5</span></span> − 1<span class="frac"><span>4</span><span>7</span></span>
+                &nbsp;&nbsp;
+                3) <span class="frac"><span>9</span><span>16</span></span> × <span class="frac"><span>4</span><span>3</span></span>
+                &nbsp;&nbsp;
+                4) 2<span class="frac"><span>1</span><span>4</span></span> ÷ 1<span class="frac"><span>1</span><span>2</span></span>
+                &nbsp;&nbsp;
+                5) <span class="frac"><span>7</span><span>8</span></span> − <span class="frac"><span>5</span><span>12</span></span>
+                <br><br>
+                6) 4<span class="frac"><span>3</span><span>4</span></span> × 2<span class="frac"><span>2</span><span>3</span></span>
+                &nbsp;&nbsp;
+                7) <span class="frac"><span>11</span><span>15</span></span> ÷ <span class="frac"><span>22</span><span>25</span></span>
+                &nbsp;&nbsp;
+                8) 1<span class="frac"><span>5</span><span>6</span></span> + 2<span class="frac"><span>7</span><span>9</span></span>
+                &nbsp;&nbsp;
+                9) 5<span class="frac"><span>1</span><span>3</span></span> × <span class="frac"><span>6</span><span>8</span></span>
+                &nbsp;&nbsp;
+                10) 3<span class="frac"><span>3</span><span>8</span></span> − 1<span class="frac"><span>5</span><span>6</span></span>
+                <br><br>
+                <button class="toggle-btn" onclick="tog('ctrl')">▶ Показать все ответы</button>
+                <div class="answer" id="ctrl">
+1) НОК(12,18)=36: 15/36+14/36 = 29/36
+
+2) НОК(5,7)=35: 3 14/35 − 1 20/35 → заём: 2 49/35 − 1 20/35 = <strong>1 29/35</strong>
+
+3) 9/16 × 4/3: сокращаем 4÷4=1, 16÷4=4; 9÷3=3, 3÷3=1 → 3/4 = <strong>3/4</strong>
+
+4) 9/4 ÷ 3/2 = 9/4 × 2/3: сокращаем → 3/2 = <strong>1½</strong>
+
+5) НОК(8,12)=24: 21/24 − 10/24 = <strong>11/24</strong>
+
+6) 19/4 × 8/3: сокращаем 8÷4=2 → 19/1 × 2/3 = 38/3 = <strong>12⅔</strong>
+
+7) 11/15 × 25/22: сокращаем 11÷11=1,22÷11=2; 25÷5=5,15÷5=3 → 5/6 = <strong>5/6</strong>
+
+8) НОК(6,9)=18: 1 15/18 + 2 14/18 = 3 29/18 = 3+1 11/18 = <strong>4 11/18</strong>
+
+9) 16/3 × 6/8: сокращаем 6÷6=1,3÷3=1; 16÷8=2,8÷8=1 → 2×1/1×1 = <strong>4</strong>
+
+10) НОК(8,6)=24: 3 9/24 − 1 20/24 → заём: 2 33/24 − 1 20/24 = <strong>1 13/24</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         ИНТЕРАКТИВНЫЙ ТЕСТ
+    ══════════════════════════════════════════════════ -->
+    <div class="quiz-wrap">
+        <h2>🧪 Интерактивный тест по математике</h2>
+        <p>10 вопросов — проверь себя!</p>
+
+        <form id="mathQuiz">
+
+            <div class="q-block">
+                <p>1. Какое из чисел делится на 9?</p>
+                <label class="q-opt"><input type="radio" name="q1" value="a"> 3 456</label>
+                <label class="q-opt"><input type="radio" name="q1" value="b"> 1 234</label>
+                <label class="q-opt"><input type="radio" name="q1" value="c"> 5 673</label>
+                <label class="q-opt"><input type="radio" name="q1" value="d"> 7 218</label>
+            </div>
+
+            <div class="q-block">
+                <p>2. НОД(24, 36) равен:</p>
+                <label class="q-opt"><input type="radio" name="q2" value="a"> 6</label>
+                <label class="q-opt"><input type="radio" name="q2" value="b"> 12</label>
+                <label class="q-opt"><input type="radio" name="q2" value="c"> 72</label>
+                <label class="q-opt"><input type="radio" name="q2" value="d"> 4</label>
+            </div>
+
+            <div class="q-block">
+                <p>3. НОК(6, 8) равен:</p>
+                <label class="q-opt"><input type="radio" name="q3" value="a"> 48</label>
+                <label class="q-opt"><input type="radio" name="q3" value="b"> 2</label>
+                <label class="q-opt"><input type="radio" name="q3" value="c"> 24</label>
+                <label class="q-opt"><input type="radio" name="q3" value="d"> 14</label>
+            </div>
+
+            <div class="q-block">
+                <p>4. Результат: 3/7 + 2/7 = ?</p>
+                <label class="q-opt"><input type="radio" name="q4" value="a"> 5/14</label>
+                <label class="q-opt"><input type="radio" name="q4" value="b"> 6/49</label>
+                <label class="q-opt"><input type="radio" name="q4" value="c"> 5/7</label>
+                <label class="q-opt"><input type="radio" name="q4" value="d"> 1</label>
+            </div>
+
+            <div class="q-block">
+                <p>5. Какой общий знаменатель у дробей 1/4 и 1/6?</p>
+                <label class="q-opt"><input type="radio" name="q5" value="a"> 10</label>
+                <label class="q-opt"><input type="radio" name="q5" value="b"> 24</label>
+                <label class="q-opt"><input type="radio" name="q5" value="c"> 12</label>
+                <label class="q-opt"><input type="radio" name="q5" value="d"> 8</label>
+            </div>
+
+            <div class="q-block">
+                <p>6. Вычислите: 1/3 + 1/4 = ?</p>
+                <label class="q-opt"><input type="radio" name="q6" value="a"> 2/7</label>
+                <label class="q-opt"><input type="radio" name="q6" value="b"> 7/12</label>
+                <label class="q-opt"><input type="radio" name="q6" value="c"> 1/6</label>
+                <label class="q-opt"><input type="radio" name="q6" value="d"> 5/12</label>
+            </div>
+
+            <div class="q-block">
+                <p>7. Вычислите: 2/3 × 3/4 = ?</p>
+                <label class="q-opt"><input type="radio" name="q7" value="a"> 5/7</label>
+                <label class="q-opt"><input type="radio" name="q7" value="b"> 6/12</label>
+                <label class="q-opt"><input type="radio" name="q7" value="c"> 1/2</label>
+                <label class="q-opt"><input type="radio" name="q7" value="d"> 8/9</label>
+            </div>
+
+            <div class="q-block">
+                <p>8. Вычислите: 3/4 ÷ 3/8 = ?</p>
+                <label class="q-opt"><input type="radio" name="q8" value="a"> 9/32</label>
+                <label class="q-opt"><input type="radio" name="q8" value="b"> 1/2</label>
+                <label class="q-opt"><input type="radio" name="q8" value="c"> 2</label>
+                <label class="q-opt"><input type="radio" name="q8" value="d"> 6/4</label>
+            </div>
+
+            <div class="q-block">
+                <p>9. Смешанное число 2¾ в виде неправильной дроби — это:</p>
+                <label class="q-opt"><input type="radio" name="q9" value="a"> 6/4</label>
+                <label class="q-opt"><input type="radio" name="q9" value="b"> 9/4</label>
+                <label class="q-opt"><input type="radio" name="q9" value="c"> 11/4</label>
+                <label class="q-opt"><input type="radio" name="q9" value="d"> 8/4</label>
+            </div>
+
+            <div class="q-block">
+                <p>10. Какое число является простым?</p>
+                <label class="q-opt"><input type="radio" name="q10" value="a"> 27</label>
+                <label class="q-opt"><input type="radio" name="q10" value="b"> 51</label>
+                <label class="q-opt"><input type="radio" name="q10" value="c"> 37</label>
+                <label class="q-opt"><input type="radio" name="q10" value="d"> 49</label>
+            </div>
+
+            <button type="button" class="check-btn" onclick="checkMath()">✅ Проверить ответы</button>
+        </form>
+
+        <div class="result-box" id="mathResult"></div>
+    </div>
+
+</div><!-- /container -->
+
+<script>
+    function tog(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function checkMath() {
+        var correct = {
+            q1:'d', // 7218: 7+2+1+8=18 → делится на 9
+            q2:'b', // НОД(24,36)=12
+            q3:'c', // НОК(6,8)=24
+            q4:'c', // 5/7
+            q5:'c', // НОК(4,6)=12
+            q6:'b', // 7/12
+            q7:'c', // 1/2
+            q8:'c', // 2
+            q9:'c', // 2*4+3=11 → 11/4
+            q10:'c' // 37 простое
+        };
+        var explain = {
+            q1: '7+2+1+8=18 → делится на 9 ✅',
+            q2: '24=2³×3; 36=2²×3² → общие: 2²×3=12',
+            q3: '6=2×3; 8=2³ → НОК=2³×3=24',
+            q4: '3/7+2/7=(3+2)/7=5/7',
+            q5: 'НОК(4,6)=12 — наименьший',
+            q6: 'НОК(3,4)=12 → 4/12+3/12=7/12',
+            q7: '2/3×3/4: сокращаем 3 → 2/4=1/2',
+            q8: '3/4÷3/8=3/4×8/3: сокращаем → 2',
+            q9: '2×4+3=11 → 11/4',
+            q10: '37 делится только на 1 и 37; 27=3³; 51=3×17; 49=7²'
+        };
+
+        var score=0, html='';
+        for (var q in correct) {
+            var sel = document.querySelector('input[name="'+q+'"]:checked');
+            var n = q.replace('q','');
+            if (sel && sel.value === correct[q]) {
+                score++;
+                html += '<br>✅ Вопрос '+n+': Верно! '+explain[q];
+            } else if (sel) {
+                html += '<br>❌ Вопрос '+n+': Неверно. '+explain[q];
+            } else {
+                html += '<br>⚠️ Вопрос '+n+': Нет ответа. '+explain[q];
+            }
+        }
+
+        var pct = Math.round(score/10*100);
+        var bg = pct>=80 ? '#c6f6d5' : pct>=60 ? '#fefcbf' : '#fed7d7';
+        var em = pct>=80 ? '🎉' : pct>=60 ? '👍' : '📚 Нужно повторить!';
+
+        var box = document.getElementById('mathResult');
+        box.style.background = bg;
+        box.style.display = 'block';
+        box.innerHTML = em+' <strong>'+score+'/10 ('+pct+'%)</strong>'+html;
+        box.scrollIntoView({behavior:'smooth'});
+    }
+</script>
+</body>
+</html>

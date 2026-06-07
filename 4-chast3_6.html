@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День 23 — Повторение блок 3: Английский, Литература, Доп. предметы</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0533, #2d1b69, #11001c);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #f093fb, #f5576c, #fda085);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .day-info { text-align: center; font-size: 1.1em; color: #aaa; margin-bottom: 30px; }
+        .schedule-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .schedule-item {
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            background: rgba(240,147,251,0.15);
+            border: 2px solid rgba(240,147,251,0.3);
+        }
+        .schedule-item .time { font-size: 0.85em; color: #aaa; }
+        .subject-block {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid;
+        }
+        .subject-block.english { border-left-color: #f093fb; }
+        .subject-block.literature { border-left-color: #fda085; }
+        .subject-block.extra { border-left-color: #4facfe; }
+        .subject-block h2 { font-size: 1.8em; margin-bottom: 5px; }
+        .subject-block .duration { color: #aaa; margin-bottom: 20px; font-size: 0.95em; }
+        .section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section h3 { font-size: 1.3em; margin-bottom: 15px; }
+        .notebook {
+            background: rgba(255,215,0,0.1);
+            border: 2px dashed #ffd93d;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .notebook h4 { color: #ffd93d; margin-bottom: 10px; font-size: 1.1em; }
+        .notebook ul, .notebook ol { padding-left: 25px; }
+        .notebook li { margin-bottom: 8px; line-height: 1.6; }
+        .exercise-box {
+            background: rgba(162,155,254,0.1);
+            border: 1px solid rgba(162,155,254,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .exercise-box h4 { color: #a29bfe; margin-bottom: 10px; }
+        .exercise-box .task {
+            background: rgba(0,0,0,0.2);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        .solution {
+            display: none;
+            background: rgba(0,255,100,0.08);
+            border: 1px solid rgba(0,255,100,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+        .show-solution-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            margin-top: 8px;
+            transition: transform 0.2s;
+        }
+        .show-solution-btn:hover { transform: scale(1.05); }
+        .video-links {
+            background: rgba(255,0,0,0.08);
+            border: 1px solid rgba(255,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .video-links h4 { color: #ff4444; margin-bottom: 10px; }
+        .video-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .video-links a:hover { color: #ff9999; }
+        .video-links a::before { content: '▶ '; }
+        .quiz-container {
+            background: rgba(255,165,0,0.08);
+            border: 2px solid rgba(255,165,0,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-container h3 { color: #ffa500; margin-bottom: 20px; text-align: center; font-size: 1.4em; }
+        .quiz-question {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .quiz-question p { font-size: 1.05em; margin-bottom: 12px; font-weight: bold; }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 18px;
+            margin: 6px 0;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        .quiz-option:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,165,0,0.5); }
+        .quiz-option.correct { background: rgba(0,255,100,0.2); border-color: #00ff64; color: #00ff64; }
+        .quiz-option.wrong { background: rgba(255,0,0,0.2); border-color: #ff4444; color: #ff4444; }
+        .quiz-option:disabled { cursor: not-allowed; opacity: 0.7; }
+        .quiz-feedback { margin-top: 10px; padding: 10px 15px; border-radius: 8px; display: none; font-weight: bold; }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct-fb { background: rgba(0,255,100,0.1); color: #00ff64; }
+        .quiz-feedback.wrong-fb { background: rgba(255,0,0,0.1); color: #ff6b6b; }
+        .quiz-score {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 12px;
+            display: none;
+        }
+        .quiz-reset-btn {
+            display: none;
+            margin: 15px auto;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th, table td {
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+            vertical-align: top;
+        }
+        table th { background: rgba(255,255,255,0.1); color: #ffd93d; }
+        table tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+        .checklist { list-style: none; padding: 0; }
+        .checklist li {
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .checklist li::before { content: '☐ '; font-size: 1.2em; }
+        .checklist li.checked { background: rgba(0,255,100,0.1); text-decoration: line-through; opacity: 0.7; }
+        .checklist li.checked::before { content: '☑ '; }
+        .tip-box {
+            background: rgba(255,215,0,0.08);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .tip-box::before { content: '💡 '; font-size: 1.2em; }
+        .grammar-card {
+            background: rgba(240,147,251,0.08);
+            border: 2px solid rgba(240,147,251,0.25);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px 0;
+        }
+        .grammar-card .card-title { color: #f093fb; font-weight: bold; margin-bottom: 8px; font-size: 1.05em; }
+        .grammar-card .formula { font-family: monospace; font-size: 1.1em; background: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 6px; margin: 5px 0; }
+        .grammar-card .example { color: #aaa; font-style: italic; margin-top: 5px; }
+        .book-card {
+            background: rgba(253,160,133,0.08);
+            border: 1px solid rgba(253,160,133,0.25);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 15px;
+            align-items: start;
+        }
+        .book-icon { font-size: 2.5em; }
+        .book-info .book-title { color: #fda085; font-weight: bold; font-size: 1.05em; }
+        .book-info .book-author { color: #aaa; margin: 3px 0; }
+        .book-info .book-details { font-size: 0.95em; line-height: 1.6; margin-top: 8px; }
+        .progress-tracker {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f093fb, #f5576c, #fda085);
+            border-radius: 15px;
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85em;
+            color: #000;
+        }
+        .step-solution { border-left: 3px solid #f093fb; padding-left: 15px; margin: 8px 0; }
+        .step-num { color: #f093fb; font-weight: bold; }
+        .highlight-box {
+            background: rgba(79,172,254,0.08);
+            border: 1px solid rgba(79,172,254,0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .highlight-box h4 { color: #4facfe; margin-bottom: 10px; }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5em; }
+            .subject-block { padding: 15px; }
+            .schedule-bar { flex-direction: column; }
+            .book-card { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>🌟 День 23: Повторение блок 3</h1>
+    <div class="day-info">Неделя 4 | Английский язык + Литература + Доп. предметы | ~5,5 часов</div>
+
+    <!-- Расписание -->
+    <div class="schedule-bar">
+        <div class="schedule-item">
+            <div>🇬🇧 Английский язык</div>
+            <div class="time">~2 часа</div>
+        </div>
+        <div class="schedule-item">
+            <div>📖 Литература</div>
+            <div class="time">~2 часа</div>
+        </div>
+        <div class="schedule-item">
+            <div>🔬 Доп. предметы</div>
+            <div class="time">~1,5 часа</div>
+        </div>
+    </div>
+
+    <!-- Чек-лист -->
+    <div class="section">
+        <h3>✅ Чек-лист на день (кликай для отметки)</h3>
+        <ul class="checklist">
+            <li onclick="toggleCheck(this)">Записать грамматические правила английского в тетрадь</li>
+            <li onclick="toggleCheck(this)">Выполнить грамматические упражнения по английскому</li>
+            <li onclick="toggleCheck(this)">Пройти тест по английскому языку</li>
+            <li onclick="toggleCheck(this)">Записать таблицу произведений и авторов по литературе</li>
+            <li onclick="toggleCheck(this)">Повторить содержание и темы произведений</li>
+            <li onclick="toggleCheck(this)">Пройти тест по литературе</li>
+            <li onclick="toggleCheck(this)">Повторить доп. предметы (физика, химия начала / ИЗО / музыка)</li>
+            <li onclick="toggleCheck(this)">Пройти тест по доп. предметам</li>
+            <li onclick="toggleCheck(this)">Посмотреть видеоматериалы по проблемным темам</li>
+        </ul>
+    </div>
+
+    <!-- =============================== -->
+    <!-- АНГЛИЙСКИЙ ЯЗЫК -->
+    <!-- =============================== -->
+    <div class="subject-block english">
+        <h2>🇬🇧 Английский язык — Полный повторительный тест</h2>
+        <div class="duration">⏱ Продолжительность: ~2 часа (120 минут)</div>
+
+        <!-- Запись в тетрадь -->
+        <div class="notebook">
+            <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Вся грамматика 6 класса</h4>
+
+            <p><strong>1. ВРЕМЕНА ГЛАГОЛА (основные)</strong></p>
+            <ul>
+                <li><strong>Present Simple</strong> — настоящее простое (факты, привычки, расписание)
+                    <br>⊕ I/We/You/They work | He/She/It works
+                    <br>⊖ I do not (don't) work | He does not (doesn't) work
+                    <br>? Do you work? | Does he work?
+                    <br><em>Маркеры: always, usually, often, sometimes, never, every day</em>
+                </li>
+                <li><strong>Present Continuous</strong> — настоящее длительное (прямо сейчас)
+                    <br>⊕ I am (I'm) working | He/She/It is (He's) working | We/You/They are (We're) working
+                    <br>⊖ I am not working | He is not (isn't) working
+                    <br>? Are you working? | Is he working?
+                    <br><em>Маркеры: now, right now, at the moment, look!, listen!</em>
+                </li>
+                <li><strong>Past Simple</strong> — прошедшее простое (завершённые действия в прошлом)
+                    <br>⊕ I/He/We worked (правильные: + ed) | I went (неправильные: 2-я форма)
+                    <br>⊖ I did not (didn't) work (все лица)
+                    <br>? Did you work? | Did he go?
+                    <br><em>Маркеры: yesterday, last week/year, ago, in 2020</em>
+                </li>
+                <li><strong>Future Simple</strong> — будущее простое (планы, предсказания)
+                    <br>⊕ I/He/We will (I'll) work
+                    <br>⊖ I will not (won't) work
+                    <br>? Will you work?
+                    <br><em>Маркеры: tomorrow, next week, soon, in the future</em>
+                </li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>2. НЕПРАВИЛЬНЫЕ ГЛАГОЛЫ (важнейшие — выучить наизусть!)</strong></p>
+            <table>
+                <tr><th>Инфинитив</th><th>Past Simple</th><th>Past Participle</th><th>Перевод</th></tr>
+                <tr><td>be</td><td>was/were</td><td>been</td><td>быть</td></tr>
+                <tr><td>go</td><td>went</td><td>gone</td><td>идти/ехать</td></tr>
+                <tr><td>come</td><td>came</td><td>come</td><td>приходить</td></tr>
+                <tr><td>see</td><td>saw</td><td>seen</td><td>видеть</td></tr>
+                <tr><td>do</td><td>did</td><td>done</td><td>делать</td></tr>
+                <tr><td>have</td><td>had</td><td>had</td><td>иметь</td></tr>
+                <tr><td>make</td><td>made</td><td>made</td><td>делать</td></tr>
+                <tr><td>take</td><td>took</td><td>taken</td><td>брать</td></tr>
+                <tr><td>get</td><td>got</td><td>got</td><td>получать</td></tr>
+                <tr><td>give</td><td>gave</td><td>given</td><td>давать</td></tr>
+                <tr><td>know</td><td>knew</td><td>known</td><td>знать</td></tr>
+                <tr><td>think</td><td>thought</td><td>thought</td><td>думать</td></tr>
+                <tr><td>say</td><td>said</td><td>said</td><td>говорить</td></tr>
+                <tr><td>find</td><td>found</td><td>found</td><td>находить</td></tr>
+                <tr><td>write</td><td>wrote</td><td>written</td><td>писать</td></tr>
+                <tr><td>read</td><td>read [red]</td><td>read [red]</td><td>читать</td></tr>
+                <tr><td>buy</td><td>bought</td><td>bought</td><td>покупать</td></tr>
+                <tr><td>eat</td><td>ate</td><td>eaten</td><td>есть</td></tr>
+                <tr><td>drink</td><td>drank</td><td>drunk</td><td>пить</td></tr>
+                <tr><td>run</td><td>ran</td><td>run</td><td>бежать</td></tr>
+            </table>
+
+            <p style="margin-top: 15px;"><strong>3. МОДАЛЬНЫЕ ГЛАГОЛЫ</strong></p>
+            <ul>
+                <li><strong>can</strong> — могу, умею: I can swim. Can you help me?</li>
+                <li><strong>could</strong> — мог (прошлое can): I could swim when I was 5.</li>
+                <li><strong>must</strong> — должен (сильная необходимость): You must do your homework.</li>
+                <li><strong>have to</strong> — вынужден (внешняя необходимость): I have to wake up early.</li>
+                <li><strong>should</strong> — следует (совет): You should eat vegetables.</li>
+                <li><strong>may</strong> — можно (разрешение), возможно: May I come in? It may rain.</li>
+                <li><strong>might</strong> — может быть (меньше уверенности): She might be at home.</li>
+                <li>❗ После модальных — инфинитив без to: I can <u>swim</u> (не to swim)</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>4. АРТИКЛИ a/an/the</strong></p>
+            <ul>
+                <li><strong>a/an</strong> — неопределённый (один из многих): a dog, an apple
+                    <br>a — перед согласными: a cat, a school
+                    <br>an — перед гласными (a, e, i, o, u): an egg, an umbrella</li>
+                <li><strong>the</strong> — определённый (конкретный, известный): the sun, the moon, the dog (которую знаем)</li>
+                <li><strong>Без артикля:</strong> имена (Mary), города (Moscow), страны (Russia, но the USA), языки (English), спорт (football)</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>5. СТЕПЕНИ СРАВНЕНИЯ ПРИЛАГАТЕЛЬНЫХ</strong></p>
+            <ul>
+                <li><strong>Короткие (1–2 слога):</strong> + er/est
+                    <br>big → bigger → the biggest
+                    <br>old → older → the oldest</li>
+                <li><strong>Длинные (3+ слога):</strong> more/the most
+                    <br>beautiful → more beautiful → the most beautiful
+                    <br>interesting → more interesting → the most interesting</li>
+                <li><strong>Неправильные:</strong>
+                    <br>good → better → the best
+                    <br>bad → worse → the worst
+                    <br>much/many → more → the most
+                    <br>little → less → the least</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>6. ПРЕДЛОГИ ВРЕМЕНИ И МЕСТА</strong></p>
+            <ul>
+                <li><strong>at</strong> — точное время, праздники: at 5 o'clock, at Christmas</li>
+                <li><strong>in</strong> — месяцы, года, части дня: in January, in 2020, in the morning</li>
+                <li><strong>on</strong> — дни недели, даты: on Monday, on 5th May</li>
+                <li><strong>in</strong> — внутри: in the box, in Russia</li>
+                <li><strong>on</strong> — на поверхности: on the table, on the wall</li>
+                <li><strong>at</strong> — у точки: at the door, at home, at school</li>
+                <li><strong>under</strong> — под, <strong>behind</strong> — за, <strong>between</strong> — между, <strong>next to</strong> — рядом</li>
+            </ul>
+        </div>
+
+        <!-- Грамматические карточки -->
+        <div class="grammar-card">
+            <div class="card-title">⚡ Present Simple vs Present Continuous</div>
+            <div class="formula">I play tennis every Sunday. (PS — привычка)</div>
+            <div class="formula">I am playing tennis now. (PC — прямо сейчас)</div>
+            <div class="example">She reads books. (всегда) / She is reading a book. (сейчас)</div>
+        </div>
+        <div class="grammar-card">
+            <div class="card-title">⚡ Past Simple: правильные глаголы</div>
+            <div class="formula">work → worked | play → played | study → studied | stop → stopped</div>
+            <div class="example">Правило удвоения согласной: stop→stopped (краткий гласный + согласная)</div>
+        </div>
+        <div class="grammar-card">
+            <div class="card-title">⚡ Вопросительные слова</div>
+            <div class="formula">What — что/какой | Where — где | When — когда | Who — кто</div>
+            <div class="formula">Why — почему | How — как | How much/many — сколько</div>
+        </div>
+
+        <!-- Видеоматериалы -->
+        <div class="video-links">
+            <h4>🎬 Видеоматериалы для повторения</h4>
+            <a href="https://www.youtube.com/watch?v=cQnzJT1e-J8" target="_blank">Английский 6 класс — вся грамматика за год</a>
+            <a href="https://www.youtube.com/watch?v=6EuMHObLuB0" target="_blank">Present Simple vs Present Continuous — объяснение</a>
+            <a href="https://www.youtube.com/watch?v=BiqDZlAZygU" target="_blank">Past Simple — правила и неправильные глаголы</a>
+            <a href="https://www.youtube.com/watch?v=sHoKVJWdpVA" target="_blank">Модальные глаголы can, must, should — объяснение</a>
+            <a href="https://www.youtube.com/watch?v=91Xf4PkCgRA" target="_blank">Артикли a/an/the — когда ставить</a>
+            <a href="https://www.youtube.com/watch?v=ZxjVBQHqtEk" target="_blank">Степени сравнения прилагательных в английском</a>
+            <a href="https://www.youtube.com/watch?v=v-Q-MNBE3bk" target="_blank">Все неправильные глаголы — песня для запоминания</a>
+        </div>
+
+        <!-- Задания с объяснениями -->
+        <div class="section">
+            <h3>📝 Задания с подробными объяснениями</h3>
+
+            <div class="exercise-box">
+                <h4>Задание 1: Выбери правильное время глагола</h4>
+                <div class="task">
+                    Поставь глагол в правильную форму:<br><br>
+                    1) She _______ (read) a book right now.<br>
+                    2) We _______ (visit) London last summer.<br>
+                    3) He _______ (play) football every Sunday.<br>
+                    4) They _______ (travel) to Paris next week.<br>
+                    5) Look! The cat _______ (sleep) on the sofa.<br>
+                    6) I _______ (not/see) this film yesterday.<br>
+                    7) _______ you _______ (study) English at school?<br>
+                    8) She _______ (not/like) coffee.
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solE1')">Показать решение</button>
+                <div class="solution" id="solE1">
+                    <div class="step-solution">
+                        <p>1) <strong>is reading</strong> — Present Continuous (right now — прямо сейчас)</p>
+                        <p>2) <strong>visited</strong> — Past Simple (last summer — в прошлом)</p>
+                        <p>3) <strong>plays</strong> — Present Simple, 3-е лицо ед.ч. + s (every Sunday — привычка)</p>
+                        <p>4) <strong>will travel</strong> — Future Simple (next week — в будущем)</p>
+                        <p>5) <strong>is sleeping</strong> — Present Continuous (Look! — прямо сейчас)</p>
+                        <p>6) <strong>didn't see</strong> — Past Simple отрицание (yesterday — вчера)</p>
+                        <p>7) <strong>Do you study</strong> — Present Simple вопрос (факт)</p>
+                        <p>8) <strong>doesn't like</strong> — Present Simple отрицание, 3-е лицо (факт)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Задание 2: Неправильные глаголы</h4>
+                <div class="task">
+                    Дай вторую форму (Past Simple) неправильных глаголов:<br><br>
+                    1) go → ?<br>
+                    2) see → ?<br>
+                    3) make → ?<br>
+                    4) write → ?<br>
+                    5) buy → ?<br>
+                    6) think → ?<br>
+                    7) eat → ?<br>
+                    8) know → ?<br>
+                    9) take → ?<br>
+                    10) give → ?
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solE2')">Показать решение</button>
+                <div class="solution" id="solE2">
+                    <p>1) go → <strong>went</strong></p>
+                    <p>2) see → <strong>saw</strong></p>
+                    <p>3) make → <strong>made</strong></p>
+                    <p>4) write → <strong>wrote</strong></p>
+                    <p>5) buy → <strong>bought</strong></p>
+                    <p>6) think → <strong>thought</strong></p>
+                    <p>7) eat → <strong>ate</strong></p>
+                    <p>8) know → <strong>knew</strong></p>
+                    <p>9) take → <strong>took</strong></p>
+                    <p>10) give → <strong>gave</strong></p>
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Задание 3: Артикли a / an / the / —</h4>
+                <div class="task">
+                    Вставь нужный артикль (или прочерк —):<br><br>
+                    1) I have ___ dog. ___ dog is very friendly.<br>
+                    2) She is ___ actress.<br>
+                    3) ___ Sun is ___ star.<br>
+                    4) He plays ___ football after school.<br>
+                    5) We live in ___ Russia.<br>
+                    6) I speak ___ English.<br>
+                    7) There is ___ apple on ___ table.<br>
+                    8) ___ Amazon is ___ longest river in ___ South America.
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solE3')">Показать решение</button>
+                <div class="solution" id="solE3">
+                    <p>1) I have <strong>a</strong> dog. <strong>The</strong> dog is very friendly. (сначала первое упоминание → a; потом конкретная → the)</p>
+                    <p>2) She is <strong>an</strong> actress. (an перед гласным звуком)</p>
+                    <p>3) <strong>The</strong> Sun is <strong>a</strong> star. (the — единственный в своём роде; a — одна из многих звёзд)</p>
+                    <p>4) He plays <strong>—</strong> football. (спорт — без артикля)</p>
+                    <p>5) We live in <strong>—</strong> Russia. (страны — без артикля)</p>
+                    <p>6) I speak <strong>—</strong> English. (языки — без артикля)</p>
+                    <p>7) There is <strong>an</strong> apple on <strong>the</strong> table. (an — первое упоминание; the — конкретный стол)</p>
+                    <p>8) <strong>The</strong> Amazon is <strong>the</strong> longest river in <strong>—</strong> South America. (the — конкретная река и превосходная степень; без артикля — континент)</p>
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Задание 4: Степени сравнения прилагательных</h4>
+                <div class="task">
+                    Образуй сравнительную и превосходную степень:<br><br>
+                    1) tall → ___ → ___<br>
+                    2) beautiful → ___ → ___<br>
+                    3) good → ___ → ___<br>
+                    4) bad → ___ → ___<br>
+                    5) hot → ___ → ___<br><br>
+                    Составь предложения со сравнением:<br>
+                    6) Moscow / big / village (больше)<br>
+                    7) This film / interesting / that one (интереснее)<br>
+                    8) Everest / high mountain / world (самая высокая)
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solE4')">Показать решение</button>
+                <div class="solution" id="solE4">
+                    <p>1) tall → <strong>taller</strong> → <strong>the tallest</strong></p>
+                    <p>2) beautiful → <strong>more beautiful</strong> → <strong>the most beautiful</strong></p>
+                    <p>3) good → <strong>better</strong> → <strong>the best</strong> (неправильное!)</p>
+                    <p>4) bad → <strong>worse</strong> → <strong>the worst</strong> (неправильное!)</p>
+                    <p>5) hot → <strong>hotter</strong> → <strong>the hottest</strong> (удвоение tt!)</p>
+                    <p>6) <strong>Moscow is bigger than a village.</strong></p>
+                    <p>7) <strong>This film is more interesting than that one.</strong></p>
+                    <p>8) <strong>Everest is the highest mountain in the world.</strong></p>
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Задание 5: Модальные глаголы</h4>
+                <div class="task">
+                    Выбери правильный модальный глагол и переведи:<br><br>
+                    1) You ___ (must / should) see a doctor. You look terrible! (совет)<br>
+                    2) Children ___ (must / may) not play with fire. (запрет)<br>
+                    3) ___ (Can / Must) you speak French? (умение)<br>
+                    4) You ___ (should / have to) wear a uniform at our school. (правило школы)<br>
+                    5) It ___ (may / must) rain tonight. (возможность)<br>
+                    6) ___ (May / Can) I open the window? (вежливое разрешение)
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solE5')">Показать решение</button>
+                <div class="solution" id="solE5">
+                    <p>1) <strong>should</strong> see a doctor — Тебе следует сходить к врачу. Ты ужасно выглядишь! (совет)</p>
+                    <p>2) <strong>must</strong> not play with fire — Детям нельзя играть с огнём. (строгий запрет)</p>
+                    <p>3) <strong>Can</strong> you speak French? — Ты умеешь говорить по-французски? (умение)</p>
+                    <p>4) <strong>have to</strong> wear a uniform — Нам нужно носить форму. (внешнее правило)</p>
+                    <p>5) <strong>may</strong> rain — Возможно, ночью будет дождь. (возможность)</p>
+                    <p>6) <strong>May</strong> I open the window? — Можно мне открыть окно? (вежливое разрешение)</p>
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Задание 6: Переведи предложения на английский</h4>
+                <div class="task">
+                    1) Она обычно встаёт в 7 утра.<br>
+                    2) Они играли в футбол вчера вечером.<br>
+                    3) Посмотри! Он бежит к автобусу.<br>
+                    4) Мы поедем в Лондон следующим летом.<br>
+                    5) У него есть старший брат?
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solE6')">Показать решение</button>
+                <div class="solution" id="solE6">
+                    <p>1) <strong>She usually gets up at 7 o'clock in the morning.</strong></p>
+                    <p>2) <strong>They played football yesterday evening.</strong></p>
+                    <p>3) <strong>Look! He is running to the bus.</strong></p>
+                    <p>4) <strong>We will go to London next summer.</strong></p>
+                    <p>5) <strong>Does he have an elder brother?</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Тест по английскому -->
+        <div class="quiz-container" id="engQuiz">
+            <h3>🧪 Интерактивный тест: Английский язык</h3>
+            <p style="text-align:center;color:#aaa;margin-bottom:20px;">20 вопросов • Грамматика и лексика 6 класса</p>
+
+            <div class="quiz-question" id="eq1">
+                <p>1. She _______ TV right now. (watch)</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq1',false)">watches</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq1',true)">is watching</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq1',false)">watched</button>
+                <div class="quiz-feedback" id="eq1-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq2">
+                <p>2. They _______ to Paris last year. (go)</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq2',true)">went</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq2',false)">go</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq2',false)">will go</button>
+                <div class="quiz-feedback" id="eq2-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq3">
+                <p>3. I _______ finish my homework tomorrow.</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq3',false)">am going</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq3',true)">will</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq3',false)">did</button>
+                <div class="quiz-feedback" id="eq3-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq4">
+                <p>4. He _______ play the guitar. He's amazing!</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq4',true)">can</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq4',false)">must</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq4',false)">should</button>
+                <div class="quiz-feedback" id="eq4-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq5">
+                <p>5. Вставь артикль: She is _______ engineer.</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq5',false)">the</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq5',true)">an</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq5',false)">a</button>
+                <div class="quiz-feedback" id="eq5-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq6">
+                <p>6. Вторая форма глагола "write":</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq6',false)">writed</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq6',true)">wrote</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq6',false)">written</button>
+                <div class="quiz-feedback" id="eq6-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq7">
+                <p>7. This book is _______ than that one. (interesting)</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq7',false)">interestinger</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq7',true)">more interesting</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq7',false)">the most interesting</button>
+                <div class="quiz-feedback" id="eq7-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq8">
+                <p>8. _______ you _______ English at school? (study — Present Simple вопрос)</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq8',false)">Are / studying</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq8',true)">Do / study</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq8',false)">Did / study</button>
+                <div class="quiz-feedback" id="eq8-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq9">
+                <p>9. Предлог времени: I was born _______ 2010.</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq9',false)">at</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq9',false)">on</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq9',true)">in</button>
+                <div class="quiz-feedback" id="eq9-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq10">
+                <p>10. Форма глагола "good" в превосходной степени:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq10',false)">the most good</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq10',true)">the best</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq10',false)">the goodest</button>
+                <div class="quiz-feedback" id="eq10-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq11">
+                <p>11. You look pale. You _______ see a doctor. (совет)</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq11',true)">should</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq11',false)">can</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq11',false)">will</button>
+                <div class="quiz-feedback" id="eq11-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq12">
+                <p>12. Маркер какого времени "yesterday"?</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq12',false)">Present Simple</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq12',true)">Past Simple</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq12',false)">Future Simple</button>
+                <div class="quiz-feedback" id="eq12-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq13">
+                <p>13. Артикль перед словом "Sun" (Солнце):</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq13',false)">a</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq13',true)">the</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq13',false)">Без артикля</button>
+                <div class="quiz-feedback" id="eq13-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq14">
+                <p>14. Вторая форма глагола "buy":</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq14',false)">buyed</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq14',true)">bought</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq14',false)">buys</button>
+                <div class="quiz-feedback" id="eq14-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq15">
+                <p>15. He _______ (not/play) tennis now.</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq15',false)">doesn't play</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq15',true)">isn't playing</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq15',false)">didn't play</button>
+                <div class="quiz-feedback" id="eq15-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq16">
+                <p>16. Перевод: "How many books do you have?"</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq16',false)">Как много времени у тебя есть?</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq16',true)">Сколько книг у тебя есть?</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq16',false)">Какие книги у тебя есть?</button>
+                <div class="quiz-feedback" id="eq16-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq17">
+                <p>17. Предлог места: The cat is _______ the table. (НА столе)</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq17',false)">in</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq17',true)">on</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq17',false)">at</button>
+                <div class="quiz-feedback" id="eq17-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq18">
+                <p>18. Артикль: He plays _______ football.</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq18',false)">a</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq18',false)">the</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq18',true)">— (без артикля)</button>
+                <div class="quiz-feedback" id="eq18-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq19">
+                <p>19. Вторая форма глагола "think":</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq19',false)">thinked</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq19',true)">thought</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq19',false)">thinks</button>
+                <div class="quiz-feedback" id="eq19-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="eq20">
+                <p>20. Маркер "always" характерен для:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq20',true)">Present Simple</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq20',false)">Present Continuous</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'eq20',false)">Past Simple</button>
+                <div class="quiz-feedback" id="eq20-fb"></div>
+            </div>
+
+            <div class="quiz-score" id="engScore"></div>
+            <button class="quiz-reset-btn" id="engResetBtn" onclick="resetQuiz('eng')">🔄 Пройти тест заново</button>
+        </div>
+    </div>
+
+    <!-- =============================== -->
+    <!-- ЛИТЕРАТУРА -->
+    <!-- =============================== -->
+    <div class="subject-block literature">
+        <h2>📖 Литература — Повторение произведений и авторов</h2>
+        <div class="duration">⏱ Продолжительность: ~2 часа (120 минут)</div>
+
+        <div class="notebook">
+            <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Все произведения программы 6 класса</h4>
+
+            <p><strong>ТАБЛИЦА: АВТОР — ПРОИЗВЕДЕНИЕ — ГЛАВНАЯ МЫСЛЬ</strong></p>
+            <table>
+                <tr><th>Автор</th><th>Произведение</th><th>Жанр</th><th>Главная идея / О чём</th></tr>
+                <tr>
+                    <td>А.С. Пушкин</td>
+                    <td>«Дубровский»</td>
+                    <td>Роман</td>
+                    <td>Благородство, честь, любовь, социальное неравенство. Владимир Дубровский мстит за отца, влюбляется в Машу Троекурову</td>
+                </tr>
+                <tr>
+                    <td>А.С. Пушкин</td>
+                    <td>«Барышня-крестьянка»</td>
+                    <td>Повесть</td>
+                    <td>Любовь преодолевает предрассудки. Лиза Муромская переодевается крестьянкой, чтобы познакомиться с Алексеем</td>
+                </tr>
+                <tr>
+                    <td>М.Ю. Лермонтов</td>
+                    <td>«Тучи»</td>
+                    <td>Стихотворение</td>
+                    <td>Одиночество, изгнание. Лирический герой сравнивает себя с тучами — такими же бездомными скитальцами</td>
+                </tr>
+                <tr>
+                    <td>М.Ю. Лермонтов</td>
+                    <td>«Листок»</td>
+                    <td>Стихотворение</td>
+                    <td>Одиночество, изгнание, поиск приюта. Засохший дубовый листок просит чинару дать ему кров</td>
+                </tr>
+                <tr>
+                    <td>И.С. Тургенев</td>
+                    <td>«Бежин луг»</td>
+                    <td>Рассказ</td>
+                    <td>Красота природы, мир детства, народные поверья. Охотник заблудился и провёл ночь у костра с крестьянскими мальчиками</td>
+                </tr>
+                <tr>
+                    <td>И.С. Тургенев</td>
+                    <td>«Хорь и Калиныч»</td>
+                    <td>Рассказ</td>
+                    <td>Два типа русского крестьянина: практичный Хорь и поэтичный Калиныч</td>
+                </tr>
+                <tr>
+                    <td>Н.С. Лесков</td>
+                    <td>«Левша»</td>
+                    <td>Сказ</td>
+                    <td>Талант русского народа, трагическая судьба мастера. Тульский оружейник подковал блоху, но погиб непризнанным</td>
+                </tr>
+                <tr>
+                    <td>А.П. Чехов</td>
+                    <td>«Толстый и тонкий»</td>
+                    <td>Рассказ</td>
+                    <td>Чинопочитание, раболепие, потеря человеческого достоинства. Старые друзья встретились, но один начал раболепствовать перед другим</td>
+                </tr>
+                <tr>
+                    <td>А.П. Чехов</td>
+                    <td>«Лошадиная фамилия»</td>
+                    <td>Рассказ</td>
+                    <td>Комедия положений, юмор. Все пытаются вспомнить фамилию знахаря</td>
+                </tr>
+                <tr>
+                    <td>В.Г. Короленко</td>
+                    <td>«В дурном обществе»</td>
+                    <td>Повесть</td>
+                    <td>Дружба, сострадание, нравственный выбор. Вася — сын судьи — дружит с бездомными детьми</td>
+                </tr>
+                <tr>
+                    <td>А.А. Фет</td>
+                    <td>«Ель рукавом мне тропинку загородила...»</td>
+                    <td>Стихотворение</td>
+                    <td>Пейзажная лирика, слияние человека с природой</td>
+                </tr>
+                <tr>
+                    <td>Ф.И. Тютчев</td>
+                    <td>«Весенняя гроза», «Есть в осени первоначальной»</td>
+                    <td>Стихотворения</td>
+                    <td>Красота природы в разные времена года, философская лирика</td>
+                </tr>
+                <tr>
+                    <td>Н.А. Некрасов</td>
+                    <td>«Железная дорога»</td>
+                    <td>Стихотворение</td>
+                    <td>Тяжёлый труд народа, строившего железную дорогу. Посвящение Ване</td>
+                </tr>
+                <tr>
+                    <td>М.М. Пришвин</td>
+                    <td>«Кладовая солнца»</td>
+                    <td>Сказка-быль</td>
+                    <td>Единство человека и природы, смелость, взаимовыручка. Дети Настя и Митраша идут за клюквой</td>
+                </tr>
+                <tr>
+                    <td>В.П. Астафьев</td>
+                    <td>«Конь с розовой гривой»</td>
+                    <td>Рассказ</td>
+                    <td>Честность, совесть, доброта бабушки. Мальчик обманул бабушку с земляникой, но был прощён</td>
+                </tr>
+                <tr>
+                    <td>В.Г. Распутин</td>
+                    <td>«Уроки французского»</td>
+                    <td>Рассказ</td>
+                    <td>Доброта, самопожертвование учителя. Лидия Михайловна помогала голодному ученику, играя с ним на деньги</td>
+                </tr>
+                <tr>
+                    <td>Дж. Лондон</td>
+                    <td>«Сказание о Кише»</td>
+                    <td>Рассказ</td>
+                    <td>Мужество, смекалка. Мальчик-эскимос Киш добывает медведя и кормит всё племя</td>
+                </tr>
+                <tr>
+                    <td>А. де Сент-Экзюпери</td>
+                    <td>«Маленький принц»</td>
+                    <td>Сказка-притча</td>
+                    <td>Дружба, любовь, ответственность, смысл жизни. «Зорко одно лишь сердце. Самого главного глазами не увидишь»</td>
+                </tr>
+                <tr>
+                    <td>О. Генри</td>
+                    <td>«Дары волхвов»</td>
+                    <td>Рассказ</td>
+                    <td>Настоящая любовь и самопожертвование. Муж и жена пожертвовали самым дорогим ради подарка друг другу</td>
+                </tr>
+            </table>
+
+            <p style="margin-top: 20px;"><strong>ЛИТЕРАТУРНЫЕ ТЕРМИНЫ — ЗАПОМНИ!</strong></p>
+            <table>
+                <tr><th>Термин</th><th>Определение</th><th>Пример</th></tr>
+                <tr><td>Эпитет</td><td>Образное определение, дающее художественную характеристику</td><td>«золотая осень», «седой туман»</td></tr>
+                <tr><td>Метафора</td><td>Перенос значения по сходству (скрытое сравнение)</td><td>«Горит восток зарёю новой»</td></tr>
+                <tr><td>Сравнение</td><td>Сопоставление двух предметов с союзами как, словно, будто</td><td>«Как лёд, холодна рука»</td></tr>
+                <tr><td>Олицетворение</td><td>Наделение неодушевлённых предметов свойствами живых</td><td>«Лес шепчет», «ветер поёт»</td></tr>
+                <tr><td>Гипербола</td><td>Художественное преувеличение</td><td>«сто лет не виделись»</td></tr>
+                <tr><td>Инверсия</td><td>Необычный порядок слов для выделения</td><td>«Белеет парус одинокий»</td></tr>
+                <tr><td>Рифма</td><td>Созвучие концов стихотворных строк</td><td>мечта–звезда, горе–море</td></tr>
+                <tr><td>Ритм</td><td>Чередование ударных и безударных слогов</td><td>— — — — / — — — —</td></tr>
+                <tr><td>Сказ</td><td>Повествование от лица рассказчика с особой речью</td><td>«Левша» Лескова</td></tr>
+                <tr><td>Притча</td><td>Короткий рассказ с нравственным поучением</td><td>«Маленький принц»</td></tr>
+            </table>
+        </div>
+
+        <div class="tip-box">
+            <strong>Приём для запоминания авторов и произведений:</strong> Составь карточки — на одной стороне название, на другой — автор и главная мысль. Или нарисуй «паутинку»: в центре автор, от него ветви к произведениям.
+        </div>
+
+        <div class="video-links">
+            <h4>🎬 Видеоматериалы для повторения</h4>
+            <a href="https://www.youtube.com/watch?v=0nXANNWx6HY" target="_blank">«Дубровский» Пушкина — краткое содержание за 10 минут</a>
+            <a href="https://www.youtube.com/watch?v=V8kExfT4SUE" target="_blank">«Левша» Лескова — краткое содержание и анализ</a>
+            <a href="https://www.youtube.com/watch?v=CkCFfq8gvLI" target="_blank">«Кладовая солнца» Пришвина — краткое содержание</a>
+            <a href="https://www.youtube.com/watch?v=oLHEFnMjjNY" target="_blank">«Уроки французского» Распутина — анализ</a>
+            <a href="https://www.youtube.com/watch?v=cKuDf2oSVLc" target="_blank">«Маленький принц» — главные идеи и анализ</a>
+            <a href="https://www.youtube.com/watch?v=j1NJkETFbv0" target="_blank">«В дурном обществе» Короленко — краткое содержание</a>
+            <a href="https://www.youtube.com/watch?v=FPaQTyUNpB0" target="_blank">Литературные термины — эпитет, метафора, сравнение</a>
+        </div>
+
+        <!-- Задания по литературе -->
+        <div class="section">
+            <h3>📝 Задания для решения</h3>
+
+            <div class="exercise-box">
+                <h4>Задание 1: Автор и произведение</h4>
+                <div class="task">
+                    Назови автора произведения:<br><br>
+                    1) «Бежин луг» → ?<br>
+                    2) «Левша» → ?<br>
+                    3) «Уроки французского» → ?<br>
+                    4) «Маленький принц» → ?<br>
+                    5) «Конь с розовой гривой» → ?<br>
+                    6) «Дубровский» → ?<br>
+                    7) «Кладовая солнца» → ?<br>
+                    8) «Дары волхвов» → ?
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solL1')">Показать решение</button>
+                <div class="solution" id="solL1">
+                    <p>1) <strong>И.С. Тургенев</strong></p>
+                    <p>2) <strong>Н.С. Лесков</strong></p>
+                    <p>3) <strong>В.Г. Распутин</strong></p>
+                    <p>4) <strong>А. де Сент-Экзюпери</strong></p>
+                    <p>5) <strong>В.П. Астафьев</strong></p>
+                    <p>6) <strong>А.С. Пушкин</strong></p>
+                    <p>7) <strong>М.М. Пришвин</strong></p>
+                    <p>8) <strong>О. Генри</strong></p>
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Задание 2: Определи литературный приём</h4>
+                <div class="task">
+                    Определи, какой приём использован:<br><br>
+                    1) «Ветер злится, ветер воет» — ?<br>
+                    2) «Белый снег как скатерть чистая» — ?<br>
+                    3) «Горит восток зарёю новой» (огонь = рассвет) — ?<br>
+                    4) «Ужасно красивый закат» — ?<br>
+                    5) «Сто лет не виделись» — ?<br>
+                    6) «Белеет парус одинокий» (парус вместо «одинокий парус белеет») — ?
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solL2')">Показать решение</button>
+                <div class="solution" id="solL2">
+                    <p>1) <strong>Олицетворение</strong> (ветер злится — как человек)</p>
+                    <p>2) <strong>Сравнение</strong> (снег как скатерть — с союзом «как»)</p>
+                    <p>3) <strong>Метафора</strong> (горит = рассветает, скрытое сравнение)</p>
+                    <p>4) <strong>Эпитет</strong> (ужасно красивый — образное определение)</p>
+                    <p>5) <strong>Гипербола</strong> (преувеличение — сто лет)</p>
+                    <p>6) <strong>Инверсия</strong> (необычный порядок слов — «белеет парус» вместо «парус белеет»)</p>
+                </div>
+            </div>
+
+            <div class="exercise-box">
+                <h4>Задание 3: Краткое содержание</h4>
+                <div class="task">
+                    Ответь на вопросы кратко (2–3 предложения):<br><br>
+                    1) О чём произведение «Уроки французского» В.Г. Распутина?<br>
+                    2) Кто такой Левша? В чём его талант и трагедия?<br>
+                    3) Какова главная мысль «Маленького принца»? Приведи цитату.
+                </div>
+                <button class="show-solution-btn" onclick="toggleSolution('solL3')">Показать решение</button>
+                <div class="solution" id="solL3">
+                    <div class="step-solution">
+                        <p><span class="step-num">1) «Уроки французского»</span></p>
+                        <p>Рассказ о мальчике из деревни, который учится в городе и голодает. Учительница французского Лидия Михайловна, видя его бедность, начинает играть с ним на деньги, чтобы дать ему возможность купить еду. Главная идея: настоящая доброта и самопожертвование.</p>
+                    </div>
+                    <div class="step-solution">
+                        <p><span class="step-num">2) Левша</span></p>
+                        <p>Тульский мастер-оружейник, который вместе с товарищами подковал крошечную английскую блоху. Его талант огромен, но государство не ценит простых людей. Левша умирает непризнанным, пытаясь передать важный секрет про чистку ружей.</p>
+                    </div>
+                    <div class="step-solution">
+                        <p><span class="step-num">3) «Маленький принц»</span></p>
+                        <p>Главная мысль — о настоящих ценностях: дружбе, любви, ответственности, умении видеть сердцем. Знаменитая цитата Лиса: <em>«Зорко одно лишь сердце. Самого главного глазами не увидишь».</em> Принц отвечает за свою Розу.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Тест по литературе -->
+        <div class="quiz-container" id="litQuiz">
+            <h3>🧪 Интерактивный тест: Литература</h3>
+            <p style="text-align:center;color:#aaa;margin-bottom:20px;">18 вопросов</p>
+
+            <div class="quiz-question" id="lq1">
+                <p>1. Кто написал «Левшу»?</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq1',false)">А.П. Чехов</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq1',true)">Н.С. Лесков</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq1',false)">И.С. Тургенев</button>
+                <div class="quiz-feedback" id="lq1-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq2">
+                <p>2. Главные герои «Кладовой солнца» — это:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq2',true)">Настя и Митраша</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq2',false)">Вася и Маруся</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq2',false)">Дубровский и Маша</button>
+                <div class="quiz-feedback" id="lq2-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq3">
+                <p>3. «Дары волхвов» написал:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq3',false)">Дж. Лондон</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq3',true)">О. Генри</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq3',false)">А. де Сент-Экзюпери</button>
+                <div class="quiz-feedback" id="lq3-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq4">
+                <p>4. «Белеет парус одинокий» — это строки из стихотворения:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq4',false)">А.С. Пушкина</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq4',true)">М.Ю. Лермонтова</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq4',false)">А.А. Фета</button>
+                <div class="quiz-feedback" id="lq4-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq5">
+                <p>5. Олицетворение — это:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq5',false)">Скрытое сравнение</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq5',true)">Наделение неодушевлённых предметов свойствами живых</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq5',false)">Художественное преувеличение</button>
+                <div class="quiz-feedback" id="lq5-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq6">
+                <p>6. Учительницу в рассказе «Уроки французского» зовут:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq6',false)">Мария Ивановна</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq6',true)">Лидия Михайловна</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq6',false)">Анна Павловна</button>
+                <div class="quiz-feedback" id="lq6-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq7">
+                <p>7. Жанр произведения «Левша» Лескова:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq7',false)">Роман</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq7',false)">Поэма</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq7',true)">Сказ</button>
+                <div class="quiz-feedback" id="lq7-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq8">
+                <p>8. Героя «В дурном обществе» Короленко зовут:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq8',true)">Вася</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq8',false)">Митраша</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq8',false)">Киш</button>
+                <div class="quiz-feedback" id="lq8-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq9">
+                <p>9. «Зорко одно лишь сердце» — цитата из:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq9',false)">«Дубровского»</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq9',true)">«Маленького принца»</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq9',false)">«Левши»</button>
+                <div class="quiz-feedback" id="lq9-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq10">
+                <p>10. «Сто лет не виделись» — это пример:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq10',false)">Метафоры</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq10',false)">Сравнения</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq10',true)">Гиперболы</button>
+                <div class="quiz-feedback" id="lq10-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq11">
+                <p>11. «Рассказ «Бежин луг» написан:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq11',true)">И.С. Тургеневым</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq11',false)">Н.А. Некрасовым</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq11',false)">А.П. Чеховым</button>
+                <div class="quiz-feedback" id="lq11-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq12">
+                <p>12. В рассказе «Конь с розовой гривой» мальчик обманул:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq12',false)">Маму</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq12',true)">Бабушку</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq12',false)">Учителя</button>
+                <div class="quiz-feedback" id="lq12-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq13">
+                <p>13. «Железная дорога» — это произведение:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq13',false)">А.А. Фета</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq13',true)">Н.А. Некрасова</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq13',false)">Ф.И. Тютчева</button>
+                <div class="quiz-feedback" id="lq13-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq14">
+                <p>14. Метафора — это:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq14',false)">Сравнение с союзом «как»</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq14',true)">Перенос значения по сходству (скрытое сравнение)</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq14',false)">Образное определение</button>
+                <div class="quiz-feedback" id="lq14-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq15">
+                <p>15. «Сказание о Кише» написал:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq15',true)">Дж. Лондон</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq15',false)">О. Генри</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq15',false)">М. Твен</button>
+                <div class="quiz-feedback" id="lq15-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq16">
+                <p>16. «Толстый и тонкий» — рассказ о:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq16',true)">Чинопочитании и потере достоинства</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq16',false)">Дружбе двух богатырей</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq16',false)">Любви и предательстве</button>
+                <div class="quiz-feedback" id="lq16-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq17">
+                <p>17. «Маленький принц» — это жанр:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq17',false)">Роман</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq17',true)">Сказка-притча</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq17',false)">Сказ</button>
+                <div class="quiz-feedback" id="lq17-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="lq18">
+                <p>18. Стихотворение «Тучи» написал:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq18',false)">А.С. Пушкин</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq18',true)">М.Ю. Лермонтов</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'lq18',false)">Ф.И. Тютчев</button>
+                <div class="quiz-feedback" id="lq18-fb"></div>
+            </div>
+
+            <div class="quiz-score" id="litScore"></div>
+            <button class="quiz-reset-btn" id="litResetBtn" onclick="resetQuiz('lit')">🔄 Пройти тест заново</button>
+        </div>
+    </div>
+
+    <!-- =============================== -->
+    <!-- ДОПОЛНИТЕЛЬНЫЕ ПРЕДМЕТЫ -->
+    <!-- =============================== -->
+    <div class="subject-block extra">
+        <h2>🔬 Дополнительные предметы — Повторение</h2>
+        <div class="duration">⏱ Продолжительность: ~1,5 часа (90 минут)</div>
+
+        <div class="highlight-box">
+            <h4>ℹ️ Что входит в «доп. предметы»</h4>
+            <p>В зависимости от программы школы это могут быть: <strong>Физика (введение)</strong>, <strong>Химия (введение)</strong>, <strong>Изобразительное искусство (ИЗО)</strong>, <strong>Музыка</strong>, <strong>Технология</strong>, <strong>ОБЖ</strong>, <strong>ОРКСЭ</strong>. Ниже — материал по наиболее распространённым.</p>
+        </div>
+
+        <!-- ОБЖ -->
+        <div class="notebook">
+            <h4>📝 ЗАПИШИ В ТЕТРАДЬ — ОБЖ (Основы безопасности жизнедеятельности)</h4>
+
+            <p><strong>1. ЧРЕЗВЫЧАЙНЫЕ СИТУАЦИИ (ЧС)</strong></p>
+            <ul>
+                <li><strong>ЧС природного характера:</strong> землетрясение, наводнение, ураган, цунами, лесной пожар, оползень</li>
+                <li><strong>ЧС техногенного характера:</strong> авария на заводе, пожар, взрыв, катастрофа транспортная</li>
+                <li><strong>ЧС социального характера:</strong> война, терроризм, массовые беспорядки</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>2. ДЕЙСТВИЯ ПРИ ПОЖАРЕ</strong></p>
+            <ul>
+                <li>Позвони <strong>101</strong> (пожарные) или <strong>112</strong> (единый номер)</li>
+                <li>Уходи, пригибаясь — дым поднимается вверх</li>
+                <li>Закрой рот влажной тканью</li>
+                <li>Не пользуйся лифтом</li>
+                <li>Выйди и закрой дверь — не уходи за вещами</li>
+            </ul>
+
+            <p style="margin-top: 15px;"><strong>3. ТЕЛЕФОНЫ ЭКСТРЕННЫХ СЛУЖБ</strong></p>
+            <table>
+                <tr><th>Номер</th><th>Служба</th></tr>
+                <tr><td>101</td><td>Пожарная охрана</td></tr>
+                <tr><td>102</td><td>Полиция</td></tr>
+                <tr><td>103</td><td>Скорая помощь</td></tr>
+                <tr><td>104</td><td>Газовая служба</td></tr>
+                <tr><td>112</td><td>Единый номер экстренных служб</td></tr>
+            </table>
+
+            <p style="margin-top: 15px;"><strong>4. ПЕРВАЯ ПОМОЩЬ — ОСНОВЫ</strong></p>
+            <ul>
+                <li><strong>При порезе:</strong> промой водой → приложи чистую ткань → перевяжи</li>
+                <li><strong>При ожоге:</strong> охладить водой (15–20 мин) → не вскрывать пузыри → обратиться к врачу</li>
+                <li><strong>При переломе:</strong> не двигать конечность → наложить шину → вызвать скорую</li>
+                <li><strong>Потеря сознания:</strong> уложить на бок → вызвать 103 → проверить дыхание</li>
+            </ul>
+        </div>
+
+        <!-- ИЗО -->
+        <div class="notebook">
+            <h4>📝 ЗАПИШИ В ТЕТРАДЬ — ИЗО (Изобразительное искусство)</h4>
+
+            <p><strong>ОСНОВНЫЕ ПОНЯТИЯ:</strong></p>
+            <table>
+                <tr><th>Термин</th><th>Определение</th></tr>
+                <tr><td>Пейзаж</td><td>Изображение природы</td></tr>
+                <tr><td>Портрет</td><td>Изображение человека</td></tr>
+                <tr><td>Натюрморт</td><td>Изображение неодушевлённых предметов</td></tr>
+                <tr><td>Жанровая живопись</td><td>Изображение сцен из повседневной жизни</td></tr>
+                <tr><td>Исторический жанр</td><td>Изображение исторических событий</td></tr>
+                <tr><td>Перспектива</td><td>Изображение объёма и пространства на плоскости</td></tr>
+                <tr><td>Цветовой круг</td><td>Основные: красный, синий, жёлтый. Дополнительные: оранжевый, зелёный, фиолетовый</td></tr>
+                <tr><td>Тёплые цвета</td><td>Красный, оранжевый, жёлтый</td></tr>
+                <tr><td>Холодные цвета</td><td>Синий, голубой, фиолетовый</td></tr>
+                <tr><td>Гравюра</td><td>Вид графики — рисунок процарапывается на твёрдой поверхности</td></tr>
+                <tr><td>Фреска</td><td>Роспись по сырой штукатурке</td></tr>
+            </table>
+
+            <p style="margin-top: 15px;"><strong>ВЕЛИКИЕ ХУДОЖНИКИ И ПРОИЗВЕДЕНИЯ:</strong></p>
+            <table>
+                <tr><th>Художник</th><th>Произведение</th><th>Жанр</th></tr>
+                <tr><td>И.И. Шишкин</td><td>«Утро в сосновом лесу», «Рожь»</td><td>Пейзаж</td></tr>
+                <tr><td>И.Е. Репин</td><td>«Бурлаки на Волге», «Запорожцы пишут письмо»</td><td>Жанровая/историческая</td></tr>
+                <tr><td>В.М. Васнецов</td><td>«Богатыри», «Алёнушка»</td><td>Историческая/сказочная</td></tr>
+                <tr><td>А.И. Куинджи</td><td>«Лунная ночь на Днепре»</td><td>Пейзаж</td></tr>
+                <tr><td>Леонардо да Винчи</td><td>«Мона Лиза», «Тайная вечеря»</td><td>Портрет/религиозная</td></tr>
+                <tr><td>Рафаэль Санти</td><td>«Сикстинская Мадонна»</td><td>Религиозная</td></tr>
+            </table>
+        </div>
+
+        <!-- Музыка -->
+        <div class="notebook">
+            <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Музыка</h4>
+
+            <p><strong>ОСНОВНЫЕ ПОНЯТИЯ:</strong></p>
+            <table>
+                <tr><th>Термин</th><th>Определение</th></tr>
+                <tr><td>Симфония</td><td>Крупное произведение для оркестра в нескольких частях</td></tr>
+                <tr><td>Соната</td><td>Произведение для одного-двух инструментов</td></tr>
+                <tr><td>Опера</td><td>Музыкальный спектакль — всё поётся</td></tr>
+                <tr><td>Балет</td><td>Музыкальный спектакль — выражается танцем</td></tr>
+                <tr><td>Оратория</td><td>Крупное произведение для хора и солистов без сценического действия</td></tr>
+                <tr><td>Кантата</td><td>Вокально-инструментальное произведение (меньше оратории)</td></tr>
+                <tr><td>Увертюра</td><td>Оркестровое вступление к опере или спектаклю</td></tr>
+                <tr><td>Мажор</td><td>Светлый, радостный лад</td></tr>
+                <tr><td>Минор</td><td>Грустный, тёмный лад</td></tr>
+            </table>
+
+            <p style="margin-top: 15px;"><strong>ВЕЛИКИЕ КОМПОЗИТОРЫ:</strong></p>
+            <table>
+                <tr><th>Композитор</th><th>Страна/эпоха</th><th>Известные произведения</th></tr>
+                <tr><td>П.И. Чайковский</td><td>Россия, XIX в.</td><td>«Лебединое озеро», «Щелкунчик», «Спящая красавица», 1-й фортепианный концерт</td></tr>
+                <tr><td>Л. ван Бетховен</td><td>Германия, XVIII–XIX в.</td><td>«К Элизе», 5-я симфония, «Лунная соната»</td></tr>
+                <tr><td>В.А. Моцарт</td><td>Австрия, XVIII в.</td><td>Опера «Волшебная флейта», «Турецкий марш», «Реквием»</td></tr>
+                <tr><td>И.С. Бах</td><td>Германия, XVII–XVIII в.</td><td>«Токката и фуга ре минор», «Хорошо темперированный клавир»</td></tr>
+                <tr><td>М.И. Глинка</td><td>Россия, XIX в.</td><td>Опера «Иван Сусанин», «Руслан и Людмила»</td></tr>
+            </table>
+        </div>
+
+        <div class="video-links">
+            <h4>🎬 Видеоматериалы для повторения</h4>
+            <a href="https://www.youtube.com/watch?v=cqt_uIBqGhM" target="_blank">ОБЖ 6 класс — действия при ЧС и пожаре</a>
+            <a href="https://www.youtube.com/watch?v=3gGY8i_8D9w" target="_blank">ИЗО — жанры живописи: пейзаж, портрет, натюрморт</a>
+            <a href="https://www.youtube.com/watch?v=UzX7iqhNvhI" target="_blank">Великие художники — краткий обзор</a>
+            <a href="https://www.youtube.com/watch?v=_CTYymbbEL4" target="_blank">Музыкальные жанры — опера, балет, симфония</a>
+            <a href="https://www.youtube.com/watch?v=VJOHpKDa9ds" target="_blank">Чайковский — жизнь и произведения кратко</a>
+        </div>
+
+        <!-- Тест по доп. предметам -->
+        <div class="quiz-container" id="extraQuiz">
+            <h3>🧪 Интерактивный тест: Дополнительные предметы</h3>
+            <p style="text-align:center;color:#aaa;margin-bottom:20px;">15 вопросов • ОБЖ + ИЗО + Музыка</p>
+
+            <div class="quiz-question" id="xq1">
+                <p>1. Какой номер скорой помощи?</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq1',false)">101</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq1',true)">103</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq1',false)">102</button>
+                <div class="quiz-feedback" id="xq1-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq2">
+                <p>2. При пожаре в здании нужно:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq2',false)">Воспользоваться лифтом для быстрой эвакуации</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq2',true)">Пригнуться, закрыть рот тканью, уйти по лестнице</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq2',false)">Остаться и позвонить друзьям</button>
+                <div class="quiz-feedback" id="xq2-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq3">
+                <p>3. Натюрморт — это изображение:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq3',false)">Природы (леса, поля, реки)</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq3',false)">Человека</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq3',true)">Неодушевлённых предметов (фрукты, цветы, посуда)</button>
+                <div class="quiz-feedback" id="xq3-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq4">
+                <p>4. «Лебединое озеро» — произведение:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq4',false)">Бетховена</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq4',true)">Чайковского</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq4',false)">Моцарта</button>
+                <div class="quiz-feedback" id="xq4-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq5">
+                <p>5. Основные цвета — это:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq5',false)">Зелёный, оранжевый, фиолетовый</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq5',true)">Красный, синий, жёлтый</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq5',false)">Белый, серый, чёрный</button>
+                <div class="quiz-feedback" id="xq5-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq6">
+                <p>6. Единый номер экстренных служб:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq6',false)">911</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq6',true)">112</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq6',false)">999</button>
+                <div class="quiz-feedback" id="xq6-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq7">
+                <p>7. «Богатыри» — картина художника:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq7',false)">И.И. Шишкина</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq7',false)">И.Е. Репина</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq7',true)">В.М. Васнецова</button>
+                <div class="quiz-feedback" id="xq7-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq8">
+                <p>8. Опера — это музыкальный спектакль, где:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq8',false)">Всё передаётся танцем</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq8',true)">Всё поётся</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq8',false)">Только инструментальная музыка</button>
+                <div class="quiz-feedback" id="xq8-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq9">
+                <p>9. При ожоге первая помощь:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq9',false)">Вскрыть пузырь и намазать маслом</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq9',true)">Охладить водой 15–20 минут</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq9',false)">Приложить горячую грелку</button>
+                <div class="quiz-feedback" id="xq9-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq10">
+                <p>10. Минор — это:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq10',false)">Светлый, радостный лад</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq10',true)">Грустный, тёмный лад</button>
+                <div class="quiz-feedback" id="xq10-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq11">
+                <p>11. «Мона Лиза» — произведение:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq11',false)">Рафаэля</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq11',true)">Леонардо да Винчи</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq11',false)">Микеланджело</button>
+                <div class="quiz-feedback" id="xq11-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq12">
+                <p>12. Балет — это музыкальный спектакль, где:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq12',false)">Всё поётся</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq12',true)">Всё передаётся танцем</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq12',false)">Читают стихи под музыку</button>
+                <div class="quiz-feedback" id="xq12-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq13">
+                <p>13. ЧС природного характера — это:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq13',false)">Авария на заводе</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq13',true)">Землетрясение, наводнение, ураган</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq13',false)">Война, терроризм</button>
+                <div class="quiz-feedback" id="xq13-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq14">
+                <p>14. «Утро в сосновом лесу» написал:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq14',true)">И.И. Шишкин</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq14',false)">А.И. Куинджи</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq14',false)">И.Е. Репин</button>
+                <div class="quiz-feedback" id="xq14-fb"></div>
+            </div>
+
+            <div class="quiz-question" id="xq15">
+                <p>15. Симфония — это:</p>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq15',false)">Произведение для одного инструмента</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq15',true)">Крупное произведение для оркестра в нескольких частях</button>
+                <button class="quiz-option" onclick="checkAnswer(this,'xq15',false)">Вступление к опере</button>
+                <div class="quiz-feedback" id="xq15-fb"></div>
+            </div>
+
+            <div class="quiz-score" id="extraScore"></div>
+            <button class="quiz-reset-btn" id="extraResetBtn" onclick="resetQuiz('extra')">🔄 Пройти тест заново</button>
+        </div>
+    </div>
+
+    <!-- Прогресс-трекер -->
+    <div class="progress-tracker">
+        <h3>📊 Прогресс дня 23</h3>
+        <p>Общий результат по всем тестам</p>
+        <div class="progress-bar">
+            <div class="progress-fill" id="totalProgress" style="width: 0%">0%</div>
+        </div>
+        <p id="totalScoreText" style="margin-top: 10px; color: #aaa;">Пройди все тесты, чтобы увидеть результат</p>
+    </div>
+
+    <!-- Итоги дня -->
+    <div class="section" style="border: 2px solid rgba(240,147,251,0.3); margin-top: 30px;">
+        <h3>🎯 Подведение итогов дня 23</h3>
+        <div class="tip-box">
+            <strong>После завершения всех заданий:</strong><br>
+            1. Отметь все выполненные пункты чек-листа ✅<br>
+            2. Запиши в отдельный столбик темы, где были ошибки<br>
+            3. Просмотри ещё раз видео по сложным темам<br>
+            4. <strong>Завтра — ПРОБНОЕ ТЕСТИРОВАНИЕ №1</strong> по всем предметам!<br>
+            5. Подготовь: бумагу, ручку, лист с черновиком, таймер<br>
+            6. Ложись спать вовремя — свежая голова важнее ночного чтения! 🌙
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function toggleSolution(id) {
+        const sol = document.getElementById(id);
+        sol.style.display = sol.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleCheck(el) {
+        el.classList.toggle('checked');
+    }
+
+    const quizData = {
+        eng:   { total: 20, answered: 0, correct: 0, prefix: 'eq' },
+        lit:   { total: 18, answered: 0, correct: 0, prefix: 'lq' },
+        extra: { total: 15, answered: 0, correct: 0, prefix: 'xq' }
+    };
+
+    function checkAnswer(button, questionId, isCorrect) {
+        const question = document.getElementById(questionId);
+        const buttons = question.querySelectorAll('.quiz-option');
+        const feedback = document.getElementById(questionId + '-fb');
+
+        buttons.forEach(btn => {
+            btn.disabled = true;
+            if (btn === button) btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        });
+
+        if (!isCorrect) {
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes('true')) {
+                    btn.classList.add('correct');
+                }
+            });
+        }
+
+        feedback.textContent = isCorrect ? '✅ Правильно!' : '❌ Неправильно. Смотри правильный ответ выше.';
+        feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+
+        let quizName = '';
+        if (questionId.startsWith('eq')) quizName = 'eng';
+        else if (questionId.startsWith('lq')) quizName = 'lit';
+        else if (questionId.startsWith('xq')) quizName = 'extra';
+
+        quizData[quizName].answered++;
+        if (isCorrect) quizData[quizName].correct++;
+
+        if (quizData[quizName].answered === quizData[quizName].total) {
+            const scoreDiv = document.getElementById(quizName + 'Score');
+            const resetBtn = document.getElementById(quizName + 'ResetBtn');
+            const percent = Math.round((quizData[quizName].correct / quizData[quizName].total) * 100);
+            const emoji = percent >= 90 ? '🌟' : percent >= 70 ? '👍' : percent >= 50 ? '📚' : '💪';
+            scoreDiv.innerHTML = `${emoji} Результат: ${quizData[quizName].correct} из ${quizData[quizName].total} (${percent}%)`;
+            scoreDiv.style.display = 'block';
+            resetBtn.style.display = 'block';
+            updateTotalProgress();
+        }
+    }
+
+    function resetQuiz(quizName) {
+        const data = quizData[quizName];
+        data.answered = 0;
+        data.correct = 0;
+
+        for (let i = 1; i <= data.total; i++) {
+            const qId = data.prefix + i;
+            const question = document.getElementById(qId);
+            if (!question) continue;
+            question.querySelectorAll('.quiz-option').forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove('correct', 'wrong');
+            });
+            const fb = document.getElementById(qId + '-fb');
+            if (fb) { fb.className = 'quiz-feedback'; fb.textContent = ''; }
+        }
+
+        document.getElementById(quizName + 'Score').style.display = 'none';
+        document.getElementById(quizName + 'ResetBtn').style.display = 'none';
+        updateTotalProgress();
+    }
+
+    function updateTotalProgress() {
+        let totalCorrect = 0, totalQuestions = 0, allComplete = true;
+
+        for (const key in quizData) {
+            totalCorrect += quizData[key].correct;
+            totalQuestions += quizData[key].total;
+            if (quizData[key].answered < quizData[key].total) allComplete = false;
+        }
+
+        if (allComplete) {
+            const percent = Math.round((totalCorrect / totalQuestions) * 100);
+            document.getElementById('totalProgress').style.width = percent + '%';
+            document.getElementById('totalProgress').textContent = percent + '%';
+            const msg = percent >= 90 ? '🌟 Отлично! Ты готов к аттестации!'
+                      : percent >= 70 ? '👍 Хорошо! Повтори темы с ошибками.'
+                      : percent >= 50 ? '📚 Неплохо, но нужно ещё поработать.'
+                      : '💪 Не сдавайся! Повтори и попробуй снова.';
+            document.getElementById('totalScoreText').textContent = `${totalCorrect} из ${totalQuestions} • ${msg}`;
+        }
+    }
+</script>
+</body>
+</html>

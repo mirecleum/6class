@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 2 — Английский, Литература, Информатика, Итог</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8; color: #2d3748; line-height: 1.75; padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* Навигация */
+        .nav {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px;
+            background: white; padding: 14px; border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+            position: sticky; top: 8px; z-index: 100;
+        }
+        .nav span { font-weight: bold; color: #718096; align-self: center; font-size:.9em; }
+        .nbtn { padding: 9px 18px; border: none; border-radius: 8px; cursor: pointer;
+                font-weight: bold; font-size: .88em; color: white; transition: all .25s; }
+        .nb-en  { background: #276749; } .nb-en:hover  { background: #22543d; }
+        .nb-lit { background: #702459; } .nb-lit:hover { background: #97266d; }
+        .nb-it  { background: #2b6cb0; } .nb-it:hover  { background: #2c5282; }
+        .nb-fin { background: #c05621; } .nb-fin:hover { background: #9c4221; }
+        .nbtn:hover { transform: translateY(-2px); }
+
+        /* Заголовки */
+        h1 { text-align: center; font-size: 1.9em; margin-bottom: 8px; padding-bottom: 13px; }
+        .h1-en  { color: #22543d; border-bottom: 4px solid #38a169; }
+        .h1-lit { color: #702459; border-bottom: 4px solid #b83280; }
+        .h1-it  { color: #2a4365; border-bottom: 4px solid #3182ce; }
+        .h1-fin { color: #744210; border-bottom: 4px solid #dd6b20; }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 26px; font-size: 1em; }
+        h2 { font-size: 1.42em; margin-bottom: 13px; display: flex; align-items: center; gap: 10px; }
+        h2.hc-en  { color: #22543d; } h2.hc-lit { color: #702459; }
+        h2.hc-it  { color: #2a4365; } h2.hc-fin { color: #744210; }
+        h3 { font-size: 1.1em; color: #2d3748; margin: 17px 0 7px;
+             padding-bottom: 4px; border-bottom: 2px dashed #e2e8f0; }
+
+        /* Блоки */
+        .lesson { background: white; border-radius: 16px; padding: 26px;
+                  margin-bottom: 24px; box-shadow: 0 4px 15px rgba(0,0,0,.07); }
+        .l-en  { border-left: 6px solid #38a169; }
+        .l-en2 { border-left: 6px solid #68d391; }
+        .l-lit { border-left: 6px solid #b83280; }
+        .l-lit2{ border-left: 6px solid #d53f8c; }
+        .l-it  { border-left: 6px solid #3182ce; }
+        .l-it2 { border-left: 6px solid #63b3ed; }
+        .l-fin { border-left: 6px solid #dd6b20; }
+        .l-fin2{ border-left: 6px solid #e53e3e; }
+
+        /* Тетрадь */
+        .nb { background: #fffff0; border: 2px solid #ecc94b; border-radius: 12px;
+              padding: 20px 20px 13px; margin: 13px 0; position: relative; }
+        .nb::before { content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+                      position: absolute; top: -13px; left: 18px;
+                      background: #ecc94b; color: #744210;
+                      padding: 2px 13px; border-radius: 8px;
+                      font-weight: bold; font-size: .82em; }
+
+        /* Правила */
+        .rule { border-radius: 10px; padding: 13px 17px; margin: 10px 0; }
+        .r-g { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .r-b { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .r-y { background: #fffff0; border: 2px solid #f6e05e; }
+        .r-r { background: #fff5f5; border: 2px solid #fc8181; }
+        .r-p { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .r-o { background: #fffaf0; border: 2px solid #fbd38d; }
+        .r-pk{ background: #fff5f7; border: 2px solid #fed7e2; }
+        .r-t { background: #e6fffa; border: 2px solid #81e6d9; }
+
+        /* Таблицы */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .92em; }
+        th { padding: 10px 12px; text-align: left; color: white; }
+        td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+        .th-en  { background: #276749; }
+        .th-lit { background: #702459; }
+        .th-it  { background: #2b6cb0; }
+        .th-fin { background: #c05621; }
+        .th-r   { background: #c53030; }
+
+        /* Упражнения */
+        .exer { background: #faf5ff; border: 2px solid #d6bcfa; border-radius: 12px;
+                padding: 18px 18px 12px; margin: 13px 0; position: relative; }
+        .exer::before { content: "✏️ ЗАДАНИЯ";
+                        position: absolute; top: -13px; left: 18px;
+                        background: #805ad5; color: white;
+                        padding: 2px 12px; border-radius: 8px;
+                        font-weight: bold; font-size: .82em; }
+        .task { background: white; border-radius: 10px; padding: 12px 14px;
+                margin: 9px 0; border-left: 4px solid #805ad5; }
+        .tn { font-weight: bold; color: #805ad5; }
+
+        /* Кнопки */
+        .btn { border: none; padding: 7px 15px; border-radius: 6px; cursor: pointer;
+               font-size: .87em; margin-top: 8px; transition: all .25s; color: white; }
+        .btn-g  { background: #38a169; } .btn-g:hover  { background: #2f855a; }
+        .btn-p  { background: #805ad5; } .btn-p:hover  { background: #6b46c1; }
+        .btn-b  { background: #3182ce; } .btn-b:hover  { background: #2b6cb0; }
+        .btn-pk { background: #b83280; } .btn-pk:hover { background: #97266d; }
+        .btn-o  { background: #dd6b20; } .btn-o:hover  { background: #c05621; }
+        .btn-r  { background: #e53e3e; } .btn-r:hover  { background: #c53030; }
+        .btn-t  { background: #319795; } .btn-t:hover  { background: #2c7a7b; }
+
+        .ans { display: none; border-radius: 8px; padding: 12px 14px;
+               margin-top: 8px; font-size: .91em; line-height: 1.8; }
+        .ans-g  { background: #f0fff4; border: 1px solid #9ae6b4; color: #22543d; }
+        .ans-b  { background: #ebf8ff; border: 1px solid #90cdf4; color: #2a4365; }
+        .ans-p  { background: #faf5ff; border: 1px solid #d6bcfa; color: #44337a; }
+        .ans-pk { background: #fff5f7; border: 1px solid #fed7e2; color: #702459; }
+        .ans-o  { background: #fffaf0; border: 1px solid #fbd38d; color: #7b341e; }
+
+        /* Видео */
+        .vid { background: #fff5f5; border: 2px solid #feb2b2;
+               border-radius: 12px; padding: 13px 17px; margin: 12px 0; }
+        .vid a { color: #c53030; text-decoration: none; font-weight: bold; }
+        .vid a:hover { text-decoration: underline; }
+
+        /* Карточки слов */
+        .word-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+        .word-card { background: white; border: 2px solid #9ae6b4; border-radius: 10px;
+                     padding: 10px 14px; cursor: pointer; transition: all .25s;
+                     min-width: 160px; flex: 1; }
+        .word-card:hover { background: #f0fff4; transform: translateY(-2px);
+                           box-shadow: 0 4px 10px rgba(0,0,0,.1); }
+        .word-en { font-weight: bold; color: #22543d; font-size: 1em; }
+        .word-ru { color: #718096; font-size: .87em; margin-top: 3px; }
+        .word-ex { color: #276749; font-size: .83em; margin-top: 4px; font-style: italic; }
+
+        /* Грамматика */
+        .gram-table th { background: #276749; }
+        .eng-ex { background: #f0fff4; border: 1px solid #9ae6b4; border-radius: 8px;
+                  padding: 13px 16px; margin: 8px 0;
+                  font-family: 'Courier New', monospace; font-size: .93em; }
+        .pos { color: #276749; font-weight: bold; }
+        .neg { color: #c53030; font-weight: bold; }
+        .que { color: #2b6cb0; font-weight: bold; }
+        .mrk { background: #fefcbf; padding: 1px 5px; border-radius: 4px;
+               font-weight: bold; font-size: .88em; }
+
+        /* Неправильные глаголы */
+        .irr-table th { background: #276749; }
+        .irr-table tr:hover { background: #f0fff4; }
+
+        /* Литература */
+        .book-card { background: white; border-radius: 12px; padding: 18px;
+                     margin: 12px 0; border-left: 5px solid #b83280;
+                     box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+        .book-title  { font-weight: bold; font-size: 1.1em; color: #702459; margin-bottom: 6px; }
+        .book-author { color: #718096; font-size: .9em; margin-bottom: 10px; }
+        .plot-step   { background: #fff5f7; border-left: 3px solid #b83280;
+                       border-radius: 6px; padding: 9px 13px; margin: 6px 0; font-size: .91em; }
+
+        /* Информатика */
+        .bit-table { font-family: 'Courier New', monospace; }
+        .bit-table th { background: #2b6cb0; }
+        .algo-block { background: #e6fffa; border: 2px solid #81e6d9;
+                      border-radius: 12px; padding: 14px 18px; margin: 12px 0; }
+        .algo-title { font-weight: bold; color: #234e52; margin-bottom: 8px; }
+        .algo-step  { background: white; border-radius: 8px; padding: 10px 14px;
+                      margin: 7px 0; border-left: 4px solid #319795; font-size: .91em; }
+        .step-num   { display: inline-block; background: #319795; color: white;
+                      width: 24px; height: 24px; border-radius: 50%; text-align: center;
+                      line-height: 24px; font-weight: bold; font-size: .88em; margin-right: 8px; }
+
+        /* Схема */
+        .scheme { background: #f7fafc; border: 2px solid #e2e8f0;
+                  border-radius: 12px; padding: 15px; margin: 12px 0; text-align: center; }
+        .sch-row { display: flex; justify-content: center; align-items: center;
+                   gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+        .sb { padding: 10px 13px; border-radius: 8px; font-size: .86em;
+              font-weight: bold; flex: 1; min-width: 100px; }
+        .sb-g { background: #c6f6d5; color: #22543d; }
+        .sb-b { background: #bee3f8; color: #2a4365; }
+        .sb-p { background: #e9d8fd; color: #44337a; }
+        .sb-o { background: #feebc8; color: #7b341e; }
+        .sb-r { background: #fed7d7; color: #742a2a; }
+        .sb-t { background: #b2f5ea; color: #234e52; }
+        .sb-y { background: #fefcbf; color: #744210; }
+        .arr  { font-size: 1.4em; color: #718096; flex: none; }
+
+        /* Итоговая проверка */
+        .final-block { background: white; border-radius: 16px; padding: 28px;
+                       margin-bottom: 24px; box-shadow: 0 6px 20px rgba(0,0,0,.1);
+                       border: 3px solid #e53e3e; }
+        .final-title { font-size: 1.7em; font-weight: bold; color: #c53030;
+                       text-align: center; margin-bottom: 8px; }
+        .final-sub   { text-align: center; color: #718096; margin-bottom: 20px; }
+
+        /* Таймер */
+        .timer-box { background: #fff5f5; border: 2px solid #fc8181;
+                     border-radius: 12px; padding: 16px; text-align: center; margin: 16px 0; }
+        .timer-disp { font-size: 3em; font-weight: bold; color: #c53030;
+                      font-family: 'Courier New', monospace; letter-spacing: 4px; }
+        .t-btn { padding: 10px 24px; border: none; border-radius: 8px; font-size: .95em;
+                 font-weight: bold; cursor: pointer; margin: 6px; color: white; transition: all .25s; }
+        .tb-start { background: #38a169; } .tb-start:hover { background: #2f855a; }
+        .tb-pause { background: #dd6b20; } .tb-pause:hover { background: #c05621; }
+        .tb-reset { background: #718096; } .tb-reset:hover { background: #4a5568; }
+
+        /* Прогресс */
+        .progress-wrap { margin: 20px 0; }
+        .pr-item { margin: 10px 0; }
+        .pr-label { font-weight: bold; font-size: .92em; margin-bottom: 3px; }
+        .pr-bg { background: #e2e8f0; border-radius: 20px; height: 22px; overflow: hidden; }
+        .pr-bar { height: 100%; border-radius: 20px; display: flex; align-items: center;
+                  justify-content: flex-end; padding-right: 10px;
+                  font-size: .8em; font-weight: bold; color: white; }
+        .pb-ru { background: linear-gradient(90deg,#3182ce,#63b3ed); }
+        .pb-ma { background: linear-gradient(90deg,#38a169,#68d391); }
+        .pb-bi { background: linear-gradient(90deg,#319795,#4fd1c5); }
+
+        /* Чеклист */
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 8px 12px; margin: 5px 0; background: #f7fafc;
+                        border-radius: 8px; display: flex; align-items: center; gap: 10px;
+                        font-size: .92em; cursor: pointer; transition: background .2s; }
+        .checklist li:hover { background: #ebf8ff; }
+        .checklist li input { width: 18px; height: 18px; cursor: pointer; }
+        .checklist li.done { background: #f0fff4; text-decoration: line-through; color: #718096; }
+
+        /* Ачивмент */
+        .achievement { background: linear-gradient(135deg,#f6e05e,#ecc94b);
+                       border-radius: 16px; padding: 24px; text-align: center;
+                       margin: 20px 0; box-shadow: 0 4px 15px rgba(236,201,75,.4);
+                       display: none; }
+        .ach-icon  { font-size: 4em; margin-bottom: 10px; }
+        .ach-title { font-size: 1.5em; font-weight: bold; color: #744210; margin-bottom: 6px; }
+        .ach-text  { color: #7b341e; font-size: .97em; }
+
+        /* Тест */
+        .quiz { background: #fffff0; border: 2px solid #f6ad55;
+                border-radius: 14px; padding: 24px; margin: 22px 0; }
+        .qt { font-size: 1.42em; font-weight: bold; margin-bottom: 6px; }
+        .qb { background: white; border-radius: 10px; padding: 15px 17px;
+              margin: 11px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+        .qb p { font-weight: bold; margin-bottom: 8px; }
+        .qo { display: block; padding: 8px 13px; margin: 4px 0; background: #f7fafc;
+              border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+              transition: all .25s; user-select: none; }
+        .qo:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .qo input { margin-right: 8px; }
+        .chk { padding: 11px 28px; border: none; border-radius: 8px; font-size: .97em;
+               font-weight: bold; cursor: pointer; margin-top: 13px; color: white;
+               transition: background .3s; }
+        .chk-en  { background: #38a169; } .chk-en:hover  { background: #2f855a; }
+        .chk-lit { background: #b83280; } .chk-lit:hover { background: #97266d; }
+        .chk-it  { background: #3182ce; } .chk-it:hover  { background: #2b6cb0; }
+        .res { padding: 15px; border-radius: 10px; margin-top: 15px;
+               display: none; line-height: 1.9; }
+
+        /* Разделитель */
+        .sep { border: none; height: 4px; margin: 32px 0; border-radius: 2px; }
+        .sep-en  { background: linear-gradient(90deg,#38a169,#68d391,#9ae6b4); }
+        .sep-lit { background: linear-gradient(90deg,#b83280,#d53f8c,#f687b3); }
+        .sep-it  { background: linear-gradient(90deg,#3182ce,#63b3ed,#90cdf4); }
+        .sep-fin { background: linear-gradient(90deg,#e53e3e,#fc8181,#fed7d7); }
+
+        /* Теги */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px;
+               font-size: .8em; font-weight: bold; margin: 2px; }
+        .t-th { background: #bee3f8; color: #2a4365; }
+        .t-pr { background: #c6f6d5; color: #22543d; }
+        .t-te { background: #fefcbf; color: #744210; }
+        .dur  { background: #e2e8f0; color: #4a5568; padding: 5px 12px;
+                border-radius: 20px; font-size: .85em; float: right; }
+
+        /* Карточки */
+        .cards { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+                 gap: 12px; margin: 12px 0; }
+        .card { border-radius: 12px; padding: 14px; }
+        .ct { font-weight: bold; font-size: .95em; margin-bottom: 5px; }
+        .cb { font-size: .85em; line-height: 1.55; }
+        .c-g { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .c-b { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .c-o { background: #fffaf0; border: 2px solid #fbd38d; }
+        .c-p { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .c-r { background: #fff5f5; border: 2px solid #fc8181; }
+        .c-t { background: #e6fffa; border: 2px solid #81e6d9; }
+        .c-pk{ background: #fff5f7; border: 2px solid #fed7e2; }
+        .c-y { background: #fffff0; border: 2px solid #f6e05e; }
+
+        /* Контрольная */
+        .ctrl-block { background: white; border-radius: 12px; padding: 20px;
+                      border: 2px solid; margin: 14px 0; }
+        .ctrl-title { font-weight: bold; font-size: 1.05em; margin-bottom: 12px; }
+
+        ul, ol { padding-left: 22px; margin: 8px 0; }
+        li { margin: 5px 0; }
+        .hl  { background: #fefcbf; padding: 1px 5px; border-radius: 4px; }
+        .red { color: #e53e3e; font-weight: bold; }
+        .grn { color: #276749; font-weight: bold; }
+        .blu { color: #2b6cb0; font-weight: bold; }
+
+        .badge { display: inline-block; padding: 5px 14px; border-radius: 16px;
+                 font-weight: bold; font-size: .92em; margin: 3px; }
+        .badge-ru { background: #bee3f8; color: #2a4365; }
+        .badge-ma { background: #c6f6d5; color: #22543d; }
+        .badge-bi { background: #b2f5ea; color: #234e52; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- Навигация -->
+<div class="nav">
+    <span>📌 Перейти:</span>
+    <button class="nbtn nb-en"  onclick="goTo('english')">🇬🇧 Английский</button>
+    <button class="nbtn nb-lit" onclick="goTo('lit')">📚 Литература</button>
+    <button class="nbtn nb-it"  onclick="goTo('it')">💻 Информатика</button>
+    <button class="nbtn nb-fin" onclick="goTo('final')">🏆 Итоговая проверка</button>
+</div>
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║           АНГЛИЙСКИЙ ЯЗЫК                   ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="english">
+    <h1 class="h1-en">🇬🇧 Английский язык — Неделя 2</h1>
+    <p class="subtitle">6 класс | 2,5 часа | Past Simple · Правильные и неправильные глаголы · Food & Daily routine</p>
+
+    <!-- ЗАНЯТИЕ 1 — PAST SIMPLE -->
+    <div class="lesson l-en">
+        <h2 class="hc-en">📖 Занятие 1: Past Simple — образование и употребление</h2>
+        <span class="dur">⏱ 1,5 часа</span>
+        <span class="tag t-th">Грамматика</span>
+        <span class="tag t-pr">Упражнения</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=T9IGKR5DRFE" target="_blank">Past Simple — полный разбор правила (EnglishMe)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=8lY0jBOQrPw" target="_blank">Неправильные глаголы английского языка — топ 50 (Skyeng)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=ZLY-6-JuMaA" target="_blank">Past Simple vs Present Simple — когда какое время? (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=X3DFwqgA1Rg" target="_blank">Правила добавления -ED к правильным глаголам (Инфоурок)</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Когда используем Past Simple?</h3>
+            <div class="rule r-g">
+                <strong>📌 Past Simple</strong> — прошедшее простое время.<br>
+                Используется когда:
+                <ul>
+                    <li>✅ Действие произошло <strong>в прошлом</strong> (завершённое): <em>I visited Moscow last year.</em></li>
+                    <li>✅ Известно <strong>когда именно</strong>: <em>He called yesterday.</em></li>
+                    <li>✅ <strong>Последовательность</strong> прошлых событий: <em>She came in, sat down and opened her book.</em></li>
+                    <li>✅ Прошлые <strong>привычки</strong> (= used to): <em>We played football every Saturday.</em></li>
+                </ul>
+                <br>
+                <strong>Слова-маркеры:</strong>
+                <span class="mrk">yesterday</span>
+                <span class="mrk">last week/month/year</span>
+                <span class="mrk">ago</span>
+                <span class="mrk">in 2020</span>
+                <span class="mrk">when I was young</span>
+                <span class="mrk">in the morning</span>
+            </div>
+
+            <h3>Образование Past Simple</h3>
+
+            <h4>Правильные глаголы → + ED</h4>
+            <table class="gram-table">
+                <tr><th class="th-en">Форма</th><th class="th-en">Структура</th><th class="th-en">Пример</th></tr>
+                <tr>
+                    <td><span class="pos">Утверждение (+)</span></td>
+                    <td>Subject + <strong>V-ed</strong></td>
+                    <td class="pos">I <strong>played</strong> tennis yesterday.</td>
+                </tr>
+                <tr>
+                    <td><span class="neg">Отрицание (−)</span></td>
+                    <td>Subject + <strong>did not (didn't)</strong> + V₁</td>
+                    <td class="neg">She <strong>didn't play</strong> yesterday.</td>
+                </tr>
+                <tr>
+                    <td><span class="que">Вопрос (?)</span></td>
+                    <td><strong>Did</strong> + Subject + V₁ + ?</td>
+                    <td class="que"><strong>Did</strong> they <strong>play</strong>? — Yes, they did. / No, they didn't.</td>
+                </tr>
+            </table>
+
+            <div class="rule r-y">
+                <strong>📌 Правила добавления -ED:</strong>
+                <ul>
+                    <li>Большинство глаголов: + <strong>ed</strong> → <em>play → play<strong>ed</strong></em>, <em>work → work<strong>ed</strong></em></li>
+                    <li>Оканчивается на -e: + <strong>d</strong> → <em>love → love<strong>d</strong></em>, <em>dance → dance<strong>d</strong></em></li>
+                    <li>Согл. + y: y→i + <strong>ed</strong> → <em>study → stud<strong>ied</strong></em>, <em>carry → carr<strong>ied</strong></em></li>
+                    <li>Короткий ударный слог + 1 согл.: удвоить + <strong>ed</strong> → <em>stop → stop<strong>p</strong>ed</em>, <em>plan → plan<strong>n</strong>ed</em></li>
+                </ul>
+            </div>
+
+            <div class="rule r-b">
+                <strong>📌 Произношение окончания -ED:</strong><br>
+                🔊 <strong>/t/</strong> — после глухих согласных (кроме /t/): worked [wɜːkt], washed [wɒʃt]<br>
+                🔊 <strong>/d/</strong> — после звонких согласных и гласных: played [pleɪd], loved [lʌvd]<br>
+                🔊 <strong>/ɪd/</strong> — после /t/ и /d/: wanted [ˈwɒntɪd], needed [ˈniːdɪd]
+            </div>
+
+            <div class="eng-ex">
+<span class="pos">+ She <strong>worked</strong> hard last Monday.</span>
+<span class="pos">+ They <strong>visited</strong> their grandparents last Sunday.</span>
+<span class="neg">− He <strong>didn't watch</strong> TV yesterday evening.</span>
+<span class="neg">− We <strong>didn't study</strong> English last summer.</span>
+<span class="que">? <strong>Did</strong> you <strong>enjoy</strong> the party? — Yes, I <strong>did</strong>.</span>
+<span class="que">? What <strong>did</strong> she <strong>do</strong> yesterday?</span>
+            </div>
+
+            <h4>Неправильные глаголы → особая форма (V2)</h4>
+            <div class="rule r-r">
+                <strong>⚠️ Неправильные глаголы</strong> не принимают -ED! У них своя форма прошедшего времени (V2).<br>
+                В отрицании и вопросе снова используем <strong>основную форму</strong> (V1):<br>
+                <em>I <span class="pos">went</span> → I <span class="neg">didn't go</span> / <span class="que">Did you go?</span></em>
+            </div>
+
+            <h3>Таблица неправильных глаголов (обязательный минимум — выучи!)</h3>
+            <table class="irr-table">
+                <tr>
+                    <th class="th-en">V1 (инфинитив)</th>
+                    <th class="th-en">V2 (Past Simple)</th>
+                    <th class="th-en">Перевод</th>
+                    <th class="th-en">V1</th>
+                    <th class="th-en">V2</th>
+                    <th class="th-en">Перевод</th>
+                </tr>
+                <tr><td>be</td><td><strong>was / were</strong></td><td>быть</td>
+                    <td>leave</td><td><strong>left</strong></td><td>уходить/уезжать</td></tr>
+                <tr><td>have</td><td><strong>had</strong></td><td>иметь</td>
+                    <td>make</td><td><strong>made</strong></td><td>делать</td></tr>
+                <tr><td>go</td><td><strong>went</strong></td><td>идти</td>
+                    <td>meet</td><td><strong>met</strong></td><td>встречать</td></tr>
+                <tr><td>come</td><td><strong>came</strong></td><td>приходить</td>
+                    <td>read</td><td><strong>read</strong> [red]</td><td>читать</td></tr>
+                <tr><td>see</td><td><strong>saw</strong></td><td>видеть</td>
+                    <td>say</td><td><strong>said</strong></td><td>говорить</td></tr>
+                <tr><td>get</td><td><strong>got</strong></td><td>получать</td>
+                    <td>know</td><td><strong>knew</strong></td><td>знать</td></tr>
+                <tr><td>give</td><td><strong>gave</strong></td><td>давать</td>
+                    <td>think</td><td><strong>thought</strong></td><td>думать</td></tr>
+                <tr><td>take</td><td><strong>took</strong></td><td>брать</td>
+                    <td>buy</td><td><strong>bought</strong></td><td>покупать</td></tr>
+                <tr><td>do</td><td><strong>did</strong></td><td>делать</td>
+                    <td>eat</td><td><strong>ate</strong></td><td>есть</td></tr>
+                <tr><td>find</td><td><strong>found</strong></td><td>находить</td>
+                    <td>drink</td><td><strong>drank</strong></td><td>пить</td></tr>
+                <tr><td>write</td><td><strong>wrote</strong></td><td>писать</td>
+                    <td>speak</td><td><strong>spoke</strong></td><td>говорить</td></tr>
+                <tr><td>tell</td><td><strong>told</strong></td><td>рассказывать</td>
+                    <td>put</td><td><strong>put</strong></td><td>класть</td></tr>
+                <tr><td>run</td><td><strong>ran</strong></td><td>бежать</td>
+                    <td>win</td><td><strong>won</strong></td><td>побеждать</td></tr>
+                <tr><td>stand</td><td><strong>stood</strong></td><td>стоять</td>
+                    <td>feel</td><td><strong>felt</strong></td><td>чувствовать</td></tr>
+                <tr><td>begin</td><td><strong>began</strong></td><td>начинать</td>
+                    <td>sit</td><td><strong>sat</strong></td><td>сидеть</td></tr>
+            </table>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">✏️ Упражнение 1: Образуй форму Past Simple</span><br>
+                Напиши формы правильных глаголов (+ED):<br>
+                visit, study, stop, love, try, open, plan, dance, watch, carry
+                <br><br>
+                <button class="btn btn-g" onclick="tog('en1a')">▶ Ответы</button>
+                <div class="ans ans-g" id="en1a">
+visit → <strong>visited</strong>      (+ ed)
+study → <strong>studied</strong>      (y→i + ed)
+stop  → <strong>stopped</strong>      (удвоить p + ed)
+love  → <strong>loved</strong>        (+ d)
+try   → <strong>tried</strong>        (y→i + ed)
+open  → <strong>opened</strong>       (+ ed)
+plan  → <strong>planned</strong>      (удвоить n + ed)
+dance → <strong>danced</strong>       (+ d)
+watch → <strong>watched</strong>      (+ ed)
+carry → <strong>carried</strong>      (y→i + ed)
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="tn">✏️ Упражнение 2: Раскрой скобки (правильные и неправильные глаголы)</span><br>
+                1) She _____ (go) to school by bus yesterday.<br>
+                2) We _____ (not/watch) the film last night.<br>
+                3) _____ he _____ (buy) a new phone? — Yes, he _____.<br>
+                4) They _____ (eat) pizza and _____ (drink) juice.<br>
+                5) I _____ (study) for the test and _____ (get) a good mark.<br>
+                6) _____ you _____ (see) that movie? — No, I _____.<br>
+                7) She _____ (feel) tired, so she _____ (go) to bed early.<br>
+                <br>
+                <button class="btn btn-g" onclick="tog('en1b')">▶ Ответы</button>
+                <div class="ans ans-g" id="en1b">
+1) She <strong>went</strong> to school by bus yesterday.
+2) We <strong>didn't watch</strong> the film last night.
+3) <strong>Did</strong> he <strong>buy</strong> a new phone? — Yes, he <strong>did</strong>.
+4) They <strong>ate</strong> pizza and <strong>drank</strong> juice.
+5) I <strong>studied</strong> for the test and <strong>got</strong> a good mark.
+6) <strong>Did</strong> you <strong>see</strong> that movie? — No, I <strong>didn't</strong>.
+7) She <strong>felt</strong> tired, so she <strong>went</strong> to bed early.
+                </div>
+            </div>
+
+            <div class="task">
+                <span class="tn">✏️ Упражнение 3: Напиши о своём вчерашнем дне</span><br>
+                Составь 6–8 предложений о том, что ты делал вчера. Используй Past Simple и слова-маркеры (yesterday, in the morning/evening, then, after that).<br><br>
+                <em>Образец: Yesterday I woke up at 7 o'clock. Then I had breakfast and went to school. In the afternoon I did my homework and played computer games...</em>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЗАНЯТИЕ 2 — ЛЕКСИКА: FOOD & DAILY ROUTINE -->
+    <div class="lesson l-en2">
+        <h2 class="hc-en">📖 Занятие 2: Лексика — Food & Daily Routine</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-pr">Лексика</span>
+        <span class="tag t-pr">Упражнения</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=oDNFiXcbcAQ" target="_blank">Food vocabulary — еда по-английски (все темы)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=5MHFUE7xJek" target="_blank">Daily routine — распорядок дня на английском (Skyeng)</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>🍽️ Food (Еда) — словарь</h3>
+            <div class="word-grid">
+                <div class="word-card"><div class="word-en">bread</div><div class="word-ru">хлеб</div><div class="word-ex">I eat bread every day.</div></div>
+                <div class="word-card"><div class="word-en">meat</div><div class="word-ru">мясо</div><div class="word-ex">We had meat for dinner.</div></div>
+                <div class="word-card"><div class="word-en">fish</div><div class="word-ru">рыба</div><div class="word-ex">She ate fish yesterday.</div></div>
+                <div class="word-card"><div class="word-en">vegetables</div><div class="word-ru">овощи</div><div class="word-ex">I like vegetables.</div></div>
+                <div class="word-card"><div class="word-en">fruit</div><div class="word-ru">фрукты</div><div class="word-ex">We bought fresh fruit.</div></div>
+                <div class="word-card"><div class="word-en">soup</div><div class="word-ru">суп</div><div class="word-ex">Mum cooked soup.</div></div>
+                <div class="word-card"><div class="word-en">rice</div><div class="word-ru">рис</div><div class="word-ex">I had rice with chicken.</div></div>
+                <div class="word-card"><div class="word-en">pasta</div><div class="word-ru">паста/макароны</div><div class="word-ex">We cooked pasta.</div></div>
+                <div class="word-card"><div class="word-en">cheese</div><div class="word-ru">сыр</div><div class="word-ex">I put cheese on bread.</div></div>
+                <div class="word-card"><div class="word-en">eggs</div><div class="word-ru">яйца</div><div class="word-ex">She fried two eggs.</div></div>
+                <div class="word-card"><div class="word-en">milk</div><div class="word-ru">молоко</div><div class="word-ex">He drank a glass of milk.</div></div>
+                <div class="word-card"><div class="word-en">juice</div><div class="word-ru">сок</div><div class="word-ex">I drank orange juice.</div></div>
+                <div class="word-card"><div class="word-en">tea / coffee</div><div class="word-ru">чай / кофе</div><div class="word-ex">Dad had coffee.</div></div>
+                <div class="word-card"><div class="word-en">cake</div><div class="word-ru">торт/пирог</div><div class="word-ex">We ate birthday cake.</div></div>
+                <div class="word-card"><div class="word-en">salad</div><div class="word-ru">салат</div><div class="word-ex">I made a salad.</div></div>
+                <div class="word-card"><div class="word-en">sandwich</div><div class="word-ru">бутерброд</div><div class="word-ex">I took a sandwich to school.</div></div>
+            </div>
+
+            <h3>⏰ Daily Routine (Распорядок дня)</h3>
+            <div class="word-grid">
+                <div class="word-card"><div class="word-en">wake up</div><div class="word-ru">просыпаться</div><div class="word-ex">I woke up at 7.</div></div>
+                <div class="word-card"><div class="word-en">get up</div><div class="word-ru">вставать</div><div class="word-ex">She got up late.</div></div>
+                <div class="word-card"><div class="word-en">have breakfast</div><div class="word-ru">завтракать</div><div class="word-ex">We had breakfast together.</div></div>
+                <div class="word-card"><div class="word-en">go to school</div><div class="word-ru">идти в школу</div><div class="word-ex">He went to school by bus.</div></div>
+                <div class="word-card"><div class="word-en">have lunch</div><div class="word-ru">обедать</div><div class="word-ex">I had lunch at noon.</div></div>
+                <div class="word-card"><div class="word-en">come home</div><div class="word-ru">приходить домой</div><div class="word-ex">She came home at 3.</div></div>
+                <div class="word-card"><div class="word-en">do homework</div><div class="word-ru">делать д/з</div><div class="word-ex">I did homework for 2 hours.</div></div>
+                <div class="word-card"><div class="word-en">have dinner</div><div class="word-ru">ужинать</div><div class="word-ex">We had dinner at 7.</div></div>
+                <div class="word-card"><div class="word-en">watch TV</div><div class="word-ru">смотреть ТВ</div><div class="word-ex">He watched TV in the evening.</div></div>
+                <div class="word-card"><div class="word-en">go to bed</div><div class="word-ru">ложиться спать</div><div class="word-ex">I went to bed at 10.</div></div>
+                <div class="word-card"><div class="word-en">read a book</div><div class="word-ru">читать книгу</div><div class="word-ex">She read a book before bed.</div></div>
+                <div class="word-card"><div class="word-en">brush teeth</div><div class="word-ru">чистить зубы</div><div class="word-ex">I brushed my teeth twice.</div></div>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">✏️ Упражнение 4: Переведи на английский (Past Simple)</span><br>
+                1) Я позавтракал в 8 утра. &nbsp; 2) Она купила хлеб и молоко. &nbsp;
+                3) Мы поужинали рыбой и салатом. &nbsp; 4) Он пришёл домой и сделал домашнее задание.
+                5) Они съели торт на вечеринке.
+                <br><br>
+                <button class="btn btn-g" onclick="tog('en2a')">▶ Ответы</button>
+                <div class="ans ans-g" id="en2a">
+1) I <strong>had breakfast</strong> at 8 o'clock in the morning.
+2) She <strong>bought</strong> bread and milk.
+3) We <strong>had dinner</strong> with fish and salad.
+4) He <strong>came home</strong> and <strong>did</strong> his homework.
+5) They <strong>ate</strong> cake at the party.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ АНГЛИЙСКИЙ -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест по английскому — Past Simple</div>
+        <p>10 вопросов | Grammar + Vocabulary</p>
+        <form id="enQuiz">
+            <div class="qb"><p>1. Правильная форма Past Simple глагола «study»:</p>
+                <label class="qo"><input type="radio" name="e1" value="a"> studyed</label>
+                <label class="qo"><input type="radio" name="e1" value="b"> studied</label>
+                <label class="qo"><input type="radio" name="e1" value="c"> studed</label>
+                <label class="qo"><input type="radio" name="e1" value="d"> studid</label>
+            </div>
+            <div class="qb"><p>2. Форма Past Simple глагола «go»:</p>
+                <label class="qo"><input type="radio" name="e2" value="a"> goed</label>
+                <label class="qo"><input type="radio" name="e2" value="b"> gone</label>
+                <label class="qo"><input type="radio" name="e2" value="c"> went</label>
+                <label class="qo"><input type="radio" name="e2" value="d"> goes</label>
+            </div>
+            <div class="qb"><p>3. Правильное отрицание: «She played tennis» →</p>
+                <label class="qo"><input type="radio" name="e3" value="a"> She not played tennis.</label>
+                <label class="qo"><input type="radio" name="e3" value="b"> She didn't played tennis.</label>
+                <label class="qo"><input type="radio" name="e3" value="c"> She didn't play tennis.</label>
+                <label class="qo"><input type="radio" name="e3" value="d"> She wasn't play tennis.</label>
+            </div>
+            <div class="qb"><p>4. Вопрос в Past Simple: «_____ you _____ the film?»</p>
+                <label class="qo"><input type="radio" name="e4" value="a"> Do / see</label>
+                <label class="qo"><input type="radio" name="e4" value="b"> Did / saw</label>
+                <label class="qo"><input type="radio" name="e4" value="c"> Did / see</label>
+                <label class="qo"><input type="radio" name="e4" value="d"> Were / see</label>
+            </div>
+            <div class="qb"><p>5. Слово-маркер Past Simple:</p>
+                <label class="qo"><input type="radio" name="e5" value="a"> now</label>
+                <label class="qo"><input type="radio" name="e5" value="b"> usually</label>
+                <label class="qo"><input type="radio" name="e5" value="c"> yesterday</label>
+                <label class="qo"><input type="radio" name="e5" value="d"> at the moment</label>
+            </div>
+            <div class="qb"><p>6. Past Simple глагола «buy»:</p>
+                <label class="qo"><input type="radio" name="e6" value="a"> buyed</label>
+                <label class="qo"><input type="radio" name="e6" value="b"> bought</label>
+                <label class="qo"><input type="radio" name="e6" value="c"> buied</label>
+                <label class="qo"><input type="radio" name="e6" value="d"> bough</label>
+            </div>
+            <div class="qb"><p>7. «To have breakfast» означает:</p>
+                <label class="qo"><input type="radio" name="e7" value="a"> ужинать</label>
+                <label class="qo"><input type="radio" name="e7" value="b"> обедать</label>
+                <label class="qo"><input type="radio" name="e7" value="c"> завтракать</label>
+                <label class="qo"><input type="radio" name="e7" value="d"> готовить ужин</label>
+            </div>
+            <div class="qb"><p>8. Как произносится окончание -ed в слове «worked»?</p>
+                <label class="qo"><input type="radio" name="e8" value="a"> /ɪd/</label>
+                <label class="qo"><input type="radio" name="e8" value="b"> /d/</label>
+                <label class="qo"><input type="radio" name="e8" value="c"> /t/</label>
+                <label class="qo"><input type="radio" name="e8" value="d"> /ed/</label>
+            </div>
+            <div class="qb"><p>9. Past Simple глагола «eat»:</p>
+                <label class="qo"><input type="radio" name="e9" value="a"> eated</label>
+                <label class="qo"><input type="radio" name="e9" value="b"> eaten</label>
+                <label class="qo"><input type="radio" name="e9" value="c"> ate</label>
+                <label class="qo"><input type="radio" name="e9" value="d"> eat</label>
+            </div>
+            <div class="qb"><p>10. Переведи: «Мы поужинали вместе вчера.»</p>
+                <label class="qo"><input type="radio" name="e10" value="a"> We have dinner together yesterday.</label>
+                <label class="qo"><input type="radio" name="e10" value="b"> We had dinner together yesterday.</label>
+                <label class="qo"><input type="radio" name="e10" value="c"> We did dinner together yesterday.</label>
+                <label class="qo"><input type="radio" name="e10" value="d"> We were dinner together yesterday.</label>
+            </div>
+            <button type="button" class="chk chk-en" onclick="runQuiz('enQuiz',enAns,enExp,'enRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="enRes"></div>
+    </div>
+</div>
+
+<hr class="sep sep-en">
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║              ЛИТЕРАТУРА                     ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="lit">
+    <h1 class="h1-lit">📚 Литература — Неделя 2</h1>
+    <p class="subtitle">6 класс | 2,5 часа | Лермонтов · Тургенев · Некрасов · Чехов</p>
+
+    <div class="lesson l-lit">
+        <h2 class="hc-lit">📖 Занятие 1: М.Ю. Лермонтов — «Тучи». И.С. Тургенев — «Бежин луг».</h2>
+        <span class="dur">⏱ 1,5 часа</span>
+        <span class="tag t-pr">Чтение</span>
+        <span class="tag t-th">Анализ</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=MFXWmJBX5h4" target="_blank">Лермонтов «Тучи» — анализ стихотворения (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=iIDLuioH4xM" target="_blank">Тургенев «Бежин луг» — краткое содержание (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=b0UY6KJk3LQ" target="_blank">«Бежин луг» — анализ образов крестьянских детей</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=UEJ4ZOLB2GQ" target="_blank">Некрасов и Чехов — обзор произведений 6 класс</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <!-- ЛЕРМОНТОВ -->
+            <h3>М.Ю. Лермонтов (1814–1841) — «Тучи»</h3>
+
+            <div class="book-card">
+                <div class="book-title">☁️ «Тучи» (1840)</div>
+                <div class="book-author">Михаил Юрьевич Лермонтов | Жанр: лирическое стихотворение | Написано перед вторым отправлением в ссылку на Кавказ</div>
+                <div class="plot-step"><strong>Тема:</strong> Одиночество, изгнание, тоска по Родине. Сравнение поэта с тучами — вечными странниками.</div>
+                <div class="plot-step"><strong>Образ туч:</strong> Тучи — «вечные странники», мчатся с «милого севера» на юг. Они свободны от изгнания, у них нет родины, нет чувств — им всё равно.</div>
+                <div class="plot-step"><strong>Главный контраст:</strong> Лирический герой страдает от разлуки с Родиной (у него есть привязанность, любовь, боль). Тучи — холодны и равнодушны.</div>
+                <div class="plot-step"><strong>Художественные средства:</strong>
+                    Риторические вопросы («Кто же вас гонит?»), олицетворение (тучки — вечные странники), антитеза (поэт и тучи), анафора (повтор «нет»).</div>
+                <div class="plot-step"><strong>Идея:</strong> Поэт завидует холодности туч, но в то же время понимает, что неспособность любить — это не свобода, а пустота.</div>
+            </div>
+
+            <div class="rule r-pk">
+                <strong>📌 Знай текст стихотворения!</strong><br>
+                <em>Тучки небесные, вечные странники!<br>
+                Степью лазурною, цепью жемчужною<br>
+                Мчитесь вы, будто как я же, изгнанники,<br>
+                С милого севера в сторону южную...</em><br><br>
+                <strong>Запомни: «Тучи» — исповедь поэта-изгнанника.</strong>
+            </div>
+
+            <!-- ТУРГЕНЕВ -->
+            <h3>И.С. Тургенев (1818–1883) — «Бежин луг»</h3>
+
+            <div class="book-card">
+                <div class="book-title">🔥 «Бежин луг» (1852)</div>
+                <div class="book-author">Иван Сергеевич Тургенев | Жанр: рассказ | Входит в сборник «Записки охотника»</div>
+                <div class="plot-step"><strong>Сюжет:</strong> Рассказчик-охотник заблудился в лесу. Ночью набрёл на костёр, у которого крестьянские мальчики пасли лошадей. Провёл с ними ночь, слушая их рассказы о нечистой силе.</div>
+                <div class="plot-step"><strong>Мальчики (5 героев) — запомни всех!</strong>
+                    <ul>
+                        <li>🏅 <strong>Федя</strong> (14 лет) — из богатой семьи, красивый, нарядно одетый. Вожак компании. Больше слушает, чем рассказывает.</li>
+                        <li>🌙 <strong>Павлуша</strong> (12 лет) — некрасивый, но умный и смелый. Лидер по духу. Не боится нечистой силы. Слышит голос утопленника, не боится. <strong>Погиб в конце</strong> (упал с лошади).</li>
+                        <li>📚 <strong>Илюша</strong> (12 лет) — знает больше всего быличек и страшных историй. Работящий, из бедной семьи.</li>
+                        <li>😊 <strong>Костя</strong> (10 лет) — задумчивый, боязливый, с большими глазами. Рассказывает про русалку.</li>
+                        <li>👶 <strong>Ваня</strong> (7 лет) — самый маленький. Почти не говорит. Восхищается звёздами.</li>
+                    </ul>
+                </div>
+                <div class="plot-step"><strong>Пейзаж</strong> — важный элемент рассказа. Описание летней ночи, рассвета создаёт атмосферу таинственности и красоты природы.</div>
+                <div class="plot-step"><strong>Тема:</strong> Жизнь крестьянских детей. Красота природы. Народные верования и суеверия. Детская непосредственность.</div>
+                <div class="plot-step"><strong>Идея:</strong> Крестьянские дети — живые, умные, поэтичные. Жёсткое крепостное право уродует их жизнь (намёк на несправедливость общества).</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson l-lit2">
+        <h2 class="hc-lit">📖 Занятие 2: Н.А. Некрасов. А.П. Чехов — рассказы.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-pr">Чтение</span>
+        <span class="tag t-th">Анализ</span>
+
+        <div class="nb">
+            <!-- НЕКРАСОВ -->
+            <h3>Н.А. Некрасов (1821–1877)</h3>
+
+            <div class="book-card">
+                <div class="book-title">🌾 Н.А. Некрасов — главные темы творчества</div>
+                <div class="book-author">Николай Алексеевич Некрасов — «поэт народного горя», певец крестьянской России</div>
+                <div class="plot-step"><strong>«Крестьянские дети» (1861)</strong> — стихотворение о жизни деревенских детей. Рассказчик наблюдает за детьми в сарае. Дети любопытны, свободны, близки к природе — но их ждёт тяжёлый крестьянский труд.</div>
+                <div class="plot-step"><strong>«Железная дорога» (1864)</strong> — о строителях железной дороги. Мороз-воевода — символ народного духа. Тысячи крестьян погибли при строительстве Николаевской железной дороги. Некрасов показывает правду, которую скрывают от детей.</div>
+                <div class="plot-step"><strong>Главные темы Некрасова:</strong>
+                    <ul>
+                        <li>Страдания простого народа (крестьян)</li>
+                        <li>Детский труд и тяжёлая жизнь</li>
+                        <li>Образ Родины-матери</li>
+                        <li>Сатира на власть и богачей</li>
+                    </ul>
+                </div>
+                <div class="plot-step"><strong>Художественные особенности:</strong> разговорная речь, народная лексика, смешение лирики и публицистики.</div>
+            </div>
+
+            <!-- ЧЕХОВ -->
+            <h3>А.П. Чехов (1860–1904) — рассказы</h3>
+
+            <div class="book-card">
+                <div class="book-title">😄 «Толстый и тонкий» (1883)</div>
+                <div class="book-author">Антон Павлович Чехов | Жанр: юмористический рассказ</div>
+                <div class="plot-step"><strong>Сюжет:</strong> На вокзале встречаются два бывших одноклассника. Встреча радостная. Но узнав, что «толстый» стал тайным советником, «тонкий» мгновенно начинает унижаться и раболепствовать.</div>
+                <div class="plot-step"><strong>Тема и идея:</strong> Чинопочитание — раболепие перед людьми более высокого социального положения. Чехов высмеивает человека, который утрачивает достоинство из-за чина другого.</div>
+                <div class="plot-step"><strong>Приём:</strong> Говорящие прозвища (Толстый — сытый, довольный; Тонкий — подобострастный, льстивый).</div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-title">🎓 «Хирургия» (1884)</div>
+                <div class="book-author">А.П. Чехов | Жанр: юмористический рассказ</div>
+                <div class="plot-step"><strong>Сюжет:</strong> Фельдшер Курятин (без врача) берётся вырвать зуб дьячку Вонмигласову. Самоуверен, хвастается. В итоге ломает зуб, причиняет пациенту страшную боль, но вины не признаёт.</div>
+                <div class="plot-step"><strong>Тема и идея:</strong> Некомпетентность и самоуверенность человека, который берётся не за своё дело. Комизм ситуации — через несоответствие самооценки и реальности.</div>
+                <div class="plot-step"><strong>Особенности стиля Чехова:</strong>
+                    <ul>
+                        <li>Краткость («Краткость — сестра таланта»)</li>
+                        <li>Говорящие имена и фамилии</li>
+                        <li>Юмор через детали и диалог</li>
+                        <li>Отсутствие прямой авторской оценки</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rule r-pk">
+                <strong>📌 Сравнительная таблица авторов:</strong>
+                <table>
+                    <tr>
+                        <th class="th-lit">Автор</th>
+                        <th class="th-lit">Годы жизни</th>
+                        <th class="th-lit">Главные темы</th>
+                        <th class="th-lit">Особенности стиля</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Лермонтов</strong></td>
+                        <td>1814–1841</td>
+                        <td>Одиночество, свобода, изгнание</td>
+                        <td>Романтизм, лирическая исповедь</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Тургенев</strong></td>
+                        <td>1818–1883</td>
+                        <td>Природа, крестьянская жизнь, детство</td>
+                        <td>Пейзажная лирика, реализм</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Некрасов</strong></td>
+                        <td>1821–1877</td>
+                        <td>Народное горе, крестьянство</td>
+                        <td>Гражданская лирика, народная речь</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Чехов</strong></td>
+                        <td>1860–1904</td>
+                        <td>Пошлость, чинопочитание, быт</td>
+                        <td>Юмор, краткость, детали</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание 1: Анализ стихотворения «Тучи»</span><br>
+                Ответь письменно: Почему лирический герой сравнивает себя с тучами? В чём принципиальное различие между ними?
+                <br><br>
+                <button class="btn btn-pk" onclick="tog('lit_a1')">▶ Примерный ответ</button>
+                <div class="ans ans-pk" id="lit_a1">
+Сходство: и герой, и тучи покидают «милый север» и мчатся
+на юг. Оба — «изгнанники» (герой — ссыльный поэт).
+
+Различие: герой страдает от изгнания, тоскует по родине,
+любит её. Тучи же «чужды» всему — у них нет родины,
+нет привязанности, нет боли. Они свободны, но бесчувственны.
+
+Вывод: неспособность любить — это не свобода, а пустота.
+Лермонтов предпочитает страдать, но сохранить душу.
+                </div>
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 2: Характеристика героев «Бежина луга»</span><br>
+                Составь таблицу в тетради: Имя / Возраст / Внешность / Характер / Рассказанная история
+                для всех пяти мальчиков.
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 3: Мини-сочинение (5–7 предложений)</span><br>
+                «Что высмеивает Чехов в рассказе «Толстый и тонкий»? Какова главная мысль рассказа?»
+                <br><br>
+                <button class="btn btn-pk" onclick="tog('lit_a3')">▶ Примерный ответ</button>
+                <div class="ans ans-pk" id="lit_a3">
+В рассказе «Толстый и тонкий» Чехов высмеивает чинопочитание
+— рабское преклонение перед людьми более высокого чина.
+Тонкий при встрече с другом радуется искренне, но узнав о
+его высоком звании, моментально меняется: начинает льстить
+и унижаться. Главная мысль: человек, живущий по принципу
+«чин важнее дружбы и достоинства», теряет себя. Чехов
+показывает: общество, где чин заменяет личность — больное
+общество. Настоящая дружба не зависит от должности.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ ЛИТЕРАТУРА -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест по литературе — Неделя 2</div>
+        <p>10 вопросов | Лермонтов · Тургенев · Некрасов · Чехов</p>
+        <form id="litQuiz">
+            <div class="qb"><p>1. В каком году написано стихотворение «Тучи»?</p>
+                <label class="qo"><input type="radio" name="l1" value="a"> 1837</label>
+                <label class="qo"><input type="radio" name="l1" value="b"> 1840</label>
+                <label class="qo"><input type="radio" name="l1" value="c"> 1852</label>
+                <label class="qo"><input type="radio" name="l1" value="d"> 1864</label>
+            </div>
+            <div class="qb"><p>2. Какой мальчик в «Бежином луге» знает больше всего страшных историй?</p>
+                <label class="qo"><input type="radio" name="l2" value="a"> Федя</label>
+                <label class="qo"><input type="radio" name="l2" value="b"> Павлуша</label>
+                <label class="qo"><input type="radio" name="l2" value="c"> Илюша</label>
+                <label class="qo"><input type="radio" name="l2" value="d"> Костя</label>
+            </div>
+            <div class="qb"><p>3. Кто из мальчиков в «Бежином луге» погиб в конце рассказа?</p>
+                <label class="qo"><input type="radio" name="l3" value="a"> Федя</label>
+                <label class="qo"><input type="radio" name="l3" value="b"> Павлуша</label>
+                <label class="qo"><input type="radio" name="l3" value="c"> Илюша</label>
+                <label class="qo"><input type="radio" name="l3" value="d"> Ваня</label>
+            </div>
+            <div class="qb"><p>4. «Краткость — сестра таланта» — это высказывание принадлежит:</p>
+                <label class="qo"><input type="radio" name="l4" value="a"> Лермонтову</label>
+                <label class="qo"><input type="radio" name="l4" value="b"> Тургеневу</label>
+                <label class="qo"><input type="radio" name="l4" value="c"> Некрасову</label>
+                <label class="qo"><input type="radio" name="l4" value="d"> Чехову</label>
+            </div>
+            <div class="qb"><p>5. Главная тема рассказа «Толстый и тонкий»:</p>
+                <label class="qo"><input type="radio" name="l5" value="a"> Дружба и верность</label>
+                <label class="qo"><input type="radio" name="l5" value="b"> Чинопочитание и потеря достоинства</label>
+                <label class="qo"><input type="radio" name="l5" value="c"> Бедность и богатство</label>
+                <label class="qo"><input type="radio" name="l5" value="d"> Любовь и разлука</label>
+            </div>
+            <div class="qb"><p>6. Сборник рассказов Тургенева, в который входит «Бежин луг»:</p>
+                <label class="qo"><input type="radio" name="l6" value="a"> «Отцы и дети»</label>
+                <label class="qo"><input type="radio" name="l6" value="b"> «Записки охотника»</label>
+                <label class="qo"><input type="radio" name="l6" value="c"> «Муму»</label>
+                <label class="qo"><input type="radio" name="l6" value="d"> «Дворянское гнездо»</label>
+            </div>
+            <div class="qb"><p>7. Что символизируют тучи в стихотворении Лермонтова?</p>
+                <label class="qo"><input type="radio" name="l7" value="a"> Родину и любовь</label>
+                <label class="qo"><input type="radio" name="l7" value="b"> Свободу, но бесчувственную и холодную</label>
+                <label class="qo"><input type="radio" name="l7" value="c"> Надежду на возвращение</label>
+                <label class="qo"><input type="radio" name="l7" value="d"> Опасность и тревогу</label>
+            </div>
+            <div class="qb"><p>8. Главная тема творчества Некрасова:</p>
+                <label class="qo"><input type="radio" name="l8" value="a"> Романтическое одиночество</label>
+                <label class="qo"><input type="radio" name="l8" value="b"> Страдания простого народа (крестьян)</label>
+                <label class="qo"><input type="radio" name="l8" value="c"> Приключения путешественников</label>
+                <label class="qo"><input type="radio" name="l8" value="d"> Светская жизнь дворян</label>
+            </div>
+            <div class="qb"><p>9. «Хирургия» Чехова высмеивает:</p>
+                <label class="qo"><input type="radio" name="l9" value="a"> Жадность врачей</label>
+                <label class="qo"><input type="radio" name="l9" value="b"> Некомпетентность и самоуверенность</label>
+                <label class="qo"><input type="radio" name="l9" value="c"> Страх перед больницами</label>
+                <label class="qo"><input type="radio" name="l9" value="d"> Суеверие пациентов</label>
+            </div>
+            <div class="qb"><p>10. В каком году жил А.П. Чехов?</p>
+                <label class="qo"><input type="radio" name="l10" value="a"> 1814–1841</label>
+                <label class="qo"><input type="radio" name="l10" value="b"> 1818–1883</label>
+                <label class="qo"><input type="radio" name="l10" value="c"> 1860–1904</label>
+                <label class="qo"><input type="radio" name="l10" value="d"> 1821–1877</label>
+            </div>
+            <button type="button" class="chk chk-lit" onclick="runQuiz('litQuiz',litAns,litExp,'litRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="litRes"></div>
+    </div>
+</div>
+
+<hr class="sep sep-lit">
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║              ИНФОРМАТИКА                    ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="it">
+    <h1 class="h1-it">💻 Информатика — Неделя 2</h1>
+    <p class="subtitle">6 класс | 1,5 часа | Алгоритмы · Единицы информации · Файловая система</p>
+
+    <div class="lesson l-it">
+        <h2 class="hc-it">📖 Занятие 1: Алгоритмы</h2>
+        <span class="dur">⏱ 30 мин</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=IZTN7WUQHGI" target="_blank">Что такое алгоритм? Свойства алгоритма (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=8NLBTQ9SWIY" target="_blank">Виды алгоритмов: линейный, ветвление, цикл (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=3VQ1Rh5nxF4" target="_blank">Блок-схемы — как составлять алгоритм</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Что такое алгоритм?</h3>
+            <div class="rule r-b">
+                <strong>📌 Алгоритм</strong> — точная последовательность инструкций (команд) для исполнителя, направленная на решение задачи за конечное число шагов.
+            </div>
+
+            <h3>Свойства алгоритма (запомни все 5!)</h3>
+            <div class="cards">
+                <div class="card c-b">
+                    <div class="ct">1. Дискретность</div>
+                    <div class="cb">Алгоритм разбит на отдельные, чётко разграниченные шаги.</div>
+                </div>
+                <div class="card c-g">
+                    <div class="ct">2. Определённость</div>
+                    <div class="cb">Каждый шаг точен и однозначен. Никаких двусмысленностей.</div>
+                </div>
+                <div class="card c-o">
+                    <div class="ct">3. Результативность</div>
+                    <div class="cb">Алгоритм всегда приводит к результату (или сообщает о невозможности).</div>
+                </div>
+                <div class="card c-p">
+                    <div class="ct">4. Конечность</div>
+                    <div class="cb">Алгоритм завершается за конечное число шагов.</div>
+                </div>
+                <div class="card c-t">
+                    <div class="ct">5. Массовость</div>
+                    <div class="cb">Алгоритм применим к целому классу похожих задач (не только к одной).</div>
+                </div>
+            </div>
+
+            <h3>Виды алгоритмов</h3>
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-b" style="text-align:left; padding:12px;">
+                        <strong>📋 Линейный</strong><br>
+                        Команды выполняются строго одна за другой, без ветвлений.<br><br>
+                        <em>Пример: рецепт чая<br>
+                        1. Вскипяти воду<br>
+                        2. Положи пакетик<br>
+                        3. Залей кипятком<br>
+                        4. Подожди 3 мин</em>
+                    </div>
+                    <div class="sb sb-g" style="text-align:left; padding:12px;">
+                        <strong>🔀 Ветвление (if)</strong><br>
+                        Выбор действия в зависимости от условия.<br><br>
+                        <em>Пример:<br>
+                        ЕСЛИ дождь<br>
+                        ТО взять зонт<br>
+                        ИНАЧЕ взять очки</em>
+                    </div>
+                    <div class="sb sb-p" style="text-align:left; padding:12px;">
+                        <strong>🔄 Цикл (loop)</strong><br>
+                        Повторение команд до выполнения условия.<br><br>
+                        <em>Пример:<br>
+                        ПОКА не решены задачи<br>
+                        ПОВТОРЯТЬ:<br>
+                        — читать задачу<br>
+                        — решать</em>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Способы записи алгоритмов</h3>
+            <table>
+                <tr><th class="th-it">Способ</th><th class="th-it">Описание</th><th class="th-it">Используется</th></tr>
+                <tr><td><strong>Словесный</strong></td><td>На естественном языке (русском)</td><td>Повседневная жизнь, инструкции</td></tr>
+                <tr><td><strong>Блок-схема</strong></td><td>Графическая схема из стандартных фигур</td><td>Наглядное представление программ</td></tr>
+                <tr><td><strong>Псевдокод</strong></td><td>Смесь естественного языка и программирования</td><td>Планирование программ</td></tr>
+                <tr><td><strong>Язык программирования</strong></td><td>Формальный язык (Python, Java и др.)</td><td>Написание программ для компьютера</td></tr>
+            </table>
+
+            <div class="rule r-y">
+                <strong>📌 Блок-схема — стандартные фигуры:</strong><br>
+                🔷 <strong>Овал</strong> — начало/конец алгоритма<br>
+                ▭ <strong>Прямоугольник</strong> — действие (команда)<br>
+                🔶 <strong>Ромб</strong> — условие (вопрос с ответами Да/Нет)<br>
+                ▱ <strong>Параллелограмм</strong> — ввод/вывод данных<br>
+                → <strong>Стрелки</strong> — направление выполнения
+            </div>
+        </div>
+    </div>
+
+    <div class="lesson l-it2">
+        <h2 class="hc-it">📖 Занятие 2: Единицы информации. Файловая система.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=ZjjEwbqVMcQ" target="_blank">Единицы измерения информации — бит, байт, килобайт (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=6FH_RJVVQWM" target="_blank">Перевод единиц информации — задачи (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=b0TUpIb5ij4" target="_blank">Файловая система — папки, файлы, расширения</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Единицы измерения информации</h3>
+
+            <div class="rule r-b">
+                <strong>📌 Бит (bit)</strong> — минимальная единица информации. Может принимать значение 0 или 1.<br>
+                <strong>📌 Байт (byte)</strong> = 8 бит — основная единица хранения информации.
+            </div>
+
+            <table class="bit-table">
+                <tr>
+                    <th class="th-it">Единица</th>
+                    <th class="th-it">Обозначение</th>
+                    <th class="th-it">Соотношение</th>
+                    <th class="th-it">Примерный объём</th>
+                </tr>
+                <tr><td><strong>Бит</strong></td><td>бит / bit / b</td><td>—</td><td>Одно значение: 0 или 1</td></tr>
+                <tr><td><strong>Байт</strong></td><td>Б / byte / B</td><td>1 Б = 8 бит</td><td>1 символ (буква)</td></tr>
+                <tr><td><strong>Килобайт</strong></td><td>КБ / KB</td><td>1 КБ = 1024 Б</td><td>~1 страница текста</td></tr>
+                <tr><td><strong>Мегабайт</strong></td><td>МБ / MB</td><td>1 МБ = 1024 КБ</td><td>~1 фотография</td></tr>
+                <tr><td><strong>Гигабайт</strong></td><td>ГБ / GB</td><td>1 ГБ = 1024 МБ</td><td>~1 фильм</td></tr>
+                <tr><td><strong>Терабайт</strong></td><td>ТБ / TB</td><td>1 ТБ = 1024 ГБ</td><td>Жёсткий диск ноутбука</td></tr>
+                <tr><td><strong>Петабайт</strong></td><td>ПБ / PB</td><td>1 ПБ = 1024 ТБ</td><td>Огромный дата-центр</td></tr>
+            </table>
+
+            <div class="rule r-y">
+                <strong>📌 Почему 1024, а не 1000?</strong><br>
+                Компьютер работает в двоичной системе (0 и 1).<br>
+                2¹⁰ = <strong>1024</strong> — ближайшая степень двойки к 1000.<br>
+                Поэтому все единицы информации кратны 1024!
+            </div>
+
+            <div class="algo-block">
+                <div class="algo-title">📋 Задачи на перевод единиц:</div>
+                <div class="algo-step"><span class="step-num">1</span>
+                    <strong>Перевести вниз</strong> (в меньшие единицы): × 1024 на каждый шаг<br>
+                    2 КБ = 2 × 1024 = 2048 Б = 2048 × 8 = 16 384 бит
+                </div>
+                <div class="algo-step"><span class="step-num">2</span>
+                    <strong>Перевести вверх</strong> (в большие единицы): ÷ 1024 на каждый шаг<br>
+                    3072 МБ = 3072 ÷ 1024 = 3 ГБ
+                </div>
+                <div class="algo-step"><span class="step-num">3</span>
+                    <strong>Скорость передачи данных</strong>: Объём ÷ Время<br>
+                    Файл 8 МБ передаётся за 4 секунды → скорость = 8÷4 = 2 МБ/с = 16 Мбит/с
+                </div>
+            </div>
+
+            <h3>Файловая система</h3>
+
+            <div class="rule r-b">
+                <strong>📌 Файл</strong> — именованная область на диске, содержащая информацию.<br>
+                <strong>📌 Папка (каталог)</strong> — контейнер для хранения файлов и других папок.<br>
+                <strong>📌 Файловая система</strong> — способ организации хранения файлов на диске.
+            </div>
+
+            <h3>Имя файла = Имя + Расширение</h3>
+            <table>
+                <tr><th class="th-it">Расширение</th><th class="th-it">Тип файла</th><th class="th-it">Примеры программ</th></tr>
+                <tr><td><strong>.txt</strong></td><td>Текстовый файл</td><td>Блокнот</td></tr>
+                <tr><td><strong>.doc / .docx</strong></td><td>Документ Word</td><td>Microsoft Word, LibreOffice</td></tr>
+                <tr><td><strong>.xls / .xlsx</strong></td><td>Таблица Excel</td><td>Microsoft Excel</td></tr>
+                <tr><td><strong>.ppt / .pptx</strong></td><td>Презентация</td><td>PowerPoint</td></tr>
+                <tr><td><strong>.pdf</strong></td><td>Портативный документ</td><td>Adobe Reader</td></tr>
+                <tr><td><strong>.jpg / .png</strong></td><td>Изображение</td><td>Просмотрщик фото</td></tr>
+                <tr><td><strong>.mp3</strong></td><td>Аудиофайл</td><td>Медиаплеер</td></tr>
+                <tr><td><strong>.mp4 / .avi</strong></td><td>Видеофайл</td><td>VLC, Windows Media</td></tr>
+                <tr><td><strong>.exe</strong></td><td>Исполняемый файл (программа)</td><td>—</td></tr>
+                <tr><td><strong>.zip / .rar</strong></td><td>Архив (сжатые файлы)</td><td>WinRAR, 7-Zip</td></tr>
+            </table>
+
+            <h3>Файловые пути</h3>
+            <div class="rule r-g">
+                <strong>📌 Путь к файлу</strong> — описание местонахождения файла в файловой системе.<br><br>
+                <strong>Абсолютный путь</strong> — от корня диска:<br>
+                <code style="background:#e2e8f0; padding:2px 8px; border-radius:4px;">C:\Users\Иван\Документы\Реферат.docx</code><br><br>
+                <strong>Относительный путь</strong> — от текущей папки:<br>
+                <code style="background:#e2e8f0; padding:2px 8px; border-radius:4px;">Документы\Реферат.docx</code><br><br>
+                <strong>Разделитель:</strong> Windows — <code>\</code> (обратный слеш), Linux/Mac — <code>/</code> (прямой слеш)
+            </div>
+
+            <div class="rule r-t">
+                <strong>📌 Операции с файлами (знай клавиатурные сочетания!):</strong>
+                <table>
+                    <tr><th class="th-it">Действие</th><th class="th-it">Клавиши Windows</th></tr>
+                    <tr><td>Копировать</td><td><kbd>Ctrl + C</kbd></td></tr>
+                    <tr><td>Вырезать</td><td><kbd>Ctrl + X</kbd></td></tr>
+                    <tr><td>Вставить</td><td><kbd>Ctrl + V</kbd></td></tr>
+                    <tr><td>Удалить</td><td><kbd>Delete</kbd></td></tr>
+                    <tr><td>Переименовать</td><td><kbd>F2</kbd></td></tr>
+                    <tr><td>Выделить всё</td><td><kbd>Ctrl + A</kbd></td></tr>
+                    <tr><td>Поиск</td><td><kbd>Ctrl + F</kbd></td></tr>
+                    <tr><td>Отменить действие</td><td><kbd>Ctrl + Z</kbd></td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание 1: Переводы единиц</span><br>
+                а) 5 КБ = ? Б = ? бит<br>
+                б) 2 ГБ = ? МБ = ? КБ<br>
+                в) 4096 Б = ? КБ<br>
+                г) Скорость интернета 10 МБ/с. За сколько секунд скачается файл 80 МБ?<br><br>
+                <button class="btn btn-b" onclick="tog('it_a1')">▶ Решения</button>
+                <div class="ans ans-b" id="it_a1">
+а) 5 КБ = 5 × 1024 = <strong>5120 Б</strong>
+   5120 Б × 8 = <strong>40 960 бит</strong>
+
+б) 2 ГБ = 2 × 1024 = <strong>2048 МБ</strong>
+   2048 МБ × 1024 = <strong>2 097 152 КБ</strong>
+
+в) 4096 ÷ 1024 = <strong>4 КБ</strong>
+
+г) Время = Объём ÷ Скорость
+   80 МБ ÷ 10 МБ/с = <strong>8 секунд</strong>
+                </div>
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 2: Определи тип файла по расширению</span><br>
+                photo.jpg / report.docx / music.mp3 / game.exe / archive.zip / data.xlsx / video.mp4 / readme.txt<br><br>
+                <button class="btn btn-b" onclick="tog('it_a2')">▶ Ответ</button>
+                <div class="ans ans-b" id="it_a2">
+photo.jpg   → изображение (JPEG)
+report.docx → документ Word
+music.mp3   → аудиофайл
+game.exe    → исполняемый файл (программа)
+archive.zip → архив
+data.xlsx   → таблица Excel
+video.mp4   → видеофайл
+readme.txt  → текстовый файл
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ ИНФОРМАТИКА -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест по информатике — Неделя 2</div>
+        <p>10 вопросов | Алгоритмы · Единицы информации · Файловая система</p>
+        <form id="itQuiz">
+            <div class="qb"><p>1. Алгоритм — это:</p>
+                <label class="qo"><input type="radio" name="i1" value="a"> Язык программирования</label>
+                <label class="qo"><input type="radio" name="i1" value="b"> Точная последовательность команд для решения задачи</label>
+                <label class="qo"><input type="radio" name="i1" value="c"> Программа для компьютера</label>
+                <label class="qo"><input type="radio" name="i1" value="d"> Схема компьютера</label>
+            </div>
+            <div class="qb"><p>2. Сколько бит содержит 1 байт?</p>
+                <label class="qo"><input type="radio" name="i2" value="a"> 4</label>
+                <label class="qo"><input type="radio" name="i2" value="b"> 16</label>
+                <label class="qo"><input type="radio" name="i2" value="c"> 8</label>
+                <label class="qo"><input type="radio" name="i2" value="d"> 2</label>
+            </div>
+            <div class="qb"><p>3. 1 Килобайт = ?</p>
+                <label class="qo"><input type="radio" name="i3" value="a"> 1000 байт</label>
+                <label class="qo"><input type="radio" name="i3" value="b"> 1024 байт</label>
+                <label class="qo"><input type="radio" name="i3" value="c"> 100 байт</label>
+                <label class="qo"><input type="radio" name="i3" value="d"> 512 байт</label>
+            </div>
+            <div class="qb"><p>4. Какое свойство алгоритма означает, что он применим к классу задач?</p>
+                <label class="qo"><input type="radio" name="i4" value="a"> Дискретность</label>
+                <label class="qo"><input type="radio" name="i4" value="b"> Определённость</label>
+                <label class="qo"><input type="radio" name="i4" value="c"> Массовость</label>
+                <label class="qo"><input type="radio" name="i4" value="d"> Конечность</label>
+            </div>
+            <div class="qb"><p>5. Файл с расширением .mp3 — это:</p>
+                <label class="qo"><input type="radio" name="i5" value="a"> Видеофайл</label>
+                <label class="qo"><input type="radio" name="i5" value="b"> Документ</label>
+                <label class="qo"><input type="radio" name="i5" value="c"> Аудиофайл</label>
+                <label class="qo"><input type="radio" name="i5" value="d"> Архив</label>
+            </div>
+            <div class="qb"><p>6. Клавиши Ctrl+C выполняют операцию:</p>
+                <label class="qo"><input type="radio" name="i6" value="a"> Вырезать</label>
+                <label class="qo"><input type="radio" name="i6" value="b"> Вставить</label>
+                <label class="qo"><input type="radio" name="i6" value="c"> Копировать</label>
+                <label class="qo"><input type="radio" name="i6" value="d"> Удалить</label>
+            </div>
+            <div class="qb"><p>7. Вид алгоритма с выбором действия по условию:</p>
+                <label class="qo"><input type="radio" name="i7" value="a"> Линейный</label>
+                <label class="qo"><input type="radio" name="i7" value="b"> Ветвление</label>
+                <label class="qo"><input type="radio" name="i7" value="c"> Цикл</label>
+                <label class="qo"><input type="radio" name="i7" value="d"> Рекурсивный</label>
+            </div>
+            <div class="qb"><p>8. Сколько МБ в 1 ГБ?</p>
+                <label class="qo"><input type="radio" name="i8" value="a"> 100 МБ</label>
+                <label class="qo"><input type="radio" name="i8" value="b"> 1000 МБ</label>
+                <label class="qo"><input type="radio" name="i8" value="c"> 1024 МБ</label>
+                <label class="qo"><input type="radio" name="i8" value="d"> 512 МБ</label>
+            </div>
+            <div class="qb"><p>9. Ромб в блок-схеме означает:</p>
+                <label class="qo"><input type="radio" name="i9" value="a"> Начало/конец алгоритма</label>
+                <label class="qo"><input type="radio" name="i9" value="b"> Действие</label>
+                <label class="qo"><input type="radio" name="i9" value="c"> Условие (вопрос)</label>
+                <label class="qo"><input type="radio" name="i9" value="d"> Ввод/вывод</label>
+            </div>
+            <div class="qb"><p>10. Файл «реферат.docx» — имя файла:</p>
+                <label class="qo"><input type="radio" name="i10" value="a"> реферат.docx</label>
+                <label class="qo"><input type="radio" name="i10" value="b"> реферат</label>
+                <label class="qo"><input type="radio" name="i10" value="c"> docx</label>
+                <label class="qo"><input type="radio" name="i10" value="d"> .docx</label>
+            </div>
+            <button type="button" class="chk chk-it" onclick="runQuiz('itQuiz',itAns,itExp,'itRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="itRes"></div>
+    </div>
+</div>
+
+<hr class="sep sep-it">
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║         ИТОГОВАЯ ПРОВЕРКА НЕДЕЛИ 2          ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="final">
+    <h1 class="h1-fin">🏆 Итоговая проверка — День 14</h1>
+    <p class="subtitle">Русский язык + Математика + Биология | Время: 2 часа</p>
+
+    <div class="final-block">
+        <div class="final-title">⏱ Таймер — 120 минут</div>
+        <div class="final-sub">Запусти перед началом контрольной!</div>
+        <div class="timer-box">
+            <div class="timer-disp" id="timerDisp">02:00:00</div>
+            <div style="margin-top:12px;">
+                <button class="t-btn tb-start" onclick="startT()">▶ Старт</button>
+                <button class="t-btn tb-pause" onclick="pauseT()">⏸ Пауза</button>
+                <button class="t-btn tb-reset" onclick="resetT()">🔄 Сброс</button>
+            </div>
+            <div id="timerMsg" style="margin-top:10px; font-weight:bold; color:#c53030;"></div>
+        </div>
+
+        <h3>📊 Распределение времени</h3>
+        <div class="scheme">
+            <div class="sch-row">
+                <div class="sb sb-b"><span class="badge badge-ru">Русский язык</span><br>20 вопросов<br>⏱ 40 минут</div>
+                <div class="sb sb-g"><span class="badge badge-ma">Математика</span><br>15 заданий<br>⏱ 50 минут</div>
+                <div class="sb sb-t"><span class="badge badge-bi">Биология</span><br>10 вопросов<br>⏱ 20 минут</div>
+                <div class="sb sb-p"><strong>Проверка</strong><br>Все работы<br>⏱ 10 минут</div>
+            </div>
+        </div>
+
+        <!-- Прогресс недели -->
+        <h3>📈 Прогресс Недели 2</h3>
+        <div class="progress-wrap">
+            <div class="pr-item">
+                <div class="pr-label">🇷🇺 Русский язык (7 ч) — Существительное + Прилагательное</div>
+                <div class="pr-bg"><div class="pr-bar pb-ru" style="width:100%">✅ 100%</div></div>
+            </div>
+            <div class="pr-item">
+                <div class="pr-label">🔢 Математика (7 ч) — Дроби + Пропорции + Отрицательные числа</div>
+                <div class="pr-bg"><div class="pr-bar pb-ma" style="width:100%">✅ 100%</div></div>
+            </div>
+            <div class="pr-item">
+                <div class="pr-label">🌿 Биология (3 ч) — Органы растений</div>
+                <div class="pr-bg"><div class="pr-bar pb-bi" style="width:100%">✅ 100%</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЧАСТЬ 1: РУССКИЙ ЯЗЫК -->
+    <div class="lesson l-fin">
+        <h2 class="hc-fin">📝 Часть 1: Русский язык — тест 20 вопросов по морфологии</h2>
+        <span class="dur">⏱ 40 мин</span>
+
+        <div class="rule r-r">
+            <strong>📋 Инструкция:</strong> Выполни тест самостоятельно, затем проверь ответы. Каждый неправильный ответ — повтори соответствующее правило.
+        </div>
+
+        <div class="quiz" style="margin-top:0;">
+            <div class="qt" style="font-size:1.2em;">🧪 Итоговый тест — Морфология (20 вопросов)</div>
+            <form id="finalRuQuiz">
+                <div class="qb"><p>1. К 3-му склонению относится слово:</p>
+                    <label class="qo"><input type="radio" name="fr1" value="a"> поле</label>
+                    <label class="qo"><input type="radio" name="fr1" value="b"> земля</label>
+                    <label class="qo"><input type="radio" name="fr1" value="c"> степь</label>
+                    <label class="qo"><input type="radio" name="fr1" value="d"> дядя</label>
+                </div>
+                <div class="qb"><p>2. Окончание слова «дочь» в родительном падеже:</p>
+                    <label class="qo"><input type="radio" name="fr2" value="a"> -е</label>
+                    <label class="qo"><input type="radio" name="fr2" value="b"> -и</label>
+                    <label class="qo"><input type="radio" name="fr2" value="c"> -ю</label>
+                    <label class="qo"><input type="radio" name="fr2" value="d"> -ью</label>
+                </div>
+                <div class="qb"><p>3. «Пламя» — это существительное:</p>
+                    <label class="qo"><input type="radio" name="fr3" value="a"> 1 склонения</label>
+                    <label class="qo"><input type="radio" name="fr3" value="b"> 2 склонения</label>
+                    <label class="qo"><input type="radio" name="fr3" value="c"> 3 склонения</label>
+                    <label class="qo"><input type="radio" name="fr3" value="d"> Разносклоняемое</label>
+                </div>
+                <div class="qb"><p>4. Несклоняемое существительное «кофе» — какого рода?</p>
+                    <label class="qo"><input type="radio" name="fr4" value="a"> Среднего</label>
+                    <label class="qo"><input type="radio" name="fr4" value="b"> Женского</label>
+                    <label class="qo"><input type="radio" name="fr4" value="c"> Мужского</label>
+                    <label class="qo"><input type="radio" name="fr4" value="d"> Общего</label>
+                </div>
+                <div class="qb"><p>5. Разряд прилагательного «лисий хвост»:</p>
+                    <label class="qo"><input type="radio" name="fr5" value="a"> Качественное</label>
+                    <label class="qo"><input type="radio" name="fr5" value="b"> Относительное</label>
+                    <label class="qo"><input type="radio" name="fr5" value="c"> Притяжательное</label>
+                </div>
+                <div class="qb"><p>6. В каком слове пишется НН?</p>
+                    <label class="qo"><input type="radio" name="fr6" value="a"> ветре_ый</label>
+                    <label class="qo"><input type="radio" name="fr6" value="b"> кож_аный</label>
+                    <label class="qo"><input type="radio" name="fr6" value="c"> оловя_ый</label>
+                    <label class="qo"><input type="radio" name="fr6" value="d"> гуси_ый</label>
+                </div>
+                <div class="qb"><p>7. Укажи ошибочную форму степени сравнения:</p>
+                    <label class="qo"><input type="radio" name="fr7" value="a"> более красивый</label>
+                    <label class="qo"><input type="radio" name="fr7" value="b"> красивейший</label>
+                    <label class="qo"><input type="radio" name="fr7" value="c"> самый красивый</label>
+                    <label class="qo"><input type="radio" name="fr7" value="d"> более красивее</label>
+                </div>
+                <div class="qb"><p>8. НЕ с прилагательным раздельно в предложении:</p>
+                    <label class="qo"><input type="radio" name="fr8" value="a"> Очень (не)скучный фильм.</label>
+                    <label class="qo"><input type="radio" name="fr8" value="b"> (Не)большое озеро.</label>
+                    <label class="qo"><input type="radio" name="fr8" value="c"> Вовсе (не)интересный рассказ.</label>
+                    <label class="qo"><input type="radio" name="fr8" value="d"> (Не)лепый поступок.</label>
+                </div>
+                <div class="qb"><p>9. Слово с суффиксом -СК-:</p>
+                    <label class="qo"><input type="radio" name="fr9" value="a"> низкий</label>
+                    <label class="qo"><input type="radio" name="fr9" value="b"> узкий</label>
+                    <label class="qo"><input type="radio" name="fr9" value="c"> городской</label>
+                    <label class="qo"><input type="radio" name="fr9" value="d"> близкий</label>
+                </div>
+                <div class="qb"><p>10. Сложное прилагательное «светло-зелёный» пишется через дефис, потому что:</p>
+                    <label class="qo"><input type="radio" name="fr10" value="a"> Образовано от словосочетания</label>
+                    <label class="qo"><input type="radio" name="fr10" value="b"> Обозначает оттенок цвета</label>
+                    <label class="qo"><input type="radio" name="fr10" value="c"> Равноправные части</label>
+                    <label class="qo"><input type="radio" name="fr10" value="d"> Иностранное слово</label>
+                </div>
+                <div class="qb"><p>11. Окончание слова «станция» в предложном падеже:</p>
+                    <label class="qo"><input type="radio" name="fr11" value="a"> -е</label>
+                    <label class="qo"><input type="radio" name="fr11" value="b"> -и</label>
+                    <label class="qo"><input type="radio" name="fr11" value="c"> -ей</label>
+                    <label class="qo"><input type="radio" name="fr11" value="d"> -ю</label>
+                </div>
+                <div class="qb"><p>12. «Деревянный» — пишется НН, потому что:</p>
+                    <label class="qo"><input type="radio" name="fr12" value="a"> Суффикс -ОНН-</label>
+                    <label class="qo"><input type="radio" name="fr12" value="b"> Слово-исключение</label>
+                    <label class="qo"><input type="radio" name="fr12" value="c"> Суффикс -ЕНН-</label>
+                    <label class="qo"><input type="radio" name="fr12" value="d"> Суффикс -АН- + Н корня</label>
+                </div>
+                <div class="qb"><p>13. Какой падеж у слова «маме» в предложении «Я написал маме письмо»?</p>
+                    <label class="qo"><input type="radio" name="fr13" value="a"> Родительный</label>
+                    <label class="qo"><input type="radio" name="fr13" value="b"> Дательный</label>
+                    <label class="qo"><input type="radio" name="fr13" value="c"> Винительный</label>
+                    <label class="qo"><input type="radio" name="fr13" value="d"> Предложный</label>
+                </div>
+                <div class="qb"><p>14. Прилагательное «золотые руки» — какого разряда?</p>
+                    <label class="qo"><input type="radio" name="fr14" value="a"> Относительное (из золота)</label>
+                    <label class="qo"><input type="radio" name="fr14" value="b"> Качественное (=умелые, переносное значение)</label>
+                    <label class="qo"><input type="radio" name="fr14" value="c"> Притяжательное</label>
+                </div>
+                <div class="qb"><p>15. «Стеклянный» — пишется НН, потому что:</p>
+                    <label class="qo"><input type="radio" name="fr15" value="a"> Суффикс -АН- → Н</label>
+                    <label class="qo"><input type="radio" name="fr15" value="b"> Слово-исключение из правила -ЯН-</label>
+                    <label class="qo"><input type="radio" name="fr15" value="c"> Суффикс -ОНН-</label>
+                    <label class="qo"><input type="radio" name="fr15" value="d"> Основа на Н + суффикс Н</label>
+                </div>
+                <div class="qb"><p>16. Краткая форма прилагательного «весёлый»:</p>
+                    <label class="qo"><input type="radio" name="fr16" value="a"> весело</label>
+                    <label class="qo"><input type="radio" name="fr16" value="b"> весел</label>
+                    <label class="qo"><input type="radio" name="fr16" value="c"> веселее</label>
+                    <label class="qo"><input type="radio" name="fr16" value="d"> самый весёлый</label>
+                </div>
+                <div class="qb"><p>17. «Метро» — несклоняемое существительное какого рода?</p>
+                    <label class="qo"><input type="radio" name="fr17" value="a"> Мужского</label>
+                    <label class="qo"><input type="radio" name="fr17" value="b"> Женского</label>
+                    <label class="qo"><input type="radio" name="fr17" value="c"> Среднего</label>
+                    <label class="qo"><input type="radio" name="fr17" value="d"> Не имеет рода</label>
+                </div>
+                <div class="qb"><p>18. В форме «времени» (Р.п.) есть суффикс:</p>
+                    <label class="qo"><input type="radio" name="fr18" value="a"> -ен-</label>
+                    <label class="qo"><input type="radio" name="fr18" value="b"> -ем-</label>
+                    <label class="qo"><input type="radio" name="fr18" value="c"> -ни-</label>
+                    <label class="qo"><input type="radio" name="fr18" value="d"> -ен-и</label>
+                </div>
+                <div class="qb"><p>19. Синтаксическая роль прилагательного в предложении чаще всего:</p>
+                    <label class="qo"><input type="radio" name="fr19" value="a"> Подлежащее</label>
+                    <label class="qo"><input type="radio" name="fr19" value="b"> Сказуемое</label>
+                    <label class="qo"><input type="radio" name="fr19" value="c"> Определение</label>
+                    <label class="qo"><input type="radio" name="fr19" value="d"> Дополнение</label>
+                </div>
+                <div class="qb"><p>20. «Железнодорожный» пишется слитно, потому что:</p>
+                    <label class="qo"><input type="radio" name="fr20" value="a"> Равноправные слова</label>
+                    <label class="qo"><input type="radio" name="fr20" value="b"> Образовано от словосочетания «железная дорога»</label>
+                    <label class="qo"><input type="radio" name="fr20" value="c"> Оттенок цвета</label>
+                    <label class="qo"><input type="radio" name="fr20" value="d"> Иностранное происхождение</label>
+                </div>
+                <button type="button" class="chk" style="background:#3182ce;" onclick="runQuiz('finalRuQuiz',frAns,frExp,'frRes')">✅ Проверить тест по русскому</button>
+            </form>
+            <div class="res" id="frRes"></div>
+        </div>
+    </div>
+
+    <!-- ЧАСТЬ 2: МАТЕМАТИКА -->
+    <div class="lesson l-fin2">
+        <h2 class="hc-fin">🔢 Часть 2: Математика — контрольная 15 заданий</h2>
+        <span class="dur">⏱ 50 мин</span>
+
+        <div class="rule r-o">
+            <strong>📋 Инструкция:</strong> Реши все задания в тетради с полным решением. Затем проверь.
+        </div>
+
+        <div class="ctrl-block" style="border-color:#38a169;">
+            <div class="ctrl-title" style="color:#276749;">📋 Контрольные задания по математике:</div>
+
+            <strong>Десятичные дроби:</strong><br>
+            1) 23,45 + 7,8 + 0,175<br>
+            2) 100 − 0,037<br>
+            3) 2,5 × 3,6<br>
+            4) 8,28 ÷ 0,12<br><br>
+
+            <strong>Пропорции и проценты:</strong><br>
+            5) Найди x: 7 : 21 = x : 15<br>
+            6) Найди 40% от 750<br>
+            7) 60 — это 25% от какого числа?<br>
+            8) Задача: 8 рабочих красят забор за 6 дней. За сколько дней покрасят 12 рабочих?<br><br>
+
+            <strong>Отрицательные числа:</strong><br>
+            9) (−13) + 8<br>
+            10) −4 − (−9)<br>
+            11) (−6) × (−7)<br>
+            12) (−45) ÷ 9<br>
+            13) (−3)² − 4 × (−2)<br><br>
+
+            <strong>Координатная плоскость:</strong><br>
+            14) В какой четверти точка A(−4; 6)? Найди симметричную ей точку относительно оси OX.<br>
+            15) Задача: Построй треугольник с вершинами A(0; 3), B(−3; −1), C(3; −1). Найди основание и высоту (по координатам).<br><br>
+
+            <button class="btn btn-o" onclick="tog('math_ctrl')">▶ Показать все ответы</button>
+            <div class="ans ans-o" id="math_ctrl">
+1) 23,450 + 7,800 + 0,175 = <strong>31,425</strong>
+2) 100,000 − 0,037 = <strong>99,963</strong>
+3) 25×36=900 → 2+1=3 знака → <strong>9,000 = 9</strong>
+4) 828÷12=69 → умножили на 100 → <strong>69</strong>
+5) 7×15=21×x → 105=21x → <strong>x=5</strong>
+6) 750×0,40 = <strong>300</strong>
+7) 60 = 25% → целое = 60×100/25 = <strong>240</strong>
+8) Обратная пропорция: 8×6=12×x → 48=12x → <strong>x=4 дня</strong>
+9) −13+8 = <strong>−5</strong>
+10) −4−(−9) = −4+9 = <strong>+5</strong>
+11) (−6)×(−7) = <strong>+42</strong>
+12) (−45)÷9 = <strong>−5</strong>
+13) (−3)²−4×(−2) = 9−(−8) = 9+8 = <strong>17</strong>
+14) x<0, y>0 → II четверть. Симм. отн. OX: A′(−4; −6)
+15) Основание BC: от x=−3 до x=3 при y=−1 → <strong>длина=6</strong>
+    Высота: от y=−1 до y=3 (вершина A) → <strong>h=4</strong>
+    Площадь = (6×4)/2 = <strong>12 кв.ед.</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЧЕКЛИСТ -->
+    <div class="lesson l-fin">
+        <h2 class="hc-fin">✅ Чеклист Недели 2</h2>
+        <p style="color:#718096; margin-bottom:12px;">Отметь галочкой всё выполненное:</p>
+        <ul class="checklist" id="wk2list">
+            <li onclick="chk(this)"><input type="checkbox"> РЯ: Три склонения — выучил окончания</li>
+            <li onclick="chk(this)"><input type="checkbox"> РЯ: Разносклоняемые (10 слов на -МЯ) — знаю наизусть</li>
+            <li onclick="chk(this)"><input type="checkbox"> РЯ: Разряды прилагательных — умею определять</li>
+            <li onclick="chk(this)"><input type="checkbox"> РЯ: Н/НН — знаю все правила и исключения</li>
+            <li onclick="chk(this)"><input type="checkbox"> РЯ: Степени сравнения — знаю простую и составную</li>
+            <li onclick="chk(this)"><input type="checkbox"> МАТ: Десятичные дроби — все 4 действия</li>
+            <li onclick="chk(this)"><input type="checkbox"> МАТ: Пропорции — нахождение неизвестного</li>
+            <li onclick="chk(this)"><input type="checkbox"> МАТ: Проценты — все 3 типа задач</li>
+            <li onclick="chk(this)"><input type="checkbox"> МАТ: Отрицательные числа — сложение/вычитание</li>
+            <li onclick="chk(this)"><input type="checkbox"> МАТ: Умножение и деление с отрицательными</li>
+            <li onclick="chk(this)"><input type="checkbox"> МАТ: Координатная плоскость — четверти, симметрия</li>
+            <li onclick="chk(this)"><input type="checkbox"> ИСТ: Крестовые походы — все 8, итоги</li>
+            <li onclick="chk(this)"><input type="checkbox"> ИСТ: Столетняя война — даты, Жанна д'Арк</li>
+            <li onclick="chk(this)"><input type="checkbox"> ИСТ: Древняя Русь — все князья и даты</li>
+            <li onclick="chk(this)"><input type="checkbox"> БИО: Зоны корня — нарисовал схему</li>
+            <li onclick="chk(this)"><input type="checkbox"> БИО: Цветок — нарисовал схему с подписями</li>
+            <li onclick="chk(this)"><input type="checkbox"> БИО: Типы плодов — умею определять</li>
+            <li onclick="chk(this)"><input type="checkbox"> ГЕО: Строение Земли — все слои</li>
+            <li onclick="chk(this)"><input type="checkbox"> ГЕО: Мировой океан — 5 океанов + свойства</li>
+            <li onclick="chk(this)"><input type="checkbox"> ГЕО: Реки и озёра — термины + рекорды</li>
+            <li onclick="chk(this)"><input type="checkbox"> ОБЩ: Межличностные отношения — 5 уровней</li>
+            <li onclick="chk(this)"><input type="checkbox"> ОБЩ: Конфликты — 5 способов разрешения</li>
+            <li onclick="chk(this)"><input type="checkbox"> АНГ: Past Simple — правила + 30 неправ. глаголов</li>
+            <li onclick="chk(this)"><input type="checkbox"> АНГ: Лексика Food + Daily Routine — выучил</li>
+            <li onclick="chk(this)"><input type="checkbox"> ЛИТ: «Тучи» Лермонтова — прочитал + анализ</li>
+            <li onclick="chk(this)"><input type="checkbox"> ЛИТ: «Бежин луг» — все 5 мальчиков знаю</li>
+            <li onclick="chk(this)"><input type="checkbox"> ИНФ: Алгоритмы — свойства и виды</li>
+            <li onclick="chk(this)"><input type="checkbox"> ИНФ: Единицы информации — умею переводить</li>
+            <li onclick="chk(this)"><input type="checkbox"> ✅ Итоговый тест по русскому (20 вопросов)</li>
+            <li onclick="chk(this)"><input type="checkbox"> ✅ Контрольная по математике (15 заданий)</li>
+        </ul>
+        <div id="chkProg" style="margin-top:14px; font-weight:bold; color:#276749; font-size:1.05em;"></div>
+    </div>
+
+    <!-- АЧИВМЕНТ -->
+    <div class="achievement" id="achiev">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-title">Неделя 2 — ОСНОВНОЙ МАССИВ пройден!</div>
+        <div class="ach-text">
+            Ты освоил 8 предметов за 2 недели подряд!<br>
+            Общий налёт: <strong>~58,5 часов</strong> за 2 недели.<br>
+            Морфология, дроби, отрицательные числа, органы растений,<br>
+            Past Simple, Средневековье, конфликты, алгоритмы — всё твоё! 💪<br><br>
+            <strong>Следующий шаг:</strong> Неделя 3 — Систематизация и углублённая практика.
+        </div>
+    </div>
+
+    <!-- СОВЕТЫ НА НЕДЕЛЮ 3 -->
+    <div class="lesson l-fin" style="margin-bottom:40px;">
+        <h2 class="hc-fin">💡 Советы для Недели 3</h2>
+        <div class="cards">
+            <div class="card c-b">
+                <div class="ct">📝 Русский язык</div>
+                <div class="cb">Глагол — виды, спряжения, наклонения. Причастие и деепричастие. Больше диктантов!</div>
+            </div>
+            <div class="card c-g">
+                <div class="ct">🔢 Математика</div>
+                <div class="cb">Уравнения с отрицательными числами. Задачи на проценты в разных контекстах.</div>
+            </div>
+            <div class="card c-o">
+                <div class="ct">⚔️ История</div>
+                <div class="cb">Позднее Средневековье. Возрождение. Великие географические открытия.</div>
+            </div>
+            <div class="card c-p">
+                <div class="ct">🌿 Биология</div>
+                <div class="cb">Размножение растений. Водоросли, мхи, папоротники. Отделы растений.</div>
+            </div>
+            <div class="card c-t">
+                <div class="ct">🇬🇧 Английский</div>
+                <div class="cb">Past Continuous. Разница Past Simple и Past Continuous. Расширяй словарный запас!</div>
+            </div>
+            <div class="card c-pk">
+                <div class="ct">📚 Литература</div>
+                <div class="cb">Читай оригиналы! «Капитанская дочка», стихи Пушкина. Пиши сочинения.</div>
+            </div>
+            <div class="card c-y">
+                <div class="ct">💻 Информатика</div>
+                <div class="cb">Двоичная система счисления. Таблицы истинности. Практика в Scratch или Python.</div>
+            </div>
+            <div class="card c-r">
+                <div class="ct">🌍 География</div>
+                <div class="cb">Атмосфера. Климат. Природные зоны. Работа с климатическими картами.</div>
+            </div>
+        </div>
+    </div>
+</div><!-- /final -->
+
+</div><!-- /container -->
+
+<script>
+/* Навигация */
+function goTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+/* Показать/скрыть */
+function tog(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+/* Чеклист */
+function chk(li) {
+    var cb = li.querySelector('input');
+    cb.checked = !cb.checked;
+    li.classList.toggle('done', cb.checked);
+    var all  = document.querySelectorAll('#wk2list li').length;
+    var done = document.querySelectorAll('#wk2list li.done').length;
+    var pct  = Math.round(done / all * 100);
+    document.getElementById('chkProg').textContent =
+        '✅ Выполнено: ' + done + ' из ' + all + ' (' + pct + '%)';
+    if (done === all) {
+        document.getElementById('achiev').style.display = 'block';
+        document.getElementById('achiev').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+/* Таймер 120 мин */
+var totalSec = 120 * 60, rem = totalSec, tInt = null, running = false;
+function pad(n) { return n < 10 ? '0' + n : n; }
+function updT() {
+    var h = Math.floor(rem / 3600), m = Math.floor((rem % 3600) / 60), s = rem % 60;
+    document.getElementById('timerDisp').textContent = pad(h)+':'+pad(m)+':'+pad(s);
+    var msg = document.getElementById('timerMsg');
+    var disp = document.getElementById('timerDisp');
+    if (rem <= 0) { clearInterval(tInt); running = false;
+        disp.textContent = '00:00:00'; disp.style.color = '#e53e3e';
+        msg.textContent = '⏰ Время вышло! Сдавай работу!'; }
+    else if (rem <= 600) { disp.style.color = '#e53e3e'; msg.textContent = '⚠️ Осталось 10 минут!'; }
+    else if (rem <= 1800) { disp.style.color = '#dd6b20'; msg.textContent = '⏳ Осталось 30 минут — завершай!'; }
+    else { disp.style.color = '#c53030'; msg.textContent = ''; }
+}
+function startT() { if (running) return; running = true; tInt = setInterval(function() { rem--; updT(); }, 1000); }
+function pauseT() { clearInterval(tInt); running = false; }
+function resetT() { clearInterval(tInt); running = false; rem = totalSec;
+    document.getElementById('timerDisp').style.color = '#c53030';
+    document.getElementById('timerMsg').textContent = ''; updT(); }
+updT();
+
+/* ══ Данные тестов ══ */
+var enAns = { e1:'b',e2:'c',e3:'c',e4:'c',e5:'c',e6:'b',e7:'c',e8:'c',e9:'c',e10:'b' };
+var enExp = {
+    e1:'study → studied (y→i+ed, т.к. перед y стоит согласная)',
+    e2:'go — неправильный глагол → went (нельзя goed!)',
+    e3:'В отрицании PS: didn\'t + инфинитив (без -ed!): didn\'t play',
+    e4:'Вопрос PS: Did + subject + инфинитив (V1): Did you see?',
+    e5:'Yesterday — маркер Past Simple. Now, at the moment — PC. Usually — PS, но маркер привычки.',
+    e6:'buy — неправильный глагол → bought',
+    e7:'have breakfast = завтракать; have lunch = обедать; have dinner = ужинать',
+    e8:'worked: work оканчивается на /k/ — глухой → -ed произносится /t/: [wɜːkt]',
+    e9:'eat — неправильный → ate (в Past Simple)',
+    e10:'have dinner — правильный перевод «ужинать»; had — форма PS глагола have'
+};
+
+var litAns = { l1:'b',l2:'c',l3:'b',l4:'d',l5:'b',l6:'b',l7:'b',l8:'b',l9:'b',l10:'c' };
+var litExp = {
+    l1:'«Тучи» написаны в 1840 году перед вторым отправлением Лермонтова в ссылку.',
+    l2:'Илюша знает больше всего быличек — страшных историй о нечистой силе.',
+    l3:'Павлуша погиб в конце рассказа — упал с лошади (автор сообщает об этом вскользь).',
+    l4:'«Краткость — сестра таланта» — известное высказывание А.П. Чехова.',
+    l5:'«Толстый и тонкий» — о чинопочитании: тонкий теряет достоинство из-за чина.',
+    l6:'«Бежин луг» входит в сборник «Записки охотника» (1852) Тургенева.',
+    l7:'Тучи символизируют бесчувственную свободу — холодную, без родины и любви.',
+    l8:'Некрасов — «поэт народного горя», главная тема — страдания крестьян.',
+    l9:'«Хирургия» высмеивает некомпетентность и самоуверенность фельдшера Курятина.',
+    l10:'А.П. Чехов жил в 1860–1904 гг. Умер от туберкулёза в Баденвайлере.'
+};
+
+var itAns = { i1:'b',i2:'c',i3:'b',i4:'c',i5:'c',i6:'c',i7:'b',i8:'c',i9:'c',i10:'b' };
+var itExp = {
+    i1:'Алгоритм — точная последовательность инструкций для исполнителя для решения задачи.',
+    i2:'1 байт = 8 бит — основное соотношение.',
+    i3:'1 КБ = 1024 байт (т.к. 2¹⁰ = 1024 — степень двойки, ближайшая к 1000).',
+    i4:'Массовость — алгоритм применим к классу похожих задач, а не только к одной.',
+    i5:'.mp3 — формат аудиофайла (MPEG Audio Layer 3).',
+    i6:'Ctrl+C — копировать выделенное. Ctrl+X — вырезать. Ctrl+V — вставить.',
+    i7:'Ветвление (if-then-else) — выбор действия в зависимости от условия.',
+    i8:'1 ГБ = 1024 МБ (не 1000!). Все единицы кратны 1024.',
+    i9:'Ромб в блок-схеме = условие (вопрос с ответами Да/Нет). Прямоуг. = действие.',
+    i10:'Имя файла — только «реферат» (без расширения). Расширение — «docx».'
+};
+
+var frAns = {
+    fr1:'c', fr2:'b', fr3:'d', fr4:'c', fr5:'c',
+    fr6:'c', fr7:'d', fr8:'c', fr9:'c', fr10:'b',
+    fr11:'b', fr12:'b', fr13:'b', fr14:'b', fr15:'b',
+    fr16:'b', fr17:'c', fr18:'a', fr19:'c', fr20:'b'
+};
+var frExp = {
+    fr1:'Степь — жен.р., □ с Ь → 3 склонение.',
+    fr2:'Дочь — 3 скл. → Р.п.: -И (дочери).',
+    fr3:'Пламя — на -МЯ → разносклоняемое.',
+    fr4:'Кофе — исключение, мужской род: горячий кофе.',
+    fr5:'Лисий хвост — чей? → притяжательное.',
+    fr6:'Оловянный — исключение (пишем НН вместо ожидаемой Н).',
+    fr7:'«Более красивее» — грубая ошибка! Двойная степень сравнения.',
+    fr8:'«Вовсе не интересный» — есть слово «вовсе не» → раздельно.',
+    fr9:'Городской — суффикс -СК- (нет краткой формы, основа не на к/ч/ц).',
+    fr10:'Светло-зелёный — через дефис, т.к. обозначает оттенок цвета.',
+    fr11:'Станция — 1 скл., но оканчивается на -ИЯ → в П.п.: -И (о станции).',
+    fr12:'Деревянный — слово-исключение из правила -ЯН- (пишем НН).',
+    fr13:'Написал (кому?) маме → Дательный падеж.',
+    fr14:'Золотые руки — переносное значение (=умелые) → качественное.',
+    fr15:'Стеклянный — слово-исключение (стеклЯНный пишем НН).',
+    fr16:'Весел — краткая форма прилагательного «весёлый» (м.р.).',
+    fr17:'Метро — неодушевлённое несклоняемое → средний род: красивое метро.',
+    fr18:'Времени — в косвенных падежах разносклоняемых появляется суффикс -ЕН-.',
+    fr19:'Прилагательное в роли определения отвечает на вопрос «какой?».',
+    fr20:'Железнодорожный — от словосочетания «железная дорога» → слитно.'
+};
+
+/* Универсальная проверка */
+function runQuiz(fId, answers, explain, rId) {
+    var keys  = Object.keys(answers);
+    var pfx   = keys[0].replace(/\d+$/, '');
+    var total = keys.length, score = 0, html = '';
+    keys.forEach(function(q) {
+        var sel = document.querySelector('input[name="'+q+'"]:checked');
+        var n   = q.replace(pfx, '');
+        if (sel && sel.value === answers[q]) {
+            score++; html += '<br>✅ ' + n + ': Верно! ' + explain[q];
+        } else if (sel) {
+            html += '<br>❌ ' + n + ': Неверно. ' + explain[q];
+        } else {
+            html += '<br>⚠️ ' + n + ': Нет ответа. ' + explain[q];
+        }
+    });
+    var pct = Math.round(score / total * 100);
+    var bg  = pct >= 80 ? '#c6f6d5' : pct >= 60 ? '#fefcbf' : '#fed7d7';
+    var em  = pct >= 80 ? '🎉 Отлично!' : pct >= 60 ? '👍 Хорошо!' : '📚 Повтори материал!';
+    var box = document.getElementById(rId);
+    box.style.background = bg; box.style.display = 'block';
+    box.innerHTML = em + ' <strong>' + score + '/' + total + ' (' + pct + '%)</strong>' + html;
+    box.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

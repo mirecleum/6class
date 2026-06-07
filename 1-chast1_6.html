@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 1 — Русский язык, 6 класс</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2b6cb0;
+            font-size: 2em;
+            margin-bottom: 10px;
+            border-bottom: 4px solid #3182ce;
+            padding-bottom: 15px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .lesson-block {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 6px solid #3182ce;
+        }
+        .lesson-block.green {
+            border-left-color: #38a169;
+        }
+        .lesson-block.purple {
+            border-left-color: #805ad5;
+        }
+        .lesson-block.orange {
+            border-left-color: #dd6b20;
+        }
+        .lesson-block.red {
+            border-left-color: #e53e3e;
+        }
+        h2 {
+            color: #2b6cb0;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h3 {
+            color: #2d3748;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+            border-bottom: 2px dashed #e2e8f0;
+            padding-bottom: 5px;
+        }
+        .notebook {
+            background: #fffff0;
+            border: 2px solid #ecc94b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #ecc94b;
+            color: #744210;
+            padding: 2px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+        .notebook .content {
+            margin-top: 10px;
+        }
+        .rule-box {
+            background: #ebf8ff;
+            border: 2px solid #90cdf4;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin: 10px 0;
+        }
+        .rule-box.warning {
+            background: #fff5f5;
+            border-color: #fc8181;
+        }
+        .example-box {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin: 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        th {
+            background: #3182ce;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        tr:nth-child(even) {
+            background: #f7fafc;
+        }
+        tr:hover {
+            background: #ebf8ff;
+        }
+        .exercise-block {
+            background: #faf5ff;
+            border: 2px solid #d6bcfa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+        .exercise-block::before {
+            content: "✏️ УПРАЖНЕНИЯ";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #805ad5;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+        .exercise-block .content {
+            margin-top: 10px;
+        }
+        .exercise-item {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            border-left: 3px solid #805ad5;
+        }
+        .answer-toggle {
+            background: #805ad5;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 8px;
+            transition: background 0.3s;
+        }
+        .answer-toggle:hover {
+            background: #6b46c1;
+        }
+        .answer {
+            display: none;
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 8px;
+            color: #276749;
+        }
+        .video-block {
+            background: #fff5f5;
+            border: 2px solid #fc8181;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .video-block a {
+            color: #c53030;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .video-block a:hover {
+            text-decoration: underline;
+        }
+        .quiz-container {
+            background: #fffff0;
+            border: 2px solid #f6ad55;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .quiz-option {
+            display: block;
+            padding: 8px 15px;
+            margin: 4px 0;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .quiz-option:hover {
+            background: #ebf8ff;
+            border-color: #90cdf4;
+        }
+        .quiz-option input {
+            margin-right: 8px;
+        }
+        .check-btn {
+            background: #38a169;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .check-btn:hover {
+            background: #2f855a;
+        }
+        .result-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+        }
+        .dictation-block {
+            background: #fff;
+            border: 3px solid #e53e3e;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+        .dictation-block::before {
+            content: "📝 ДИКТАНТ";
+            position: absolute;
+            top: -14px;
+            left: 20px;
+            background: #e53e3e;
+            color: white;
+            padding: 3px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .dictation-block .content {
+            margin-top: 10px;
+        }
+        ul, ol {
+            padding-left: 25px;
+            margin: 8px 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .tag-theory { background: #bee3f8; color: #2a4365; }
+        .tag-practice { background: #c6f6d5; color: #22543d; }
+        .tag-test { background: #fefcbf; color: #744210; }
+        .duration {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            float: right;
+        }
+        .highlight {
+            background: #fefcbf;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .bold-red { color: #e53e3e; font-weight: bold; }
+        .bold-green { color: #38a169; font-weight: bold; }
+        .bold-blue { color: #3182ce; font-weight: bold; }
+        .separator {
+            border: none;
+            height: 3px;
+            background: linear-gradient(to right, #3182ce, #805ad5, #e53e3e);
+            margin: 30px 0;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Русский язык — Неделя 1</h1>
+        <p class="subtitle">6 класс | 6 часов | Фонетика, Морфемика, Орфография</p>
+
+        <!-- ==================== ЗАНЯТИЕ 1 ==================== -->
+        <div class="lesson-block">
+            <h2>📖 Занятие 1: Фонетика (повторение)</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=tpILHOkTpXo" target="_blank">Фонетика. Звуки и буквы — Русский язык 6 класс (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=YBtR1P8bef8" target="_blank">Фонетический разбор слова — подробное объяснение</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=i3jzgVJTfQg" target="_blank">Гласные и согласные звуки — повторение (TutorOnline)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <div class="content">
+                    <h3>Тема: Фонетика — наука о звуках речи</h3>
+                    
+                    <div class="rule-box">
+                        <strong>📌 Запомни!</strong><br>
+                        <strong>Фонетика</strong> — раздел науки о языке, изучающий звуки речи.<br>
+                        <strong>Графика</strong> — раздел науки о языке, изучающий способы обозначения звуков на письме.
+                    </div>
+
+                    <h3>Гласные звуки и буквы</h3>
+                    <table>
+                        <tr><th>Гласных звуков</th><th>Гласных букв</th></tr>
+                        <tr><td>6: [а], [о], [у], [э], [и], [ы]</td><td>10: а, о, у, э, и, ы, е, ё, ю, я</td></tr>
+                    </table>
+
+                    <div class="rule-box">
+                        <strong>📌 Буквы Е, Ё, Ю, Я обозначают ДВА звука:</strong>
+                        <ul>
+                            <li><strong>Е</strong> → [й'э] | <strong>Ё</strong> → [й'о] | <strong>Ю</strong> → [й'у] | <strong>Я</strong> → [й'а]</li>
+                        </ul>
+                        <strong>Когда?</strong>
+                        <ol>
+                            <li>В начале слова: <em><span class="bold-red">я</span>блоко</em> → [й'а]блоко</li>
+                            <li>После гласной: по<span class="bold-red">ю</span>т → по[й'у]т</li>
+                            <li>После Ъ и Ь: вь<span class="bold-red">ю</span>га → вь[й'у]га, объ<span class="bold-red">е</span>м → объ[й'э]м</li>
+                        </ol>
+                    </div>
+
+                    <h3>Согласные звуки</h3>
+                    <table>
+                        <tr><th>Признак</th><th>Характеристика</th><th>Примеры</th></tr>
+                        <tr><td>Звонкие/глухие</td><td>Парные</td><td>б-п, в-ф, г-к, д-т, ж-ш, з-с</td></tr>
+                        <tr><td></td><td>Всегда звонкие (сонорные)</td><td>л, м, н, р, й</td></tr>
+                        <tr><td></td><td>Всегда глухие</td><td>х, ц, ч, щ</td></tr>
+                        <tr><td>Твёрдые/мягкие</td><td>Всегда твёрдые</td><td>ж, ш, ц</td></tr>
+                        <tr><td></td><td>Всегда мягкие</td><td>ч, щ, й</td></tr>
+                    </table>
+
+                    <h3>Порядок фонетического разбора</h3>
+                    <ol>
+                        <li>Записать слово, разделить на слоги, поставить ударение</li>
+                        <li>Записать транскрипцию [ ]</li>
+                        <li>Охарактеризовать каждый звук</li>
+                        <li>Указать количество букв и звуков</li>
+                    </ol>
+
+                    <div class="example-box">
+                        <strong>Образец разбора:</strong><br>
+                        <strong>Ёлка</strong> — ёл-ка, [й'о́лка], 2 слога<br>
+                        ё — [й'] — согласный, звонкий, мягкий<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;[о́] — гласный, ударный<br>
+                        л — [л] — согласный, звонкий, твёрдый<br>
+                        к — [к] — согласный, глухой, твёрдый<br>
+                        а — [а] — гласный, безударный<br>
+                        <strong>4 буквы, 5 звуков</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="content">
+                    <h3>Упражнение 1: Определите количество букв и звуков</h3>
+                    
+                    <div class="exercise-item">
+                        <strong>Разберите слова:</strong> яблоня, местность, подъезд, юность, молодёжь, счастье
+                        <br><br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans1')">Показать ответы</button>
+                        <div class="answer" id="ans1">
+                            <strong>Яблоня:</strong> [й'а́блон'а] — 6 букв, 7 звуков (я=й'+а в начале слова)<br>
+                            <strong>Местность:</strong> [м'э́снос'т'] — 9 букв, 7 звуков (т — не произносится, ь — не даёт звука)<br>
+                            <strong>Подъезд:</strong> [падй'э́ст] — 7 букв, 7 звуков (ъ не даёт звука, но е=й'+э после ъ; д→т оглушение на конце)<br>
+                            <strong>Юность:</strong> [й'у́нас'т'] — 6 букв, 7 звуков (ю=й'+у в начале слова)<br>
+                            <strong>Молодёжь:</strong> [маладо́ш] — 8 букв, 7 звуков (ь не даёт звука; ж→ш оглушение)<br>
+                            <strong>Счастье:</strong> [щ'а́с'т'й'э] — 7 букв, 6 звуков (сч=[щ'], е=й'+э после ь)
+                        </div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <strong>Упражнение 2: В каких словах буква Е обозначает два звука?</strong><br>
+                        Снег, еда, поезд, лес, приехать, мель, въехать, небо
+                        <br><br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans2')">Показать ответ</button>
+                        <div class="answer" id="ans2">
+                            Два звука [й'э]: <strong>еда</strong> (начало слова), <strong>поезд</strong> (после гласной), <strong>приехать</strong> (после гласной), <strong>въехать</strong> (после ъ).<br>
+                            Один звук [э]: снег, лес, мель, небо (после согласных).
+                        </div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <strong>Упражнение 3: Выполните полный фонетический разбор слов</strong><br>
+                        Сделайте в тетради: <strong>объявление, льётся, праздник</strong>
+                        <br><br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans3')">Показать ответ</button>
+                        <div class="answer" id="ans3">
+                            <strong>Объявление</strong> — объ-яв-ле-ни-е [абй'авл'э́н'ий'э] — 11 букв, 11 звуков<br>
+                            <strong>Льётся</strong> — льёт-ся [л'й'о́ца] — 6 букв, 5 звуков (тс=[ц])<br>
+                            <strong>Праздник</strong> — праз-дник [пра́з'н'ик] — 8 букв, 7 звуков (д не произносится)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="separator">
+
+        <!-- ==================== ЗАНЯТИЕ 2 ==================== -->
+        <div class="lesson-block green">
+            <h2>📖 Занятие 2: Морфемика (состав слова)</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=6_gU9jHrFvo" target="_blank">Морфемика. Состав слова — 6 класс (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=sxFGqpBh4fk" target="_blank">Как разобрать слово по составу (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=1z3bMDjS3dg" target="_blank">Основа слова и окончание — повторение</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <div class="content">
+                    <h3>Тема: Морфемика — наука о частях слова</h3>
+
+                    <div class="rule-box">
+                        <strong>📌 Морфемика</strong> — раздел науки о языке, изучающий морфемы (значимые части слова).
+                    </div>
+
+                    <table>
+                        <tr><th>Морфема</th><th>Определение</th><th>Пример</th></tr>
+                        <tr><td>🔹 Корень</td><td>Главная значимая часть слова, в которой заключено общее лексическое значение всех однокоренных слов</td><td><strong>лес</strong>-ной, <strong>лес</strong>-ник, <strong>лес</strong>-ок</td></tr>
+                        <tr><td>🔹 Приставка (префикс)</td><td>Значимая часть слова, стоящая перед корнем и служащая для образования новых слов</td><td><strong>при-</strong>ехать, <strong>у-</strong>ехать, <strong>вы-</strong>ехать</td></tr>
+                        <tr><td>🔹 Суффикс</td><td>Значимая часть слова, стоящая после корня и служащая для образования новых слов</td><td>дом-<strong>-ик</strong>, учи-<strong>-тель</strong></td></tr>
+                        <tr><td>🔹 Окончание</td><td>Изменяемая часть слова, служащая для связи слов в предложении</td><td>книг-<strong>а</strong>, книг-<strong>и</strong>, книг-<strong>у</strong></td></tr>
+                        <tr><td>🔹 Основа</td><td>Часть слова без окончания</td><td><strong>пригород</strong>-ный → основа: пригородн-</td></tr>
+                    </table>
+
+                    <div class="rule-box">
+                        <strong>📌 Порядок разбора слова по составу:</strong>
+                        <ol>
+                            <li>Определи <strong>окончание</strong> (измени форму слова)</li>
+                            <li>Выдели <strong>основу</strong> (часть без окончания)</li>
+                            <li>Найди <strong>корень</strong> (подбери однокоренные слова)</li>
+                            <li>Выдели <strong>приставку</strong> (стоит перед корнем)</li>
+                            <li>Выдели <strong>суффикс</strong> (стоит после корня)</li>
+                        </ol>
+                    </div>
+
+                    <div class="example-box">
+                        <strong>Образец:</strong><br>
+                        <strong>Пришкольный</strong><br>
+                        1. Окончание: -ый (пришкольн<strong>ая</strong>, пришкольн<strong>ого</strong>)<br>
+                        2. Основа: пришкольн-<br>
+                        3. Корень: -школь- (школа, школьник)<br>
+                        4. Приставка: при-<br>
+                        5. Суффикс: -н-<br>
+                        Итого: при/школь/н/ый
+                    </div>
+
+                    <div class="rule-box warning">
+                        <strong>⚠️ Запомни!</strong><br>
+                        Нулевое окончание — это окончание, которое не выражено звуком, но проявляется при изменении слова.<br>
+                        <em>Пример: дом□ (дом-а, дом-у) — нулевое окончание</em><br><br>
+                        У неизменяемых слов (наречия, деепричастия) <strong>окончания нет!</strong><br>
+                        <em>Быстро, красиво, вчера — нет окончания, всё слово = основа</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="content">
+                    <h3>Упражнение 1: Разберите слова по составу</h3>
+                    <div class="exercise-item">
+                        <strong>Разберите в тетради:</strong> подводный, перелесок, настольный, безоблачный, выходной, приморский
+                        <br><br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans4')">Показать ответы</button>
+                        <div class="answer" id="ans4">
+                            <strong>Подводный:</strong> под/вод/н/ый (приставка под-, корень -вод-, суффикс -н-, окончание -ый)<br>
+                            <strong>Перелесок:</strong> пере/лес/ок/□ (приставка пере-, корень -лес-, суффикс -ок-, нулевое окончание)<br>
+                            <strong>Настольный:</strong> на/стольн/ый (приставка на-, корень -стол-, суффикс -н-, окончание -ый; ь входит в корень: стольн → стол')<br>
+                            <strong>Безоблачный:</strong> без/облач/н/ый<br>
+                            <strong>Выходной:</strong> вы/ход/н/ой<br>
+                            <strong>Приморский:</strong> при/мор/ск/ий
+                        </div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <strong>Упражнение 2: Подберите по 3 однокоренных слова:</strong><br>
+                        Вода, свет, земля, ходить, писать
+                        <br><br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans5')">Показать ответ</button>
+                        <div class="answer" id="ans5">
+                            <strong>Вода:</strong> водный, подводный, водица<br>
+                            <strong>Свет:</strong> светлый, освещение, светильник<br>
+                            <strong>Земля:</strong> земляной, подземный, землянка<br>
+                            <strong>Ходить:</strong> выход, пешеход, переходить<br>
+                            <strong>Писать:</strong> письмо, записка, написание
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="separator">
+
+        <!-- ==================== ЗАНЯТИЕ 3 ==================== -->
+        <div class="lesson-block purple">
+            <h2>📖 Занятие 3: Корни с чередованием гласных</h2>
+            <span class="duration">⏱ 1,5 часа</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=lB2WfpcVGLg" target="_blank">Чередующиеся гласные в корне — ВСЕ правила (Русский язык TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=M8O1jGsf9K8" target="_blank">Корни с чередованием — таблица и примеры (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=qe0Lv3rxXyU" target="_blank">Чередование в корне: лайфхаки для запоминания</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <div class="content">
+                    <h3>Тема: Чередующиеся гласные в корне слова</h3>
+
+                    <div class="rule-box warning">
+                        <strong>⚠️ ВАЖНО!</strong> В корнях с чередованием <strong>НЕЛЬЗЯ</strong> проверять гласную ударением! Нужно применять специальные правила.
+                    </div>
+
+                    <h3>Группа 1: Зависят от СУФФИКСА -А-</h3>
+                    <table>
+                        <tr><th>Корень</th><th>Правило</th><th>Примеры</th></tr>
+                        <tr><td>-бер-/-бир-</td><td rowspan="6">Если после корня стоит суффикс <strong>-а-</strong>, пишем <strong>И</strong>. Если нет — <strong>Е</strong>.</td><td>со<strong>бир</strong>ать — со<strong>бер</strong>у</td></tr>
+                        <tr><td>-дер-/-дир-</td><td>за<strong>дир</strong>ать — за<strong>дер</strong>у</td></tr>
+                        <tr><td>-мер-/-мир-</td><td>за<strong>мир</strong>ать — за<strong>мер</strong>еть</td></tr>
+                        <tr><td>-пер-/-пир-</td><td>за<strong>пир</strong>ать — за<strong>пер</strong>еть</td></tr>
+                        <tr><td>-тер-/-тир-</td><td>про<strong>тир</strong>ать — про<strong>тер</strong>еть</td></tr>
+                        <tr><td>-стел-/-стил-</td><td>рас<strong>стил</strong>ать — рас<strong>стел</strong>ить</td></tr>
+                        <tr><td>-кас-/-кос-</td><td>Если после корня <strong>-а-</strong> → пишем <strong>А</strong>, если нет → <strong>О</strong></td><td><strong>кас</strong>аться — при<strong>кос</strong>нуться</td></tr>
+                        <tr><td>-лаг-/-лож-</td><td>Перед <strong>Г</strong> → <strong>А</strong>, перед <strong>Ж</strong> → <strong>О</strong> (+ суффикс -а-)</td><td>по<strong>лаг</strong>ать — по<strong>лож</strong>ить</td></tr>
+                    </table>
+
+                    <h3>Группа 2: Зависят от УДАРЕНИЯ</h3>
+                    <table>
+                        <tr><th>Корень</th><th>Правило</th><th>Примеры</th></tr>
+                        <tr><td>-гор-/-гар-</td><td>Без ударения — <strong>О</strong></td><td>заг<strong>о</strong>рать, уг<strong>о</strong>реть (но: заг<strong>а́</strong>р)</td></tr>
+                        <tr><td>-зор-/-зар-</td><td>Без ударения — <strong>А</strong></td><td>з<strong>а</strong>рница, оз<strong>а</strong>рить (но: з<strong>о́</strong>ри)</td></tr>
+                        <tr><td>-клон-/-клан-</td><td>Без ударения — <strong>О</strong></td><td>накл<strong>о</strong>ниться (но: кл<strong>а́</strong>няться)</td></tr>
+                        <tr><td>-твор-/-твар-</td><td>Без ударения — <strong>О</strong></td><td>тв<strong>о</strong>рить (но: тв<strong>а́</strong>рь)</td></tr>
+                    </table>
+
+                    <h3>Группа 3: Зависят от СОГЛАСНОЙ в корне</h3>
+                    <table>
+                        <tr><th>Корень</th><th>Правило</th><th>Примеры</th></tr>
+                        <tr><td>-раст-/-ращ-/-рос-</td><td>Перед <strong>СТ, Щ</strong> → <strong>А</strong>, перед <strong>С</strong> → <strong>О</strong></td><td>р<strong>а</strong>стение, выр<strong>а</strong>щивать, выр<strong>о</strong>сли<br>❗ Исключения: росток, Ростов, Ростислав, ростовщик, отрасль</td></tr>
+                        <tr><td>-скак-/-скоч-</td><td>Перед <strong>К</strong> → <strong>А</strong>, перед <strong>Ч</strong> → <strong>О</strong></td><td>ск<strong>а</strong>кать — выск<strong>о</strong>чить</td></tr>
+                    </table>
+
+                    <h3>Группа 4: Зависят от ЗНАЧЕНИЯ</h3>
+                    <table>
+                        <tr><th>Корень</th><th>Правило</th><th>Примеры</th></tr>
+                        <tr><td>-мак-/-мок-</td><td><strong>МАК</strong> = погружать в жидкость<br><strong>МОК</strong> = пропускать жидкость</td><td>обм<strong>а</strong>кнуть (перо в чернила)<br>непром<strong>о</strong>каемый (плащ)</td></tr>
+                        <tr><td>-равн-/-ровн-</td><td><strong>РАВН</strong> = одинаковый<br><strong>РОВН</strong> = гладкий, ровный</td><td>ур<strong>а</strong>внение, ср<strong>а</strong>внить<br>подр<strong>о</strong>внять (причёску)<br>❗ Исключение: р<strong>а</strong>внина, пор<strong>о</strong>вну</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="content">
+                    <h3>Упражнение 1: Вставьте пропущенные буквы, объясните выбор</h3>
+                    <div class="exercise-item">
+                        1) Соб_рать ягоды<br>
+                        2) Зам_реть от страха<br>
+                        3) Заг_рать на пляже<br>
+                        4) Выр_стить цветок<br>
+                        5) Прик_снуться к тайне<br>
+                        6) Распол_гать информацией<br>
+                        7) Бл_стеть на солнце<br>
+                        8) Разр_внять грядку<br>
+                        9) Заст_лить постель<br>
+                        10) Оз_рить светом<br><br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans6')">Показать ответы</button>
+                        <div class="answer" id="ans6">
+                            1) Соб<strong>и</strong>рать — есть суффикс -а-<br>
+                            2) Зам<strong>е</strong>реть — нет суффикса -а-<br>
+                            3) Заг<strong>о</strong>рать — без ударения пишем О<br>
+                            4) Выр<strong>а</strong>стить — перед СТ пишем А<br>
+                            5) Прик<strong>о</strong>снуться — нет суффикса -а-<br>
+                            6) Распол<strong>а</strong>гать — есть суффикс -а- (+ перед Г)<br>
+                            7) Бл<strong>е</strong>стеть — нет суффикса -а- (блИстать)<br>
+                            8) Разр<strong>о</strong>внять — значение «сделать ровным»<br>
+                            9) Заст<strong>е</strong>лить — нет суффикса -а-<br>
+                            10) Оз<strong>а</strong>рить — без ударения пишем А
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="separator">
+
+        <!-- ==================== ЗАНЯТИЕ 4 ==================== -->
+        <div class="lesson-block orange">
+            <h2>📖 Занятие 4: Приставки ПРЕ- и ПРИ-</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=GdA3GhpGcCg" target="_blank">Приставки ПРЕ- и ПРИ- — правило и примеры (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=kCqZLpJi7x4" target="_blank">ПРЕ и ПРИ — как не путать? Лайфхаки (TutorOnline)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <div class="content">
+                    <h3>Тема: Правописание приставок ПРЕ- и ПРИ-</h3>
+
+                    <h3>Приставка ПРИ- пишется, когда слово обозначает:</h3>
+                    <table>
+                        <tr><th>Значение</th><th>Примеры</th></tr>
+                        <tr><td>1. <strong>Приближение</strong></td><td>при<strong>ехать</strong>, при<strong>бежать</strong>, при<strong>лететь</strong>, при<strong>плыть</strong></td></tr>
+                        <tr><td>2. <strong>Присоединение</strong></td><td>при<strong>клеить</strong>, при<strong>шить</strong>, при<strong>винтить</strong>, при<strong>бить</strong></td></tr>
+                        <tr><td>3. <strong>Близость</strong> (=около)</td><td>при<strong>морский</strong>, при<strong>школьный</strong>, при<strong>дорожный</strong></td></tr>
+                        <tr><td>4. <strong>Неполное действие</strong></td><td>при<strong>открыть</strong>, при<strong>сесть</strong>, при<strong>лечь</strong>, при<strong>тормозить</strong></td></tr>
+                    </table>
+
+                    <h3>Приставка ПРЕ- пишется, когда:</h3>
+                    <table>
+                        <tr><th>Значение</th><th>Примеры</th></tr>
+                        <tr><td>1. = <strong>ОЧЕНЬ</strong> (высшая степень)</td><td>пре<strong>красный</strong> (=очень красивый), пре<strong>добрый</strong>, пре<strong>огромный</strong></td></tr>
+                        <tr><td>2. = <strong>ПЕРЕ-</strong></td><td>пре<strong>градить</strong> (=перегородить), пре<strong>рвать</strong> (=перервать), пре<strong>ступить</strong> (=переступить)</td></tr>
+                    </table>
+
+                    <div class="rule-box warning">
+                        <strong>⚠️ Слова, которые нужно ЗАПОМНИТЬ:</strong><br><br>
+                        <strong>ПРИ-:</strong> привет, пример, природа, причина, приключение, прилежный, привередливый, приоритет, привилегия, притязание<br><br>
+                        <strong>ПРЕ-:</strong> президент, премьера, преследовать, пренебрегать, препятствие, преподаватель, предмет, президиум, претензия, прецедент
+                    </div>
+
+                    <div class="rule-box">
+                        <strong>📌 Различай по значению!</strong>
+                        <table>
+                            <tr><th>ПРИ-</th><th>ПРЕ-</th></tr>
+                            <tr><td>при<strong>бывать</strong> (приезжать)</td><td>пре<strong>бывать</strong> (находиться)</td></tr>
+                            <tr><td>при<strong>ступить</strong> (начать)</td><td>пре<strong>ступить</strong> (нарушить)</td></tr>
+                            <tr><td>при<strong>зреть</strong> (приютить)</td><td>пре<strong>зирать</strong> (не уважать)</td></tr>
+                            <tr><td>при<strong>творить</strong> (дверь)</td><td>пре<strong>творить</strong> (мечту в жизнь)</td></tr>
+                            <tr><td>при<strong>клоняться</strong> (нагнуться)</td><td>пре<strong>клоняться</strong> (уважать)</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="content">
+                    <h3>Вставьте ПРЕ- или ПРИ-</h3>
+                    <div class="exercise-item">
+                        1) _ехать в город<br>
+                        2) _красный закат<br>
+                        3) _школьный участок<br>
+                        4) _градить путь<br>
+                        5) _открыть окно<br>
+                        6) _одолеть трудности<br>
+                        7) _клеить марку<br>
+                        8) _скучный рассказ<br>
+                        9) _морский город<br>
+                        10) _рвать разговор<br>
+                        11) _бывать в Москве (находиться)<br>
+                        12) _бывать в Москву (приезжать)<br>
+                        <br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans7')">Показать ответы</button>
+                        <div class="answer" id="ans7">
+                            1) <strong>ПРИ</strong>ехать — приближение<br>
+                            2) <strong>ПРЕ</strong>красный — =очень красивый<br>
+                            3) <strong>ПРИ</strong>школьный — близость<br>
+                            4) <strong>ПРЕ</strong>градить — =перегородить<br>
+                            5) <strong>ПРИ</strong>открыть — неполное действие<br>
+                            6) <strong>ПРЕ</strong>одолеть — =пере-<br>
+                            7) <strong>ПРИ</strong>клеить — присоединение<br>
+                            8) <strong>ПРЕ</strong>скучный — =очень скучный<br>
+                            9) <strong>ПРИ</strong>морский — близость к морю<br>
+                            10) <strong>ПРЕ</strong>рвать — =перервать<br>
+                            11) <strong>ПРЕ</strong>бывать — находиться<br>
+                            12) <strong>ПРИ</strong>бывать — приезжать
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="separator">
+
+        <!-- ==================== ЗАНЯТИЕ 5 ==================== -->
+        <div class="lesson-block red">
+            <h2>📖 Занятие 5: О/Ё после шипящих</h2>
+            <span class="duration">⏱ 30 минут</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=4i4K0_3Zyfc" target="_blank">О и Ё после шипящих — все случаи (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=HN7aAJFKqPo" target="_blank">О/Ё после шипящих в разных частях слова</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <div class="content">
+                    <h3>Тема: Буквы О и Ё после шипящих (Ж, Ш, Ч, Щ)</h3>
+
+                    <h3>1. В КОРНЕ слова</h3>
+                    <div class="rule-box">
+                        <strong>Правило:</strong> В корне после шипящих пишем <strong>Ё</strong>, если можно подобрать однокоренное слово с <strong>Е</strong>.<br>
+                        <em>Ш<strong>ё</strong>пот — ш<strong>е</strong>птать, ж<strong>ё</strong>лтый — ж<strong>е</strong>лтеть, ч<strong>ё</strong>рный — ч<strong>е</strong>рнеть</em>
+                    </div>
+                    <div class="rule-box warning">
+                        <strong>⚠️ Исключения (пишем О):</strong> ш<strong>о</strong>рох, ш<strong>о</strong>в, ш<strong>о</strong>к, ш<strong>о</strong>мпол, ш<strong>о</strong>ссе, ш<strong>о</strong>колад, ш<strong>о</strong>рты, ж<strong>о</strong>кей, ж<strong>о</strong>нглёр, крыж<strong>о</strong>вник, обж<strong>о</strong>ра, трущ<strong>о</strong>ба, чащ<strong>о</strong>ба, маж<strong>о</strong>р, ч<strong>о</strong>порный
+                    </div>
+
+                    <h3>2. В СУФФИКСАХ и ОКОНЧАНИЯХ</h3>
+                    <div class="rule-box">
+                        <strong>Правило:</strong><br>
+                        Под <strong>ударением</strong> → <strong>О</strong>: друж<strong>о́</strong>к, больш<strong>о́</strong>й, свеч<strong>о́</strong>й<br>
+                        Без <strong>ударения</strong> → <strong>Е</strong>: до́ж<strong>е</strong>м (нет ударения), ту́ч<strong>е</strong>й, ре́ч<strong>е</strong>нька
+                    </div>
+
+                    <div class="example-box">
+                        <strong>Суффиксы существительных:</strong> медвеж<strong>о́</strong>нок, руч<strong>о́</strong>нка, собач<strong>о́</strong>нка (под ударением — О)<br>
+                        <strong>Суффикс -ёр-:</strong> дириж<strong>ё</strong>р, стаж<strong>ё</strong>р, ухаж<strong>ё</strong>р — всегда Ё<br>
+                        <strong>Глаголы:</strong> в глаголах всегда <strong>Ё</strong>: печ<strong>ё</strong>т, теч<strong>ё</strong>т, стереж<strong>ё</strong>т
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="content">
+                    <h3>Вставьте О или Ё</h3>
+                    <div class="exercise-item">
+                        1) Ш_лковый, 2) Ш_рох, 3) Крыж_вник, 4) Ж_луди, 5) Пч_лы, 6) Ш_колад, 7) Реч_нка, 8) Деш_вый, 9) Медвеж_нок, 10) Печ_т пироги
+                        <br><br>
+                        <button class="answer-toggle" onclick="toggleAnswer('ans8')">Показать ответы</button>
+                        <div class="answer" id="ans8">
+                            1) Ш<strong>ё</strong>лковый (шелка — есть Е)<br>
+                            2) Ш<strong>о</strong>рох (исключение)<br>
+                            3) Крыж<strong>о</strong>вник (исключение)<br>
+                            4) Ж<strong>ё</strong>луди (желудей — есть Е)<br>
+                            5) Пч<strong>ё</strong>лы (пчела — есть Е)<br>
+                            6) Ш<strong>о</strong>колад (исключение/заимствование)<br>
+                            7) Реч<strong>о</strong>нка (суффикс под ударением)<br>
+                            8) Деш<strong>ё</strong>вый (дешевле — есть Е)<br>
+                            9) Медвеж<strong>о</strong>нок (суффикс под ударением)<br>
+                            10) Печ<strong>ё</strong>т (глагол — всегда Ё)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="separator">
+
+        <!-- ==================== ЗАНЯТИЕ 6: ДИКТАНТ И ТЕСТ ==================== -->
+        <div class="lesson-block">
+            <h2>📝 Занятие 6: Закрепление + Диктант</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-practice">Практика</span>
+            <span class="tag tag-test">Тест</span>
+
+            <div class="dictation-block">
+                <div class="content">
+                    <h3>Тренировочный диктант (50 слов на изученные орфограммы)</h3>
+                    <p><em>Попросите кого-нибудь продиктовать вам этот текст, или запишите его, закрыв оригинал:</em></p>
+                    <br>
+                    <div style="background: #f7fafc; padding: 15px; border-radius: 8px; display:none;" id="dictation-text">
+                        <p>На прибрежной поляне расположились туристы. Солнце пригревало, и все решили позагорать. Ребята расстелили покрывала и прилегли отдохнуть. Вдали блестела река. Мальчик собирал жёлуди под старым дубом. Девочка замерла, увидев прекрасную бабочку. Вечером все разожгли костёр. Дым расстилался над озером. Прикоснувшись к прохладной воде, дети притихли. Растения у берега слегка покачивались от ветра. Преодолев усталость, ребята запели песню.</p>
+                    </div>
+                    <button class="answer-toggle" onclick="toggleAnswer('dictation-text')">Показать текст диктанта</button>
+                    <br><br>
+                    <strong>Орфограммы в тексте:</strong>
+                    <ul>
+                        <li>ПРИ-/ПРЕ-: прибрежной, пригревало, прилегли, прекрасную, прикоснувшись, притихли, преодолев</li>
+                        <li>Чередование: расположились, позагорать, расстелили, блестела, собирал, замерла, расстилался, прикоснувшись, растения</li>
+                        <li>О/Ё после шипящих: жёлуди, костёр</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ИНТЕРАКТИВНЫЙ ТЕСТ ==================== -->
+        <div class="quiz-container">
+            <h2>🧪 Интерактивный тест по русскому языку</h2>
+            <p>Проверь свои знания! (10 вопросов)</p>
+
+            <form id="russianQuiz">
+                <div class="quiz-question">
+                    <p>1. Сколько звуков в слове «юность»?</p>
+                    <label class="quiz-option"><input type="radio" name="q1" value="a"> 6 звуков</label>
+                    <label class="quiz-option"><input type="radio" name="q1" value="b"> 7 звуков</label>
+                    <label class="quiz-option"><input type="radio" name="q1" value="c"> 5 звуков</label>
+                    <label class="quiz-option"><input type="radio" name="q1" value="d"> 8 звуков</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>2. В каком слове пропущена буква И?</p>
+                    <label class="quiz-option"><input type="radio" name="q2" value="a"> Соб_ру</label>
+                    <label class="quiz-option"><input type="radio" name="q2" value="b"> Зам_реть</label>
+                    <label class="quiz-option"><input type="radio" name="q2" value="c"> Заст_лать</label>
+                    <label class="quiz-option"><input type="radio" name="q2" value="d"> Бл_стеть</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>3. В каком слове пишется приставка ПРЕ-?</p>
+                    <label class="quiz-option"><input type="radio" name="q3" value="a"> _школьный</label>
+                    <label class="quiz-option"><input type="radio" name="q3" value="b"> _сесть</label>
+                    <label class="quiz-option"><input type="radio" name="q3" value="c"> _градить</label>
+                    <label class="quiz-option"><input type="radio" name="q3" value="d"> _клеить</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>4. Какое слово является исключением (О после шипящей в корне)?</p>
+                    <label class="quiz-option"><input type="radio" name="q4" value="a"> Шёпот</label>
+                    <label class="quiz-option"><input type="radio" name="q4" value="b"> Жёлтый</label>
+                    <label class="quiz-option"><input type="radio" name="q4" value="c"> Крыжовник</label>
+                    <label class="quiz-option"><input type="radio" name="q4" value="d"> Чёрный</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>5. Какая гласная пишется в слове «заг_рать»?</p>
+                    <label class="quiz-option"><input type="radio" name="q5" value="a"> А (загарать)</label>
+                    <label class="quiz-option"><input type="radio" name="q5" value="b"> О (загорать)</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. Укажите слово с приставкой ПРИ- в значении «неполное действие»:</p>
+                    <label class="quiz-option"><input type="radio" name="q6" value="a"> Прибежать</label>
+                    <label class="quiz-option"><input type="radio" name="q6" value="b"> Приморский</label>
+                    <label class="quiz-option"><input type="radio" name="q6" value="c"> Приоткрыть</label>
+                    <label class="quiz-option"><input type="radio" name="q6" value="d"> Приклеить</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. Какая морфема служит для связи слов в предложении?</p>
+                    <label class="quiz-option"><input type="radio" name="q7" value="a"> Корень</label>
+                    <label class="quiz-option"><input type="radio" name="q7" value="b"> Суффикс</label>
+                    <label class="quiz-option"><input type="radio" name="q7" value="c"> Приставка</label>
+                    <label class="quiz-option"><input type="radio" name="q7" value="d"> Окончание</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. В слове «р_стение» пишется буква:</p>
+                    <label class="quiz-option"><input type="radio" name="q8" value="a"> О (ростение)</label>
+                    <label class="quiz-option"><input type="radio" name="q8" value="b"> А (растение)</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. Буквы Е, Ё, Ю, Я обозначают два звука:</p>
+                    <label class="quiz-option"><input type="radio" name="q9" value="a"> Только в начале слова</label>
+                    <label class="quiz-option"><input type="radio" name="q9" value="b"> В начале слова, после гласной, после Ъ и Ь</label>
+                    <label class="quiz-option"><input type="radio" name="q9" value="c"> После любой согласной</label>
+                    <label class="quiz-option"><input type="radio" name="q9" value="d"> Всегда</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. Какое слово написано ПРАВИЛЬНО?</p>
+                    <label class="quiz-option"><input type="radio" name="q10" value="a"> Прикрасный</label>
+                    <label class="quiz-option"><input type="radio" name="q10" value="b"> Прекрасный</label>
+                    <label class="quiz-option"><input type="radio" name="q10" value="c"> Прикрастный</label>
+                    <label class="quiz-option"><input type="radio" name="q10" value="d"> Прекрастный</label>
+                </div>
+
+                <button type="button" class="check-btn" onclick="checkRussianQuiz()">✅ Проверить ответы</button>
+            </form>
+
+            <div class="result-box" id="russianResult"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            var el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        function checkRussianQuiz() {
+            var answers = {
+                q1: 'b',  // 7 звуков
+                q2: 'c',  // застИлать
+                q3: 'c',  // прЕградить
+                q4: 'c',  // крыжОвник
+                q5: 'b',  // загОрать
+                q6: 'c',  // приоткрыть
+                q7: 'd',  // окончание
+                q8: 'b',  // рАстение
+                q9: 'b',  // три позиции
+                q10: 'b'  // прекрасный
+            };
+
+            var explanations = {
+                q1: 'Юность: ю=[й\'у] в начале слова + н+о+с+т+ь(мягкость) = 7 звуков',
+                q2: 'ЗастИлать — есть суффикс -а- → пишем И',
+                q3: 'ПрЕградить = перегородить → ПРЕ-',
+                q4: 'КрыжОвник — исключение, пишем О в корне',
+                q5: 'ЗагОрать — без ударения в корне -гор-/-гар- пишем О',
+                q6: 'ПриОткрыть — неполное действие (не полностью открыть)',
+                q7: 'Окончание — изменяемая часть слова для связи слов',
+                q8: 'РАстение — перед СТ пишем А',
+                q9: 'В начале слова, после гласной, после Ъ и Ь',
+                q10: 'ПрЕкрасный — значение «очень красивый», без Т (красен)'
+            };
+
+            var score = 0;
+            var total = Object.keys(answers).length;
+            var details = '';
+
+            for (var q in answers) {
+                var selected = document.querySelector('input[name="' + q + '"]:checked');
+                var questionNum = q.replace('q', '');
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                    details += '<br>✅ Вопрос ' + questionNum + ': Правильно! ' + explanations[q];
+                } else if (selected) {
+                    details += '<br>❌ Вопрос ' + questionNum + ': Неправильно. ' + explanations[q];
+                } else {
+                    details += '<br>⚠️ Вопрос ' + questionNum + ': Нет ответа. ' + explanations[q];
+                }
+            }
+
+            var resultBox = document.getElementById('russianResult');
+            var percentage = Math.round((score / total) * 100);
+            var color, emoji;
+
+            if (percentage >= 80) { color = '#c6f6d5'; emoji = '🎉'; }
+            else if (percentage >= 60) { color = '#fefcbf'; emoji = '👍'; }
+            else { color = '#fed7d7'; emoji = '📚'; }
+
+            resultBox.style.background = color;
+            resultBox.style.display = 'block';
+            resultBox.innerHTML = emoji + ' Результат: <strong>' + score + '/' + total + ' (' + percentage + '%)</strong>' + details;
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

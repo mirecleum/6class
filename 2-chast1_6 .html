@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 2 — Русский язык, 6 класс</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea11, #764ba211);
+            color: #2d3748; line-height: 1.75; padding: 20px;
+        }
+        .container { max-width: 940px; margin: 0 auto; }
+
+        /* Заголовки */
+        h1 { text-align: center; color: #2b6cb0; font-size: 2em; margin-bottom: 8px;
+             border-bottom: 4px solid #3182ce; padding-bottom: 14px; }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 28px; font-size: 1.05em; }
+        h2 { font-size: 1.45em; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        h3 { font-size: 1.12em; color: #2d3748; margin: 18px 0 8px; padding-bottom: 4px;
+             border-bottom: 2px dashed #e2e8f0; }
+        h4 { font-size: 1em; color: #4a5568; margin: 12px 0 5px; }
+
+        /* Блоки занятий */
+        .lesson { background: white; border-radius: 16px; padding: 28px; margin-bottom: 26px;
+                  box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+        .l-blue   { border-left: 6px solid #3182ce; }
+        .l-green  { border-left: 6px solid #38a169; }
+        .l-purple { border-left: 6px solid #805ad5; }
+        .l-orange { border-left: 6px solid #dd6b20; }
+        .l-red    { border-left: 6px solid #e53e3e; }
+        .l-teal   { border-left: 6px solid #319795; }
+        .l-pink   { border-left: 6px solid #d53f8c; }
+
+        .h-blue   { color: #2a4365; }
+        .h-green  { color: #22543d; }
+        .h-purple { color: #44337a; }
+        .h-orange { color: #7b341e; }
+        .h-red    { color: #742a2a; }
+
+        /* Тетрадь */
+        .nb { background: #fffff0; border: 2px solid #ecc94b; border-radius: 12px;
+              padding: 22px 22px 14px; margin: 14px 0; position: relative; }
+        .nb::before { content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ"; position: absolute; top: -13px; left: 18px;
+                      background: #ecc94b; color: #744210; padding: 2px 13px; border-radius: 8px;
+                      font-weight: bold; font-size: .82em; }
+
+        /* Правила */
+        .rule { border-radius: 10px; padding: 13px 17px; margin: 10px 0; }
+        .r-blue   { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .r-green  { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .r-yellow { background: #fffff0; border: 2px solid #f6e05e; }
+        .r-red    { background: #fff5f5; border: 2px solid #fc8181; }
+        .r-purple { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .r-orange { background: #fffaf0; border: 2px solid #fbd38d; }
+
+        /* Таблицы */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .93em; }
+        th { padding: 10px 12px; text-align: left; color: white; }
+        td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+        .th-blue   { background: #2b6cb0; }
+        .th-green  { background: #276749; }
+        .th-purple { background: #553c9a; }
+        .th-orange { background: #c05621; }
+
+        /* Примеры */
+        .ex { background: #f0fff4; border: 1px solid #9ae6b4; border-radius: 8px;
+              padding: 13px 17px; margin: 8px 0; }
+        .ex-blue { background: #ebf8ff; border-color: #90cdf4; }
+
+        /* Упражнения */
+        .exer { background: #faf5ff; border: 2px solid #d6bcfa; border-radius: 12px;
+                padding: 20px 20px 12px; margin: 14px 0; position: relative; }
+        .exer::before { content: "✏️ УПРАЖНЕНИЯ"; position: absolute; top: -13px; left: 18px;
+                        background: #805ad5; color: white; padding: 2px 12px; border-radius: 8px;
+                        font-weight: bold; font-size: .82em; }
+        .task { background: white; border-radius: 10px; padding: 13px 15px; margin: 10px 0;
+                border-left: 4px solid #805ad5; }
+
+        /* Кнопки */
+        .btn { border: none; padding: 7px 16px; border-radius: 6px; cursor: pointer;
+               font-size: .88em; margin-top: 8px; transition: all .25s; color: white; }
+        .btn-p { background: #805ad5; }
+        .btn-p:hover { background: #6b46c1; }
+        .btn-g { background: #38a169; }
+        .btn-g:hover { background: #2f855a; }
+        .btn-b { background: #3182ce; }
+        .btn-b:hover { background: #2b6cb0; }
+        .btn-o { background: #dd6b20; }
+        .btn-o:hover { background: #c05621; }
+
+        .ans { display: none; border-radius: 8px; padding: 12px 15px; margin-top: 8px;
+               font-size: .92em; line-height: 1.8; }
+        .ans-g { background: #f0fff4; border: 1px solid #9ae6b4; color: #22543d; }
+        .ans-b { background: #ebf8ff; border: 1px solid #90cdf4; color: #2a4365; }
+        .ans-p { background: #faf5ff; border: 1px solid #d6bcfa; color: #44337a; }
+
+        /* Видео */
+        .vid { background: #fff5f5; border: 2px solid #feb2b2; border-radius: 12px;
+               padding: 13px 17px; margin: 13px 0; }
+        .vid a { color: #c53030; text-decoration: none; font-weight: bold; }
+        .vid a:hover { text-decoration: underline; }
+
+        /* Теги */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px;
+               font-size: .8em; font-weight: bold; margin: 2px; }
+        .t-th { background: #bee3f8; color: #2a4365; }
+        .t-pr { background: #c6f6d5; color: #22543d; }
+        .t-te { background: #fefcbf; color: #744210; }
+        .dur { background: #e2e8f0; color: #4a5568; padding: 5px 12px; border-radius: 20px;
+               font-size: .85em; float: right; }
+
+        /* Разделитель */
+        .sep { border: none; height: 3px; margin: 30px 0; border-radius: 2px;
+               background: linear-gradient(to right, #3182ce, #805ad5, #e53e3e); }
+
+        /* Термины */
+        .terms { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+                 gap: 11px; margin: 12px 0; }
+        .term { background: white; border-radius: 10px; padding: 12px 14px;
+                border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+        .term-w { font-weight: bold; color: #2b6cb0; font-size: .95em; }
+        .term-d { font-size: .87em; color: #4a5568; margin-top: 3px; }
+
+        /* Схема */
+        .scheme { background: #f7fafc; border: 2px solid #e2e8f0; border-radius: 12px;
+                  padding: 16px; margin: 12px 0; text-align: center; }
+        .sch-row { display: flex; justify-content: center; align-items: center; gap: 10px;
+                   flex-wrap: wrap; margin: 8px 0; }
+        .sch-box { padding: 9px 15px; border-radius: 8px; font-size: .88em;
+                   font-weight: bold; flex: 1; min-width: 130px; }
+        .sb-b { background: #bee3f8; color: #2a4365; }
+        .sb-g { background: #c6f6d5; color: #22543d; }
+        .sb-p { background: #e9d8fd; color: #44337a; }
+        .sb-o { background: #feebc8; color: #7b341e; }
+        .sb-r { background: #fed7d7; color: #742a2a; }
+        .sb-t { background: #b2f5ea; color: #234e52; }
+        .arr { font-size: 1.4em; color: #718096; flex: none; }
+
+        /* Тест */
+        .quiz { background: #fffff0; border: 2px solid #f6ad55; border-radius: 14px;
+                padding: 26px; margin: 24px 0; }
+        .quiz-t { font-size: 1.45em; font-weight: bold; margin-bottom: 6px; }
+        .qb { background: white; border-radius: 10px; padding: 16px 18px; margin: 12px 0;
+              box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+        .qb p { font-weight: bold; margin-bottom: 9px; }
+        .qo { display: block; padding: 8px 14px; margin: 4px 0; background: #f7fafc;
+              border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+              transition: all .25s; user-select: none; }
+        .qo:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .qo input { margin-right: 8px; }
+        .chk-btn { padding: 12px 32px; border: none; border-radius: 8px; font-size: 1em;
+                   font-weight: bold; cursor: pointer; margin-top: 16px; color: white;
+                   background: #38a169; transition: background .3s; }
+        .chk-btn:hover { background: #2f855a; }
+        .res-box { padding: 16px; border-radius: 10px; margin-top: 16px;
+                   display: none; line-height: 1.9; }
+
+        ul, ol { padding-left: 22px; margin: 8px 0; }
+        li { margin: 5px 0; }
+        .hl { background: #fefcbf; padding: 1px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>📝 Русский язык — Неделя 2</h1>
+    <p class="subtitle">6 класс | 7 часов | Имя существительное. Имя прилагательное.</p>
+
+    <!-- ═══════════════════════════════════════════
+         ЗАНЯТИЕ 1 — СУЩЕСТВИТЕЛЬНОЕ: ПОВТОРЕНИЕ
+    ═══════════════════════════════════════════ -->
+    <div class="lesson l-blue">
+        <h2 class="h-blue">📖 Занятие 1: Имя существительное — повторение основ</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=2X4mXDUO_o4" target="_blank">Имя существительное — повторение 6 класс (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=C6bR1r1rYxw" target="_blank">Род, число, падеж существительных (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=F18YZLa_HME" target="_blank">Одушевлённые и неодушевлённые существительные</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Имя существительное — общая характеристика</h3>
+
+            <div class="rule r-blue">
+                <strong>📌 Имя существительное</strong> — самостоятельная часть речи, обозначающая предмет и отвечающая на вопросы <strong>КТО? ЧТО?</strong><br><br>
+                <strong>Морфологические признаки:</strong>
+                <ul>
+                    <li><strong>Постоянные:</strong> собственное/нарицательное, одушевлённое/неодушевлённое, род, склонение</li>
+                    <li><strong>Непостоянные:</strong> число, падеж</li>
+                </ul>
+                <strong>Синтаксическая роль:</strong> подлежащее, дополнение, обстоятельство, сказуемое, определение.
+            </div>
+
+            <h3>Постоянные признаки</h3>
+            <table>
+                <tr><th class="th-blue">Признак</th><th class="th-blue">Виды</th><th class="th-blue">Примеры</th></tr>
+                <tr>
+                    <td><strong>Собственные / Нарицательные</strong></td>
+                    <td>Собственные — имена, названия (с большой буквы)<br>Нарицательные — общие понятия</td>
+                    <td>Москва, Пушкин, Волга<br>город, поэт, река</td>
+                </tr>
+                <tr>
+                    <td><strong>Одушевлённые / Неодушевлённые</strong></td>
+                    <td>Одушевлённые → Кто?<br>Неодушевлённые → Что?</td>
+                    <td>ученик, кошка, врач<br>стол, дождь, радость</td>
+                </tr>
+                <tr>
+                    <td><strong>Род</strong></td>
+                    <td>Мужской (он мой)<br>Женский (она моя)<br>Средний (оно моё)</td>
+                    <td>дом, учитель<br>книга, земля<br>окно, море</td>
+                </tr>
+            </table>
+
+            <h3>6 падежей русского языка</h3>
+            <table>
+                <tr><th class="th-blue">Падеж</th><th class="th-blue">Вопрос</th><th class="th-blue">Предлоги</th><th class="th-blue">Пример (м.р.)</th><th class="th-blue">Пример (ж.р.)</th></tr>
+                <tr><td><strong>Именительный</strong> (И.п.)</td><td>Кто? Что?</td><td>—</td><td>дом</td><td>книга</td></tr>
+                <tr><td><strong>Родительный</strong> (Р.п.)</td><td>Кого? Чего?</td><td>без, у, до, из, от, с, около</td><td>дома</td><td>книги</td></tr>
+                <tr><td><strong>Дательный</strong> (Д.п.)</td><td>Кому? Чему?</td><td>к, по</td><td>дому</td><td>книге</td></tr>
+                <tr><td><strong>Винительный</strong> (В.п.)</td><td>Кого? Что?</td><td>в, на, за, через</td><td>дом</td><td>книгу</td></tr>
+                <tr><td><strong>Творительный</strong> (Т.п.)</td><td>Кем? Чем?</td><td>с, за, под, над, между</td><td>домом</td><td>книгой</td></tr>
+                <tr><td><strong>Предложный</strong> (П.п.)</td><td>О ком? О чём?</td><td>о (об), в, на, при</td><td>о доме</td><td>о книге</td></tr>
+            </table>
+
+            <div class="rule r-yellow">
+                <strong>📌 Как определить падеж?</strong><br>
+                1️⃣ Найди слово, от которого зависит существительное<br>
+                2️⃣ Задай от него вопрос к существительному<br>
+                3️⃣ По вопросу определи падеж<br><br>
+                <em>Пример: Я читаю (что?) <strong>книгу</strong> → В.п.</em>
+            </div>
+        </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════
+         ЗАНЯТИЕ 2 — СКЛОНЕНИЕ СУЩЕСТВИТЕЛЬНЫХ
+    ═══════════════════════════════════════════ -->
+    <div class="lesson l-green">
+        <h2 class="h-green">📖 Занятие 2: Три склонения существительных</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=5uJ4pXqUBFs" target="_blank">Три склонения существительных — 6 класс (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=bFdq5a6FqM4" target="_blank">Падежные окончания 1, 2, 3 склонения (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=oQEaV2uALEI" target="_blank">Разносклоняемые и несклоняемые существительные</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Типы склонения существительных</h3>
+
+            <table>
+                <tr>
+                    <th class="th-green">Склонение</th>
+                    <th class="th-green">Какие существительные</th>
+                    <th class="th-green">Примеры</th>
+                    <th class="th-green">Окончания в И.п.</th>
+                </tr>
+                <tr>
+                    <td><strong>1 склонение</strong></td>
+                    <td>Ж.р. и М.р. с окончаниями <strong>-а, -я</strong></td>
+                    <td>мам<strong>а</strong>, дяд<strong>я</strong>, земл<strong>я</strong>, юнош<strong>а</strong></td>
+                    <td>-а, -я</td>
+                </tr>
+                <tr>
+                    <td><strong>2 склонение</strong></td>
+                    <td>М.р. с нулевым окончанием, Ср.р. с <strong>-о, -е</strong></td>
+                    <td>дом□, конь□, окн<strong>о</strong>, пол<strong>е</strong></td>
+                    <td>□, -о, -е</td>
+                </tr>
+                <tr>
+                    <td><strong>3 склонение</strong></td>
+                    <td>Ж.р. с нулевым окончанием и Ь на конце</td>
+                    <td>мышь□, ночь□, печь□, рожь□</td>
+                    <td>□ (с Ь)</td>
+                </tr>
+            </table>
+
+            <h3>Падежные окончания — главная таблица!</h3>
+            <table>
+                <tr>
+                    <th class="th-green">Падеж</th>
+                    <th class="th-green">1 скл. (страна / земля)</th>
+                    <th class="th-green">2 скл. (конь / окно)</th>
+                    <th class="th-green">3 скл. (степь)</th>
+                </tr>
+                <tr><td>И.п.</td><td>-а / -я</td><td>□ / -о, -е</td><td>□</td></tr>
+                <tr><td>Р.п.</td><td><strong>-ы / -и</strong></td><td>-а / -я</td><td><strong>-и</strong></td></tr>
+                <tr><td>Д.п.</td><td><strong>-е</strong></td><td>-у / -ю</td><td><strong>-и</strong></td></tr>
+                <tr><td>В.п.</td><td>-у / -ю</td><td>□ / -о, -е</td><td>□</td></tr>
+                <tr><td>Т.п.</td><td>-ой (-ей)</td><td>-ом (-ем)</td><td>-ью</td></tr>
+                <tr><td>П.п.</td><td><strong>-е</strong></td><td><strong>-е</strong></td><td><strong>-и</strong></td></tr>
+            </table>
+
+            <div class="rule r-red">
+                <strong>⚠️ Как не ошибиться с Е или И в окончании?</strong><br><br>
+                Пиши <strong>-И</strong> в окончании:<br>
+                ✅ 1 скл. Р.п.: у <strong>земл<u>и</u></strong>, от <strong>мам<u>ы</u></strong> (после твёрд. → -ы)<br>
+                ✅ 3 скл. Р.п., Д.п., П.п.: к <strong>ноч<u>и</u></strong>, о <strong>ноч<u>и</u></strong>, от <strong>ноч<u>и</u></strong><br><br>
+                Пиши <strong>-Е</strong> в окончании:<br>
+                ✅ 1 скл. Д.п. и П.п.: к <strong>мам<u>е</u></strong>, о <strong>мам<u>е</u></strong><br>
+                ✅ 2 скл. П.п.: о <strong>дом<u>е</u></strong>, в <strong>пол<u>е</u></strong>
+            </div>
+
+            <div class="rule r-green">
+                <strong>📌 Способ проверки:</strong> Если сомневаешься в окончании, подставь слово того же склонения с ударным окончанием:<br>
+                1 скл. → <strong>страна́</strong> (стране́, страны́)<br>
+                2 скл. → <strong>стол</strong> (столу́, о столе́)<br>
+                3 скл. → <strong>степь</strong> (степи́, о степи́)<br><br>
+                <em>Пример: о <u>деревн_</u> → 1 скл. → о <u>стране́</u> → значит: о деревн<strong>е</strong></em>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <strong>Упражнение 1:</strong> Определите склонение существительных:<br>
+                Дорога, конь, ночь, поле, дядя, кость, стена, город, молодёжь, здание
+                <br><br>
+                <button class="btn btn-g" onclick="tog('s2a1')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="s2a1">
+Дорога — 1 скл. (ж.р., -а)<br>
+Конь — 2 скл. (м.р., □)<br>
+Ночь — 3 скл. (ж.р., □ с Ь)<br>
+Поле — 2 скл. (ср.р., -е)<br>
+Дядя — 1 скл. (м.р., -я)<br>
+Кость — 3 скл. (ж.р., □ с Ь)<br>
+Стена — 1 скл. (ж.р., -а)<br>
+Город — 2 скл. (м.р., □)<br>
+Молодёжь — 3 скл. (ж.р., □ с Ь)<br>
+Здание — 2 скл. (ср.р., -е)
+                </div>
+            </div>
+
+            <div class="task">
+                <strong>Упражнение 2:</strong> Вставьте пропущенные окончания, определите падеж и склонение:<br>
+                1) Подошёл к деревн_ &nbsp; 2) Рассказал о мыш_ &nbsp; 3) Жил в город_ &nbsp; 4) Достал из коробк_ &nbsp;
+                5) Написал тёт_ &nbsp; 6) Мечтал о жизн_ &nbsp; 7) Играл на площадк_ &nbsp; 8) Приехал без цел_
+                <br><br>
+                <button class="btn btn-g" onclick="tog('s2a2')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="s2a2">
+1) к деревн<strong>Е</strong> — 1 скл., Д.п.<br>
+2) о мыш<strong>И</strong> — 3 скл., П.п. (3 скл. → всегда -И в Р.п., Д.п., П.п.)<br>
+3) в город<strong>Е</strong> — 2 скл., П.п.<br>
+4) из коробк<strong>И</strong> — 1 скл., Р.п.<br>
+5) написал тёт<strong>Е</strong> — 1 скл., Д.п.<br>
+6) о жизн<strong>И</strong> — 3 скл., П.п.<br>
+7) на площадк<strong>Е</strong> — 1 скл., П.п.<br>
+8) без цел<strong>И</strong> — 3 скл., Р.п.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════
+         ЗАНЯТИЕ 3 — РАЗНОСКЛОНЯЕМЫЕ И НЕСКЛОНЯЕМЫЕ
+    ═══════════════════════════════════════════ -->
+    <div class="lesson l-purple">
+        <h2 class="h-purple">📖 Занятие 3: Разносклоняемые и несклоняемые существительные</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=oQEaV2uALEI" target="_blank">Разносклоняемые существительные на -МЯ (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=Kk0W97DvPRA" target="_blank">Несклоняемые существительные — род и употребление (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=uQE8B6Y-rqI" target="_blank">Суффикс -ЕН- в разносклоняемых существительных</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Разносклоняемые существительные</h3>
+
+            <div class="rule r-purple">
+                <strong>📌 Разносклоняемые существительные</strong> — 10 слов среднего рода на <strong>-МЯ</strong> + слово <strong>ПУТЬ</strong>.<br>
+                Они совмещают окончания разных склонений!<br><br>
+                <strong>Выучи наизусть (10 слов на -МЯ):</strong><br>
+                <span class="hl">бремя, время, вымя, знамя, имя, пламя, племя, семя, стремя, темя</span>
+            </div>
+
+            <table>
+                <tr>
+                    <th class="th-purple">Падеж</th>
+                    <th class="th-purple">Окончание на -МЯ</th>
+                    <th class="th-purple">Пример: ВРЕМЯ</th>
+                    <th class="th-purple">Похоже на склонение</th>
+                </tr>
+                <tr><td>И.п.</td><td>-мя</td><td>вре<strong>мя</strong></td><td>—</td></tr>
+                <tr><td>Р.п.</td><td>-мен<strong>и</strong></td><td>вре<strong>мени</strong></td><td>3 скл.!</td></tr>
+                <tr><td>Д.п.</td><td>-мен<strong>и</strong></td><td>вре<strong>мени</strong></td><td>3 скл.!</td></tr>
+                <tr><td>В.п.</td><td>-мя</td><td>вре<strong>мя</strong></td><td>—</td></tr>
+                <tr><td>Т.п.</td><td>-мен<strong>ем</strong></td><td>вре<strong>менем</strong></td><td>2 скл.!</td></tr>
+                <tr><td>П.п.</td><td>о -мен<strong>и</strong></td><td>о вре<strong>мени</strong></td><td>3 скл.!</td></tr>
+            </table>
+
+            <div class="rule r-yellow">
+                <strong>📌 Во всех косвенных падежах (кроме В.п.) появляется суффикс -ЕН- (-ЁН-):</strong><br>
+                знам<strong>ен</strong>и, плем<strong>ен</strong>и, им<strong>ен</strong>и, сем<strong>ен</strong>и и т.д.<br><br>
+                <strong>Во мн. числе:</strong> знам<strong>ён</strong>, плем<strong>ён</strong>, им<strong>ён</strong>, сем<strong>ян</strong> (❗ исключение)
+            </div>
+
+            <h3>Несклоняемые существительные</h3>
+
+            <div class="rule r-blue">
+                <strong>📌 Несклоняемые существительные</strong> — слова, которые НЕ изменяются по падежам. Их форма остаётся одной и той же.<br><br>
+                <strong>Группы несклоняемых:</strong>
+                <ul>
+                    <li>Заимствованные слова на <strong>-о, -е, -у, -ю, -и, -а</strong>: кино, кофе, меню, жюри, какао, метро, пальто, пианино, радио, шоссе</li>
+                    <li>Аббревиатуры: ООН, МГУ, СМИ</li>
+                    <li>Иноязычные фамилии на согласный для женщин: Маргарет Тэтчер → с Маргарет Тэтчер (не склоняется)</li>
+                    <li>Украинские фамилии на -КО: Шевченко, Петренко</li>
+                </ul>
+            </div>
+
+            <h3>Как определить род несклоняемых?</h3>
+            <table>
+                <tr><th class="th-purple">Правило</th><th class="th-purple">Примеры</th></tr>
+                <tr><td>Неодушевлённые → обычно <strong>ср. род</strong></td><td>красив<strong>ое</strong> пальто, вкусн<strong>ое</strong> какао, нов<strong>ое</strong> метро</td></tr>
+                <tr><td>Одушевлённые → по полу</td><td>молод<strong>ой</strong> кенгуру (самец), молод<strong>ая</strong> кенгуру (самка)</td></tr>
+                <tr><td>Географические названия → по родовому понятию</td><td>солнечн<strong>ый</strong> Баку (город — м.р.), полноводн<strong>ая</strong> Миссисипи (река — ж.р.)</td></tr>
+                <tr><td><strong>❗ Исключения</strong></td><td><strong>кофе</strong> — м.р. (чёрн<strong>ый</strong> кофе), <strong>пенальти</strong> — м.р., <strong>авеню</strong> — ж.р.</td></tr>
+            </table>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <strong>Упражнение 1:</strong> Просклоняй слово <strong>«ПЛАМЯ»</strong> по всем падежам (единственное число).<br><br>
+                <button class="btn btn-p" onclick="tog('s3a1')">▶ Показать ответ</button>
+                <div class="ans ans-p" id="s3a1">
+И.п. — пламя<br>
+Р.п. — пламен<strong>и</strong><br>
+Д.п. — пламен<strong>и</strong><br>
+В.п. — пламя<br>
+Т.п. — пламен<strong>ем</strong><br>
+П.п. — о пламен<strong>и</strong>
+                </div>
+            </div>
+
+            <div class="task">
+                <strong>Упражнение 2:</strong> Определи род несклоняемых существительных, составь словосочетание с прилагательным:<br>
+                Метро, кенгуру, кофе, Сочи (город), какаду (попугай), жюри, интервью, Конго (река)
+                <br><br>
+                <button class="btn btn-p" onclick="tog('s3a2')">▶ Показать ответ</button>
+                <div class="ans ans-p" id="s3a2">
+Метро — ср.р. → московское метро<br>
+Кенгуру — м.р. (одуш.) → большой кенгуру<br>
+Кофе — м.р. (исключ.) → горячий кофе<br>
+Сочи — м.р. (город) → солнечный Сочи<br>
+Какаду — м.р. (одуш.) → яркий какаду<br>
+Жюри — ср.р. → строгое жюри<br>
+Интервью — ср.р. → интересное интервью<br>
+Конго — ж.р. (река) → полноводная Конго
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════
+         ЗАНЯТИЕ 4 — ПРИЛАГАТЕЛЬНОЕ: РАЗРЯДЫ
+    ═══════════════════════════════════════════ -->
+    <div class="lesson l-orange">
+        <h2 class="h-orange">📖 Занятие 4: Имя прилагательное — разряды</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=X8D1XT_REYQ" target="_blank">Разряды прилагательных: качественные, относительные, притяжательные (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=LbHqy4nM6kg" target="_blank">Как определить разряд прилагательного — пошагово (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=Z2gDp5xFqYA" target="_blank">Качественные прилагательные — полная и краткая форма</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Имя прилагательное — общая характеристика</h3>
+
+            <div class="rule r-orange">
+                <strong>📌 Имя прилагательное</strong> — часть речи, обозначающая <strong>признак предмета</strong> и отвечающая на вопросы <strong>КАКОЙ? ЧЕЙ?</strong><br><br>
+                <strong>Морфологические признаки:</strong><br>
+                Постоянные: <strong>разряд</strong> (качественное / относительное / притяжательное)<br>
+                Непостоянные: род, число, падеж (согласуются с существительным); у качественных — полная/краткая форма, степень сравнения
+            </div>
+
+            <h3>Три разряда прилагательных</h3>
+
+            <table>
+                <tr>
+                    <th class="th-orange">Разряд</th>
+                    <th class="th-orange">Что обозначает</th>
+                    <th class="th-orange">Примеры</th>
+                    <th class="th-orange">Признаки</th>
+                </tr>
+                <tr>
+                    <td><strong>Качественные</strong></td>
+                    <td>Признак, который может быть в бо́льшей или меньшей степени</td>
+                    <td>красивый, большой, тёплый, умный, добрый</td>
+                    <td>✅ Степени сравнения (красивее)<br>✅ Краткая форма (красив)<br>✅ Сочетание с «очень» (очень красивый)<br>✅ Антонимы (большой — маленький)</td>
+                </tr>
+                <tr>
+                    <td><strong>Относительные</strong></td>
+                    <td>Признак через отношение к предмету, материалу, времени, месту</td>
+                    <td>деревянный (дерево), зимний (зима), городской (город)</td>
+                    <td>❌ Нет степеней сравнения<br>❌ Нет краткой формы<br>❌ Нельзя «очень»<br>✅ Можно заменить: «из дерева»</td>
+                </tr>
+                <tr>
+                    <td><strong>Притяжательные</strong></td>
+                    <td>Принадлежность лицу или животному</td>
+                    <td>мамин, лисий, папин, медвежий, Петин</td>
+                    <td>Отвечают на вопрос <strong>ЧЕЙ?</strong><br>Суффиксы: <strong>-ин-, -ов-, -ий/-й</strong></td>
+                </tr>
+            </table>
+
+            <div class="rule r-yellow">
+                <strong>📌 Алгоритм определения разряда:</strong><br>
+                1️⃣ Отвечает на вопрос <strong>ЧЕЙ?</strong> → <span class="hl">Притяжательное</span><br>
+                2️⃣ Можно образовать степень сравнения или краткую форму? → <span class="hl">Качественное</span><br>
+                3️⃣ Можно заменить конструкцией «из/от/для + существительное»? → <span class="hl">Относительное</span>
+            </div>
+
+            <div class="ex">
+                <strong>Примеры определения разряда:</strong><br>
+                <strong>Серебряная</strong> ложка → из серебра → <strong>относительное</strong><br>
+                <strong>Серебряный</strong> голос → красивый, звонкий (перен. знач.) → <strong>качественное</strong>!<br><br>
+                ⚠️ <strong>Внимание!</strong> Относительные и притяжательные могут переходить в качественные при переносном значении!<br>
+                <em>Лисий хвост (чей? → притяж.) → Лисий характер (=хитрый → качеств.)</em>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <strong>Упражнение:</strong> Определи разряд прилагательных:<br>
+                1) золотое кольцо &nbsp; 2) золотые руки &nbsp; 3) папин костюм &nbsp; 4) тёплый день &nbsp;
+                5) вечерний свет &nbsp; 6) медвежья берлога &nbsp; 7) каменный дом &nbsp; 8) каменное лицо &nbsp;
+                9) сельская жизнь &nbsp; 10) весёлый рассказ
+                <br><br>
+                <button class="btn btn-o" onclick="tog('s4a1')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="s4a1">
+1) золотое кольцо — <strong>относительное</strong> (из золота)<br>
+2) золотые руки — <strong>качественное</strong> (=умелые, перен. знач.)<br>
+3) папин костюм — <strong>притяжательное</strong> (чей?)<br>
+4) тёплый день — <strong>качественное</strong> (теплее, очень тёплый)<br>
+5) вечерний свет — <strong>относительное</strong> (свет вечера)<br>
+6) медвежья берлога — <strong>притяжательное</strong> (чья?)<br>
+7) каменный дом — <strong>относительное</strong> (из камня)<br>
+8) каменное лицо — <strong>качественное</strong> (=неподвижное, перен. знач.)<br>
+9) сельская жизнь — <strong>относительное</strong> (жизнь в селе)<br>
+10) весёлый рассказ — <strong>качественное</strong> (веселее, очень весёлый)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════
+         ЗАНЯТИЕ 5 — СТЕПЕНИ СРАВНЕНИЯ
+    ═══════════════════════════════════════════ -->
+    <div class="lesson l-teal">
+        <h2 class="h-green">📖 Занятие 5: Степени сравнения прилагательных</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=FeMiHr4ywwM" target="_blank">Степени сравнения прилагательных — все виды (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=_0B4j72jdso" target="_blank">Сравнительная и превосходная степень — лёгкий способ запомнить (TutorOnline)</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Тема: Степени сравнения (только у качественных!)</h3>
+
+            <div class="scheme">
+                <strong>Три формы прилагательного:</strong>
+                <div class="sch-row" style="margin-top:12px;">
+                    <div class="sch-box sb-b"><strong>Положительная</strong><br>красивый</div>
+                    <div class="arr">→</div>
+                    <div class="sch-box sb-g"><strong>Сравнительная</strong><br>красивее / более красивый</div>
+                    <div class="arr">→</div>
+                    <div class="sch-box sb-o"><strong>Превосходная</strong><br>красивейший / самый красивый</div>
+                </div>
+            </div>
+
+            <h3>Сравнительная степень</h3>
+            <table>
+                <tr>
+                    <th class="th-green">Форма</th>
+                    <th class="th-green">Как образуется</th>
+                    <th class="th-green">Примеры</th>
+                    <th class="th-green">Особенности</th>
+                </tr>
+                <tr>
+                    <td><strong>Простая</strong></td>
+                    <td>Основа + <strong>-ее (-ей) / -е / -ше</strong></td>
+                    <td>красив<strong>ее</strong>, добр<strong>ее</strong>, тонь<strong>ше</strong>, выш<strong>е</strong>, глуб<strong>же</strong></td>
+                    <td>Не изменяется по родам, числам, падежам!<br>Не является членом предложения-определением</td>
+                </tr>
+                <tr>
+                    <td><strong>Составная</strong></td>
+                    <td><strong>более / менее</strong> + полное прилаг.</td>
+                    <td><strong>более</strong> красивый, <strong>менее</strong> интересный</td>
+                    <td>Изменяется по родам, числам, падежам</td>
+                </tr>
+            </table>
+
+            <div class="rule r-red">
+                <strong>⚠️ Запомни исключения (нестандартные формы):</strong><br>
+                хороший → <strong>лучше</strong> (не «хорошее»!)<br>
+                плохой → <strong>хуже</strong><br>
+                маленький → <strong>меньше</strong><br>
+                большой → <strong>больше</strong><br>
+                сладкий → <strong>слаще</strong><br>
+                громкий → <strong>громче</strong><br>
+                тихий → <strong>тише</strong>
+            </div>
+
+            <h3>Превосходная степень</h3>
+            <table>
+                <tr>
+                    <th class="th-green">Форма</th>
+                    <th class="th-green">Как образуется</th>
+                    <th class="th-green">Примеры</th>
+                </tr>
+                <tr>
+                    <td><strong>Простая</strong></td>
+                    <td>Основа + <strong>-ейш- / -айш-</strong></td>
+                    <td>красив<strong>ейший</strong>, добр<strong>ейший</strong>, высоч<strong>айший</strong>, тонч<strong>айший</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Составная</strong></td>
+                    <td><strong>самый / наиболее / наименее</strong> + полное прилаг.</td>
+                    <td><strong>самый</strong> красивый, <strong>наиболее</strong> интересный</td>
+                </tr>
+            </table>
+
+            <div class="rule r-red">
+                <strong>⚠️ ОШИБКИ, которые нельзя допускать:</strong><br>
+                ❌ более красивее (двойная степень!)<br>
+                ❌ самый красивейший (двойная степень!)<br>
+                ✅ более красивый ИЛИ красивее<br>
+                ✅ самый красивый ИЛИ красивейший
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <strong>Упражнение 1:</strong> Образуйте все формы степеней сравнения:<br>
+                Умный, глубокий, хороший, тонкий, важный
+                <br><br>
+                <button class="btn btn-g" onclick="tog('s5a1')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="s5a1">
+<strong>Умный:</strong><br>
+  Сравнит. простая: умн<strong>ее</strong><br>
+  Сравнит. составная: <strong>более</strong> умный<br>
+  Превосх. простая: умн<strong>ейший</strong><br>
+  Превосх. составная: <strong>самый</strong> умный<br><br>
+
+<strong>Глубокий:</strong><br>
+  глуб<strong>же</strong> / более глубокий<br>
+  глубоч<strong>айший</strong> / самый глубокий<br><br>
+
+<strong>Хороший:</strong><br>
+  <strong>лучше</strong> / более хороший<br>
+  <strong>лучший</strong> / самый хороший<br><br>
+
+<strong>Тонкий:</strong><br>
+  тонь<strong>ше</strong> / более тонкий<br>
+  тонч<strong>айший</strong> / самый тонкий<br><br>
+
+<strong>Важный:</strong><br>
+  важн<strong>ее</strong> / более важный<br>
+  важн<strong>ейший</strong> / самый важный
+                </div>
+            </div>
+
+            <div class="task">
+                <strong>Упражнение 2:</strong> Найди и исправь ошибки:<br>
+                1) Этот дом более выше. &nbsp; 2) Она самая умнейшая. &nbsp; 3) Его результат хорошее моего.
+                <br><br>
+                <button class="btn btn-g" onclick="tog('s5a2')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="s5a2">
+1) ❌ «более выше» → ✅ «<strong>выше</strong>» или «<strong>более высокий</strong>»<br>
+2) ❌ «самая умнейшая» → ✅ «<strong>самая умная</strong>» или «<strong>умнейшая</strong>»<br>
+3) ❌ «хорошее» → ✅ «<strong>лучше</strong> моего» (нестандартная форма)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════
+         ЗАНЯТИЕ 6 — ПРАВОПИСАНИЕ ПРИЛАГАТЕЛЬНЫХ
+    ═══════════════════════════════════════════ -->
+    <div class="lesson l-red">
+        <h2 class="h-red">📖 Занятие 6: Правописание прилагательных</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Практика</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=BNHh-0j4R8w" target="_blank">Н и НН в прилагательных — полное правило (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=vGzMSpqfFeY" target="_blank">НЕ с прилагательными — слитно или раздельно (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=q-gvYSTsGjA" target="_blank">Суффиксы -К- и -СК- в прилагательных</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=w0T2SFCxCVU" target="_blank">Дефисное и слитное написание сложных прилагательных</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Правило 1: Н и НН в суффиксах прилагательных</h3>
+
+            <table>
+                <tr><th class="th-orange" colspan="3">Пишем НН</th></tr>
+                <tr><th class="th-orange">Условие</th><th class="th-orange">Суффикс</th><th class="th-orange">Примеры</th></tr>
+                <tr><td>Основа на -Н + суффикс -Н-</td><td>-н- + -н-</td><td>со<strong>нн</strong>ый (сон + н), каме<strong>нн</strong>ый (камень + н)</td></tr>
+                <tr><td>Суффикс -ОНН-</td><td>-онн-</td><td>станци<strong>онн</strong>ый, лекци<strong>онн</strong>ый</td></tr>
+                <tr><td>Суффикс -ЕНН-</td><td>-енн-</td><td>соломе<strong>нн</strong>ый, клюкве<strong>нн</strong>ый</td></tr>
+            </table>
+
+            <table>
+                <tr><th class="th-blue" colspan="3">Пишем Н</th></tr>
+                <tr><th class="th-blue">Условие</th><th class="th-blue">Суффикс</th><th class="th-blue">Примеры</th></tr>
+                <tr><td>Суффикс -АН- (-ЯН-)</td><td>-ан-, -ян-</td><td>кож<strong>ан</strong>ый, серебр<strong>ян</strong>ый, шерст<strong>ян</strong>ой</td></tr>
+                <tr><td>Суффикс -ИН-</td><td>-ин-</td><td>гус<strong>ин</strong>ый, ут<strong>ин</strong>ый, лебед<strong>ин</strong>ый</td></tr>
+            </table>
+
+            <div class="rule r-red">
+                <strong>⚠️ Исключения! Запомни 3 слова с НН (вместо ожидаемой Н):</strong><br>
+                <span class="hl">стекл<strong>ЯНН</strong>ый, олов<strong>ЯНН</strong>ый, дерев<strong>ЯНН</strong>ый</span><br><br>
+                <strong>Запомни слова с Н (вместо ожидаемых НН):</strong><br>
+                <span class="hl">ветр<strong>ЕН</strong>ый (но: без<strong>ветрЕНН</strong>ый — с приставкой!), юн<strong>ый</strong>, зелён<strong>ый</strong>, рьян<strong>ый</strong>, рдян<strong>ый</strong>, пьян<strong>ый</strong>, свин<strong>ой</strong></span>
+            </div>
+
+            <h3>Правило 2: НЕ с прилагательными</h3>
+            <table>
+                <tr>
+                    <th class="th-green">Слитно</th>
+                    <th class="th-orange">Раздельно</th>
+                </tr>
+                <tr>
+                    <td>
+                        1) Не употребляется без НЕ: <em><strong>не</strong>лепый, <strong>не</strong>настный</em><br>
+                        2) Можно заменить синонимом: <em><strong>не</strong>красивый = уродливый</em><br>
+                        3) Есть слова «очень, весьма, крайне»: <em>очень <strong>не</strong>красивый</em>
+                    </td>
+                    <td>
+                        1) Есть противопоставление с «а»: <em><strong>не</strong> красивый, <strong>а</strong> уродливый</em><br>
+                        2) Есть «далеко не, вовсе не, отнюдь не, ничуть не»: <em>далеко <strong>не</strong> умный</em><br>
+                        3) С краткими прилагат., которые не имеют полной формы: <em><strong>не</strong> рад, <strong>не</strong> должен</em>
+                    </td>
+                </tr>
+            </table>
+
+            <h3>Правило 3: Суффиксы -К- и -СК-</h3>
+            <div class="rule r-blue">
+                <strong>📌 -К-</strong> пишется:<br>
+                1) В прилагательных с краткой формой: низ<strong>к</strong>ий (низок), уз<strong>к</strong>ий (узок)<br>
+                2) В прилагательных от сущ. с основой на -к, -ч, -ц: казац<strong>к</strong>ий (казак), неме<strong>ц</strong>кий (немец), тка<strong>ц</strong>кий (ткач)<br><br>
+                <strong>📌 -СК-</strong> пишется:<br>
+                Во всех остальных случаях: француз<strong>ск</strong>ий, матрос<strong>ск</strong>ий, город<strong>ск</strong>ой
+            </div>
+
+            <h3>Правило 4: Сложные прилагательные</h3>
+            <table>
+                <tr><th class="th-green">Слитно</th><th class="th-orange">Через дефис</th></tr>
+                <tr>
+                    <td>
+                        Образованы от словосочетания:<br>
+                        <em>железная дорога → <strong>железнодорожный</strong></em><br>
+                        <em>левый берег → <strong>левобережный</strong></em>
+                    </td>
+                    <td>
+                        1) Равноправные слова (можно вставить И):<br>
+                        <em>русско-английский (рус. И англ.)</em><br>
+                        2) Оттенки цвета:<br>
+                        <em>светло-зелёный, тёмно-синий</em><br>
+                        3) От существ. с дефисом:<br>
+                        <em>юго-восточный (юго-восток)</em>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <strong>Упражнение 1:</strong> Вставьте Н или НН:<br>
+                1) сереб_яный &nbsp; 2) стекля_ый &nbsp; 3) каме_ый &nbsp; 4) кожа_ый &nbsp;
+                5) оловя_ый &nbsp; 6) деревя_ый &nbsp; 7) стан_ионный &nbsp; 8) гуси_ый &nbsp;
+                9) со_ый &nbsp; 10) ветре_ый
+                <br><br>
+                <button class="btn btn-o" onclick="tog('s6a1')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="s6a1">
+1) серебр<strong>ЯН</strong>ый — Н (суфф. -ян-)<br>
+2) стекл<strong>ЯНН</strong>ый — НН (исключение!)<br>
+3) каме<strong>НН</strong>ый — НН (камень + н)<br>
+4) кож<strong>АН</strong>ый — Н (суфф. -ан-)<br>
+5) олов<strong>ЯНН</strong>ый — НН (исключение!)<br>
+6) дерев<strong>ЯНН</strong>ый — НН (исключение!)<br>
+7) станци<strong>ОНН</strong>ый — НН (суфф. -онн-)<br>
+8) гус<strong>ИН</strong>ый — Н (суфф. -ин-)<br>
+9) с<strong>ОНН</strong>ый — НН (сон + н)<br>
+10) ветр<strong>ЕН</strong>ый — Н (исключение!)
+                </div>
+            </div>
+
+            <div class="task">
+                <strong>Упражнение 2:</strong> Раскройте скобки — слитно или раздельно?<br>
+                1) (Не)красивый поступок &nbsp; 2) Вовсе (не)интересный фильм &nbsp; 3) (Не)брежный почерк &nbsp;
+                4) (Не)высокий, а низкий дом &nbsp; 5) Очень (не)глупый человек
+                <br><br>
+                <button class="btn btn-o" onclick="tog('s6a2')">▶ Показать ответ</button>
+                <div class="ans ans-g" id="s6a2">
+1) <strong>Некрасивый</strong> — слитно (=уродливый, нет противопоставления)<br>
+2) Вовсе <strong>не интересный</strong> — раздельно («вовсе не»)<br>
+3) <strong>Небрежный</strong> — слитно (не употр. без НЕ: нет слова «брежный»)<br>
+4) <strong>Не высокий, а низкий</strong> — раздельно (противопоставление с «а»)<br>
+5) Очень <strong>неглупый</strong> — слитно (=умный, «очень» усиливает)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════
+         ЗАНЯТИЕ 7 — ЗАКРЕПЛЕНИЕ + ТЕСТ
+    ═══════════════════════════════════════════ -->
+    <div class="lesson l-pink">
+        <h2 class="h-red">📖 Занятие 7: Закрепление. Морфологический разбор.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-pr">Практика</span>
+        <span class="tag t-te">Тест</span>
+
+        <div class="nb">
+            <h3>Морфологический разбор существительного</h3>
+            <div class="rule r-blue">
+                <strong>📌 Порядок разбора:</strong>
+                <ol>
+                    <li><strong>Часть речи.</strong> Общее значение (предмет). Вопрос.</li>
+                    <li><strong>Начальная форма</strong> (И.п., ед.ч.)</li>
+                    <li><strong>Постоянные признаки:</strong> собств./нариц., одуш./неодуш., род, склонение</li>
+                    <li><strong>Непостоянные признаки:</strong> падеж, число</li>
+                    <li><strong>Синтаксическая роль</strong> в предложении</li>
+                </ol>
+            </div>
+            <div class="ex">
+                <strong>Образец:</strong> <em>Дети играли на <u>площадке</u>.</em><br><br>
+                1. На (чём?) площадке — сущ., предмет.<br>
+                2. Н.ф. — площадка<br>
+                3. Нариц., неодуш., ж.р., 1 скл.<br>
+                4. П.п., ед.ч.<br>
+                5. Обстоятельство (играли — где? — на площадке)
+            </div>
+
+            <h3>Морфологический разбор прилагательного</h3>
+            <div class="rule r-green">
+                <strong>📌 Порядок разбора:</strong>
+                <ol>
+                    <li><strong>Часть речи.</strong> Общее значение (признак предмета). Вопрос.</li>
+                    <li><strong>Начальная форма</strong> (И.п., ед.ч., м.р.)</li>
+                    <li><strong>Постоянные признаки:</strong> разряд (качеств./относит./притяж.)</li>
+                    <li><strong>Непостоянные признаки:</strong> степень сравнения (если есть), полная/краткая форма, падеж, число, род (в ед.ч.)</li>
+                    <li><strong>Синтаксическая роль</strong> в предложении</li>
+                </ol>
+            </div>
+            <div class="ex">
+                <strong>Образец:</strong> <em>Мы шли по <u>тенистой</u> аллее.</em><br><br>
+                1. По (какой?) тенистой — прилаг., признак предмета.<br>
+                2. Н.ф. — тенистый<br>
+                3. Качественное (тенистее, очень тенистый)<br>
+                4. Полн. форма, полож. степень, Д.п., ед.ч., ж.р.<br>
+                5. Определение (аллее — какой? — тенистой)
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <strong>📝 Задание:</strong> Выполни морфологический разбор выделенных слов:<br>
+                1) Над <u>широкой</u> <u>рекой</u> поднимался туман.<br>
+                2) В <u>зимнем</u> <u>лесу</u> было тихо.<br><br>
+                <button class="btn btn-p" onclick="tog('s7a1')">▶ Показать ответ</button>
+                <div class="ans ans-p" id="s7a1">
+<strong>1) рекой:</strong><br>
+1. Над (чем?) рекой — сущ., предмет.<br>
+2. Н.ф. — река<br>
+3. Нариц., неодуш., ж.р., 1 скл.<br>
+4. Т.п., ед.ч.<br>
+5. Дополнение (или обстоятельство)<br><br>
+
+<strong>1) широкой:</strong><br>
+1. Рекой (какой?) широкой — прилаг., признак.<br>
+2. Н.ф. — широкий<br>
+3. Качественное (шире, очень широкий)<br>
+4. Полн. ф., полож. ст., Т.п., ед.ч., ж.р.<br>
+5. Определение<br><br>
+
+<strong>2) лесу:</strong><br>
+1. В (чём?) лесу — сущ., предмет.<br>
+2. Н.ф. — лес<br>
+3. Нариц., неодуш., м.р., 2 скл.<br>
+4. П.п., ед.ч.<br>
+5. Обстоятельство<br><br>
+
+<strong>2) зимнем:</strong><br>
+1. В лесу (каком?) зимнем — прилаг., признак.<br>
+2. Н.ф. — зимний<br>
+3. Относительное (зима → зимний)<br>
+4. Полн. ф., П.п., ед.ч., м.р.<br>
+5. Определение
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="sep">
+
+    <!-- ═══════════════════════════════════════════
+         ИНТЕРАКТИВНЫЙ ТЕСТ — 20 ВОПРОСОВ
+    ═══════════════════════════════════════════ -->
+    <div class="quiz">
+        <div class="quiz-t">🧪 Тест по русскому языку — Неделя 2</div>
+        <p>20 вопросов | Имя существительное + Имя прилагательное</p>
+
+        <form id="ruQuiz">
+            <div class="qb"><p>1. К какому склонению относится слово «ночь»?</p>
+                <label class="qo"><input type="radio" name="r1" value="a"> 1 склонение</label>
+                <label class="qo"><input type="radio" name="r1" value="b"> 2 склонение</label>
+                <label class="qo"><input type="radio" name="r1" value="c"> 3 склонение</label>
+                <label class="qo"><input type="radio" name="r1" value="d"> Разносклоняемое</label>
+            </div>
+
+            <div class="qb"><p>2. Какое окончание у слова «тетрадь» в дательном падеже?</p>
+                <label class="qo"><input type="radio" name="r2" value="a"> -е</label>
+                <label class="qo"><input type="radio" name="r2" value="b"> -и</label>
+                <label class="qo"><input type="radio" name="r2" value="c"> -ю</label>
+                <label class="qo"><input type="radio" name="r2" value="d"> -ью</label>
+            </div>
+
+            <div class="qb"><p>3. Сколько существительных на -МЯ являются разносклоняемыми?</p>
+                <label class="qo"><input type="radio" name="r3" value="a"> 8</label>
+                <label class="qo"><input type="radio" name="r3" value="b"> 10</label>
+                <label class="qo"><input type="radio" name="r3" value="c"> 12</label>
+                <label class="qo"><input type="radio" name="r3" value="d"> 5</label>
+            </div>
+
+            <div class="qb"><p>4. Какой род у несклоняемого слова «кофе»?</p>
+                <label class="qo"><input type="radio" name="r4" value="a"> Средний</label>
+                <label class="qo"><input type="radio" name="r4" value="b"> Женский</label>
+                <label class="qo"><input type="radio" name="r4" value="c"> Мужской</label>
+                <label class="qo"><input type="radio" name="r4" value="d"> Общий</label>
+            </div>
+
+            <div class="qb"><p>5. В каком слове пишется НН?</p>
+                <label class="qo"><input type="radio" name="r5" value="a"> серебр_ный</label>
+                <label class="qo"><input type="radio" name="r5" value="b"> кож_ный</label>
+                <label class="qo"><input type="radio" name="r5" value="c"> стекл_ный</label>
+                <label class="qo"><input type="radio" name="r5" value="d"> гус_ный</label>
+            </div>
+
+            <div class="qb"><p>6. Какой разряд у прилагательного «деревянный»?</p>
+                <label class="qo"><input type="radio" name="r6" value="a"> Качественное</label>
+                <label class="qo"><input type="radio" name="r6" value="b"> Относительное</label>
+                <label class="qo"><input type="radio" name="r6" value="c"> Притяжательное</label>
+            </div>
+
+            <div class="qb"><p>7. Какая сравнительная степень у прилагательного «хороший»?</p>
+                <label class="qo"><input type="radio" name="r7" value="a"> хорошее</label>
+                <label class="qo"><input type="radio" name="r7" value="b"> лучше</label>
+                <label class="qo"><input type="radio" name="r7" value="c"> более хорошее</label>
+                <label class="qo"><input type="radio" name="r7" value="d"> хорошейший</label>
+            </div>
+
+            <div class="qb"><p>8. «Мамин платок» — прилагательное какого разряда?</p>
+                <label class="qo"><input type="radio" name="r8" value="a"> Качественное</label>
+                <label class="qo"><input type="radio" name="r8" value="b"> Относительное</label>
+                <label class="qo"><input type="radio" name="r8" value="c"> Притяжательное</label>
+            </div>
+
+            <div class="qb"><p>9. НЕ с прилагательным пишется раздельно в предложении:</p>
+                <label class="qo"><input type="radio" name="r9" value="a"> Он (не)ряшливый ученик.</label>
+                <label class="qo"><input type="radio" name="r9" value="b"> (Не)высокий, а низкий забор.</label>
+                <label class="qo"><input type="radio" name="r9" value="c"> Очень (не)простая задача.</label>
+                <label class="qo"><input type="radio" name="r9" value="d"> (Не)большой домик.</label>
+            </div>
+
+            <div class="qb"><p>10. Какое окончание у слова «деревня» в предложном падеже?</p>
+                <label class="qo"><input type="radio" name="r10" value="a"> -и</label>
+                <label class="qo"><input type="radio" name="r10" value="b"> -е</label>
+                <label class="qo"><input type="radio" name="r10" value="c"> -у</label>
+                <label class="qo"><input type="radio" name="r10" value="d"> -ой</label>
+            </div>
+
+            <div class="qb"><p>11. Слово «время» — это:</p>
+                <label class="qo"><input type="radio" name="r11" value="a"> 1 склонение</label>
+                <label class="qo"><input type="radio" name="r11" value="b"> 2 склонение</label>
+                <label class="qo"><input type="radio" name="r11" value="c"> 3 склонение</label>
+                <label class="qo"><input type="radio" name="r11" value="d"> Разносклоняемое</label>
+            </div>
+
+            <div class="qb"><p>12. В каком варианте допущена ошибка?</p>
+                <label class="qo"><input type="radio" name="r12" value="a"> более красивый</label>
+                <label class="qo"><input type="radio" name="r12" value="b"> самый красивый</label>
+                <label class="qo"><input type="radio" name="r12" value="c"> более красивее</label>
+                <label class="qo"><input type="radio" name="r12" value="d"> красивейший</label>
+            </div>
+
+            <div class="qb"><p>13. Какой суффикс в слове «французский»?</p>
+                <label class="qo"><input type="radio" name="r13" value="a"> -к-</label>
+                <label class="qo"><input type="radio" name="r13" value="b"> -ск-</label>
+                <label class="qo"><input type="radio" name="r13" value="c"> -ск-ий</label>
+                <label class="qo"><input type="radio" name="r13" value="d"> -узск-</label>
+            </div>
+
+            <div class="qb"><p>14. «Метро» — несклоняемое существительное какого рода?</p>
+                <label class="qo"><input type="radio" name="r14" value="a"> Мужского</label>
+                <label class="qo"><input type="radio" name="r14" value="b"> Женского</label>
+                <label class="qo"><input type="radio" name="r14" value="c"> Среднего</label>
+                <label class="qo"><input type="radio" name="r14" value="d"> Общего</label>
+            </div>
+
+            <div class="qb"><p>15. «Русско-английский словарь» — через дефис, потому что:</p>
+                <label class="qo"><input type="radio" name="r15" value="a"> Образовано от словосочетания</label>
+                <label class="qo"><input type="radio" name="r15" value="b"> Обозначает оттенок цвета</label>
+                <label class="qo"><input type="radio" name="r15" value="c"> Образовано от равноправных слов (можно вставить И)</label>
+                <label class="qo"><input type="radio" name="r15" value="d"> Всегда пишется через дефис</label>
+            </div>
+
+            <div class="qb"><p>16. Укажите слово 1 склонения:</p>
+                <label class="qo"><input type="radio" name="r16" value="a"> поле</label>
+                <label class="qo"><input type="radio" name="r16" value="b"> земля</label>
+                <label class="qo"><input type="radio" name="r16" value="c"> конь</label>
+                <label class="qo"><input type="radio" name="r16" value="d"> рожь</label>
+            </div>
+
+            <div class="qb"><p>17. «Каменное лицо» — прилагательное какого разряда?</p>
+                <label class="qo"><input type="radio" name="r17" value="a"> Относительное (из камня)</label>
+                <label class="qo"><input type="radio" name="r17" value="b"> Качественное (=неподвижное, перен.)</label>
+                <label class="qo"><input type="radio" name="r17" value="c"> Притяжательное</label>
+            </div>
+
+            <div class="qb"><p>18. Какое слово пишется с одной Н?</p>
+                <label class="qo"><input type="radio" name="r18" value="a"> лимо_ный</label>
+                <label class="qo"><input type="radio" name="r18" value="b"> ути_ный</label>
+                <label class="qo"><input type="radio" name="r18" value="c"> стан_ионный</label>
+                <label class="qo"><input type="radio" name="r18" value="d"> каме_ный</label>
+            </div>
+
+            <div class="qb"><p>19. Краткую форму можно образовать от прилагательных:</p>
+                <label class="qo"><input type="radio" name="r19" value="a"> Только качественных</label>
+                <label class="qo"><input type="radio" name="r19" value="b"> Только относительных</label>
+                <label class="qo"><input type="radio" name="r19" value="c"> Качественных и притяжательных</label>
+                <label class="qo"><input type="radio" name="r19" value="d"> Всех разрядов</label>
+            </div>
+
+            <div class="qb"><p>20. В Р.п. слова «племя» — правильная форма:</p>
+                <label class="qo"><input type="radio" name="r20" value="a"> племя</label>
+                <label class="qo"><input type="radio" name="r20" value="b"> племя</label>
+                <label class="qo"><input type="radio" name="r20" value="c"> племени</label>
+                <label class="qo"><input type="radio" name="r20" value="d"> племю</label>
+            </div>
+
+            <button type="button" class="chk-btn" onclick="checkRu()">✅ Проверить ответы</button>
+        </form>
+        <div class="res-box" id="ruRes"></div>
+    </div>
+
+</div>
+
+<script>
+function tog(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function checkRu() {
+    var correct = {
+        r1:'c', r2:'b', r3:'b', r4:'c', r5:'c',
+        r6:'b', r7:'b', r8:'c', r9:'b', r10:'b',
+        r11:'d', r12:'c', r13:'b', r14:'c', r15:'c',
+        r16:'b', r17:'b', r18:'b', r19:'a', r20:'c'
+    };
+    var explain = {
+        r1: 'Ночь — ж.р., □ с Ь → 3 склонение.',
+        r2: 'Тетрадь — 3 скл. → в Д.п. окончание -И (тетради).',
+        r3: '10 слов на -МЯ: бремя, время, вымя, знамя, имя, пламя, племя, семя, стремя, темя.',
+        r4: 'Кофе — мужской род (исключение): горячий кофе.',
+        r5: 'Стеклянный — исключение (стекл-ЯНН-ый), пишется НН.',
+        r6: 'Деревянный — из дерева → относительное (материал).',
+        r7: 'Хороший → лучше (нестандартная форма сравнительной степени).',
+        r8: 'Мамин — чей? → притяжательное (суффикс -ин-).',
+        r9: 'Не высокий, а низкий — противопоставление с «а» → раздельно.',
+        r10: 'Деревня — 1 скл. → в П.п. окончание -Е (о деревне).',
+        r11: 'Время — на -МЯ → разносклоняемое.',
+        r12: '«Более красивее» — ошибка! Двойная степень сравнения.',
+        r13: 'Французский — суффикс -СК- (не -К-, т.к. нет краткой формы и основа не на к/ч/ц).',
+        r14: 'Метро — неодуш. → средний род (красивое метро).',
+        r15: 'Русско-английский — равноправные слова (русский И английский) → дефис.',
+        r16: 'Земля — ж.р., окончание -Я → 1 склонение.',
+        r17: 'Каменное лицо — переносное значение (=неподвижное) → качественное.',
+        r18: 'Утиный — суффикс -ИН- → одна Н.',
+        r19: 'Краткая форма — только у качественных прилагательных.',
+        r20: 'Племени — Р.п. разносклоняемого (суффикс -ЕН- в косв. падежах).'
+    };
+
+    var score = 0, html = '', total = 20;
+    for (var q in correct) {
+        var sel = document.querySelector('input[name="' + q + '"]:checked');
+        var n = q.replace('r', '');
+        if (sel && sel.value === correct[q]) { score++; html += '<br>✅ ' + n + ': Верно! ' + explain[q]; }
+        else if (sel) { html += '<br>❌ ' + n + ': Неверно. ' + explain[q]; }
+        else { html += '<br>⚠️ ' + n + ': Нет ответа. ' + explain[q]; }
+    }
+    var pct = Math.round(score / total * 100);
+    var bg = pct >= 80 ? '#c6f6d5' : pct >= 60 ? '#fefcbf' : '#fed7d7';
+    var em = pct >= 80 ? '🎉' : pct >= 60 ? '👍' : '📚 Нужно повторить!';
+    var box = document.getElementById('ruRes');
+    box.style.background = bg;
+    box.style.display = 'block';
+    box.innerHTML = em + ' <strong>' + score + '/' + total + ' (' + pct + '%)</strong>' + html;
+    box.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

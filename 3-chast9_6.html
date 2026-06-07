@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День 20 — Итоговые тесты Недели 3 (6 класс)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* ====== HEADER ====== */
+        .header {
+            background: white; border-radius: 20px;
+            padding: 30px; text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        .header h1 { font-size: 2em; color: #1a1a2e; margin-bottom: 8px; }
+        .header .subtitle { color: #555; font-size: 1.05em; margin-bottom: 12px; }
+        .header .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white; padding: 10px 28px;
+            border-radius: 30px; font-size: 1.2em;
+            font-weight: bold; margin-bottom: 10px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 12px; margin-top: 15px;
+        }
+        .info-box-h {
+            border-radius: 10px; padding: 12px;
+            text-align: center;
+        }
+        .ibh-1 { background: #e8eaf6; border: 2px solid #5c6bc0; }
+        .ibh-2 { background: #e8f5e9; border: 2px solid #43a047; }
+        .ibh-3 { background: #fff3e0; border: 2px solid #fb8c00; }
+        .info-box-h .ib-icon { font-size: 1.5em; }
+        .info-box-h .ib-text { font-size: 0.85em; color: #444; margin-top: 4px; font-weight: bold; }
+
+        /* ====== TIMER ====== */
+        .timer-section {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            border-radius: 15px; padding: 20px;
+            text-align: center; margin-bottom: 20px;
+            color: white;
+        }
+        .timer-section h2 { margin-bottom: 15px; font-size: 1.3em; }
+        .timer-display {
+            font-size: 3em; font-weight: bold;
+            color: #f1c40f; font-family: 'Courier New', monospace;
+            text-shadow: 0 0 20px rgba(241,196,15,0.5);
+            margin: 10px 0;
+        }
+        .timer-controls { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+        .timer-btn {
+            padding: 10px 22px; border: none;
+            border-radius: 20px; font-weight: bold;
+            font-size: 0.95em; cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .timer-btn:hover { transform: scale(1.05); }
+        .tb-start  { background: #27ae60; color: white; }
+        .tb-pause  { background: #f39c12; color: white; }
+        .tb-reset  { background: #e74c3c; color: white; }
+        .timer-label { font-size: 0.9em; color: #aaa; margin-top: 8px; }
+
+        /* ====== PROGRESS ====== */
+        .progress-section {
+            background: white; border-radius: 15px;
+            padding: 20px; margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .progress-section h2 { color: #1a1a2e; margin-bottom: 15px; font-size: 1.2em; }
+        .progress-bar-wrap {
+            background: #eee; border-radius: 10px;
+            height: 22px; margin: 8px 0; overflow: hidden;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%; border-radius: 10px;
+            transition: width 0.5s ease;
+            display: flex; align-items: center;
+            justify-content: flex-end; padding-right: 8px;
+            font-size: 0.8em; font-weight: bold; color: white;
+            width: 0%;
+        }
+        .pf-ru   { background: linear-gradient(90deg, #667eea, #764ba2); }
+        .pf-math { background: linear-gradient(90deg, #f5576c, #f093fb); }
+        .pf-hist { background: linear-gradient(90deg, #8B4513, #D2691E); }
+        .pf-bio  { background: linear-gradient(90deg, #228B22, #32CD32); }
+        .pf-geo  { background: linear-gradient(90deg, #2980b9, #27ae60); }
+        .progress-label {
+            display: flex; justify-content: space-between;
+            font-size: 0.85em; color: #555; margin-bottom: 2px;
+        }
+
+        /* ====== TABS ====== */
+        .tab-nav {
+            display: flex; flex-wrap: wrap;
+            gap: 8px; margin-bottom: 20px;
+        }
+        .tab-btn {
+            padding: 10px 18px; border: none;
+            border-radius: 25px; font-weight: bold;
+            font-size: 0.88em; cursor: pointer;
+            transition: all 0.2s; color: white;
+            opacity: 0.75;
+        }
+        .tab-btn.active { opacity: 1; transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        .tab-ru   { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .tab-math { background: linear-gradient(135deg, #f5576c, #f093fb); }
+        .tab-hist { background: linear-gradient(135deg, #8B4513, #D2691E); }
+        .tab-bio  { background: linear-gradient(135deg, #228B22, #2ecc71); }
+        .tab-geo  { background: linear-gradient(135deg, #2980b9, #27ae60); }
+
+        .test-section { display: none; }
+        .test-section.active { display: block; }
+
+        /* ====== TEST CARDS ====== */
+        .test-header {
+            border-radius: 15px; padding: 20px 25px;
+            margin-bottom: 18px; color: white;
+        }
+        .th-ru   { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .th-math { background: linear-gradient(135deg, #f5576c, #c0392b); }
+        .th-hist { background: linear-gradient(135deg, #8B4513, #D2691E); }
+        .th-bio  { background: linear-gradient(135deg, #1e8449, #27ae60); }
+        .th-geo  { background: linear-gradient(135deg, #1a5276, #2980b9); }
+        .test-header h2 { font-size: 1.4em; margin-bottom: 6px; }
+        .test-header p  { font-size: 0.9em; opacity: 0.9; }
+        .test-meta {
+            display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px;
+        }
+        .test-meta span {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px; border-radius: 15px;
+            font-size: 0.82em;
+        }
+
+        .question-card {
+            background: white; border-radius: 12px;
+            padding: 20px; margin-bottom: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+            border-left: 4px solid;
+        }
+        .qc-ru   { border-left-color: #764ba2; }
+        .qc-math { border-left-color: #f5576c; }
+        .qc-hist { border-left-color: #D2691E; }
+        .qc-bio  { border-left-color: #27ae60; }
+        .qc-geo  { border-left-color: #2980b9; }
+
+        .q-number {
+            font-size: 0.78em; font-weight: bold;
+            text-transform: uppercase; margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .q-num-badge {
+            width: 26px; height: 26px;
+            border-radius: 50%; color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85em; font-weight: bold; flex-shrink: 0;
+        }
+        .qnb-ru   { background: #764ba2; }
+        .qnb-math { background: #f5576c; }
+        .qnb-hist { background: #D2691E; }
+        .qnb-bio  { background: #27ae60; }
+        .qnb-geo  { background: #2980b9; }
+
+        .q-text {
+            font-weight: bold; color: #222;
+            margin-bottom: 12px; font-size: 1.02em; line-height: 1.55;
+        }
+        .q-category {
+            font-size: 0.75em; color: #888;
+            font-style: italic; margin-left: auto;
+        }
+
+        .option-btn {
+            display: block; width: 100%;
+            text-align: left; padding: 10px 14px;
+            margin: 5px 0; border: 2px solid #e0e0e0;
+            border-radius: 8px; background: white;
+            cursor: pointer; font-size: 0.95em;
+            transition: all 0.2s; line-height: 1.4;
+        }
+        .option-btn:hover:not(:disabled) { border-color: #999; background: #f5f5f5; }
+        .option-btn.correct { background: #c8e6c9; border-color: #4caf50; color: #2e7d32; }
+        .option-btn.wrong   { background: #ffcdd2; border-color: #f44336; color: #c62828; }
+        .option-btn:disabled { cursor: default; }
+
+        .q-feedback {
+            margin-top: 10px; padding: 9px 13px;
+            border-radius: 8px; display: none;
+            font-size: 0.9em; line-height: 1.5;
+        }
+        .qf-correct { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        .qf-wrong   { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+
+        /* ====== INPUT QUESTIONS ====== */
+        .input-answer {
+            border: 2px solid #ddd; border-radius: 8px;
+            padding: 8px 13px; font-size: 0.95em;
+            width: 100%; margin: 8px 0; outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-answer:focus { border-color: #667eea; }
+        .input-answer.ia-correct { border-color: #4caf50; background: #e8f5e9; }
+        .input-answer.ia-wrong   { border-color: #f44336; background: #ffebee; }
+        .check-input-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white; border: none; padding: 8px 20px;
+            border-radius: 18px; cursor: pointer;
+            font-weight: bold; font-size: 0.88em;
+            transition: transform 0.2s;
+        }
+        .check-input-btn:hover { transform: scale(1.05); }
+        .check-input-btn.math-btn {
+            background: linear-gradient(135deg, #f5576c, #c0392b);
+        }
+
+        /* ====== SECTION RESULT ====== */
+        .section-result {
+            background: white; border-radius: 12px;
+            padding: 22px; margin-top: 20px;
+            text-align: center; display: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .section-result h3 { font-size: 1.3em; margin-bottom: 10px; color: #1a1a2e; }
+        .result-circle {
+            width: 120px; height: 120px;
+            border-radius: 50%; margin: 15px auto;
+            display: flex; align-items: center;
+            justify-content: center; flex-direction: column;
+            font-size: 1.8em; font-weight: bold;
+            color: white;
+        }
+        .result-circle .result-score { font-size: 1.1em; }
+        .result-circle .result-max   { font-size: 0.55em; opacity: 0.9; }
+
+        .show-result-btn {
+            border: none; padding: 12px 30px;
+            border-radius: 25px; font-size: 1.05em;
+            cursor: pointer; font-weight: bold;
+            color: white; margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        .show-result-btn:hover { transform: scale(1.05); }
+        .srb-ru   { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .srb-math { background: linear-gradient(135deg, #f5576c, #c0392b); }
+        .srb-hist { background: linear-gradient(135deg, #8B4513, #D2691E); }
+        .srb-bio  { background: linear-gradient(135deg, #228B22, #2ecc71); }
+        .srb-geo  { background: linear-gradient(135deg, #1a5276, #2980b9); }
+
+        /* ====== FINAL DASHBOARD ====== */
+        .final-dashboard {
+            background: white; border-radius: 18px;
+            padding: 28px; margin-top: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+        .final-dashboard h2 { color: #1a1a2e; text-align: center; margin-bottom: 20px; font-size: 1.5em; }
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+            gap: 14px; margin-bottom: 20px;
+        }
+        .score-card {
+            border-radius: 12px; padding: 15px;
+            text-align: center; border: 2px solid;
+        }
+        .sc-ru   { background: #f3e5f5; border-color: #9c27b0; }
+        .sc-math { background: #fce4ec; border-color: #e91e63; }
+        .sc-hist { background: #fdf3e7; border-color: #D2691E; }
+        .sc-bio  { background: #e8f5e9; border-color: #4caf50; }
+        .sc-geo  { background: #e3f2fd; border-color: #2196f3; }
+        .score-card .sc-subject { font-size: 0.8em; font-weight: bold; margin-bottom: 6px; color: #555; }
+        .score-card .sc-num { font-size: 2em; font-weight: bold; }
+        .score-card .sc-max { font-size: 0.75em; color: #888; }
+        .sc-ru   .sc-num { color: #7b1fa2; }
+        .sc-math .sc-num { color: #c62828; }
+        .sc-hist .sc-num { color: #8B4513; }
+        .sc-bio  .sc-num { color: #2e7d32; }
+        .sc-geo  .sc-num { color: #1565c0; }
+
+        .total-score-box {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            border-radius: 15px; padding: 25px;
+            text-align: center; color: white; margin-top: 15px;
+        }
+        .total-score-box h3 { font-size: 1.2em; margin-bottom: 10px; opacity: 0.9; }
+        .total-num { font-size: 3.5em; font-weight: bold; color: #f1c40f; }
+        .total-max { font-size: 1em; opacity: 0.8; }
+        .rating-bar { margin: 15px 0; }
+        .rating-track {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px; height: 18px;
+            overflow: hidden; margin: 8px 0;
+        }
+        .rating-fill {
+            height: 100%; border-radius: 10px;
+            background: linear-gradient(90deg, #f1c40f, #e67e22);
+            transition: width 1s ease;
+        }
+        .rating-text { font-size: 1em; margin-top: 8px; }
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px,1fr));
+            gap: 10px; margin-top: 18px;
+        }
+        .achievement {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px; padding: 12px;
+            text-align: center; opacity: 0.4;
+            transition: all 0.5s;
+        }
+        .achievement.earned {
+            opacity: 1;
+            background: rgba(241,196,15,0.2);
+            border: 2px solid #f1c40f;
+        }
+        .ach-icon { font-size: 1.8em; margin-bottom: 4px; }
+        .ach-text { font-size: 0.75em; color: #ddd; }
+        .achievement.earned .ach-text { color: #f1c40f; font-weight: bold; }
+
+        /* ====== NAV ====== */
+        .nav-buttons {
+            display: flex; justify-content: space-between;
+            margin-top: 28px; flex-wrap: wrap; gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block; padding: 12px 24px;
+            background: white; color: #1a1a2e;
+            text-decoration: none; border-radius: 22px;
+            font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* misc */
+        .hint-box {
+            background: #fff8e1; border: 2px solid #ffc107;
+            border-radius: 10px; padding: 12px;
+            margin: 10px 0; font-size: 0.9em; line-height: 1.6;
+        }
+        .hint-box::before {
+            content: "💡 Подсказка: ";
+            font-weight: bold; color: #f57f17;
+        }
+
+        @media(max-width:600px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .tab-btn { font-size: 0.78em; padding: 8px 13px; }
+        }
+
+        .q-divider {
+            height: 2px; border-radius: 2px;
+            margin: 20px 0; opacity: 0.15;
+            background: currentColor;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+    <div class="day-badge">📅 ДЕНЬ 20 — Мини-проверка</div>
+    <h1>🎯 Итоговые тесты Недели 3</h1>
+    <div class="subtitle">Комплексная проверка знаний по всем предметам</div>
+    <div class="info-grid">
+        <div class="info-box-h ibh-1">
+            <div class="ib-icon">📝</div>
+            <div class="ib-text">95 вопросов<br>по всем предметам</div>
+        </div>
+        <div class="info-box-h ibh-2">
+            <div class="ib-icon">⏱️</div>
+            <div class="ib-text">Рекомендуемое время<br>3 часа (180 минут)</div>
+        </div>
+        <div class="info-box-h ibh-3">
+            <div class="ib-icon">🏆</div>
+            <div class="ib-text">Проходной балл<br>70% и выше</div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== ТАЙМЕР ========== -->
+<div class="timer-section">
+    <h2>⏱ Таймер экзамена</h2>
+    <div class="timer-display" id="timerDisplay">3:00:00</div>
+    <div class="timer-label">часы : минуты : секунды</div>
+    <div class="timer-controls">
+        <button class="timer-btn tb-start" onclick="startTimer()">▶ Старт</button>
+        <button class="timer-btn tb-pause" onclick="pauseTimer()">⏸ Пауза</button>
+        <button class="timer-btn tb-reset" onclick="resetTimer()">🔄 Сброс</button>
+    </div>
+</div>
+
+<!-- ========== ПРОГРЕСС ========== -->
+<div class="progress-section">
+    <h2>📊 Прогресс выполнения тестов</h2>
+    <div class="progress-label"><span>📗 Русский язык (30 вопросов)</span><span id="prog-ru-text">0/30</span></div>
+    <div class="progress-bar-wrap"><div class="progress-fill pf-ru" id="prog-ru"></div></div>
+    <div class="progress-label"><span>📐 Математика (20 заданий)</span><span id="prog-math-text">0/20</span></div>
+    <div class="progress-bar-wrap"><div class="progress-fill pf-math" id="prog-math"></div></div>
+    <div class="progress-label"><span>🏰 История (15 вопросов)</span><span id="prog-hist-text">0/15</span></div>
+    <div class="progress-bar-wrap"><div class="progress-fill pf-hist" id="prog-hist"></div></div>
+    <div class="progress-label"><span>🌿 Биология (15 вопросов)</span><span id="prog-bio-text">0/15</span></div>
+    <div class="progress-bar-wrap"><div class="progress-fill pf-bio" id="prog-bio"></div></div>
+    <div class="progress-label"><span>🌍 География (15 вопросов)</span><span id="prog-geo-text">0/15</span></div>
+    <div class="progress-bar-wrap"><div class="progress-fill pf-geo" id="prog-geo"></div></div>
+</div>
+
+<!-- ========== ВКЛАДКИ ========== -->
+<div class="tab-nav">
+    <button class="tab-btn tab-ru active"   onclick="switchTab('ru')">📗 Русский язык</button>
+    <button class="tab-btn tab-math"         onclick="switchTab('math')">📐 Математика</button>
+    <button class="tab-btn tab-hist"         onclick="switchTab('hist')">🏰 История</button>
+    <button class="tab-btn tab-bio"          onclick="switchTab('bio')">🌿 Биология</button>
+    <button class="tab-btn tab-geo"          onclick="switchTab('geo')">🌍 География</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ТЕСТ 1: РУССКИЙ ЯЗЫК — 30 вопросов                          -->
+<!-- ============================================================ -->
+<div class="test-section active" id="sec-ru">
+    <div class="test-header th-ru">
+        <h2>📗 Тест по Русскому языку</h2>
+        <p>Темы: Глагол (спряжение, наклонение, -ТСЯ/-ТЬСЯ) • Местоимение (разряды, правописание) • Числительное (склонение, Ь) • Синтаксис</p>
+        <div class="test-meta">
+            <span>📝 30 вопросов</span>
+            <span>⏱ ~45 минут</span>
+            <span>🎯 Проходной балл: 21/30</span>
+        </div>
+    </div>
+
+    <!-- Вопросы 1–10: Глагол -->
+    <div class="question-card qc-ru" id="ru1">
+        <div class="q-number"><div class="q-num-badge qnb-ru">1</div>Глагол<span class="q-category">Спряжение</span></div>
+        <div class="q-text">Определи спряжение глагола «зависеть»:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',1,false)">А) I спряжение (на -еть)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',1,true)">Б) II спряжение (глагол-исключение)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',1,false)">В) Разноспрягаемый</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru2">
+        <div class="q-number"><div class="q-num-badge qnb-ru">2</div>Глагол<span class="q-category">Спряжение</span></div>
+        <div class="q-text">Выбери строку, где все глаголы I спряжения:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',2,false)">А) смотреть, обидеть, гнать</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',2,true)">Б) писать, читать, идти</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',2,false)">В) строить, любить, видеть</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',2,false)">Г) слышать, дышать, держать</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru3">
+        <div class="q-number"><div class="q-num-badge qnb-ru">3</div>Глагол<span class="q-category">Окончания</span></div>
+        <div class="q-text">Выбери правильное окончание: «Они бор...тся за победу»:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',3,false)">А) -ются</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',3,true)">Б) -ются (бороться → I спр. → -ются)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',3,false)">В) -атся</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',3,false)">Г) -ятся</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru4">
+        <div class="q-number"><div class="q-num-badge qnb-ru">4</div>Глагол<span class="q-category">-ТСЯ/-ТЬСЯ</span></div>
+        <div class="q-text">В каком предложении глагол пишется с Ь?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',4,false)">А) Он старает...ся изо всех сил.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',4,false)">Б) Дверь не открывает...ся.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',4,true)">В) Нужно постарат...ся.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',4,false)">Г) Ребёнок смеёт...ся.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru5">
+        <div class="q-number"><div class="q-num-badge qnb-ru">5</div>Глагол<span class="q-category">Наклонение</span></div>
+        <div class="q-text">«Прочитал бы эту книгу» — наклонение глагола:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',5,false)">А) Изъявительное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',5,true)">Б) Условное (сослагательное)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',5,false)">В) Повелительное</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru6">
+        <div class="q-number"><div class="q-num-badge qnb-ru">6</div>Глагол<span class="q-category">Наклонение</span></div>
+        <div class="q-text">«Читайте внимательно!» — наклонение глагола:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',6,false)">А) Изъявительное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',6,false)">Б) Условное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',6,true)">В) Повелительное</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru7">
+        <div class="q-number"><div class="q-num-badge qnb-ru">7</div>Глагол<span class="q-category">Виды</span></div>
+        <div class="q-text">У глаголов какого вида НЕТ настоящего времени?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',7,true)">А) Совершенного вида</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',7,false)">Б) Несовершенного вида</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',7,false)">В) У обоих видов есть настоящее</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru8">
+        <div class="q-number"><div class="q-num-badge qnb-ru">8</div>Глагол<span class="q-category">-ТСЯ/-ТЬСЯ</span></div>
+        <div class="q-text">Частица БЫ с глаголом пишется:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',8,true)">А) Раздельно</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',8,false)">Б) Слитно</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',8,false)">В) Через дефис</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru9">
+        <div class="q-number"><div class="q-num-badge qnb-ru">9</div>Глагол<span class="q-category">Разбор</span></div>
+        <div class="q-text">Глагол «пришла» стоит в форме:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',9,false)">А) Наст. вр., ж.р., ед.ч.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',9,true)">Б) Прош. вр., ж.р., ед.ч.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',9,false)">В) Буд. вр., ж.р., ед.ч.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',9,false)">Г) Повелит. накл., ж.р.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru10">
+        <div class="q-number"><div class="q-num-badge qnb-ru">10</div>Глагол<span class="q-category">Спряжение</span></div>
+        <div class="q-text">Определи правильное окончание: «Ты слыш...шь музыку»:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',10,false)">А) -ешь (I спр.)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',10,true)">Б) -ишь (II спр., слышать — исключение)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',10,false)">В) -ышь</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <!-- Вопросы 11–20: Местоимение -->
+    <div class="question-card qc-ru" id="ru11">
+        <div class="q-number"><div class="q-num-badge qnb-ru">11</div>Местоимение<span class="q-category">Разряды</span></div>
+        <div class="q-text">«Каждый ученик» — выделенное местоимение относится к разряду:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',11,false)">А) Указательное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',11,false)">Б) Притяжательное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',11,true)">В) Определительное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',11,false)">Г) Неопределённое</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru12">
+        <div class="q-number"><div class="q-num-badge qnb-ru">12</div>Местоимение<span class="q-category">Правописание</span></div>
+        <div class="q-text">Как пишется: «Он говорил (ни/не)сколько минут»?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',12,false)">А) нéсколько (под ударением)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',12,true)">Б) нéсколько (неопределённое, под ударением — не-)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',12,false)">В) ни́сколько</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru13">
+        <div class="q-number"><div class="q-num-badge qnb-ru">13</div>Местоимение<span class="q-category">Правописание</span></div>
+        <div class="q-text">Как пишется «кое(с)кем»?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',13,false)">А) кое-скем</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',13,false)">Б) коескем (слитно)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',13,true)">В) кое с кем (предлог → три слова)</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru14">
+        <div class="q-number"><div class="q-num-badge qnb-ru">14</div>Местоимение<span class="q-category">Склонение</span></div>
+        <div class="q-text">«Подошёл к (она)» — правильная форма:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',14,false)">А) к её</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',14,true)">Б) к ней</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',14,false)">В) к ей</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',14,false)">Г) к неё</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru15">
+        <div class="q-number"><div class="q-num-badge qnb-ru">15</div>Местоимение<span class="q-category">Разряды</span></div>
+        <div class="q-text">«Никто не пришёл» — разряд местоимения «никто»:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',15,false)">А) Неопределённое</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',15,true)">Б) Отрицательное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',15,false)">В) Относительное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',15,false)">Г) Вопросительное</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru16">
+        <div class="q-number"><div class="q-num-badge qnb-ru">16</div>Местоимение<span class="q-category">Правописание</span></div>
+        <div class="q-text">Выбери правильное написание:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',16,false)">А) ни у кто</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',16,true)">Б) ни у кого (предлог → три слова)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',16,false)">В) ниукого</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',16,false)">Г) не у кого</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <!-- Вопросы 17–22: Числительное -->
+    <div class="question-card qc-ru" id="ru17">
+        <div class="q-number"><div class="q-num-badge qnb-ru">17</div>Числительное<span class="q-category">Правописание Ь</span></div>
+        <div class="q-text">В каком слове пишется Ь в середине?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',17,false)">А) пятнадцать</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',17,true)">Б) пятьдесят</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',17,false)">В) шестнадцать</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',17,false)">Г) одиннадцать</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru18">
+        <div class="q-number"><div class="q-num-badge qnb-ru">18</div>Числительное<span class="q-category">Склонение</span></div>
+        <div class="q-text">«Нет (90) рублей» — правильная форма числительного:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',18,false)">А) девяносто</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',18,true)">Б) девяноста</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',18,false)">В) девяностов</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',18,false)">Г) девяностa</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru19">
+        <div class="q-number"><div class="q-num-badge qnb-ru">19</div>Числительное<span class="q-category">Разряды</span></div>
+        <div class="q-text">«Двое друзей» — числительное «двое» является:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',19,false)">А) Порядковым</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',19,false)">Б) Количественным (целым)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',19,true)">В) Количественным (собирательным)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',19,false)">Г) Количественным (дробным)</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru20">
+        <div class="q-number"><div class="q-num-badge qnb-ru">20</div>Числительное<span class="q-category">Склонение</span></div>
+        <div class="q-text">«Работаю с (500) документами» — правильная форма:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',20,false)">А) пятьсот документами</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',20,true)">Б) пятьюстами документами</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',20,false)">В) пятисотами документами</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',20,false)">Г) пятистами документами</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <!-- Вопросы 21–30: Синтаксис -->
+    <div class="question-card qc-ru" id="ru21">
+        <div class="q-number"><div class="q-num-badge qnb-ru">21</div>Синтаксис<span class="q-category">Основа</span></div>
+        <div class="q-text">Что является грамматической основой в предложении «Яркое солнце светит в окно»?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',21,false)">А) Яркое солнце</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',21,true)">Б) Солнце светит</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',21,false)">В) Светит в окно</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',21,false)">Г) Яркое светит</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru22">
+        <div class="q-number"><div class="q-num-badge qnb-ru">22</div>Синтаксис<span class="q-category">Члены предложения</span></div>
+        <div class="q-text">Какой вопрос задаётся к дополнению?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',22,false)">А) Какой? Чей?</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',22,true)">Б) Вопросы косвенных падежей (кого? чего? кому? и т.д.)</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',22,false)">В) Где? Когда? Куда?</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',22,false)">Г) Кто? Что?</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru23">
+        <div class="q-number"><div class="q-num-badge qnb-ru">23</div>Синтаксис<span class="q-category">Пунктуация</span></div>
+        <div class="q-text">Нужна ли запятая: «Мы видели и слонов и жирафов и обезьян»?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',23,false)">А) Нет, одиночный союз «и» — запятая не нужна</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',23,true)">Б) Да, повторяющийся союз «и» — запятые нужны</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',23,false)">В) Только перед последним «и»</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru24">
+        <div class="q-number"><div class="q-num-badge qnb-ru">24</div>Синтаксис<span class="q-category">Обращение</span></div>
+        <div class="q-text">Обращение в предложении является:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',24,false)">А) Подлежащим</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',24,false)">Б) Определением</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',24,true)">В) Не является членом предложения</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',24,false)">Г) Дополнением</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru25">
+        <div class="q-number"><div class="q-num-badge qnb-ru">25</div>Синтаксис<span class="q-category">Пунктуация</span></div>
+        <div class="q-text">В каком предложении перед союзом ставится запятая?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',25,false)">А) Он читал и писал.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',25,true)">Б) Она пела но не танцевала.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',25,false)">В) Я куплю яблоки или груши.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru26">
+        <div class="q-number"><div class="q-num-badge qnb-ru">26</div>Синтаксис<span class="q-category">Виды предложений</span></div>
+        <div class="q-text">«Идёт дождь?» — это предложение по цели высказывания:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',26,false)">А) Повествовательное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',26,true)">Б) Вопросительное</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',26,false)">В) Побудительное</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru27">
+        <div class="q-number"><div class="q-num-badge qnb-ru">27</div>Синтаксис<span class="q-category">Обстоятельство</span></div>
+        <div class="q-text">На какой вопрос отвечает обстоятельство образа действия?</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',27,false)">А) Где?</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',27,false)">Б) Когда?</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',27,true)">В) Как? Каким образом?</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',27,false)">Г) Почему?</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru28">
+        <div class="q-number"><div class="q-num-badge qnb-ru">28</div>Всё вместе<span class="q-category">Комплексный</span></div>
+        <div class="q-text">Найди предложение с ошибкой в написании глагола:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',28,false)">А) Нужно учиться хорошо.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',28,true)">Б) Он боится темнота.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',28,false)">В) Она хочет научиться петь.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',28,false)">Г) Дети веселятся на улице.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru29">
+        <div class="q-number"><div class="q-num-badge qnb-ru">29</div>Всё вместе<span class="q-category">Комплексный</span></div>
+        <div class="q-text">Выбери верное предложение с числительным в Т.п.:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',29,false)">А) с пятьсот рублями</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',29,true)">Б) с пятьюстами рублями</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',29,false)">В) с пятисотами рублями</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',29,false)">Г) с пятьюста рублями</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-ru" id="ru30">
+        <div class="q-number"><div class="q-num-badge qnb-ru">30</div>Всё вместе<span class="q-category">Диктант</span></div>
+        <div class="q-text">Укажи предложение, в котором все знаки препинания расставлены верно:</div>
+        <button class="option-btn" onclick="checkOpt(this,'ru',30,false)">А) Дети, пели и танцевали.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',30,false)">Б) Мама, папа и я пошли гулять.</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',30,true)">В) Ребята, убирайте за собой мусор!</button>
+        <button class="option-btn" onclick="checkOpt(this,'ru',30,false)">Г) Солнце светило но было холодно.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <button class="show-result-btn srb-ru" onclick="showSectionResult('ru',30)">📊 Результат по Русскому языку</button>
+    <div class="section-result" id="result-ru">
+        <h3>📗 Результат: Русский язык</h3>
+        <div class="result-circle" id="rc-ru" style="background:linear-gradient(135deg,#667eea,#764ba2);">
+            <span class="result-score" id="rs-ru">0</span>
+            <span class="result-max">из 30</span>
+        </div>
+        <p id="rt-ru" style="color:#555; margin-top:10px;"></p>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ТЕСТ 2: МАТЕМАТИКА — 20 заданий                             -->
+<!-- ============================================================ -->
+<div class="test-section" id="sec-math">
+    <div class="test-header th-math">
+        <h2>📐 Тест по Математике</h2>
+        <p>Темы: Координатная плоскость • Уравнения • Проценты • Масштаб • Диаграммы</p>
+        <div class="test-meta">
+            <span>📝 20 заданий</span>
+            <span>⏱ ~50 минут</span>
+            <span>🎯 Проходной балл: 14/20</span>
+        </div>
+    </div>
+
+    <!-- Координаты (1–4) -->
+    <div class="question-card qc-math" id="m1">
+        <div class="q-number"><div class="q-num-badge qnb-math">1</div>Координаты<span class="q-category">Квадранты</span></div>
+        <div class="q-text">Точка K(−4; 7) находится в:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',1,false)">А) I квадранте</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',1,true)">Б) II квадранте</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',1,false)">В) III квадранте</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',1,false)">Г) IV квадранте</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m2">
+        <div class="q-number"><div class="q-num-badge qnb-math">2</div>Координаты<span class="q-category">Оси</span></div>
+        <div class="q-text">Точка лежит на оси Oy. Её координаты могут быть:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',2,false)">А) (3; 0)</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',2,true)">Б) (0; −5)</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',2,false)">В) (2; 3)</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',2,false)">Г) (−1; −1)</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m3">
+        <div class="q-number"><div class="q-num-badge qnb-math">3</div>Координаты<span class="q-category">Расстояние</span></div>
+        <div class="q-text">Найди длину отрезка AB, если A(−3; 2) и B(5; 2):</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',3,false)">А) 5</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',3,true)">Б) 8</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',3,false)">В) 2</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',3,false)">Г) 10</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m4">
+        <div class="q-number"><div class="q-num-badge qnb-math">4</div>Координаты<span class="q-category">Применение</span></div>
+        <div class="q-text">В каком квадранте x > 0 и y < 0?</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',4,false)">А) I</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',4,false)">Б) II</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',4,false)">В) III</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',4,true)">Г) IV</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <!-- Уравнения (5–8) -->
+    <div class="question-card qc-math" id="m5">
+        <div class="q-number"><div class="q-num-badge qnb-math">5</div>Уравнения<span class="q-category">Решение</span></div>
+        <div class="q-text">Реши уравнение: 7x − 5 = 3x + 19</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',5,false)">А) x = 5</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',5,true)">Б) x = 6</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',5,false)">В) x = 3</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',5,false)">Г) x = 7</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m6">
+        <div class="q-number"><div class="q-num-badge qnb-math">6</div>Уравнения<span class="q-category">Со скобками</span></div>
+        <div class="q-text">Реши уравнение: 4(x − 3) = 2(x + 5)</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',6,false)">А) x = 8</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',6,true)">Б) x = 11</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',6,false)">В) x = 4</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',6,false)">Г) x = 14</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m7">
+        <div class="q-number"><div class="q-num-badge qnb-math">7</div>Уравнения<span class="q-category">С дробями</span></div>
+        <div class="q-text">Реши уравнение: x/4 + x/8 = 6</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',7,false)">А) x = 12</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',7,false)">Б) x = 24</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',7,true)">В) x = 16</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',7,false)">Г) x = 18</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m8">
+        <div class="q-number"><div class="q-num-badge qnb-math">8</div>Уравнения<span class="q-category">Задача</span></div>
+        <div class="q-text">Задумали число. Его утроили и прибавили 11 — получили 50. Найди число.</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',8,false)">А) 12</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',8,true)">Б) 13</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',8,false)">В) 15</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',8,false)">Г) 11</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <!-- Проценты (9–13) -->
+    <div class="question-card qc-math" id="m9">
+        <div class="q-number"><div class="q-num-badge qnb-math">9</div>Проценты<span class="q-category">Тип 1</span></div>
+        <div class="q-text">Найди 35% от 400:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',9,false)">А) 120</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',9,true)">Б) 140</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',9,false)">В) 160</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',9,false)">Г) 135</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m10">
+        <div class="q-number"><div class="q-num-badge qnb-math">10</div>Проценты<span class="q-category">Тип 2</span></div>
+        <div class="q-text">40% числа равны 120. Чему равно число?</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',10,false)">А) 240</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',10,true)">Б) 300</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',10,false)">В) 280</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',10,false)">Г) 320</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m11">
+        <div class="q-number"><div class="q-num-badge qnb-math">11</div>Проценты<span class="q-category">Тип 3</span></div>
+        <div class="q-text">Сколько процентов составляет 36 от 144?</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',11,false)">А) 20%</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',11,true)">Б) 25%</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',11,false)">В) 30%</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',11,false)">Г) 36%</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m12">
+        <div class="q-number"><div class="q-num-badge qnb-math">12</div>Проценты<span class="q-category">Скидка</span></div>
+        <div class="q-text">Платье стоило 3600 руб. Скидка 25%. Цена со скидкой:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',12,false)">А) 2400 руб.</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',12,true)">Б) 2700 руб.</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',12,false)">В) 3000 руб.</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',12,false)">Г) 2880 руб.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m13">
+        <div class="q-number"><div class="q-num-badge qnb-math">13</div>Проценты<span class="q-category">Обратная задача</span></div>
+        <div class="q-text">После скидки 20% цена стала 2400 руб. Исходная цена:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',13,false)">А) 2880 руб.</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',13,true)">Б) 3000 руб.</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',13,false)">В) 2800 руб.</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',13,false)">Г) 3200 руб.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <!-- Масштаб (14–16) -->
+    <div class="question-card qc-math" id="m14">
+        <div class="q-number"><div class="q-num-badge qnb-math">14</div>Масштаб<span class="q-category">Реальная длина</span></div>
+        <div class="q-text">Масштаб карты 1:300 000. Расстояние на карте 6 см. Реальное расстояние:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',14,false)">А) 18 км</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',14,true)">Б) 18 км (6 × 300 000 = 1 800 000 см = 18 км)</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',14,false)">В) 1,8 км</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',14,false)">Г) 180 км</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m15">
+        <div class="q-number"><div class="q-num-badge qnb-math">15</div>Масштаб<span class="q-category">Длина на карте</span></div>
+        <div class="q-text">Реальная длина дороги 48 км. Масштаб карты 1:2 400 000. Длина на карте:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',15,true)">А) 2 см</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',15,false)">Б) 4 см</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',15,false)">В) 0,2 см</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',15,false)">Г) 20 см</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m16">
+        <div class="q-number"><div class="q-num-badge qnb-math">16</div>Масштаб<span class="q-category">Нахождение масштаба</span></div>
+        <div class="q-text">На плане 5 см соответствует 250 м в реальности. Масштаб плана:</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',16,false)">А) 1 : 500</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',16,true)">Б) 1 : 5 000</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',16,false)">В) 1 : 50 000</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',16,false)">Г) 1 : 500 000</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <!-- Диаграммы (17–20) -->
+    <div class="question-card qc-math" id="m17">
+        <div class="q-number"><div class="q-num-badge qnb-math">17</div>Диаграммы<span class="q-category">Виды</span></div>
+        <div class="q-text">Какая диаграмма лучше всего показывает изменение температуры за год?</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',17,false)">А) Круговая</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',17,true)">Б) Линейная</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',17,false)">В) Столбчатая</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',17,false)">Г) Точечная</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m18">
+        <div class="q-number"><div class="q-num-badge qnb-math">18</div>Диаграммы<span class="q-category">Круговая</span></div>
+        <div class="q-text">В круговой диаграмме 40% — какой угол занимает этот сектор?</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',18,false)">А) 120°</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',18,true)">Б) 144°</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',18,false)">В) 100°</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',18,false)">Г) 160°</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m19">
+        <div class="q-number"><div class="q-num-badge qnb-math">19</div>Диаграммы<span class="q-category">Чтение</span></div>
+        <div class="q-text">По столбчатой диаграмме: в понедельник — 20, в пятницу — 30. На сколько % выросло?</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',19,false)">А) 10%</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',19,true)">Б) 50%</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',19,false)">В) 30%</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',19,false)">Г) 150%</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-math" id="m20">
+        <div class="q-number"><div class="q-num-badge qnb-math">20</div>Комплексное<span class="q-category">Задача</span></div>
+        <div class="q-text">В классе 30 учеников, 60% — девочки. Сколько мальчиков?</div>
+        <button class="option-btn" onclick="checkOpt(this,'math',20,false)">А) 15</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',20,true)">Б) 12</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',20,false)">В) 18</button>
+        <button class="option-btn" onclick="checkOpt(this,'math',20,false)">Г) 10</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <button class="show-result-btn srb-math" onclick="showSectionResult('math',20)">📊 Результат по Математике</button>
+    <div class="section-result" id="result-math">
+        <h3>📐 Результат: Математика</h3>
+        <div class="result-circle" id="rc-math" style="background:linear-gradient(135deg,#f5576c,#c0392b);">
+            <span class="result-score" id="rs-math">0</span>
+            <span class="result-max">из 20</span>
+        </div>
+        <p id="rt-math" style="color:#555; margin-top:10px;"></p>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ТЕСТ 3: ИСТОРИЯ — 15 вопросов                               -->
+<!-- ============================================================ -->
+<div class="test-section" id="sec-hist">
+    <div class="test-header th-hist">
+        <h2>🏰 Тест по Истории</h2>
+        <p>Темы: Позднее Средневековье • Ключевые даты и события • Термины</p>
+        <div class="test-meta">
+            <span>📝 15 вопросов</span>
+            <span>⏱ ~25 минут</span>
+            <span>🎯 Проходной балл: 11/15</span>
+        </div>
+    </div>
+
+    <div class="question-card qc-hist" id="h1">
+        <div class="q-number"><div class="q-num-badge qnb-hist">1</div>Даты<span class="q-category">Средневековье</span></div>
+        <div class="q-text">В каком году пала Западная Римская империя (начало Средневековья)?</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',1,true)">А) 476 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',1,false)">Б) 395 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',1,false)">В) 410 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',1,false)">Г) 500 г.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h2">
+        <div class="q-number"><div class="q-num-badge qnb-hist">2</div>Столетняя война<span class="q-category">Факты</span></div>
+        <div class="q-text">Столетняя война (1337–1453) закончилась победой:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',2,false)">А) Англии</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',2,true)">Б) Франции</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',2,false)">В) Ничьей</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',2,false)">Г) Бургундии</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h3">
+        <div class="q-number"><div class="q-num-badge qnb-hist">3</div>Жанна д'Арк<span class="q-category">Биография</span></div>
+        <div class="q-text">В каком году Жанна д'Арк сняла осаду Орлеана?</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',3,true)">А) 1429 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',3,false)">Б) 1415 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',3,false)">В) 1431 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',3,false)">Г) 1453 г.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h4">
+        <div class="q-number"><div class="q-num-badge qnb-hist">4</div>Термины<span class="q-category">Феодализм</span></div>
+        <div class="q-text">Жакерия — это:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',4,false)">А) Восстание в Англии</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',4,true)">Б) Крестьянское восстание во Франции 1358 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',4,false)">В) Первый крестовый поход</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',4,false)">Г) Эпидемия чумы</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h5">
+        <div class="q-number"><div class="q-num-badge qnb-hist">5</div>Константинополь<span class="q-category">1453 г.</span></div>
+        <div class="q-text">Константинополь в 1453 г. взял:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',5,false)">А) Тамерлан</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',5,true)">Б) Мехмед II</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',5,false)">В) Чингисхан</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',5,false)">Г) Карл Великий</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h6">
+        <div class="q-number"><div class="q-num-badge qnb-hist">6</div>Документы<span class="q-category">Англия</span></div>
+        <div class="q-text">Великая хартия вольностей подписана в:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',6,true)">А) 1215 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',6,false)">Б) 1265 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',6,false)">В) 1302 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',6,false)">Г) 1381 г.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h7">
+        <div class="q-number"><div class="q-num-badge qnb-hist">7</div>Культура<span class="q-category">Книгопечатание</span></div>
+        <div class="q-text">Книгопечатание изобрёл приблизительно в 1450 г.:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',7,false)">А) Леонардо да Винчи</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',7,true)">Б) Иоганн Гутенберг</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',7,false)">В) Данте Алигьери</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',7,false)">Г) Роджер Бэкон</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h8">
+        <div class="q-number"><div class="q-num-badge qnb-hist">8</div>Термины<span class="q-category">Феодализм</span></div>
+        <div class="q-text">Реконкиста завершилась в:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',8,false)">А) 1453 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',8,true)">Б) 1492 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',8,false)">В) 1415 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',8,false)">Г) 1302 г.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h9">
+        <div class="q-number"><div class="q-num-badge qnb-hist">9</div>«Чёрная смерть»<span class="q-category">Последствия</span></div>
+        <div class="q-text">Сколько людей погибло от «Чёрной смерти» в Европе?</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',9,false)">А) около 1/10 населения</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',9,true)">Б) около 1/3 населения</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',9,false)">В) около 1/2 населения</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',9,false)">Г) менее 1/20 населения</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h10">
+        <div class="q-number"><div class="q-num-badge qnb-hist">10</div>Термины<span class="q-category">Средневековье</span></div>
+        <div class="q-text">Цех в Средневековье — это:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',10,false)">А) Объединение купцов</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',10,true)">Б) Объединение ремесленников одной специальности</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',10,false)">В) Городская стража</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',10,false)">Г) Рыцарский орден</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h11">
+        <div class="q-number"><div class="q-num-badge qnb-hist">11</div>Хронология<span class="q-category">Порядок событий</span></div>
+        <div class="q-text">Расставь события в хронологическом порядке (от раннего к позднему):</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',11,false)">А) Открытие Америки → Жакерия → Первый крестовый поход</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',11,true)">Б) Первый крестовый поход → Жакерия → Открытие Америки</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',11,false)">В) Жакерия → Первый крестовый поход → Открытие Америки</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',11,false)">Г) Все события в одно время</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h12">
+        <div class="q-number"><div class="q-num-badge qnb-hist">12</div>Архитектура<span class="q-category">Культура</span></div>
+        <div class="q-text">Готическая архитектура отличается:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',12,false)">А) Круглыми куполами и мозаикой</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',12,true)">Б) Стрельчатыми арками, витражами, устремлённостью вверх</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',12,false)">В) Деревянными срубами</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',12,false)">Г) Шатровыми башнями</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h13">
+        <div class="q-number"><div class="q-num-badge qnb-hist">13</div>Термины<span class="q-category">Феодализм</span></div>
+        <div class="q-text">Феод — это:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',13,false)">А) Вид крестьянского налога</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',13,true)">Б) Земельное владение, пожалованное вассалу за службу</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',13,false)">В) Рыцарский замок</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',13,false)">Г) Объединение городов</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h14">
+        <div class="q-number"><div class="q-num-badge qnb-hist">14</div>Восстания<span class="q-category">Англия</span></div>
+        <div class="q-text">Восстание Уота Тайлера произошло в Англии в:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',14,false)">А) 1358 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',14,true)">Б) 1381 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',14,false)">В) 1415 г.</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',14,false)">Г) 1265 г.</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-hist" id="h15">
+        <div class="q-number"><div class="q-num-badge qnb-hist">15</div>Последствия<span class="q-category">Анализ</span></div>
+        <div class="q-text">Главным последствием падения Константинополя для Европы стало:</div>
+        <button class="option-btn" onclick="checkOpt(this,'hist',15,false)">А) Окончание крестовых походов</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',15,true)">Б) Перекрытие торговых путей → поиск новых морских путей → Великие географические открытия</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',15,false)">В) Объединение Европы в единое государство</button>
+        <button class="option-btn" onclick="checkOpt(this,'hist',15,false)">Г) Начало Столетней войны</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <button class="show-result-btn srb-hist" onclick="showSectionResult('hist',15)">📊 Результат по Истории</button>
+    <div class="section-result" id="result-hist">
+        <h3>🏰 Результат: История</h3>
+        <div class="result-circle" id="rc-hist" style="background:linear-gradient(135deg,#8B4513,#D2691E);">
+            <span class="result-score" id="rs-hist">0</span>
+            <span class="result-max">из 15</span>
+        </div>
+        <p id="rt-hist" style="color:#555; margin-top:10px;"></p>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ТЕСТ 4: БИОЛОГИЯ — 15 вопросов                              -->
+<!-- ============================================================ -->
+<div class="test-section" id="sec-bio">
+    <div class="test-header th-bio">
+        <h2>🌿 Тест по Биологии</h2>
+        <p>Темы: Фотосинтез • Дыхание • Размножение растений • Классификация растений</p>
+        <div class="test-meta">
+            <span>📝 15 вопросов</span>
+            <span>⏱ ~25 минут</span>
+            <span>🎯 Проходной балл: 11/15</span>
+        </div>
+    </div>
+
+    <div class="question-card qc-bio" id="b1">
+        <div class="q-number"><div class="q-num-badge qnb-bio">1</div>Фотосинтез<span class="q-category">Условия</span></div>
+        <div class="q-text">Фотосинтез происходит:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',1,true)">А) Только на свету, в хлоропластах</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',1,false)">Б) Всегда, в митохондриях</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',1,false)">В) Только ночью</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',1,false)">Г) Только в корнях</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b2">
+        <div class="q-number"><div class="q-num-badge qnb-bio">2</div>Фотосинтез<span class="q-category">Продукты</span></div>
+        <div class="q-text">Что выделяется в атмосферу при фотосинтезе?</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',2,false)">А) CO₂</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',2,true)">Б) O₂</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',2,false)">В) N₂</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',2,false)">Г) H₂</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b3">
+        <div class="q-number"><div class="q-num-badge qnb-bio">3</div>Дыхание<span class="q-category">Сравнение</span></div>
+        <div class="q-text">Дыхание растений отличается от фотосинтеза тем, что:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',3,false)">А) Происходит только в листьях</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',3,true)">Б) Происходит во всех клетках, всегда (днём и ночью), поглощает O₂</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',3,false)">В) Происходит только на свету</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',3,false)">Г) Производит глюкозу</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b4">
+        <div class="q-number"><div class="q-num-badge qnb-bio">4</div>Питание<span class="q-category">Минеральное</span></div>
+        <div class="q-text">Почвенное питание растений осуществляется через:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',4,false)">А) Устьица листьев</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',4,true)">Б) Корневые волоски</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',4,false)">В) Хлоропласты</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',4,false)">Г) Цветки</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b5">
+        <div class="q-number"><div class="q-num-badge qnb-bio">5</div>Размножение<span class="q-category">Двойное оплодотворение</span></div>
+        <div class="q-text">Двойное оплодотворение открыл учёный:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',5,false)">А) Карл Линней</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',5,true)">Б) С.Г. Навашин</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',5,false)">В) Чарльз Дарвин</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',5,false)">Г) Грегор Мендель</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b6">
+        <div class="q-number"><div class="q-num-badge qnb-bio">6</div>Классификация<span class="q-category">Отделы</span></div>
+        <div class="q-text">У каких растений нет корней, а есть ризоиды?</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',6,false)">А) Папоротники</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',6,true)">Б) Мхи</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',6,false)">В) Голосеменные</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',6,false)">Г) Хвощи</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b7">
+        <div class="q-number"><div class="q-num-badge qnb-bio">7</div>Классификация<span class="q-category">Голосеменные</span></div>
+        <div class="q-text">Семена голосеменных растений:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',7,false)">А) Закрыты в плоде</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',7,true)">Б) Лежат открыто на чешуях шишки</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',7,false)">В) Находятся в спорангиях</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',7,false)">Г) Образуются из спор</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b8">
+        <div class="q-number"><div class="q-num-badge qnb-bio">8</div>Классификация<span class="q-category">Классы</span></div>
+        <div class="q-text">Однодольные растения отличаются от двудольных:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',8,false)">А) Наличием цветка</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',8,true)">Б) Одной семядолей, параллельными жилками, мочковатым корнем</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',8,false)">В) Размножением спорами</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',8,false)">Г) Отсутствием плодов</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b9">
+        <div class="q-number"><div class="q-num-badge qnb-bio">9</div>Семейства<span class="q-category">Двудольные</span></div>
+        <div class="q-text">Картофель и томат относятся к семейству:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',9,false)">А) Розоцветные</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',9,true)">Б) Паслёновые</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',9,false)">В) Бобовые</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',9,false)">Г) Крестоцветные</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b10">
+        <div class="q-number"><div class="q-num-badge qnb-bio">10</div>Семейства<span class="q-category">Однодольные</span></div>
+        <div class="q-text">Пшеница, рожь, кукуруза — представители семейства:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',10,true)">А) Злаки (Мятликовые)</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',10,false)">Б) Лилейные</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',10,false)">В) Бобовые</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',10,false)">Г) Розоцветные</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b11">
+        <div class="q-number"><div class="q-num-badge qnb-bio">11</div>Размножение<span class="q-category">Вегетативное</span></div>
+        <div class="q-text">Клубника размножается вегетативно при помощи:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',11,false)">А) Клубней</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',11,true)">Б) Усов</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',11,false)">В) Черенков</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',11,false)">Г) Луковиц</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b12">
+        <div class="q-number"><div class="q-num-badge qnb-bio">12</div>Фотосинтез<span class="q-category">Уравнение</span></div>
+        <div class="q-text">Уравнение фотосинтеза: 6CO₂ + 6H₂O + свет →</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',12,false)">А) 6CO₂ + 6H₂O + энергия</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',12,true)">Б) C₆H₁₂O₆ + 6O₂</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',12,false)">В) 6O₂ + H₂O</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',12,false)">Г) CO₂ + O₂ + глюкоза</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b13">
+        <div class="q-number"><div class="q-num-badge qnb-bio">13</div>Классификация<span class="q-category">Водоросли</span></div>
+        <div class="q-text">Водоросли отличаются от других растений тем, что:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',13,false)">А) Нет хлорофилла</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',13,true)">Б) Нет тканей и органов, тело — слоевище, живут в воде</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',13,false)">В) Размножаются только семенами</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',13,false)">Г) Все водоросли — паразиты</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b14">
+        <div class="q-number"><div class="q-num-badge qnb-bio">14</div>Дыхание<span class="q-category">Органоиды</span></div>
+        <div class="q-text">В каком органоиде клетки происходит дыхание?</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',14,false)">А) Хлоропласт</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',14,true)">Б) Митохондрия</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',14,false)">В) Ядро</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',14,false)">Г) Вакуоль</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-bio" id="b15">
+        <div class="q-number"><div class="q-num-badge qnb-bio">15</div>Семейства<span class="q-category">Комплексный</span></div>
+        <div class="q-text">Соцветие-корзинка и плод-семянка характерны для семейства:</div>
+        <button class="option-btn" onclick="checkOpt(this,'bio',15,false)">А) Розоцветные</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',15,true)">Б) Сложноцветные (Астровые)</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',15,false)">В) Крестоцветные</button>
+        <button class="option-btn" onclick="checkOpt(this,'bio',15,false)">Г) Паслёновые</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <button class="show-result-btn srb-bio" onclick="showSectionResult('bio',15)">📊 Результат по Биологии</button>
+    <div class="section-result" id="result-bio">
+        <h3>🌿 Результат: Биология</h3>
+        <div class="result-circle" id="rc-bio" style="background:linear-gradient(135deg,#228B22,#2ecc71);">
+            <span class="result-score" id="rs-bio">0</span>
+            <span class="result-max">из 15</span>
+        </div>
+        <p id="rt-bio" style="color:#555; margin-top:10px;"></p>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ТЕСТ 5: ГЕОГРАФИЯ — 15 вопросов                             -->
+<!-- ============================================================ -->
+<div class="test-section" id="sec-geo">
+    <div class="test-header th-geo">
+        <h2>🌍 Тест по Географии</h2>
+        <p>Темы: Атмосфера • Биосфера и природные зоны • Население Земли</p>
+        <div class="test-meta">
+            <span>📝 15 вопросов</span>
+            <span>⏱ ~25 минут</span>
+            <span>🎯 Проходной балл: 11/15</span>
+        </div>
+    </div>
+
+    <div class="question-card qc-geo" id="g1">
+        <div class="q-number"><div class="q-num-badge qnb-geo">1</div>Атмосфера<span class="q-category">Состав</span></div>
+        <div class="q-text">Какой газ составляет 78% атмосферы?</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',1,false)">А) Кислород</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',1,true)">Б) Азот</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',1,false)">В) Углекислый газ</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',1,false)">Г) Аргон</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g2">
+        <div class="q-number"><div class="q-num-badge qnb-geo">2</div>Атмосфера<span class="q-category">Слои</span></div>
+        <div class="q-text">В каком слое атмосферы сгорают метеориты?</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',2,false)">А) Тропосфера</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',2,false)">Б) Стратосфера</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',2,true)">В) Мезосфера</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',2,false)">Г) Термосфера</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g3">
+        <div class="q-number"><div class="q-num-badge qnb-geo">3</div>Атмосфера<span class="q-category">Расчёт</span></div>
+        <div class="q-text">У подножия горы +24°C. Высота горы 3 000 м. Температура на вершине:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',3,false)">А) +18°C</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',3,false)">Б) +12°C</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',3,true)">В) +6°C</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',3,false)">Г) 0°C</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g4">
+        <div class="q-number"><div class="q-num-badge qnb-geo">4</div>Погода и климат<span class="q-category">Понятия</span></div>
+        <div class="q-text">Чем климат отличается от погоды?</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',4,false)">А) Климат — это состояние атмосферы сегодня</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',4,true)">Б) Климат — это многолетний режим погоды, постоянный для данной местности</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',4,false)">В) Климат изменяется каждый день</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',4,false)">Г) Климат измеряется только барометром</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g5">
+        <div class="q-number"><div class="q-num-badge qnb-geo">5</div>Климатические пояса<span class="q-category">Порядок</span></div>
+        <div class="q-text">Какой климатический пояс следует за экватором к полюсу?</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',5,false)">А) Умеренный</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',5,true)">Б) Субэкваториальный</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',5,false)">В) Субтропический</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',5,false)">Г) Арктический</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g6">
+        <div class="q-number"><div class="q-num-badge qnb-geo">6</div>Биосфера<span class="q-category">Учёные</span></div>
+        <div class="q-text">Учение о биосфере разработал:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',6,false)">А) Эдуард Зюсс</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',6,true)">Б) В.И. Вернадский</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',6,false)">В) Карл Линней</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',6,false)">Г) Чарльз Дарвин</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g7">
+        <div class="q-number"><div class="q-num-badge qnb-geo">7</div>Природные зоны<span class="q-category">Порядок</span></div>
+        <div class="q-text">Правильный порядок природных зон от экватора к полюсу:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',7,false)">А) Тундра → тайга → саванна → пустыня</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',7,true)">Б) Влажные леса → саванна → пустыня → степь → тайга → тундра</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',7,false)">В) Пустыня → степь → тропики → полюс</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',7,false)">Г) Тайга → тундра → степь → пустыня</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g8">
+        <div class="q-number"><div class="q-num-badge qnb-geo">8</div>Природные зоны<span class="q-category">Тайга</span></div>
+        <div class="q-text">Крупнейшая природная зона России — это:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',8,false)">А) Тундра</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',8,true)">Б) Тайга</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',8,false)">В) Степь</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',8,false)">Г) Смешанные леса</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g9">
+        <div class="q-number"><div class="q-num-badge qnb-geo">9</div>Население<span class="q-category">Численность</span></div>
+        <div class="q-text">Население Земли в 2023 году составляет приблизительно:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',9,false)">А) 7 миллиардов</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',9,true)">Б) более 8 миллиардов</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',9,false)">В) 6 миллиардов</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',9,false)">Г) 10 миллиардов</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g10">
+        <div class="q-number"><div class="q-num-badge qnb-geo">10</div>Население<span class="q-category">Расчёт</span></div>
+        <div class="q-text">Рождаемость — 22‰, смертность — 14‰. Естественный прирост:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',10,false)">А) 36‰</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',10,true)">Б) 8‰</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',10,false)">В) −8‰</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',10,false)">Г) 14‰</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g11">
+        <div class="q-number"><div class="q-num-badge qnb-geo">11</div>Население<span class="q-category">Страны</span></div>
+        <div class="q-text">Самая населённая страна мира в 2023 году:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',11,false)">А) Китай</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',11,true)">Б) Индия</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',11,false)">В) США</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',11,false)">Г) Россия</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g12">
+        <div class="q-number"><div class="q-num-badge qnb-geo">12</div>Население<span class="q-category">Плотность</span></div>
+        <div class="q-text">Население страны 80 млн чел., площадь 400 000 км². Плотность населения:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',12,false)">А) 20 чел/км²</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',12,true)">Б) 200 чел/км²</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',12,false)">В) 2 чел/км²</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',12,false)">Г) 2000 чел/км²</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g13">
+        <div class="q-number"><div class="q-num-badge qnb-geo">13</div>Расы<span class="q-category">Характеристики</span></div>
+        <div class="q-text">Монголоидная раса характеризуется:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',13,false)">А) Тёмной кожей, курчавыми волосами</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',13,true)">Б) Жёлтоватой кожей, прямыми тёмными волосами, раскосыми глазами</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',13,false)">В) Светлой кожей, прямыми волосами</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',13,false)">Г) Широким носом, толстыми губами</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g14">
+        <div class="q-number"><div class="q-num-badge qnb-geo">14</div>Урбанизация<span class="q-category">Определение</span></div>
+        <div class="q-text">Урбанизация — это процесс:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',14,false)">А) Переселения людей из города в деревню</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',14,true)">Б) Роста городов и доли городского населения</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',14,false)">В) Строительства новых городов в пустынях</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',14,false)">Г) Изучения городской культуры</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <div class="question-card qc-geo" id="g15">
+        <div class="q-number"><div class="q-num-badge qnb-geo">15</div>Высотная поясность<span class="q-category">Анализ</span></div>
+        <div class="q-text">Высотная поясность похожа на широтную зональность потому, что:</div>
+        <button class="option-btn" onclick="checkOpt(this,'geo',15,false)">А) В обоих случаях нет изменений природы</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',15,true)">Б) В обоих случаях смена природных зон связана с изменением температуры</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',15,false)">В) Обе зональности существуют только в тропиках</button>
+        <button class="option-btn" onclick="checkOpt(this,'geo',15,false)">Г) Природные зоны в горах такие же, как у полюсов</button>
+        <div class="q-feedback"></div>
+    </div>
+
+    <button class="show-result-btn srb-geo" onclick="showSectionResult('geo',15)">📊 Результат по Географии</button>
+    <div class="section-result" id="result-geo">
+        <h3>🌍 Результат: География</h3>
+        <div class="result-circle" id="rc-geo" style="background:linear-gradient(135deg,#1a5276,#2980b9);">
+            <span class="result-score" id="rs-geo">0</span>
+            <span class="result-max">из 15</span>
+        </div>
+        <p id="rt-geo" style="color:#555; margin-top:10px;"></p>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ИТОГОВАЯ ПАНЕЛЬ                                              -->
+<!-- ============================================================ -->
+<div class="final-dashboard" id="finalDash">
+    <h2>🏆 Итоговые результаты — День 20</h2>
+
+    <div class="scores-grid">
+        <div class="score-card sc-ru">
+            <div class="sc-subject">📗 Русский язык</div>
+            <div class="sc-num" id="fd-ru">0</div>
+            <div class="sc-max">из 30</div>
+        </div>
+        <div class="score-card sc-math">
+            <div class="sc-subject">📐 Математика</div>
+            <div class="sc-num" id="fd-math">0</div>
+            <div class="sc-max">из 20</div>
+        </div>
+        <div class="score-card sc-hist">
+            <div class="sc-subject">🏰 История</div>
+            <div class="sc-num" id="fd-hist">0</div>
+            <div class="sc-max">из 15</div>
+        </div>
+        <div class="score-card sc-bio">
+            <div class="sc-subject">🌿 Биология</div>
+            <div class="sc-num" id="fd-bio">0</div>
+            <div class="sc-max">из 15</div>
+        </div>
+        <div class="score-card sc-geo">
+            <div class="sc-subject">🌍 География</div>
+            <div class="sc-num" id="fd-geo">0</div>
+            <div class="sc-max">из 15</div>
+        </div>
+    </div>
+
+    <div class="total-score-box">
+        <h3>Общий результат</h3>
+        <div class="total-num" id="totalNum">0</div>
+        <div class="total-max">из 95 баллов</div>
+        <div class="rating-bar">
+            <div style="font-size:0.85em; opacity:0.8; margin-bottom:5px;">Процент выполнения:</div>
+            <div class="rating-track">
+                <div class="rating-fill" id="ratingFill" style="width:0%;"></div>
+            </div>
+            <div class="rating-text" id="ratingText">0%</div>
+        </div>
+        <div style="font-size:1.1em; margin-top:10px;" id="finalComment"></div>
+    </div>
+
+    <div class="achievement-grid" id="achievGrid">
+        <div class="achievement" id="ach1">
+            <div class="ach-icon">🥇</div>
+            <div class="ach-text">Отличник<br>&gt;90%</div>
+        </div>
+        <div class="achievement" id="ach2">
+            <div class="ach-icon">📗</div>
+            <div class="ach-text">Знаток<br>Русского</div>
+        </div>
+        <div class="achievement" id="ach3">
+            <div class="ach-icon">📐</div>
+            <div class="ach-text">Математик<br>85%+</div>
+        </div>
+        <div class="achievement" id="ach4">
+            <div class="ach-icon">🏰</div>
+            <div class="ach-text">Историк<br>80%+</div>
+        </div>
+        <div class="achievement" id="ach5">
+            <div class="ach-icon">🌿</div>
+            <div class="ach-text">Биолог<br>80%+</div>
+        </div>
+        <div class="achievement" id="ach6">
+            <div class="ach-icon">🌍</div>
+            <div class="ach-text">Географ<br>80%+</div>
+        </div>
+        <div class="achievement" id="ach7">
+            <div class="ach-icon">⚡</div>
+            <div class="ach-text">Скорость<br>&lt;2 часов</div>
+        </div>
+        <div class="achievement" id="ach8">
+            <div class="ach-icon">🎯</div>
+            <div class="ach-text">Все тесты<br>завершены</div>
+        </div>
+    </div>
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+    <button onclick="showFinalResults()" style="
+        background: linear-gradient(135deg, #f1c40f, #e67e22);
+        color: white; border: none; padding: 15px 40px;
+        border-radius: 30px; font-size: 1.2em;
+        cursor: pointer; font-weight: bold;
+        box-shadow: 0 8px 25px rgba(241,196,15,0.4);
+        transition: transform 0.2s;
+    " onmouseover="this.style.transform='scale(1.05)'"
+       onmouseout="this.style.transform='scale(1)'">
+        🏆 Показать итоговые результаты
+    </button>
+</div>
+
+<!-- НАВИГАЦИЯ -->
+<div class="nav-buttons" style="margin-top:30px;">
+    <a href="#" class="nav-btn">← ОБЖ, ИЗО, Музыка, Технология</a>
+    <a href="#" class="nav-btn" style="background:linear-gradient(135deg,#f1c40f,#e67e22); color:white;">
+        🎓 Неделя 3 завершена!
+    </a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+/* ============================================================ */
+/* ТАЙМЕР                                                        */
+/* ============================================================ */
+let timerSeconds = 10800; // 3 часа
+let timerInterval = null;
+let timerRunning = false;
+
+function startTimer() {
+    if (timerRunning) return;
+    timerRunning = true;
+    timerInterval = setInterval(() => {
+        if (timerSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('timerDisplay').textContent = '0:00:00';
+            document.getElementById('timerDisplay').style.color = '#e74c3c';
+            return;
+        }
+        timerSeconds--;
+        updateTimerDisplay();
+        // Предупреждение за 10 минут
+        if (timerSeconds === 600) {
+            document.getElementById('timerDisplay').style.color = '#e67e22';
+        }
+        if (timerSeconds <= 300) {
+            document.getElementById('timerDisplay').style.color = '#e74c3c';
+        }
+    }, 1000);
+}
+
+function pauseTimer() {
+    if (!timerRunning) return;
+    clearInterval(timerInterval);
+    timerRunning = false;
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerSeconds = 10800;
+    document.getElementById('timerDisplay').style.color = '#f1c40f';
+    updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+    const h = Math.floor(timerSeconds / 3600);
+    const m = Math.floor((timerSeconds % 3600) / 60);
+    const s = timerSeconds % 60;
+    document.getElementById('timerDisplay').textContent =
+        h + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+/* ============================================================ */
+/* ВКЛАДКИ                                                       */
+/* ============================================================ */
+function switchTab(name) {
+    document.querySelectorAll('.test-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('sec-' + name).classList.add('active');
+    document.querySelector('.tab-' + name).classList.add('active');
+}
+
+/* ============================================================ */
+/* ТЕСТИРОВАНИЕ                                                  */
+/* ============================================================ */
+// Счётчики по предметам
+const scores = { ru: 0, math: 0, hist: 0, bio: 0, geo: 0 };
+const answered = { ru: new Set(), math: new Set(), hist: new Set(), bio: new Set(), geo: new Set() };
+const totals = { ru: 30, math: 20, hist: 15, bio: 15, geo: 15 };
+
+function checkOpt(btn, subject, qNum, isCorrect) {
+    const qId = subject + qNum;
+    if (answered[subject].has(qId)) return;
+    answered[subject].add(qId);
+
+    const q = btn.parentElement;
+    q.querySelectorAll('.option-btn').forEach(b => {
+        b.disabled = true;
+        b.style.pointerEvents = 'none';
+    });
+
+    if (isCorrect) {
+        btn.classList.add('correct');
+        scores[subject]++;
+        showQFeedback(q, true, getCorrectExplanation(subject, qNum));
+    } else {
+        btn.classList.add('wrong');
+        // Подсветим правильный
+        q.querySelectorAll('.option-btn').forEach(b => {
+            const oc = b.getAttribute('onclick') || '';
+            if (oc.includes(',true)')) b.classList.add('correct');
+        });
+        showQFeedback(q, false, getCorrectExplanation(subject, qNum));
+    }
+
+    updateProgress(subject);
+}
+
+function showQFeedback(q, correct, explanation) {
+    const fb = q.querySelector('.q-feedback');
+    fb.style.display = 'block';
+    if (correct) {
+        fb.className = 'q-feedback qf-correct';
+        fb.innerHTML = '✅ <strong>Правильно!</strong>' + (explanation ? ' ' + explanation : '');
+    } else {
+        fb.className = 'q-feedback qf-wrong';
+        fb.innerHTML = '❌ <strong>Неправильно.</strong>' + (explanation ? ' ' + explanation : '');
+    }
+}
+
+function getCorrectExplanation(subject, num) {
+    const explanations = {
+        ru: {
+            1: 'Глагол «зависеть» — исключение, относится ко II спряжению (как видеть, смотреть, ненавидеть, терпеть).',
+            2: 'Писать, читать, идти — оканчиваются на -ать/-ить, не являются исключениями → I спр.',
+            3: 'Бороться → I спр. → 3 л. мн.ч. -ются.',
+            4: 'Нужно (что делать?) постарат<b>ь</b>ся — в вопросе есть Ь → пишем Ь.',
+            5: 'Частица «бы» → условное наклонение.',
+            6: 'Побуждение к действию → повелительное наклонение.',
+            7: 'Совершенный вид отвечает на вопрос «что сделать?» — действие не длится, поэтому настоящего времени нет.',
+            8: 'Частица БЫ всегда пишется раздельно.',
+            9: '-а → прошедшее время, женский род, единственное число.',
+            10: 'Слышать — глагол-исключение II спряжения → ты слыш<b>ишь</b>.',
+            11: 'Весь, всякий, каждый, сам, любой → определительные.',
+            12: 'Нéсколько — неопределённое, ударение на НЕ → пишем не-.',
+            13: 'Предлог между кое- и местоимением → пишем в три слова: кое с кем.',
+            14: 'После предлога «к» у местоимений 3 лица добавляется Н → к ней.',
+            15: 'Никто — указывает на отсутствие → отрицательное.',
+            16: 'С предлогом → три слова: ни у кого.',
+            17: 'Пятьдесят — числительное 50–80 → Ь пишется в середине.',
+            18: 'Девяносто в Р.п., Д.п., Т.п., П.п. → девяноста.',
+            19: 'Двое — собирательное числительное.',
+            20: 'Пятьсот в Т.п. → пятьюстами.',
+            21: 'Подлежащее — кто? что? = солнце; сказуемое = светит.',
+            22: 'Дополнение отвечает на вопросы косвенных падежей.',
+            23: 'Повторяющийся союз «и» → запятые перед каждым «и».',
+            24: 'Обращение — не член предложения, выделяется запятыми.',
+            25: 'Перед противительным союзом «но» всегда ставится запятая.',
+            26: 'Знак «?» → вопросительное предложение.',
+            27: 'Обстоятельство образа действия отвечает на вопрос «как?».',
+            28: 'Ошибка: «боится темнота» — неправильное управление, нужно «боится темноты».',
+            29: 'Пятьсот в Т.п. → пятьюстами. Обе части склоняются.',
+            30: 'В предложении с обращением нужна запятая: «Ребята,» — обращение выделено.'
+        },
+        math: {
+            3: '|5 − (−3)| = |5 + 3| = 8.',
+            5: '7x − 3x = 19 + 5; 4x = 24; x = 6.',
+            6: '4x − 12 = 2x + 10; 2x = 22; x = 11.',
+            7: 'НОК(4,8)=8; 2x + x = 48; 3x = 48; x = 16.',
+            8: '3x + 11 = 50; 3x = 39; x = 13.',
+            9: '400 · 0,35 = 140.',
+            10: '120 · 100/40 = 300.',
+            11: '36/144 · 100% = 25%.',
+            12: '3600 · 0,75 = 2700 руб.',
+            13: '2400 · 100/80 = 3000 руб.',
+            14: '6 · 300 000 = 1 800 000 см = 18 км.',
+            15: '48 км = 4 800 000 см; 4 800 000/2 400 000 = 2 см.',
+            16: '250 м = 25 000 см; 25 000/5 = 5 000; масштаб 1:5 000.',
+            18: '40 · 360/100 = 144°.',
+            19: '(30−20)/20 · 100% = 50%.',
+            20: 'Мальчиков 40%; 30 · 0,4 = 12.'
+        }
+    };
+    if (explanations[subject] && explanations[subject][num]) {
+        return '<br><em>' + explanations[subject][num] + '</em>';
+    }
+    return '';
+}
+
+function updateProgress(subject) {
+    const done = answered[subject].size;
+    const total = totals[subject];
+    const pct = Math.round(done / total * 100);
+
+    const bar = document.getElementById('prog-' + subject);
+    const txt = document.getElementById('prog-' + subject + '-text');
+    if (bar) { bar.style.width = pct + '%'; bar.textContent = pct > 10 ? pct + '%' : ''; }
+    if (txt) txt.textContent = done + '/' + total;
+}
+
+/* ============================================================ */
+/* РЕЗУЛЬТАТЫ РАЗДЕЛА                                            */
+/* ============================================================ */
+function showSectionResult(subject, max) {
+    const score = scores[subject];
+    const pct = Math.round(score / max * 100);
+    const div = document.getElementById('result-' + subject);
+    div.style.display = 'block';
+    document.getElementById('rs-' + subject).textContent = score;
+
+    const comment = document.getElementById('rt-' + subject);
+    if (pct >= 90) {
+        comment.textContent = '🏆 Отлично! Блестящий результат!';
+        comment.style.color = '#2e7d32';
+    } else if (pct >= 70) {
+        comment.textContent = '👍 Хорошо! Ты справился с задачей.';
+        comment.style.color = '#1565c0';
+    } else if (pct >= 50) {
+        comment.textContent = '📖 Неплохо, но стоит повторить материал.';
+        comment.style.color = '#e65100';
+    } else {
+        comment.textContent = '📚 Нужно ещё раз изучить тему.';
+        comment.style.color = '#c62828';
+    }
+
+    div.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ============================================================ */
+/* ИТОГОВАЯ ПАНЕЛЬ                                               */
+/* ============================================================ */
+function showFinalResults() {
+    const dash = document.getElementById('finalDash');
+    dash.style.display = 'block';
+
+    const subjects = ['ru','math','hist','bio','geo'];
+    const maxScores = { ru:30, math:20, hist:15, bio:15, geo:15 };
+
+    let total = 0;
+    let maxTotal = 95;
+
+    subjects.forEach(s => {
+        const sc = scores[s];
+        total += sc;
+        document.getElementById('fd-' + s).textContent = sc;
+    });
+
+    document.getElementById('totalNum').textContent = total;
+
+    const pct = Math.round(total / maxTotal * 100);
+    document.getElementById('ratingFill').style.width = pct + '%';
+    document.getElementById('ratingText').textContent = pct + '%';
+
+    const fc = document.getElementById('finalComment');
+    if (pct >= 90) {
+        fc.textContent = '🎉 Великолепно! Ты настоящий отличник!';
+        fc.style.color = '#f1c40f';
+    } else if (pct >= 75) {
+        fc.textContent = '👍 Отличный результат! Неделя 3 пройдена успешно!';
+        fc.style.color = '#2ecc71';
+    } else if (pct >= 60) {
+        fc.textContent = '📖 Хороший результат, но есть над чем поработать.';
+        fc.style.color = '#e67e22';
+    } else {
+        fc.textContent = '📚 Рекомендуется повторить материал перед следующей неделей.';
+        fc.style.color = '#e74c3c';
+    }
+
+    // Достижения
+    if (pct >= 90) document.getElementById('ach1').classList.add('earned');
+    document.getElementById('ach8').classList.add('earned'); // Все тесты завершены (клик на кнопку)
+
+    if (scores.ru >= 27) document.getElementById('ach2').classList.add('earned');
+    if (scores.math >= 17) document.getElementById('ach3').classList.add('earned');
+    if (scores.hist >= 12) document.getElementById('ach4').classList.add('earned');
+    if (scores.bio >= 12)  document.getElementById('ach5').classList.add('earned');
+    if (scores.geo >= 12)  document.getElementById('ach6').classList.add('earned');
+
+    // Скорость (если таймер >60 минут оставалось)
+    if (timerSeconds > 3600) document.getElementById('ach7').classList.add('earned');
+
+    dash.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

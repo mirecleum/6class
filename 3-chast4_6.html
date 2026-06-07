@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — Математика: Проценты, Масштаб, Диаграммы (6 класс)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 { color: #11998e; font-size: 1.9em; margin-bottom: 10px; }
+        .header .subtitle { color: #666; font-size: 1.1em; }
+        .header .time-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .section-divider span {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            color: #11998e;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #38ef7d;
+            font-size: 1.5em;
+        }
+        .card h3 { color: #0d7a6e; margin: 15px 0 10px; font-size: 1.2em; }
+        .card h4 { color: #11998e; margin: 12px 0 8px; font-size: 1.05em; }
+        .card p { line-height: 1.7; margin: 6px 0; }
+
+        .notebook {
+            background: #fffde7;
+            border-left: 5px solid #ff9800;
+            padding: 22px 20px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -12px; left: 10px;
+            background: #ff9800;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .notebook ul, .notebook ol { margin-left: 22px; margin-top: 8px; }
+        .notebook li { margin-bottom: 7px; line-height: 1.7; }
+        .notebook p { line-height: 1.7; margin: 6px 0; }
+
+        .rule-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .rule-box .rule-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .rule-box p, .rule-box li { line-height: 1.7; }
+        .rule-box ul, .rule-box ol { margin-left: 20px; margin-top: 5px; }
+
+        .formula-box {
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            border: 2px solid #00bcd4;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .formula-box .formula-title {
+            font-weight: bold;
+            color: #006064;
+            font-size: 1.05em;
+            margin-bottom: 12px;
+        }
+        .formula {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #004d40;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 6px;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .example {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.8;
+        }
+        .example strong { color: #1565c0; }
+
+        .practice {
+            background: #fce4ec;
+            border-left: 5px solid #e91e63;
+            padding: 22px 20px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .practice::before {
+            content: "✏️ ПОРЕШАТЬ";
+            position: absolute;
+            top: -12px; left: 10px;
+            background: #e91e63;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .practice ol, .practice ul { margin-left: 22px; margin-top: 8px; }
+        .practice li { margin-bottom: 10px; line-height: 1.7; }
+
+        .solution {
+            background: #f1f8e9;
+            border: 1px dashed #8bc34a;
+            padding: 15px;
+            margin: 5px 0 10px;
+            border-radius: 8px;
+            display: none;
+            line-height: 1.8;
+        }
+        .solution ol, .solution ul { margin-left: 22px; }
+        .solution li { margin-bottom: 8px; }
+        .solution p { margin-bottom: 10px; }
+
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none;
+            color: #1a5e2a;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin: 6px 0;
+            transition: transform 0.2s;
+        }
+        .solution-btn:hover { transform: scale(1.05); }
+
+        .step-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 12px 0;
+        }
+        .step-box .step-title {
+            font-weight: bold;
+            color: #e65100;
+            font-size: 1.05em;
+            margin-bottom: 8px;
+        }
+        .step-box ol, .step-box ul { margin-left: 20px; margin-top: 5px; }
+        .step-box li { margin-bottom: 5px; line-height: 1.7; }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВНИМАНИЕ! Частая ошибка:";
+            font-weight: bold;
+            color: #856404;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .warning-box p { line-height: 1.6; }
+
+        .mnemonic {
+            background: #e0f7fa;
+            border: 2px dashed #00bcd4;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ ЛЕГКО:";
+            display: block;
+            font-weight: bold;
+            color: #006064;
+            margin-bottom: 6px;
+        }
+
+        .video-section {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .video-section h3 { color: #e65100; margin-bottom: 10px; }
+        .video-link {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+        .video-link:hover { transform: translateX(5px); color: white; }
+        .video-link .play-icon { font-size: 1.5em; margin-right: 10px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th {
+            background: linear-gradient(135deg, #11998e, #0d7a6e);
+            color: white; padding: 10px 8px; text-align: left;
+        }
+        td { padding: 9px 8px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.6; }
+        tr:nth-child(even) { background: #f5fffe; }
+        tr:hover { background: #e0f7f4; }
+
+        /* ---- ТРЕУГОЛЬНИК ПРОЦЕНТОВ ---- */
+        .percent-triangle {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .percent-triangle svg { max-width: 340px; width: 100%; }
+
+        /* ---- СХЕМЫ ПРОЦЕНТОВ ---- */
+        .percent-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        @media(max-width:620px){ .percent-cards { grid-template-columns: 1fr; } }
+        .percent-card {
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+        .pc1 { background: #e8f5e9; border: 2px solid #4caf50; }
+        .pc2 { background: #e3f2fd; border: 2px solid #2196f3; }
+        .pc3 { background: #fce4ec; border: 2px solid #e91e63; }
+        .percent-card h4 { font-size: 0.95em; margin-bottom: 8px; }
+        .percent-card .pf {
+            font-size: 1.1em;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 4px 0;
+        }
+
+        /* ---- МАСШТАБ ---- */
+        .scale-visual {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .scale-ruler {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        .scale-label {
+            background: #11998e;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .scale-arrow {
+            font-size: 1.4em;
+            color: #11998e;
+        }
+
+        /* ---- ДИАГРАММЫ ---- */
+        .diagram-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .diagram-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        .diagram-box h4 { color: #11998e; margin-bottom: 10px; font-size: 1em; }
+
+        /* Столбчатая диаграмма SVG */
+        /* Круговая диаграмма SVG */
+
+        .eq-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 8px 0;
+            gap: 12px;
+        }
+        .eq-num {
+            background: #11998e;
+            color: white;
+            border-radius: 50%;
+            width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.9em;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .eq-content { flex: 1; line-height: 1.8; }
+        .eq-math {
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            color: #333;
+            font-weight: bold;
+        }
+        .eq-comment { color: #666; font-size: 0.9em; font-style: italic; }
+
+        .quiz-container {
+            background: linear-gradient(135deg, #11998e, #0d7a6e);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-container h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .quiz-question p {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+            line-height: 1.5;
+        }
+        .quiz-option {
+            display: block; width: 100%; text-align: left;
+            padding: 10px 15px; margin: 5px 0;
+            border: 2px solid #e0e0e0; border-radius: 8px;
+            background: white; cursor: pointer; font-size: 1em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: #11998e; background: #e0f7f4; }
+        .quiz-option.correct { background: #c8e6c9; border-color: #4caf50; color: #2e7d32; }
+        .quiz-option.wrong   { background: #ffcdd2; border-color: #f44336; color: #c62828; }
+        .quiz-feedback {
+            margin-top: 10px; padding: 10px;
+            border-radius: 8px; display: none; font-weight: bold;
+        }
+        .score-display {
+            text-align: center; background: white;
+            padding: 25px; border-radius: 15px;
+            margin-top: 15px; display: none;
+        }
+        .score-display .score-number { font-size: 3em; color: #11998e; font-weight: bold; }
+        .check-btn {
+            background: white; color: #11998e;
+            border: none; padding: 12px 35px;
+            border-radius: 25px; font-size: 1.1em;
+            cursor: pointer; font-weight: bold;
+            margin-top: 15px; transition: transform 0.2s;
+        }
+        .check-btn:hover { transform: scale(1.05); }
+
+        .nav-buttons {
+            display: flex; justify-content: space-between;
+            margin-top: 30px; flex-wrap: wrap; gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block; padding: 12px 25px;
+            background: white; color: #11998e;
+            text-decoration: none; border-radius: 25px;
+            font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .green { color: #2e7d32; font-weight: bold; }
+        .highlight { background: #ffeb3b; padding: 2px 5px; border-radius: 3px; }
+        .two-col {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 15px; margin: 10px 0;
+        }
+        @media(max-width:600px){ .two-col { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>📊 Неделя 3 — Математика</h1>
+        <div class="subtitle">Часть 2: Задачи на проценты • Масштаб • Диаграммы</div>
+        <div class="time-badge">⏱ Время: ~3,5 часа</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ЧАСТЬ А: ПРОЦЕНТЫ -->
+    <!-- ============================================================ -->
+    <div class="section-divider"><span>💯 ЗАДАЧИ НА ПРОЦЕНТЫ</span></div>
+
+    <!-- 1. Что такое процент -->
+    <div class="card">
+        <h2>📖 1. Что такое процент</h2>
+        <div class="notebook">
+            <br>
+            <h3>Определение</h3>
+            <p><strong>Процент (%))</strong> — одна сотая часть числа или величины.</p>
+            <p><strong>1% = 1/100 = 0,01</strong></p>
+            <p>Слово «процент» происходит от латинского <em>«pro centum»</em> — «на сто».</p>
+
+            <h3>Основные связи:</h3>
+            <ul>
+                <li>100% — это всё число (целое)</li>
+                <li>50% — половина числа (½)</li>
+                <li>25% — четверть числа (¼)</li>
+                <li>10% — одна десятая числа (1/10)</li>
+                <li>1% — одна сотая числа (1/100)</li>
+            </ul>
+
+            <h3>Перевод:</h3>
+            <ul>
+                <li><strong>% → десятичная дробь:</strong> делим на 100<br>
+                    35% = 35 : 100 = <strong>0,35</strong></li>
+                <li><strong>Десятичная дробь → %:</strong> умножаем на 100<br>
+                    0,7 = 0,7 × 100 = <strong>70%</strong></li>
+                <li><strong>% → обыкновенная дробь:</strong><br>
+                    40% = 40/100 = <strong>2/5</strong></li>
+            </ul>
+        </div>
+
+        <div class="mnemonic">
+            <strong>Быстрый перевод в памяти:</strong><br>
+            % → дробь: <strong>убери знак % и раздели на 100</strong> (перенеси запятую на 2 влево)<br>
+            Дробь → %: <strong>умножь на 100 и поставь знак %</strong> (перенеси запятую на 2 вправо)<br><br>
+            35% → 0,35 (запятая 2 влево) ✓<br>
+            0,42 → 42% (запятая 2 вправо) ✓
+        </div>
+
+        <div class="example">
+            <strong>Таблица часто встречающихся процентов:</strong><br><br>
+            <table>
+                <tr>
+                    <th>Процент</th><th>Десятичная дробь</th>
+                    <th>Обыкновенная дробь</th><th>Слова</th>
+                </tr>
+                <tr><td>1%</td><td>0,01</td><td>1/100</td><td>одна сотая</td></tr>
+                <tr><td>5%</td><td>0,05</td><td>1/20</td><td>одна двадцатая</td></tr>
+                <tr><td>10%</td><td>0,1</td><td>1/10</td><td>одна десятая</td></tr>
+                <tr><td>20%</td><td>0,2</td><td>1/5</td><td>одна пятая</td></tr>
+                <tr><td>25%</td><td>0,25</td><td>1/4</td><td>одна четвёртая</td></tr>
+                <tr><td>50%</td><td>0,5</td><td>1/2</td><td>одна вторая</td></tr>
+                <tr><td>75%</td><td>0,75</td><td>3/4</td><td>три четвёртых</td></tr>
+                <tr><td>100%</td><td>1</td><td>1</td><td>целое</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2. Три типа задач -->
+    <div class="card">
+        <h2>📖 2. Три основных типа задач на проценты</h2>
+
+        <!-- Треугольник -->
+        <div class="percent-triangle">
+            <svg viewBox="0 0 340 200" width="340" height="200">
+                <!-- Треугольник -->
+                <polygon points="170,10 10,190 330,190"
+                         fill="#e0f7fa" stroke="#11998e" stroke-width="2.5"/>
+                <!-- Линия делит на части -->
+                <line x1="10" y1="190" x2="330" y2="190"
+                      stroke="#11998e" stroke-width="2"/>
+                <line x1="170" y1="10" x2="90" y2="190"
+                      stroke="#11998e" stroke-width="1.5" stroke-dasharray="5"/>
+                <line x1="170" y1="10" x2="250" y2="190"
+                      stroke="#11998e" stroke-width="1.5" stroke-dasharray="5"/>
+
+                <!-- Верх: Часть -->
+                <rect x="130" y="25" width="80" height="32" rx="8"
+                      fill="#e91e63"/>
+                <text x="170" y="46" text-anchor="middle"
+                      font-size="14" font-weight="bold" fill="white">ЧАСТЬ</text>
+
+                <!-- Низ-лево: Целое -->
+                <rect x="20" y="160" width="80" height="32" rx="8"
+                      fill="#2196f3"/>
+                <text x="60" y="181" text-anchor="middle"
+                      font-size="14" font-weight="bold" fill="white">ЦЕЛОЕ</text>
+
+                <!-- Низ-право: % -->
+                <rect x="235" y="160" width="85" height="32" rx="8"
+                      fill="#ff9800"/>
+                <text x="277" y="181" text-anchor="middle"
+                      font-size="14" font-weight="bold" fill="white">% / 100</text>
+
+                <!-- Знаки -->
+                <text x="170" y="185" text-anchor="middle"
+                      font-size="20" fill="#11998e" font-weight="bold">×</text>
+                <text x="107" y="120" text-anchor="middle"
+                      font-size="20" fill="#11998e" font-weight="bold">÷</text>
+                <text x="233" y="120" text-anchor="middle"
+                      font-size="20" fill="#11998e" font-weight="bold">÷</text>
+            </svg>
+        </div>
+
+        <div class="percent-cards">
+            <div class="percent-card pc1">
+                <h4>Тип 1<br>Найти часть</h4>
+                <div class="pf">Часть =<br>Целое × % / 100</div>
+                <p style="font-size:0.85em; margin-top:8px;">«Сколько это … % от числа?»</p>
+            </div>
+            <div class="percent-card pc2">
+                <h4>Тип 2<br>Найти целое</h4>
+                <div class="pf">Целое =<br>Часть × 100 / %</div>
+                <p style="font-size:0.85em; margin-top:8px;">«Это … — сколько % от целого?»</p>
+            </div>
+            <div class="percent-card pc3">
+                <h4>Тип 3<br>Найти процент</h4>
+                <div class="pf">% =<br>Часть / Целое × 100</div>
+                <p style="font-size:0.85em; margin-top:8px;">«Сколько % составляет часть?»</p>
+            </div>
+        </div>
+
+        <div class="notebook">
+            <br>
+            <h3>Три формулы — запомни!</h3>
+            <div class="formula-box">
+                <div class="formula-title">Главные формулы задач на проценты</div>
+                <div class="formula">Часть = Целое · р/100</div><br>
+                <div class="formula">Целое = Часть · 100/р</div><br>
+                <div class="formula">р = Часть/Целое · 100%</div>
+                <p style="margin-top:10px; color:#006064; font-size:0.9em;">где <strong>р</strong> — процент, <strong>р/100</strong> — процент в виде дроби</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Подробные разборы каждого типа -->
+    <div class="card">
+        <h2>📖 3. Разбор каждого типа задач</h2>
+
+        <!-- ТИП 1 -->
+        <h3>🔷 Тип 1: Найти часть от целого</h3>
+        <p>Вопрос: <strong>«Найди X% от числа N»</strong></p>
+
+        <div class="step-box">
+            <div class="step-title">Алгоритм:</div>
+            <ol>
+                <li>Записать: Часть = Целое · р / 100</li>
+                <li>Подставить числа</li>
+                <li>Вычислить</li>
+            </ol>
+        </div>
+
+        <div class="example">
+            <strong>Задача:</strong> В классе 30 учеников. 40% из них занимаются спортом.
+            Сколько учеников занимаются спортом?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">Целое = 30, р = 40%</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">Часть = 30 · 40 / 100 = 30 · 0,4 = 12</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: 12 учеников занимаются спортом.</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Задача:</strong> Цена товара 2 500 рублей. Магазин сделал скидку 15%.
+            Сколько рублей составляет скидка? Какова цена со скидкой?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">Скидка = 2500 · 15/100 = 2500 · 0,15 = 375 руб.</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">Цена со скидкой = 2500 − 375 = 2125 руб.</span><br>
+                    <span class="eq-comment">Или: 2500 · (1 − 0,15) = 2500 · 0,85 = 2125 руб.</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: скидка 375 руб., цена со скидкой 2125 руб.</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- ТИП 2 -->
+        <h3>🔷 Тип 2: Найти целое по его части</h3>
+        <p>Вопрос: <strong>«X% числа равны N. Найди число.»</strong></p>
+
+        <div class="step-box">
+            <div class="step-title">Алгоритм:</div>
+            <ol>
+                <li>Записать: Целое = Часть · 100 / р</li>
+                <li>Подставить числа</li>
+                <li>Вычислить</li>
+            </ol>
+        </div>
+
+        <div class="example">
+            <strong>Задача:</strong> 30% учеников школы — это 120 человек.
+            Сколько всего учеников в школе?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">Часть = 120, р = 30%</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">Целое = 120 · 100 / 30 = 12000 / 30 = 400</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: в школе 400 учеников.</strong><br>
+                    Проверка: 400 · 30/100 = 120 ✓
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Задача:</strong> После скидки 20% цена товара стала 640 рублей.
+            Какова была первоначальная цена?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-comment">После скидки 20% осталось 80% от цены.</span><br>
+                    <span class="eq-math">640 рублей = 80% от первоначальной цены</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">Целое = 640 · 100 / 80 = 64000 / 80 = 800 руб.</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: первоначальная цена — 800 рублей.</strong><br>
+                    Проверка: 800 · 0,8 = 640 ✓
+                </div>
+            </div>
+        </div>
+
+        <!-- ТИП 3 -->
+        <h3>🔷 Тип 3: Найти, сколько процентов составляет часть</h3>
+        <p>Вопрос: <strong>«Сколько процентов составляет A от B?»</strong></p>
+
+        <div class="step-box">
+            <div class="step-title">Алгоритм:</div>
+            <ol>
+                <li>Записать: р = Часть / Целое · 100%</li>
+                <li>Подставить числа</li>
+                <li>Вычислить</li>
+            </ol>
+        </div>
+
+        <div class="example">
+            <strong>Задача:</strong> В корзине 60 яблок, из них 18 — красные.
+            Сколько процентов яблок красные?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">р = 18 / 60 · 100% = 0,3 · 100% = 30%</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: 30% яблок красные.</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Задача (изменение в %):</strong> Цена товара выросла с 500 до 600 рублей.
+            На сколько процентов выросла цена?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">Изменение = 600 − 500 = 100 руб.</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">р = 100 / 500 · 100% = 20%</span><br>
+                    <span class="eq-comment">Делим на НАЧАЛЬНУЮ цену (от неё считаем %)</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: цена выросла на 20%.</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <p>При нахождении процентного изменения всегда делим на <strong>начальное</strong> (исходное) значение!</p>
+            <p>Нельзя делить на конечное значение или на разность!</p>
+        </div>
+    </div>
+
+    <!-- 4. Практика: проценты -->
+    <div class="card">
+        <h2>✏️ Практика: Задачи на проценты</h2>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 1.</strong> Переведи в десятичную дробь и обратно:</p>
+            <ol>
+                <li>45% = ?</li>
+                <li>7% = ?</li>
+                <li>130% = ?</li>
+                <li>0,25 = ?%</li>
+                <li>0,08 = ?%</li>
+                <li>1,5 = ?%</li>
+            </ol>
+        </div>
+        <button class="solution-btn" onclick="toggleSol('sp1')">👁 Показать решение</button>
+        <div class="solution" id="sp1">
+            <ol>
+                <li>45% = 45/100 = <span class="green">0,45</span></li>
+                <li>7% = 7/100 = <span class="green">0,07</span></li>
+                <li>130% = 130/100 = <span class="green">1,3</span></li>
+                <li>0,25 = 0,25 · 100 = <span class="green">25%</span></li>
+                <li>0,08 = 0,08 · 100 = <span class="green">8%</span></li>
+                <li>1,5 = 1,5 · 100 = <span class="green">150%</span></li>
+            </ol>
+        </div>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 2.</strong> Реши задачи на проценты:</p>
+            <ol>
+                <li><strong>Тип 1.</strong> Найди 35% от 200.</li>
+                <li><strong>Тип 1.</strong> В городе 250 000 жителей. 12% из них — дети.
+                    Сколько детей в городе?</li>
+                <li><strong>Тип 1.</strong> Книга стоит 480 рублей. Магазин делает скидку 25%.
+                    Сколько стоит книга со скидкой?</li>
+                <li><strong>Тип 2.</strong> 15% числа равны 45. Найди число.</li>
+                <li><strong>Тип 2.</strong> После повышения на 10% зарплата составила 22 000 рублей.
+                    Какой была зарплата до повышения?</li>
+                <li><strong>Тип 3.</strong> Сколько процентов составляет 24 от 80?</li>
+                <li><strong>Тип 3.</strong> Вес котёнка вырос с 400 г до 500 г.
+                    На сколько процентов увеличился вес?</li>
+                <li><strong>Смешанная.</strong> На складе было 600 кг сахара.
+                    В первый день продали 20%, во второй — 15% от остатка.
+                    Сколько кг осталось?</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sp2')">👁 Показать решение</button>
+        <div class="solution" id="sp2">
+            <p><strong>1) 35% от 200:</strong><br>
+            200 · 35/100 = 200 · 0,35 = <span class="green">70</span></p>
+
+            <p><strong>2) Дети в городе:</strong><br>
+            250 000 · 12/100 = 250 000 · 0,12 = <span class="green">30 000 детей</span></p>
+
+            <p><strong>3) Книга со скидкой:</strong><br>
+            Скидка: 480 · 0,25 = 120 руб.<br>
+            Цена со скидкой: 480 − 120 = <span class="green">360 руб.</span><br>
+            Или: 480 · 0,75 = 360 руб.</p>
+
+            <p><strong>4) Найти число по 15%:</strong><br>
+            Целое = 45 · 100/15 = 4500/15 = <span class="green">300</span><br>
+            Проверка: 300 · 0,15 = 45 ✓</p>
+
+            <p><strong>5) Зарплата до повышения:</strong><br>
+            После повышения 10% → стало 110% от прежней.<br>
+            Целое = 22 000 · 100/110 = 2 200 000/110 = <span class="green">20 000 руб.</span><br>
+            Проверка: 20 000 · 1,1 = 22 000 ✓</p>
+
+            <p><strong>6) Сколько % составляет 24 от 80:</strong><br>
+            р = 24/80 · 100% = 0,3 · 100% = <span class="green">30%</span></p>
+
+            <p><strong>7) Рост веса котёнка:</strong><br>
+            Изменение = 500 − 400 = 100 г<br>
+            р = 100/400 · 100% = 0,25 · 100% = <span class="green">25%</span></p>
+
+            <p><strong>8) Задача в два действия:</strong><br>
+            Начало: 600 кг<br>
+            После 1-го дня (продали 20%): 600 · 0,20 = 120 кг продано;<br>
+            Остаток: 600 − 120 = 480 кг<br>
+            После 2-го дня (продали 15% от остатка): 480 · 0,15 = 72 кг продано;<br>
+            Остаток: 480 − 72 = <span class="green">408 кг</span></p>
+        </div>
+    </div>
+
+    <!-- Видео: проценты -->
+    <div class="card">
+        <div class="video-section">
+            <h3>🎬 Видеоматериалы: Проценты</h3>
+            <a href="https://www.youtube.com/watch?v=3nMsF_O-RPw" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Задачи на проценты — все три типа | 6 класс (подробно)</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Gy8ITRbFCXk" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Нахождение процентов от числа — простые объяснения</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=h5ppV-7p1yU" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Задачи на проценты: скидки, наценки, изменения</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- ЧАСТЬ Б: МАСШТАБ -->
+    <!-- ============================================================ -->
+    <div class="section-divider"><span>🗺️ МАСШТАБ</span></div>
+
+    <!-- 5. Что такое масштаб -->
+    <div class="card">
+        <h2>📖 4. Масштаб — теория</h2>
+
+        <div class="notebook">
+            <br>
+            <h3>Определение</h3>
+            <p><strong>Масштаб</strong> — это отношение длины отрезка на чертеже (карте, плане)
+            к соответствующей длине в действительности.</p>
+
+            <div class="formula-box">
+                <div class="formula-title">Главная формула масштаба</div>
+                <div class="formula">Масштаб = Длина на карте / Длина в жизни</div><br>
+                <div class="formula">Длина на карте = Реальная длина × Масштаб</div><br>
+                <div class="formula">Реальная длина = Длина на карте / Масштаб</div>
+            </div>
+
+            <h3>Виды масштаба:</h3>
+            <ul>
+                <li><strong>Численный:</strong> записывается дробью, например 1 : 100 000
+                    (1 см на карте = 100 000 см = 1 км в действительности)</li>
+                <li><strong>Именованный:</strong> «в 1 см — 5 км»</li>
+                <li><strong>Линейный:</strong> отрезок с делениями на карте</li>
+            </ul>
+
+            <h3>Как читать масштаб 1 : N?</h3>
+            <p>Это значит, что <strong>1 единица на карте = N единиц в жизни</strong>.</p>
+            <p>Чем <strong>меньше N</strong> — тем <strong>крупнее масштаб</strong> (больше деталей).</p>
+            <p>Чем <strong>больше N</strong> — тем <strong>мельче масштаб</strong> (охватывает большую территорию).</p>
+        </div>
+
+        <div class="scale-visual">
+            <strong>Примеры масштабов:</strong>
+            <div class="scale-ruler">
+                <div class="scale-label">1 : 100</div>
+                <div class="scale-arrow">→</div>
+                <span>1 см = 1 м (план комнаты)</span>
+            </div>
+            <div class="scale-ruler">
+                <div class="scale-label">1 : 10 000</div>
+                <div class="scale-arrow">→</div>
+                <span>1 см = 100 м (план города)</span>
+            </div>
+            <div class="scale-ruler">
+                <div class="scale-label">1 : 1 000 000</div>
+                <div class="scale-arrow">→</div>
+                <span>1 см = 10 км (карта области)</span>
+            </div>
+        </div>
+
+        <div class="mnemonic">
+            <strong>Правило перевода единиц при работе с масштабом:</strong><br>
+            1 км = 1000 м = 100 000 см<br>
+            1 м = 100 см<br><br>
+            При масштабе 1 : 50 000:<br>
+            2 см на карте = 2 × 50 000 = 100 000 см = <strong>1 км</strong> в жизни
+        </div>
+    </div>
+
+    <!-- 6. Алгоритм решения задач с масштабом -->
+    <div class="card">
+        <h2>📖 5. Решение задач с масштабом</h2>
+
+        <div class="step-box">
+            <div class="step-title">Алгоритм решения задач на масштаб:</div>
+            <ol>
+                <li>Определить масштаб (запиши как дробь: 1/N)</li>
+                <li>Привести все длины к <strong>одним единицам</strong> (лучше к сантиметрам)</li>
+                <li>Применить нужную формулу:
+                    <ul>
+                        <li>Найти реальную длину: <strong>l_реал = l_карта / масштаб = l_карта · N</strong></li>
+                        <li>Найти длину на карте: <strong>l_карта = l_реал · масштаб = l_реал / N</strong></li>
+                    </ul>
+                </li>
+                <li>Перевести ответ в нужные единицы</li>
+            </ol>
+        </div>
+
+        <div class="example">
+            <strong>Задача 1 (найти реальную длину):</strong><br>
+            На карте масштаба 1 : 200 000 расстояние между городами 4,5 см.
+            Какое реальное расстояние между городами?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">Масштаб 1 : 200 000</span><br>
+                    <span class="eq-comment">Значит 1 см на карте = 200 000 см в жизни</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">l_реал = 4,5 · 200 000 = 900 000 см</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">3</div>
+                <div class="eq-content">
+                    <span class="eq-math">900 000 см = 9 000 м = 9 км</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: реальное расстояние — 9 км.</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Задача 2 (найти длину на карте):</strong><br>
+            Длина реки 120 км. Какова её длина на карте масштаба 1 : 2 000 000?<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">120 км = 12 000 000 см</span><br>
+                    <span class="eq-comment">120 · 1000 · 100 = 12 000 000</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">l_карта = 12 000 000 / 2 000 000 = 6 см</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: на карте длина реки — 6 см.</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Задача 3 (найти масштаб):</strong><br>
+            Длина озера на плане 8 см, реальная длина — 400 м.
+            Определи масштаб плана.<br><br>
+            <div class="eq-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">400 м = 40 000 см</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">Масштаб = 8 / 40 000 = 1 / 5 000</span>
+                </div>
+            </div>
+            <div class="eq-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Ответ: масштаб плана — 1 : 5 000.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Практика: масштаб -->
+    <div class="card">
+        <h2>✏️ Практика: Масштаб</h2>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 3.</strong> Реши задачи на масштаб:</p>
+            <ol>
+                <li>Масштаб карты 1 : 500 000. Расстояние на карте 3 см.
+                    Найди реальное расстояние в км.</li>
+                <li>Масштаб плана 1 : 1 000. Длина здания на плане 4,5 см.
+                    Найди реальную длину в метрах.</li>
+                <li>Реальное расстояние между сёлами 36 км.
+                    Масштаб карты 1 : 1 800 000.
+                    Найди расстояние на карте в сантиметрах.</li>
+                <li>На плане комнаты масштаба 1 : 40 длина стены равна 10 см.
+                    Какова реальная длина стены?</li>
+                <li>Длина дороги на карте 7 см, реальная длина — 280 км.
+                    Определи масштаб карты.</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sm1')">👁 Показать решение</button>
+        <div class="solution" id="sm1">
+            <p><strong>1) 1 : 500 000, расстояние 3 см:</strong><br>
+            l_реал = 3 · 500 000 = 1 500 000 см = 15 000 м = <span class="green">15 км</span></p>
+
+            <p><strong>2) 1 : 1 000, длина 4,5 см:</strong><br>
+            l_реал = 4,5 · 1 000 = 4 500 см = <span class="green">45 м</span></p>
+
+            <p><strong>3) 36 км → карта 1 : 1 800 000:</strong><br>
+            36 км = 3 600 000 см<br>
+            l_карта = 3 600 000 / 1 800 000 = <span class="green">2 см</span></p>
+
+            <p><strong>4) 1 : 40, длина 10 см:</strong><br>
+            l_реал = 10 · 40 = 400 см = <span class="green">4 м</span></p>
+
+            <p><strong>5) 7 см = 280 км → масштаб:</strong><br>
+            280 км = 28 000 000 см<br>
+            Масштаб = 7 / 28 000 000 = 1 / 4 000 000<br>
+            <span class="green">Масштаб 1 : 4 000 000</span></p>
+        </div>
+    </div>
+
+    <!-- Видео: масштаб -->
+    <div class="card">
+        <div class="video-section">
+            <h3>🎬 Видеоматериалы: Масштаб</h3>
+            <a href="https://www.youtube.com/watch?v=TNnRRHfVoFg" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Масштаб — все три типа задач | 6 класс (подробно)</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=gYlQnPqSzlk" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Масштаб карты: как переводить единицы и решать задачи</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- ЧАСТЬ В: ДИАГРАММЫ -->
+    <!-- ============================================================ -->
+    <div class="section-divider"><span>📊 ДИАГРАММЫ</span></div>
+
+    <!-- 7. Виды диаграмм -->
+    <div class="card">
+        <h2>📖 6. Виды диаграмм — теория</h2>
+
+        <div class="notebook">
+            <br>
+            <h3>Что такое диаграмма?</h3>
+            <p><strong>Диаграмма</strong> — это графическое (наглядное) представление данных,
+            которое помогает сравнивать величины, видеть тенденции и делать выводы.</p>
+
+            <h3>Основные виды диаграмм:</h3>
+            <table>
+                <tr>
+                    <th>Вид диаграммы</th><th>Для чего используется</th><th>Особенность</th>
+                </tr>
+                <tr>
+                    <td><strong>Столбчатая</strong></td>
+                    <td>Сравнение значений разных категорий</td>
+                    <td>Высота столбца = значение</td>
+                </tr>
+                <tr>
+                    <td><strong>Круговая (секторная)</strong></td>
+                    <td>Показывает доли (части) целого</td>
+                    <td>Весь круг = 100% = 360°</td>
+                </tr>
+                <tr>
+                    <td><strong>Линейная</strong></td>
+                    <td>Показывает изменение величины во времени</td>
+                    <td>Точки соединены линиями</td>
+                </tr>
+            </table>
+
+            <h3>Как читать диаграммы:</h3>
+            <ul>
+                <li>Прочитай <strong>название</strong> диаграммы</li>
+                <li>Изучи <strong>оси</strong> (что на них отложено, единицы)</li>
+                <li>Прочитай <strong>легенду</strong> (объяснение цветов/обозначений)</li>
+                <li>Сравни значения, найди максимум/минимум</li>
+                <li>Сделай <strong>выводы</strong></li>
+            </ul>
+
+            <h3>Круговая диаграмма — расчёты:</h3>
+            <ul>
+                <li>Весь круг = 360° = 100%</li>
+                <li>Угол сектора = доля (%) · 360° / 100%</li>
+                <li>Например, 25% → угол = 25 · 360/100 = <strong>90°</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 8. Примеры диаграмм -->
+    <div class="card">
+        <h2>📖 7. Примеры диаграмм с разбором</h2>
+
+        <div class="diagram-container">
+
+            <!-- Столбчатая диаграмма -->
+            <div class="diagram-box">
+                <h4>📊 Столбчатая диаграмма<br>«Успеваемость класса»</h4>
+                <svg viewBox="0 0 260 200" width="260" height="200">
+                    <!-- Оси -->
+                    <line x1="35" y1="10" x2="35" y2="165" stroke="#333" stroke-width="2"/>
+                    <line x1="35" y1="165" x2="255" y2="165" stroke="#333" stroke-width="2"/>
+
+                    <!-- Сетка и подписи Y -->
+                    <g font-size="10" fill="#666" text-anchor="end">
+                        <line x1="33" y1="165" x2="255" y2="165" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="168">0</text>
+
+                        <line x1="33" y1="132" x2="255" y2="132" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="135">5</text>
+
+                        <line x1="33" y1="99" x2="255" y2="99" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="102">10</text>
+
+                        <line x1="33" y1="66" x2="255" y2="66" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="69">15</text>
+
+                        <line x1="33" y1="33" x2="255" y2="33" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="36">20</text>
+                    </g>
+
+                    <!-- Столбцы: 5=отл(13), 4=хор(9), 3=уд(6), 2=неуд(2) -->
+                    <!-- Масштаб: 20 ед = 132 пикс → 1 ед = 6.6 пикс -->
+                    <!-- 13 · 6.6 = 85.8 → высота 86; y = 165-86=79 -->
+                    <rect x="45" y="79" width="35" height="86" fill="#4caf50" rx="3"/>
+                    <text x="62" y="75" text-anchor="middle" font-size="11" font-weight="bold" fill="#2e7d32">13</text>
+                    <text x="62" y="178" text-anchor="middle" font-size="10" fill="#555">«5»</text>
+
+                    <!-- 9 · 6.6 = 59.4 → высота 59; y = 165-59=106 -->
+                    <rect x="100" y="106" width="35" height="59" fill="#2196f3" rx="3"/>
+                    <text x="117" y="102" text-anchor="middle" font-size="11" font-weight="bold" fill="#1565c0">9</text>
+                    <text x="117" y="178" text-anchor="middle" font-size="10" fill="#555">«4»</text>
+
+                    <!-- 6 · 6.6 = 39.6 → высота 40; y = 165-40=125 -->
+                    <rect x="155" y="125" width="35" height="40" fill="#ff9800" rx="3"/>
+                    <text x="172" y="121" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">6</text>
+                    <text x="172" y="178" text-anchor="middle" font-size="10" fill="#555">«3»</text>
+
+                    <!-- 2 · 6.6 = 13.2 → высота 13; y = 165-13=152 -->
+                    <rect x="210" y="152" width="35" height="13" fill="#f44336" rx="3"/>
+                    <text x="227" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#c62828">2</text>
+                    <text x="227" y="178" text-anchor="middle" font-size="10" fill="#555">«2»</text>
+
+                    <!-- Заголовок -->
+                    <text x="145" y="195" text-anchor="middle" font-size="9" fill="#888">Оценки учеников</text>
+                </svg>
+            </div>
+
+            <!-- Круговая диаграмма -->
+            <div class="diagram-box">
+                <h4>🥧 Круговая диаграмма<br>«Бюджет класса»</h4>
+                <svg viewBox="0 0 220 200" width="220" height="200">
+                    <!-- Секторы: Экскурсии 40%(144°), Призы 30%(108°), Канц 20%(72°), Прочее 10%(36°) -->
+                    <!-- Центр: 110,95; радиус: 75 -->
+
+                    <!-- Сектор 1: 0° → 144° (40% экскурсии) -->
+                    <path d="M110,95 L110,20 A75,75 0 0,1 183.3,132.5 Z" fill="#4caf50"/>
+                    <!-- Сектор 2: 144° → 252° (30% призы) -->
+                    <path d="M110,95 L183.3,132.5 A75,75 0 0,1 36.7,132.5 Z" fill="#2196f3"/>
+                    <!-- Сектор 3: 252° → 324° (20% канц) -->
+                    <path d="M110,95 L36.7,132.5 A75,75 0 0,1 73.3,20.3 Z" fill="#ff9800"/>
+                    <!-- Сектор 4: 324° → 360° (10% прочее) -->
+                    <path d="M110,95 L73.3,20.3 A75,75 0 0,1 110,20 Z" fill="#e91e63"/>
+
+                    <!-- Подписи секторов -->
+                    <text x="140" y="75" font-size="10" fill="white" font-weight="bold">40%</text>
+                    <text x="135" y="140" font-size="10" fill="white" font-weight="bold">30%</text>
+                    <text x="68" y="130" font-size="10" fill="white" font-weight="bold">20%</text>
+                    <text x="90" y="50" font-size="10" fill="white" font-weight="bold">10%</text>
+
+                    <!-- Легенда -->
+                    <rect x="10" y="178" width="10" height="10" fill="#4caf50"/>
+                    <text x="23" y="188" font-size="9" fill="#333">Экскурсии</text>
+                    <rect x="80" y="178" width="10" height="10" fill="#2196f3"/>
+                    <text x="93" y="188" font-size="9" fill="#333">Призы</text>
+                    <rect x="130" y="178" width="10" height="10" fill="#ff9800"/>
+                    <text x="143" y="188" font-size="9" fill="#333">Канц.</text>
+                    <rect x="175" y="178" width="10" height="10" fill="#e91e63"/>
+                    <text x="188" y="188" font-size="9" fill="#333">Пр.</text>
+                </svg>
+            </div>
+
+            <!-- Линейная диаграмма -->
+            <div class="diagram-box">
+                <h4>📈 Линейная диаграмма<br>«Температура за неделю»</h4>
+                <svg viewBox="0 0 260 200" width="260" height="200">
+                    <!-- Оси -->
+                    <line x1="35" y1="10" x2="35" y2="165" stroke="#333" stroke-width="2"/>
+                    <line x1="35" y1="165" x2="255" y2="165" stroke="#333" stroke-width="2"/>
+
+                    <!-- Сетка Y: -5 до 25 (диапазон 30) -->
+                    <!-- 0°: y=165; 10°: y=125; 20°: y=85; 25°: y=65; -5°: y=178(за осью) -->
+                    <!-- Масштаб: 30 ед = 150 пикс → 1 ед = 5 пикс -->
+                    <!-- y = 165 - (T - (-5)) * 5 = 165 - (T+5)*5 -->
+                    <g font-size="9" fill="#666" text-anchor="end">
+                        <line x1="33" y1="165" x2="255" y2="165" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="168">-5</text>
+                        <line x1="33" y1="140" x2="255" y2="140" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="143">0</text>
+                        <line x1="33" y1="115" x2="255" y2="115" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="118">5</text>
+                        <line x1="33" y1="90" x2="255" y2="90" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="93">10</text>
+                        <line x1="33" y1="65" x2="255" y2="65" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="68">15</text>
+                        <line x1="33" y1="40" x2="255" y2="40" stroke="#eee" stroke-width="1"/>
+                        <text x="30" y="43">20</text>
+                    </g>
+
+                    <!-- Дни недели -->
+                    <g font-size="9" fill="#666" text-anchor="middle">
+                        <text x="60" y="178">Пн</text>
+                        <text x="90" y="178">Вт</text>
+                        <text x="120" y="178">Ср</text>
+                        <text x="150" y="178">Чт</text>
+                        <text x="180" y="178">Пт</text>
+                        <text x="210" y="178">Сб</text>
+                        <text x="240" y="178">Вс</text>
+                    </g>
+
+                    <!-- Данные: Пн=8, Вт=12, Ср=15, Чт=10, Пт=6, Сб=3, Вс=10 -->
+                    <!-- y = 165 - (T+5)*5 -->
+                    <!-- Пн 8: y=165-(13*5)=165-65=100 -->
+                    <!-- Вт 12: y=165-(17*5)=165-85=80 -->
+                    <!-- Ср 15: y=165-(20*5)=165-100=65 -->
+                    <!-- Чт 10: y=165-(15*5)=165-75=90 -->
+                    <!-- Пт 6: y=165-(11*5)=165-55=110 -->
+                    <!-- Сб 3: y=165-(8*5)=165-40=125 -->
+                    <!-- Вс 10: y=165-(15*5)=165-75=90 -->
+                    <polyline
+                        points="60,100 90,80 120,65 150,90 180,110 210,125 240,90"
+                        fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-linejoin="round"/>
+
+                    <!-- Точки -->
+                    <circle cx="60"  cy="100" r="4" fill="#e74c3c"/>
+                    <circle cx="90"  cy="80"  r="4" fill="#e74c3c"/>
+                    <circle cx="120" cy="65"  r="4" fill="#e74c3c"/>
+                    <circle cx="150" cy="90"  r="4" fill="#e74c3c"/>
+                    <circle cx="180" cy="110" r="4" fill="#e74c3c"/>
+                    <circle cx="210" cy="125" r="4" fill="#e74c3c"/>
+                    <circle cx="240" cy="90"  r="4" fill="#e74c3c"/>
+
+                    <!-- Подписи значений -->
+                    <g font-size="9" fill="#c0392b" text-anchor="middle">
+                        <text x="60"  y="95">8°</text>
+                        <text x="90"  y="75">12°</text>
+                        <text x="120" y="60">15°</text>
+                        <text x="150" y="85">10°</text>
+                        <text x="180" y="105">6°</text>
+                        <text x="210" y="120">3°</text>
+                        <text x="240" y="85">10°</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Разбор столбчатой диаграммы «Успеваемость класса»:</strong><br>
+            В классе 30 учеников. По данным диаграммы:<br>
+            — Оценку «5» получили <strong>13</strong> учеников → <strong>13/30 · 100% ≈ 43%</strong><br>
+            — Оценку «4» получили <strong>9</strong> учеников → <strong>9/30 · 100% = 30%</strong><br>
+            — Оценку «3» получили <strong>6</strong> учеников → <strong>6/30 · 100% = 20%</strong><br>
+            — Оценку «2» получили <strong>2</strong> ученика → <strong>2/30 · 100% ≈ 7%</strong><br>
+            Всего: 13+9+6+2 = 30 ✓<br><br>
+            <strong>Вывод:</strong> Большинство учеников (73%) имеют оценки «4» и «5».
+        </div>
+
+        <div class="example">
+            <strong>Разбор линейной диаграммы «Температура за неделю»:</strong><br>
+            — Максимальная температура: <strong>15°С</strong> в среду<br>
+            — Минимальная температура: <strong>3°С</strong> в субботу<br>
+            — Разница: 15 − 3 = <strong>12°С</strong><br>
+            — Среднее за неделю: (8+12+15+10+6+3+10)/7 = 64/7 ≈ <strong>9,1°С</strong><br>
+            — С понедельника по среду температура <strong>росла</strong>, затем <strong>падала</strong> до субботы,
+            потом снова поднялась в воскресенье.
+        </div>
+    </div>
+
+    <!-- Практика: диаграммы -->
+    <div class="card">
+        <h2>✏️ Практика: Диаграммы</h2>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 4.</strong> Построй столбчатую диаграмму по данным и ответь на вопросы:</p>
+            <p>В школьной библиотеке за неделю было взято книг:</p>
+            <table style="margin:10px 0;">
+                <tr>
+                    <th>День</th><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th>
+                </tr>
+                <tr>
+                    <td>Книг выдано</td><td>15</td><td>22</td><td>18</td><td>25</td><td>30</td>
+                </tr>
+            </table>
+            <ol>
+                <li>В какой день было выдано больше всего книг?</li>
+                <li>В какой день — меньше всего?</li>
+                <li>Сколько всего книг выдано за неделю?</li>
+                <li>На сколько процентов больше выдали в пятницу, чем в понедельник?</li>
+                <li>Сколько процентов от общего числа составляют книги, выданные в среду?</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sd1')">👁 Показать решение</button>
+        <div class="solution" id="sd1">
+            <p><strong>1) Больше всего книг — в пятницу: 30 книг.</strong></p>
+            <p><strong>2) Меньше всего — в понедельник: 15 книг.</strong></p>
+            <p><strong>3) Всего за неделю:</strong><br>
+            15 + 22 + 18 + 25 + 30 = <span class="green">110 книг</span></p>
+            <p><strong>4) На сколько % больше в пятницу, чем в понедельник:</strong><br>
+            Разница: 30 − 15 = 15 книг<br>
+            р = 15/15 · 100% = <span class="green">100%</span><br>
+            (В пятницу выдали на 100% больше, то есть вдвое больше)</p>
+            <p><strong>5) Доля среды от общего числа:</strong><br>
+            р = 18/110 · 100% ≈ 16,4%</p>
+
+            <!-- Мини-диаграмма в решении -->
+            <p><strong>Схематичная столбчатая диаграмма:</strong></p>
+            <svg viewBox="0 0 300 160" width="300" height="160" style="display:block; margin:10px auto;">
+                <line x1="30" y1="10" x2="30" y2="130" stroke="#333" stroke-width="1.5"/>
+                <line x1="30" y1="130" x2="290" y2="130" stroke="#333" stroke-width="1.5"/>
+                <!-- масштаб: 30 = max, 120 пикс → 1 ед = 4 пикс -->
+                <!-- Пн 15: h=60 y=70; Вт 22: h=88 y=42; Ср 18: h=72 y=58; Чт 25: h=100 y=30; Пт 30: h=120 y=10 -->
+                <rect x="40" y="70" width="30" height="60" fill="#4caf50" rx="2"/>
+                <text x="55" y="66" text-anchor="middle" font-size="10" fill="#2e7d32">15</text>
+                <text x="55" y="143" text-anchor="middle" font-size="9" fill="#555">Пн</text>
+
+                <rect x="90" y="42" width="30" height="88" fill="#2196f3" rx="2"/>
+                <text x="105" y="38" text-anchor="middle" font-size="10" fill="#1565c0">22</text>
+                <text x="105" y="143" text-anchor="middle" font-size="9" fill="#555">Вт</text>
+
+                <rect x="140" y="58" width="30" height="72" fill="#ff9800" rx="2"/>
+                <text x="155" y="54" text-anchor="middle" font-size="10" fill="#e65100">18</text>
+                <text x="155" y="143" text-anchor="middle" font-size="9" fill="#555">Ср</text>
+
+                <rect x="190" y="30" width="30" height="100" fill="#9c27b0" rx="2"/>
+                <text x="205" y="26" text-anchor="middle" font-size="10" fill="#6a1b9a">25</text>
+                <text x="205" y="143" text-anchor="middle" font-size="9" fill="#555">Чт</text>
+
+                <rect x="240" y="10" width="30" height="120" fill="#e74c3c" rx="2"/>
+                <text x="255" y="7" text-anchor="middle" font-size="10" fill="#c0392b">30</text>
+                <text x="255" y="143" text-anchor="middle" font-size="9" fill="#555">Пт</text>
+
+                <text x="155" y="157" text-anchor="middle" font-size="9" fill="#888">Книги по дням недели</text>
+            </svg>
+        </div>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 5.</strong> По данным круговой диаграммы ответь на вопросы:</p>
+            <p>Бюджет класса 5000 рублей распределён так:</p>
+            <ul>
+                <li>Экскурсии — 40%</li>
+                <li>Призы победителям — 30%</li>
+                <li>Канцтовары — 20%</li>
+                <li>Прочее — 10%</li>
+            </ul>
+            <ol>
+                <li>Сколько рублей выделено на экскурсии?</li>
+                <li>Сколько рублей выделено на призы?</li>
+                <li>На сколько рублей больше тратят на экскурсии, чем на прочее?</li>
+                <li>Какой угол соответствует сектору «Канцтовары»?</li>
+                <li>Сколько градусов в секторе «Призы»?</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sd2')">👁 Показать решение</button>
+        <div class="solution" id="sd2">
+            <p><strong>1) Экскурсии (40%):</strong><br>
+            5000 · 0,40 = <span class="green">2000 руб.</span></p>
+            <p><strong>2) Призы (30%):</strong><br>
+            5000 · 0,30 = <span class="green">1500 руб.</span></p>
+            <p><strong>3) Разница (экскурсии − прочее):</strong><br>
+            Прочее: 5000 · 0,10 = 500 руб.<br>
+            2000 − 500 = <span class="green">1500 руб.</span></p>
+            <p><strong>4) Угол сектора «Канцтовары» (20%):</strong><br>
+            α = 20 · 360/100 = 20 · 3,6 = <span class="green">72°</span></p>
+            <p><strong>5) Угол сектора «Призы» (30%):</strong><br>
+            α = 30 · 360/100 = 30 · 3,6 = <span class="green">108°</span></p>
+        </div>
+    </div>
+
+    <!-- Видео: диаграммы -->
+    <div class="card">
+        <div class="video-section">
+            <h3>🎬 Видеоматериалы: Диаграммы</h3>
+            <a href="https://www.youtube.com/watch?v=Bkm2Vhj5CaU" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Диаграммы — виды, построение и чтение | 6 класс</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=QUq8OLiECG8" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Круговая диаграмма — как построить и посчитать углы</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=1aOb1CqXqvQ" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Статистика и диаграммы — задачи ОГЭ и ВПР | 6 класс</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- ИТОГОВЫЙ ТЕСТ -->
+    <!-- ============================================================ -->
+    <div class="quiz-container">
+        <h2>🧪 Итоговый тест: Проценты + Масштаб + Диаграммы</h2>
+        <p style="color: rgba(255,255,255,0.9); margin-bottom: 10px;">20 вопросов — проверь свои знания!</p>
+
+        <!-- Q1 -->
+        <div class="quiz-question" id="tq1">
+            <p>1. 35% в виде десятичной дроби:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 3,5</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 0,35</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 0,035</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 35</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-question" id="tq2">
+            <p>2. 0,08 = ?%</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 0,8%</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 8%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 80%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 800%</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-question" id="tq3">
+            <p>3. Найди 20% от 350:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 35</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 60</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) 70</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 700</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-question" id="tq4">
+            <p>4. Велосипед стоит 8000 руб. Скидка — 15%.
+               Сколько стоит велосипед со скидкой?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 6400 руб.</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 6800 руб.</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 7200 руб.</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 7850 руб.</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-question" id="tq5">
+            <p>5. 25% числа равны 60. Чему равно число?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 180</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 200</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) 240</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 300</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="quiz-question" id="tq6">
+            <p>6. Сколько процентов составляет 45 от 180?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 20%</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 25%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 30%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 40%</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="quiz-question" id="tq7">
+            <p>7. Цена выросла с 400 до 500 рублей. На сколько процентов?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 20%</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 25%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 10%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 100%</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="quiz-question" id="tq8">
+            <p>8. После скидки 20% цена стала 1600 руб. Какова исходная цена?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 1800 руб.</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 2000 руб.</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 1920 руб.</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 2200 руб.</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="quiz-question" id="tq9">
+            <p>9. Масштаб карты 1 : 100 000. Расстояние на карте — 5 см.
+               Реальное расстояние:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 500 м</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 5 км</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 50 км</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 0,5 км</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="quiz-question" id="tq10">
+            <p>10. Реальное расстояние 240 км, масштаб 1 : 6 000 000.
+                Расстояние на карте:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 2 см</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 3 см</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) 4 см</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 6 см</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="quiz-question" id="tq11">
+            <p>11. На плане масштаб 1 : 500. Стена на плане — 6 см. Реальная длина:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 25 м</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 30 м</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 300 м</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 3 м</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="quiz-question" id="tq12">
+            <p>12. Дорога длиной 150 км изображена на карте отрезком 3 см.
+                Каков масштаб карты?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 1 : 500 000</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 1 : 1 000 000</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) 1 : 5 000 000</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 1 : 50 000</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="quiz-question" id="tq13">
+            <p>13. Какой масштаб КРУПНЕЕ?</p>
+            <button class="quiz-option" onclick="doQ(this,true)">А) 1 : 10 000</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 1 : 100 000</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 1 : 1 000 000</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) Все одинаковые</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="quiz-question" id="tq14">
+            <p>14. Для чего лучше всего подходит КРУГОВАЯ диаграмма?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) Показать изменение температуры за год</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) Показать доли (части) целого</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) Сравнить рост нескольких учеников</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) Показать расстояние между городами</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="quiz-question" id="tq15">
+            <p>15. Весь круг = 360°. Какой угол соответствует 30%?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 30°</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 90°</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) 108°</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 120°</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="quiz-question" id="tq16">
+            <p>16. По столбчатой диаграмме: в январе продали 50 единиц товара,
+                в феврале — 70. На сколько % выросли продажи?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 20%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 30%</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) 40%</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 140%</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="quiz-question" id="tq17">
+            <p>17. 50% от 250:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 100</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 125</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 150</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 200</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="quiz-question" id="tq18">
+            <p>18. Масштаб 1 : 200 000 означает, что в 1 см — :</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 2 км</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 2 км (200 000 см = 2 км)</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 20 км</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 200 км</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="quiz-question" id="tq19">
+            <p>19. В классе 40 учеников, 8 из них занимаются в музыкальной школе.
+                Какой угол займёт этот сектор в круговой диаграмме?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 36°</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 72°</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 80°</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 90°</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="quiz-question" id="tq20">
+            <p>20. На складе было 800 кг. Продали сначала 25%, потом 10% от остатка.
+                Сколько кг осталось?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 480 кг</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 540 кг</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 560 кг</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 520 кг</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="score-display" id="scoreDisp4">
+            <p>Твой результат:</p>
+            <div class="score-number" id="scoreNum4">0/20</div>
+            <p id="scoreCom4" style="font-size:1.1em; margin-top:10px;"></p>
+        </div>
+        <button class="check-btn" onclick="showScore4()">📊 Показать результат</button>
+    </div>
+
+    <!-- НАВИГАЦИЯ -->
+    <div class="nav-buttons">
+        <a href="#" class="nav-btn">← Математика: Координаты и Уравнения</a>
+        <a href="#" class="nav-btn">Далее: История и Биология →</a>
+    </div>
+
+</div><!-- /container -->
+
+<script>
+    function toggleSol(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    let score4 = 0;
+    let answered4 = new Set();
+
+    function doQ(btn, isCorrect) {
+        const q = btn.parentElement;
+        const qId = q.id;
+        if (answered4.has(qId)) return;
+        answered4.add(qId);
+
+        q.querySelectorAll('.quiz-option').forEach(b => {
+            b.style.pointerEvents = 'none';
+        });
+
+        if (isCorrect) {
+            btn.classList.add('correct');
+            score4++;
+            showFB(q, true);
+        } else {
+            btn.classList.add('wrong');
+            q.querySelectorAll('.quiz-option').forEach(b => {
+                if (b.getAttribute('onclick') &&
+                    b.getAttribute('onclick').includes('true')) {
+                    b.classList.add('correct');
+                }
+            });
+            showFB(q, false);
+        }
+    }
+
+    function showFB(q, ok) {
+        const fb = q.querySelector('.quiz-feedback');
+        fb.style.display = 'block';
+        if (ok) {
+            fb.style.background = '#c8e6c9';
+            fb.style.color = '#2e7d32';
+            fb.textContent = '✅ Правильно!';
+        } else {
+            fb.style.background = '#ffcdd2';
+            fb.style.color = '#c62828';
+            fb.textContent = '❌ Неправильно. Правильный ответ выделен зелёным.';
+        }
+    }
+
+    function showScore4() {
+        const d = document.getElementById('scoreDisp4');
+        d.style.display = 'block';
+        document.getElementById('scoreNum4').textContent = score4 + '/20';
+        const c = document.getElementById('scoreCom4');
+        if (score4 >= 18) {
+            c.textContent = '🏆 Отлично! Ты прекрасно знаешь проценты, масштаб и диаграммы!';
+            c.style.color = '#2e7d32';
+        } else if (score4 >= 14) {
+            c.textContent = '👍 Хороший результат! Повтори ошибки.';
+            c.style.color = '#1565c0';
+        } else if (score4 >= 10) {
+            c.textContent = '📖 Неплохо, но стоит повторить теорию.';
+            c.style.color = '#e65100';
+        } else {
+            c.textContent = '📚 Нужно ещё раз изучить все три темы.';
+            c.style.color = '#c62828';
+        }
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

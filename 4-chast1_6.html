@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День 21 — Повторение блок 1: Русский язык, История, Обществознание</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .day-info {
+            text-align: center;
+            font-size: 1.1em;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        .schedule-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .schedule-item {
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .schedule-item.active {
+            background: rgba(255,107,107,0.3);
+            border: 2px solid #ff6b6b;
+        }
+        .schedule-item .time {
+            font-size: 0.85em;
+            color: #aaa;
+        }
+        .subject-block {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid;
+        }
+        .subject-block.russian { border-left-color: #ff6b6b; }
+        .subject-block.history { border-left-color: #4ecdc4; }
+        .subject-block.social { border-left-color: #a29bfe; }
+        .subject-block h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        .subject-block .duration {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notebook {
+            background: rgba(255,215,0,0.1);
+            border: 2px dashed #ffd93d;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .notebook h4 {
+            color: #ffd93d;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .notebook ul, .notebook ol {
+            padding-left: 25px;
+        }
+        .notebook li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .explanation-box {
+            background: rgba(78,205,196,0.1);
+            border: 1px solid rgba(78,205,196,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .explanation-box h4 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+        .exercise-box {
+            background: rgba(162,155,254,0.1);
+            border: 1px solid rgba(162,155,254,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .exercise-box h4 {
+            color: #a29bfe;
+            margin-bottom: 10px;
+        }
+        .exercise-box .task {
+            background: rgba(0,0,0,0.2);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+        .solution {
+            display: none;
+            background: rgba(0,255,100,0.08);
+            border: 1px solid rgba(0,255,100,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        .show-solution-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            margin-top: 8px;
+            transition: transform 0.2s;
+        }
+        .show-solution-btn:hover {
+            transform: scale(1.05);
+        }
+        .video-links {
+            background: rgba(255,0,0,0.08);
+            border: 1px solid rgba(255,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .video-links h4 {
+            color: #ff4444;
+            margin-bottom: 10px;
+        }
+        .video-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .video-links a:hover {
+            color: #ff9999;
+        }
+        .video-links a::before {
+            content: '▶ ';
+        }
+        /* Quiz styles */
+        .quiz-container {
+            background: rgba(255,165,0,0.08);
+            border: 2px solid rgba(255,165,0,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-container h3 {
+            color: #ffa500;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.4em;
+        }
+        .quiz-question {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .quiz-question p {
+            font-size: 1.05em;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 18px;
+            margin: 6px 0;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,165,0,0.5);
+        }
+        .quiz-option.correct {
+            background: rgba(0,255,100,0.2);
+            border-color: #00ff64;
+            color: #00ff64;
+        }
+        .quiz-option.wrong {
+            background: rgba(255,0,0,0.2);
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+        .quiz-option:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct-fb {
+            background: rgba(0,255,100,0.1);
+            color: #00ff64;
+        }
+        .quiz-feedback.wrong-fb {
+            background: rgba(255,0,0,0.1);
+            color: #ff6b6b;
+        }
+        .quiz-score {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 12px;
+            display: none;
+        }
+        .quiz-reset-btn {
+            display: block;
+            margin: 15px auto;
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: none;
+        }
+        .timer-box {
+            background: rgba(255,0,0,0.1);
+            border: 2px solid rgba(255,0,0,0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .timer-box .timer-display {
+            font-size: 2.5em;
+            font-family: monospace;
+            color: #ff6b6b;
+        }
+        .timer-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 0.95em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th, table td {
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+        }
+        table th {
+            background: rgba(255,255,255,0.1);
+            color: #ffd93d;
+        }
+        table tr:nth-child(even) {
+            background: rgba(255,255,255,0.03);
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .checklist li::before {
+            content: '☐ ';
+            font-size: 1.2em;
+        }
+        .checklist li.checked {
+            background: rgba(0,255,100,0.1);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        .checklist li.checked::before {
+            content: '☑ ';
+        }
+        .tip-box {
+            background: rgba(255,215,0,0.08);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .tip-box::before {
+            content: '💡 ';
+            font-size: 1.2em;
+        }
+        .progress-tracker {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500, #ffd93d);
+            border-radius: 15px;
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85em;
+            color: #000;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5em; }
+            .subject-block { padding: 15px; }
+            .schedule-bar { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 День 21: Повторение блок 1</h1>
+        <div class="day-info">Неделя 4 | Русский язык + История + Обществознание | ~5,5 часов</div>
+
+        <!-- Расписание дня -->
+        <div class="schedule-bar">
+            <div class="schedule-item active">
+                <div>🇷🇺 Русский язык</div>
+                <div class="time">~2,5 часа</div>
+            </div>
+            <div class="schedule-item active">
+                <div>🏛️ История</div>
+                <div class="time">~1,5 часа</div>
+            </div>
+            <div class="schedule-item active">
+                <div>👥 Обществознание</div>
+                <div class="time">~1,5 часа</div>
+            </div>
+        </div>
+
+        <!-- Чек-лист дня -->
+        <div class="section">
+            <h3>✅ Чек-лист на день (кликай для отметки)</h3>
+            <ul class="checklist" id="dayChecklist">
+                <li onclick="toggleCheck(this)">Записать опорные конспекты в тетрадь</li>
+                <li onclick="toggleCheck(this)">Выполнить повторительный тест по русскому языку</li>
+                <li onclick="toggleCheck(this)">Разобрать задания с объяснениями</li>
+                <li onclick="toggleCheck(this)">Повторить даты и термины по истории</li>
+                <li onclick="toggleCheck(this)">Пройти интерактивный тест по истории</li>
+                <li onclick="toggleCheck(this)">Повторить обществознание</li>
+                <li onclick="toggleCheck(this)">Пройти интерактивный тест по обществознанию</li>
+                <li onclick="toggleCheck(this)">Посмотреть видеоматериалы</li>
+            </ul>
+        </div>
+
+        <!-- =============================== -->
+        <!-- РУССКИЙ ЯЗЫК -->
+        <!-- =============================== -->
+        <div class="subject-block russian">
+            <h2>🇷🇺 Русский язык — Полный повторительный тест</h2>
+            <div class="duration">⏱ Продолжительность: ~2,5 часа (150 минут)</div>
+
+            <!-- Запись в тетрадь -->
+            <div class="notebook">
+                <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Опорный конспект для повторения</h4>
+                <p><strong>Тема: Главные правила русского языка за 6 класс</strong></p>
+                <ol>
+                    <li><strong>Чередующиеся гласные в корне:</strong>
+                        <ul>
+                            <li><strong>-КОС-/-КАС-</strong>: если после корня суффикс -А-, пишем КАС (касание, касаться), иначе КОС (коснуться, прикосновение)</li>
+                            <li><strong>-ГОР-/-ГАР-</strong>: без ударения — ГОР (загорать, угореть), под ударением — ГАР (загар, нагар)</li>
+                            <li><strong>-ЗОР-/-ЗАР-</strong>: без ударения — ЗАР (заря, озарение), под ударением — как слышим (зóрька, зáрево)</li>
+                            <li><strong>-ЛАГ-/-ЛОЖ-</strong>: перед Г — А (полагать, слагаемое), перед Ж — О (положить, изложение)</li>
+                            <li><strong>-РАСТ-/-РОС-/-РАЩ-</strong>: перед СТ, Щ — А (растение, выращенный), перед С — О (выросли). Исключения: росток, Ростов, ростовщик, Ростислав, отрасль</li>
+                            <li><strong>-БЕР-/-БИР-, -ТЕР-/-ТИР-, -МЕР-/-МИР-</strong> и др.: если после корня -А-, пишем И (собирать, замирать), иначе Е (соберу, замереть)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Приставки ПРЕ- и ПРИ-:</strong>
+                        <ul>
+                            <li><strong>ПРИ-</strong>: приближение (приехать), присоединение (приклеить), неполное действие (присесть), близость (приморский)</li>
+                            <li><strong>ПРЕ-</strong>: = очень (предобрый = очень добрый), = пере- (преградить = перегородить)</li>
+                            <li>Запомнить: привилегия, приоритет, президент, преследовать, пренебрегать</li>
+                        </ul>
+                    </li>
+                    <li><strong>НЕ с существительными, прилагательными:</strong>
+                        <ul>
+                            <li><strong>Слитно</strong>: если без НЕ не употребляется (невежда, ненастье); если можно заменить синонимом (недруг = враг, нелёгкий = трудный)</li>
+                            <li><strong>Раздельно</strong>: если есть противопоставление с А (не друг, а враг); если есть слова далеко не, вовсе не, ничуть не, нисколько не</li>
+                        </ul>
+                    </li>
+                    <li><strong>Н и НН в прилагательных:</strong>
+                        <ul>
+                            <li><strong>НН</strong>: суффиксы -ОНН-, -ЕНН- (революционный, торжественный); основа на -Н + суффикс -Н- (длинный, каменный)</li>
+                            <li><strong>Н</strong>: суффиксы -ИН-, -АН-/-ЯН- (гусиный, кожаный, серебряный). Исключения: стеклянный, оловянный, деревянный</li>
+                        </ul>
+                    </li>
+                    <li><strong>Разряды прилагательных:</strong>
+                        <ul>
+                            <li><strong>Качественные</strong>: имеют степени сравнения (красивый — красивее — красивейший), краткую форму (красив)</li>
+                            <li><strong>Относительные</strong>: обозначают материал, время, место (деревянный, зимний, городской)</li>
+                            <li><strong>Притяжательные</strong>: чей? (мамин, лисий, отцов)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Разряды местоимений:</strong>
+                        <ul>
+                            <li>Личные (я, ты, он, она, оно, мы, вы, они)</li>
+                            <li>Возвратное (себя)</li>
+                            <li>Вопросительные (кто? что? какой? чей? сколько?)</li>
+                            <li>Относительные (кто, что, какой, чей, сколько — в сложных предложениях)</li>
+                            <li>Неопределённые (некто, нечто, некоторый, кое-кто, кто-то, кто-нибудь)</li>
+                            <li>Отрицательные (никто, ничто, никакой, ничей, некого, нечего)</li>
+                            <li>Притяжательные (мой, твой, наш, ваш, свой)</li>
+                            <li>Указательные (тот, этот, такой, столько)</li>
+                            <li>Определительные (весь, всякий, каждый, сам, самый, иной, любой, другой)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Числительные:</strong>
+                        <ul>
+                            <li>Количественные (сколько? — пять, двадцать три) и порядковые (какой? — пятый, двадцать третий)</li>
+                            <li>Мягкий знак: 5–20, 30 — Ь на конце (пять, двадцать); 50–80, 500–900 — Ь в середине (пятьдесят, пятьсот)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Глагол:</strong>
+                        <ul>
+                            <li>I спряжение: -ЕШЬ, -ЕТ, -ЕМ, -ЕТЕ, -УТ/-ЮТ</li>
+                            <li>II спряжение: -ИШЬ, -ИТ, -ИМ, -ИТЕ, -АТ/-ЯТ</li>
+                            <li>Ко II спр.: все на -ИТЬ (кроме брить, стелить) + 4 на -АТЬ (гнать, держать, дышать, слышать) + 7 на -ЕТЬ (смотреть, видеть, ненавидеть, обидеть, терпеть, зависеть, вертеть)</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Видеоматериалы -->
+            <div class="video-links">
+                <h4>🎬 Видеоматериалы для повторения</h4>
+                <a href="https://www.youtube.com/watch?v=TvO5LzH_MpQ" target="_blank">Русский язык 6 класс — Все правила за год (повторение)</a>
+                <a href="https://www.youtube.com/watch?v=be2gFKq6pzc" target="_blank">Чередующиеся гласные в корне — все правила</a>
+                <a href="https://www.youtube.com/watch?v=_-CvQoZH7Sw" target="_blank">Приставки ПРЕ- и ПРИ- — объяснение с примерами</a>
+                <a href="https://www.youtube.com/watch?v=JZexPyPbr4E" target="_blank">Н и НН в прилагательных — понятное объяснение</a>
+                <a href="https://www.youtube.com/watch?v=s5G98TaFzOo" target="_blank">Разряды местоимений — 6 класс</a>
+                <a href="https://www.youtube.com/watch?v=BHa-UPi7k3o" target="_blank">Имя числительное — повторение</a>
+                <a href="https://www.youtube.com/watch?v=dXkZjU37p7o" target="_blank">Спряжение глаголов — как определить</a>
+            </div>
+
+            <!-- Задания с объяснениями -->
+            <div class="section">
+                <h3>📝 Задания для решения с объяснениями</h3>
+
+                <div class="exercise-box">
+                    <h4>Задание 1: Чередующиеся гласные в корне</h4>
+                    <p>Вставь пропущенные буквы, объясни выбор:</p>
+                    <div class="task">
+                        1) К..снуться мечты<br>
+                        2) Заг..релый мальчик<br>
+                        3) Утренняя з..ря<br>
+                        4) Пол..жить на стол<br>
+                        5) Зар..сли кустарника<br>
+                        6) Соб..рать ягоды<br>
+                        7) Прик..сновение руки<br>
+                        8) Дог..рающий костёр<br>
+                        9) Прил..гательное<br>
+                        10) Выр..щенный цветок
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('sol1')">Показать решение</button>
+                    <div class="solution" id="sol1">
+                        <p><strong>1) коснуться</strong> — корень КОС, нет суффикса -А- после корня → О</p>
+                        <p><strong>2) загорелый</strong> — корень ГОР, без ударения → О</p>
+                        <p><strong>3) заря</strong> — корень ЗАР, без ударения → А</p>
+                        <p><strong>4) положить</strong> — корень ЛОЖ, перед Ж → О</p>
+                        <p><strong>5) заросли</strong> — корень РОС, перед С → О</p>
+                        <p><strong>6) собирать</strong> — корень БИР, после корня суффикс -А- → И</p>
+                        <p><strong>7) прикосновение</strong> — корень КОС, нет суффикса -А- → О</p>
+                        <p><strong>8) догорающий</strong> — корень ГОР, без ударения → О</p>
+                        <p><strong>9) прилагательное</strong> — корень ЛАГ, перед Г → А</p>
+                        <p><strong>10) выращенный</strong> — корень РАЩ, перед Щ → А</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 2: Приставки ПРЕ- и ПРИ-</h4>
+                    <p>Вставь пропущенные приставки, объясни выбор:</p>
+                    <div class="task">
+                        1) Пр..школьный участок<br>
+                        2) Пр..красная погода<br>
+                        3) Пр..открыть дверь<br>
+                        4) Пр..градить путь<br>
+                        5) Пр..клеить марку<br>
+                        6) Пр..интересный рассказ<br>
+                        7) Пр..брежная полоса<br>
+                        8) Пр..рвать разговор
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('sol2')">Показать решение</button>
+                    <div class="solution" id="sol2">
+                        <p><strong>1) пришкольный</strong> — близость (при школе) → ПРИ-</p>
+                        <p><strong>2) прекрасная</strong> — = очень красивая → ПРЕ-</p>
+                        <p><strong>3) приоткрыть</strong> — неполное действие (немного открыть) → ПРИ-</p>
+                        <p><strong>4) преградить</strong> — = перегородить → ПРЕ-</p>
+                        <p><strong>5) приклеить</strong> — присоединение → ПРИ-</p>
+                        <p><strong>6) преинтересный</strong> — = очень интересный → ПРЕ-</p>
+                        <p><strong>7) прибрежная</strong> — близость (при береге) → ПРИ-</p>
+                        <p><strong>8) прервать</strong> — = перервать → ПРЕ-</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 3: Н и НН в прилагательных</h4>
+                    <p>Вставь Н или НН, объясни:</p>
+                    <div class="task">
+                        1) Гуси..ый пух<br>
+                        2) Торжестве..ый марш<br>
+                        3) Серебря..ый кулон<br>
+                        4) Карти..ая галерея<br>
+                        5) Кожа..ый ремень<br>
+                        6) Стекля..ая ваза<br>
+                        7) Дли..ый путь<br>
+                        8) Революцио..ый подъём<br>
+                        9) Ветре..ый день<br>
+                        10) Безветре..ый вечер
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('sol3')">Показать решение</button>
+                    <div class="solution" id="sol3">
+                        <p><strong>1) гусиный (Н)</strong> — суффикс -ИН-</p>
+                        <p><strong>2) торжественный (НН)</strong> — суффикс -ЕНН-</p>
+                        <p><strong>3) серебряный (Н)</strong> — суффикс -ЯН-</p>
+                        <p><strong>4) картинная (НН)</strong> — основа на -Н (картин-) + суффикс -Н-</p>
+                        <p><strong>5) кожаный (Н)</strong> — суффикс -АН-</p>
+                        <p><strong>6) стеклянная (НН)</strong> — ИСКЛЮЧЕНИЕ (стеклянный, оловянный, деревянный)</p>
+                        <p><strong>7) длинный (НН)</strong> — основа на -Н (длин-) + суффикс -Н-</p>
+                        <p><strong>8) революционный (НН)</strong> — суффикс -ОНН-</p>
+                        <p><strong>9) ветреный (Н)</strong> — ИСКЛЮЧЕНИЕ (единственное слово с -ЕН-)</p>
+                        <p><strong>10) безветренный (НН)</strong> — но с приставкой уже НН!</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 4: НЕ с существительными и прилагательными</h4>
+                    <p>Определи: слитно или раздельно?</p>
+                    <div class="task">
+                        1) Это была (не)правда, а ложь.<br>
+                        2) На улице (не)настье.<br>
+                        3) (Не)глубокая, а мелкая река.<br>
+                        4) (Не)аккуратный ученик.<br>
+                        5) Вовсе (не)интересная книга.<br>
+                        6) (Не)вежда — тот, кто мало знает.<br>
+                        7) (Не)большой домик.<br>
+                        8) (Не)друг, а просто знакомый.
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('sol4')">Показать решение</button>
+                    <div class="solution" id="sol4">
+                        <p><strong>1) не правда, а ложь</strong> — РАЗДЕЛЬНО (есть противопоставление с А)</p>
+                        <p><strong>2) ненастье</strong> — СЛИТНО (без НЕ не употребляется)</p>
+                        <p><strong>3) не глубокая, а мелкая</strong> — РАЗДЕЛЬНО (есть противопоставление с А)</p>
+                        <p><strong>4) неаккуратный</strong> — СЛИТНО (= небрежный, можно заменить синонимом)</p>
+                        <p><strong>5) вовсе не интересная</strong> — РАЗДЕЛЬНО (есть слово «вовсе не»)</p>
+                        <p><strong>6) невежда</strong> — СЛИТНО (без НЕ не употребляется)</p>
+                        <p><strong>7) небольшой</strong> — СЛИТНО (= маленький)</p>
+                        <p><strong>8) не друг, а просто знакомый</strong> — РАЗДЕЛЬНО (есть противопоставление с А)</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 5: Определи разряд местоимений</h4>
+                    <div class="task">
+                        1) Я люблю читать. → ?<br>
+                        2) Кто-то постучал в дверь. → ?<br>
+                        3) Никто не пришёл. → ?<br>
+                        4) Этот день запомнился. → ?<br>
+                        5) Мой рюкзак тяжёлый. → ?<br>
+                        6) Каждый ученик старался. → ?<br>
+                        7) Она посмотрела на себя. → ?<br>
+                        8) Какой фильм тебе нравится? → ?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('sol5')">Показать решение</button>
+                    <div class="solution" id="sol5">
+                        <p><strong>1) Я</strong> — личное местоимение</p>
+                        <p><strong>2) Кто-то</strong> — неопределённое местоимение</p>
+                        <p><strong>3) Никто</strong> — отрицательное местоимение</p>
+                        <p><strong>4) Этот</strong> — указательное местоимение</p>
+                        <p><strong>5) Мой</strong> — притяжательное местоимение</p>
+                        <p><strong>6) Каждый</strong> — определительное местоимение</p>
+                        <p><strong>7) Себя</strong> — возвратное местоимение</p>
+                        <p><strong>8) Какой</strong> — вопросительное местоимение</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 6: Спряжение глаголов</h4>
+                    <p>Определи спряжение и вставь окончание:</p>
+                    <div class="task">
+                        1) Он стро..т дом (строить)<br>
+                        2) Они кле..т обои (клеить)<br>
+                        3) Ты пиш..шь письмо (писать)<br>
+                        4) Мы дыш..м воздухом (дышать)<br>
+                        5) Она стел..т постель (стелить)<br>
+                        6) Они бор..тся за победу (бороться)<br>
+                        7) Ты вид..шь звёзды (видеть)<br>
+                        8) Он гон..т мяч (гнать)
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('sol6')">Показать решение</button>
+                    <div class="solution" id="sol6">
+                        <p><strong>1) строит</strong> — строИТЬ → II спр. → -ИТ</p>
+                        <p><strong>2) клеят</strong> — клеИТЬ → II спр. → -ЯТ</p>
+                        <p><strong>3) пишешь</strong> — писАТЬ → I спр. (не исключение) → -ЕШЬ</p>
+                        <p><strong>4) дышим</strong> — дышАТЬ → II спр. (исключение!) → -ИМ</p>
+                        <p><strong>5) стелет</strong> — стелИТЬ → I спр. (исключение!) → -ЕТ</p>
+                        <p><strong>6) борются</strong> — борОТЬСЯ → I спр. → -ЮТСЯ</p>
+                        <p><strong>7) видишь</strong> — видЕТЬ → II спр. (исключение!) → -ИШЬ</p>
+                        <p><strong>8) гонит</strong> — гнАТЬ → II спр. (исключение!) → -ИТ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерактивный тест по русскому языку -->
+            <div class="quiz-container" id="russianQuiz">
+                <h3>🧪 Интерактивный тест: Русский язык — полное повторение</h3>
+                <p style="text-align:center; color:#aaa; margin-bottom:20px;">20 вопросов • Все темы 6 класса</p>
+
+                <div class="quiz-question" id="rq1">
+                    <p>1. Какая буква пропущена: к..сательная?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq1', true)">А (касательная)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq1', false)">О (косательная)</button>
+                    <div class="quiz-feedback" id="rq1-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq2">
+                    <p>2. Какая приставка в слове «пр..морский»?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq2', true)">ПРИ- (приморский)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq2', false)">ПРЕ- (преморский)</button>
+                    <div class="quiz-feedback" id="rq2-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq3">
+                    <p>3. Сколько Н в слове «оловя..ый»?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq3', false)">Одна Н (оловяный)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq3', true)">Две НН (оловянный)</button>
+                    <div class="quiz-feedback" id="rq3-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq4">
+                    <p>4. «(Не)большой дом» — слитно или раздельно?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq4', true)">Слитно: небольшой</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq4', false)">Раздельно: не большой</button>
+                    <div class="quiz-feedback" id="rq4-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq5">
+                    <p>5. Местоимение «некто» — какого разряда?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq5', false)">Отрицательное</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq5', true)">Неопределённое</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq5', false)">Личное</button>
+                    <div class="quiz-feedback" id="rq5-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq6">
+                    <p>6. Какая буква пропущена: заг..рать на пляже?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq6', true)">О (загорать)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq6', false)">А (загарать)</button>
+                    <div class="quiz-feedback" id="rq6-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq7">
+                    <p>7. Определи спряжение: «терпеть»</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq7', false)">I спряжение</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq7', true)">II спряжение (исключение)</button>
+                    <div class="quiz-feedback" id="rq7-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq8">
+                    <p>8. Где мягкий знак в числительных: 500?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq8', false)">На конце: пятсот Ь</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq8', true)">В середине: пятЬсот</button>
+                    <div class="quiz-feedback" id="rq8-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq9">
+                    <p>9. Какой разряд прилагательного «деревянный»?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq9', false)">Качественное</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq9', true)">Относительное</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq9', false)">Притяжательное</button>
+                    <div class="quiz-feedback" id="rq9-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq10">
+                    <p>10. «Росток» — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq10', true)">Исключение из правила РАСТ/РОС</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq10', false)">Подчиняется правилу (перед С → О)</button>
+                    <div class="quiz-feedback" id="rq10-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq11">
+                    <p>11. «Пр..вилегия» — какая приставка?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq11', true)">ПРИ- (привилегия) — запомнить!</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq11', false)">ПРЕ- (превилегия)</button>
+                    <div class="quiz-feedback" id="rq11-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq12">
+                    <p>12. «Ветре..ый день» — Н или НН?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq12', true)">Н (ветреный) — исключение</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq12', false)">НН (ветренный)</button>
+                    <div class="quiz-feedback" id="rq12-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq13">
+                    <p>13. Местоимение «себя» — какого разряда?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq13', false)">Личное</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq13', true)">Возвратное</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq13', false)">Притяжательное</button>
+                    <div class="quiz-feedback" id="rq13-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq14">
+                    <p>14. «Они бре..тся» (бриться) — какое окончание?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq14', true)">-ЮТСЯ: бреются (I спр., исключение)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq14', false)">-ЯТСЯ: бреятся (II спр.)</button>
+                    <div class="quiz-feedback" id="rq14-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq15">
+                    <p>15. «Зам..реть от восторга» — какая буква?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq15', true)">Е (замереть) — нет суффикса -А-</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq15', false)">И (замиреть)</button>
+                    <div class="quiz-feedback" id="rq15-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq16">
+                    <p>16. «(Не)правда, а ложь» — слитно или раздельно?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq16', false)">Слитно: неправда</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq16', true)">Раздельно: не правда (противопоставление с А)</button>
+                    <div class="quiz-feedback" id="rq16-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq17">
+                    <p>17. «Числительное «пятнадцать» — где Ь?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq17', true)">На конце: пятнадцатЬ</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq17', false)">В середине: пятЬнадцать</button>
+                    <div class="quiz-feedback" id="rq17-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq18">
+                    <p>18. «Пр..сесть на скамейку» — какая приставка?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq18', true)">ПРИ- (присесть) — неполное действие</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq18', false)">ПРЕ- (пресесть)</button>
+                    <div class="quiz-feedback" id="rq18-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq19">
+                    <p>19. «Лисий хвост» — какой разряд прилагательного?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq19', false)">Качественное</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq19', false)">Относительное</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq19', true)">Притяжательное</button>
+                    <div class="quiz-feedback" id="rq19-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="rq20">
+                    <p>20. «Изл..жение» — какая буква в корне?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq20', true)">О (изложение) — перед Ж пишем О</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'rq20', false)">А (излажение)</button>
+                    <div class="quiz-feedback" id="rq20-fb"></div>
+                </div>
+
+                <div class="quiz-score" id="russianScore"></div>
+                <button class="quiz-reset-btn" id="russianResetBtn" onclick="resetQuiz('russian')">🔄 Пройти тест заново</button>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- ИСТОРИЯ -->
+        <!-- =============================== -->
+        <div class="subject-block history">
+            <h2>🏛️ История — Повторение дат и терминов</h2>
+            <div class="duration">⏱ Продолжительность: ~1,5 часа (90 минут)</div>
+
+            <!-- Запись в тетрадь -->
+            <div class="notebook">
+                <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Ключевые даты и события (История России + Средневековье)</h4>
+
+                <p><strong>ИСТОРИЯ СРЕДНИХ ВЕКОВ:</strong></p>
+                <table>
+                    <tr><th>Дата</th><th>Событие</th></tr>
+                    <tr><td>476 г.</td><td>Падение Западной Римской империи — начало Средневековья</td></tr>
+                    <tr><td>486 г.</td><td>Возникновение государства франков (Хлодвиг)</td></tr>
+                    <tr><td>622 г.</td><td>Переселение Мухаммеда из Мекки в Медину (хиджра) — начало мусульманского летоисчисления</td></tr>
+                    <tr><td>632 г.</td><td>Образование Арабского халифата</td></tr>
+                    <tr><td>800 г.</td><td>Провозглашение Карла Великого императором</td></tr>
+                    <tr><td>843 г.</td><td>Верденский договор — распад империи Карла Великого</td></tr>
+                    <tr><td>862 г.</td><td>Призвание варягов (Рюрик) — начало русской государственности (по летописи)</td></tr>
+                    <tr><td>882 г.</td><td>Объединение Новгорода и Киева — образование Древнерусского государства (князь Олег)</td></tr>
+                    <tr><td>988 г.</td><td>Крещение Руси (князь Владимир)</td></tr>
+                    <tr><td>1054 г.</td><td>Раскол христианской церкви на католическую и православную</td></tr>
+                    <tr><td>1066 г.</td><td>Нормандское завоевание Англии (битва при Гастингсе)</td></tr>
+                    <tr><td>1096–1099 гг.</td><td>Первый крестовый поход</td></tr>
+                    <tr><td>1147 г.</td><td>Первое упоминание Москвы в летописи</td></tr>
+                    <tr><td>1185 г.</td><td>Поход князя Игоря на половцев («Слово о полку Игореве»)</td></tr>
+                    <tr><td>1206 г.</td><td>Провозглашение Чингисхана правителем монголов</td></tr>
+                    <tr><td>1215 г.</td><td>Принятие Великой хартии вольностей в Англии</td></tr>
+                    <tr><td>1237–1240 гг.</td><td>Монгольское нашествие на Русь (Батый)</td></tr>
+                    <tr><td>1240 г.</td><td>Невская битва (Александр Невский)</td></tr>
+                    <tr><td>1242 г.</td><td>Ледовое побоище (Александр Невский)</td></tr>
+                    <tr><td>1337–1453 гг.</td><td>Столетняя война (Англия и Франция)</td></tr>
+                    <tr><td>1380 г.</td><td>Куликовская битва (Дмитрий Донской)</td></tr>
+                    <tr><td>1453 г.</td><td>Падение Константинополя — конец Средневековья</td></tr>
+                    <tr><td>1480 г.</td><td>Стояние на Угре — конец ордынского ига</td></tr>
+                    <tr><td>1492 г.</td><td>Открытие Америки Колумбом</td></tr>
+                </table>
+
+                <p style="margin-top: 20px;"><strong>КЛЮЧЕВЫЕ ТЕРМИНЫ:</strong></p>
+                <table>
+                    <tr><th>Термин</th><th>Определение</th></tr>
+                    <tr><td>Феодализм</td><td>Общественный строй, при котором земля принадлежит феодалам, а крестьяне за пользование землёй несут повинности</td></tr>
+                    <tr><td>Вассал</td><td>Феодал, получивший землю от сеньора и обязанный нести службу</td></tr>
+                    <tr><td>Сеньор</td><td>Крупный феодал, дающий землю вассалу</td></tr>
+                    <tr><td>Барщина</td><td>Повинность: работа крестьянина на земле феодала</td></tr>
+                    <tr><td>Оброк</td><td>Повинность: плата крестьянина феодалу продуктами или деньгами</td></tr>
+                    <tr><td>Натуральное хозяйство</td><td>Хозяйство, при котором всё необходимое производится на месте, а не покупается</td></tr>
+                    <tr><td>Вече</td><td>Народное собрание на Руси</td></tr>
+                    <tr><td>Дружина</td><td>Отряд воинов при князе</td></tr>
+                    <tr><td>Полюдье</td><td>Объезд князем подвластных земель для сбора дани</td></tr>
+                    <tr><td>Уроки и погосты</td><td>Установлены княгиней Ольгой: уроки — размер дани, погосты — места сбора</td></tr>
+                    <tr><td>Крестовые походы</td><td>Военные походы европейцев на Восток с целью освобождения Святой земли</td></tr>
+                    <tr><td>Инквизиция</td><td>Церковный суд для борьбы с ересями</td></tr>
+                    <tr><td>Ересь</td><td>Религиозное учение, противоречащее официальной церкви</td></tr>
+                    <tr><td>Парламент</td><td>Орган сословного представительства (впервые в Англии, 1265 г.)</td></tr>
+                    <tr><td>Генеральные штаты</td><td>Орган сословного представительства во Франции</td></tr>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <strong>Совет для запоминания дат:</strong> Используй ассоциации! Например: 988 — крещение Руси — «девять-восемь-восемь» — можно представить как номер телефона, по которому Владимир «позвонил» в Византию.
+            </div>
+
+            <!-- Видеоматериалы -->
+            <div class="video-links">
+                <h4>🎬 Видеоматериалы для повторения</h4>
+                <a href="https://www.youtube.com/watch?v=z7VYVjR_nwA" target="_blank">История 6 класс — Все даты для повторения</a>
+                <a href="https://www.youtube.com/watch?v=2NTdGxOSjFQ" target="_blank">Средние века за 30 минут — краткое повторение</a>
+                <a href="https://www.youtube.com/watch?v=Gcz0nfFkmjo" target="_blank">Древняя Русь — от Рюрика до монголов</a>
+                <a href="https://www.youtube.com/watch?v=5ibJcoR6F9Q" target="_blank">Крестовые походы — кратко и понятно</a>
+                <a href="https://www.youtube.com/watch?v=b-rGJYzPr4c" target="_blank">Монгольское нашествие на Русь</a>
+            </div>
+
+            <!-- Задания с объяснениями -->
+            <div class="section">
+                <h3>📝 Задания для решения</h3>
+
+                <div class="exercise-box">
+                    <h4>Задание 1: Установи соответствие (даты и события)</h4>
+                    <div class="task">
+                        Соедини дату и событие:<br><br>
+                        Даты: 988, 1242, 1380, 882, 1480<br><br>
+                        События:<br>
+                        А) Куликовская битва<br>
+                        Б) Крещение Руси<br>
+                        В) Образование Древнерусского государства<br>
+                        Г) Стояние на Угре<br>
+                        Д) Ледовое побоище
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solH1')">Показать решение</button>
+                    <div class="solution" id="solH1">
+                        <p><strong>988 — Б) Крещение Руси</strong> (князь Владимир)</p>
+                        <p><strong>1242 — Д) Ледовое побоище</strong> (Александр Невский разбил тевтонских рыцарей на Чудском озере)</p>
+                        <p><strong>1380 — А) Куликовская битва</strong> (Дмитрий Донской победил Мамая)</p>
+                        <p><strong>882 — В) Образование Древнерусского государства</strong> (князь Олег объединил Новгород и Киев)</p>
+                        <p><strong>1480 — Г) Стояние на Угре</strong> (конец ордынского ига при Иване III)</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 2: Объясни термины</h4>
+                    <div class="task">
+                        Дай определение своими словами:<br>
+                        1) Феодализм<br>
+                        2) Вассал<br>
+                        3) Полюдье<br>
+                        4) Вече<br>
+                        5) Инквизиция
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solH2')">Показать решение</button>
+                    <div class="solution" id="solH2">
+                        <p><strong>1) Феодализм</strong> — строй, при котором земля принадлежит феодалам (землевладельцам), а крестьяне работают на их земле и несут повинности (барщина, оброк)</p>
+                        <p><strong>2) Вассал</strong> — феодал, который получил землю (феод) от более крупного феодала (сеньора) и за это обязан ему служить</p>
+                        <p><strong>3) Полюдье</strong> — ежегодный объезд князем подвластных земель для сбора дани. Было отменено после восстания древлян (945 г.), когда убили князя Игоря. Княгиня Ольга ввела «уроки» и «погосты»</p>
+                        <p><strong>4) Вече</strong> — народное собрание в Древней Руси, где решались важные вопросы. Особенно сильное вече было в Новгороде</p>
+                        <p><strong>5) Инквизиция</strong> — специальный церковный суд для выявления и наказания еретиков (людей с «неправильными» религиозными взглядами)</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 3: Хронологическая последовательность</h4>
+                    <div class="task">
+                        Расположи события в хронологическом порядке (от раннего к позднему):<br><br>
+                        А) Куликовская битва<br>
+                        Б) Крещение Руси<br>
+                        В) Ледовое побоище<br>
+                        Г) Призвание варягов<br>
+                        Д) Монгольское нашествие на Русь<br>
+                        Е) Стояние на Угре
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solH3')">Показать решение</button>
+                    <div class="solution" id="solH3">
+                        <p><strong>Правильный порядок:</strong></p>
+                        <p>1. <strong>Г) Призвание варягов</strong> — 862 г.</p>
+                        <p>2. <strong>Б) Крещение Руси</strong> — 988 г.</p>
+                        <p>3. <strong>Д) Монгольское нашествие</strong> — 1237–1240 гг.</p>
+                        <p>4. <strong>В) Ледовое побоище</strong> — 1242 г.</p>
+                        <p>5. <strong>А) Куликовская битва</strong> — 1380 г.</p>
+                        <p>6. <strong>Е) Стояние на Угре</strong> — 1480 г.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерактивный тест по истории -->
+            <div class="quiz-container" id="historyQuiz">
+                <h3>🧪 Интерактивный тест: История — даты и термины</h3>
+                <p style="text-align:center; color:#aaa; margin-bottom:20px;">15 вопросов</p>
+
+                <div class="quiz-question" id="hq1">
+                    <p>1. В каком году произошло Крещение Руси?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq1', false)">862 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq1', true)">988 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq1', false)">1054 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq1', false)">882 г.</button>
+                    <div class="quiz-feedback" id="hq1-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq2">
+                    <p>2. Кто победил в Ледовом побоище?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq2', false)">Дмитрий Донской</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq2', true)">Александр Невский</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq2', false)">Иван III</button>
+                    <div class="quiz-feedback" id="hq2-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq3">
+                    <p>3. Что такое «барщина»?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq3', true)">Работа крестьянина на земле феодала</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq3', false)">Плата крестьянина продуктами</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq3', false)">Народное собрание</button>
+                    <div class="quiz-feedback" id="hq3-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq4">
+                    <p>4. Куликовская битва произошла в:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq4', false)">1240 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq4', false)">1242 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq4', true)">1380 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq4', false)">1480 г.</button>
+                    <div class="quiz-feedback" id="hq4-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq5">
+                    <p>5. Кто ввёл уроки и погосты?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq5', false)">Князь Олег</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq5', false)">Князь Игорь</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq5', true)">Княгиня Ольга</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq5', false)">Князь Владимир</button>
+                    <div class="quiz-feedback" id="hq5-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq6">
+                    <p>6. Верденский договор (843 г.) — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq6', true)">Распад империи Карла Великого</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq6', false)">Начало Крестовых походов</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq6', false)">Образование Англии</button>
+                    <div class="quiz-feedback" id="hq6-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq7">
+                    <p>7. Первое упоминание Москвы в летописи:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq7', false)">1097 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq7', true)">1147 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq7', false)">1237 г.</button>
+                    <div class="quiz-feedback" id="hq7-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq8">
+                    <p>8. Что такое натуральное хозяйство?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq8', false)">Хозяйство, основанное на торговле</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq8', true)">Хозяйство, где всё необходимое производится на месте</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq8', false)">Хозяйство, основанное на ремесле</button>
+                    <div class="quiz-feedback" id="hq8-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq9">
+                    <p>9. Падение Западной Римской империи (начало Средневековья):</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq9', true)">476 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq9', false)">486 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq9', false)">410 г.</button>
+                    <div class="quiz-feedback" id="hq9-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq10">
+                    <p>10. Хан Батый напал на Русь в:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq10', false)">1206 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq10', true)">1237 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq10', false)">1380 г.</button>
+                    <div class="quiz-feedback" id="hq10-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq11">
+                    <p>11. Столетняя война велась между:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq11', true)">Англией и Францией</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq11', false)">Францией и Германией</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq11', false)">Англией и Испанией</button>
+                    <div class="quiz-feedback" id="hq11-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq12">
+                    <p>12. Стояние на Угре (1480 г.) — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq12', false)">Начало ордынского ига</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq12', true)">Конец ордынского ига</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq12', false)">Битва с тевтонскими рыцарями</button>
+                    <div class="quiz-feedback" id="hq12-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq13">
+                    <p>13. Что такое «полюдье»?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq13', false)">Народное собрание</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq13', true)">Объезд князем земель для сбора дани</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq13', false)">Вид наказания</button>
+                    <div class="quiz-feedback" id="hq13-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq14">
+                    <p>14. Раскол христианской церкви произошёл в:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq14', false)">988 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq14', true)">1054 г.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq14', false)">1096 г.</button>
+                    <div class="quiz-feedback" id="hq14-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="hq15">
+                    <p>15. Невская битва (1240 г.) — против кого сражался Александр Невский?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq15', true)">Против шведов</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq15', false)">Против тевтонских рыцарей</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'hq15', false)">Против монголов</button>
+                    <div class="quiz-feedback" id="hq15-fb"></div>
+                </div>
+
+                <div class="quiz-score" id="historyScore"></div>
+                <button class="quiz-reset-btn" id="historyResetBtn" onclick="resetQuiz('history')">🔄 Пройти тест заново</button>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- ОБЩЕСТВОЗНАНИЕ -->
+        <!-- =============================== -->
+        <div class="subject-block social">
+            <h2>👥 Обществознание — Повторение</h2>
+            <div class="duration">⏱ Продолжительность: ~1,5 часа (90 минут)</div>
+
+            <!-- Запись в тетрадь -->
+            <div class="notebook">
+                <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Опорный конспект по обществознанию 6 класс</h4>
+
+                <p><strong>Тема 1: Человек — личность</strong></p>
+                <ul>
+                    <li><strong>Индивид</strong> — отдельный человек как представитель биологического вида</li>
+                    <li><strong>Индивидуальность</strong> — неповторимые черты, отличающие одного человека от другого</li>
+                    <li><strong>Личность</strong> — человек как носитель социальных качеств, сформированных в обществе</li>
+                    <li>Личностью не рождаются, а <strong>становятся</strong> в процессе социализации</li>
+                    <li><strong>Социализация</strong> — процесс усвоения человеком социальных норм, ценностей, знаний</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Тема 2: Потребности человека</strong></p>
+                <ul>
+                    <li><strong>Биологические потребности</strong>: еда, вода, сон, воздух</li>
+                    <li><strong>Социальные потребности</strong>: общение, дружба, признание</li>
+                    <li><strong>Духовные потребности</strong>: познание, творчество, самовыражение</li>
+                    <li>Пирамида Маслоу: от физиологических → к потребности в самореализации</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Тема 3: Деятельность человека</strong></p>
+                <ul>
+                    <li><strong>Деятельность</strong> — сознательная активность человека, направленная на достижение цели</li>
+                    <li>Структура: <strong>субъект → мотив → цель → средства → действия → результат</strong></li>
+                    <li>Виды: игра, учение, труд, общение</li>
+                    <li>Отличие деятельности от поведения животных: деятельность <strong>целенаправленна</strong> и <strong>осознанна</strong></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Тема 4: Межличностные отношения</strong></p>
+                <ul>
+                    <li>Виды: знакомство → приятельство → товарищество → дружба</li>
+                    <li><strong>Симпатия</strong> — внутреннее расположение к человеку</li>
+                    <li><strong>Антипатия</strong> — внутреннее неприятие человека</li>
+                    <li><strong>Стереотип</strong> — обобщённое и упрощённое представление о группе людей</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Тема 5: Группы</strong></p>
+                <ul>
+                    <li><strong>Малая группа</strong> — небольшое количество людей, объединённых общей целью (семья, класс)</li>
+                    <li><strong>Большая группа</strong> — нация, народ, молодёжь</li>
+                    <li><strong>Формальная группа</strong> — создана официально (класс, отряд)</li>
+                    <li><strong>Неформальная группа</strong> — возникает стихийно (компания друзей)</li>
+                    <li><strong>Лидер</strong> — тот, кто ведёт группу; <strong>Аутсайдер</strong> — тот, кто на периферии</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Тема 6: Конфликты</strong></p>
+                <ul>
+                    <li><strong>Конфликт</strong> — столкновение интересов, мнений, целей</li>
+                    <li>Виды: межличностный, групповой, внутриличностный</li>
+                    <li>Способы разрешения: <strong>компромисс</strong> (взаимные уступки), <strong>сотрудничество</strong> (поиск общего решения), <strong>избегание</strong>, <strong>приспособление</strong></li>
+                    <li><strong>Конструктивный конфликт</strong> — помогает найти лучшее решение</li>
+                    <li><strong>Деструктивный конфликт</strong> — разрушает отношения</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Тема 7: Нравственные основы жизни</strong></p>
+                <ul>
+                    <li><strong>Мораль</strong> — правила поведения, принятые в обществе, основанные на представлениях о добре и зле</li>
+                    <li><strong>Добро</strong> — всё, что помогает людям, обществу</li>
+                    <li><strong>Зло</strong> — всё, что вредит людям</li>
+                    <li><strong>Золотое правило нравственности</strong>: «Поступай с другими так, как хочешь, чтобы поступали с тобой»</li>
+                    <li><strong>Гуманизм</strong> — человеколюбие, уважение к достоинству каждого</li>
+                    <li><strong>Добродетель</strong> — положительное нравственное качество (честность, доброта, смелость)</li>
+                    <li><strong>Порок</strong> — отрицательное нравственное качество (жадность, трусость, лживость)</li>
+                </ul>
+            </div>
+
+            <!-- Видеоматериалы -->
+            <div class="video-links">
+                <h4>🎬 Видеоматериалы для повторения</h4>
+                <a href="https://www.youtube.com/watch?v=r2Sih5lnFKw" target="_blank">Обществознание 6 класс — весь курс за 1 час</a>
+                <a href="https://www.youtube.com/watch?v=4s31_cxr1o8" target="_blank">Человек — личность. Индивид и индивидуальность</a>
+                <a href="https://www.youtube.com/watch?v=Dx3E5w9g_Ew" target="_blank">Потребности человека — пирамида Маслоу</a>
+                <a href="https://www.youtube.com/watch?v=_jJfQwnr4Ew" target="_blank">Межличностные отношения и конфликты</a>
+                <a href="https://www.youtube.com/watch?v=a59OtIi7bDk" target="_blank">Нравственные основы жизни — мораль, добро и зло</a>
+            </div>
+
+            <!-- Задания с объяснениями -->
+            <div class="section">
+                <h3>📝 Задания для решения</h3>
+
+                <div class="exercise-box">
+                    <h4>Задание 1: Термины</h4>
+                    <div class="task">
+                        Определи, какой термин описан:<br><br>
+                        1) Неповторимые черты, отличающие одного человека от другого — ?<br>
+                        2) Процесс усвоения человеком социальных норм — ?<br>
+                        3) Правила поведения, основанные на представлениях о добре и зле — ?<br>
+                        4) Столкновение интересов, мнений — ?<br>
+                        5) Способ разрешения конфликта через взаимные уступки — ?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solS1')">Показать решение</button>
+                    <div class="solution" id="solS1">
+                        <p>1) <strong>Индивидуальность</strong></p>
+                        <p>2) <strong>Социализация</strong></p>
+                        <p>3) <strong>Мораль</strong></p>
+                        <p>4) <strong>Конфликт</strong></p>
+                        <p>5) <strong>Компромисс</strong></p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 2: Классификация потребностей</h4>
+                    <div class="task">
+                        Распредели потребности по группам (биологические, социальные, духовные):<br><br>
+                        1) Потребность в пище<br>
+                        2) Потребность в общении<br>
+                        3) Потребность в познании мира<br>
+                        4) Потребность во сне<br>
+                        5) Потребность в признании<br>
+                        6) Потребность в творчестве<br>
+                        7) Потребность в безопасности<br>
+                        8) Потребность в дружбе
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solS2')">Показать решение</button>
+                    <div class="solution" id="solS2">
+                        <p><strong>Биологические:</strong> 1) пища, 4) сон, 7) безопасность</p>
+                        <p><strong>Социальные:</strong> 2) общение, 5) признание, 8) дружба</p>
+                        <p><strong>Духовные:</strong> 3) познание мира, 6) творчество</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 3: Анализ ситуаций</h4>
+                    <div class="task">
+                        Определи вид конфликта и предложи способ разрешения:<br><br>
+                        Ситуация 1: Маша и Катя поссорились из-за того, что обе хотят быть старостой класса.<br><br>
+                        Ситуация 2: Петя хочет пойти гулять с друзьями, но мама просит помочь по дому. Петя не знает, что выбрать.<br><br>
+                        Ситуация 3: Два класса спорят, кто будет использовать спортзал в пятницу.
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solS3')">Показать решение</button>
+                    <div class="solution" id="solS3">
+                        <p><strong>Ситуация 1:</strong> Межличностный конфликт. Способ разрешения — <strong>компромисс</strong> (например, одна станет старостой, другая — заместителем) или <strong>сотрудничество</strong> (вместе придумать, как разделить обязанности).</p>
+                        <p><strong>Ситуация 2:</strong> Внутриличностный конфликт. Способ разрешения — <strong>компромисс с самим собой</strong> (сначала помочь маме, потом пойти гулять).</p>
+                        <p><strong>Ситуация 3:</strong> Групповой (межгрупповой) конфликт. Способ разрешения — <strong>компромисс</strong> (чередовать недели) или <strong>обратиться к третьей стороне</strong> (учитель физкультуры составит расписание).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерактивный тест по обществознанию -->
+            <div class="quiz-container" id="socialQuiz">
+                <h3>🧪 Интерактивный тест: Обществознание</h3>
+                <p style="text-align:center; color:#aaa; margin-bottom:20px;">15 вопросов</p>
+
+                <div class="quiz-question" id="sq1">
+                    <p>1. Личностью человек:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq1', false)">Рождается</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq1', true)">Становится в процессе жизни</button>
+                    <div class="quiz-feedback" id="sq1-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq2">
+                    <p>2. Потребность в пище — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq2', true)">Биологическая потребность</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq2', false)">Социальная потребность</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq2', false)">Духовная потребность</button>
+                    <div class="quiz-feedback" id="sq2-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq3">
+                    <p>3. Что такое социализация?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq3', false)">Общение в социальных сетях</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq3', true)">Процесс усвоения человеком социальных норм и ценностей</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq3', false)">Создание социальных групп</button>
+                    <div class="quiz-feedback" id="sq3-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq4">
+                    <p>4. Компромисс — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq4', false)">Полная победа одной стороны</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq4', true)">Решение путём взаимных уступок</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq4', false)">Уход от конфликта</button>
+                    <div class="quiz-feedback" id="sq4-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq5">
+                    <p>5. «Золотое правило нравственности» гласит:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq5', true)">Поступай с другими так, как хочешь, чтобы поступали с тобой</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq5', false)">Кто сильнее, тот и прав</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq5', false)">Каждый сам за себя</button>
+                    <div class="quiz-feedback" id="sq5-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq6">
+                    <p>6. Семья — это пример:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq6', true)">Малой группы</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq6', false)">Большой группы</button>
+                    <div class="quiz-feedback" id="sq6-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq7">
+                    <p>7. Чем деятельность человека отличается от поведения животных?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq7', true)">Деятельность целенаправленна и осознанна</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq7', false)">Ничем не отличается</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq7', false)">Деятельность основана только на инстинктах</button>
+                    <div class="quiz-feedback" id="sq7-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq8">
+                    <p>8. Что такое «индивид»?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq8', true)">Отдельный человек как представитель вида</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq8', false)">Человек с уникальными чертами</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq8', false)">Человек, занимающий высокое положение</button>
+                    <div class="quiz-feedback" id="sq8-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq9">
+                    <p>9. Гуманизм — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq9', true)">Человеколюбие, уважение к достоинству каждого</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq9', false)">Стремление к богатству</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq9', false)">Любовь к животным</button>
+                    <div class="quiz-feedback" id="sq9-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq10">
+                    <p>10. Стереотип — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq10', true)">Обобщённое и упрощённое представление о группе людей</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq10', false)">Точная характеристика каждого человека</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq10', false)">Вид конфликта</button>
+                    <div class="quiz-feedback" id="sq10-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq11">
+                    <p>11. Компания друзей — это пример:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq11', false)">Формальной группы</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq11', true)">Неформальной группы</button>
+                    <div class="quiz-feedback" id="sq11-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq12">
+                    <p>12. Виды деятельности:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq12', true)">Игра, учение, труд, общение</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq12', false)">Еда, сон, прогулка, отдых</button>
+                    <div class="quiz-feedback" id="sq12-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq13">
+                    <p>13. Конструктивный конфликт — это конфликт, который:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq13', true)">Помогает найти лучшее решение</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq13', false)">Разрушает отношения</button>
+                    <div class="quiz-feedback" id="sq13-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq14">
+                    <p>14. Потребность в творчестве — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq14', false)">Биологическая</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq14', false)">Социальная</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq14', true)">Духовная</button>
+                    <div class="quiz-feedback" id="sq14-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="sq15">
+                    <p>15. Структура деятельности включает:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq15', true)">Субъект, мотив, цель, средства, действия, результат</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq15', false)">Только цель и результат</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'sq15', false)">Потребности и инстинкты</button>
+                    <div class="quiz-feedback" id="sq15-fb"></div>
+                </div>
+
+                <div class="quiz-score" id="socialScore"></div>
+                <button class="quiz-reset-btn" id="socialResetBtn" onclick="resetQuiz('social')">🔄 Пройти тест заново</button>
+            </div>
+        </div>
+
+        <!-- Прогресс-трекер -->
+        <div class="progress-tracker">
+            <h3>📊 Прогресс дня 21</h3>
+            <p>Общий результат по всем тестам</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="totalProgress" style="width: 0%">0%</div>
+            </div>
+            <p id="totalScoreText" style="margin-top: 10px; color: #aaa;">Пройди все тесты, чтобы увидеть результат</p>
+        </div>
+
+        <!-- Итоги дня -->
+        <div class="section" style="border: 2px solid rgba(255,215,0,0.3); margin-top: 30px;">
+            <h3>🎯 Подведение итогов дня 21</h3>
+            <div class="tip-box">
+                <strong>После завершения всех заданий:</strong><br>
+                1. Проверь, все ли пункты чек-листа отмечены ✅<br>
+                2. Запиши в тетрадь темы, в которых были ошибки<br>
+                3. Повтори правила, которые вызвали затруднения<br>
+                4. Оцени свою готовность по каждому предмету по шкале 1–10<br>
+                5. Отдохни! Завтра — повторение блок 2 (Математика, Биология, География)
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Toggle solution visibility
+        function toggleSolution(id) {
+            const sol = document.getElementById(id);
+            if (sol.style.display === 'block') {
+                sol.style.display = 'none';
+            } else {
+                sol.style.display = 'block';
+            }
+        }
+
+        // Checklist
+        function toggleCheck(el) {
+            el.classList.toggle('checked');
+        }
+
+        // Quiz system
+        const quizData = {
+            russian: { total: 20, answered: 0, correct: 0, prefix: 'rq' },
+            history: { total: 15, answered: 0, correct: 0, prefix: 'hq' },
+            social: { total: 15, answered: 0, correct: 0, prefix: 'sq' }
+        };
+
+        function checkAnswer(button, questionId, isCorrect) {
+            const question = document.getElementById(questionId);
+            const buttons = question.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById(questionId + '-fb');
+
+            // Disable all buttons
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                if (btn === button) {
+                    btn.classList.add(isCorrect ? 'correct' : 'wrong');
+                }
+            });
+
+            // If wrong, highlight correct
+            if (!isCorrect) {
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('onclick').includes('true')) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+
+            // Show feedback
+            feedback.textContent = isCorrect ? '✅ Правильно!' : '❌ Неправильно. Смотри правильный ответ выше.';
+            feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+
+            // Update quiz data
+            let quizName = '';
+            if (questionId.startsWith('rq')) quizName = 'russian';
+            else if (questionId.startsWith('hq')) quizName = 'history';
+            else if (questionId.startsWith('sq')) quizName = 'social';
+
+            quizData[quizName].answered++;
+            if (isCorrect) quizData[quizName].correct++;
+
+            // Check if quiz is complete
+            if (quizData[quizName].answered === quizData[quizName].total) {
+                const scoreDiv = document.getElementById(quizName + 'Score');
+                const resetBtn = document.getElementById(quizName + 'ResetBtn');
+                const percent = Math.round((quizData[quizName].correct / quizData[quizName].total) * 100);
+                let emoji = percent >= 90 ? '🌟' : percent >= 70 ? '👍' : percent >= 50 ? '📚' : '💪';
+                scoreDiv.innerHTML = `${emoji} Результат: ${quizData[quizName].correct} из ${quizData[quizName].total} (${percent}%)`;
+                scoreDiv.style.display = 'block';
+                resetBtn.style.display = 'block';
+                updateTotalProgress();
+            }
+        }
+
+        function resetQuiz(quizName) {
+            const data = quizData[quizName];
+            data.answered = 0;
+            data.correct = 0;
+
+            for (let i = 1; i <= data.total; i++) {
+                const qId = data.prefix + i;
+                const question = document.getElementById(qId);
+                if (!question) continue;
+                const buttons = question.querySelectorAll('.quiz-option');
+                buttons.forEach(btn => {
+                    btn.disabled = false;
+                    btn.classList.remove('correct', 'wrong');
+                });
+                const feedback = document.getElementById(qId + '-fb');
+                feedback.className = 'quiz-feedback';
+                feedback.textContent = '';
+            }
+
+            document.getElementById(quizName + 'Score').style.display = 'none';
+            document.getElementById(quizName + 'ResetBtn').style.display = 'none';
+            updateTotalProgress();
+        }
+
+        function updateTotalProgress() {
+            let totalCorrect = 0;
+            let totalQuestions = 0;
+            let allComplete = true;
+
+            for (const key in quizData) {
+                totalCorrect += quizData[key].correct;
+                totalQuestions += quizData[key].total;
+                if (quizData[key].answered < quizData[key].total) allComplete = false;
+            }
+
+            if (allComplete) {
+                const percent = Math.round((totalCorrect / totalQuestions) * 100);
+                document.getElementById('totalProgress').style.width = percent + '%';
+                document.getElementById('totalProgress').textContent = percent + '%';
+                
+                let message = '';
+                if (percent >= 90) message = '🌟 Отлично! Ты готов к аттестации!';
+                else if (percent >= 70) message = '👍 Хорошо! Повтори темы с ошибками.';
+                else if (percent >= 50) message = '📚 Неплохо, но нужно ещё поработать.';
+                else message = '💪 Не сдавайся! Повтори материал и пройди тесты снова.';
+                
+                document.getElementById('totalScoreText').textContent = `${totalCorrect} из ${totalQuestions} • ${message}`;
+            }
+        }
+    </script>
+</body>
+</html>

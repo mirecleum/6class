@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День 25 — Работа над ошибками</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1117, #161b22, #0d1117);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .day-info { text-align: center; font-size: 1.1em; color: #aaa; margin-bottom: 25px; }
+
+        /* КАРТОЧКА АНАЛИЗА ОШИБОК */
+        .error-tracker {
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(255,165,0,0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .error-tracker h2 { color: #ffa500; margin-bottom: 20px; font-size: 1.5em; }
+        .subject-error-row {
+            display: grid;
+            grid-template-columns: 200px 1fr auto auto;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .subject-error-row:last-child { border-bottom: none; }
+        .subject-label { font-weight: bold; font-size: 0.95em; }
+        .score-input-group { display: flex; align-items: center; gap: 10px; }
+        .score-input {
+            width: 55px;
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1em;
+            text-align: center;
+        }
+        .score-input:focus { outline: none; border-color: #ffa500; }
+        .score-total { color: #aaa; font-size: 0.9em; }
+        .priority-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .p-high { background: rgba(255,50,50,0.2); color: #ff6b6b; border: 1px solid #ff6b6b; }
+        .p-mid  { background: rgba(255,165,0,0.2); color: #ffa500; border: 1px solid #ffa500; }
+        .p-low  { background: rgba(0,200,80,0.2);  color: #00c850; border: 1px solid #00c850; }
+        .calc-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .calc-btn:hover { transform: scale(1.02); }
+        .priority-result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+        }
+        .priority-result.show { display: block; }
+        .priority-result h3 { color: #ffd200; margin-bottom: 12px; }
+
+        /* ПЛАН ДНЯ */
+        .day-plan {
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(79,172,254,0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .day-plan h2 { color: #4facfe; margin-bottom: 15px; font-size: 1.4em; }
+        .plan-step {
+            display: flex;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            align-items: flex-start;
+        }
+        .plan-step:last-child { border-bottom: none; }
+        .step-number {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            flex-shrink: 0;
+        }
+        .step-content h4 { margin-bottom: 5px; font-size: 1.05em; }
+        .step-content p { color: #aaa; font-size: 0.95em; line-height: 1.6; }
+
+        /* БЛОКИ ПРЕДМЕТОВ */
+        .subject-block {
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border-left: 5px solid;
+        }
+        .subject-block.russian   { border-left-color: #ff6b6b; }
+        .subject-block.math      { border-left-color: #00b4d8; }
+        .subject-block.history   { border-left-color: #4ecdc4; }
+        .subject-block.social    { border-left-color: #a29bfe; }
+        .subject-block.biology   { border-left-color: #2ecc71; }
+        .subject-block.geography { border-left-color: #e67e22; }
+        .subject-block.english   { border-left-color: #f093fb; }
+        .subject-block.literature{ border-left-color: #fda085; }
+        .subject-block h2 { font-size: 1.6em; margin-bottom: 5px; }
+        .subject-block .sub-meta { color: #aaa; font-size: 0.92em; margin-bottom: 20px; }
+
+        /* ОШИБКИ И ОБЪЯСНЕНИЯ */
+        .error-card {
+            background: rgba(255,50,50,0.06);
+            border: 1px solid rgba(255,80,80,0.2);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+        .error-card .error-q { font-weight: bold; margin-bottom: 8px; color: #ff8080; }
+        .error-card .wrong-ans { color: #ff6b6b; margin-bottom: 5px; }
+        .error-card .wrong-ans::before { content: '❌ Неправильно: '; }
+        .error-card .right-ans { color: #00c850; margin-bottom: 10px; }
+        .error-card .right-ans::before { content: '✅ Правильно: '; }
+        .error-card .explanation {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #ccc;
+        }
+        .error-card .explanation::before { content: '📖 Объяснение: '; color: #4facfe; font-weight: bold; }
+
+        /* ПРАВИЛО-ПОВТОРЕНИЕ */
+        .rule-box {
+            background: rgba(255,215,0,0.08);
+            border: 2px solid rgba(255,215,0,0.25);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 15px 0;
+        }
+        .rule-box h4 { color: #ffd93d; margin-bottom: 10px; font-size: 1.05em; }
+        .rule-box ul { padding-left: 22px; }
+        .rule-box li { margin-bottom: 7px; line-height: 1.6; }
+
+        /* УПРАЖНЕНИЯ */
+        .exercise-box {
+            background: rgba(162,155,254,0.08);
+            border: 1px solid rgba(162,155,254,0.25);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+        }
+        .exercise-box h4 { color: #a29bfe; margin-bottom: 10px; }
+        .exercise-box .task {
+            background: rgba(0,0,0,0.2);
+            padding: 12px 15px;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-size: 1.02em;
+        }
+        .solution {
+            display: none;
+            background: rgba(0,200,80,0.07);
+            border: 1px solid rgba(0,200,80,0.2);
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+        .show-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        .show-btn:hover { transform: scale(1.04); }
+
+        /* МИНИ-ТЕСТ ПОСЛЕ РАБОТЫ НАД ОШИБКАМИ */
+        .mini-quiz {
+            background: rgba(0,180,216,0.07);
+            border: 2px solid rgba(0,180,216,0.25);
+            border-radius: 15px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+        .mini-quiz h3 { color: #00b4d8; margin-bottom: 15px; font-size: 1.25em; }
+        .mq-question {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+        .mq-question p { font-weight: 500; margin-bottom: 10px; line-height: 1.5; }
+        .mq-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            color: #d0d0d0;
+            cursor: pointer;
+            font-size: 0.97em;
+            transition: all 0.25s;
+        }
+        .mq-option:hover:not(:disabled) { background: rgba(0,180,216,0.1); border-color: rgba(0,180,216,0.4); }
+        .mq-option.correct { background: rgba(0,200,80,0.18); border-color: #00c850; color: #00ff80; }
+        .mq-option.wrong   { background: rgba(255,50,50,0.18); border-color: #ff3232; color: #ff8080; }
+        .mq-option:disabled { cursor: not-allowed; }
+        .mq-feedback { margin-top: 8px; padding: 8px 12px; border-radius: 7px; display: none; font-size: 0.93em; font-weight: bold; }
+        .mq-feedback.show { display: block; }
+        .mq-feedback.cfb { background: rgba(0,200,80,0.1); color: #00c850; }
+        .mq-feedback.wfb { background: rgba(255,50,50,0.1); color: #ff6b6b; }
+        .mq-score { text-align: center; padding: 15px; background: rgba(255,215,0,0.08); border-radius: 10px; display: none; margin-top: 12px; font-size: 1.3em; }
+
+        /* ЧЕКЛИСТ */
+        .checklist { list-style: none; padding: 0; }
+        .checklist li {
+            padding: 10px 15px; margin: 5px 0;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px; cursor: pointer; transition: all 0.3s;
+        }
+        .checklist li::before { content: '☐ '; font-size: 1.2em; }
+        .checklist li.checked { background: rgba(0,255,100,0.1); text-decoration: line-through; opacity: 0.7; }
+        .checklist li.checked::before { content: '☑ '; }
+
+        .section { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 20px; margin-bottom: 20px; }
+        .section h3 { font-size: 1.2em; margin-bottom: 15px; }
+
+        .tip-box {
+            background: rgba(255,215,0,0.07);
+            border: 1px solid rgba(255,215,0,0.25);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 14px 0;
+            line-height: 1.7;
+        }
+        .tip-box::before { content: '💡 '; font-size: 1.15em; }
+
+        .method-card {
+            background: rgba(79,172,254,0.07);
+            border: 1px solid rgba(79,172,254,0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .method-card h4 { color: #4facfe; margin-bottom: 8px; }
+        .method-card p { color: #ccc; line-height: 1.7; font-size: 0.97em; }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        table th, table td { padding: 10px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: left; vertical-align: top; }
+        table th { background: rgba(255,255,255,0.08); color: #ffd93d; }
+        table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+        .progress-bar-wrap { background: rgba(255,255,255,0.08); border-radius: 12px; height: 28px; overflow: hidden; margin: 10px 0; }
+        .progress-bar-fill { height: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85em; color: #000; transition: width 0.5s; background: linear-gradient(90deg, #f7971e, #ffd200); }
+
+        .video-links { background: rgba(255,0,0,0.07); border: 1px solid rgba(255,0,0,0.18); border-radius: 12px; padding: 18px; margin: 14px 0; }
+        .video-links h4 { color: #ff4444; margin-bottom: 10px; }
+        .video-links a { color: #ff6b6b; text-decoration: none; display: block; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .video-links a:hover { color: #ff9999; }
+        .video-links a::before { content: '▶ '; }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 12px 0; }
+        @media (max-width: 650px) {
+            h1 { font-size: 1.5em; }
+            .subject-error-row { grid-template-columns: 1fr 1fr; }
+            .two-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>🔍 День 25: Работа над ошибками</h1>
+    <div class="day-info">Неделя 4 | Разбор ошибок пробного теста | Точечное повторение | ~5 часов</div>
+
+    <!-- ПСИХОЛОГИЧЕСКАЯ ПОДДЕРЖКА -->
+    <div style="background:rgba(0,200,80,0.07);border:2px solid rgba(0,200,80,0.25);border-radius:18px;padding:22px;margin-bottom:22px;text-align:center;">
+        <h3 style="color:#00c850;margin-bottom:10px;">🧘 Сегодня — день исправлений, а не поражений!</h3>
+        <p style="color:#ccc;line-height:1.7;">Ошибки вчерашнего теста — это не провал, а <strong style="color:#ffd200;">точная карта слабых мест</strong>.<br>
+        Каждая исправленная ошибка делает тебя сильнее. Работаем спокойно и методично! 💪</p>
+    </div>
+
+    <!-- АНАЛИЗАТОР РЕЗУЛЬТАТОВ -->
+    <div class="error-tracker">
+        <h2>📊 Шаг 1: Введи результаты вчерашнего тестирования</h2>
+        <p style="color:#aaa;margin-bottom:18px;font-size:0.95em;">Введи количество правильных ответов — система определит приоритеты</p>
+
+        <div class="subject-error-row">
+            <div class="subject-label">🇷🇺 Русский язык</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-russian" min="0" max="15" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 15</span>
+            </div>
+            <div id="pb-russian" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-russian">—</span>
+        </div>
+
+        <div class="subject-error-row">
+            <div class="subject-label">📐 Математика</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-math" min="0" max="15" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 15</span>
+            </div>
+            <div id="pb-math" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-math">—</span>
+        </div>
+
+        <div class="subject-error-row">
+            <div class="subject-label">🏛️ История</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-history" min="0" max="10" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 10</span>
+            </div>
+            <div id="pb-history" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-history">—</span>
+        </div>
+
+        <div class="subject-error-row">
+            <div class="subject-label">👥 Обществознание</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-social" min="0" max="10" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 10</span>
+            </div>
+            <div id="pb-social" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-social">—</span>
+        </div>
+
+        <div class="subject-error-row">
+            <div class="subject-label">🌿 Биология</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-biology" min="0" max="10" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 10</span>
+            </div>
+            <div id="pb-biology" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-biology">—</span>
+        </div>
+
+        <div class="subject-error-row">
+            <div class="subject-label">🌍 География</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-geography" min="0" max="10" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 10</span>
+            </div>
+            <div id="pb-geography" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-geography">—</span>
+        </div>
+
+        <div class="subject-error-row">
+            <div class="subject-label">🇬🇧 Английский</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-english" min="0" max="10" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 10</span>
+            </div>
+            <div id="pb-english" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-english">—</span>
+        </div>
+
+        <div class="subject-error-row">
+            <div class="subject-label">📖 Литература</div>
+            <div class="score-input-group">
+                <input class="score-input" type="number" id="sc-literature" min="0" max="10" value="0" onchange="calcPriority()">
+                <span class="score-total">/ 10</span>
+            </div>
+            <div id="pb-literature" class="progress-bar-wrap" style="width:160px"><div class="progress-bar-fill" style="width:0%">0%</div></div>
+            <span class="priority-badge" id="badge-literature">—</span>
+        </div>
+
+        <button class="calc-btn" onclick="calcPriority()">📊 Определить приоритеты</button>
+
+        <div class="priority-result" id="priorityResult">
+            <h3>🎯 Твой план на сегодня:</h3>
+            <div id="priorityList"></div>
+        </div>
+    </div>
+
+    <!-- ПЛАН ДНЯ -->
+    <div class="day-plan">
+        <h2>🗓️ Структура дня 25</h2>
+        <div class="plan-step">
+            <div class="step-number" style="background:rgba(255,50,50,0.2);color:#ff6b6b;">1</div>
+            <div class="step-content">
+                <h4>Анализ результатов (15 мин)</h4>
+                <p>Введи результаты выше → определи 3 самых проблемных предмета → составь план дня</p>
+            </div>
+        </div>
+        <div class="plan-step">
+            <div class="step-number" style="background:rgba(255,165,0,0.2);color:#ffa500;">2</div>
+            <div class="step-content">
+                <h4>Разбор ошибок по каждому предмету (2,5 ч)</h4>
+                <p>Читай объяснение каждой ошибки → изучи правило → выполни похожее задание → закрепи</p>
+            </div>
+        </div>
+        <div class="plan-step">
+            <div class="step-number" style="background:rgba(0,200,80,0.2);color:#00c850;">3</div>
+            <div class="step-content">
+                <h4>Точечное повторение проблемных тем (1,5 ч)</h4>
+                <p>По каждому предмету — мини-тест после изучения ошибок. Цель: не повторить ошибку</p>
+            </div>
+        </div>
+        <div class="plan-step">
+            <div class="step-number" style="background:rgba(79,172,254,0.2);color:#4facfe;">4</div>
+            <div class="step-content">
+                <h4>Повторение «опасных» тем (45 мин)</h4>
+                <p>Перечитай опорные конспекты из дней 21–23 по слабым предметам</p>
+            </div>
+        </div>
+        <div class="plan-step">
+            <div class="step-number" style="background:rgba(240,147,251,0.2);color:#f093fb;">5</div>
+            <div class="step-content">
+                <h4>Подготовка к Дню 26 (15 мин)</h4>
+                <p>Составь список тем для пробного теста №2 → отметь, что ещё нужно повторить</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЧЕК-ЛИСТ -->
+    <div class="section">
+        <h3>✅ Чек-лист дня (кликай для отметки)</h3>
+        <ul class="checklist">
+            <li onclick="toggleCheck(this)">Ввёл результаты и определил приоритеты</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по русскому языку</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по математике</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по истории</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по обществознанию</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по биологии</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по географии</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по английскому</li>
+            <li onclick="toggleCheck(this)">Разобрал ошибки по литературе</li>
+            <li onclick="toggleCheck(this)">Прошёл мини-тесты после каждого предмета</li>
+            <li onclick="toggleCheck(this)">Перечитал опорные конспекты по слабым предметам</li>
+            <li onclick="toggleCheck(this)">Составил список для Дня 26</li>
+        </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- БЛОК РАБОТЫ НАД ОШИБКАМИ — РУССКИЙ ЯЗЫК -->
+    <!-- ============================================================ -->
+    <div class="subject-block russian">
+        <h2>🇷🇺 Русский язык — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Самые частые ошибки 6 класса с подробным разбором</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №1: Чередующиеся гласные в корне</div>
+            <div class="wrong-ans">Написал «прилОжать» (через О)</div>
+            <div class="right-ans">Правильно: «прилАгать» (через А)</div>
+            <div class="explanation">Корень ЛАГ/ЛОЖ: перед буквой Г пишем А (прилАГать, слАГаемое), перед Ж пишем О (прилОЖить, слОЖение). Запомни: буква в корне та же, что перед ней идёт согласная.</div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №2: Приставки ПРЕ-/ПРИ-</div>
+            <div class="wrong-ans">Написал «прИкрасный»</div>
+            <div class="right-ans">Правильно: «прЕкрасный»</div>
+            <div class="explanation">ПРЕ- = «очень»: прЕкрасный = очень красивый, прЕмудрый = очень мудрый. ПРИ- = приближение, присоединение, неполное действие, близость. Если можно заменить «очень» или «пере-» → ПРЕ-.</div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №3: Н и НН в прилагательных</div>
+            <div class="wrong-ans">Написал «стеклЯНый» (через Н)</div>
+            <div class="right-ans">Правильно: «стеклЯННый» (через НН)</div>
+            <div class="explanation">ИСКЛЮЧЕНИЯ с НН: стеклЯННый, оловЯННый, деревЯННый — запомни их как «три исключения с -ЯНН-». Все остальные с суффиксом -ЯН-: серебрЯНый, кожАНый, льнЯНой — через Н.</div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №4: НЕ с прилагательными</div>
+            <div class="wrong-ans">Написал «не интересная книга» (раздельно)</div>
+            <div class="right-ans">Правильно: «неинтересная книга» (слитно)</div>
+            <div class="explanation">Если нет противопоставления с А и нет слов «вовсе не», «ничуть не», «далеко не» → пишем слитно, если можно заменить синонимом. Неинтересная = скучная. Но: «не интересная, а скучная» → раздельно (есть А).</div>
+        </div>
+
+        <div class="rule-box">
+            <h4>📌 Главные правила — повтори ещё раз</h4>
+            <ul>
+                <li><strong>ЛАГ/ЛОЖ:</strong> перед Г → А, перед Ж → О</li>
+                <li><strong>ГОР/ГАР:</strong> без ударения → О (загОрать), под ударением → А (зАгар)</li>
+                <li><strong>БИР/БЕР и др.:</strong> есть суффикс -А- → И, нет → Е</li>
+                <li><strong>ПРЕ-:</strong> = очень / = пере-. <strong>ПРИ-:</strong> приближение / присоединение / неполное / близость</li>
+                <li><strong>НН:</strong> -ОНН-, -ЕНН-, основа на Н + суффикс Н, 3 исключения (стеклянный, оловянный, деревянный)</li>
+                <li><strong>НЕ слитно:</strong> можно заменить синонимом БЕЗ НЕ. <strong>НЕ раздельно:</strong> есть А, вовсе не, ничуть не</li>
+            </ul>
+        </div>
+
+        <div class="exercise-box">
+            <h4>✏️ Закрепляющее упражнение — вставь пропущенные буквы</h4>
+            <div class="task">
+                1) Пол..жить вещи на место<br>
+                2) Пр..морский курорт<br>
+                3) Стекля..ая ваза стоит на столе<br>
+                4) Заг..рать на солнышке<br>
+                5) Собр..ть грибы в лесу<br>
+                6) Пр..красный вид из окна<br>
+                7) Это была (не)правда, а ложь<br>
+                8) Кожа..ый пояс на ремне<br>
+                9) Сл..жить числа вместе<br>
+                10) Пр..сесть на скамейку
+            </div>
+            <button class="show-btn" onclick="toggleSol('sol-ru1')">Показать ответы</button>
+            <div class="solution" id="sol-ru1">
+                <p>1) <strong>положить</strong> — ЛОЖ (перед Ж → О)</p>
+                <p>2) <strong>приморский</strong> — ПРИ (близость к морю)</p>
+                <p>3) <strong>стеклянная</strong> — НН (исключение!)</p>
+                <p>4) <strong>загорать</strong> — ГОР (без ударения → О)</p>
+                <p>5) <strong>собрать</strong> — нет суффикса -А- после корня → Е... подожди: со-БР-ать → корень БР, здесь нет чередования; правильно: соБРать</p>
+                <p>6) <strong>прекрасный</strong> — ПРЕ (= очень красный)</p>
+                <p>7) <strong>не правда</strong> — РАЗДЕЛЬНО (есть противопоставление с А)</p>
+                <p>8) <strong>кожаный</strong> — Н (суффикс -АН-)</p>
+                <p>9) <strong>сложить</strong> — ЛОЖ (перед Ж → О)</p>
+                <p>10) <strong>присесть</strong> — ПРИ (неполное действие)</p>
+            </div>
+        </div>
+
+        <!-- Мини-тест русский -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: Русский язык (после разбора ошибок)</h3>
+            <div class="mq-question" id="mru1">
+                <p>1. В каком слове пишется А? (корень ЗАР/ЗОР)</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mru1',true)">зАря</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mru1',false)">зОрька (исключение — под ударением)</button>
+                <div class="mq-feedback" id="mru1-fb"></div>
+            </div>
+            <div class="mq-question" id="mru2">
+                <p>2. «Пр..открыть форточку» — какая приставка?</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mru2',true)">ПРИ- (неполное действие)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mru2',false)">ПРЕ- (= очень)</button>
+                <div class="mq-feedback" id="mru2-fb"></div>
+            </div>
+            <div class="mq-question" id="mru3">
+                <p>3. Сколько Н в слове «оловя..ый»?</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mru3',false)">Одна Н</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mru3',true)">Две НН (исключение!)</button>
+                <div class="mq-feedback" id="mru3-fb"></div>
+            </div>
+            <div class="mq-question" id="mru4">
+                <p>4. «Зам..рать от восторга» — И или Е?</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mru4',false)">Е (замЕрать)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mru4',true)">И (замИрать — есть суффикс -А-)</button>
+                <div class="mq-feedback" id="mru4-fb"></div>
+            </div>
+            <div class="mq-question" id="mru5">
+                <p>5. «(Не)вежда» — слитно или раздельно?</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mru5',true)">Слитно: невежда (без НЕ не употребляется)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mru5',false)">Раздельно: не вежда</button>
+                <div class="mq-feedback" id="mru5-fb"></div>
+            </div>
+            <div class="mq-score" id="mru-score"></div>
+        </div>
+
+        <div class="video-links">
+            <h4>🎬 Видео для повторения сложных тем</h4>
+            <a href="https://www.youtube.com/watch?v=be2gFKq6pzc" target="_blank">Чередующиеся гласные — разбор всех корней</a>
+            <a href="https://www.youtube.com/watch?v=_-CvQoZH7Sw" target="_blank">ПРЕ- и ПРИ- — как не путать</a>
+            <a href="https://www.youtube.com/watch?v=JZexPyPbr4E" target="_blank">Н и НН — полный разбор с исключениями</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- БЛОК РАБОТЫ НАД ОШИБКАМИ — МАТЕМАТИКА -->
+    <!-- ============================================================ -->
+    <div class="subject-block math">
+        <h2>📐 Математика — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Самые частые ошибки и подробный разбор</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №1: Деление дробей</div>
+            <div class="wrong-ans">При делении умножил оба числителя и знаменателя</div>
+            <div class="right-ans">При делении нужно умножать на ПЕРЕВЁРНУТУЮ дробь</div>
+            <div class="explanation">
+                Правило: a/b ÷ c/d = a/b × d/c<br>
+                Пример: 3/4 ÷ 5/8 = 3/4 × 8/5 = 24/20 = 6/5 = 1⅕<br>
+                Алгоритм: 1) переворачиваем вторую дробь, 2) знак ÷ меняем на ×, 3) умножаем, 4) сокращаем.
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №2: Умножение отрицательных чисел</div>
+            <div class="wrong-ans">Написал: (−5) × (−3) = −15</div>
+            <div class="right-ans">Правильно: (−5) × (−3) = +15</div>
+            <div class="explanation">
+                Правило знаков при умножении и делении:<br>
+                (+) × (+) = + | (−) × (−) = + | (+) × (−) = − | (−) × (+) = −<br>
+                Запомни: «минус на минус даёт плюс» — это фундаментальное правило!<br>
+                (−5)³ = (−5) × (−5) × (−5) = 25 × (−5) = −125 (нечётная степень → минус)
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №3: Задачи на проценты</div>
+            <div class="wrong-ans">Чтобы найти число по его 30%, умножил на 30/100</div>
+            <div class="right-ans">Нужно разделить на 30/100 (или умножить на 100/30)</div>
+            <div class="explanation">
+                3 типа задач на проценты — запомни формулы:<br>
+                • Найти p% от числа A: A × p ÷ 100<br>
+                • Найти число, если известен его p%: A ÷ p × 100<br>
+                • Найти, сколько % A от B: A ÷ B × 100%<br>
+                Пример: 48 — это 30% от X. X = 48 ÷ 30 × 100 = 160
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Ошибка №4: Пропорции</div>
+            <div class="wrong-ans">Перепутал основное свойство пропорции</div>
+            <div class="right-ans">Произведение крайних членов = произведению средних</div>
+            <div class="explanation">
+                a : b = c : d → a × d = b × c (крайние × крайние = средние × средние)<br>
+                Пример: x/6 = 4/8 → x × 8 = 6 × 4 → 8x = 24 → x = 3<br>
+                Проверка: 3/6 = 4/8 → 0,5 = 0,5 ✓
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <h4>📌 Ключевые формулы — повтори</h4>
+            <ul>
+                <li><strong>Деление дробей:</strong> a/b ÷ c/d = a/b × d/c</li>
+                <li><strong>Знаки:</strong> − × − = +, − × + = −</li>
+                <li><strong>% от числа:</strong> A × p / 100</li>
+                <li><strong>Число по %:</strong> A / p × 100</li>
+                <li><strong>Пропорция:</strong> a/b = c/d → a×d = b×c</li>
+                <li><strong>НОД</strong> — для сокращения дробей, <strong>НОК</strong> — для общего знаменателя</li>
+                <li><strong>S круга = π×r², C = 2πr</strong> (π ≈ 3,14)</li>
+            </ul>
+        </div>
+
+        <div class="exercise-box">
+            <h4>✏️ Закрепляющие задачи с решением</h4>
+            <div class="task">
+                а) 5/6 ÷ 10/9 = ?<br>
+                б) (−8) × (−4) + (−3) × 6 = ?<br>
+                в) 60 — это 40% от какого числа?<br>
+                г) Реши: 7/x = 14/12
+            </div>
+            <button class="show-btn" onclick="toggleSol('sol-ma1')">Показать решение</button>
+            <div class="solution" id="sol-ma1">
+                <p><strong>а)</strong> 5/6 ÷ 10/9 = 5/6 × 9/10 = 45/60 = <strong>3/4</strong> (сокращаем: 5 и 10 → ½; 6 и 9 → можно сократить на 3)</p>
+                <p><strong>б)</strong> (−8)×(−4) = 32; (−3)×6 = −18; 32 + (−18) = <strong>14</strong></p>
+                <p><strong>в)</strong> x = 60 ÷ 40 × 100 = 1,5 × 100 = <strong>150</strong></p>
+                <p><strong>г)</strong> 7×12 = x×14 → 84 = 14x → x = <strong>6</strong>. Проверка: 7/6 = 14/12 → 7/6 = 7/6 ✓</p>
+            </div>
+        </div>
+
+        <!-- Мини-тест математика -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: Математика</h3>
+            <div class="mq-question" id="mma1">
+                <p>1. Вычисли: 2/3 ÷ 4/9</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mma1',false)">8/27</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma1',true)">3/2 = 1½</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma1',false)">6/9 = 2/3</button>
+                <div class="mq-feedback" id="mma1-fb"></div>
+            </div>
+            <div class="mq-question" id="mma2">
+                <p>2. (−6) × (−5) = ?</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mma2',false)">−30</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma2',true)">30</button>
+                <div class="mq-feedback" id="mma2-fb"></div>
+            </div>
+            <div class="mq-question" id="mma3">
+                <p>3. Найди 35% от 200</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mma3',false)">57</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma3',true)">70</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma3',false)">35</button>
+                <div class="mq-feedback" id="mma3-fb"></div>
+            </div>
+            <div class="mq-question" id="mma4">
+                <p>4. Реши пропорцию: 4/x = 8/6</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mma4',true)">x = 3</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma4',false)">x = 12</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma4',false)">x = 6</button>
+                <div class="mq-feedback" id="mma4-fb"></div>
+            </div>
+            <div class="mq-question" id="mma5">
+                <p>5. НОК(6, 9) = ?</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mma5',false)">3</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma5',true)">18</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mma5',false)">54</button>
+                <div class="mq-feedback" id="mma5-fb"></div>
+            </div>
+            <div class="mq-score" id="mma-score"></div>
+        </div>
+
+        <div class="video-links">
+            <h4>🎬 Видео для повторения</h4>
+            <a href="https://www.youtube.com/watch?v=ZwL0s-MXxiE" target="_blank">Деление дробей — подробный разбор</a>
+            <a href="https://www.youtube.com/watch?v=2cLvjDIMPMo" target="_blank">Умножение отрицательных чисел</a>
+            <a href="https://www.youtube.com/watch?v=Gj5gxJx3K7E" target="_blank">Проценты — три типа задач</a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- БЛОК — ИСТОРИЯ -->
+    <!-- ============================================================ -->
+    <div class="subject-block history">
+        <h2>🏛️ История — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Самые сложные даты и понятия</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: путаница в датах</div>
+            <div class="wrong-ans">Путают 1240 и 1242 / 1380 и 1480</div>
+            <div class="right-ans">1240 — Невская битва (шведы), 1242 — Ледовое побоище (немцы). 1380 — Куликово, 1480 — Угра</div>
+            <div class="explanation">
+                Мнемоника: «1242 — на льду два воина» (Ледовое побоище на Чудском озере).<br>
+                «1380 — поле Куликово», «1480 — стояние, конец ига».<br>
+                Разница: 1380 — победа в битве; 1480 — конец ига (без сражения, хан ушёл).
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: путаница понятий барщина/оброк/полюдье</div>
+            <div class="wrong-ans">Путают определения повинностей</div>
+            <div class="right-ans">Барщина = работа. Оброк = плата. Полюдье = объезд князя</div>
+            <div class="explanation">
+                • БАРщина — БАРин (феодал) заставляет работать на своей земле<br>
+                • ОБРок — ОТдавать продукты/деньги (от слова «обирать»)<br>
+                • ПОЛюдье — ПО Людям (объезд + сбор) → потом Ольга заменила на уроки/погосты
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <h4>📌 Хронологическая шпаргалка — повтори</h4>
+            <table>
+                <tr><th>Дата</th><th>Событие</th><th>Подсказка</th></tr>
+                <tr><td>862</td><td>Призвание варягов (Рюрик)</td><td>8+6+2=16, Рюрик — первый</td></tr>
+                <tr><td>882</td><td>Образование Киевской Руси (Олег)</td><td>882 — Олег, 862+20=882</td></tr>
+                <tr><td>988</td><td>Крещение Руси (Владимир)</td><td>9-8-8 — «позвонил в Визант.»</td></tr>
+                <tr><td>1237–1240</td><td>Монгольское нашествие (Батый)</td><td>1237 — начало, 1240 — Киев</td></tr>
+                <tr><td>1240</td><td>Невская битва (шведы)</td><td>1240 — Нева — шведы</td></tr>
+                <tr><td>1242</td><td>Ледовое побоище (немцы)</td><td>1242 — лёд — немцы</td></tr>
+                <tr><td>1380</td><td>Куликовская битва</td><td>1380 — Куликово поле</td></tr>
+                <tr><td>1480</td><td>Стояние на Угре (конец ига)</td><td>1480 — «хан ушёл»</td></tr>
+            </table>
+        </div>
+
+        <div class="exercise-box">
+            <h4>✏️ Задание: соедини дату и событие</h4>
+            <div class="task">
+                Запиши пары (дата → событие) по памяти, затем проверь:<br><br>
+                Даты: 476, 622, 800, 988, 1066, 1215, 1453<br><br>
+                События:<br>
+                А) Принятие Великой хартии вольностей<br>
+                Б) Падение Западного Рима<br>
+                В) Нормандское завоевание Англии<br>
+                Г) Хиджра — начало ислама<br>
+                Д) Провозглашение Карла Великого императором<br>
+                Е) Крещение Руси<br>
+                Ж) Падение Константинополя
+            </div>
+            <button class="show-btn" onclick="toggleSol('sol-his1')">Показать ответы</button>
+            <div class="solution" id="sol-his1">
+                <p>476 — Б (Падение Западного Рима = начало Средневековья)</p>
+                <p>622 — Г (Хиджра Мухаммеда = начало мусульманского летоисчисления)</p>
+                <p>800 — Д (Карл Великий стал императором)</p>
+                <p>988 — Е (Крещение Руси при Владимире)</p>
+                <p>1066 — В (Битва при Гастингсе, нормандское завоевание Англии)</p>
+                <p>1215 — А (Великая хартия вольностей в Англии)</p>
+                <p>1453 — Ж (Падение Константинополя = конец Средневековья)</p>
+            </div>
+        </div>
+
+        <!-- Мини-тест история -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: История</h3>
+            <div class="mq-question" id="mhi1">
+                <p>1. Невская битва произошла в:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi1',true)">1240 г. (против шведов)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi1',false)">1242 г. (Ледовое побоище)</button>
+                <div class="mq-feedback" id="mhi1-fb"></div>
+            </div>
+            <div class="mq-question" id="mhi2">
+                <p>2. Барщина — это:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi2',true)">Работа крестьянина на земле феодала</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi2',false)">Плата продуктами и деньгами</button>
+                <div class="mq-feedback" id="mhi2-fb"></div>
+            </div>
+            <div class="mq-question" id="mhi3">
+                <p>3. Кто провозгласил Великую хартию вольностей?</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi3',false)">Карл Великий</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi3',true)">Английские бароны заставили короля Иоанна Безземельного (1215 г.)</button>
+                <div class="mq-feedback" id="mhi3-fb"></div>
+            </div>
+            <div class="mq-question" id="mhi4">
+                <p>4. Стояние на Угре завершилось в:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi4',false)">1380 г.</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mhi4',true)">1480 г.</button>
+                <div class="mq-feedback" id="mhi4-fb"></div>
+            </div>
+            <div class="mq-score" id="mhi-score"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- БЛОК — ОБЩЕСТВОЗНАНИЕ -->
+    <!-- ============================================================ -->
+    <div class="subject-block social">
+        <h2>👥 Обществознание — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Ключевые понятия и их различия</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: путаница индивид/индивидуальность/личность</div>
+            <div class="wrong-ans">Считают, что «личность» = «индивид»</div>
+            <div class="right-ans">Это три разных понятия!</div>
+            <div class="explanation">
+                • <strong>Индивид</strong> — любой отдельный человек (биологическое существо, представитель вида Homo sapiens)<br>
+                • <strong>Индивидуальность</strong> — неповторимые черты: цвет глаз, характер, таланты<br>
+                • <strong>Личность</strong> — социальные качества, приобретённые в обществе (ответственность, взгляды, роли)<br>
+                Личностью не рождаются — СТАНОВЯТСЯ в процессе социализации!
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: путаница биологических/социальных/духовных потребностей</div>
+            <div class="wrong-ans">«Безопасность» отнесли к социальным</div>
+            <div class="right-ans">Безопасность — это биологическая (физическая) потребность</div>
+            <div class="explanation">
+                • <strong>Биологические:</strong> еда, вода, сон, воздух, тепло, безопасность (физическая)<br>
+                • <strong>Социальные:</strong> общение, любовь, дружба, признание, принадлежность к группе<br>
+                • <strong>Духовные:</strong> познание, творчество, смысл жизни, вера, самовыражение<br>
+                Ключ: биологические — без них погибнешь; социальные — без них одиноко; духовные — без них пусто.
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <h4>📌 Таблица — виды конфликтов и способы решения</h4>
+            <table>
+                <tr><th>Вид конфликта</th><th>Пример</th><th>Лучший способ решения</th></tr>
+                <tr><td>Межличностный</td><td>Поссорился с другом</td><td>Компромисс / Сотрудничество</td></tr>
+                <tr><td>Внутриличностный</td><td>Хочу гулять, но надо учиться</td><td>Расстановка приоритетов</td></tr>
+                <tr><td>Межгрупповой</td><td>Два класса спорят о спортзале</td><td>Переговоры / третья сторона</td></tr>
+                <tr><td>Конструктивный</td><td>Спор → лучшее решение</td><td>Сотрудничество</td></tr>
+                <tr><td>Деструктивный</td><td>Ссора → обиды, разрыв</td><td>Остановить, привлечь медиатора</td></tr>
+            </table>
+        </div>
+
+        <!-- Мини-тест обществознание -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: Обществознание</h3>
+            <div class="mq-question" id="mso1">
+                <p>1. «Индивидуальность» — это:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mso1',false)">Любой отдельный человек как биологическое существо</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mso1',true)">Неповторимые уникальные черты человека</button>
+                <div class="mq-feedback" id="mso1-fb"></div>
+            </div>
+            <div class="mq-question" id="mso2">
+                <p>2. Потребность «в познании мира» относится к:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mso2',false)">Биологическим</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mso2',false)">Социальным</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mso2',true)">Духовным</button>
+                <div class="mq-feedback" id="mso2-fb"></div>
+            </div>
+            <div class="mq-question" id="mso3">
+                <p>3. Личностью человек:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mso3',false)">Рождается</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mso3',true)">Становится в процессе жизни в обществе</button>
+                <div class="mq-feedback" id="mso3-fb"></div>
+            </div>
+            <div class="mq-question" id="mso4">
+                <p>4. Сотрудничество как способ решения конфликта — это:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mso4',false)">Один побеждает, другой проигрывает</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mso4',true)">Обе стороны ищут решение, выгодное для всех</button>
+                <div class="mq-feedback" id="mso4-fb"></div>
+            </div>
+            <div class="mq-score" id="mso-score"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- БЛОК — БИОЛОГИЯ + ГЕОГРАФИЯ -->
+    <!-- ============================================================ -->
+    <div class="subject-block biology">
+        <h2>🌿 Биология — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Клетка, ткани, процессы растений</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: фотосинтез vs дыхание</div>
+            <div class="wrong-ans">«Фотосинтез и дыхание — одно и то же»</div>
+            <div class="right-ans">Это противоположные процессы!</div>
+            <div class="explanation">
+                <strong>Фотосинтез:</strong> CO₂ + H₂O → (свет, хлоропласты) → Глюкоза + O₂<br>
+                Поглощает CO₂, выделяет O₂. Только на свету. Только в зелёных частях.<br><br>
+                <strong>Дыхание:</strong> Глюкоза + O₂ → CO₂ + H₂O + энергия<br>
+                Поглощает O₂, выделяет CO₂. Круглосуточно. Во всех клетках.<br><br>
+                Ночью растения только дышат (нет света). Днём — и фотосинтез, и дыхание, причём фотосинтез сильнее.
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: однодольные vs двудольные</div>
+            <div class="wrong-ans">Путают признаки классов</div>
+            <div class="right-ans">Запомни комплекс признаков для каждого класса</div>
+            <div class="explanation">
+                <strong>Однодольные:</strong> 1 семядоля, мочковатая корневая система, параллельное/дуговое жилкование, цветки 3-членные. Примеры: пшеница, кукуруза, лук, тюльпан.<br><br>
+                <strong>Двудольные:</strong> 2 семядоли, стержневая корневая система, сетчатое жилкование, цветки 4–5-членные. Примеры: берёза, яблоня, горох, подсолнух.
+            </div>
+        </div>
+
+        <!-- Мини-тест биология -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: Биология</h3>
+            <div class="mq-question" id="mbi1">
+                <p>1. Фотосинтез происходит:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi1',false)">Круглосуточно во всех клетках</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi1',true)">Только на свету, только в хлоропластах</button>
+                <div class="mq-feedback" id="mbi1-fb"></div>
+            </div>
+            <div class="mq-question" id="mbi2">
+                <p>2. Тюльпан — растение:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi2',true)">Однодольное (1 семядоля, параллельное жилкование)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi2',false)">Двудольное (2 семядоли, сетчатое жилкование)</button>
+                <div class="mq-feedback" id="mbi2-fb"></div>
+            </div>
+            <div class="mq-question" id="mbi3">
+                <p>3. Вакуоль в клетке — это:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi3',false)">Место фотосинтеза</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi3',true)">Резервуар с клеточным соком</button>
+                <div class="mq-feedback" id="mbi3-fb"></div>
+            </div>
+            <div class="mq-question" id="mbi4">
+                <p>4. При дыхании растения:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi4',false)">Поглощают CO₂ и выделяют O₂</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mbi4',true)">Поглощают O₂ и выделяют CO₂</button>
+                <div class="mq-feedback" id="mbi4-fb"></div>
+            </div>
+            <div class="mq-score" id="mbi-score"></div>
+        </div>
+    </div>
+
+    <div class="subject-block geography">
+        <h2>🌍 География — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Координаты, атмосфера, гидросфера</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: широта и долгота</div>
+            <div class="wrong-ans">Путают широту и долготу</div>
+            <div class="right-ans">Широта — горизонтальные линии (параллели), долгота — вертикальные (меридианы)</div>
+            <div class="explanation">
+                <strong>Широта</strong> (горизонталь): от экватора (0°) до полюсов (90°), с.ш. или ю.ш.<br>
+                <strong>Долгота</strong> (вертикаль): от Гринвича (0°) до 180°, в.д. или з.д.<br>
+                Запомни: «широко — горизонталь», «долго — вертикаль».<br>
+                Москва: 55°с.ш. (широта) и 37°в.д. (долгота).
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: задачи на температуру и давление</div>
+            <div class="wrong-ans">Забыли коэффициент: на сколько меняется за 1 км / 100 м</div>
+            <div class="right-ans">Температура: −6°С/км. Давление: −12 мм/100 м</div>
+            <div class="explanation">
+                <strong>Температура:</strong> поднялись на 1 км → температура упала на 6°С<br>
+                <strong>Давление:</strong> поднялись на 100 м → давление упало на 12 мм рт.ст.<br>
+                Алгоритм: 1) определи высоту подъёма; 2) раздели на шаг (1 км или 100 м); 3) умножь на коэффициент; 4) вычти из начального значения.
+            </div>
+        </div>
+
+        <!-- Мини-тест география -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: География</h3>
+            <div class="mq-question" id="mge1">
+                <p>1. Параллели — это линии:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mge1',true)">Горизонтальные (широта)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mge1',false)">Вертикальные (долгота)</button>
+                <div class="mq-feedback" id="mge1-fb"></div>
+            </div>
+            <div class="mq-question" id="mge2">
+                <p>2. Температура у подножия +24°С. На высоте 3 км:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mge2',false)">+12°С</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mge2',true)">+6°С (24 − 3×6 = 6)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mge2',false)">0°С</button>
+                <div class="mq-feedback" id="mge2-fb"></div>
+            </div>
+            <div class="mq-question" id="mge3">
+                <p>3. Гранит — это горная порода:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mge3',true)">Магматическая (застывшая магма)</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mge3',false)">Метаморфическая</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mge3',false)">Осадочная</button>
+                <div class="mq-feedback" id="mge3-fb"></div>
+            </div>
+            <div class="mq-question" id="mge4">
+                <p>4. Эпицентр землетрясения — это:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mge4',false)">Точка внутри Земли, где произошёл разрыв</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mge4',true)">Точка на поверхности Земли над очагом</button>
+                <div class="mq-feedback" id="mge4-fb"></div>
+            </div>
+            <div class="mq-score" id="mge-score"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- БЛОК — АНГЛИЙСКИЙ ЯЗЫК -->
+    <!-- ============================================================ -->
+    <div class="subject-block english">
+        <h2>🇬🇧 Английский язык — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Времена, артикли, неправильные глаголы</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: Present Simple vs Present Continuous</div>
+            <div class="wrong-ans">Написал «He is playing football every Sunday»</div>
+            <div class="right-ans">He plays football every Sunday (Present Simple — привычка)</div>
+            <div class="explanation">
+                <strong>Present Simple</strong> — факты, привычки, расписание:<br>
+                Маркеры: always, usually, often, sometimes, never, every day/week<br><br>
+                <strong>Present Continuous</strong> — прямо сейчас:<br>
+                Маркеры: now, right now, at the moment, look!, listen!<br><br>
+                Есть глаголы-исключения — НЕ употребляются в Continuous:<br>
+                know, like, love, hate, want, need, understand, believe, see, hear
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: артикли</div>
+            <div class="wrong-ans">Поставил «a» перед гласным: «a apple»</div>
+            <div class="right-ans">Перед гласным звуком — «an»: «an apple»</div>
+            <div class="explanation">
+                a — перед согласным звуком: a book, a user [ju:] (!)«user» начинается со звука [j]<br>
+                an — перед гласным звуком: an apple, an hour [ауэ] (!)«hour» начинается с гласного звука<br>
+                Важно: смотрим на ЗВУК, а не на букву! «university» → a university (звук [j])
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <h4>📌 Самые нужные неправильные глаголы — повтори колонки</h4>
+            <div class="two-col">
+                <div>
+                    <table>
+                        <tr><th>V1</th><th>V2</th></tr>
+                        <tr><td>go</td><td>went</td></tr>
+                        <tr><td>come</td><td>came</td></tr>
+                        <tr><td>see</td><td>saw</td></tr>
+                        <tr><td>take</td><td>took</td></tr>
+                        <tr><td>give</td><td>gave</td></tr>
+                        <tr><td>write</td><td>wrote</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr><th>V1</th><th>V2</th></tr>
+                        <tr><td>make</td><td>made</td></tr>
+                        <tr><td>know</td><td>knew</td></tr>
+                        <tr><td>think</td><td>thought</td></tr>
+                        <tr><td>buy</td><td>bought</td></tr>
+                        <tr><td>eat</td><td>ate</td></tr>
+                        <tr><td>run</td><td>ran</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мини-тест английский -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: Английский язык</h3>
+            <div class="mq-question" id="men1">
+                <p>1. «Look! She _______ in the rain.» (dance)</p>
+                <button class="mq-option" onclick="mqAnswer(this,'men1',false)">dances</button>
+                <button class="mq-option" onclick="mqAnswer(this,'men1',true)">is dancing</button>
+                <div class="mq-feedback" id="men1-fb"></div>
+            </div>
+            <div class="mq-question" id="men2">
+                <p>2. «We _______ this film last week.» (see)</p>
+                <button class="mq-option" onclick="mqAnswer(this,'men2',false)">see</button>
+                <button class="mq-option" onclick="mqAnswer(this,'men2',true)">saw</button>
+                <button class="mq-option" onclick="mqAnswer(this,'men2',false)">seen</button>
+                <div class="mq-feedback" id="men2-fb"></div>
+            </div>
+            <div class="mq-question" id="men3">
+                <p>3. Артикль: «She is _______ honest person.»</p>
+                <button class="mq-option" onclick="mqAnswer(this,'men3',false)">a</button>
+                <button class="mq-option" onclick="mqAnswer(this,'men3',true)">an (honest начинается с гласного звука [o])</button>
+                <div class="mq-feedback" id="men3-fb"></div>
+            </div>
+            <div class="mq-question" id="men4">
+                <p>4. «He _______ play chess very well.» (умеет)</p>
+                <button class="mq-option" onclick="mqAnswer(this,'men4',true)">can</button>
+                <button class="mq-option" onclick="mqAnswer(this,'men4',false)">must</button>
+                <button class="mq-option" onclick="mqAnswer(this,'men4',false)">should</button>
+                <div class="mq-feedback" id="men4-fb"></div>
+            </div>
+            <div class="mq-score" id="men-score"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- БЛОК — ЛИТЕРАТУРА -->
+    <!-- ============================================================ -->
+    <div class="subject-block literature">
+        <h2>📖 Литература — Разбор типичных ошибок</h2>
+        <div class="sub-meta">Авторы, произведения, литературные приёмы</div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: путаница авторов</div>
+            <div class="wrong-ans">Приписали «Уроки французского» Астафьеву</div>
+            <div class="right-ans">«Уроки французского» — Валентин Григорьевич Распутин</div>
+            <div class="explanation">
+                Запомни пары «автор → произведение» через ассоциации:<br>
+                • РАСПутин → РАСсказывает про французский язык<br>
+                • АСТАфьев → АСТра (цветок) → «Конь с розовой гривой» (красивое, яркое)<br>
+                • ПРИшвин → ПРИрода → «Кладовая солнца» (природа, лес, болото)<br>
+                • ЛЕСков → ЛЕСной мастер → «Левша» (тульский мастер)
+            </div>
+        </div>
+
+        <div class="error-card">
+            <div class="error-q">❓ Частая ошибка: метафора vs олицетворение</div>
+            <div class="wrong-ans">«Горит восток» назвали олицетворением</div>
+            <div class="right-ans">«Горит восток» — метафора (скрытое сравнение: рассвет = огонь)</div>
+            <div class="explanation">
+                <strong>Метафора</strong> — перенос значения по СХОДСТВУ (А похоже на Б, поэтому называем А словом Б):<br>
+                «Горит восток» = рассвет похож на огонь → метафора<br><br>
+                <strong>Олицетворение</strong> — частный случай метафоры: НЕЖИВОМУ приписываем свойства ЖИВОГО:<br>
+                «Ветер злится» = ветер (неживой) делает то, что делают живые (злятся) → олицетворение<br><br>
+                Проверка: если неживое ведёт себя как живое → олицетворение. Если просто похожесть → метафора.
+            </div>
+        </div>
+
+        <div class="rule-box">
+            <h4>📌 Шпаргалка: автор — произведение — ключевое</h4>
+            <table>
+                <tr><th>Автор</th><th>Произведение</th><th>Запомни</th></tr>
+                <tr><td>Пушкин</td><td>Дубровский</td><td>Дубровский мстит Троекурову, любит Машу</td></tr>
+                <tr><td>Лесков</td><td>Левша</td><td>Подковал блоху, умер непризнанным — сказ</td></tr>
+                <tr><td>Распутин</td><td>Уроки французского</td><td>Учительница Лидия Михайловна — игра на деньги</td></tr>
+                <tr><td>Астафьев</td><td>Конь с розовой гривой</td><td>Обманул бабушку с земляникой — прощён</td></tr>
+                <tr><td>Пришвин</td><td>Кладовая солнца</td><td>Настя и Митраша — болото — Антипыч</td></tr>
+                <tr><td>Сент-Экзюпери</td><td>Маленький принц</td><td>«Зорко одно лишь сердце» — Лис</td></tr>
+                <tr><td>О. Генри</td><td>Дары волхвов</td><td>Делла + Джим — оба пожертвовали главным</td></tr>
+                <tr><td>Чехов</td><td>Толстый и тонкий</td><td>Чинопочитание — потеря достоинства</td></tr>
+            </table>
+        </div>
+
+        <!-- Мини-тест литература -->
+        <div class="mini-quiz">
+            <h3>🎯 Мини-тест: Литература</h3>
+            <div class="mq-question" id="mli1">
+                <p>1. «Уроки французского» написал:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mli1',false)">В.П. Астафьев</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mli1',true)">В.Г. Распутин</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mli1',false)">М.М. Пришвин</button>
+                <div class="mq-feedback" id="mli1-fb"></div>
+            </div>
+            <div class="mq-question" id="mli2">
+                <p>2. «Ветер поёт и свистит» — это:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mli2',false)">Метафора</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mli2',true)">Олицетворение (ветер — неживой, но ведёт себя как живой)</button>
+                <div class="mq-feedback" id="mli2-fb"></div>
+            </div>
+            <div class="mq-question" id="mli3">
+                <p>3. Главный герой «В дурном обществе» Короленко — это:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mli3',true)">Вася — сын местного судьи</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mli3',false)">Митраша — крестьянский мальчик</button>
+                <div class="mq-feedback" id="mli3-fb"></div>
+            </div>
+            <div class="mq-question" id="mli4">
+                <p>4. Жанр «Маленького принца» Сент-Экзюпери:</p>
+                <button class="mq-option" onclick="mqAnswer(this,'mli4',false)">Сказ</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mli4',true)">Сказка-притча</button>
+                <button class="mq-option" onclick="mqAnswer(this,'mli4',false)">Роман</button>
+                <div class="mq-feedback" id="mli4-fb"></div>
+            </div>
+            <div class="mq-score" id="mli-score"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ИТОГОВЫЙ ПРОГРЕСС И РЕКОМЕНДАЦИИ -->
+    <!-- ============================================================ -->
+    <div style="background:rgba(255,255,255,0.04);border:2px solid rgba(255,210,0,0.3);border-radius:20px;padding:28px;margin-top:25px;">
+        <h2 style="color:#ffd200;margin-bottom:18px;">📊 Итоги работы над ошибками</h2>
+
+        <div class="method-card">
+            <h4>🔄 Метод «Три прохода»</h4>
+            <p>1-й проход: читаешь ошибку и объяснение (понять). 2-й проход: закрываешь объяснение и повторяешь сам вслух (запомнить). 3-й проход: решаешь похожее задание без подсказки (закрепить).</p>
+        </div>
+
+        <div class="method-card">
+            <h4>📝 Метод «Карточки ошибок»</h4>
+            <p>Запиши каждую ошибку на карточку: с одной стороны — вопрос, с другой — правильный ответ с объяснением. Просматривай карточки завтра перед пробным тестом №2.</p>
+        </div>
+
+        <div class="method-card">
+            <h4>🎯 Фокус завтрашнего дня (День 26)</h4>
+            <p>Пробный тест №2 — сосредоточься на предметах, где были наибольшие ошибки сегодня. В остальных предметах — лёгкое повторение опорных конспектов.</p>
+        </div>
+
+        <div class="tip-box">
+            <strong>Перед сном сегодня:</strong><br>
+            ✅ Перечитай карточки ошибок (10 минут)<br>
+            ✅ Запомни 5 самых важных правил, которые узнал сегодня<br>
+            ✅ Выспись — мозг закрепляет информацию во сне<br>
+            ✅ Завтра — последний пробный тест и финальная подготовка!
+        </div>
+    </div>
+
+</div>
+
+<script>
+    /* ===== АНАЛИЗАТОР ОШИБОК ===== */
+    const subjects = [
+        { id: 'russian',   name: '🇷🇺 Русский язык', total: 15 },
+        { id: 'math',      name: '📐 Математика',     total: 15 },
+        { id: 'history',   name: '🏛️ История',        total: 10 },
+        { id: 'social',    name: '👥 Обществознание', total: 10 },
+        { id: 'biology',   name: '🌿 Биология',       total: 10 },
+        { id: 'geography', name: '🌍 География',      total: 10 },
+        { id: 'english',   name: '🇬🇧 Английский',    total: 10 },
+        { id: 'literature',name: '📖 Литература',     total: 10 }
+    ];
+
+    function calcPriority() {
+        const results = [];
+        subjects.forEach(s => {
+            const input = document.getElementById('sc-' + s.id);
+            const val = Math.min(Math.max(parseInt(input.value) || 0, 0), s.total);
+            const pct = Math.round(val / s.total * 100);
+            results.push({ ...s, score: val, pct });
+
+            // progress bar
+            const pb = document.querySelector('#pb-' + s.id + ' .progress-bar-fill');
+            if (pb) { pb.style.width = pct + '%'; pb.textContent = pct + '%'; }
+
+            // badge
+            const badge = document.getElementById('badge-' + s.id);
+            if (badge) {
+                if (pct >= 80) { badge.textContent = '✅ Хорошо'; badge.className = 'priority-badge p-low'; }
+                else if (pct >= 60) { badge.textContent = '⚠️ Повторить'; badge.className = 'priority-badge p-mid'; }
+                else { badge.textContent = '🔥 Приоритет!'; badge.className = 'priority-badge p-high'; }
+            }
+        });
+
+        results.sort((a, b) => a.pct - b.pct);
+
+        let html = '<ul style="padding-left:20px;line-height:2;">';
+        results.forEach((r, i) => {
+            const icon = r.pct >= 80 ? '✅' : r.pct >= 60 ? '⚠️' : '🔥';
+            const tip = r.pct >= 80 ? 'Лёгкое повторение' : r.pct >= 60 ? 'Повтори проблемные темы' : 'ПРИОРИТЕТ — детальный разбор!';
+            html += `<li>${icon} <strong>${r.name}</strong>: ${r.score}/${r.total} (${r.pct}%) — ${tip}</li>`;
+        });
+        html += '</ul>';
+
+        document.getElementById('priorityList').innerHTML = html;
+        document.getElementById('priorityResult').classList.add('show');
+    }
+
+    /* ===== МИНИ-ТЕСТЫ ===== */
+    const miniQuizzes = {
+        mru: { total: 5, answered: 0, correct: 0 },
+        mma: { total: 5, answered: 0, correct: 0 },
+        mhi: { total: 4, answered: 0, correct: 0 },
+        mso: { total: 4, answered: 0, correct: 0 },
+        mbi: { total: 4, answered: 0, correct: 0 },
+        mge: { total: 4, answered: 0, correct: 0 },
+        men: { total: 4, answered: 0, correct: 0 },
+        mli: { total: 4, answered: 0, correct: 0 }
+    };
+
+    function getQuizPrefix(qId) {
+        return Object.keys(miniQuizzes).find(k => qId.startsWith(k));
+    }
+
+    function mqAnswer(button, questionId, isCorrect) {
+        const question = document.getElementById(questionId);
+        if (!question) return;
+        const buttons = question.querySelectorAll('.mq-option');
+        const feedback = document.getElementById(questionId + '-fb');
+        if (button.disabled) return;
+
+        buttons.forEach(btn => {
+            btn.disabled = true;
+            if (btn === button) btn.classList.add(isCorrect ? 'correct' : 'wrong');
+        });
+        if (!isCorrect) {
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes('true'))
+                    btn.classList.add('correct');
+            });
+        }
+        if (feedback) {
+            feedback.className = 'mq-feedback show ' + (isCorrect ? 'cfb' : 'wfb');
+            feedback.textContent = isCorrect ? '✅ Правильно!' : '❌ Неправильно — смотри правильный ответ выше.';
+        }
+
+        const prefix = getQuizPrefix(questionId);
+        if (prefix && miniQuizzes[prefix]) {
+            miniQuizzes[prefix].answered++;
+            if (isCorrect) miniQuizzes[prefix].correct++;
+            if (miniQuizzes[prefix].answered === miniQuizzes[prefix].total) {
+                const scoreEl = document.getElementById(prefix + '-score');
+                if (scoreEl) {
+                    const pct = Math.round(miniQuizzes[prefix].correct / miniQuizzes[prefix].total * 100);
+                    const em = pct === 100 ? '🌟' : pct >= 80 ? '👍' : pct >= 60 ? '📚' : '💪';
+                    scoreEl.textContent = em + ' Результат: ' + miniQuizzes[prefix].correct + '/' + miniQuizzes[prefix].total + ' (' + pct + '%)';
+                    scoreEl.style.display = 'block';
+                }
+            }
+        }
+    }
+
+    /* ===== РЕШЕНИЯ УПРАЖНЕНИЙ ===== */
+    function toggleSol(id) {
+        const el = document.getElementById(id);
+        if (el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
+    }
+
+    /* ===== ЧЕК-ЛИСТ ===== */
+    function toggleCheck(el) { el.classList.toggle('checked'); }
+</script>
+</body>
+</html>

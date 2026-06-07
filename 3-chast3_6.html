@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — Математика: Координаты и Уравнения (6 класс)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 { color: #c0392b; font-size: 1.9em; margin-bottom: 10px; }
+        .header .subtitle { color: #666; font-size: 1.1em; }
+        .header .time-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .section-divider span {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            color: #c0392b;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f093fb;
+            font-size: 1.5em;
+        }
+        .card h3 { color: #e74c3c; margin: 15px 0 10px; font-size: 1.2em; }
+        .card h4 { color: #c0392b; margin: 12px 0 8px; font-size: 1.05em; }
+        .card p { line-height: 1.7; margin: 6px 0; }
+
+        .notebook {
+            background: #fffde7;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -12px; left: 10px;
+            background: #ff9800;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .notebook ul, .notebook ol { margin-left: 20px; margin-top: 10px; }
+        .notebook li { margin-bottom: 6px; line-height: 1.7; }
+        .notebook p { line-height: 1.7; margin: 6px 0; }
+
+        .rule-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .rule-box .rule-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .rule-box p { margin: 5px 0; line-height: 1.6; }
+        .rule-box ul { margin-left: 20px; }
+        .rule-box li { margin-bottom: 4px; line-height: 1.6; }
+
+        .example {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.8;
+        }
+        .example strong { color: #1565c0; }
+
+        .practice {
+            background: #fce4ec;
+            border-left: 5px solid #e91e63;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .practice::before {
+            content: "✏️ ПОРЕШАТЬ";
+            position: absolute;
+            top: -12px; left: 10px;
+            background: #e91e63;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .practice ol, .practice ul { margin-left: 20px; margin-top: 8px; }
+        .practice li { margin-bottom: 10px; line-height: 1.7; }
+
+        .solution {
+            background: #f1f8e9;
+            border: 1px dashed #8bc34a;
+            padding: 15px;
+            margin: 5px 0 10px;
+            border-radius: 8px;
+            display: none;
+            line-height: 1.8;
+        }
+        .solution ol, .solution ul { margin-left: 20px; }
+        .solution li { margin-bottom: 8px; }
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none;
+            color: #1a5e2a;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin: 6px 0;
+            transition: transform 0.2s;
+        }
+        .solution-btn:hover { transform: scale(1.05); }
+
+        .step-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 12px 0;
+        }
+        .step-box .step-title {
+            font-weight: bold;
+            color: #e65100;
+            font-size: 1.05em;
+            margin-bottom: 8px;
+        }
+        .step-box p, .step-box li { line-height: 1.7; }
+        .step-box ol, .step-box ul { margin-left: 20px; margin-top: 5px; }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВНИМАНИЕ! Частая ошибка:";
+            font-weight: bold;
+            color: #856404;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .warning-box p { line-height: 1.6; }
+
+        .mnemonic {
+            background: #e0f7fa;
+            border: 2px dashed #00bcd4;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ ЛЕГКО:";
+            display: block;
+            font-weight: bold;
+            color: #006064;
+            margin-bottom: 5px;
+        }
+
+        .video-section {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .video-section h3 { color: #e65100; margin-bottom: 10px; }
+        .video-link {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+        .video-link:hover { transform: translateX(5px); color: white; }
+        .video-link .play-icon { font-size: 1.5em; margin-right: 10px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white; padding: 10px 8px; text-align: left;
+        }
+        td { padding: 9px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+        tr:nth-child(even) { background: #fafafa; }
+        tr:hover { background: #fce4ec; }
+
+        /* Координатная плоскость SVG */
+        .coord-plane-container {
+            text-align: center;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .coord-plane-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Уравнения - красивое отображение */
+        .equation {
+            font-size: 1.15em;
+            font-weight: bold;
+            color: #c0392b;
+            background: #fce4ec;
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .equation-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 8px 0;
+            gap: 15px;
+        }
+        .eq-num {
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .eq-content { flex: 1; line-height: 1.8; }
+        .eq-math {
+            font-family: 'Courier New', monospace;
+            font-size: 1.05em;
+            color: #333;
+        }
+        .eq-comment { color: #888; font-size: 0.9em; font-style: italic; }
+
+        /* Квадранты */
+        .quadrant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .quadrant-card {
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+        }
+        .q1 { background: #e8f5e9; border: 2px solid #4caf50; }
+        .q2 { background: #e3f2fd; border: 2px solid #2196f3; }
+        .q3 { background: #fce4ec; border: 2px solid #e91e63; }
+        .q4 { background: #fff3e0; border: 2px solid #ff9800; }
+        .quadrant-card h4 { font-size: 1em; margin-bottom: 5px; }
+
+        .quiz-container {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-container h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .quiz-question p {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+            line-height: 1.5;
+        }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: #e74c3c; background: #fff5f5; }
+        .quiz-option.correct { background: #c8e6c9; border-color: #4caf50; color: #2e7d32; }
+        .quiz-option.wrong { background: #ffcdd2; border-color: #f44336; color: #c62828; }
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+        }
+        .score-display {
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .score-display .score-number {
+            font-size: 3em;
+            color: #c0392b;
+            font-weight: bold;
+        }
+        .check-btn {
+            background: white;
+            color: #c0392b;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        .check-btn:hover { transform: scale(1.05); }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: white;
+            color: #c0392b;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .highlight { background: #ffeb3b; padding: 2px 5px; border-radius: 3px; }
+        .accent { color: #e91e63; font-weight: bold; }
+        .green { color: #2e7d32; font-weight: bold; }
+        .blue { color: #1565c0; font-weight: bold; }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 10px 0;
+        }
+        @media(max-width: 600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .quadrant-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .solution-full {
+            background: #f9fbe7;
+            border: 2px solid #aed581;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 10px 0;
+            display: none;
+        }
+        .solution-full h4 { color: #33691e; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ====== HEADER ====== -->
+    <div class="header">
+        <h1>📐 Неделя 3 — Математика</h1>
+        <div class="subtitle">Часть 1: Координатная плоскость • Решение уравнений</div>
+        <div class="time-badge">⏱ Время: ~3,5 часа</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ЧАСТЬ А: КООРДИНАТНАЯ ПЛОСКОСТЬ -->
+    <!-- ============================================================ -->
+    <div class="section-divider">
+        <span>📍 КООРДИНАТНАЯ ПЛОСКОСТЬ</span>
+    </div>
+
+    <!-- 1. Основные понятия -->
+    <div class="card">
+        <h2>📖 1. Основные понятия</h2>
+
+        <div class="notebook">
+            <br>
+            <h3>Координатная плоскость — что это?</h3>
+            <p>Две числовые оси, пересекающиеся под прямым углом в точке <strong>O (начало координат)</strong>, образуют <strong>координатную плоскость</strong>.</p>
+
+            <h3>Оси координат:</h3>
+            <ul>
+                <li><strong>Ось Ox (абсцисс)</strong> — горизонтальная ось. Вправо — положительные числа, влево — отрицательные.</li>
+                <li><strong>Ось Oy (ординат)</strong> — вертикальная ось. Вверх — положительные числа, вниз — отрицательные.</li>
+                <li><strong>Начало координат O(0; 0)</strong> — точка пересечения осей.</li>
+            </ul>
+
+            <h3>Координаты точки:</h3>
+            <p>Каждая точка плоскости задаётся парой чисел <strong>(x; y)</strong>, где:</p>
+            <ul>
+                <li><strong>x — абсцисса</strong> (первая координата) — расстояние от оси Oy (отсчитывается горизонтально)</li>
+                <li><strong>y — ордината</strong> (вторая координата) — расстояние от оси Ox (отсчитывается вертикально)</li>
+            </ul>
+            <p>Пример: точка <strong>A(3; −2)</strong> — отложить 3 вправо, 2 вниз.</p>
+        </div>
+
+        <div class="mnemonic">
+            <strong>Как запомнить порядок координат?</strong><br>
+            <em>«Иди сначала <strong>направо (или налево)</strong>, потом <strong>вверх (или вниз)</strong>»</em><br>
+            То есть <strong>сначала x</strong> (горизонталь), <strong>потом y</strong> (вертикаль).<br><br>
+            Запомни: <strong>«ПО улице, затем В дом»</strong><br>
+            (горизонталь → вертикаль = x → y)
+        </div>
+    </div>
+
+    <!-- 2. Координатная плоскость — рисунок -->
+    <div class="card">
+        <h2>📖 2. Координатная плоскость (схема)</h2>
+
+        <div class="coord-plane-container">
+            <svg viewBox="-200 -200 400 400" width="480" height="480"
+                 style="border: 1px solid #ddd; border-radius: 10px; background: #fafafa;">
+
+                <!-- Сетка -->
+                <g stroke="#e0e0e0" stroke-width="0.5">
+                    <line x1="-180" y1="-160" x2="-180" y2="160"/>
+                    <line x1="-140" y1="-160" x2="-140" y2="160"/>
+                    <line x1="-100" y1="-160" x2="-100" y2="160"/>
+                    <line x1="-60" y1="-160" x2="-60" y2="160"/>
+                    <line x1="-20" y1="-160" x2="-20" y2="160"/>
+                    <line x1="20" y1="-160" x2="20" y2="160"/>
+                    <line x1="60" y1="-160" x2="60" y2="160"/>
+                    <line x1="100" y1="-160" x2="100" y2="160"/>
+                    <line x1="140" y1="-160" x2="140" y2="160"/>
+                    <line x1="180" y1="-160" x2="180" y2="160"/>
+
+                    <line x1="-185" y1="-160" x2="185" y2="-160"/>
+                    <line x1="-185" y1="-120" x2="185" y2="-120"/>
+                    <line x1="-185" y1="-80" x2="185" y2="-80"/>
+                    <line x1="-185" y1="-40" x2="185" y2="-40"/>
+                    <line x1="-185" y1="40" x2="185" y2="40"/>
+                    <line x1="-185" y1="80" x2="185" y2="80"/>
+                    <line x1="-185" y1="120" x2="185" y2="120"/>
+                    <line x1="-185" y1="160" x2="185" y2="160"/>
+                </g>
+
+                <!-- Оси -->
+                <line x1="-190" y1="0" x2="190" y2="0" stroke="#333" stroke-width="2"/>
+                <line x1="0" y1="185" x2="0" y2="-185" stroke="#333" stroke-width="2"/>
+
+                <!-- Стрелки -->
+                <polygon points="190,0 180,-5 180,5" fill="#333"/>
+                <polygon points="0,-185 -5,-175 5,-175" fill="#333"/>
+
+                <!-- Подписи осей -->
+                <text x="192" y="5" font-size="16" font-weight="bold" fill="#c0392b">x</text>
+                <text x="5" y="-187" font-size="16" font-weight="bold" fill="#c0392b">y</text>
+                <text x="5" y="15" font-size="13" fill="#555">O</text>
+
+                <!-- Деления и цифры по X -->
+                <g font-size="11" fill="#555" text-anchor="middle">
+                    <line x1="-160" y1="-4" x2="-160" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="-160" y="16">-4</text>
+                    <line x1="-120" y1="-4" x2="-120" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="-120" y="16">-3</text>
+                    <line x1="-80" y1="-4" x2="-80" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="-80" y="16">-2</text>
+                    <line x1="-40" y1="-4" x2="-40" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="-40" y="16">-1</text>
+                    <line x1="40" y1="-4" x2="40" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="40" y="16">1</text>
+                    <line x1="80" y1="-4" x2="80" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="80" y="16">2</text>
+                    <line x1="120" y1="-4" x2="120" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="120" y="16">3</text>
+                    <line x1="160" y1="-4" x2="160" y2="4" stroke="#333" stroke-width="1.5"/>
+                    <text x="160" y="16">4</text>
+                </g>
+
+                <!-- Деления и цифры по Y -->
+                <g font-size="11" fill="#555" text-anchor="end">
+                    <line x1="-4" y1="-160" x2="4" y2="-160" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="-156">4</text>
+                    <line x1="-4" y1="-120" x2="4" y2="-120" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="-116">3</text>
+                    <line x1="-4" y1="-80" x2="4" y2="-80" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="-76">2</text>
+                    <line x1="-4" y1="-40" x2="4" y2="-40" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="-36">1</text>
+                    <line x1="-4" y1="40" x2="4" y2="40" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="44">-1</text>
+                    <line x1="-4" y1="80" x2="4" y2="80" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="84">-2</text>
+                    <line x1="-4" y1="120" x2="4" y2="120" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="124">-3</text>
+                    <line x1="-4" y1="160" x2="4" y2="160" stroke="#333" stroke-width="1.5"/>
+                    <text x="-8" y="164">-4</text>
+                </g>
+
+                <!-- Квадранты — подписи -->
+                <text x="100" y="-100" font-size="13" fill="#4caf50" font-weight="bold" opacity="0.7">I</text>
+                <text x="-125" y="-100" font-size="13" fill="#2196f3" font-weight="bold" opacity="0.7">II</text>
+                <text x="-125" y="120" font-size="13" fill="#e91e63" font-weight="bold" opacity="0.7">III</text>
+                <text x="100" y="120" font-size="13" fill="#ff9800" font-weight="bold" opacity="0.7">IV</text>
+
+                <!-- Примеры точек -->
+                <!-- A(2; 3) -->
+                <circle cx="80" cy="-120" r="5" fill="#e74c3c"/>
+                <text x="88" y="-125" font-size="12" fill="#c0392b" font-weight="bold">A(2;3)</text>
+                <!-- Проекции A -->
+                <line x1="80" y1="0" x2="80" y2="-120" stroke="#e74c3c" stroke-width="1" stroke-dasharray="4"/>
+                <line x1="0" y1="-120" x2="80" y2="-120" stroke="#e74c3c" stroke-width="1" stroke-dasharray="4"/>
+
+                <!-- B(-3; 1) -->
+                <circle cx="-120" cy="-40" r="5" fill="#2196f3"/>
+                <text x="-175" y="-45" font-size="12" fill="#1565c0" font-weight="bold">B(-3;1)</text>
+                <line x1="-120" y1="0" x2="-120" y2="-40" stroke="#2196f3" stroke-width="1" stroke-dasharray="4"/>
+                <line x1="0" y1="-40" x2="-120" y2="-40" stroke="#2196f3" stroke-width="1" stroke-dasharray="4"/>
+
+                <!-- C(-2; -3) -->
+                <circle cx="-80" cy="120" r="5" fill="#9c27b0"/>
+                <text x="-145" y="135" font-size="12" fill="#7b1fa2" font-weight="bold">C(-2;-3)</text>
+                <line x1="-80" y1="0" x2="-80" y2="120" stroke="#9c27b0" stroke-width="1" stroke-dasharray="4"/>
+                <line x1="0" y1="120" x2="-80" y2="120" stroke="#9c27b0" stroke-width="1" stroke-dasharray="4"/>
+
+                <!-- D(3; -2) -->
+                <circle cx="120" cy="80" r="5" fill="#ff9800"/>
+                <text x="128" y="75" font-size="12" fill="#e65100" font-weight="bold">D(3;-2)</text>
+                <line x1="120" y1="0" x2="120" y2="80" stroke="#ff9800" stroke-width="1" stroke-dasharray="4"/>
+                <line x1="0" y1="80" x2="120" y2="80" stroke="#ff9800" stroke-width="1" stroke-dasharray="4"/>
+            </svg>
+        </div>
+
+        <div class="notebook">
+            <br>
+            <h3>Четыре квадранта координатной плоскости:</h3>
+        </div>
+
+        <div class="quadrant-grid">
+            <div class="quadrant-card q1">
+                <h4>I квадрант</h4>
+                <p><strong>x > 0, y > 0</strong></p>
+                <p>(правый верхний)</p>
+                <p>Пример: A(2; 3)</p>
+            </div>
+            <div class="quadrant-card q2">
+                <h4>II квадрант</h4>
+                <p><strong>x &lt; 0, y > 0</strong></p>
+                <p>(левый верхний)</p>
+                <p>Пример: B(−3; 1)</p>
+            </div>
+            <div class="quadrant-card q3">
+                <h4>III квадрант</h4>
+                <p><strong>x &lt; 0, y &lt; 0</strong></p>
+                <p>(левый нижний)</p>
+                <p>Пример: C(−2; −3)</p>
+            </div>
+            <div class="quadrant-card q4">
+                <h4>IV квадрант</h4>
+                <p><strong>x > 0, y &lt; 0</strong></p>
+                <p>(правый нижний)</p>
+                <p>Пример: D(3; −2)</p>
+            </div>
+        </div>
+
+        <div class="notebook">
+            <br>
+            <h3>Точки на осях:</h3>
+            <ul>
+                <li>Если точка на оси <strong>Ox</strong> → у неё <strong>y = 0</strong>. Например: M(5; 0)</li>
+                <li>Если точка на оси <strong>Oy</strong> → у неё <strong>x = 0</strong>. Например: N(0; −3)</li>
+                <li>Если точка в <strong>начале координат</strong> → O(0; 0)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. Как строить и читать точки -->
+    <div class="card">
+        <h2>📖 3. Алгоритмы работы с точками</h2>
+
+        <div class="step-box">
+            <div class="step-title">📌 Как построить точку по координатам A(x; y):</div>
+            <ol>
+                <li>От начала координат O отложи по оси Ox значение <strong>x</strong> (вправо если «+», влево если «−»)</li>
+                <li>Из полученной точки восстанови перпендикуляр к оси Ox</li>
+                <li>Отложи по оси Oy значение <strong>y</strong> (вверх если «+», вниз если «−»)</li>
+                <li>Поставь точку и подпиши её</li>
+            </ol>
+        </div>
+
+        <div class="step-box">
+            <div class="step-title">📌 Как определить координаты точки по чертежу:</div>
+            <ol>
+                <li>Из точки опусти перпендикуляр на ось Ox → прочитай значение <strong>x (абсциссу)</strong></li>
+                <li>Из точки опусти перпендикуляр на ось Oy → прочитай значение <strong>y (ординату)</strong></li>
+                <li>Запиши координаты в скобках через точку с запятой: <strong>(x; y)</strong></li>
+            </ol>
+        </div>
+
+        <div class="warning-box">
+            <p>Не путай x и y местами! Всегда сначала АБСЦИССА (x), потом ОРДИНАТА (y).</p>
+            <p>Точка A(3; 5) и точка B(5; 3) — это РАЗНЫЕ точки!</p>
+        </div>
+
+        <div class="example">
+            <strong>Пример определения квадранта без чертежа:</strong><br><br>
+            Точка <strong>M(−5; 3)</strong>: x = −5 (отрицательное), y = 3 (положительное) → x&lt;0, y&gt;0 → <strong>II квадрант</strong><br>
+            Точка <strong>K(7; −1)</strong>: x = 7 (положительное), y = −1 (отрицательное) → x&gt;0, y&lt;0 → <strong>IV квадрант</strong><br>
+            Точка <strong>P(−4; −6)</strong>: x = −4 (отрицательное), y = −6 (отрицательное) → x&lt;0, y&lt;0 → <strong>III квадрант</strong><br>
+            Точка <strong>Q(2; 0)</strong>: y = 0 → точка лежит на оси <strong>Ox</strong>
+        </div>
+    </div>
+
+    <!-- 4. Расстояние между точками -->
+    <div class="card">
+        <h2>📖 4. Расстояние на координатной плоскости</h2>
+
+        <div class="notebook">
+            <br>
+            <h3>Расстояние между двумя точками на одной горизонтали (одинаковый y):</h3>
+            <p>|AB| = |x₂ − x₁|</p>
+
+            <h3>Расстояние между двумя точками на одной вертикали (одинаковый x):</h3>
+            <p>|AB| = |y₂ − y₁|</p>
+
+            <h3>В общем случае (теорема Пифагора, для 6 класса достаточно знать для осей):</h3>
+            <p>Если точки на одной прямой, параллельной оси — считаем разность координат по модулю.</p>
+        </div>
+
+        <div class="example">
+            <strong>Пример:</strong><br>
+            A(−2; 3) и B(4; 3) — у обеих точек y = 3, значит они на одной горизонтали.<br>
+            |AB| = |4 − (−2)| = |4 + 2| = |6| = <strong>6 единиц</strong><br><br>
+            C(1; −3) и D(1; 5) — у обеих точек x = 1, значит они на одной вертикали.<br>
+            |CD| = |5 − (−3)| = |5 + 3| = |8| = <strong>8 единиц</strong>
+        </div>
+    </div>
+
+    <!-- Практика: координаты -->
+    <div class="card">
+        <h2>✏️ Практика: Координатная плоскость</h2>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 1.</strong> В каком квадранте (или на какой оси) находится точка? Определи без чертежа.</p>
+            <ol>
+                <li>A(3; 7)</li>
+                <li>B(−5; 2)</li>
+                <li>C(−1; −8)</li>
+                <li>D(4; −3)</li>
+                <li>E(0; 6)</li>
+                <li>F(−7; 0)</li>
+                <li>G(0; 0)</li>
+                <li>H(−3; −3)</li>
+                <li>K(100; −0,5)</li>
+                <li>L(−2; 9)</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sol_k1')">👁 Показать решение</button>
+        <div class="solution" id="sol_k1">
+            <ol>
+                <li>A(3; 7) — x&gt;0, y&gt;0 → <strong>I квадрант</strong></li>
+                <li>B(−5; 2) — x&lt;0, y&gt;0 → <strong>II квадрант</strong></li>
+                <li>C(−1; −8) — x&lt;0, y&lt;0 → <strong>III квадрант</strong></li>
+                <li>D(4; −3) — x&gt;0, y&lt;0 → <strong>IV квадрант</strong></li>
+                <li>E(0; 6) — x=0 → <strong>ось Oy</strong></li>
+                <li>F(−7; 0) — y=0 → <strong>ось Ox</strong></li>
+                <li>G(0; 0) — <strong>начало координат (точка O)</strong></li>
+                <li>H(−3; −3) — x&lt;0, y&lt;0 → <strong>III квадрант</strong></li>
+                <li>K(100; −0,5) — x&gt;0, y&lt;0 → <strong>IV квадрант</strong></li>
+                <li>L(−2; 9) — x&lt;0, y&gt;0 → <strong>II квадрант</strong></li>
+            </ol>
+        </div>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 2.</strong> Найди длину отрезка, если известны координаты его концов:</p>
+            <ol>
+                <li>A(1; 4) и B(7; 4)</li>
+                <li>C(−3; 2) и D(5; 2)</li>
+                <li>E(2; −5) и F(2; 3)</li>
+                <li>G(−4; −1) и H(−4; 6)</li>
+                <li>K(−6; 0) и L(4; 0)</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sol_k2')">👁 Показать решение</button>
+        <div class="solution" id="sol_k2">
+            <ol>
+                <li>A(1; 4) и B(7; 4): одинаковый y=4, |AB| = |7−1| = <strong>6 ед.</strong></li>
+                <li>C(−3; 2) и D(5; 2): одинаковый y=2, |CD| = |5−(−3)| = |5+3| = <strong>8 ед.</strong></li>
+                <li>E(2; −5) и F(2; 3): одинаковый x=2, |EF| = |3−(−5)| = |3+5| = <strong>8 ед.</strong></li>
+                <li>G(−4; −1) и H(−4; 6): одинаковый x=−4, |GH| = |6−(−1)| = |6+1| = <strong>7 ед.</strong></li>
+                <li>K(−6; 0) и L(4; 0): оба на оси Ox, |KL| = |4−(−6)| = |4+6| = <strong>10 ед.</strong></li>
+            </ol>
+        </div>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 3.</strong> Определи координаты вершин прямоугольника ABCD, если:</p>
+            <ul>
+                <li>A(2; 1) — левая нижняя вершина</li>
+                <li>Длина прямоугольника (горизонтальная сторона) = 5 единиц</li>
+                <li>Ширина прямоугольника (вертикальная сторона) = 3 единицы</li>
+                <li>Прямоугольник расположен в I квадранте</li>
+            </ul>
+            <p>Найди: координаты B, C, D и периметр прямоугольника.</p>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sol_k3')">👁 Показать решение</button>
+        <div class="solution" id="sol_k3">
+            <p><strong>A(2; 1)</strong> — левая нижняя.</p>
+            <p>Длина вправо = 5: <strong>B(2+5; 1) = B(7; 1)</strong> — правая нижняя.</p>
+            <p>Ширина вверх = 3: <strong>D(2; 1+3) = D(2; 4)</strong> — левая верхняя.</p>
+            <p>Правая верхняя: <strong>C(7; 4)</strong></p>
+            <br>
+            <p><strong>Периметр:</strong> P = 2·(5+3) = 2·8 = <strong>16 единиц</strong></p>
+            <p><strong>Площадь:</strong> S = 5·3 = <strong>15 кв. единиц</strong></p>
+        </div>
+    </div>
+
+    <!-- Видео: координаты -->
+    <div class="card">
+        <div class="video-section">
+            <h3>🎬 Видеоматериалы: Координатная плоскость</h3>
+            <a href="https://www.youtube.com/watch?v=6Yr0mMlEiO4" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Координатная плоскость — полный разбор темы | 6 класс</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=FRRf_v9H-nQ" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Как строить точки на координатной плоскости — практика</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=Yh7oJ8jBByA" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Квадранты координатной плоскости — простое объяснение</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- ЧАСТЬ Б: РЕШЕНИЕ УРАВНЕНИЙ -->
+    <!-- ============================================================ -->
+    <div class="section-divider">
+        <span>⚖️ РЕШЕНИЕ УРАВНЕНИЙ</span>
+    </div>
+
+    <!-- 5. Что такое уравнение -->
+    <div class="card">
+        <h2>📖 5. Уравнение — основные понятия</h2>
+
+        <div class="notebook">
+            <br>
+            <h3>Определение</h3>
+            <p><strong>Уравнение</strong> — это равенство, содержащее <strong>неизвестное</strong> (переменную), значение которой нужно найти.</p>
+            <p><strong>Корень уравнения</strong> — значение переменной, при котором уравнение становится верным равенством.</p>
+            <p><strong>Решить уравнение</strong> — найти все его корни или доказать, что корней нет.</p>
+
+            <h3>Основные свойства равенства (правила переноса):</h3>
+            <div class="rule-box">
+                <div class="rule-title">🔑 Главные правила решения уравнений:</div>
+                <ul>
+                    <li><strong>Правило 1:</strong> Если перенести слагаемое из одной части уравнения в другую, его знак меняется на противоположный.<br>
+                    <em>x + 5 = 12 → x = 12 − 5</em></li>
+                    <li><strong>Правило 2:</strong> Обе части уравнения можно умножить или разделить на одно и то же ненулевое число.<br>
+                    <em>3x = 15 → x = 15 : 3 = 5</em></li>
+                    <li><strong>Правило 3:</strong> Если слагаемое переходит через знак «=», оно меняет знак.<br>
+                    <em>Слагаемое «+» становится «−», и наоборот.</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mnemonic">
+            <strong>Главная цель при решении уравнения:</strong><br>
+            Получить вид <strong>«x = (число)»</strong><br>
+            Для этого нужно собрать все <strong>x</strong> в одну сторону,<br>
+            а все <strong>числа</strong> — в другую сторону!
+        </div>
+    </div>
+
+    <!-- 6. Типы уравнений -->
+    <div class="card">
+        <h2>📖 6. Типы уравнений и алгоритмы решения</h2>
+
+        <!-- Тип 1 -->
+        <h3>🔷 Тип 1: Простейшие уравнения</h3>
+        <div class="notebook">
+            <br>
+            <p>Вид: <strong>x + a = b</strong> или <strong>x − a = b</strong> или <strong>a · x = b</strong> или <strong>x : a = b</strong></p>
+            <br>
+            <p>Используем правила нахождения неизвестного компонента:</p>
+            <ul>
+                <li>Неизвестное <strong>слагаемое</strong> = сумма − известное слагаемое</li>
+                <li>Неизвестное <strong>уменьшаемое</strong> = разность + вычитаемое</li>
+                <li>Неизвестное <strong>вычитаемое</strong> = уменьшаемое − разность</li>
+                <li>Неизвестный <strong>множитель</strong> = произведение : известный множитель</li>
+                <li>Неизвестное <strong>делимое</strong> = частное × делитель</li>
+                <li>Неизвестный <strong>делитель</strong> = делимое : частное</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <strong>Примеры простейших уравнений:</strong><br><br>
+            <span class="eq-math">x + 13 = 28</span><br>
+            x = 28 − 13 = <strong>15</strong>. Проверка: 15 + 13 = 28 ✓<br><br>
+
+            <span class="eq-math">x − 7 = −3</span><br>
+            x = −3 + 7 = <strong>4</strong>. Проверка: 4 − 7 = −3 ✓<br><br>
+
+            <span class="eq-math">4x = 36</span><br>
+            x = 36 : 4 = <strong>9</strong>. Проверка: 4 · 9 = 36 ✓<br><br>
+
+            <span class="eq-math">x : 6 = −5</span><br>
+            x = −5 · 6 = <strong>−30</strong>. Проверка: −30 : 6 = −5 ✓
+        </div>
+
+        <!-- Тип 2 -->
+        <h3>🔷 Тип 2: Уравнения с переносом слагаемых</h3>
+        <div class="notebook">
+            <br>
+            <p>Вид: <strong>ax + b = c</strong> или <strong>ax = bx + c</strong></p>
+            <br>
+            <div class="step-box">
+                <div class="step-title">Алгоритм решения:</div>
+                <ol>
+                    <li>Перенести все члены с <strong>x</strong> в левую часть, числа — в правую<br>
+                    (при переносе знак меняется!)</li>
+                    <li>Привести подобные слагаемые</li>
+                    <li>Разделить обе части на коэффициент при x</li>
+                    <li>Сделать <strong>проверку</strong></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Подробный разбор: 5x − 8 = 2x + 10</strong><br><br>
+            <div class="equation-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">5x − 8 = 2x + 10</span><br>
+                    <span class="eq-comment">Переносим 2x влево (меняем знак: +2x → −2x), −8 вправо (меняем знак: −8 → +8)</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">5x − 2x = 10 + 8</span><br>
+                    <span class="eq-comment">Приводим подобные слагаемые</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">3</div>
+                <div class="eq-content">
+                    <span class="eq-math">3x = 18</span><br>
+                    <span class="eq-comment">Делим обе части на 3</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">4</div>
+                <div class="eq-content">
+                    <span class="eq-math">x = 18 : 3 = 6</span><br>
+                    <span class="eq-comment">Получили ответ</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Проверка:</strong> 5·6 − 8 = 30 − 8 = 22; 2·6 + 10 = 12 + 10 = 22. ✓<br>
+                    <strong>Ответ: x = 6</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Тип 3 -->
+        <h3>🔷 Тип 3: Уравнения со скобками</h3>
+        <div class="notebook">
+            <br>
+            <div class="step-box">
+                <div class="step-title">Алгоритм решения:</div>
+                <ol>
+                    <li><strong>Раскрыть скобки</strong> (умножить каждый член в скобках на множитель перед скобкой)</li>
+                    <li>Перенести x в одну сторону, числа — в другую</li>
+                    <li>Привести подобные слагаемые</li>
+                    <li>Разделить на коэффициент при x</li>
+                    <li>Сделать проверку</li>
+                </ol>
+            </div>
+
+            <h3>Правила раскрытия скобок:</h3>
+            <ul>
+                <li><strong>+(a + b) = a + b</strong> — знаки не меняются</li>
+                <li><strong>−(a + b) = −a − b</strong> — все знаки меняются</li>
+                <li><strong>−(a − b) = −a + b</strong> — все знаки меняются</li>
+                <li><strong>a(b + c) = ab + ac</strong> — каждый член умножается на a</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <strong>Подробный разбор: 3(x − 4) = 2(x + 1) − 5</strong><br><br>
+            <div class="equation-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">3(x − 4) = 2(x + 1) − 5</span><br>
+                    <span class="eq-comment">Раскрываем скобки</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">3x − 12 = 2x + 2 − 5</span><br>
+                    <span class="eq-comment">3·x=3x, 3·(−4)=−12; 2·x=2x, 2·1=2</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">3</div>
+                <div class="eq-content">
+                    <span class="eq-math">3x − 12 = 2x − 3</span><br>
+                    <span class="eq-comment">Приводим подобные в правой части: 2+(-5)=-3</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">4</div>
+                <div class="eq-content">
+                    <span class="eq-math">3x − 2x = −3 + 12</span><br>
+                    <span class="eq-comment">Переносим: 2x вправо → −2x, −12 вправо → +12</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">5</div>
+                <div class="eq-content">
+                    <span class="eq-math">x = 9</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Проверка:</strong> Левая: 3·(9−4) = 3·5 = 15<br>
+                    Правая: 2·(9+1)−5 = 2·10−5 = 20−5 = 15 ✓<br>
+                    <strong>Ответ: x = 9</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Тип 4: дроби -->
+        <h3>🔷 Тип 4: Уравнения с дробными коэффициентами</h3>
+        <div class="notebook">
+            <br>
+            <div class="step-box">
+                <div class="step-title">Алгоритм решения уравнений с дробями:</div>
+                <ol>
+                    <li>Найти <strong>НОК всех знаменателей</strong></li>
+                    <li>Умножить <strong>обе части уравнения</strong> на этот НОК</li>
+                    <li>Сократить дроби (знаменатели пропадут)</li>
+                    <li>Решить получившееся уравнение без дробей</li>
+                    <li>Проверка</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="example">
+            <strong>Подробный разбор: x/3 + x/6 = 5</strong><br><br>
+            <div class="equation-step">
+                <div class="eq-num">1</div>
+                <div class="eq-content">
+                    <span class="eq-math">x/3 + x/6 = 5</span><br>
+                    <span class="eq-comment">НОК(3, 6) = 6. Умножаем всё на 6.</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">2</div>
+                <div class="eq-content">
+                    <span class="eq-math">6 · (x/3) + 6 · (x/6) = 6 · 5</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">3</div>
+                <div class="eq-content">
+                    <span class="eq-math">2x + x = 30</span><br>
+                    <span class="eq-comment">6/3 = 2, 6/6 = 1</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">4</div>
+                <div class="eq-content">
+                    <span class="eq-math">3x = 30 → x = 10</span>
+                </div>
+            </div>
+            <div class="equation-step">
+                <div class="eq-num">✓</div>
+                <div class="eq-content">
+                    <strong>Проверка:</strong> 10/3 + 10/6 = 20/6 + 10/6 = 30/6 = 5 ✓<br>
+                    <strong>Ответ: x = 10</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Особые случаи -->
+        <h3>🔷 Особые случаи</h3>
+        <div class="notebook">
+            <br>
+            <table>
+                <tr>
+                    <th>Ситуация</th>
+                    <th>Пример</th>
+                    <th>Вывод</th>
+                </tr>
+                <tr>
+                    <td><strong>Нет корней</strong></td>
+                    <td>2x + 3 = 2x + 7 → 3 = 7 (ложь)</td>
+                    <td>Уравнение корней не имеет (∅)</td>
+                </tr>
+                <tr>
+                    <td><strong>Бесконечно много корней</strong></td>
+                    <td>3x − 6 = 3(x − 2) → 3x − 6 = 3x − 6 → 0 = 0 (истина)</td>
+                    <td>Уравнение верно при любом x</td>
+                </tr>
+                <tr>
+                    <td><strong>Один корень</strong></td>
+                    <td>5x − 3 = 2x + 9 → x = 4</td>
+                    <td>Обычный случай</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 7. Уравнения — практика -->
+    <div class="card">
+        <h2>✏️ Практика: Решение уравнений</h2>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 4.</strong> Реши уравнения (с проверкой):</p>
+            <ol>
+                <li>x + 17 = 45</li>
+                <li>x − 23 = −8</li>
+                <li>6x = −54</li>
+                <li>x : 4 = −12</li>
+                <li>3x + 7 = 28</li>
+                <li>5x − 14 = 2x + 7</li>
+                <li>8 − 3x = 2 + x</li>
+                <li>4(x + 3) = 2(x − 1) + 18</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sol_u1')">👁 Показать решение</button>
+        <div class="solution" id="sol_u1">
+            <p><strong>1) x + 17 = 45</strong><br>
+            x = 45 − 17 = <span class="green">28</span><br>
+            Проверка: 28 + 17 = 45 ✓</p>
+
+            <p><strong>2) x − 23 = −8</strong><br>
+            x = −8 + 23 = <span class="green">15</span><br>
+            Проверка: 15 − 23 = −8 ✓</p>
+
+            <p><strong>3) 6x = −54</strong><br>
+            x = −54 : 6 = <span class="green">−9</span><br>
+            Проверка: 6·(−9) = −54 ✓</p>
+
+            <p><strong>4) x : 4 = −12</strong><br>
+            x = −12 · 4 = <span class="green">−48</span><br>
+            Проверка: −48 : 4 = −12 ✓</p>
+
+            <p><strong>5) 3x + 7 = 28</strong><br>
+            3x = 28 − 7<br>
+            3x = 21<br>
+            x = 21 : 3 = <span class="green">7</span><br>
+            Проверка: 3·7 + 7 = 21 + 7 = 28 ✓</p>
+
+            <p><strong>6) 5x − 14 = 2x + 7</strong><br>
+            5x − 2x = 7 + 14<br>
+            3x = 21<br>
+            x = <span class="green">7</span><br>
+            Проверка: 5·7−14 = 35−14 = 21; 2·7+7 = 14+7 = 21 ✓</p>
+
+            <p><strong>7) 8 − 3x = 2 + x</strong><br>
+            8 − 2 = x + 3x<br>
+            6 = 4x<br>
+            x = 6 : 4 = <span class="green">1,5</span><br>
+            Проверка: 8−3·1,5 = 8−4,5 = 3,5; 2+1,5 = 3,5 ✓</p>
+
+            <p><strong>8) 4(x + 3) = 2(x − 1) + 18</strong><br>
+            4x + 12 = 2x − 2 + 18<br>
+            4x + 12 = 2x + 16<br>
+            4x − 2x = 16 − 12<br>
+            2x = 4<br>
+            x = <span class="green">2</span><br>
+            Проверка: 4·(2+3) = 4·5 = 20; 2·(2−1)+18 = 2·1+18 = 20 ✓</p>
+        </div>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 5.</strong> Реши уравнения с дробями:</p>
+            <ol>
+                <li>x/2 + x/4 = 9</li>
+                <li>x/5 − x/10 = 3</li>
+                <li>(x + 2)/3 = (x − 1)/2</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sol_u2')">👁 Показать решение</button>
+        <div class="solution" id="sol_u2">
+            <p><strong>1) x/2 + x/4 = 9</strong><br>
+            НОК(2, 4) = 4. Умножаем на 4:<br>
+            4·(x/2) + 4·(x/4) = 4·9<br>
+            2x + x = 36<br>
+            3x = 36<br>
+            x = <span class="green">12</span><br>
+            Проверка: 12/2 + 12/4 = 6 + 3 = 9 ✓</p>
+
+            <p><strong>2) x/5 − x/10 = 3</strong><br>
+            НОК(5, 10) = 10. Умножаем на 10:<br>
+            10·(x/5) − 10·(x/10) = 10·3<br>
+            2x − x = 30<br>
+            x = <span class="green">30</span><br>
+            Проверка: 30/5 − 30/10 = 6 − 3 = 3 ✓</p>
+
+            <p><strong>3) (x + 2)/3 = (x − 1)/2</strong><br>
+            НОК(3, 2) = 6. Умножаем на 6:<br>
+            6·(x+2)/3 = 6·(x−1)/2<br>
+            2(x + 2) = 3(x − 1)<br>
+            2x + 4 = 3x − 3<br>
+            4 + 3 = 3x − 2x<br>
+            x = <span class="green">7</span><br>
+            Проверка: (7+2)/3 = 9/3 = 3; (7−1)/2 = 6/2 = 3 ✓</p>
+        </div>
+
+        <div class="practice">
+            <br>
+            <p><strong>Задание 6.</strong> Составь и реши уравнение по условию задачи:</p>
+            <ol>
+                <li>В двух корзинах вместе 48 яблок. В первой в 3 раза меньше, чем во второй. Сколько яблок в каждой корзине?</li>
+                <li>Задумали число. Если его умножить на 4 и прибавить 7, получится 43. Найди задуманное число.</li>
+                <li>Периметр прямоугольника равен 54 см. Длина на 9 см больше ширины. Найди стороны прямоугольника.</li>
+            </ol>
+        </div>
+
+        <button class="solution-btn" onclick="toggleSol('sol_u3')">👁 Показать решение</button>
+        <div class="solution" id="sol_u3">
+            <p><strong>1) Две корзины, 48 яблок, в первой в 3 раза меньше.</strong><br>
+            Пусть в первой корзине x яблок, тогда во второй — 3x яблок.<br>
+            Уравнение: x + 3x = 48<br>
+            4x = 48<br>
+            x = 12<br>
+            В первой: <span class="green">12 яблок</span>, во второй: 3·12 = <span class="green">36 яблок</span>.<br>
+            Проверка: 12 + 36 = 48 ✓, 36 : 12 = 3 ✓</p>
+
+            <p><strong>2) Задуманное число.</strong><br>
+            Пусть число x.<br>
+            Уравнение: 4x + 7 = 43<br>
+            4x = 43 − 7 = 36<br>
+            x = 36 : 4 = <span class="green">9</span><br>
+            Проверка: 4·9 + 7 = 36 + 7 = 43 ✓</p>
+
+            <p><strong>3) Периметр прямоугольника 54 см, длина на 9 см больше ширины.</strong><br>
+            Пусть ширина = x см, тогда длина = (x + 9) см.<br>
+            Периметр: 2(x + x + 9) = 54<br>
+            2(2x + 9) = 54<br>
+            4x + 18 = 54<br>
+            4x = 54 − 18 = 36<br>
+            x = 9 (ширина)<br>
+            Длина: 9 + 9 = 18 см<br>
+            <span class="green">Ширина = 9 см, длина = 18 см.</span><br>
+            Проверка: 2·(9 + 18) = 2·27 = 54 ✓</p>
+        </div>
+    </div>
+
+    <!-- Видео: уравнения -->
+    <div class="card">
+        <div class="video-section">
+            <h3>🎬 Видеоматериалы: Решение уравнений</h3>
+            <a href="https://www.youtube.com/watch?v=UMp6XFCPGrk" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Линейные уравнения с одной переменной | 6 класс — полный разбор</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=MK56-S__1TA" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Уравнения со скобками — как раскрывать и решать</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=ksW9mWaM8NE" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Решение уравнений с дробями — простой метод</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=T_fTy0DVXVY" target="_blank" class="video-link">
+                <span class="play-icon">▶️</span>
+                <span>Составление уравнений по условию задачи | 6 класс</span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- ИНТЕРАКТИВНЫЙ ТЕСТ -->
+    <!-- ============================================================ -->
+    <div class="quiz-container">
+        <h2>🧪 Интерактивный тест: Координаты + Уравнения</h2>
+        <p style="color: rgba(255,255,255,0.9); margin-bottom: 10px;">20 вопросов — проверь свои знания!</p>
+
+        <!-- Q1 -->
+        <div class="quiz-question" id="tq1">
+            <p>1. Точка A(−3; 5) находится в:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) I квадранте</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) II квадранте</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) III квадранте</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) IV квадранте</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-question" id="tq2">
+            <p>2. Точка лежит на оси Ox. Какая из пар координат ей соответствует?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) (0; 5)</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) (5; 0)</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) (5; 5)</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) (0; 0) только</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-question" id="tq3">
+            <p>3. В каком квадранте знаки координат такие: x &lt; 0, y &lt; 0?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) I</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) II</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) III</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) IV</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-question" id="tq4">
+            <p>4. Как называется первая координата точки (x)?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) Ордината</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) Абсцисса</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) Начало координат</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) Ось ординат</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-question" id="tq5">
+            <p>5. Найди длину отрезка AB, если A(−2; 4) и B(6; 4).</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 4</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) 6</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) 8</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 10</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="quiz-question" id="tq6">
+            <p>6. Реши уравнение: x + 24 = 17</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 41</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) x = −7</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = 7</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = −41</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="quiz-question" id="tq7">
+            <p>7. Реши уравнение: 7x = −63</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 9</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) x = −9</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = −7</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = 56</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="quiz-question" id="tq8">
+            <p>8. Реши уравнение: 4x + 5 = 21</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 26</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) x = 4</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = 6</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = 16</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="quiz-question" id="tq9">
+            <p>9. Реши уравнение: 6x − 3 = 3x + 12</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 3</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) x = 5</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = 15</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = 9</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="quiz-question" id="tq10">
+            <p>10. Реши уравнение: 2(x + 4) = 3(x − 1)</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 5</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) x = −5</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) x = 11</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = 1</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="quiz-question" id="tq11">
+            <p>11. При переносе слагаемого через знак «=»:</p>
+            <button class="quiz-option" onclick="doQ(this,true)">А) Знак меняется на противоположный</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) Знак остаётся тем же</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) Слагаемое умножается на −1 с обеих сторон</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) Знак зависит от позиции слагаемого</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="quiz-question" id="tq12">
+            <p>12. Раскрой скобки: −(5x − 3)</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) −5x − 3</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) −5x + 3</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 5x − 3</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 5x + 3</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="quiz-question" id="tq13">
+            <p>13. Реши уравнение: x/3 + x/6 = 4</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 6</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) x = 8</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = 12</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = 4</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="quiz-question" id="tq14">
+            <p>14. Уравнение 3x + 5 = 3x − 2:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 7</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) Не имеет корней</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = −7</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = любое число</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="quiz-question" id="tq15">
+            <p>15. Задумали число, умножили на 5, прибавили 3 и получили 33. Какое число задумали?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) 5</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) 6</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) 7</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) 8</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="quiz-question" id="tq16">
+            <p>16. Точка N(0; −4) лежит:</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) В III квадранте</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) В IV квадранте</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) На оси Oy</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) На оси Ox</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="quiz-question" id="tq17">
+            <p>17. Реши уравнение: 10 − 2x = 4x − 8</p>
+            <button class="quiz-option" onclick="doQ(this,true)">А) x = 3</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) x = −3</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = 1</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = 6</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="quiz-question" id="tq18">
+            <p>18. В трёх квадрантах x и y имеют разные знаки. В каких?</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) I и III</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) II и IV</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) I и II</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) III и IV</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="quiz-question" id="tq19">
+            <p>19. Периметр квадрата равен 52 см. Составь уравнение и найди сторону.</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = 10 см</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Б) x = 12 см</button>
+            <button class="quiz-option" onclick="doQ(this,true)">В) x = 13 см</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = 14 см</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="quiz-question" id="tq20">
+            <p>20. Реши уравнение: 5(x − 2) − 3(x + 4) = 0</p>
+            <button class="quiz-option" onclick="doQ(this,false)">А) x = −1</button>
+            <button class="quiz-option" onclick="doQ(this,true)">Б) x = 11</button>
+            <button class="quiz-option" onclick="doQ(this,false)">В) x = 1</button>
+            <button class="quiz-option" onclick="doQ(this,false)">Г) x = −11</button>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="score-display" id="scoreDisp3">
+            <p>Твой результат:</p>
+            <div class="score-number" id="scoreNum3">0/20</div>
+            <p id="scoreCom3" style="font-size:1.1em; margin-top:10px;"></p>
+        </div>
+        <button class="check-btn" onclick="showScore3()">📊 Показать результат</button>
+    </div>
+
+    <!-- Навигация -->
+    <div class="nav-buttons">
+        <a href="#" class="nav-btn">← Русский язык</a>
+        <a href="#" class="nav-btn">Далее: Математика — Проценты →</a>
+    </div>
+
+</div><!-- /container -->
+
+<script>
+    // ---- Показать/скрыть решение ----
+    function toggleSol(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // ---- Тест ----
+    let score3 = 0;
+    let answered3 = new Set();
+
+    function doQ(btn, isCorrect) {
+        const q = btn.parentElement;
+        const qId = q.id;
+        if (answered3.has(qId)) return;
+        answered3.add(qId);
+
+        q.querySelectorAll('.quiz-option').forEach(b => {
+            b.style.pointerEvents = 'none';
+        });
+
+        if (isCorrect) {
+            btn.classList.add('correct');
+            score3++;
+            showFeedback(q, true);
+        } else {
+            btn.classList.add('wrong');
+            q.querySelectorAll('.quiz-option').forEach(b => {
+                if (b.getAttribute('onclick') && b.getAttribute('onclick').includes('true')) {
+                    b.classList.add('correct');
+                }
+            });
+            showFeedback(q, false);
+        }
+    }
+
+    function showFeedback(q, correct) {
+        const fb = q.querySelector('.quiz-feedback');
+        fb.style.display = 'block';
+        if (correct) {
+            fb.style.background = '#c8e6c9';
+            fb.style.color = '#2e7d32';
+            fb.textContent = '✅ Правильно! Отлично!';
+        } else {
+            fb.style.background = '#ffcdd2';
+            fb.style.color = '#c62828';
+            fb.textContent = '❌ Неправильно. Правильный ответ выделен зелёным.';
+        }
+    }
+
+    function showScore3() {
+        const d = document.getElementById('scoreDisp3');
+        d.style.display = 'block';
+        document.getElementById('scoreNum3').textContent = score3 + '/20';
+        const c = document.getElementById('scoreCom3');
+        if (score3 >= 18) {
+            c.textContent = '🏆 Блестящий результат! Ты отлично знаешь материал!';
+            c.style.color = '#4caf50';
+        } else if (score3 >= 14) {
+            c.textContent = '👍 Хороший результат! Разбери ошибки.';
+            c.style.color = '#2196f3';
+        } else if (score3 >= 10) {
+            c.textContent = '📖 Неплохо, но стоит повторить теорию.';
+            c.style.color = '#ff9800';
+        } else {
+            c.textContent = '📚 Рекомендуется заново изучить обе темы.';
+            c.style.color = '#f44336';
+        }
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

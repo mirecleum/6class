@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День 26 — Пробное тестирование №2 + Финальная подготовка</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        /* ЗАГОЛОВОК */
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #56ccf2, #2f80ed, #56ccf2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .day-info { text-align: center; font-size: 1.1em; color: #aaa; margin-bottom: 25px; }
+
+        /* МОТИВАЦИЯ */
+        .motivation-box {
+            background: linear-gradient(135deg, rgba(86,204,242,0.1), rgba(47,128,237,0.1));
+            border: 2px solid rgba(86,204,242,0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .motivation-box h2 { color: #56ccf2; margin-bottom: 12px; font-size: 1.5em; }
+        .motivation-box p { color: #ccc; line-height: 1.8; font-size: 1.05em; }
+
+        /* СТРУКТУРА ДНЯ */
+        .day-structure {
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(255,215,0,0.25);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .day-structure h2 { color: #ffd200; margin-bottom: 18px; font-size: 1.4em; }
+        .time-slot {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .time-slot:last-child { border-bottom: none; }
+        .time-badge {
+            background: rgba(255,210,0,0.15);
+            border: 1px solid rgba(255,210,0,0.3);
+            color: #ffd200;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.88em;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .time-content h4 { margin-bottom: 4px; font-size: 1.02em; }
+        .time-content p { color: #aaa; font-size: 0.93em; line-height: 1.6; }
+
+        /* ВЫБОР ПРЕДМЕТОВ */
+        .subject-selector {
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(86,204,242,0.25);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .subject-selector h2 { color: #56ccf2; margin-bottom: 15px; font-size: 1.4em; }
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .subj-select-card {
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .subj-select-card:hover { background: rgba(86,204,242,0.1); border-color: rgba(86,204,242,0.4); }
+        .subj-select-card.selected { background: rgba(86,204,242,0.15); border-color: #56ccf2; }
+        .subj-select-card .subj-icon { font-size: 1.8em; margin-bottom: 6px; }
+        .subj-select-card .subj-name { font-size: 0.9em; font-weight: bold; }
+        .subj-select-card .subj-score { font-size: 0.8em; color: #aaa; margin-top: 4px; }
+        .score-input-sm {
+            width: 50px;
+            padding: 4px 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 6px;
+        }
+        .generate-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #56ccf2, #2f80ed);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .generate-btn:hover { transform: scale(1.02); }
+
+        /* ТАЙМЕР */
+        .timer-box {
+            background: linear-gradient(135deg, rgba(255,50,50,0.12), rgba(150,0,0,0.12));
+            border: 2px solid rgba(255,80,80,0.4);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 22px;
+            text-align: center;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .timer-display {
+            font-size: 3.2em;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #ff4444;
+            letter-spacing: 4px;
+        }
+        .timer-display.warn { color: #ff8c00; }
+        .timer-display.danger { color: #ff0000; animation: blink 0.5s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .timer-controls { display: flex; justify-content: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .tbtn {
+            padding: 9px 22px; border: none; border-radius: 10px;
+            font-size: 0.95em; font-weight: bold; cursor: pointer; transition: transform 0.2s;
+        }
+        .tbtn:hover { transform: scale(1.05); }
+        .tbtn-start { background: linear-gradient(135deg,#00b09b,#96c93d); color: #000; }
+        .tbtn-pause { background: linear-gradient(135deg,#f7971e,#ffd200); color: #000; }
+        .tbtn-reset { background: linear-gradient(135deg,#ff416c,#ff4b2b); color: #fff; }
+
+        /* ТЕСТОВЫЕ БЛОКИ */
+        .test-block {
+            background: rgba(255,255,255,0.04);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border-left: 5px solid;
+            display: none;
+        }
+        .test-block.active { display: block; }
+        .test-block.russian   { border-left-color: #ff6b6b; }
+        .test-block.math      { border-left-color: #00b4d8; }
+        .test-block.history   { border-left-color: #4ecdc4; }
+        .test-block.social    { border-left-color: #a29bfe; }
+        .test-block.biology   { border-left-color: #2ecc71; }
+        .test-block.geography { border-left-color: #e67e22; }
+        .test-block.english   { border-left-color: #f093fb; }
+        .test-block.literature{ border-left-color: #fda085; }
+        .test-block h2 { font-size: 1.6em; margin-bottom: 5px; }
+        .test-block .block-meta { color: #aaa; font-size: 0.92em; margin-bottom: 18px; }
+        .badge-time {
+            display: inline-block;
+            background: rgba(255,210,0,0.15);
+            border: 1px solid rgba(255,210,0,0.3);
+            color: #ffd200; padding: 4px 12px;
+            border-radius: 20px; font-size: 0.82em; margin-left: 10px;
+        }
+        .subj-prog { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; margin: 12px 0 18px; overflow: hidden; }
+        .subj-prog-fill { height: 100%; border-radius: 3px; transition: width 0.4s; width: 0%; }
+        .russian   .subj-prog-fill { background: #ff6b6b; }
+        .math      .subj-prog-fill { background: #00b4d8; }
+        .history   .subj-prog-fill { background: #4ecdc4; }
+        .social    .subj-prog-fill { background: #a29bfe; }
+        .biology   .subj-prog-fill { background: #2ecc71; }
+        .geography .subj-prog-fill { background: #e67e22; }
+        .english   .subj-prog-fill { background: #f093fb; }
+        .literature .subj-prog-fill { background: #fda085; }
+
+        /* ВОПРОСЫ */
+        .tq { background: rgba(0,0,0,0.25); border-radius: 14px; padding: 20px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.06); }
+        .tq .qnum { font-size: 0.8em; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .tq p { font-size: 1.04em; margin-bottom: 14px; font-weight: 500; line-height: 1.5; }
+        .topt {
+            display: block; width: 100%; text-align: left;
+            padding: 11px 18px; margin: 6px 0;
+            background: rgba(255,255,255,0.04);
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 10px; color: #d0d0d0;
+            cursor: pointer; font-size: 0.97em; transition: all 0.25s;
+        }
+        .topt:hover:not(:disabled) { background: rgba(86,204,242,0.1); border-color: rgba(86,204,242,0.4); color: #fff; }
+        .topt.correct { background: rgba(0,200,80,0.18); border-color: #00c850; color: #00ff80; }
+        .topt.wrong   { background: rgba(255,50,50,0.18); border-color: #ff3232; color: #ff8080; }
+        .topt:disabled { cursor: not-allowed; }
+        .qfb { margin-top: 10px; padding: 10px 15px; border-radius: 8px; display: none; font-size: 0.93em; font-weight: bold; }
+        .qfb.show { display: block; }
+        .qfb.cfb { background: rgba(0,200,80,0.1); color: #00c850; }
+        .qfb.wfb { background: rgba(255,50,50,0.1); color: #ff6b6b; }
+
+        /* РЕЗУЛЬТАТ БЛОКА */
+        .block-res { display: none; background: rgba(255,210,0,0.08); border: 2px solid rgba(255,210,0,0.3); border-radius: 14px; padding: 20px; text-align: center; margin-top: 15px; }
+        .block-res.show { display: block; }
+        .res-score { font-size: 2em; font-weight: bold; margin-bottom: 8px; }
+        .res-grade { font-size: 1.05em; color: #aaa; }
+        .col-exc { color: #00ff80; } .col-good { color: #ffd200; } .col-avg { color: #ff8c00; } .col-low { color: #ff4444; }
+
+        /* ФИНАЛЬНАЯ ТАБЛИЦА */
+        .final-table-wrap { display: none; background: rgba(255,255,255,0.04); border: 2px solid rgba(86,204,242,0.35); border-radius: 20px; padding: 28px; margin-bottom: 28px; }
+        .final-table-wrap.show { display: block; }
+        .final-table-wrap h2 { color: #56ccf2; text-align: center; margin-bottom: 20px; font-size: 1.6em; }
+        .res-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .res-table th, .res-table td { padding: 11px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: left; }
+        .res-table th { background: rgba(86,204,242,0.1); color: #56ccf2; }
+        .res-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+        .improvement-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+        .imp-up   { background: rgba(0,200,80,0.15); color: #00c850; }
+        .imp-same { background: rgba(255,210,0,0.15); color: #ffd200; }
+        .imp-down { background: rgba(255,80,80,0.15); color: #ff6b6b; }
+
+        /* ОБЩИЙ РЕЗУЛЬТАТ */
+        .overall-result { text-align: center; margin-top: 22px; padding: 22px; background: rgba(255,210,0,0.08); border-radius: 14px; }
+        .overall-pct { font-size: 3.5em; font-weight: bold; font-family: monospace; }
+
+        /* ФИНАЛЬНАЯ ПОДГОТОВКА */
+        .final-prep { background: rgba(255,255,255,0.04); border: 2px solid rgba(0,200,80,0.25); border-radius: 20px; padding: 28px; margin-bottom: 28px; }
+        .final-prep h2 { color: #00c850; margin-bottom: 18px; font-size: 1.5em; }
+        .prep-card { background: rgba(0,0,0,0.2); border-radius: 14px; padding: 20px; margin-bottom: 15px; border-left: 4px solid; }
+        .prep-card.green  { border-left-color: #00c850; }
+        .prep-card.blue   { border-left-color: #56ccf2; }
+        .prep-card.yellow { border-left-color: #ffd200; }
+        .prep-card.purple { border-left-color: #a29bfe; }
+        .prep-card.orange { border-left-color: #f7971e; }
+        .prep-card h4 { margin-bottom: 10px; font-size: 1.05em; }
+        .prep-card ul { padding-left: 20px; }
+        .prep-card li { margin-bottom: 7px; line-height: 1.7; color: #ccc; font-size: 0.97em; }
+
+        /* БЫСТРЫЕ ШПАРГАЛКИ */
+        .cheat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin: 18px 0; }
+        .cheat-card { background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; }
+        .cheat-card h4 { color: #ffd200; margin-bottom: 10px; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cheat-card ul { padding-left: 18px; }
+        .cheat-card li { font-size: 0.88em; margin-bottom: 5px; line-height: 1.5; color: #ccc; }
+        .cheat-card li strong { color: #e0e0e0; }
+
+        /* ПСИХОЛОГИЧЕСКАЯ ПОДГОТОВКА */
+        .psych-section { background: rgba(162,155,254,0.08); border: 2px solid rgba(162,155,254,0.25); border-radius: 20px; padding: 25px; margin-bottom: 25px; }
+        .psych-section h2 { color: #a29bfe; margin-bottom: 15px; font-size: 1.4em; }
+        .psych-card { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+        .psych-card h4 { color: #c5b8ff; margin-bottom: 8px; }
+        .psych-card p { color: #ccc; line-height: 1.7; font-size: 0.96em; }
+
+        /* ИНТЕРАКТИВНЫЙ ЧЕКЛИСТ АТТЕСТАЦИИ */
+        .attestation-checklist { background: rgba(255,255,255,0.04); border: 2px solid rgba(255,165,0,0.25); border-radius: 20px; padding: 25px; margin-bottom: 25px; }
+        .attestation-checklist h2 { color: #ffa500; margin-bottom: 15px; }
+        .check-group { margin-bottom: 18px; }
+        .check-group h4 { color: #ffd200; margin-bottom: 10px; font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.5px; }
+        .citem {
+            padding: 10px 15px; margin: 5px 0;
+            background: rgba(255,255,255,0.03); border-radius: 8px;
+            cursor: pointer; transition: all 0.3s; line-height: 1.5;
+        }
+        .citem::before { content: '☐ '; font-size: 1.2em; }
+        .citem.checked { background: rgba(0,255,100,0.08); text-decoration: line-through; opacity: 0.65; }
+        .citem.checked::before { content: '☑ '; }
+
+        /* ЛЁГКОЕ ПОВТОРЕНИЕ */
+        .light-review { background: rgba(253,160,133,0.07); border: 2px solid rgba(253,160,133,0.22); border-radius: 20px; padding: 25px; margin-bottom: 25px; }
+        .light-review h2 { color: #fda085; margin-bottom: 15px; font-size: 1.4em; }
+        .lr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+        .lr-card { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 14px; }
+        .lr-card h4 { font-size: 0.95em; margin-bottom: 8px; }
+        .lr-card ul { padding-left: 18px; }
+        .lr-card li { font-size: 0.87em; color: #ccc; line-height: 1.6; margin-bottom: 4px; }
+
+        /* ФИНАЛЬНОЕ СООБЩЕНИЕ */
+        .final-message { background: linear-gradient(135deg, rgba(86,204,242,0.1), rgba(47,128,237,0.1), rgba(162,155,254,0.1)); border: 2px solid rgba(86,204,242,0.35); border-radius: 22px; padding: 35px; text-align: center; margin-top: 30px; }
+        .final-message h2 { font-size: 2em; margin-bottom: 15px; background: linear-gradient(90deg,#56ccf2,#a29bfe,#f093fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .final-message p { color: #ccc; line-height: 1.9; font-size: 1.05em; margin-bottom: 12px; }
+        .star-row { font-size: 2em; margin: 15px 0; }
+
+        /* ПРОГРЕСС НЕДЕЛИ */
+        .week-progress { background: rgba(255,255,255,0.04); border: 2px solid rgba(255,215,0,0.22); border-radius: 18px; padding: 22px; margin-bottom: 22px; }
+        .week-progress h3 { color: #ffd200; margin-bottom: 15px; }
+        .week-bar { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+        .week-bar-label { width: 80px; font-size: 0.88em; color: #aaa; flex-shrink: 0; }
+        .week-bar-track { flex: 1; height: 22px; background: rgba(255,255,255,0.07); border-radius: 11px; overflow: hidden; }
+        .week-bar-fill { height: 100%; border-radius: 11px; display: flex; align-items: center; padding-left: 10px; font-size: 0.8em; font-weight: bold; color: #000; transition: width 1s; }
+        .week-bar-pct { width: 45px; text-align: right; font-size: 0.85em; color: #aaa; }
+
+        /* MISC */
+        .section { background: rgba(255,255,255,0.03); border-radius: 15px; padding: 20px; margin-bottom: 18px; }
+        .section h3 { font-size: 1.2em; margin-bottom: 14px; }
+        .tip-box { background: rgba(255,215,0,0.07); border: 1px solid rgba(255,215,0,0.22); border-radius: 12px; padding: 14px 18px; margin: 12px 0; line-height: 1.7; }
+        .tip-box::before { content: '💡 '; font-size: 1.15em; }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        table th, table td { padding: 10px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: left; vertical-align: top; }
+        table th { background: rgba(255,255,255,0.08); color: #ffd93d; }
+        table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+        @media(max-width:600px){
+            h1{font-size:1.5em;}
+            .timer-display{font-size:2.3em;}
+            .test-block{padding:15px;}
+            .cheat-grid,.lr-grid{grid-template-columns:1fr;}
+            .selector-grid{grid-template-columns:repeat(2,1fr);}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>🏁 День 26: Пробное тестирование №2 + Финальная подготовка</h1>
+    <div class="day-info">Неделя 4 | Финальный день подготовки | ~4 часа | Ты почти у цели!</div>
+
+    <!-- МОТИВАЦИЯ -->
+    <div class="motivation-box">
+        <h2>🌟 Последний рывок перед аттестацией!</h2>
+        <p>Ты прошёл 4 недели интенсивной подготовки. Сегодня — финальная проверка и спокойная подготовка.<br>
+        <strong style="color:#56ccf2;">Доверяй себе. Ты знаешь материал. Осталось подтвердить это на бумаге.</strong></p>
+    </div>
+
+    <!-- ПРОГРЕСС НЕДЕЛИ 4 -->
+    <div class="week-progress">
+        <h3>📊 Прогресс Недели 4 — ты дошёл до конца!</h3>
+        <div class="week-bar">
+            <div class="week-bar-label">День 21</div>
+            <div class="week-bar-track"><div class="week-bar-fill" style="width:100%;background:linear-gradient(90deg,#ff6b6b,#ffa500);">Рус + Ист + Обществ</div></div>
+            <div class="week-bar-pct">✅</div>
+        </div>
+        <div class="week-bar">
+            <div class="week-bar-label">День 22</div>
+            <div class="week-bar-track"><div class="week-bar-fill" style="width:100%;background:linear-gradient(90deg,#00b4d8,#2ecc71);">Мат + Био + Гео</div></div>
+            <div class="week-bar-pct">✅</div>
+        </div>
+        <div class="week-bar">
+            <div class="week-bar-label">День 23</div>
+            <div class="week-bar-track"><div class="week-bar-fill" style="width:100%;background:linear-gradient(90deg,#f093fb,#fda085);">Англ + Лит + Доп</div></div>
+            <div class="week-bar-pct">✅</div>
+        </div>
+        <div class="week-bar">
+            <div class="week-bar-label">День 24</div>
+            <div class="week-bar-track"><div class="week-bar-fill" style="width:100%;background:linear-gradient(90deg,#ffd200,#f7971e);">Пробный тест №1</div></div>
+            <div class="week-bar-pct">✅</div>
+        </div>
+        <div class="week-bar">
+            <div class="week-bar-label">День 25</div>
+            <div class="week-bar-track"><div class="week-bar-fill" style="width:100%;background:linear-gradient(90deg,#a29bfe,#6c63ff);">Работа над ошибками</div></div>
+            <div class="week-bar-pct">✅</div>
+        </div>
+        <div class="week-bar">
+            <div class="week-bar-label">День 26</div>
+            <div class="week-bar-track"><div class="week-bar-fill" style="width:100%;background:linear-gradient(90deg,#56ccf2,#2f80ed);">Тест №2 + Финал</div></div>
+            <div class="week-bar-pct">🎯</div>
+        </div>
+    </div>
+
+    <!-- СТРУКТУРА ДНЯ -->
+    <div class="day-structure">
+        <h2>🗓️ Структура дня 26 (~4 часа)</h2>
+        <div class="time-slot">
+            <span class="time-badge">0–30 мин</span>
+            <div class="time-content">
+                <h4>Выбор предметов и настройка</h4>
+                <p>Определи 2–3 самых проблемных предмета → запусти пробный тест №2 по ним</p>
+            </div>
+        </div>
+        <div class="time-slot">
+            <span class="time-badge">30–150 мин</span>
+            <div class="time-content">
+                <h4>Пробное тестирование №2 (2 часа)</h4>
+                <p>Тесты по выбранным предметам с таймером. Условия — как на аттестации</p>
+            </div>
+        </div>
+        <div class="time-slot">
+            <span class="time-badge">150–180 мин</span>
+            <div class="time-content">
+                <h4>Лёгкое повторение остальных предметов (30 мин)</h4>
+                <p>Просмотр опорных конспектов, быстрые шпаргалки — без стресса</p>
+            </div>
+        </div>
+        <div class="time-slot">
+            <span class="time-badge">180–220 мин</span>
+            <div class="time-content">
+                <h4>Сравнение с Тестом №1 + анализ роста (40 мин)</h4>
+                <p>Посмотри на улучшение результатов — это твоя мотивация!</p>
+            </div>
+        </div>
+        <div class="time-slot">
+            <span class="time-badge">220–240 мин</span>
+            <div class="time-content">
+                <h4>Подготовка к дню аттестации (20 мин)</h4>
+                <p>Чеклист, психологический настрой, сборы. Ранний отбой!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ВЫБОР ПРЕДМЕТОВ ДЛЯ ТЕСТА -->
+    <div class="subject-selector">
+        <h2>🎯 Шаг 1: Выбери предметы для Пробного теста №2</h2>
+        <p style="color:#aaa;margin-bottom:16px;font-size:0.95em;">Отметь предметы с наихудшим результатом вчера (рекомендуется 2–4 предмета). Введи вчерашний результат для сравнения.</p>
+        <div class="selector-grid">
+            <div class="subj-select-card" id="card-russian" onclick="toggleSubject('russian',this)">
+                <div class="subj-icon">🇷🇺</div>
+                <div class="subj-name">Русский язык</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-russian" type="number" min="0" max="15" value="0" onclick="event.stopPropagation()"> /15</div>
+            </div>
+            <div class="subj-select-card" id="card-math" onclick="toggleSubject('math',this)">
+                <div class="subj-icon">📐</div>
+                <div class="subj-name">Математика</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-math" type="number" min="0" max="15" value="0" onclick="event.stopPropagation()"> /15</div>
+            </div>
+            <div class="subj-select-card" id="card-history" onclick="toggleSubject('history',this)">
+                <div class="subj-icon">🏛️</div>
+                <div class="subj-name">История</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-history" type="number" min="0" max="10" value="0" onclick="event.stopPropagation()"> /10</div>
+            </div>
+            <div class="subj-select-card" id="card-social" onclick="toggleSubject('social',this)">
+                <div class="subj-icon">👥</div>
+                <div class="subj-name">Обществознание</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-social" type="number" min="0" max="10" value="0" onclick="event.stopPropagation()"> /10</div>
+            </div>
+            <div class="subj-select-card" id="card-biology" onclick="toggleSubject('biology',this)">
+                <div class="subj-icon">🌿</div>
+                <div class="subj-name">Биология</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-biology" type="number" min="0" max="10" value="0" onclick="event.stopPropagation()"> /10</div>
+            </div>
+            <div class="subj-select-card" id="card-geography" onclick="toggleSubject('geography',this)">
+                <div class="subj-icon">🌍</div>
+                <div class="subj-name">География</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-geography" type="number" min="0" max="10" value="0" onclick="event.stopPropagation()"> /10</div>
+            </div>
+            <div class="subj-select-card" id="card-english" onclick="toggleSubject('english',this)">
+                <div class="subj-icon">🇬🇧</div>
+                <div class="subj-name">Английский</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-english" type="number" min="0" max="10" value="0" onclick="event.stopPropagation()"> /10</div>
+            </div>
+            <div class="subj-select-card" id="card-literature" onclick="toggleSubject('literature',this)">
+                <div class="subj-icon">📖</div>
+                <div class="subj-name">Литература</div>
+                <div class="subj-score">Вчера: <input class="score-input-sm" id="prev-literature" type="number" min="0" max="10" value="0" onclick="event.stopPropagation()"> /10</div>
+            </div>
+        </div>
+        <button class="generate-btn" onclick="startTest2()">▶ Начать Пробное тестирование №2</button>
+    </div>
+
+    <!-- ТАЙМЕР -->
+    <div class="timer-box" id="timerBox" style="display:none;">
+        <div style="color:#ff6b6b;font-size:0.9em;letter-spacing:2px;margin-bottom:8px;">⏱ ПРОБНОЕ ТЕСТИРОВАНИЕ №2</div>
+        <div class="timer-display" id="t2Display">00:00</div>
+        <div style="color:#aaa;font-size:0.85em;margin-top:5px;" id="t2SubjLabel">Выбери предмет</div>
+        <div class="timer-controls">
+            <button class="tbtn tbtn-start" onclick="t2Start()">▶ СТАРТ</button>
+            <button class="tbtn tbtn-pause" onclick="t2Pause()">⏸ ПАУЗА</button>
+            <button class="tbtn tbtn-reset" onclick="t2Reset()">↺ СБРОС</button>
+        </div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: РУССКИЙ ЯЗЫК ==================== -->
+    <div class="test-block russian" id="t2-russian">
+        <h2>🇷🇺 Русский язык <span class="badge-time">⏱ 40 минут</span></h2>
+        <div class="block-meta">12 заданий • Фокус на проблемных темах</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-russian"></div></div>
+
+        <div class="tq" id="r2q1"><div class="qnum">Задание 1/12</div>
+        <p>В каком слове пишется буква О? (корень ГОР/ГАР)</p>
+        <button class="topt" onclick="t2ans(this,'r2q1',false,'russian')">Уг..рать дровами</button>
+        <button class="topt" onclick="t2ans(this,'r2q1',true,'russian')">Заг..реть на солнце</button>
+        <button class="topt" onclick="t2ans(this,'r2q1',false,'russian')">Зн..й (зн..й)</button>
+        <div class="qfb" id="r2q1-fb">✅ ЗагОреть — корень ГОР, без ударения → О. УгАрный — под ударением → А (исключение).</div></div>
+
+        <div class="tq" id="r2q2"><div class="qnum">Задание 2/12</div>
+        <p>Укажи слово с приставкой ПРЕ-:</p>
+        <button class="topt" onclick="t2ans(this,'r2q2',false,'russian')">Пр..вокзальный</button>
+        <button class="topt" onclick="t2ans(this,'r2q2',false,'russian')">Пр..клеить</button>
+        <button class="topt" onclick="t2ans(this,'r2q2',true,'russian')">Пр..мудрый</button>
+        <div class="qfb" id="r2q2-fb">✅ ПрЕмудрый = очень мудрый → ПРЕ-. Привокзальный (близость), приклеить (присоединение) → ПРИ-.</div></div>
+
+        <div class="tq" id="r2q3"><div class="qnum">Задание 3/12</div>
+        <p>В каком слове НН?</p>
+        <button class="topt" onclick="t2ans(this,'r2q3',false,'russian')">Серебря..ый перстень</button>
+        <button class="topt" onclick="t2ans(this,'r2q3',true,'russian')">Деревя..ый домик</button>
+        <button class="topt" onclick="t2ans(this,'r2q3',false,'russian')">Кожа..ый ремень</button>
+        <div class="qfb" id="r2q3-fb">✅ ДеревЯННый — исключение (запомни три: стеклянный, оловянный, деревянный). Серебряный и кожаный — одна Н.</div></div>
+
+        <div class="tq" id="r2q4"><div class="qnum">Задание 4/12</div>
+        <p>«(Не)аккуратный ученик» — слитно или раздельно?</p>
+        <button class="topt" onclick="t2ans(this,'r2q4',true,'russian')">Слитно: неаккуратный (= небрежный, синоним без НЕ)</button>
+        <button class="topt" onclick="t2ans(this,'r2q4',false,'russian')">Раздельно: не аккуратный</button>
+        <div class="qfb" id="r2q4-fb">✅ Можно заменить синонимом «небрежный» → пишем слитно. Раздельно было бы: «не аккуратный, а неряшливый» (противопоставление).</div></div>
+
+        <div class="tq" id="r2q5"><div class="qnum">Задание 5/12</div>
+        <p>Какое окончание у глагола «они вид..т» (видеть)?</p>
+        <button class="topt" onclick="t2ans(this,'r2q5',false,'russian')">-ут (видут)</button>
+        <button class="topt" onclick="t2ans(this,'r2q5',true,'russian')">-ят (видят) — II спр., исключение</button>
+        <div class="qfb" id="r2q5-fb">✅ «Видеть» — исключение II спряжения → они видЯТ. Глаголы II спр.: -ат/-ят для 3-го лица мн.ч.</div></div>
+
+        <div class="tq" id="r2q6"><div class="qnum">Задание 6/12</div>
+        <p>Какой разряд у местоимения «весь»?</p>
+        <button class="topt" onclick="t2ans(this,'r2q6',false,'russian')">Указательное</button>
+        <button class="topt" onclick="t2ans(this,'r2q6',false,'russian')">Притяжательное</button>
+        <button class="topt" onclick="t2ans(this,'r2q6',true,'russian')">Определительное</button>
+        <div class="qfb" id="r2q6-fb">✅ Определительные: весь, всякий, каждый, сам, самый, иной, любой, другой — они определяют признак предмета.</div></div>
+
+        <div class="tq" id="r2q7"><div class="qnum">Задание 7/12</div>
+        <p>В каком слове пишется буква И? (чередование)</p>
+        <button class="topt" onclick="t2ans(this,'r2q7',false,'russian')">Зап..реть на замок</button>
+        <button class="topt" onclick="t2ans(this,'r2q7',true,'russian')">Зап..рать каждый вечер</button>
+        <div class="qfb" id="r2q7-fb">✅ ЗапИрать — есть суффикс -А- после корня → И (ПИР). ЗапЕреть — нет -А- → Е (ПЕР).</div></div>
+
+        <div class="tq" id="r2q8"><div class="qnum">Задание 8/12</div>
+        <p>«Прил..жение» — какая буква в корне?</p>
+        <button class="topt" onclick="t2ans(this,'r2q8',true,'russian')">О (прилОжение — перед Ж)</button>
+        <button class="topt" onclick="t2ans(this,'r2q8',false,'russian')">А (прилАжение)</button>
+        <div class="qfb" id="r2q8-fb">✅ ЛАГ/ЛОЖ: перед Ж → О. ПрилОЖение, слОЖение, изЛОЖение — все с О перед Ж.</div></div>
+
+        <div class="tq" id="r2q9"><div class="qnum">Задание 9/12</div>
+        <p>Числительное «пятьсот» — где мягкий знак?</p>
+        <button class="topt" onclick="t2ans(this,'r2q9',true,'russian')">В середине: пятЬсот (500–900)</button>
+        <button class="topt" onclick="t2ans(this,'r2q9',false,'russian')">На конце: пятсотЬ</button>
+        <div class="qfb" id="r2q9-fb">✅ 500–900: Ь в середине слова (пятЬсот, шестЬсот). 11–20, 30: Ь на конце (одиннадцатЬ, тридцатЬ).</div></div>
+
+        <div class="tq" id="r2q10"><div class="qnum">Задание 10/12</div>
+        <p>«Р..стение» — О или А?</p>
+        <button class="topt" onclick="t2ans(this,'r2q10',false,'russian')">О (рОстение)</button>
+        <button class="topt" onclick="t2ans(this,'r2q10',true,'russian')">А (рАстение — перед СТ)</button>
+        <div class="qfb" id="r2q10-fb">✅ РАСТ/РОС: перед СТ и Щ → А (рАСТение, вырАЩенный). Перед С → О (выРОСли). Исключения: рОСток, рОСтов, рОСтовщик.</div></div>
+
+        <div class="tq" id="r2q11"><div class="qnum">Задание 11/12</div>
+        <p>«Ещё (не)известно» — как пишется НЕ?</p>
+        <button class="topt" onclick="t2ans(this,'r2q11',true,'russian')">Раздельно: не известно (краткое прилагательное)</button>
+        <button class="topt" onclick="t2ans(this,'r2q11',false,'russian')">Слитно: неизвестно</button>
+        <div class="qfb" id="r2q11-fb">✅ Краткие прилагательные и наречия с НЕ пишутся так же, как полные. Неизвестный → неизвестно (слитно можно). Но с «ещё» — оттенок сомнения → раздельно.</div></div>
+
+        <div class="tq" id="r2q12"><div class="qnum">Задание 12/12</div>
+        <p>Укажи верную форму глагола: «Она хорошо..» (петь, наст. вр., 3 л., ед.ч.)</p>
+        <button class="topt" onclick="t2ans(this,'r2q12',false,'russian')">поёт (I спр.)</button>
+        <button class="topt" onclick="t2ans(this,'r2q12',true,'russian')">поёт — верно! петь → I спряжение → она поЁТ</button>
+        <div class="qfb" id="r2q12-fb">✅ «Петь» — I спряжение (не входит в исключения). Она поЁТ — окончание -ЕТ характерно для I спр., 3 л. ед.ч.</div></div>
+
+        <div class="block-res" id="res2-russian"><div class="res-score" id="sc2-russian"></div><div class="res-grade" id="gr2-russian"></div></div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: МАТЕМАТИКА ==================== -->
+    <div class="test-block math" id="t2-math">
+        <h2>📐 Математика <span class="badge-time">⏱ 40 минут</span></h2>
+        <div class="block-meta">12 заданий • Фокус на проблемных темах</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-math"></div></div>
+
+        <div class="tq" id="m2q1"><div class="qnum">Задание 1/12</div>
+        <p>Вычисли: 7/8 − 1/3</p>
+        <button class="topt" onclick="t2ans(this,'m2q1',true,'math')">13/24</button>
+        <button class="topt" onclick="t2ans(this,'m2q1',false,'math')">6/5</button>
+        <button class="topt" onclick="t2ans(this,'m2q1',false,'math')">1/2</button>
+        <div class="qfb" id="m2q1-fb">✅ НОК(8,3)=24: 7/8=21/24, 1/3=8/24. 21/24−8/24=13/24.</div></div>
+
+        <div class="tq" id="m2q2"><div class="qnum">Задание 2/12</div>
+        <p>Вычисли: (−9) × 4 + (−3) × (−8)</p>
+        <button class="topt" onclick="t2ans(this,'m2q2',false,'math')">−60</button>
+        <button class="topt" onclick="t2ans(this,'m2q2',true,'math')">−12</button>
+        <button class="topt" onclick="t2ans(this,'m2q2',false,'math')">12</button>
+        <div class="qfb" id="m2q2-fb">✅ (−9)×4=−36; (−3)×(−8)=24; −36+24=−12.</div></div>
+
+        <div class="tq" id="m2q3"><div class="qnum">Задание 3/12</div>
+        <p>Реши: 4/5 ÷ 8/15</p>
+        <button class="topt" onclick="t2ans(this,'m2q3',false,'math')">32/75</button>
+        <button class="topt" onclick="t2ans(this,'m2q3',true,'math')">3/2 = 1,5</button>
+        <button class="topt" onclick="t2ans(this,'m2q3',false,'math')">4/3</button>
+        <div class="qfb" id="m2q3-fb">✅ 4/5 × 15/8 = 60/40 = 3/2. Сокращение: 4 и 8 → ½; 5 и 15 → 3.</div></div>
+
+        <div class="tq" id="m2q4"><div class="qnum">Задание 4/12</div>
+        <p>Цена со скидкой 30% равна 2800 р. Какова была цена без скидки?</p>
+        <button class="topt" onclick="t2ans(this,'m2q4',false,'math')">3640 р.</button>
+        <button class="topt" onclick="t2ans(this,'m2q4',true,'math')">4000 р.</button>
+        <button class="topt" onclick="t2ans(this,'m2q4',false,'math')">3360 р.</button>
+        <div class="qfb" id="m2q4-fb">✅ Скидка 30% → осталось 70%. 2800 = 70% от X. X = 2800/70×100 = 40×100 = 4000 р.</div></div>
+
+        <div class="tq" id="m2q5"><div class="qnum">Задание 5/12</div>
+        <p>НОД(42, 56) = ?</p>
+        <button class="topt" onclick="t2ans(this,'m2q5',false,'math')">7</button>
+        <button class="topt" onclick="t2ans(this,'m2q5',true,'math')">14</button>
+        <button class="topt" onclick="t2ans(this,'m2q5',false,'math')">168</button>
+        <div class="qfb" id="m2q5-fb">✅ 42=2×3×7, 56=2³×7. НОД=2×7=14. Проверка: 42÷14=3, 56÷14=4 ✓</div></div>
+
+        <div class="tq" id="m2q6"><div class="qnum">Задание 6/12</div>
+        <p>Точка K(5; −3) находится в:</p>
+        <button class="topt" onclick="t2ans(this,'m2q6',false,'math')">I четверти</button>
+        <button class="topt" onclick="t2ans(this,'m2q6',false,'math')">III четверти</button>
+        <button class="topt" onclick="t2ans(this,'m2q6',true,'math')">IV четверти (x>0, y<0)</button>
+        <div class="qfb" id="m2q6-fb">✅ x=5 (положительное), y=−3 (отрицательное) → IV четверть (+; −).</div></div>
+
+        <div class="tq" id="m2q7"><div class="qnum">Задание 7/12</div>
+        <p>Реши пропорцию: 5/12 = x/36</p>
+        <button class="topt" onclick="t2ans(this,'m2q7',false,'math')">x = 3</button>
+        <button class="topt" onclick="t2ans(this,'m2q7',true,'math')">x = 15</button>
+        <button class="topt" onclick="t2ans(this,'m2q7',false,'math')">x = 60</button>
+        <div class="qfb" id="m2q7-fb">✅ 5×36=12×x → 180=12x → x=15. Проверка: 5/12=15/36 → 5/12=5/12 ✓</div></div>
+
+        <div class="tq" id="m2q8"><div class="qnum">Задание 8/12</div>
+        <p>|−24| ÷ |6| = ?</p>
+        <button class="topt" onclick="t2ans(this,'m2q8',false,'math')">−4</button>
+        <button class="topt" onclick="t2ans(this,'m2q8',true,'math')">4</button>
+        <button class="topt" onclick="t2ans(this,'m2q8',false,'math')">−18</button>
+        <div class="qfb" id="m2q8-fb">✅ |−24|=24, |6|=6. 24÷6=4. Модуль всегда положителен!</div></div>
+
+        <div class="tq" id="m2q9"><div class="qnum">Задание 9/12</div>
+        <p>Длина окружности колеса 62,8 см. Каков радиус? (π=3,14)</p>
+        <button class="topt" onclick="t2ans(this,'m2q9',false,'math')">20 см</button>
+        <button class="topt" onclick="t2ans(this,'m2q9',true,'math')">10 см</button>
+        <button class="topt" onclick="t2ans(this,'m2q9',false,'math')">5 см</button>
+        <div class="qfb" id="m2q9-fb">✅ C=2πr → r=C÷(2π)=62,8÷(2×3,14)=62,8÷6,28=10 см.</div></div>
+
+        <div class="tq" id="m2q10"><div class="qnum">Задание 10/12</div>
+        <p>Вычисли: 1⅔ × 2¼</p>
+        <button class="topt" onclick="t2ans(this,'m2q10',false,'math')">2⅔</button>
+        <button class="topt" onclick="t2ans(this,'m2q10',true,'math')">3¾</button>
+        <button class="topt" onclick="t2ans(this,'m2q10',false,'math')">3½</button>
+        <div class="qfb" id="m2q10-fb">✅ 1⅔=5/3; 2¼=9/4. 5/3×9/4=45/12=15/4=3¾.</div></div>
+
+        <div class="tq" id="m2q11"><div class="qnum">Задание 11/12</div>
+        <p>Делится ли 7 128 на 4?</p>
+        <button class="topt" onclick="t2ans(this,'m2q11',true,'math')">Да (последние две цифры: 28÷4=7)</button>
+        <button class="topt" onclick="t2ans(this,'m2q11',false,'math')">Нет</button>
+        <div class="qfb" id="m2q11-fb">✅ Признак делимости на 4: если последние две цифры числа делятся на 4. 28÷4=7 → делится.</div></div>
+
+        <div class="tq" id="m2q12"><div class="qnum">Задание 12/12</div>
+        <p>Поезд прошёл 360 км за 4 ч. За сколько он пройдёт 540 км?</p>
+        <button class="topt" onclick="t2ans(this,'m2q12',false,'math')">5 часов</button>
+        <button class="topt" onclick="t2ans(this,'m2q12',true,'math')">6 часов</button>
+        <button class="topt" onclick="t2ans(this,'m2q12',false,'math')">7 часов</button>
+        <div class="qfb" id="m2q12-fb">✅ Скорость=360÷4=90 км/ч. Время=540÷90=6 часов.</div></div>
+
+        <div class="block-res" id="res2-math"><div class="res-score" id="sc2-math"></div><div class="res-grade" id="gr2-math"></div></div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: ИСТОРИЯ ==================== -->
+    <div class="test-block history" id="t2-history">
+        <h2>🏛️ История <span class="badge-time">⏱ 25 минут</span></h2>
+        <div class="block-meta">10 заданий • Новые вопросы</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-history"></div></div>
+
+        <div class="tq" id="h2q1"><div class="qnum">1/10</div>
+        <p>Какое событие произошло в 476 году?</p>
+        <button class="topt" onclick="t2ans(this,'h2q1',true,'history')">Падение Западной Римской империи</button>
+        <button class="topt" onclick="t2ans(this,'h2q1',false,'history')">Образование государства франков</button>
+        <div class="qfb" id="h2q1-fb">✅ 476 г. — дата, с которой принято отсчитывать начало Средневековья. Государство франков — 486 г.</div></div>
+
+        <div class="tq" id="h2q2"><div class="qnum">2/10</div>
+        <p>Что такое «феод»?</p>
+        <button class="topt" onclick="t2ans(this,'h2q2',false,'history')">Налог на крестьян</button>
+        <button class="topt" onclick="t2ans(this,'h2q2',true,'history')">Земельное владение, полученное вассалом от сеньора</button>
+        <div class="qfb" id="h2q2-fb">✅ Феод — земля, которую сеньор давал вассалу за военную службу. От слова «феод» произошло слово «феодализм».</div></div>
+
+        <div class="tq" id="h2q3"><div class="qnum">3/10</div>
+        <p>Крещение Руси связано с именем:</p>
+        <button class="topt" onclick="t2ans(this,'h2q3',false,'history')">Ярослава Мудрого</button>
+        <button class="topt" onclick="t2ans(this,'h2q3',true,'history')">Владимира Святославича (Владимира Красное Солнышко)</button>
+        <div class="qfb" id="h2q3-fb">✅ Князь Владимир крестил Русь в 988 г. Ярослав Мудрый — его сын, правил позже (1019–1054), создал «Русскую правду».</div></div>
+
+        <div class="tq" id="h2q4"><div class="qnum">4/10</div>
+        <p>Первый Крестовый поход закончился:</p>
+        <button class="topt" onclick="t2ans(this,'h2q4',true,'history')">Взятием Иерусалима (1099 г.)</button>
+        <button class="topt" onclick="t2ans(this,'h2q4',false,'history')">Поражением крестоносцев</button>
+        <div class="qfb" id="h2q4-fb">✅ 1096–1099 гг. — Первый крестовый поход. В 1099 г. крестоносцы взяли Иерусалим и создали Иерусалимское королевство.</div></div>
+
+        <div class="tq" id="h2q5"><div class="qnum">5/10</div>
+        <p>Дмитрий Донской получил своё прозвище за:</p>
+        <button class="topt" onclick="t2ans(this,'h2q5',false,'history')">Ледовое побоище</button>
+        <button class="topt" onclick="t2ans(this,'h2q5',true,'history')">Победу на Куликовом поле (на реке Дон)</button>
+        <div class="qfb" id="h2q5-fb">✅ Дмитрий Иванович получил прозвище «Донской» после победы над Мамаем на Куликовом поле в 1380 г. (у реки Дон).</div></div>
+
+        <div class="tq" id="h2q6"><div class="qnum">6/10</div>
+        <p>Великая хартия вольностей (1215 г.) была подписана в:</p>
+        <button class="topt" onclick="t2ans(this,'h2q6',false,'history')">Франции</button>
+        <button class="topt" onclick="t2ans(this,'h2q6',true,'history')">Англии (король Иоанн Безземельный)</button>
+        <div class="qfb" id="h2q6-fb">✅ Великая хартия вольностей — первый документ, ограничивающий власть короля в пользу баронов. Основа английского конституционализма.</div></div>
+
+        <div class="tq" id="h2q7"><div class="qnum">7/10</div>
+        <p>Что такое «инквизиция»?</p>
+        <button class="topt" onclick="t2ans(this,'h2q7',false,'history')">Сбор налогов церковью</button>
+        <button class="topt" onclick="t2ans(this,'h2q7',true,'history')">Церковный суд для борьбы с ересями</button>
+        <div class="qfb" id="h2q7-fb">✅ Инквизиция (от лат. «расследование») — церковный суд, преследовавший еретиков. Особенно активна в XIII–XVII вв. в Испании и Франции.</div></div>
+
+        <div class="tq" id="h2q8"><div class="qnum">8/10</div>
+        <p>Хлодвиг основал государство:</p>
+        <button class="topt" onclick="t2ans(this,'h2q8',true,'history')">Франков (486 г.)</button>
+        <button class="topt" onclick="t2ans(this,'h2q8',false,'history')">Монголов</button>
+        <button class="topt" onclick="t2ans(this,'h2q8',false,'history')">Арабов</button>
+        <div class="qfb" id="h2q8-fb">✅ Хлодвиг — первый король франков (486 г.), принял христианство, объединил франкские племена. Его империя — основа будущих Франции и Германии.</div></div>
+
+        <div class="tq" id="h2q9"><div class="qnum">9/10</div>
+        <p>Столетняя война длилась:</p>
+        <button class="topt" onclick="t2ans(this,'h2q9',false,'history')">Ровно 100 лет (1337–1437)</button>
+        <button class="topt" onclick="t2ans(this,'h2q9',true,'history')">116 лет (1337–1453)</button>
+        <div class="qfb" id="h2q9-fb">✅ Столетняя война длилась 116 лет (1337–1453). Её так назвали условно. Завершилась победой Франции и падением Константинополя в том же 1453 г.</div></div>
+
+        <div class="tq" id="h2q10"><div class="qnum">10/10</div>
+        <p>Первое упоминание Москвы в летописях:</p>
+        <button class="topt" onclick="t2ans(this,'h2q10',false,'history')">1097 г.</button>
+        <button class="topt" onclick="t2ans(this,'h2q10',true,'history')">1147 г. (при князе Юрии Долгоруком)</button>
+        <button class="topt" onclick="t2ans(this,'h2q10',false,'history')">1237 г.</button>
+        <div class="qfb" id="h2q10-fb">✅ 1147 г. — первое летописное упоминание Москвы. Юрий Долгорукий пригласил своего союзника: «Приди ко мне, брате, в Москов».</div></div>
+
+        <div class="block-res" id="res2-history"><div class="res-score" id="sc2-history"></div><div class="res-grade" id="gr2-history"></div></div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: ОБЩЕСТВОЗНАНИЕ ==================== -->
+    <div class="test-block social" id="t2-social">
+        <h2>👥 Обществознание <span class="badge-time">⏱ 25 минут</span></h2>
+        <div class="block-meta">10 заданий • Новые вопросы</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-social"></div></div>
+
+        <div class="tq" id="s2q1"><div class="qnum">1/10</div>
+        <p>Агенты социализации — это:</p>
+        <button class="topt" onclick="t2ans(this,'s2q1',false,'social')">Сотрудники полиции</button>
+        <button class="topt" onclick="t2ans(this,'s2q1',true,'social')">Те, кто влияет на формирование личности (семья, школа, СМИ)</button>
+        <div class="qfb" id="s2q1-fb">✅ Агенты социализации: семья (главный), школа, группа сверстников, СМИ, церковь. Через них человек усваивает нормы общества.</div></div>
+
+        <div class="tq" id="s2q2"><div class="qnum">2/10</div>
+        <p>Что из перечисленного НЕ является видом деятельности?</p>
+        <button class="topt" onclick="t2ans(this,'s2q2',false,'social')">Игра</button>
+        <button class="topt" onclick="t2ans(this,'s2q2',true,'social')">Инстинкт (это поведение животных, не деятельность)</button>
+        <button class="topt" onclick="t2ans(this,'s2q2',false,'social')">Труд</button>
+        <div class="qfb" id="s2q2-fb">✅ Виды деятельности: игра, учение, труд, общение. Инстинкт — врождённое поведение, не осознанная деятельность.</div></div>
+
+        <div class="tq" id="s2q3"><div class="qnum">3/10</div>
+        <p>Нравственный выбор — это:</p>
+        <button class="topt" onclick="t2ans(this,'s2q3',true,'social')">Самостоятельное решение человека о том, как поступить с точки зрения добра и зла</button>
+        <button class="topt" onclick="t2ans(this,'s2q3',false,'social')">Выбор товара в магазине</button>
+        <div class="qfb" id="s2q3-fb">✅ Нравственный выбор предполагает осознание последствий своего поступка, ответственность и руководство совестью.</div></div>
+
+        <div class="tq" id="s2q4"><div class="qnum">4/10</div>
+        <p>«Аутсайдер» в группе — это:</p>
+        <button class="topt" onclick="t2ans(this,'s2q4',false,'social')">Лидер группы</button>
+        <button class="topt" onclick="t2ans(this,'s2q4',true,'social')">Человек на периферии группы, с низким статусом</button>
+        <div class="qfb" id="s2q4-fb">✅ Статусы в группе: лидер (наибольший авторитет), аутсайдер (наименьший). Между ними — середнячки. Статус может меняться.</div></div>
+
+        <div class="tq" id="s2q5"><div class="qnum">5/10</div>
+        <p>Симпатия — это:</p>
+        <button class="topt" onclick="t2ans(this,'s2q5',true,'social')">Внутреннее расположение, тяготение к человеку</button>
+        <button class="topt" onclick="t2ans(this,'s2q5',false,'social')">Внутреннее неприятие человека</button>
+        <div class="qfb" id="s2q5-fb">✅ Симпатия — притяжение (от греч. «sympatheia» — сочувствие). Антипатия — отталкивание. Оба чувства могут быть основой межличностных отношений.</div></div>
+
+        <div class="tq" id="s2q6"><div class="qnum">6/10</div>
+        <p>Право в отличие от морали:</p>
+        <button class="topt" onclick="t2ans(this,'s2q6',true,'social')">Закреплено в законах и обеспечивается государственным принуждением</button>
+        <button class="topt" onclick="t2ans(this,'s2q6',false,'social')">Основано только на общественном мнении</button>
+        <div class="qfb" id="s2q6-fb">✅ Мораль — неписаные нормы, нарушение → осуждение. Право — писаные законы, нарушение → юридическая ответственность (штраф, наказание).</div></div>
+
+        <div class="tq" id="s2q7"><div class="qnum">7/10</div>
+        <p>«Порок» — это:</p>
+        <button class="topt" onclick="t2ans(this,'s2q7',false,'social')">Положительное нравственное качество</button>
+        <button class="topt" onclick="t2ans(this,'s2q7',true,'social')">Отрицательное нравственное качество (жадность, трусость)</button>
+        <div class="qfb" id="s2q7-fb">✅ Добродетель ↔ порок. Добродетели: честность, доброта, смелость, щедрость. Пороки: жадность, трусость, зависть, лживость.</div></div>
+
+        <div class="tq" id="s2q8"><div class="qnum">8/10</div>
+        <p>Нация — это пример группы:</p>
+        <button class="topt" onclick="t2ans(this,'s2q8',true,'social')">Большой</button>
+        <button class="topt" onclick="t2ans(this,'s2q8',false,'social')">Малой</button>
+        <div class="qfb" id="s2q8-fb">✅ Большие группы: нации, народы, классы, молодёжь. Малые группы: семья (2–7 чел.), класс, команда. Критерий — количество и характер взаимодействия.</div></div>
+
+        <div class="tq" id="s2q9"><div class="qnum">9/10</div>
+        <p>Что такое «стереотип»?</p>
+        <button class="topt" onclick="t2ans(this,'s2q9',false,'social')">Точная характеристика отдельного человека</button>
+        <button class="topt" onclick="t2ans(this,'s2q9',true,'social')">Упрощённое обобщённое представление о группе людей</button>
+        <div class="qfb" id="s2q9-fb">✅ Стереотип (от греч. «твёрдый отпечаток») — шаблонное мышление. Стереотипы могут быть ложными и вести к предрассудкам и дискриминации.</div></div>
+
+        <div class="tq" id="s2q10"><div class="qnum">10/10</div>
+        <p>Мотив в структуре деятельности — это:</p>
+        <button class="topt" onclick="t2ans(this,'s2q10',false,'social')">Конечный результат</button>
+        <button class="topt" onclick="t2ans(this,'s2q10',true,'social')">То, что побуждает человека к деятельности (потребность, интерес)</button>
+        <div class="qfb" id="s2q10-fb">✅ Структура: Мотив (зачем?) → Цель (что?) → Средства (как?) → Действия → Результат. Мотив — движущая сила деятельности.</div></div>
+
+        <div class="block-res" id="res2-social"><div class="res-score" id="sc2-social"></div><div class="res-grade" id="gr2-social"></div></div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: БИОЛОГИЯ ==================== -->
+    <div class="test-block biology" id="t2-biology">
+        <h2>🌿 Биология <span class="badge-time">⏱ 25 минут</span></h2>
+        <div class="block-meta">10 заданий • Новые вопросы</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-biology"></div></div>
+
+        <div class="tq" id="b2q1"><div class="qnum">1/10</div>
+        <p>Митохондрии в клетке выполняют функцию:</p>
+        <button class="topt" onclick="t2ans(this,'b2q1',true,'biology')">Синтеза энергии (клеточное дыхание)</button>
+        <button class="topt" onclick="t2ans(this,'b2q1',false,'biology')">Фотосинтеза</button>
+        <div class="qfb" id="b2q1-fb">✅ Митохондрии — «энергетические станции» клетки. Здесь происходит дыхание: глюкоза + O₂ → CO₂ + H₂O + энергия (АТФ).</div></div>
+
+        <div class="tq" id="b2q2"><div class="qnum">2/10</div>
+        <p>Корень поглощает воду и минеральные соли с помощью:</p>
+        <button class="topt" onclick="t2ans(this,'b2q2',false,'biology')">Устьиц</button>
+        <button class="topt" onclick="t2ans(this,'b2q2',true,'biology')">Корневых волосков (зона всасывания)</button>
+        <div class="qfb" id="b2q2-fb">✅ Зона всасывания корня покрыта корневыми волосками — тонкими выростами клеток, увеличивающими площадь всасывания. Устьица — на листьях.</div></div>
+
+        <div class="tq" id="b2q3"><div class="qnum">3/10</div>
+        <p>Сложный лист отличается от простого тем, что:</p>
+        <button class="topt" onclick="t2ans(this,'b2q3',false,'biology')">У него нет черешка</button>
+        <button class="topt" onclick="t2ans(this,'b2q3',true,'biology')">Его пластинка разделена на листочки (как у рябины, акации)</button>
+        <div class="qfb" id="b2q3-fb">✅ Простой лист: одна цельная пластинка (берёза, дуб). Сложный: несколько листочков на одном черешке (рябина, клевер, акация).</div></div>
+
+        <div class="tq" id="b2q4"><div class="qnum">4/10</div>
+        <p>Семейство Крестоцветные — признак:</p>
+        <button class="topt" onclick="t2ans(this,'b2q4',true,'biology')">Цветок с 4 лепестками крест-накрест (капуста, редька, горчица)</button>
+        <button class="topt" onclick="t2ans(this,'b2q4',false,'biology')">Цветок с 5 лепестками (роза, яблоня)</button>
+        <div class="qfb" id="b2q4-fb">✅ Крестоцветные (Капустные): 4 лепестка крест-накрест, плод — стручок или стручочек. Примеры: капуста, редис, горчица, пастушья сумка.</div></div>
+
+        <div class="tq" id="b2q5"><div class="qnum">5/10</div>
+        <p>Опыление — это:</p>
+        <button class="topt" onclick="t2ans(this,'b2q5',false,'biology')">Слияние яйцеклетки и сперматозоида</button>
+        <button class="topt" onclick="t2ans(this,'b2q5',true,'biology')">Перенос пыльцы с тычинки на рыльце пестика</button>
+        <div class="qfb" id="b2q5-fb">✅ Опыление → пыльца на рыльце → оплодотворение (слияние гамет) → образование семени. Виды опыления: самоопыление и перекрёстное (ветром, насекомыми).</div></div>
+
+        <div class="tq" id="b2q6"><div class="qnum">6/10</div>
+        <p>Проводящая ткань растения состоит из:</p>
+        <button class="topt" onclick="t2ans(this,'b2q6',true,'biology')">Сосудов (ксилема — вода вверх) и ситовидных трубок (флоэма — вещества вниз)</button>
+        <button class="topt" onclick="t2ans(this,'b2q6',false,'biology')">Только сосудов для воды</button>
+        <div class="qfb" id="b2q6-fb">✅ Ксилема (древесина) — проводит воду и минеральные соли снизу вверх. Флоэма (луб) — проводит органические вещества от листьев вниз.</div></div>
+
+        <div class="tq" id="b2q7"><div class="qnum">7/10</div>
+        <p>Образовательная ткань (меристема) находится:</p>
+        <button class="topt" onclick="t2ans(this,'b2q7',true,'biology')">На кончике корня и верхушке побега (конусы нарастания)</button>
+        <button class="topt" onclick="t2ans(this,'b2q7',false,'biology')">В мякоти листа</button>
+        <div class="qfb" id="b2q7-fb">✅ Меристема — делящиеся клетки. Верхушечная (рост в длину), боковая/камбий (рост в толщину), вставочная (в основании листьев злаков).</div></div>
+
+        <div class="tq" id="b2q8"><div class="qnum">8/10</div>
+        <p>Корневище — это:</p>
+        <button class="topt" onclick="t2ans(this,'b2q8',false,'biology')">Тип корня</button>
+        <button class="topt" onclick="t2ans(this,'b2q8',true,'biology')">Подземный видоизменённый побег (ландыш, пырей, крапива)</button>
+        <div class="qfb" id="b2q8-fb">✅ Корневище — подземный побег (есть узлы, почки, листовые рубцы). Функции: запас питательных веществ, вегетативное размножение. Отличие от корня — есть почки.</div></div>
+
+        <div class="tq" id="b2q9"><div class="qnum">9/10</div>
+        <p>В каком ответе верно указаны органы растения?</p>
+        <button class="topt" onclick="t2ans(this,'b2q9',false,'biology')">Корень, стебель, клетка, цветок</button>
+        <button class="topt" onclick="t2ans(this,'b2q9',true,'biology')">Корень, побег (стебель+листья), цветок, плод, семя</button>
+        <div class="qfb" id="b2q9-fb">✅ Органы растения: корень, побег (стебель с листьями и почками), цветок, плод, семя. Клетка — не орган, а структурная единица.</div></div>
+
+        <div class="tq" id="b2q10"><div class="qnum">10/10</div>
+        <p>Фотосинтез и дыхание — это процессы:</p>
+        <button class="topt" onclick="t2ans(this,'b2q10',false,'biology')">Одинаковые (один и тот же процесс)</button>
+        <button class="topt" onclick="t2ans(this,'b2q10',true,'biology')">Противоположные (фотосинтез — поглощает CO₂; дыхание — выделяет CO₂)</button>
+        <div class="qfb" id="b2q10-fb">✅ Фотосинтез: CO₂+H₂O→глюкоза+O₂ (только на свету). Дыхание: глюкоза+O₂→CO₂+H₂O+энергия (всегда). Взаимно противоположны!</div></div>
+
+        <div class="block-res" id="res2-biology"><div class="res-score" id="sc2-biology"></div><div class="res-grade" id="gr2-biology"></div></div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: ГЕОГРАФИЯ ==================== -->
+    <div class="test-block geography" id="t2-geography">
+        <h2>🌍 География <span class="badge-time">⏱ 25 минут</span></h2>
+        <div class="block-meta">10 заданий • Новые вопросы</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-geography"></div></div>
+
+        <div class="tq" id="g2q1"><div class="qnum">1/10</div>
+        <p>Гидросфера — это:</p>
+        <button class="topt" onclick="t2ans(this,'g2q1',false,'geography')">Воздушная оболочка Земли</button>
+        <button class="topt" onclick="t2ans(this,'g2q1',true,'geography')">Водная оболочка Земли</button>
+        <div class="qfb" id="g2q1-fb">✅ Гидро = вода. Гидросфера включает: Мировой океан (97%), ледники (2%), подземные воды, реки, озёра. Литосфера — твёрдая, атмосфера — воздушная.</div></div>
+
+        <div class="tq" id="g2q2"><div class="qnum">2/10</div>
+        <p>Изогипсы (горизонтали) на карте — это:</p>
+        <button class="topt" onclick="t2ans(this,'g2q2',true,'geography')">Линии, соединяющие точки с одинаковой высотой</button>
+        <button class="topt" onclick="t2ans(this,'g2q2',false,'geography')">Линии, соединяющие точки с одинаковым давлением</button>
+        <div class="qfb" id="g2q2-fb">✅ Горизонтали (изогипсы) — основа изображения рельефа на картах. Чем ближе линии → круче склон. Изобары — одинаковое давление. Изотермы — одинаковая температура.</div></div>
+
+        <div class="tq" id="g2q3"><div class="qnum">3/10</div>
+        <p>Самый глубокий океан:</p>
+        <button class="topt" onclick="t2ans(this,'g2q3',true,'geography')">Тихий (Марианская впадина — 11 022 м)</button>
+        <button class="topt" onclick="t2ans(this,'g2q3',false,'geography')">Атлантический</button>
+        <div class="qfb" id="g2q3-fb">✅ Марианская впадина — наиболее глубокая точка Мирового океана (11 022 м). Расположена в западной части Тихого океана.</div></div>
+
+        <div class="tq" id="g2q4"><div class="qnum">4/10</div>
+        <p>Атмосферное давление 760 мм рт.ст. — это давление:</p>
+        <button class="topt" onclick="t2ans(this,'g2q4',true,'geography')">Нормальное (на уровне моря, 45° ш.)</button>
+        <button class="topt" onclick="t2ans(this,'g2q4',false,'geography')">Повышенное</button>
+        <div class="qfb" id="g2q4-fb">✅ 760 мм рт.ст. — нормальное давление при 0°С на уровне моря (широта 45°). Выше 760 — повышенное (антициклон), ниже — пониженное (циклон).</div></div>
+
+        <div class="tq" id="g2q5"><div class="qnum">5/10</div>
+        <p>Дельта реки — это:</p>
+        <button class="topt" onclick="t2ans(this,'g2q5',false,'geography')">Место, где река берёт начало</button>
+        <button class="topt" onclick="t2ans(this,'g2q5',true,'geography')">Место впадения реки в море/озеро, разделяющееся на рукава</button>
+        <div class="qfb" id="g2q5-fb">✅ Дельта — низменность у устья реки, разделённая на множество рукавов. Примеры: дельта Волги, Нила, Амазонки. Исток — начало реки. Устье — конец.</div></div>
+
+        <div class="tq" id="g2q6"><div class="qnum">6/10</div>
+        <p>Природные зоны сменяют друг друга от экватора к полюсам. Это называется:</p>
+        <button class="topt" onclick="t2ans(this,'g2q6',true,'geography')">Широтная зональность</button>
+        <button class="topt" onclick="t2ans(this,'g2q6',false,'geography')">Вертикальная поясность</button>
+        <div class="qfb" id="g2q6-fb">✅ Широтная зональность — смена зон параллельно экватору. Вертикальная поясность — смена зон от подножия горы к вершине (аналог движения от экватора к полюсу).</div></div>
+
+        <div class="tq" id="g2q7"><div class="qnum">7/10</div>
+        <p>Почва отличается от горной породы тем, что:</p>
+        <button class="topt" onclick="t2ans(this,'g2q7',true,'geography')">Обладает плодородием (содержит гумус)</button>
+        <button class="topt" onclick="t2ans(this,'g2q7',false,'geography')">Состоит из минералов</button>
+        <div class="qfb" id="g2q7-fb">✅ Главное свойство почвы — плодородие. Гумус (перегной) — органическое вещество от разложения остатков организмов. Без гумуса нет плодородия.</div></div>
+
+        <div class="tq" id="g2q8"><div class="qnum">8/10</div>
+        <p>Материковая земная кора отличается от океанической:</p>
+        <button class="topt" onclick="t2ans(this,'g2q8',true,'geography')">Большей толщиной (30–70 км) и наличием гранитного слоя</button>
+        <button class="topt" onclick="t2ans(this,'g2q8',false,'geography')">Меньшей толщиной (5–10 км)</button>
+        <div class="qfb" id="g2q8-fb">✅ Материковая кора: 3 слоя (осадочный, гранитный, базальтовый), 30–70 км. Океаническая: 2 слоя (осадочный, базальтовый), 5–10 км — тоньше и плотнее.</div></div>
+
+        <div class="tq" id="g2q9"><div class="qnum">9/10</div>
+        <p>Муссон — это ветер:</p>
+        <button class="topt" onclick="t2ans(this,'g2q9',false,'geography')">Меняющий направление дважды в сутки</button>
+        <button class="topt" onclick="t2ans(this,'g2q9',true,'geography')">Меняющий направление по сезонам (лето/зима)</button>
+        <div class="qfb" id="g2q9-fb">✅ Муссон (от арабск. «сезон»): летом дует с океана на сушу (несёт дожди), зимой — с суши на океан (сухой). Бриз меняется дважды в сутки (день/ночь).</div></div>
+
+        <div class="tq" id="g2q10"><div class="qnum">10/10</div>
+        <p>Озоновый слой находится в:</p>
+        <button class="topt" onclick="t2ans(this,'g2q10',false,'geography')">Тропосфере</button>
+        <button class="topt" onclick="t2ans(this,'g2q10',true,'geography')">Стратосфере (на высоте 20–25 км)</button>
+        <div class="qfb" id="g2q10-fb">✅ Озоновый слой в стратосфере защищает Землю от ультрафиолетового излучения Солнца. Разрушение озонового слоя (озоновые дыры) — экологическая проблема.</div></div>
+
+        <div class="block-res" id="res2-geography"><div class="res-score" id="sc2-geography"></div><div class="res-grade" id="gr2-geography"></div></div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: АНГЛИЙСКИЙ ==================== -->
+    <div class="test-block english" id="t2-english">
+        <h2>🇬🇧 Английский язык <span class="badge-time">⏱ 30 минут</span></h2>
+        <div class="block-meta">10 заданий • Новые вопросы</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-english"></div></div>
+
+        <div class="tq" id="e2q1"><div class="qnum">1/10</div>
+        <p>«I _______ my homework when mum called.» (do — прошедшее, незаконченное)</p>
+        <button class="topt" onclick="t2ans(this,'e2q1',false,'english')">did</button>
+        <button class="topt" onclick="t2ans(this,'e2q1',true,'english')">was doing</button>
+        <button class="topt" onclick="t2ans(this,'e2q1',false,'english')">do</button>
+        <div class="qfb" id="e2q1-fb">✅ Past Continuous: действие было в процессе, когда произошло другое (called). «When mum called» — сигнал. Was doing — незавершённое прошедшее длительное.</div></div>
+
+        <div class="tq" id="e2q2"><div class="qnum">2/10</div>
+        <p>Переведи: «Тебе не следует есть столько сладкого.»</p>
+        <button class="topt" onclick="t2ans(this,'e2q2',false,'english')">You must not eat so many sweets.</button>
+        <button class="topt" onclick="t2ans(this,'e2q2',true,'english')">You shouldn't eat so many sweets.</button>
+        <div class="qfb" id="e2q2-fb">✅ Should not (shouldn't) — мягкий совет/рекомендация. Must not — строгий запрет. «Не следует» = shouldn't.</div></div>
+
+        <div class="tq" id="e2q3"><div class="qnum">3/10</div>
+        <p>Артикль: «She plays _______ piano beautifully.»</p>
+        <button class="topt" onclick="t2ans(this,'e2q3',true,'english')">the (музыкальные инструменты — the)</button>
+        <button class="topt" onclick="t2ans(this,'e2q3',false,'english')">a</button>
+        <button class="topt" onclick="t2ans(this,'e2q3',false,'english')">— (без артикля)</button>
+        <div class="qfb" id="e2q3-fb">✅ Перед названиями музыкальных инструментов ставится the: play the guitar, the violin, the piano. Но: play football (спорт — без артикля).</div></div>
+
+        <div class="tq" id="e2q4"><div class="qnum">4/10</div>
+        <p>Вторая форма глагола «know»:</p>
+        <button class="topt" onclick="t2ans(this,'e2q4',false,'english')">knowed</button>
+        <button class="topt" onclick="t2ans(this,'e2q4',true,'english')">knew</button>
+        <div class="qfb" id="e2q4-fb">✅ Know — knew — known. Неправильный глагол. Запомни пары: know/knew, grow/grew, blow/blew, throw/threw.</div></div>
+
+        <div class="tq" id="e2q5"><div class="qnum">5/10</div>
+        <p>«This is _______ most interesting book I've ever read.»</p>
+        <button class="topt" onclick="t2ans(this,'e2q5',false,'english')">a</button>
+        <button class="topt" onclick="t2ans(this,'e2q5',true,'english')">the</button>
+        <div class="qfb" id="e2q5-fb">✅ Перед превосходной степенью прилагательного обязательно ставится the: the best, the most interesting, the biggest.</div></div>
+
+        <div class="tq" id="e2q6"><div class="qnum">6/10</div>
+        <p>«He _______ his key. He can't open the door.» (потерял — рез-т виден сейчас)</p>
+        <button class="topt" onclick="t2ans(this,'e2q6',false,'english')">lost</button>
+        <button class="topt" onclick="t2ans(this,'e2q6',true,'english')">has lost</button>
+        <div class="qfb" id="e2q6-fb">✅ Present Perfect: действие в прошлом, но результат виден сейчас (не может открыть). Has lost = потерял (и сейчас нет ключа). Lost — просто факт в прошлом.</div></div>
+
+        <div class="tq" id="e2q7"><div class="qnum">7/10</div>
+        <p>«It _______ rain tomorrow.» (возможно)</p>
+        <button class="topt" onclick="t2ans(this,'e2q7',false,'english')">must</button>
+        <button class="topt" onclick="t2ans(this,'e2q7',true,'english')">might / may</button>
+        <div class="qfb" id="e2q7-fb">✅ Might/may — возможность (может быть). Must — уверенность или необходимость. Will — точное будущее.</div></div>
+
+        <div class="tq" id="e2q8"><div class="qnum">8/10</div>
+        <p>Предлог: «I've been waiting _______ 3 o'clock.»</p>
+        <button class="topt" onclick="t2ans(this,'e2q8',false,'english')">for</button>
+        <button class="topt" onclick="t2ans(this,'e2q8',true,'english')">since</button>
+        <div class="qfb" id="e2q8-fb">✅ Since — с определённого момента (3 o'clock, Monday, 2020). For — в течение периода (two hours, a week, ages).</div></div>
+
+        <div class="tq" id="e2q9"><div class="qnum">9/10</div>
+        <p>«Москва больше Лондона» по-английски:</p>
+        <button class="topt" onclick="t2ans(this,'e2q9',true,'english')">Moscow is bigger than London.</button>
+        <button class="topt" onclick="t2ans(this,'e2q9',false,'english')">Moscow is more big than London.</button>
+        <div class="qfb" id="e2q9-fb">✅ Big — короткое прилагательное → сравнительная: bigger (удвоение g). Чем = than. Длинные: more interesting than.</div></div>
+
+        <div class="tq" id="e2q10"><div class="qnum">10/10</div>
+        <p>«_______ did you go to school?» — «By bus.»</p>
+        <button class="topt" onclick="t2ans(this,'e2q10',false,'english')">Where</button>
+        <button class="topt" onclick="t2ans(this,'e2q10',true,'english')">How</button>
+        <button class="topt" onclick="t2ans(this,'e2q10',false,'english')">When</button>
+        <div class="qfb" id="e2q10-fb">✅ How — как (способ, метод). By bus — на автобусе. Where — где. When — когда. How much/many — сколько.</div></div>
+
+        <div class="block-res" id="res2-english"><div class="res-score" id="sc2-english"></div><div class="res-grade" id="gr2-english"></div></div>
+    </div>
+
+    <!-- ==================== ТЕСТ 2: ЛИТЕРАТУРА ==================== -->
+    <div class="test-block literature" id="t2-literature">
+        <h2>📖 Литература <span class="badge-time">⏱ 25 минут</span></h2>
+        <div class="block-meta">10 заданий • Новые вопросы</div>
+        <div class="subj-prog"><div class="subj-prog-fill" id="sp-literature"></div></div>
+
+        <div class="tq" id="l2q1"><div class="qnum">1/10</div>
+        <p>«В дурном обществе» — автор:</p>
+        <button class="topt" onclick="t2ans(this,'l2q1',true,'literature')">В.Г. Короленко</button>
+        <button class="topt" onclick="t2ans(this,'l2q1',false,'literature')">А.П. Чехов</button>
+        <div class="qfb" id="l2q1-fb">✅ Владимир Галактионович Короленко. Повесть о дружбе Васи — сына судьи — с бездомными детьми Валеком и Марусей. Тема: сострадание и социальное неравенство.</div></div>
+
+        <div class="tq" id="l2q2"><div class="qnum">2/10</div>
+        <p>Эпитет в строке «Белая берёза под моим окном»:</p>
+        <button class="topt" onclick="t2ans(this,'l2q2',true,'literature')">«Белая» — образное определение</button>
+        <button class="topt" onclick="t2ans(this,'l2q2',false,'literature')">«берёза» — это метафора</button>
+        <div class="qfb" id="l2q2-fb">✅ Белая — эпитет (образное определение, подчёркивающее характерный признак). Это строка из стихотворения С.А. Есенина «Белая берёза».</div></div>
+
+        <div class="tq" id="l2q3"><div class="qnum">3/10</div>
+        <p>Что такое «сказ» (жанровая особенность)?</p>
+        <button class="topt" onclick="t2ans(this,'l2q3',false,'literature')">Стихотворная сказка</button>
+        <button class="topt" onclick="t2ans(this,'l2q3',true,'literature')">Повествование от лица рассказчика с особой народной речью</button>
+        <div class="qfb" id="l2q3-fb">✅ Сказ имитирует устную речь: народные выражения, просторечия, особая интонация. В «Левше» рассказчик — простой человек из народа, отсюда «мелкоскоп» вместо «микроскоп».</div></div>
+
+        <div class="tq" id="l2q4"><div class="qnum">4/10</div>
+        <p>В рассказе «Толстый и тонкий» тонкий начал раболепствовать, потому что:</p>
+        <button class="topt" onclick="t2ans(this,'l2q4',false,'literature')">Боялся наказания</button>
+        <button class="topt" onclick="t2ans(this,'l2q4',true,'literature')">Узнал, что толстый занимает высокий чин (тайный советник)</button>
+        <div class="qfb" id="l2q4-fb">✅ Чехов высмеивает чинопочитание: стоило тонкому узнать о чине старого друга — и он тут же потерял человеческое достоинство, начав унижаться.</div></div>
+
+        <div class="tq" id="l2q5"><div class="qnum">5/10</div>
+        <p>Главная мысль «Дубровского» Пушкина:</p>
+        <button class="topt" onclick="t2ans(this,'l2q5',false,'literature')">Богатство важнее всего</button>
+        <button class="topt" onclick="t2ans(this,'l2q5',true,'literature')">Честь, благородство и любовь не зависят от социального положения</button>
+        <div class="qfb" id="l2q5-fb">✅ Дубровский — разорённый дворянин — благороднее богача Троекурова. Любовь Владимира и Маши преодолевает классовые барьеры. Несправедливость губит людей.</div></div>
+
+        <div class="tq" id="l2q6"><div class="qnum">6/10</div>
+        <p>«Некрасов написал «Железную дорогу». Она посвящена теме:</p>
+        <button class="topt" onclick="t2ans(this,'l2q6',true,'literature')">Тяжёлого труда народа-строителя</button>
+        <button class="topt" onclick="t2ans(this,'l2q6',false,'literature')">Развитию транспорта в России</button>
+        <div class="qfb" id="l2q6-fb">✅ Некрасов показывает, какой ценой построена железная дорога — ценой жизни тысяч крестьян. Посвящение мальчику Ване. «Кто строил эту дорогу? Граф Пётр Андреич Клейнмихель?» — ирония.</div></div>
+
+        <div class="tq" id="l2q7"><div class="qnum">7/10</div>
+        <p>В «Маленьком принце» Лис говорит: «Ты навсегда в ответе за тех...»</p>
+        <button class="topt" onclick="t2ans(this,'l2q7',true,'literature')">«...кого приручил»</button>
+        <button class="topt" onclick="t2ans(this,'l2q7',false,'literature')">«...кого встретил»</button>
+        <div class="qfb" id="l2q7-fb">✅ «Ты навсегда в ответе за тех, кого приручил» — одна из главных цитат произведения. Говорит о любви, дружбе и ответственности. Принц отвечает за свою Розу.</div></div>
+
+        <div class="tq" id="l2q8"><div class="qnum">8/10</div>
+        <p>«Хорь и Калиныч» Тургенева — это:</p>
+        <button class="topt" onclick="t2ans(this,'l2q8',false,'literature')">Первый рассказ «Капитанской дочки»</button>
+        <button class="topt" onclick="t2ans(this,'l2q8',true,'literature')">Первый рассказ цикла «Записки охотника»</button>
+        <div class="qfb" id="l2q8-fb">✅ «Записки охотника» — цикл рассказов Тургенева о русском крестьянстве. «Хорь и Калиныч» — первый рассказ цикла (1847). Два типа характера русского мужика.</div></div>
+
+        <div class="tq" id="l2q9"><div class="qnum">9/10</div>
+        <p>«Сказание о Кише» — Киш победил медведя с помощью:</p>
+        <button class="topt" onclick="t2ans(this,'l2q9',false,'literature')">Силы и копья</button>
+        <button class="topt" onclick="t2ans(this,'l2q9',true,'literature')">Смекалки — вложил в жир костяные спирали</button>
+        <div class="qfb" id="l2q9-fb">✅ Киш придумал хитрость: в шарики жира спрятал острые косточки-спирали. Медведь съел — спирали развернулись и ранили его изнутри. Победа умом, а не силой.</div></div>
+
+        <div class="tq" id="l2q10"><div class="qnum">10/10</div>
+        <p>Рифма — это:</p>
+        <button class="topt" onclick="t2ans(this,'l2q10',false,'literature')">Чередование ударных и безударных слогов</button>
+        <button class="topt" onclick="t2ans(this,'l2q10',true,'literature')">Созвучие концов стихотворных строк</button>
+        <div class="qfb" id="l2q10-fb">✅ Рифма — созвучие (мечта–звезда, горе–море). Ритм — чередование ударных/безударных слогов. Рифма бывает: точная, неточная, мужская, женская, дактилическая.</div></div>
+
+        <div class="block-res" id="res2-literature"><div class="res-score" id="sc2-literature"></div><div class="res-grade" id="gr2-literature"></div></div>
+    </div>
+
+    <!-- ИТОГОВАЯ ТАБЛИЦА ТЕСТА №2 -->
+    <div class="final-table-wrap" id="finalTable2">
+        <h2>📊 Результаты Пробного тестирования №2</h2>
+        <table class="res-table">
+            <thead>
+                <tr><th>Предмет</th><th>Тест №1 (вчера)</th><th>Тест №2 (сегодня)</th><th>Изменение</th><th>Оценка</th></tr>
+            </thead>
+            <tbody id="compareTableBody"></tbody>
+        </table>
+        <div class="overall-result">
+            <div class="overall-pct" id="overall2Pct">—</div>
+            <div style="color:#aaa;margin-top:5px;">Общий результат Теста №2</div>
+            <div id="overall2Msg" style="margin-top:12px;font-size:1.05em;"></div>
+        </div>
+    </div>
+
+    <!-- ЛЁГКОЕ ПОВТОРЕНИЕ -->
+    <div class="light-review">
+        <h2>📋 Лёгкое повторение остальных предметов</h2>
+        <p style="color:#aaa;margin-bottom:15px;font-size:0.95em;">Быстро просмотри ключевые моменты по предметам, которые не вошли в Тест №2</p>
+        <div class="lr-grid">
+            <div class="lr-card" style="border-left:3px solid #ff6b6b;">
+                <h4>🇷🇺 Русский язык — экспресс</h4>
+                <ul>
+                    <li>ЛАГ/ЛОЖ: Г→А, Ж→О</li>
+                    <li>ПРЕ-: очень/пере-. ПРИ-: к/при</li>
+                    <li>НН: -ОНН-, -ЕНН-, 3 исключения</li>
+                    <li>НЕ: синоним→слитно, А→раздельно</li>
+                    <li>II спр.: видеть, слышать и др.</li>
+                </ul>
+            </div>
+            <div class="lr-card" style="border-left:3px solid #00b4d8;">
+                <h4>📐 Математика — экспресс</h4>
+                <ul>
+                    <li>Деление дробей: ×перевёрнутую</li>
+                    <li>−×−=+, −×+=−</li>
+                    <li>p% от A: A×p/100</li>
+                    <li>S=πr², C=2πr</li>
+                    <li>Пропорция: крайние=средние</li>
+                </ul>
+            </div>
+            <div class="lr-card" style="border-left:3px solid #4ecdc4;">
+                <h4>🏛️ История — экспресс</h4>
+                <ul>
+                    <li>988 — крещение Руси</li>
+                    <li>1240 — Нева (шведы)</li>
+                    <li>1242 — лёд (немцы)</li>
+                    <li>1380 — Куликово</li>
+                    <li>1480 — Угра, конец ига</li>
+                </ul>
+            </div>
+            <div class="lr-card" style="border-left:3px solid #a29bfe;">
+                <h4>👥 Общество — экспресс</h4>
+                <ul>
+                    <li>Личностью становятся</li>
+                    <li>Биол/соц/дух потребности</li>
+                    <li>Золотое правило нравственности</li>
+                    <li>Компромисс = взаимные уступки</li>
+                    <li>Социализация = усвоение норм</li>
+                </ul>
+            </div>
+            <div class="lr-card" style="border-left:3px solid #2ecc71;">
+                <h4>🌿 Биология — экспресс</h4>
+                <ul>
+                    <li>Фотосинтез: CO₂+H₂O→глюкоза+O₂</li>
+                    <li>Хлоропласт — фотосинтез</li>
+                    <li>Однодольные — мочковатая</li>
+                    <li>Двудольные — стержневая</li>
+                    <li>Дыхание — круглосуточно</li>
+                </ul>
+            </div>
+            <div class="lr-card" style="border-left:3px solid #e67e22;">
+                <h4>🌍 География — экспресс</h4>
+                <ul>
+                    <li>Широта — от экватора (параллели)</li>
+                    <li>Долгота — от Гринвича (меридианы)</li>
+                    <li>t°: −6°С на каждый 1 км</li>
+                    <li>Р: −12 мм на каждые 100 м</li>
+                    <li>Гольфстрим — тёплое течение</li>
+                </ul>
+            </div>
+            <div class="lr-card" style="border-left:3px solid #f093fb;">
+                <h4>🇬🇧 Английский — экспресс</h4>
+                <ul>
+                    <li>PS — every day / always</li>
+                    <li>PC — now / look!</li>
+                    <li>Past Simple — yesterday / ago</li>
+                    <li>an — перед гласным ЗВУКОМ</li>
+                    <li>the — перед инструментами</li>
+                </ul>
+            </div>
+            <div class="lr-card" style="border-left:3px solid #fda085;">
+                <h4>📖 Литература — экспресс</h4>
+                <ul>
+                    <li>Левша — Лесков (сказ)</li>
+                    <li>Уроки фр. — Распутин</li>
+                    <li>Кладовая — Пришвин</li>
+                    <li>Конь — Астафьев</li>
+                    <li>Маленький принц — Сент-Экзюпери</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЫСТРЫЕ ШПАРГАЛКИ -->
+    <div class="section">
+        <h3>⚡ Быстрые шпаргалки для аттестации</h3>
+        <div class="cheat-grid">
+            <div class="cheat-card">
+                <h4>🇷🇺 Чередования (корни)</h4>
+                <ul>
+                    <li><strong>ЛАГ/ЛОЖ:</strong> Г→А, Ж→О</li>
+                    <li><strong>ГОР/ГАР:</strong> без удар.→О</li>
+                    <li><strong>ЗАР/ЗОР:</strong> без удар.→А</li>
+                    <li><strong>РАСТ/РОС:</strong> перед СТ→А</li>
+                    <li><strong>БИР/БЕР:</strong> есть -А-→И</li>
+                </ul>
+            </div>
+            <div class="cheat-card">
+                <h4>🏛️ Ключевые даты</h4>
+                <ul>
+                    <li><strong>476</strong> — конец Рима</li>
+                    <li><strong>988</strong> — крещение Руси</li>
+                    <li><strong>1242</strong> — Ледовое побоище</li>
+                    <li><strong>1380</strong> — Куликово поле</li>
+                    <li><strong>1480</strong> — конец ига</li>
+                </ul>
+            </div>
+            <div class="cheat-card">
+                <h4>🇬🇧 Времена (маркеры)</h4>
+                <ul>
+                    <li><strong>PS:</strong> always, every, never</li>
+                    <li><strong>PC:</strong> now, look!, at the moment</li>
+                    <li><strong>Past S:</strong> yesterday, ago, last</li>
+                    <li><strong>Future:</strong> tomorrow, next, soon</li>
+                    <li><strong>Can</strong>=умею, <strong>should</strong>=совет</li>
+                </ul>
+            </div>
+            <div class="cheat-card">
+                <h4>📐 Формулы</h4>
+                <ul>
+                    <li><strong>S круга</strong> = πr²</li>
+                    <li><strong>C окружн.</strong> = 2πr</li>
+                    <li><strong>p% от A</strong> = A×p/100</li>
+                    <li><strong>Пропорция:</strong> a×d = b×c</li>
+                    <li><strong>−×−</strong> = + | <strong>−×+</strong> = −</li>
+                </ul>
+            </div>
+            <div class="cheat-card">
+                <h4>🌿 Биология</h4>
+                <ul>
+                    <li><strong>Фотосинтез:</strong> хлоропласт, свет</li>
+                    <li><strong>Дыхание:</strong> митохондрии, всегда</li>
+                    <li><strong>Однодольные:</strong> мочков., 1 семядоля</li>
+                    <li><strong>Двудольные:</strong> стержн., 2 семядоли</li>
+                    <li><strong>Ядро</strong> = наследственность</li>
+                </ul>
+            </div>
+            <div class="cheat-card">
+                <h4>🌍 География</h4>
+                <ul>
+                    <li><strong>Широта:</strong> 0–90°, от экватора</li>
+                    <li><strong>Долгота:</strong> 0–180°, от Гринвича</li>
+                    <li><strong>Москва:</strong> 55°с.ш., 37°в.д.</li>
+                    <li><strong>Норма давл.:</strong> 760 мм рт.ст.</li>
+                    <li><strong>t°↓6°С</strong> на каждый км вверх</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПСИХОЛОГИЧЕСКАЯ ПОДГОТОВКА -->
+    <div class="psych-section">
+        <h2>🧘 Психологическая подготовка к аттестации</h2>
+
+        <div class="psych-card">
+            <h4>😌 Техника «5-4-3-2-1» (при тревоге)</h4>
+            <p>Если почувствуешь волнение на аттестации: назови <strong>5 вещей которые видишь</strong>, <strong>4 которые можешь потрогать</strong>, <strong>3 которые слышишь</strong>, <strong>2 которые чувствуешь по запаху</strong>, <strong>1 которую чувствуешь на вкус</strong>. Это возвращает в «здесь и сейчас».</p>
+        </div>
+
+        <div class="psych-card">
+            <h4>💨 Дыхание «4-7-8»</h4>
+            <p>Вдох на счёт <strong>4</strong> → задержи дыхание на счёт <strong>7</strong> → выдох на счёт <strong>8</strong>. Повтори 3 раза. Это активирует парасимпатическую нервную систему и снижает тревогу за 60 секунд.</p>
+        </div>
+
+        <div class="psych-card">
+            <h4>🧠 Установка на рост</h4>
+            <p>Замени «Я боюсь, что не знаю» на «<strong>Я сделал всё возможное, и покажу, что знаю</strong>». Ошибки — это не провал, а информация. Аттестация — не приговор, а один день из тысяч твоих дней.</p>
+        </div>
+
+        <div class="psych-card">
+            <h4>⏱️ Тактика на аттестации</h4>
+            <p>1) Сначала быстро пройди все вопросы, отвечая на те, что знаешь точно.<br>
+            2) Пропускай сложные — возвращайся к ним в конце.<br>
+            3) Если совсем не знаешь — выбери наиболее правдоподобный ответ.<br>
+            4) Следи за временем: раздели время поровну на все вопросы.<br>
+            5) Не меняй первый ответ без веской причины — интуиция часто права!</p>
+        </div>
+    </div>
+
+    <!-- ЧЕК-ЛИСТ ПОДГОТОВКИ К АТТЕСТАЦИИ -->
+    <div class="attestation-checklist">
+        <h2>✅ Чек-лист подготовки к дню аттестации</h2>
+
+        <div class="check-group">
+            <h4>📅 Сегодня вечером:</h4>
+            <div class="citem" onclick="this.classList.toggle('checked')">Просмотреть быстрые шпаргалки (10 минут)</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Приготовить ручки, карандаши, линейку</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Положить всё необходимое в рюкзак/папку</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Узнать точное расписание аттестации</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Лечь спать НЕ ПОЗЖЕ 22:00 (мозгу нужен отдых!)</div>
+        </div>
+
+        <div class="check-group">
+            <h4>🌅 В день аттестации (утром):</h4>
+            <div class="citem" onclick="this.classList.toggle('checked')">Встать за 1,5–2 часа до начала</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Нормально позавтракать (глюкоза = топливо для мозга)</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Не открывать учебники — только шпаргалки 10 мин</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Взять с собой воду</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Выйти заранее, чтобы не торопиться</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Сказать себе: «Я готов. Я знаю материал. Всё будет хорошо!»</div>
+        </div>
+
+        <div class="check-group">
+            <h4>📝 На аттестации:</h4>
+            <div class="citem" onclick="this.classList.toggle('checked')">Внимательно прочитать ВСЕ вопросы сначала</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Начать с лёгких вопросов</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Следить за временем</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">При тревоге — применить технику 4-7-8</div>
+            <div class="citem" onclick="this.classList.toggle('checked')">Проверить ответы если останется время</div>
+        </div>
+    </div>
+
+    <!-- ФИНАЛЬНОЕ СООБЩЕНИЕ -->
+    <div class="final-message">
+        <h2>🎓 Ты готов к аттестации!</h2>
+        <div class="star-row">⭐ ⭐ ⭐ ⭐ ⭐</div>
+        <p><strong style="color:#56ccf2;">4 недели усердной работы позади.</strong><br>
+        Ты повторил все предметы, прошёл два пробных тестирования,<br>
+        разобрал ошибки и закрепил знания.</p>
+        <p>Помни: аттестация — это не самое важное в жизни.<br>
+        Это просто <strong style="color:#ffd200;">возможность показать то, что ты знаешь.</strong><br>
+        А ты знаешь очень много!</p>
+        <p style="font-size:1.2em;color:#a29bfe;font-weight:bold;">
+            «Успех — это сумма маленьких усилий, повторяемых день за днём.»<br>
+            <span style="font-size:0.8em;color:#888;">— Роберт Коллиер</span>
+        </p>
+        <div class="star-row">🚀 Удачи на аттестации! 🚀</div>
+        <p style="color:#aaa;font-size:0.9em;margin-top:15px;">
+            Неделя 4 завершена • 26 дней подготовки • Все предметы повторены ✅
+        </p>
+    </div>
+
+</div>
+
+<script>
+    /* ===== ВЫБОР ПРЕДМЕТОВ ===== */
+    const selected = new Set();
+    const blockTotals = {
+        russian:10, math:10, history:10, social:10,
+        biology:10, geography:10, english:10, literature:10
+    };
+    // Реальные итоги (из тестовых блоков)
+    const test2Data = {
+        russian:   {total:12,answered:0,correct:0,prefix:'r2q'},
+        math:      {total:12,answered:0,correct:0,prefix:'m2q'},
+        history:   {total:10,answered:0,correct:0,prefix:'h2q'},
+        social:    {total:10,answered:0,correct:0,prefix:'s2q'},
+        biology:   {total:10,answered:0,correct:0,prefix:'b2q'},
+        geography: {total:10,answered:0,correct:0,prefix:'g2q'},
+        english:   {total:10,answered:0,correct:0,prefix:'e2q'},
+        literature:{total:10,answered:0,correct:0,prefix:'l2q'}
+    };
+
+    function toggleSubject(id, card) {
+        if (selected.has(id)) { selected.delete(id); card.classList.remove('selected'); }
+        else { selected.add(id); card.classList.add('selected'); }
+    }
+
+    function startTest2() {
+        if (selected.size === 0) { alert('Выбери хотя бы один предмет!'); return; }
+        document.getElementById('timerBox').style.display = 'block';
+        selected.forEach(id => {
+            const block = document.getElementById('t2-' + id);
+            if (block) block.classList.add('active');
+        });
+        document.getElementById('timerBox').scrollIntoView({behavior:'smooth'});
+        alert('✅ Тестирование начато! Запусти таймер и приступай к заданиям. Удачи!');
+    }
+
+    /* ===== ТАЙМЕР ===== */
+    let t2Sec = 40*60, t2Running = false, t2Int = null;
+
+    function t2UpdateDisplay() {
+        const m = Math.floor(t2Sec/60), s = t2Sec%60;
+        const d = document.getElementById('t2Display');
+        d.textContent = pad(m)+':'+pad(s);
+        d.className = 'timer-display';
+        if (t2Sec <= 300 && t2Sec > 60) d.classList.add('warn');
+        if (t2Sec <= 60) d.classList.add('danger');
+    }
+    function pad(n){return String(n).padStart(2,'0');}
+    function t2Start(){
+        if(t2Running)return;
+        t2Running=true;
+        t2Int=setInterval(()=>{
+            if(t2Sec<=0){clearInterval(t2Int);t2Running=false;alert('⏰ Время вышло!');return;}
+            t2Sec--;t2UpdateDisplay();
+        },1000);
+    }
+    function t2Pause(){clearInterval(t2Int);t2Running=false;}
+    function t2Reset(){t2Pause();t2Sec=40*60;t2UpdateDisplay();}
+    t2UpdateDisplay();
+
+    /* ===== ОТВЕТЫ НА ВОПРОСЫ ТЕСТА ===== */
+    function t2ans(button, qId, isCorrect, subj) {
+        const q = document.getElementById(qId);
+        if (!q) return;
+        const btns = q.querySelectorAll('.topt');
+        const fb = document.getElementById(qId+'-fb');
+        if (button.disabled) return;
+
+        btns.forEach(b => {
+            b.disabled = true;
+            if (b === button) b.classList.add(isCorrect ? 'correct' : 'wrong');
+        });
+        if (!isCorrect) {
+            btns.forEach(b => {
+                if (b.getAttribute('onclick') && b.getAttribute('onclick').includes('true'))
+                    b.classList.add('correct');
+            });
+        }
+        if (fb) {
+            fb.className = 'qfb show ' + (isCorrect ? 'cfb' : 'wfb');
+            if (!isCorrect) fb.textContent = '❌ Неверно. ' + (fb.textContent || '');
+        }
+
+        const d = test2Data[subj];
+        if (!d) return;
+        d.answered++;
+        if (isCorrect) d.correct++;
+
+        const pct = d.answered/d.total*100;
+        const sp = document.getElementById('sp-'+subj);
+        if (sp) sp.style.width = pct+'%';
+
+        if (d.answered === d.total) showBlockRes2(subj);
+    }
+
+    function showBlockRes2(subj) {
+        const d = test2Data[subj];
+        const pct = Math.round(d.correct/d.total*100);
+        const resDiv = document.getElementById('res2-'+subj);
+        const scDiv  = document.getElementById('sc2-'+subj);
+        const grDiv  = document.getElementById('gr2-'+subj);
+        if (!resDiv) return;
+
+        scDiv.textContent = d.correct+'/'+d.total+' ('+pct+'%)';
+        let cls='', txt='';
+        if(pct>=90){cls='col-exc';txt='🌟 Отлично! Оценка: 5';}
+        else if(pct>=70){cls='col-good';txt='✅ Хорошо! Оценка: 4';}
+        else if(pct>=50){cls='col-avg';txt='📚 Удовлетворительно. Оценка: 3';}
+        else{cls='col-low';txt='🔥 Оценка: 2 — требует работы';}
+        scDiv.className='res-score '+cls;
+        grDiv.textContent=txt;
+        resDiv.classList.add('show');
+
+        checkAllDone2();
+    }
+
+    function checkAllDone2() {
+        const done = Array.from(selected).every(s => test2Data[s] && test2Data[s].answered === test2Data[s].total);
+        if (done) showFinal2();
+    }
+
+    function showFinal2() {
+        const names = {
+            russian:'🇷🇺 Русский', math:'📐 Математика', history:'🏛️ История',
+            social:'👥 Обществознание', biology:'🌿 Биология',
+            geography:'🌍 География', english:'🇬🇧 Английский', literature:'📖 Литература'
+        };
+        const maxes = {russian:15,math:15,history:10,social:10,biology:10,geography:10,english:10,literature:10};
+
+        let totalC=0, totalQ=0, tbody='';
+        selected.forEach(s => {
+            const d = test2Data[s];
+            const pct2 = Math.round(d.correct/d.total*100);
+            const prev = parseInt(document.getElementById('prev-'+s)?.value)||0;
+            const max  = maxes[s]||10;
+            const pct1 = Math.round(prev/max*100);
+            totalC+=d.correct; totalQ+=d.total;
+
+            let impHtml='', impCls='imp-same';
+            if(pct2>pct1){impHtml='▲ +'+(pct2-pct1)+'%';impCls='imp-up';}
+            else if(pct2<pct1){impHtml='▼ '+(pct2-pct1)+'%';impCls='imp-down';}
+            else{impHtml='= Без изм.';}
+
+            let gr='', grCls='';
+            if(pct2>=90){gr='5';grCls='col-exc';}
+            else if(pct2>=70){gr='4';grCls='col-good';}
+            else if(pct2>=50){gr='3';grCls='col-avg';}
+            else{gr='2';grCls='col-low';}
+
+            tbody+=`<tr>
+                <td>${names[s]||s}</td>
+                <td>${prev}/${max} (${pct1}%)</td>
+                <td>${d.correct}/${d.total} (${pct2}%)</td>
+                <td><span class="improvement-badge ${impCls}">${impHtml}</span></td>
+                <td class="${grCls}">${gr}</td>
+            </tr>`;
+        });
+
+        document.getElementById('compareTableBody').innerHTML=tbody;
+        const ov=Math.round(totalC/totalQ*100);
+        const ovEl=document.getElementById('overall2Pct');
+        ovEl.textContent=ov+'%';
+        ovEl.className='overall-pct '+(ov>=90?'col-exc':ov>=70?'col-good':ov>=50?'col-avg':'col-low');
+
+        let msg='';
+        if(ov>=90)msg='🌟 Превосходно! Ты полностью готов к аттестации!';
+        else if(ov>=70)msg='👍 Отличный результат! Небольшое повторение — и ты готов!';
+        else if(ov>=50)msg='📚 Хороший прогресс! Перечитай шпаргалки и верь в себя!';
+        else msg='💪 Ты старался! Просмотри быстрые шпаргалки и не переживай — ты знаешь больше, чем думаешь!';
+        document.getElementById('overall2Msg').textContent=msg;
+
+        document.getElementById('finalTable2').classList.add('show');
+        document.getElementById('finalTable2').scrollIntoView({behavior:'smooth'});
+    }
+
+    function toggleCheck(el){el.classList.toggle('checked');}
+</script>
+</body>
+</html>

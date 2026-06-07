@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подготовка к итоговой аттестации — 6 класс</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2234;
+            --bg-card-hover: #1f2a42;
+            --border-color: #2a3550;
+            --text-primary: #f0f4ff;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-pink: #ec4899;
+            --accent-cyan: #06b6d4;
+            --accent-indigo: #6366f1;
+            --week1-color: #3b82f6;
+            --week1-bg: rgba(59, 130, 246, 0.1);
+            --week1-border: rgba(59, 130, 246, 0.3);
+            --week2-color: #8b5cf6;
+            --week2-bg: rgba(139, 92, 246, 0.1);
+            --week2-border: rgba(139, 92, 246, 0.3);
+            --week3-color: #f59e0b;
+            --week3-bg: rgba(245, 158, 11, 0.1);
+            --week3-border: rgba(245, 158, 11, 0.3);
+            --week4-color: #10b981;
+            --week4-bg: rgba(16, 185, 129, 0.1);
+            --week4-border: rgba(16, 185, 129, 0.3);
+            --glow-blue: 0 0 30px rgba(59, 130, 246, 0.15);
+            --glow-purple: 0 0 30px rgba(139, 92, 246, 0.15);
+            --glow-orange: 0 0 30px rgba(245, 158, 11, 0.15);
+            --glow-green: 0 0 30px rgba(16, 185, 129, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-animation .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .bg-animation .orb:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent);
+            top: -200px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-animation .orb:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent);
+            top: 50%;
+            right: -150px;
+            animation-delay: -7s;
+        }
+
+        .bg-animation .orb:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent);
+            bottom: -100px;
+            left: 30%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -30px) scale(1.05); }
+            50% { transform: translate(-30px, 50px) scale(0.95); }
+            75% { transform: translate(40px, 20px) scale(1.02); }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 0 50px;
+            position: relative;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .header h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #94a3b8 50%, #f0f4ff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 200% center; }
+        }
+
+        .header .subtitle {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .header .subtitle span {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* Progress overview */
+        .progress-overview {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px 32px;
+            margin-bottom: 48px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .progress-overview .progress-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            min-width: 200px;
+            height: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .progress-bar-container .seg {
+            height: 100%;
+            transition: width 1s ease;
+        }
+
+        .progress-bar-container .seg-1 { background: var(--week1-color); width: 25%; }
+        .progress-bar-container .seg-2 { background: var(--week2-color); width: 25%; }
+        .progress-bar-container .seg-3 { background: var(--week3-color); width: 25%; }
+        .progress-bar-container .seg-4 { background: var(--week4-color); width: 25%; }
+
+        .progress-legend {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+        }
+
+        /* Week navigation */
+        .week-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .week-nav-btn {
+            padding: 12px 28px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .week-nav-btn:hover {
+            background: var(--bg-card-hover);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .week-nav-btn.active {
+            color: white;
+        }
+
+        .week-nav-btn[data-week="1"].active {
+            background: var(--week1-color);
+            border-color: var(--week1-color);
+            box-shadow: var(--glow-blue);
+        }
+
+        .week-nav-btn[data-week="2"].active {
+            background: var(--week2-color);
+            border-color: var(--week2-color);
+            box-shadow: var(--glow-purple);
+        }
+
+        .week-nav-btn[data-week="3"].active {
+            background: var(--week3-color);
+            border-color: var(--week3-color);
+            box-shadow: var(--glow-orange);
+        }
+
+        .week-nav-btn[data-week="4"].active {
+            background: var(--week4-color);
+            border-color: var(--week4-color);
+            box-shadow: var(--glow-green);
+        }
+
+        .week-nav-btn[data-week="checklist"] {
+            border-style: dashed;
+        }
+
+        .week-nav-btn[data-week="checklist"].active {
+            background: var(--accent-pink);
+            border-color: var(--accent-pink);
+            border-style: solid;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.15);
+        }
+
+        /* Week section */
+        .week-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .week-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Week header */
+        .week-header {
+            margin-bottom: 36px;
+            padding: 32px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .week-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.03) 20px,
+                rgba(255,255,255,0.03) 40px
+            );
+        }
+
+        .week-1 .week-header {
+            background: linear-gradient(135deg, var(--week1-bg), transparent);
+            border: 1px solid var(--week1-border);
+        }
+
+        .week-2 .week-header {
+            background: linear-gradient(135deg, var(--week2-bg), transparent);
+            border: 1px solid var(--week2-border);
+        }
+
+        .week-3 .week-header {
+            background: linear-gradient(135deg, var(--week3-bg), transparent);
+            border: 1px solid var(--week3-border);
+        }
+
+        .week-4 .week-header {
+            background: linear-gradient(135deg, var(--week4-bg), transparent);
+            border: 1px solid var(--week4-border);
+        }
+
+        .week-header .week-number {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .week-1 .week-number { color: var(--week1-color); }
+        .week-2 .week-number { color: var(--week2-color); }
+        .week-3 .week-number { color: var(--week3-color); }
+        .week-4 .week-number { color: var(--week4-color); }
+
+        .week-header h2 {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .week-header .week-desc {
+            color: var(--text-secondary);
+            font-size: 15px;
+            max-width: 800px;
+        }
+
+        .week-header .week-hours {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .week-1 .week-hours {
+            background: var(--week1-bg);
+            color: var(--week1-color);
+            border: 1px solid var(--week1-border);
+        }
+
+        .week-2 .week-hours {
+            background: var(--week2-bg);
+            color: var(--week2-color);
+            border: 1px solid var(--week2-border);
+        }
+
+        .week-3 .week-hours {
+            background: var(--week3-bg);
+            color: var(--week3-color);
+            border: 1px solid var(--week3-border);
+        }
+
+        .week-4 .week-hours {
+            background: var(--week4-bg);
+            color: var(--week4-color);
+            border: 1px solid var(--week4-border);
+        }
+
+        /* Goals section */
+        .goals-section {
+            margin-bottom: 32px;
+        }
+
+        .goals-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .goals-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .goal-item:hover {
+            border-color: rgba(255,255,255,0.1);
+            background: var(--bg-card-hover);
+        }
+
+        .goal-icon {
+            font-size: 16px;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Materials grid */
+        .materials-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .material-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .material-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.15);
+            background: var(--bg-card-hover);
+        }
+
+        .week-1 .material-card:hover { box-shadow: var(--glow-blue); border-color: var(--week1-border); }
+        .week-2 .material-card:hover { box-shadow: var(--glow-purple); border-color: var(--week2-border); }
+        .week-3 .material-card:hover { box-shadow: var(--glow-orange); border-color: var(--week3-border); }
+        .week-4 .material-card:hover { box-shadow: var(--glow-green); border-color: var(--week4-border); }
+
+        .material-card .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .material-card .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .week-1 .card-icon { background: var(--week1-bg); }
+        .week-2 .card-icon { background: var(--week2-bg); }
+        .week-3 .card-icon { background: var(--week3-bg); }
+        .week-4 .card-icon { background: var(--week4-bg); }
+
+        .material-card .card-part {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .week-1 .card-part { color: var(--week1-color); background: var(--week1-bg); }
+        .week-2 .card-part { color: var(--week2-color); background: var(--week2-bg); }
+        .week-3 .card-part { color: var(--week3-color); background: var(--week3-bg); }
+        .week-4 .card-part { color: var(--week4-color); background: var(--week4-bg); }
+
+        .material-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .material-card .card-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .material-card .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .card-meta .meta-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .card-meta .meta-tag {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-meta .open-link {
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .week-1 .open-link { color: var(--week1-color); }
+        .week-2 .open-link { color: var(--week2-color); }
+        .week-3 .open-link { color: var(--week3-color); }
+        .week-4 .open-link { color: var(--week4-color); }
+
+        .material-card:hover .open-link {
+            gap: 8px;
+        }
+
+        /* Schedule table for week 4 */
+        .schedule-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin-bottom: 36px;
+        }
+
+        .schedule-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .schedule-table td {
+            padding: 16px;
+            background: var(--bg-card);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .schedule-table tr td:first-child {
+            border-radius: 12px 0 0 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .schedule-table tr td:last-child {
+            border-radius: 0 12px 12px 0;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        .day-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .day-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .week-4 .day-num {
+            background: var(--week4-bg);
+            color: var(--week4-color);
+        }
+
+        /* Mini-check section */
+        .mini-check {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mini-check::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .week-1 .mini-check::before { background: var(--week1-color); }
+        .week-2 .mini-check::before { background: var(--week2-color); }
+        .week-3 .mini-check::before { background: var(--week3-color); }
+        .week-4 .mini-check::before { background: var(--week4-color); }
+
+        .mini-check h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mini-check-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .mini-check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .mini-check-item .check-icon {
+            color: var(--accent-green);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .mini-check .check-time {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Subject table in week headers */
+        .subject-table-wrapper {
+            margin-bottom: 36px;
+            overflow-x: auto;
+        }
+
+        .subject-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 14px;
+        }
+
+        .subject-table thead th {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .subject-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .subject-table tbody tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .subject-table tbody td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        .subject-table tbody td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .subject-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .subject-table .hours-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .subject-table .format-cell {
+            font-size: 12px;
+        }
+
+        .format-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            margin: 2px 2px;
+        }
+
+        .subject-table tfoot td {
+            padding: 14px 16px;
+            font-weight: 700;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        /* Checklist section */
+        .checklist-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .checklist-section.active {
+            display: block;
+        }
+
+        .checklist-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 32px;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), transparent);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            border-radius: 20px;
+        }
+
+        .checklist-header h2 {
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .checklist-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .checklist-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-card:hover {
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .checklist-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist-card h4 .subject-icon {
+            font-size: 20px;
+        }
+
+        .checklist-items {
+            list-style: none;
+        }
+
+        .checklist-items li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .checklist-items li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-items li:hover {
+            color: var(--text-primary);
+        }
+
+        .checkbox-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            margin-top: 1px;
+        }
+
+        .checklist-items li.checked .checkbox-custom {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        .checklist-items li.checked .checkbox-custom::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .checklist-items li.checked {
+            color: var(--text-muted);
+            text-decoration: line-through;
+            text-decoration-color: var(--text-muted);
+        }
+
+        .checklist-progress {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist-progress .prog-bar {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .checklist-progress .prog-fill {
+            height: 100%;
+            background: var(--accent-green);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .checklist-progress .prog-text {
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        /* Technical readiness */
+        .tech-readiness {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 48px;
+        }
+
+        .tech-readiness h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer .tip {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .header {
+                padding: 40px 0 30px;
+            }
+
+            .stats-bar {
+                gap: 24px;
+            }
+
+            .progress-overview {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 20px;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .week-nav {
+                gap: 6px;
+            }
+
+            .week-nav-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+
+            .subject-table-wrapper {
+                margin: 0 -16px 36px;
+                padding: 0 16px;
+            }
+
+            .schedule-table {
+                font-size: 13px;
+            }
+
+            .goals-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .week-nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .week-nav-btn {
+                text-align: center;
+            }
+        }
+
+        /* Subject icons */
+        .subj-emoji {
+            font-size: 16px;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-badge">
+                <span class="dot"></span>
+                Учебный портал
+            </div>
+            <h1>Подготовка к итоговой аттестации</h1>
+            <p class="subtitle">Полный курс подготовки для <span>6 класса</span> — 4 недели, 10 предметов, системный подход</p>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Недели</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">~125</div>
+                    <div class="stat-label">Часов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Предметов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">26</div>
+                    <div class="stat-label">Уроков</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- PROGRESS OVERVIEW -->
+        <div class="progress-overview">
+            <div class="progress-label">📊 Прогресс курса</div>
+            <div class="progress-bar-container">
+                <div class="seg seg-1"></div>
+                <div class="seg seg-2"></div>
+                <div class="seg seg-3"></div>
+                <div class="seg seg-4"></div>
+            </div>
+            <div class="progress-legend">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--week1-color);"></div>
+                    Неделя 1
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--week2-color);"></div>
+                    Неделя 2
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--week3-color);"></div>
+                    Неделя 3
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: var(--week4-color);"></div>
+                    Неделя 4
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK NAVIGATION -->
+        <nav class="week-nav">
+            <button class="week-nav-btn active" data-week="1" onclick="showWeek(1)">📘 Неделя 1</button>
+            <button class="week-nav-btn" data-week="2" onclick="showWeek(2)">📗 Неделя 2</button>
+            <button class="week-nav-btn" data-week="3" onclick="showWeek(3)">📙 Неделя 3</button>
+            <button class="week-nav-btn" data-week="4" onclick="showWeek(4)">📕 Неделя 4</button>
+            <button class="week-nav-btn" data-week="checklist" onclick="showChecklist()">✅ Чек-лист</button>
+        </nav>
+
+        <!-- ==================== WEEK 1 ==================== -->
+        <div class="week-section week-1 active" id="week-1">
+            <div class="week-header">
+                <div class="week-number">Неделя 1</div>
+                <h2>🏗️ Фундамент</h2>
+                <p class="week-desc">Дни 3–8 · Закладываем базу по русскому языку и математике, начинаем системное повторение истории и биологии, знакомимся с форматом тестов</p>
+                <div class="week-hours">⏱ ~26 часов за неделю</div>
+            </div>
+
+            <!-- Goals -->
+            <div class="goals-section">
+                <h3>🎯 Главные цели недели</h3>
+                <div class="goals-list">
+                    <div class="goal-item">
+                        <span class="goal-icon">📝</span>
+                        Заложить базу по русскому языку и математике
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">📚</span>
+                        Начать системное повторение истории и биологии
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🎯</span>
+                        Познакомиться с форматом тестов
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Table -->
+            <div class="subject-table-wrapper">
+                <table class="subject-table">
+                    <thead>
+                        <tr>
+                            <th>Предмет</th>
+                            <th>Темы недели</th>
+                            <th>Часов</th>
+                            <th>Формат</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🇷🇺 Русский язык</td>
+                            <td>Фонетика (повторение), Морфемика, Орфография (корни с чередованием, приставки ПРЕ-/ПРИ-, О/Ё после шипящих)</td>
+                            <td class="hours-cell">6 ч</td>
+                            <td class="format-cell"><span class="format-tag">Теория</span><span class="format-tag">Упражнения</span><span class="format-tag">Диктанты</span></td>
+                        </tr>
+                        <tr>
+                            <td>🔢 Математика</td>
+                            <td>Делимость чисел (НОД, НОК), Обыкновенные дроби (сложение, вычитание, умножение, деление)</td>
+                            <td class="hours-cell">6 ч</td>
+                            <td class="format-cell"><span class="format-tag">Теория</span><span class="format-tag">Задачи</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🏰 История</td>
+                            <td>Раннее Средневековье: Византия, Франки, Арабский халифат, Феодализм</td>
+                            <td class="hours-cell">3 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Карта</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🧬 Биология</td>
+                            <td>Клеточное строение организмов, Ткани растений</td>
+                            <td class="hours-cell">3 ч</td>
+                            <td class="format-cell"><span class="format-tag">Схемы</span><span class="format-tag">Термины</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>👥 Обществознание</td>
+                            <td>Человек — личность, Познание, Деятельность</td>
+                            <td class="hours-cell">2 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🌍 География</td>
+                            <td>Земля — планета Солнечной системы, План и карта</td>
+                            <td class="hours-cell">2 ч</td>
+                            <td class="format-cell"><span class="format-tag">Карта</span><span class="format-tag">Термины</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🇬🇧 Английский</td>
+                            <td>Present Simple, Present Continuous, лексика (Family, Home)</td>
+                            <td class="hours-cell">2 ч</td>
+                            <td class="format-cell"><span class="format-tag">Грамматика</span><span class="format-tag">Упражнения</span></td>
+                        </tr>
+                        <tr>
+                            <td>📖 Литература</td>
+                            <td>Мифы Древней Греции, А.С. Пушкин «Дубровский»</td>
+                            <td class="hours-cell">2 ч</td>
+                            <td class="format-cell"><span class="format-tag">Краткие содержания</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Итого</td>
+                            <td class="hours-cell">~26 ч</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Materials -->
+            <div class="materials-section">
+                <h3>📂 Учебные материалы</h3>
+                <div class="materials-grid">
+
+                    <a href="1-chast1_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇷🇺</div>
+                            <span class="card-part">Часть 1</span>
+                        </div>
+                        <h4>Русский язык — Фонетика и Морфемика</h4>
+                        <p class="card-desc">Повторение фонетики, состав слова, морфемный разбор. Основные понятия и упражнения.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~1.5 ч</span>
+                                <span class="meta-tag">📝 Теория</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="1-chast2_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇷🇺</div>
+                            <span class="card-part">Часть 2</span>
+                        </div>
+                        <h4>Русский язык — Орфография</h4>
+                        <p class="card-desc">Корни с чередованием, приставки ПРЕ-/ПРИ-, буквы О/Ё после шипящих. Правила и тренировка.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~1.5 ч</span>
+                                <span class="meta-tag">✏️ Упражнения</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="1-chast3_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔢</div>
+                            <span class="card-part">Часть 3</span>
+                        </div>
+                        <h4>Математика — Делимость чисел</h4>
+                        <p class="card-desc">НОД и НОК, признаки делимости, простые и составные числа. Теория и задачи.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">🧮 Задачи</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="1-chast4_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔢</div>
+                            <span class="card-part">Часть 4</span>
+                        </div>
+                        <h4>Математика — Обыкновенные дроби</h4>
+                        <p class="card-desc">Сложение, вычитание, умножение и деление обыкновенных дробей. Смешанные числа.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">🧮 Задачи</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Mini-check -->
+            <div class="mini-check">
+                <h3>📋 Мини-проверка в конце недели (день 8)</h3>
+                <div class="mini-check-items">
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Русский язык: диктант из 50 слов на изученные орфограммы
+                    </div>
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Математика: 10 примеров на дроби
+                    </div>
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        История: тест 10 вопросов по раннему Средневековью
+                    </div>
+                </div>
+                <div class="check-time">⏱ Время: 1,5 часа</div>
+            </div>
+        </div>
+
+        <!-- ==================== WEEK 2 ==================== -->
+        <div class="week-section week-2" id="week-2">
+            <div class="week-header">
+                <div class="week-number">Неделя 2</div>
+                <h2>📚 Основной массив</h2>
+                <p class="week-desc">Дни 9–14 · Морфология русского языка, рациональные числа, завершение основных блоков по истории и географии, углублённая работа по биологии и обществознанию</p>
+                <div class="week-hours">⏱ ~32,5 часа за неделю</div>
+            </div>
+
+            <!-- Goals -->
+            <div class="goals-section">
+                <h3>🎯 Главные цели недели</h3>
+                <div class="goals-list">
+                    <div class="goal-item">
+                        <span class="goal-icon">📝</span>
+                        Русский язык: морфология (существительное, прилагательное, глагол)
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🔢</span>
+                        Математика: рациональные числа, координатная плоскость
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🏰</span>
+                        Завершить основные блоки по истории и географии
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🔬</span>
+                        Углублённая работа по биологии и обществознанию
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Table -->
+            <div class="subject-table-wrapper">
+                <table class="subject-table">
+                    <thead>
+                        <tr>
+                            <th>Предмет</th>
+                            <th>Темы недели</th>
+                            <th>Часов</th>
+                            <th>Формат</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🇷🇺 Русский язык</td>
+                            <td>Имя существительное (склонение, разносклоняемые, несклоняемые), Имя прилагательное (разряды, степени сравнения, правописание)</td>
+                            <td class="hours-cell">7 ч</td>
+                            <td class="format-cell"><span class="format-tag">Теория</span><span class="format-tag">Упражнения</span><span class="format-tag">Тесты</span></td>
+                        </tr>
+                        <tr>
+                            <td>🔢 Математика</td>
+                            <td>Десятичные дроби (все действия), Отношения и пропорции, Положительные и отрицательные числа</td>
+                            <td class="hours-cell">7 ч</td>
+                            <td class="format-cell"><span class="format-tag">Теория</span><span class="format-tag">Задачи</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🏰 История</td>
+                            <td>Расцвет Средневековья: Крестовые походы, Средневековый город, Культура, Столетняя война, Реконкиста. Древняя Русь</td>
+                            <td class="hours-cell">4 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Даты</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🧬 Биология</td>
+                            <td>Органы растений: корень, побег, лист, цветок, плод</td>
+                            <td class="hours-cell">3 ч</td>
+                            <td class="format-cell"><span class="format-tag">Схемы</span><span class="format-tag">Термины</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>👥 Обществознание</td>
+                            <td>Межличностные отношения, Человек в группе, Общение, Конфликты</td>
+                            <td class="hours-cell">2 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🌍 География</td>
+                            <td>Литосфера, Гидросфера (Мировой океан, воды суши)</td>
+                            <td class="hours-cell">3 ч</td>
+                            <td class="format-cell"><span class="format-tag">Карта</span><span class="format-tag">Термины</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🇬🇧 Английский</td>
+                            <td>Past Simple (правильные и неправильные глаголы), лексика (Food, Daily routine)</td>
+                            <td class="hours-cell">2,5 ч</td>
+                            <td class="format-cell"><span class="format-tag">Грамматика</span><span class="format-tag">Упражнения</span><span class="format-tag">Аудио</span></td>
+                        </tr>
+                        <tr>
+                            <td>📖 Литература</td>
+                            <td>М.Ю. Лермонтов «Тучи», И.С. Тургенев «Бежин луг», Н.А. Некрасов, А.П. Чехов рассказы</td>
+                            <td class="hours-cell">2,5 ч</td>
+                            <td class="format-cell"><span class="format-tag">Краткие содержания</span><span class="format-tag">Тесты</span></td>
+                        </tr>
+                        <tr>
+                            <td>💻 Информатика</td>
+                            <td>Алгоритмы, единицы информации, файловая система</td>
+                            <td class="hours-cell">1,5 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Итого</td>
+                            <td class="hours-cell">~32,5 ч</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Materials -->
+            <div class="materials-section">
+                <h3>📂 Учебные материалы</h3>
+                <div class="materials-grid">
+
+                    <a href="2-chast1_6 .html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇷🇺</div>
+                            <span class="card-part">Часть 1</span>
+                        </div>
+                        <h4>Русский язык — Имя существительное</h4>
+                        <p class="card-desc">Склонение, разносклоняемые и несклоняемые существительные. Правописание суффиксов.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">📝 Теория</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="2-chast2_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇷🇺</div>
+                            <span class="card-part">Часть 2</span>
+                        </div>
+                        <h4>Русский язык — Имя прилагательное</h4>
+                        <p class="card-desc">Разряды прилагательных, степени сравнения, правописание Н/НН, НЕ с прилагательными.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">✏️ Упражнения</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="2-chast3_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔢</div>
+                            <span class="card-part">Часть 3</span>
+                        </div>
+                        <h4>Математика — Десятичные дроби</h4>
+                        <p class="card-desc">Все действия с десятичными дробями, перевод обыкновенных в десятичные и обратно.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">🧮 Задачи</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="2-chast4_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔢</div>
+                            <span class="card-part">Часть 4</span>
+                        </div>
+                        <h4>Математика — Отношения и пропорции</h4>
+                        <p class="card-desc">Отношения, пропорции, основное свойство пропорции. Положительные и отрицательные числа.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">🧮 Задачи</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="2-chast5_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">📚</div>
+                            <span class="card-part">Часть 5</span>
+                        </div>
+                        <h4>История, Биология, География и другие</h4>
+                        <p class="card-desc">Крестовые походы, органы растений, литосфера и гидросфера, обществознание, английский, литература, информатика.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~6 ч</span>
+                                <span class="meta-tag">📋 Комплексный</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Mini-check -->
+            <div class="mini-check">
+                <h3>📋 Мини-проверка в конце недели (день 14)</h3>
+                <div class="mini-check-items">
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Русский язык: тест 20 вопросов по морфологии
+                    </div>
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Математика: контрольная на дроби и отрицательные числа (15 заданий)
+                    </div>
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Биология: тест на строение растений
+                    </div>
+                </div>
+                <div class="check-time">⏱ Время: 2 часа</div>
+            </div>
+        </div>
+
+        <!-- ==================== WEEK 3 ==================== -->
+        <div class="week-section week-3" id="week-3">
+            <div class="week-header">
+                <div class="week-number">Неделя 3</div>
+                <h2>🔍 Углубление и дополнительные предметы</h2>
+                <p class="week-desc">Дни 15–20 · Глагол, местоимение, числительное, координаты, уравнения, проценты. Завершение всех основных тем, прохождение дополнительных предметов, тренировочные тесты</p>
+                <div class="week-hours">⏱ ~35 часов за неделю</div>
+            </div>
+
+            <!-- Goals -->
+            <div class="goals-section">
+                <h3>🎯 Главные цели недели</h3>
+                <div class="goals-list">
+                    <div class="goal-item">
+                        <span class="goal-icon">📝</span>
+                        Русский язык: глагол, местоимение, числительное
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🔢</span>
+                        Математика: координаты, уравнения, проценты
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">📚</span>
+                        Завершить все основные темы по всем предметам
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🎨</span>
+                        Пройти все дополнительные предметы
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">📊</span>
+                        Начать регулярные тренировочные тесты
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Table -->
+            <div class="subject-table-wrapper">
+                <table class="subject-table">
+                    <thead>
+                        <tr>
+                            <th>Предмет</th>
+                            <th>Темы недели</th>
+                            <th>Часов</th>
+                            <th>Формат</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🇷🇺 Русский язык</td>
+                            <td>Глагол (спряжение, наклонение, время, -ТСЯ/-ТЬСЯ), Местоимение (разряды), Числительное (склонение, правописание), Синтаксис</td>
+                            <td class="hours-cell">7 ч</td>
+                            <td class="format-cell"><span class="format-tag">Теория</span><span class="format-tag">Тесты</span><span class="format-tag">Диктанты</span></td>
+                        </tr>
+                        <tr>
+                            <td>🔢 Математика</td>
+                            <td>Координатная плоскость, Решение уравнений, Задачи на проценты, Масштаб, Диаграммы</td>
+                            <td class="hours-cell">7 ч</td>
+                            <td class="format-cell"><span class="format-tag">Теория</span><span class="format-tag">Задачи</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🏰 История</td>
+                            <td>Позднее Средневековье. Повторение всего курса. Ключевые даты и термины</td>
+                            <td class="hours-cell">3 ч</td>
+                            <td class="format-cell"><span class="format-tag">Хронология</span><span class="format-tag">Итоговый тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🧬 Биология</td>
+                            <td>Жизнедеятельность растений: питание, дыхание, размножение. Классификация растений</td>
+                            <td class="hours-cell">3 ч</td>
+                            <td class="format-cell"><span class="format-tag">Схемы</span><span class="format-tag">Итоговый тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>👥 Обществознание</td>
+                            <td>Нравственные основы жизни. Повторение всего курса</td>
+                            <td class="hours-cell">2 ч</td>
+                            <td class="format-cell"><span class="format-tag">Итоговый тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🌍 География</td>
+                            <td>Атмосфера, Биосфера, Население Земли. Повторение</td>
+                            <td class="hours-cell">3 ч</td>
+                            <td class="format-cell"><span class="format-tag">Карта</span><span class="format-tag">Итоговый тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🇬🇧 Английский</td>
+                            <td>Future Simple, модальные глаголы (can, must, should), лексика (Weather, Hobbies, School)</td>
+                            <td class="hours-cell">2,5 ч</td>
+                            <td class="format-cell"><span class="format-tag">Грамматика</span><span class="format-tag">Тесты</span></td>
+                        </tr>
+                        <tr>
+                            <td>📖 Литература</td>
+                            <td>А.И. Куприн, А.С. Грин «Алые паруса», В.П. Астафьев, В.Г. Распутин. Стихи о природе</td>
+                            <td class="hours-cell">2,5 ч</td>
+                            <td class="format-cell"><span class="format-tag">Краткие содержания</span><span class="format-tag">Тесты</span></td>
+                        </tr>
+                        <tr>
+                            <td>🛡️ ОБЖ</td>
+                            <td>Безопасность на дороге, пожарная безопасность, ЧС, первая помощь</td>
+                            <td class="hours-cell">1,5 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🎨 ИЗО</td>
+                            <td>Виды ИЗО, жанры живописи, основы композиции, цветоведение</td>
+                            <td class="hours-cell">1 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🎵 Музыка</td>
+                            <td>Музыкальные жанры, инструменты, композиторы</td>
+                            <td class="hours-cell">1 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🔧 Технология</td>
+                            <td>Материаловедение, технологии обработки, проектная деятельность</td>
+                            <td class="hours-cell">1 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                        <tr>
+                            <td>🏃 Физкультура</td>
+                            <td>Олимпийские игры, виды спорта, основы ЗОЖ, правила спортивных игр</td>
+                            <td class="hours-cell">0,5 ч</td>
+                            <td class="format-cell"><span class="format-tag">Конспект</span><span class="format-tag">Тест</span></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Итого</td>
+                            <td class="hours-cell">~35 ч</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Materials -->
+            <div class="materials-section">
+                <h3>📂 Учебные материалы</h3>
+                <div class="materials-grid">
+
+                    <a href="3-chast1_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇷🇺</div>
+                            <span class="card-part">Часть 1</span>
+                        </div>
+                        <h4>Русский язык — Глагол</h4>
+                        <p class="card-desc">Спряжение, наклонение, время, -ТСЯ/-ТЬСЯ. Теория и тренировочные упражнения.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">📝 Теория</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast2_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇷🇺</div>
+                            <span class="card-part">Часть 2</span>
+                        </div>
+                        <h4>Русский язык — Местоимение и Числительное</h4>
+                        <p class="card-desc">Разряды местоимений, склонение числительных, правописание. Синтаксис простого предложения.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">✏️ Упражнения</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast3_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔢</div>
+                            <span class="card-part">Часть 3</span>
+                        </div>
+                        <h4>Математика — Координатная плоскость</h4>
+                        <p class="card-desc">Координатная плоскость, построение точек, решение линейных уравнений.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">🧮 Задачи</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast4_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔢</div>
+                            <span class="card-part">Часть 4</span>
+                        </div>
+                        <h4>Математика — Проценты, масштаб, диаграммы</h4>
+                        <p class="card-desc">Задачи на проценты, масштаб, чтение и построение диаграмм.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">🧮 Задачи</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast5_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🏰</div>
+                            <span class="card-part">Часть 5</span>
+                        </div>
+                        <h4>История — Позднее Средневековье</h4>
+                        <p class="card-desc">Завершение курса, хронологическая таблица, ключевые даты и термины. Итоговый тест.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~1.5 ч</span>
+                                <span class="meta-tag">📋 Повторение</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast6_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🧬</div>
+                            <span class="card-part">Часть 6</span>
+                        </div>
+                        <h4>Биология — Жизнедеятельность растений</h4>
+                        <p class="card-desc">Питание, дыхание, размножение растений. Классификация. Итоговый тест по биологии.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~1.5 ч</span>
+                                <span class="meta-tag">🔬 Схемы</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast7_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🌍</div>
+                            <span class="card-part">Часть 7</span>
+                        </div>
+                        <h4>География и Обществознание</h4>
+                        <p class="card-desc">Атмосфера, биосфера, население Земли. Нравственные основы жизни. Итоговые тесты.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2.5 ч</span>
+                                <span class="meta-tag">📋 Итоговые тесты</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast8_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇬🇧</div>
+                            <span class="card-part">Часть 8</span>
+                        </div>
+                        <h4>Английский язык и Литература</h4>
+                        <p class="card-desc">Future Simple, модальные глаголы. Куприн, Грин, Астафьев, Распутин — краткие содержания и тесты.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2.5 ч</span>
+                                <span class="meta-tag">📖 Чтение</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="3-chast9_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🎨</div>
+                            <span class="card-part">Часть 9</span>
+                        </div>
+                        <h4>Дополнительные предметы</h4>
+                        <p class="card-desc">ОБЖ, ИЗО, Музыка, Технология, Физкультура (теория) — конспекты и тесты по каждому предмету.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2.5 ч</span>
+                                <span class="meta-tag">📋 Конспекты</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Mini-check -->
+            <div class="mini-check">
+                <h3>📋 Мини-проверка в конце недели (день 20)</h3>
+                <div class="mini-check-items">
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Комплексный тест по русскому языку (30 вопросов)
+                    </div>
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Комплексный тест по математике (20 заданий)
+                    </div>
+                    <div class="mini-check-item">
+                        <span class="check-icon">✅</span>
+                        Тесты по истории, биологии, географии (по 15 вопросов)
+                    </div>
+                </div>
+                <div class="check-time">⏱ Время: 3 часа</div>
+            </div>
+        </div>
+
+        <!-- ==================== WEEK 4 ==================== -->
+        <div class="week-section week-4" id="week-4">
+            <div class="week-header">
+                <div class="week-number">Неделя 4</div>
+                <h2>🎯 Повторение и пробные тестирования</h2>
+                <p class="week-desc">Дни 21–26 · Системное повторение всех предметов, пробные тестирования в формате аттестации, работа над ошибками, психологическая подготовка</p>
+                <div class="week-hours">⏱ ~31,5 часа за неделю</div>
+            </div>
+
+            <!-- Goals -->
+            <div class="goals-section">
+                <h3>🎯 Главные цели недели</h3>
+                <div class="goals-list">
+                    <div class="goal-item">
+                        <span class="goal-icon">🔄</span>
+                        Системное повторение всех предметов
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">📝</span>
+                        Пробные тестирования в формате аттестации
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🔍</span>
+                        Работа над ошибками
+                    </div>
+                    <div class="goal-item">
+                        <span class="goal-icon">🧘</span>
+                        Психологическая подготовка
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Table -->
+            <div class="subject-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>День</th>
+                            <th>Фокус</th>
+                            <th>Содержание</th>
+                            <th>Часов</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="day-label"><span class="day-num">21</span></div></td>
+                            <td><strong>Повторение блок 1</strong></td>
+                            <td>Русский язык (полный повторительный тест) + История (повторение дат и терминов) + Обществознание (повторение)</td>
+                            <td>5,5 ч</td>
+                        </tr>
+                        <tr>
+                            <td><div class="day-label"><span class="day-num">22</span></div></td>
+                            <td><strong>Повторение блок 2</strong></td>
+                            <td>Математика (полный повторительный тест) + Биология (повторение) + География (повторение)</td>
+                            <td>5,5 ч</td>
+                        </tr>
+                        <tr>
+                            <td><div class="day-label"><span class="day-num">23</span></div></td>
+                            <td><strong>Повторение блок 3</strong></td>
+                            <td>Английский (полный повторительный тест) + Литература (повторение произведений и авторов) + Доп. предметы (повторение)</td>
+                            <td>5,5 ч</td>
+                        </tr>
+                        <tr>
+                            <td><div class="day-label"><span class="day-num">24</span></div></td>
+                            <td><strong style="color: var(--accent-red);">ПРОБНОЕ ТЕСТИРОВАНИЕ №1</strong></td>
+                            <td>Все основные предметы — полные пробные тесты в условиях, приближённых к аттестации (с таймером)</td>
+                            <td>6 ч</td>
+                        </tr>
+                        <tr>
+                            <td><div class="day-label"><span class="day-num">25</span></div></td>
+                            <td><strong>Работа над ошибками</strong></td>
+                            <td>Разбор всех ошибок пробного тестирования, повторение проблемных тем, точечная подготовка</td>
+                            <td>5 ч</td>
+                        </tr>
+                        <tr>
+                            <td><div class="day-label"><span class="day-num">26</span></div></td>
+                            <td><strong style="color: var(--accent-orange);">ПРОБНОЕ ТЕСТИРОВАНИЕ №2 + Финал</strong></td>
+                            <td>Повторные пробные тесты по самым проблемным предметам. Лёгкое повторение остальных. Подготовка к дню аттестации</td>
+                            <td>4 ч</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Materials -->
+            <div class="materials-section">
+                <h3>📂 Учебные материалы</h3>
+                <div class="materials-grid">
+
+                    <a href="4-chast1_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🇷🇺</div>
+                            <span class="card-part">Часть 1</span>
+                        </div>
+                        <h4>Повторение — Русский язык</h4>
+                        <p class="card-desc">Полный повторительный тест по русскому языку. Все разделы: фонетика, морфемика, орфография, морфология, синтаксис.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">📝 Тест</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="4-chast2_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔢</div>
+                            <span class="card-part">Часть 2</span>
+                        </div>
+                        <h4>Повторение — Математика</h4>
+                        <p class="card-desc">Полный повторительный тест по математике. Дроби, отрицательные числа, уравнения, проценты, координаты.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~2 ч</span>
+                                <span class="meta-tag">🧮 Тест</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="4-chast3_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">📚</div>
+                            <span class="card-part">Часть 3</span>
+                        </div>
+                        <h4>Повторение — История, Обществознание, Английский, Литература</h4>
+                        <p class="card-desc">Повторение дат, терминов. Повторительные тесты по английскому, литературе, обществознанию.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~3 ч</span>
+                                <span class="meta-tag">📋 Повторение</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="4-chast4_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🎯</div>
+                            <span class="card-part">Часть 4</span>
+                        </div>
+                        <h4>Пробное тестирование №1</h4>
+                        <p class="card-desc">Полные пробные тесты по всем основным предметам в условиях, приближённых к аттестации. С таймером.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~6 ч</span>
+                                <span class="meta-tag">🔴 Экзамен</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="4-chast5_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🔍</div>
+                            <span class="card-part">Часть 5</span>
+                        </div>
+                        <h4>Работа над ошибками</h4>
+                        <p class="card-desc">Разбор всех ошибок пробного тестирования, повторение проблемных тем, точечная подготовка.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~5 ч</span>
+                                <span class="meta-tag">🔧 Коррекция</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                    <a href="4-chast6_6.html" class="material-card">
+                        <div class="card-top">
+                            <div class="card-icon">🏆</div>
+                            <span class="card-part">Часть 6</span>
+                        </div>
+                        <h4>Пробное тестирование №2 + Финальная подготовка</h4>
+                        <p class="card-desc">Повторные тесты по проблемным предметам. Лёгкое повторение остальных. Подготовка к дню аттестации.</p>
+                        <div class="card-meta">
+                            <div class="meta-info">
+                                <span class="meta-tag">⏱ ~4 ч</span>
+                                <span class="meta-tag">🏁 Финал</span>
+                            </div>
+                            <span class="open-link">Открыть →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CHECKLIST ==================== -->
+        <div class="checklist-section" id="checklist">
+            <div class="checklist-header">
+                <h2>✅ Чек-лист готовности к аттестации</h2>
+                <p>Отмечай каждый пункт по мере подготовки. Цель — набрать ≥70% по каждому предмету.</p>
+            </div>
+
+            <div class="checklist-grid">
+
+                <!-- Русский язык -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">🇷🇺</span> Русский язык</h4>
+                    <ul class="checklist-items" data-subject="russian">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю все чередующиеся корни и исключения</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Различаю ПРЕ- и ПРИ-</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю спряжения глаголов</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Различаю разряды прилагательных</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю разряды местоимений</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею склонять числительные</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю правило Н/НН в прилагательных</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю правила НЕ с существительными, прилагательными, глаголами</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею находить однородные члены и ставить запятые</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/10</span>
+                    </div>
+                </div>
+
+                <!-- Математика -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">🔢</span> Математика</h4>
+                    <ul class="checklist-items" data-subject="math">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею выполнять все действия с обыкновенными дробями</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею выполнять все действия с десятичными дробями</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю правило знаков при действиях</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею решать линейные уравнения</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею решать задачи на проценты</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею находить НОД и НОК</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею работать с координатной плоскостью</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю что такое модуль числа</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею решать задачи на пропорции и масштаб</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/10</span>
+                    </div>
+                </div>
+
+                <!-- История -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">🏰</span> История</h4>
+                    <ul class="checklist-items" data-subject="history">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю 20 ключевых дат Средневековья</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю 20 ключевых терминов</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Могу объяснить феодальную систему</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю причины и последствия Крестовых походов</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/5</span>
+                    </div>
+                </div>
+
+                <!-- Обществознание -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">👥</span> Обществознание</h4>
+                    <ul class="checklist-items" data-subject="social">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю понятия: личность, индивид, потребности, деятельность</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Различаю виды потребностей</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю виды межличностных отношений</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/4</span>
+                    </div>
+                </div>
+
+                <!-- Биология -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">🧬</span> Биология</h4>
+                    <ul class="checklist-items" data-subject="biology">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю строение растительной клетки</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю типы тканей растений</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю строение корня, побега, листа, цветка</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Понимаю фотосинтез и дыхание</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю классификацию растений (5 отделов)</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/6</span>
+                    </div>
+                </div>
+
+                <!-- География -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">🌍</span> География</h4>
+                    <ul class="checklist-items" data-subject="geography">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Умею работать с масштабом</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю строение литосферы</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю части гидросферы</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю строение атмосферы</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Могу назвать крупнейшие горы, реки, озёра</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/6</span>
+                    </div>
+                </div>
+
+                <!-- Английский -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">🇬🇧</span> Английский язык</h4>
+                    <ul class="checklist-items" data-subject="english">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю Present Simple (образование, маркеры)</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю Present Continuous</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю Past Simple (+ 30 неправильных глаголов)</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю Future Simple</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю модальные глаголы (can, must, should)</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю лексику по основным темам (≥100 слов)</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥65%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/7</span>
+                    </div>
+                </div>
+
+                <!-- Литература -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">📖</span> Литература</h4>
+                    <ul class="checklist-items" data-subject="literature">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю всех авторов и их произведения</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю героев каждого произведения</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Знаю краткое содержание каждого произведения</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Различаю средства выразительности (эпитет, метафора, олицетворение, сравнение)</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/5</span>
+                    </div>
+                </div>
+
+                <!-- Дополнительные предметы -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">📋</span> Дополнительные предметы</h4>
+                    <ul class="checklist-items" data-subject="extra">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Информатика: пробный тест ≥70%</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>ОБЖ: пробный тест ≥70%</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>ИЗО: пробный тест ≥70%</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Музыка: пробный тест ≥70%</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Технология: пробный тест ≥70%</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Физкультура: пробный тест ≥70%</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/6</span>
+                    </div>
+                </div>
+
+                <!-- Техническая готовность -->
+                <div class="checklist-card">
+                    <h4><span class="subject-icon">⚙️</span> Техническая готовность</h4>
+                    <ul class="checklist-items" data-subject="tech">
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Проверил вход на платформу</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Проверил интернет-соединение</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Есть запасной вариант подключения</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Подготовлено рабочее место</li>
+                        <li onclick="toggleCheck(this)"><span class="checkbox-custom"></span>Есть черновик и ручка</li>
+                    </ul>
+                    <div class="checklist-progress">
+                        <div class="prog-bar"><div class="prog-fill" style="width: 0%"></div></div>
+                        <span class="prog-text">0/5</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="tip">
+                💡 Совет: занимайся каждый день по расписанию и не забывай делать перерывы каждые 45 минут!
+            </div>
+            <p>Подготовка к итоговой аттестации · 6 класс ·</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Week navigation
+        function showWeek(weekNum) {
+            // Hide all sections
+            document.querySelectorAll('.week-section').forEach(s => s.classList.remove('active'));
+            document.querySelector('.checklist-section')?.classList.remove('active');
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.week-nav-btn').forEach(b => b.classList.remove('active'));
+            
+            // Show selected week
+            document.getElementById('week-' + weekNum).classList.add('active');
+            document.querySelector('.week-nav-btn[data-week="' + weekNum + '"]').classList.add('active');
+            
+            // Scroll to top of content
+            window.scrollTo({ top: document.querySelector('.week-nav').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        function showChecklist() {
+            // Hide all sections
+            document.querySelectorAll('.week-section').forEach(s => s.classList.remove('active'));
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.week-nav-btn').forEach(b => b.classList.remove('active'));
+            
+            // Show checklist
+            document.getElementById('checklist').classList.add('active');
+            document.querySelector('.week-nav-btn[data-week="checklist"]').classList.add('active');
+            
+            // Scroll to top of content
+            window.scrollTo({ top: document.querySelector('.week-nav').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        // Checklist functionality
+        function toggleCheck(li) {
+            li.classList.toggle('checked');
+            updateProgress(li.closest('.checklist-card'));
+            saveChecklist();
+        }
+
+        function updateProgress(card) {
+            const items = card.querySelectorAll('.checklist-items li');
+            const checked = card.querySelectorAll('.checklist-items li.checked');
+            const total = items.length;
+            const done = checked.length;
+            const pct = Math.round((done / total) * 100);
+            
+            card.querySelector('.prog-fill').style.width = pct + '%';
+            card.querySelector('.prog-text').textContent = done + '/' + total;
+        }
+
+        // Save/Load checklist state
+        function saveChecklist() {
+            const state = {};
+            document.querySelectorAll('.checklist-items').forEach(ul => {
+                const subject = ul.dataset.subject;
+                const items = [];
+                ul.querySelectorAll('li').forEach((li, i) => {
+                    items.push(li.classList.contains('checked'));
+                });
+                state[subject] = items;
+            });
+            localStorage.setItem('checklist_6class', JSON.stringify(state));
+        }
+
+        function loadChecklist() {
+            const saved = localStorage.getItem('checklist_6class');
+            if (!saved) return;
+            
+            try {
+                const state = JSON.parse(saved);
+                Object.keys(state).forEach(subject => {
+                    const ul = document.querySelector('.checklist-items[data-subject="' + subject + '"]');
+                    if (!ul) return;
+                    const items = ul.querySelectorAll('li');
+                    state[subject].forEach((checked, i) => {
+                        if (checked && items[i]) {
+                            items[i].classList.add('checked');
+                        }
+                    });
+                });
+                
+                // Update all progress bars
+                document.querySelectorAll('.checklist-card').forEach(card => {
+                    updateProgress(card);
+                });
+            } catch (e) {
+                console.error('Error loading checklist:', e);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChecklist();
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — Русский язык: Глагол (6 класс)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            color: #4a00e0;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .header .time-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            color: #4a00e0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f093fb;
+            font-size: 1.5em;
+        }
+        .card h3 {
+            color: #6c5ce7;
+            margin: 15px 0 10px;
+            font-size: 1.2em;
+        }
+        .notebook {
+            background: #fffde7;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: #ff9800;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .notebook ul, .notebook ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .notebook li {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+        .rule-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .rule-box .rule-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .example {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .example strong {
+            color: #1565c0;
+        }
+        .practice {
+            background: #fce4ec;
+            border-left: 5px solid #e91e63;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .practice::before {
+            content: "✏️ ПОРЕШАТЬ";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: #e91e63;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .practice ol {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        .practice li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .solution {
+            background: #f1f8e9;
+            border: 1px dashed #8bc34a;
+            padding: 12px;
+            margin: 5px 0 10px;
+            border-radius: 8px;
+            display: none;
+        }
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none;
+            color: #1a5e2a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+        .solution-btn:hover {
+            transform: scale(1.05);
+        }
+        .video-link {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+        .video-link:hover {
+            transform: translateX(5px);
+        }
+        .video-link .play-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        .video-section {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .video-section h3 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+        tr:hover {
+            background: #e8eaf6;
+        }
+        .quiz-container {
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-container h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .quiz-question p {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+        .quiz-option.correct {
+            background: #c8e6c9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+        .quiz-option.wrong {
+            background: #ffcdd2;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+        }
+        .score-display {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .score-display .score-number {
+            font-size: 3em;
+            color: #4a00e0;
+            font-weight: bold;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВНИМАНИЕ! Частая ошибка:";
+            font-weight: bold;
+            color: #856404;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .dictation-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .dictation-box h3 {
+            color: #7b1fa2;
+        }
+        .conjugation-table {
+            font-size: 0.95em;
+        }
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .accent {
+            color: #e91e63;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: white;
+            color: #4a00e0;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .check-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .check-btn:hover {
+            transform: scale(1.05);
+        }
+        .mnemonic {
+            background: #e0f7fa;
+            border: 2px dashed #00bcd4;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ ЛЕГКО:";
+            display: block;
+            font-weight: bold;
+            color: #006064;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>📚 Неделя 3 — Русский язык</h1>
+            <div class="subtitle">Часть 1: ГЛАГОЛ — спряжение, наклонение, время, -ТСЯ/-ТЬСЯ</div>
+            <div class="time-badge">⏱ Время: ~2,5 часа</div>
+        </div>
+
+        <!-- РАЗДЕЛ 1: ЧТО ТАКОЕ ГЛАГОЛ -->
+        <div class="card">
+            <h2>📖 1. Глагол — повторение основ</h2>
+            
+            <div class="notebook">
+                <br>
+                <h3>Определение</h3>
+                <p><strong>Глагол</strong> — самостоятельная часть речи, которая обозначает <strong>действие или состояние предмета</strong> и отвечает на вопросы <strong>что делать? что сделать?</strong></p>
+                
+                <h3>Постоянные признаки глагола:</h3>
+                <ul>
+                    <li><strong>Вид:</strong> совершенный (что сделать?) / несовершенный (что делать?)</li>
+                    <li><strong>Спряжение:</strong> I или II</li>
+                    <li><strong>Переходность:</strong> переходный / непереходный</li>
+                    <li><strong>Возвратность:</strong> возвратный (-ся, -сь) / невозвратный</li>
+                </ul>
+                
+                <h3>Непостоянные признаки глагола:</h3>
+                <ul>
+                    <li><strong>Наклонение:</strong> изъявительное, условное, повелительное</li>
+                    <li><strong>Время</strong> (только в изъявительном): прошедшее, настоящее, будущее</li>
+                    <li><strong>Лицо</strong> (в настоящем и будущем времени): 1-е, 2-е, 3-е</li>
+                    <li><strong>Число:</strong> единственное, множественное</li>
+                    <li><strong>Род</strong> (в прошедшем времени ед.ч.): мужской, женский, средний</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Примеры:</strong><br>
+                <em>Читать</em> (несов. вид, I спр.) — <em>прочитать</em> (сов. вид, I спр.)<br>
+                <em>Смотреть</em> (несов. вид, II спр.) — <em>посмотреть</em> (сов. вид, II спр.)<br>
+                <em>Умываться</em> — возвратный глагол<br>
+                <em>Умывать</em> — невозвратный глагол
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ 2: СПРЯЖЕНИЕ -->
+        <div class="card">
+            <h2>📖 2. Спряжение глагола</h2>
+            
+            <div class="notebook">
+                <br>
+                <h3>Что такое спряжение?</h3>
+                <p><strong>Спряжение</strong> — это изменение глагола по лицам и числам в настоящем и будущем времени.</p>
+                
+                <h3>Два спряжения — личные окончания:</h3>
+                <table class="conjugation-table">
+                    <tr>
+                        <th>Лицо</th>
+                        <th>I спряжение</th>
+                        <th>II спряжение</th>
+                    </tr>
+                    <tr>
+                        <td>1 л. ед.ч. (я)</td>
+                        <td>-<span class="accent">у</span> (-<span class="accent">ю</span>)</td>
+                        <td>-<span class="accent">у</span> (-<span class="accent">ю</span>)</td>
+                    </tr>
+                    <tr>
+                        <td>2 л. ед.ч. (ты)</td>
+                        <td>-<span class="accent">ешь</span> (-<span class="accent">ёшь</span>)</td>
+                        <td>-<span class="accent">ишь</span></td>
+                    </tr>
+                    <tr>
+                        <td>3 л. ед.ч. (он/она/оно)</td>
+                        <td>-<span class="accent">ет</span> (-<span class="accent">ёт</span>)</td>
+                        <td>-<span class="accent">ит</span></td>
+                    </tr>
+                    <tr>
+                        <td>1 л. мн.ч. (мы)</td>
+                        <td>-<span class="accent">ем</span> (-<span class="accent">ём</span>)</td>
+                        <td>-<span class="accent">им</span></td>
+                    </tr>
+                    <tr>
+                        <td>2 л. мн.ч. (вы)</td>
+                        <td>-<span class="accent">ете</span> (-<span class="accent">ёте</span>)</td>
+                        <td>-<span class="accent">ите</span></td>
+                    </tr>
+                    <tr>
+                        <td>3 л. мн.ч. (они)</td>
+                        <td>-<span class="accent">ут</span> (-<span class="accent">ют</span>)</td>
+                        <td>-<span class="accent">ат</span> (-<span class="accent">ят</span>)</td>
+                    </tr>
+                </table>
+
+                <h3>Как определить спряжение?</h3>
+                <p><strong>Шаг 1:</strong> Поставь глагол в форму 3 лица мн.ч. Если окончание ударное — определяй по нему.</p>
+                <p><strong>Шаг 2:</strong> Если окончание безударное — определяй по инфинитиву (начальной форме).</p>
+                
+                <h3>Ко II спряжению относятся:</h3>
+                <ol>
+                    <li>Все глаголы на <strong>-ить</strong> (кроме брить, стелить, зиждиться)</li>
+                    <li>7 глаголов на <strong>-еть</strong>: видеть, смотреть, ненавидеть, терпеть, обидеть, зависеть, вертеть</li>
+                    <li>4 глагола на <strong>-ать</strong>: гнать, держать, слышать, дышать</li>
+                </ol>
+                <p><strong>Все остальные — I спряжение.</strong></p>
+            </div>
+
+            <div class="mnemonic">
+                <strong>Стих для запоминания глаголов-исключений II спряжения:</strong><br><br>
+                Ко второму же спряженью<br>
+                Отнесём мы, без сомненья,<br>
+                Все глаголы, что на <strong>-ить</strong>,<br>
+                Исключая <strong>брить, стелить</strong>.<br>
+                И ещё: <strong>смотреть, обидеть,</strong><br>
+                <strong>Слышать, видеть, ненавидеть,</strong><br>
+                <strong>Гнать, дышать, держать, вертеть</strong><br>
+                И <strong>зависеть</strong>, и <strong>терпеть</strong>.
+            </div>
+
+            <div class="example">
+                <strong>Разбор примера:</strong><br>
+                Глагол <em>«писать»</em> — оканчивается на -ать → НЕ входит в 4 исключения → <strong>I спряжение</strong><br>
+                Значит: ты пиш<span class="accent">ешь</span>, он пиш<span class="accent">ет</span>, они пиш<span class="accent">ут</span><br><br>
+                Глагол <em>«строить»</em> — оканчивается на -ить → <strong>II спряжение</strong><br>
+                Значит: ты стро<span class="accent">ишь</span>, он стро<span class="accent">ит</span>, они стро<span class="accent">ят</span><br><br>
+                Глагол <em>«слышать»</em> — оканчивается на -ать, НО входит в исключения → <strong>II спряжение</strong><br>
+                Значит: ты слыш<span class="accent">ишь</span>, он слыш<span class="accent">ит</span>, они слыш<span class="accent">ат</span>
+            </div>
+        </div>
+
+        <!-- ПРАКТИКА ПО СПРЯЖЕНИЮ -->
+        <div class="card">
+            <h2>✏️ Практика: Спряжение глаголов</h2>
+            
+            <div class="practice">
+                <br>
+                <p><strong>Задание 1:</strong> Определи спряжение глаголов и вставь пропущенные буквы в окончаниях:</p>
+                <ol>
+                    <li>Ты чита...шь книгу.</li>
+                    <li>Он стро...т дом.</li>
+                    <li>Мы игра...м в футбол.</li>
+                    <li>Они дыш...т свежим воздухом.</li>
+                    <li>Ты смотр...шь фильм.</li>
+                    <li>Она кле...т обои.</li>
+                    <li>Вы пиш...те письмо.</li>
+                    <li>Они бор...тся за победу.</li>
+                    <li>Ты се...шь зерно.</li>
+                    <li>Он ненавид...т ложь.</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol1')">👁 Показать решение</button>
+            <div class="solution" id="sol1">
+                <ol>
+                    <li>Ты чита<strong>ешь</strong> книгу. (читать → I спр.)</li>
+                    <li>Он стро<strong>ит</strong> дом. (строить → на -ить → II спр.)</li>
+                    <li>Мы игра<strong>ем</strong> в футбол. (играть → I спр.)</li>
+                    <li>Они дыш<strong>ат</strong> свежим воздухом. (дышать → исключение → II спр.)</li>
+                    <li>Ты смотр<strong>ишь</strong> фильм. (смотреть → исключение → II спр.)</li>
+                    <li>Она кле<strong>ит</strong> обои. (клеить → на -ить → II спр.)</li>
+                    <li>Вы пиш<strong>ете</strong> письмо. (писать → I спр.)</li>
+                    <li>Они бор<strong>ют</strong>ся за победу. (бороться → I спр.)</li>
+                    <li>Ты се<strong>ешь</strong> зерно. (сеять → I спр.)</li>
+                    <li>Он ненавид<strong>ит</strong> ложь. (ненавидеть → исключение → II спр.)</li>
+                </ol>
+            </div>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 2:</strong> Проспрягай глаголы (запиши все 6 форм):</p>
+                <ol>
+                    <li>Рисовать (I спр.)</li>
+                    <li>Любить (II спр.)</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol2')">👁 Показать решение</button>
+            <div class="solution" id="sol2">
+                <p><strong>Рисовать (I спряжение):</strong></p>
+                <table>
+                    <tr><td>я рису<strong>ю</strong></td><td>мы рису<strong>ем</strong></td></tr>
+                    <tr><td>ты рису<strong>ешь</strong></td><td>вы рису<strong>ете</strong></td></tr>
+                    <tr><td>он/она рису<strong>ет</strong></td><td>они рису<strong>ют</strong></td></tr>
+                </table>
+                <p><strong>Любить (II спряжение):</strong></p>
+                <table>
+                    <tr><td>я любл<strong>ю</strong></td><td>мы люб<strong>им</strong></td></tr>
+                    <tr><td>ты люб<strong>ишь</strong></td><td>вы люб<strong>ите</strong></td></tr>
+                    <tr><td>он/она люб<strong>ит</strong></td><td>они люб<strong>ят</strong></td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ 3: НАКЛОНЕНИЯ -->
+        <div class="card">
+            <h2>📖 3. Наклонения глагола</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Три наклонения глагола:</h3>
+                <table>
+                    <tr>
+                        <th>Наклонение</th>
+                        <th>Значение</th>
+                        <th>Как образуется</th>
+                        <th>Примеры</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Изъявительное</strong></td>
+                        <td>Действие происходит, происходило или будет происходить реально</td>
+                        <td>Формы настоящего, прошедшего, будущего времени</td>
+                        <td>Я <strong>читаю</strong>. Я <strong>читал</strong>. Я <strong>буду читать</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Условное (сослагательное)</strong></td>
+                        <td>Действие возможно при определённом условии или желаемо</td>
+                        <td>Форма прошедшего времени + частица <strong>БЫ (Б)</strong></td>
+                        <td>Я <strong>читал бы</strong>. Она <strong>пришла бы</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Повелительное</strong></td>
+                        <td>Побуждение к действию (просьба, приказ, совет)</td>
+                        <td>Основа наст. вр. + <strong>-и</strong> (ед.ч.) / <strong>-ите</strong> (мн.ч.) или нулевое окончание</td>
+                        <td><strong>Читай!</strong> <strong>Читайте!</strong> <strong>Пиши!</strong> <strong>Пишите!</strong></td>
+                    </tr>
+                </table>
+
+                <h3>Важно!</h3>
+                <ul>
+                    <li>Частица <strong>БЫ</strong> в условном наклонении пишется <strong>РАЗДЕЛЬНО</strong> с глаголом!</li>
+                    <li>В повелительном наклонении 2 л. мн.ч. пишем <strong>-ИТЕ</strong> (с мягким знаком на конце, если ед.ч. оканчивается на согласный): <em>сядь → сядь<strong>те</strong></em></li>
+                    <li>Изъявительное наклонение — единственное, в котором глагол изменяется по временам</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                Не путай формы изъявительного и повелительного наклонения!<br>
+                <em>Вы <strong>пишете</strong></em> (изъяв., I спр., -ете) — вы сейчас пишете.<br>
+                <em><strong>Пишите</strong> скорее!</em> (повелит., -ите) — приказ/просьба.
+            </div>
+
+            <div class="example">
+                <strong>Примеры определения наклонения:</strong><br>
+                1) «Я сделал домашнюю работу.» — <strong>изъявительное</strong> (реальное действие, прош. время)<br>
+                2) «Я сделал бы работу, если бы было время.» — <strong>условное</strong> (бы!)<br>
+                3) «Сделай домашнюю работу!» — <strong>повелительное</strong> (побуждение)
+            </div>
+        </div>
+
+        <!-- ПРАКТИКА ПО НАКЛОНЕНИЯМ -->
+        <div class="card">
+            <h2>✏️ Практика: Наклонения</h2>
+            
+            <div class="practice">
+                <br>
+                <p><strong>Задание 3:</strong> Определи наклонение глагола:</p>
+                <ol>
+                    <li>Мы пойдём в кино завтра.</li>
+                    <li>Принесите мне, пожалуйста, воды.</li>
+                    <li>Я полетел бы на Луну.</li>
+                    <li>Она вчера играла на пианино.</li>
+                    <li>Не шумите!</li>
+                    <li>Без труда не выловишь и рыбку из пруда.</li>
+                    <li>Расскажи мне сказку.</li>
+                    <li>Он хотел бы стать врачом.</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol3')">👁 Показать решение</button>
+            <div class="solution" id="sol3">
+                <ol>
+                    <li>пойдём — <strong>изъявительное</strong> (будущее время, реальное действие)</li>
+                    <li>принесите — <strong>повелительное</strong> (просьба)</li>
+                    <li>полетел бы — <strong>условное</strong> (частица бы)</li>
+                    <li>играла — <strong>изъявительное</strong> (прошедшее время, реальное действие)</li>
+                    <li>не шумите — <strong>повелительное</strong> (приказ)</li>
+                    <li>не выловишь — <strong>изъявительное</strong> (будущее время в значении обобщения)</li>
+                    <li>расскажи — <strong>повелительное</strong> (просьба)</li>
+                    <li>хотел бы — <strong>условное</strong> (частица бы)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ 4: ВРЕМЕНА ГЛАГОЛА -->
+        <div class="card">
+            <h2>📖 4. Времена глагола</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Три времени (только в изъявительном наклонении!):</h3>
+                <table>
+                    <tr>
+                        <th>Время</th>
+                        <th>Вопросы</th>
+                        <th>Как образуется</th>
+                        <th>Пример (писать)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Настоящее</strong></td>
+                        <td>Что делает? Что делают?</td>
+                        <td>Только у глаголов несов. вида. Личные окончания по спряжению</td>
+                        <td>пишу, пишешь, пишет…</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Прошедшее</strong></td>
+                        <td>Что делал? Что сделал?</td>
+                        <td>Основа инфинитива + суффикс <strong>-Л-</strong> (+ окончание рода/числа)</td>
+                        <td>писал, писала, писало, писали</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Будущее</strong></td>
+                        <td>Что будет делать? Что сделает?</td>
+                        <td><strong>Простое</strong> (сов. вид): напишу<br><strong>Составное</strong> (несов. вид): буду + инфинитив</td>
+                        <td>напишу / буду писать</td>
+                    </tr>
+                </table>
+
+                <h3>Важно запомнить:</h3>
+                <ul>
+                    <li>Глаголы <strong>совершенного вида</strong> НЕ имеют настоящего времени</li>
+                    <li>В прошедшем времени глагол изменяется по <strong>родам</strong> (в ед.ч.) и <strong>числам</strong>, но НЕ по лицам</li>
+                    <li>В настоящем и будущем времени глагол изменяется по <strong>лицам</strong> и <strong>числам</strong></li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <strong>Пример полного разбора:</strong><br>
+                Глагол «<em>прочитала</em>»:<br>
+                — Начальная форма: прочитать<br>
+                — Вид: совершенный (что сделать?)<br>
+                — Спряжение: I (на -ать, не исключение)<br>
+                — Наклонение: изъявительное<br>
+                — Время: прошедшее<br>
+                — Род: женский (-а)<br>
+                — Число: единственное<br>
+                — Синтаксическая роль: сказуемое
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛ 5: -ТСЯ / -ТЬСЯ -->
+        <div class="card">
+            <h2>📖 5. Правописание -ТСЯ и -ТЬСЯ</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Главное правило:</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Правило -ТСЯ / -ТЬСЯ</div>
+                    <p>Задай вопрос к глаголу!</p>
+                    <p>Если в вопросе есть <strong>Ь</strong> (что делат<strong>ь</strong>? что сделат<strong>ь</strong>?) → пиши <strong>-ТЬСЯ</strong> (с Ь)</p>
+                    <p>Если в вопросе <strong>нет Ь</strong> (что делае<strong>т</strong>? что сделае<strong>т</strong>?) → пиши <strong>-ТСЯ</strong> (без Ь)</p>
+                </div>
+
+                <h3>Алгоритм:</h3>
+                <ol>
+                    <li>Найди глагол с -тся/-ться</li>
+                    <li>Задай вопрос от подлежащего или другого слова</li>
+                    <li>Есть Ь в вопросе → пиши Ь в глаголе</li>
+                </ol>
+            </div>
+
+            <div class="mnemonic">
+                Вопрос подскажет: <strong>Ь в вопросе = Ь в глаголе!</strong><br>
+                Что делат<strong>Ь</strong>? → учит<strong>Ь</strong>ся ✔<br>
+                Что делае<strong>Т</strong>? → учи<strong>Т</strong>ся ✔
+            </div>
+
+            <div class="example">
+                <strong>Примеры:</strong><br>
+                1) Он (что делает?) <em>учи<strong>тся</strong></em> хорошо. → без Ь<br>
+                2) Надо (что делать?) <em>учи<strong>ться</strong></em> хорошо. → с Ь<br>
+                3) Дети (что делают?) <em>купаю<strong>тся</strong></em> в реке. → без Ь<br>
+                4) Дети любят (что делать?) <em>купа<strong>ться</strong></em> в реке. → с Ь<br>
+                5) Мама (что делает?) <em>радуе<strong>тся</strong></em>. → без Ь<br>
+                6) Есть чему (что делать?) <em>радова<strong>ться</strong></em>. → с Ь
+            </div>
+
+            <div class="warning-box">
+                В безличных предложениях (без подлежащего) часто нужен Ь:<br>
+                «Мне не <em>спи<strong>тся</strong></em>.» — Задай вопрос: что делается? Нет подлежащего, это 3 лицо → <strong>без Ь</strong>.<br>
+                «Мне хочется <em>учи<strong>ться</strong></em>.» — Что делать? → <strong>с Ь</strong>.
+            </div>
+        </div>
+
+        <!-- ПРАКТИКА -ТСЯ / -ТЬСЯ -->
+        <div class="card">
+            <h2>✏️ Практика: -ТСЯ / -ТЬСЯ</h2>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 4:</strong> Вставь, где нужно, мягкий знак. Объясни свой выбор (задай вопрос).</p>
+                <ol>
+                    <li>Не надо ленит...ся.</li>
+                    <li>Он никогда не ленит...ся.</li>
+                    <li>Дверь не открывает...ся.</li>
+                    <li>Эту дверь трудно открыват...ся. (Подумай! Подвох!)</li>
+                    <li>Катя любит смеят...ся.</li>
+                    <li>Катя всегда смеёт...ся.</li>
+                    <li>Нужно хорошо подготовит...ся к экзамену.</li>
+                    <li>Ученик готовит...ся к экзамену.</li>
+                    <li>Брат занимает...ся спортом.</li>
+                    <li>Полезно занимат...ся спортом.</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol4')">👁 Показать решение</button>
+            <div class="solution" id="sol4">
+                <ol>
+                    <li>Не надо (что делать?) ленит<strong>ься</strong>. → с Ь</li>
+                    <li>Он никогда не (что делает?) ленит<strong>ся</strong>. → без Ь</li>
+                    <li>Дверь не (что делает?) открывает<strong>ся</strong>. → без Ь</li>
+                    <li>Эту дверь трудно (что делать?) <strong>открыть</strong>. ← Подвох! Здесь глагол «открывать» без -ся, потому что дверь открывают (переходный). Но если «открываться»: трудно (что делать?) открыват<strong>ься</strong>. → с Ь</li>
+                    <li>Катя любит (что делать?) смеят<strong>ься</strong>. → с Ь</li>
+                    <li>Катя всегда (что делает?) смеёт<strong>ся</strong>. → без Ь</li>
+                    <li>Нужно хорошо (что сделать?) подготовит<strong>ься</strong>. → с Ь</li>
+                    <li>Ученик (что делает?) готовит<strong>ся</strong>. → без Ь</li>
+                    <li>Брат (что делает?) занимает<strong>ся</strong> спортом. → без Ь</li>
+                    <li>Полезно (что делать?) занимат<strong>ься</strong> спортом. → с Ь</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- ДИКТАНТ -->
+        <div class="card">
+            <div class="dictation-box">
+                <h3>📝 Мини-диктант: Глагол</h3>
+                <p><em>Попроси кого-нибудь продиктовать или прочитай, закрой текст и напиши по памяти:</em></p>
+                <br>
+                <p>Хорошо учит<strong>ь</strong>ся — значит стремит<strong>ь</strong>ся к знаниям. Каждый ученик готовит<strong>ся</strong> к урокам, выполняет домашние задания. Если бы он не ленился, то получал бы только хорошие оценки. «Не бойтесь трудностей! — говорит учитель. — Старайтесь, и у вас всё получит<strong>ся</strong>!»</p>
+                <p>Мы смотр<strong>им</strong> в окно и вид<strong>им</strong>, как по небу плыв<strong>ут</strong> облака. Ветер гон<strong>ит</strong> их на восток. Скоро нач<strong>нёт</strong>ся дождь. Хочет<strong>ся</strong> оказат<strong>ь</strong>ся дома, укрыт<strong>ь</strong>ся тёплым пледом и читат<strong>ь</strong> интересную книгу.</p>
+                <br>
+                <p><strong>Самопроверка:</strong> Подчеркни все глаголы, определи спряжение и наклонение каждого.</p>
+            </div>
+        </div>
+
+        <!-- ВИДЕО -->
+        <div class="card">
+            <div class="video-section">
+                <h3>🎬 Видеоматериалы</h3>
+                <p>Посмотри для закрепления:</p>
+                
+                <a href="https://www.youtube.com/watch?v=uwFrkVfiER4" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Спряжение глагола — вся теория за 10 минут (InternetUrok)</span>
+                </a>
+                
+                <a href="https://www.youtube.com/watch?v=S2mKVDJhLHs" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Наклонения глагола — изъявительное, условное, повелительное</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=JFVCo0YFOBI" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>-ТСЯ и -ТЬСЯ — как не ошибиться (Русский язык с Таней Ключ)</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=5hKqrB4bGzk" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Глагол — полный разбор темы для 6 класса</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ИНТЕРАКТИВНЫЙ ТЕСТ -->
+        <div class="quiz-container">
+            <h2>🧪 Интерактивный тест: ГЛАГОЛ</h2>
+            <p style="color: white; margin-bottom: 10px;">Проверь свои знания! Нажми на правильный ответ.</p>
+
+            <!-- Вопрос 1 -->
+            <div class="quiz-question" id="q1">
+                <p>1. Определи спряжение глагола «терпеть»:</p>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">А) I спряжение (оканчивается на -еть)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">Б) II спряжение (глагол-исключение)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) Разноспрягаемый глагол</button>
+                <div class="quiz-feedback" id="fb1"></div>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="quiz-question" id="q2">
+                <p>2. В каком слове пишется Ь?</p>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">А) Он старает...ся</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">Б) Нужно старат...ся</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) Она улыбает...ся</button>
+                <div class="quiz-feedback" id="fb2"></div>
+            </div>
+
+            <!-- Вопрос 3 -->
+            <div class="quiz-question" id="q3">
+                <p>3. Глагол «прочитал бы» стоит в … наклонении:</p>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">А) Изъявительном</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">Б) Условном (сослагательном)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) Повелительном</button>
+                <div class="quiz-feedback" id="fb3"></div>
+            </div>
+
+            <!-- Вопрос 4 -->
+            <div class="quiz-question" id="q4">
+                <p>4. Какое окончание у глагола II спряжения в 3 лице мн.ч.?</p>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">А) -ут / -ют</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">Б) -ат / -ят</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) -ем / -ём</button>
+                <div class="quiz-feedback" id="fb4"></div>
+            </div>
+
+            <!-- Вопрос 5 -->
+            <div class="quiz-question" id="q5">
+                <p>5. Глагол «брить» относится к:</p>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">А) I спряжению (исключение из правила)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">Б) II спряжению (на -ить)</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) Разноспрягаемым</button>
+                <div class="quiz-feedback" id="fb5"></div>
+            </div>
+
+            <!-- Вопрос 6 -->
+            <div class="quiz-question" id="q6">
+                <p>6. «Напишите мне письмо!» — глагол в каком наклонении?</p>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">А) Изъявительном</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">Б) Условном</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">В) Повелительном</button>
+                <div class="quiz-feedback" id="fb6"></div>
+            </div>
+
+            <!-- Вопрос 7 -->
+            <div class="quiz-question" id="q7">
+                <p>7. У глаголов какого вида нет настоящего времени?</p>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">А) Совершенного вида</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">Б) Несовершенного вида</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) У обоих видов есть настоящее время</button>
+                <div class="quiz-feedback" id="fb7"></div>
+            </div>
+
+            <!-- Вопрос 8 -->
+            <div class="quiz-question" id="q8">
+                <p>8. Выбери строку, где все глаголы II спряжения:</p>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">А) петь, читать, брить</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">Б) видеть, строить, дышать</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) стелить, гнать, рисовать</button>
+                <div class="quiz-feedback" id="fb8"></div>
+            </div>
+
+            <!-- Вопрос 9 -->
+            <div class="quiz-question" id="q9">
+                <p>9. В каком предложении глагол стоит в прошедшем времени?</p>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">А) Дети играют во дворе.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">Б) Мы вчера посетили музей.</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) Завтра мы пойдём в парк.</button>
+                <div class="quiz-feedback" id="fb9"></div>
+            </div>
+
+            <!-- Вопрос 10 -->
+            <div class="quiz-question" id="q10">
+                <p>10. Частица БЫ с глаголом пишется:</p>
+                <button class="quiz-option" onclick="checkAnswer(this, true)">А) Раздельно</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">Б) Через дефис</button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">В) Слитно</button>
+                <div class="quiz-feedback" id="fb10"></div>
+            </div>
+
+            <div class="score-display" id="scoreDisplay">
+                <p>Твой результат:</p>
+                <div class="score-number" id="scoreNumber">0/10</div>
+                <p id="scoreComment"></p>
+            </div>
+
+            <button class="check-btn" onclick="showScore()">📊 Показать результат</button>
+        </div>
+
+        <!-- НАВИГАЦИЯ -->
+        <div class="nav-buttons">
+            <span></span>
+            <a href="#" class="nav-btn">Далее: Местоимение →</a>
+        </div>
+    </div>
+
+    <script>
+        let score = 0;
+        let answered = new Set();
+
+        function toggleSolution(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'block') {
+                el.style.display = 'none';
+            } else {
+                el.style.display = 'block';
+            }
+        }
+
+        function checkAnswer(button, isCorrect) {
+            const question = button.parentElement;
+            const qId = question.id;
+            
+            if (answered.has(qId)) return;
+            answered.add(qId);
+
+            const buttons = question.querySelectorAll('.quiz-option');
+            buttons.forEach(btn => {
+                btn.style.pointerEvents = 'none';
+            });
+
+            if (isCorrect) {
+                button.classList.add('correct');
+                score++;
+                const fb = question.querySelector('.quiz-feedback');
+                fb.style.display = 'block';
+                fb.style.background = '#c8e6c9';
+                fb.style.color = '#2e7d32';
+                fb.textContent = '✅ Правильно! Молодец!';
+            } else {
+                button.classList.add('wrong');
+                // Подсветить правильный
+                buttons.forEach(btn => {
+                    if (btn.onclick.toString().includes('true')) {
+                        btn.classList.add('correct');
+                    }
+                });
+                const fb = question.querySelector('.quiz-feedback');
+                fb.style.display = 'block';
+                fb.style.background = '#ffcdd2';
+                fb.style.color = '#c62828';
+                fb.textContent = '❌ Неправильно. Посмотри правильный ответ (выделен зелёным).';
+            }
+        }
+
+        function showScore() {
+            const display = document.getElementById('scoreDisplay');
+            display.style.display = 'block';
+            document.getElementById('scoreNumber').textContent = score + '/10';
+            
+            const comment = document.getElementById('scoreComment');
+            if (score === 10) {
+                comment.textContent = '🏆 Отлично! Ты прекрасно знаешь тему «Глагол»!';
+                comment.style.color = '#4caf50';
+            } else if (score >= 7) {
+                comment.textContent = '👍 Хороший результат! Повтори ошибки.';
+                comment.style.color = '#ff9800';
+            } else if (score >= 5) {
+                comment.textContent = '📖 Неплохо, но стоит перечитать теорию.';
+                comment.style.color = '#ff5722';
+            } else {
+                comment.textContent = '📚 Нужно ещё раз внимательно изучить тему.';
+                comment.style.color = '#f44336';
+            }
+        }
+    </script>
+</body>
+</html>

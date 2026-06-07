@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — ОБЖ, ИЗО, Музыка, Технология, Физкультура (6 класс)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e74c3c 0%, #e67e22 25%, #f1c40f 50%, #27ae60 75%, #2980b9 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 940px; margin: 0 auto; }
+
+        /* ====== HEADER ====== */
+        .header {
+            background: white; border-radius: 20px;
+            padding: 28px; text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .header h1 { font-size: 1.75em; margin-bottom: 8px; color: #2c3e50; }
+        .header .subtitle { color: #666; font-size: 1em; }
+        .badges { display: flex; justify-content: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .badge { display: inline-block; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.85em; color: white; }
+        .b-obzh { background: #e74c3c; }
+        .b-izo  { background: #9b59b6; }
+        .b-muz  { background: #2980b9; }
+        .b-tech { background: #27ae60; }
+        .b-fiz  { background: #e67e22; }
+
+        /* ====== DIVIDERS ====== */
+        .section-divider { text-align: center; margin: 35px 0 18px; }
+        .section-divider span {
+            color: white; padding: 9px 28px; border-radius: 28px;
+            font-size: 1.2em; font-weight: bold;
+            display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .d-obzh { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+        .d-izo  { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        .d-muz  { background: linear-gradient(135deg, #1a5276, #2980b9); }
+        .d-tech { background: linear-gradient(135deg, #1e8449, #27ae60); }
+        .d-fiz  { background: linear-gradient(135deg, #ca6f1e, #e67e22); }
+
+        /* ====== CARDS ====== */
+        .card {
+            background: white; border-radius: 15px;
+            padding: 24px; margin-bottom: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card h2 { margin-bottom: 14px; padding-bottom: 10px; border-bottom: 3px solid; font-size: 1.35em; }
+        .c-obzh h2 { color: #c0392b; border-bottom-color: #e74c3c; }
+        .c-obzh h3 { color: #c0392b; margin: 13px 0 8px; font-size: 1.1em; }
+        .c-izo  h2 { color: #8e44ad; border-bottom-color: #9b59b6; }
+        .c-izo  h3 { color: #8e44ad; margin: 13px 0 8px; font-size: 1.1em; }
+        .c-muz  h2 { color: #1a5276; border-bottom-color: #2980b9; }
+        .c-muz  h3 { color: #1a5276; margin: 13px 0 8px; font-size: 1.1em; }
+        .c-tech h2 { color: #1e8449; border-bottom-color: #27ae60; }
+        .c-tech h3 { color: #1e8449; margin: 13px 0 8px; font-size: 1.1em; }
+        .c-fiz  h2 { color: #ca6f1e; border-bottom-color: #e67e22; }
+        .c-fiz  h3 { color: #ca6f1e; margin: 13px 0 8px; font-size: 1.1em; }
+        .card p  { line-height: 1.7; margin: 5px 0; }
+        .card ul, .card ol { margin-left: 20px; }
+        .card li { line-height: 1.7; margin-bottom: 5px; }
+
+        /* ====== NOTEBOOK ====== */
+        .notebook {
+            background: #fffde7; border-left: 5px solid #ff9800;
+            padding: 20px 18px 16px; margin: 12px 0;
+            border-radius: 0 10px 10px 0; position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute; top: -11px; left: 10px;
+            background: #ff9800; color: white;
+            padding: 3px 11px; border-radius: 10px;
+            font-size: 0.76em; font-weight: bold;
+        }
+        .notebook ul, .notebook ol { margin-left: 18px; margin-top: 7px; }
+        .notebook li { margin-bottom: 5px; line-height: 1.7; }
+        .notebook p  { line-height: 1.7; margin: 5px 0; }
+
+        /* ====== INFO BOXES ====== */
+        .info-box { border: 2px solid; border-radius: 10px; padding: 13px; margin: 10px 0; }
+        .ib-red    { background: #fdecea; border-color: #e74c3c; }
+        .ib-purple { background: #f3e5f5; border-color: #9b59b6; }
+        .ib-blue   { background: #e3f2fd; border-color: #2196f3; }
+        .ib-green  { background: #e8f5e9; border-color: #4caf50; }
+        .ib-orange { background: #fff3e0; border-color: #ff9800; }
+        .ib-yellow { background: #fffde7; border-color: #f1c40f; }
+        .ibt { font-weight: bold; font-size: 1.02em; margin-bottom: 6px; }
+        .ibt-red    { color: #c0392b; }
+        .ibt-purple { color: #8e44ad; }
+        .ibt-blue   { color: #1565c0; }
+        .ibt-green  { color: #2e7d32; }
+        .ibt-orange { color: #e65100; }
+        .info-box p, .info-box li { line-height: 1.7; font-size: 0.95em; }
+        .info-box ul, .info-box ol { margin-left: 18px; margin-top: 4px; }
+
+        .warning-box {
+            background: #fff3cd; border: 2px solid #ffc107;
+            border-radius: 10px; padding: 12px; margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВАЖНО:";
+            font-weight: bold; color: #856404;
+            display: block; margin-bottom: 4px;
+        }
+
+        .mnemonic {
+            background: #e0f7fa; border: 2px dashed #00bcd4;
+            border-radius: 10px; padding: 12px; margin: 10px 0;
+            text-align: center; font-size: 1em; line-height: 1.8;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ:";
+            display: block; font-weight: bold;
+            color: #006064; margin-bottom: 4px;
+        }
+
+        /* ====== PRACTICE ====== */
+        .practice {
+            background: #fce4ec; border-left: 5px solid #e91e63;
+            padding: 20px 18px 16px; margin: 12px 0;
+            border-radius: 0 10px 10px 0; position: relative;
+        }
+        .practice::before {
+            content: "✏️ ЗАДАНИЕ";
+            position: absolute; top: -11px; left: 10px;
+            background: #e91e63; color: white;
+            padding: 3px 11px; border-radius: 10px;
+            font-size: 0.76em; font-weight: bold;
+        }
+        .practice ol, .practice ul { margin-left: 18px; margin-top: 7px; }
+        .practice li { margin-bottom: 8px; line-height: 1.7; }
+        .practice p  { line-height: 1.7; margin: 5px 0; }
+
+        .solution {
+            background: #f1f8e9; border: 1px dashed #8bc34a;
+            padding: 13px; margin: 4px 0 10px;
+            border-radius: 8px; display: none; line-height: 1.8;
+        }
+        .solution ol, .solution ul { margin-left: 18px; }
+        .solution li { margin-bottom: 6px; }
+        .solution p  { margin-bottom: 7px; }
+
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none; color: #1a5e2a;
+            padding: 7px 16px; border-radius: 18px;
+            cursor: pointer; font-weight: bold;
+            font-size: 0.91em; margin: 5px 0; transition: transform 0.2s;
+        }
+        .solution-btn:hover { transform: scale(1.05); }
+
+        /* ====== TABLES ====== */
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.91em; }
+        th { color: white; padding: 9px 7px; text-align: left; }
+        .th-obzh { background: #c0392b; }
+        .th-izo  { background: #8e44ad; }
+        .th-muz  { background: #1a5276; }
+        .th-tech { background: #1e8449; }
+        .th-fiz  { background: #ca6f1e; }
+        td { padding: 8px 7px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.6; }
+        tr:nth-child(even) { background: #fafafa; }
+
+        /* ====== VIDEO ====== */
+        .video-section { background: #fff3e0; padding: 16px; border-radius: 10px; margin: 12px 0; }
+        .video-section h3 { color: #e65100; margin-bottom: 8px; font-size: 1.05em; }
+        .video-link {
+            display: flex; align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white; padding: 10px 16px;
+            border-radius: 10px; text-decoration: none;
+            margin: 8px 0; transition: transform 0.2s; font-size: 0.93em;
+        }
+        .video-link:hover { transform: translateX(5px); color: white; }
+        .video-link .pi { font-size: 1.3em; margin-right: 10px; flex-shrink: 0; }
+
+        /* ====== QUIZ ====== */
+        .quiz-block {
+            border-radius: 15px; padding: 22px; margin: 18px 0;
+        }
+        .qb-obzh { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+        .qb-izo  { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+        .qb-muz  { background: linear-gradient(135deg, #1a5276, #2980b9); }
+        .qb-tech { background: linear-gradient(135deg, #1e8449, #27ae60); }
+        .qb-fiz  { background: linear-gradient(135deg, #ca6f1e, #e67e22); }
+        .quiz-block h2 {
+            color: white; border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 9px; margin-bottom: 13px; font-size: 1.2em;
+        }
+        .quiz-question { background: white; border-radius: 10px; padding: 16px; margin: 11px 0; }
+        .quiz-question p { font-weight: bold; color: #333; margin-bottom: 10px; font-size: 0.99em; line-height: 1.5; }
+        .quiz-option {
+            display: block; width: 100%; text-align: left;
+            padding: 8px 13px; margin: 4px 0;
+            border: 2px solid #e0e0e0; border-radius: 8px;
+            background: white; cursor: pointer; font-size: 0.94em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: #999; background: #f5f5f5; }
+        .quiz-option.correct { background: #c8e6c9; border-color: #4caf50; color: #2e7d32; }
+        .quiz-option.wrong   { background: #ffcdd2; border-color: #f44336; color: #c62828; }
+        .quiz-feedback { margin-top: 8px; padding: 8px; border-radius: 7px; display: none; font-weight: bold; font-size: 0.92em; }
+        .score-display {
+            text-align: center; background: white;
+            padding: 20px; border-radius: 13px; margin-top: 12px; display: none;
+        }
+        .score-display .snum { font-size: 2.6em; font-weight: bold; }
+        .check-btn {
+            background: white; border: none; padding: 10px 28px;
+            border-radius: 22px; font-size: 1em;
+            cursor: pointer; font-weight: bold;
+            margin-top: 12px; transition: transform 0.2s;
+        }
+        .check-btn:hover { transform: scale(1.05); }
+
+        /* ====== SPECIAL ELEMENTS ====== */
+        /* Алгоритм помощи */
+        .algo-step {
+            display: flex; align-items: flex-start;
+            gap: 12px; margin: 10px 0;
+        }
+        .step-num {
+            background: #e74c3c; color: white;
+            border-radius: 50%; width: 30px; height: 30px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.95em; flex-shrink: 0; margin-top: 2px;
+        }
+        .step-num.green  { background: #27ae60; }
+        .step-num.blue   { background: #2980b9; }
+        .step-num.purple { background: #8e44ad; }
+        .step-num.orange { background: #e67e22; }
+        .step-content { flex: 1; line-height: 1.7; font-size: 0.95em; }
+
+        /* Цветовой круг */
+        .color-circle-wrap { text-align: center; margin: 15px 0; }
+        .color-wheel {
+            display: inline-grid;
+            grid-template-columns: repeat(4, 80px);
+            gap: 8px;
+        }
+        .color-swatch {
+            width: 80px; height: 60px;
+            border-radius: 8px; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 0.78em; font-weight: bold; color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+            cursor: default;
+        }
+
+        /* Жанры живописи */
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(155px,1fr));
+            gap: 9px; margin: 12px 0;
+        }
+        .genre-card {
+            border-radius: 10px; padding: 12px;
+            text-align: center; border: 2px solid #9b59b6;
+            background: #f3e5f5;
+        }
+        .genre-icon { font-size: 1.8em; margin-bottom: 4px; }
+        .genre-name { font-weight: bold; font-size: 0.9em; color: #8e44ad; }
+        .genre-desc { font-size: 0.78em; color: #555; margin-top: 3px; line-height: 1.4; }
+
+        /* Композиторы */
+        .composer-card {
+            border-radius: 10px; padding: 14px;
+            margin: 8px 0; border-left: 5px solid;
+            display: flex; gap: 12px; align-items: flex-start;
+        }
+        .cc-bach     { background: #e3f2fd; border-color: #1565c0; }
+        .cc-mozart   { background: #e8f5e9; border-color: #2e7d32; }
+        .cc-beethoven{ background: #fff3e0; border-color: #e65100; }
+        .cc-tchaik   { background: #f3e5f5; border-color: #7b1fa2; }
+        .cc-glinka   { background: #fce4ec; border-color: #c62828; }
+        .comp-icon { font-size: 2em; flex-shrink: 0; }
+        .comp-info h4 { font-size: 0.98em; margin-bottom: 4px; }
+        .comp-info p  { font-size: 0.84em; line-height: 1.5; color: #444; }
+
+        /* Музыкальные жанры */
+        .music-genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+            gap: 8px; margin: 12px 0;
+        }
+        .mg-card {
+            border-radius: 9px; padding: 10px;
+            text-align: center; background: #e3f2fd;
+            border: 2px solid #2196f3;
+        }
+        .mg-icon { font-size: 1.6em; margin-bottom: 4px; }
+        .mg-name { font-weight: bold; font-size: 0.88em; color: #1a5276; }
+        .mg-desc { font-size: 0.76em; color: #555; margin-top: 2px; }
+
+        /* Инструменты */
+        .instr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px,1fr));
+            gap: 8px; margin: 12px 0;
+        }
+        .instr-card {
+            border-radius: 9px; padding: 10px;
+            text-align: center; border: 2px solid;
+        }
+        .ic-str  { background: #e8f5e9; border-color: #4caf50; }
+        .ic-wind { background: #e3f2fd; border-color: #2196f3; }
+        .ic-perc { background: #fff3e0; border-color: #ff9800; }
+        .ic-key  { background: #f3e5f5; border-color: #9c27b0; }
+        .instr-icon { font-size: 1.6em; margin-bottom: 3px; }
+        .instr-name { font-weight: bold; font-size: 0.84em; }
+        .instr-type { font-size: 0.73em; color: #666; }
+
+        /* Технологии — карточки материалов */
+        .material-card {
+            border-radius: 9px; padding: 11px;
+            margin: 7px 0; border-left: 5px solid;
+            font-size: 0.92em; line-height: 1.6;
+        }
+        .mc-wood   { background: #fff8e1; border-color: #ff8f00; }
+        .mc-metal  { background: #eceff1; border-color: #546e7a; }
+        .mc-fabric { background: #fce4ec; border-color: #e91e63; }
+        .mc-paper  { background: #e8f5e9; border-color: #43a047; }
+        .mc-plast  { background: #e3f2fd; border-color: #1e88e5; }
+
+        /* Спорт */
+        .sport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+            gap: 8px; margin: 12px 0;
+        }
+        .sport-card {
+            border-radius: 9px; padding: 10px;
+            text-align: center; background: #fff3e0;
+            border: 2px solid #e67e22;
+        }
+        .sport-icon { font-size: 1.7em; margin-bottom: 4px; }
+        .sport-name { font-weight: bold; font-size: 0.85em; color: #ca6f1e; }
+        .sport-info { font-size: 0.75em; color: #555; margin-top: 2px; }
+
+        /* NAV */
+        .nav-buttons {
+            display: flex; justify-content: space-between;
+            margin-top: 28px; flex-wrap: wrap; gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block; padding: 11px 22px;
+            background: white; text-decoration: none;
+            border-radius: 22px; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12); font-size: 0.93em;
+        }
+
+        .green  { color: #2e7d32; font-weight: bold; }
+        .two-col {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0;
+        }
+        @media(max-width:600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .color-wheel { grid-template-columns: repeat(2,80px); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+    <h1>🛡️🎨🎵⚙️🏃 Неделя 3 — ОБЖ, ИЗО, Музыка, Технология, Физкультура</h1>
+    <div class="subtitle">Дополнительные предметы — теория, конспекты и тесты</div>
+    <div class="badges">
+        <span class="badge b-obzh">🛡️ ОБЖ — 1,5 ч</span>
+        <span class="badge b-izo">🎨 ИЗО — 1 ч</span>
+        <span class="badge b-muz">🎵 Музыка — 1 ч</span>
+        <span class="badge b-tech">⚙️ Технология — 1 ч</span>
+        <span class="badge b-fiz">🏃 Физкультура — 0,5 ч</span>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ОБЖ                                                         -->
+<!-- ============================================================ -->
+<div class="section-divider"><span class="d-obzh">🛡️ ОБЖ — Безопасность жизнедеятельности</span></div>
+
+<!-- 1. Безопасность на дороге -->
+<div class="card c-obzh">
+    <h2>📖 1. Безопасность на дороге</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Участники дорожного движения</h3>
+        <ul>
+            <li><strong>Пешеход</strong> — человек, находящийся вне транспортного средства на дороге</li>
+            <li><strong>Водитель</strong> — лицо, управляющее транспортным средством</li>
+            <li><strong>Пассажир</strong> — лицо, находящееся в транспортном средстве</li>
+        </ul>
+
+        <h3>Основные правила пешехода:</h3>
+        <ul>
+            <li>Переходи дорогу только на <strong>зелёный сигнал светофора</strong></li>
+            <li>Используй только <strong>пешеходные переходы</strong> (зебра, подземный, надземный)</li>
+            <li>Перед переходом <strong>посмотри налево, затем направо</strong>, убедись в безопасности</li>
+            <li>На нерегулируемом переходе — пропусти машины, убедись, что водители тебя видят</li>
+            <li>Не переходи дорогу из-за стоящего транспорта — тебя не видно!</li>
+            <li>В тёмное время суток — используй <strong>световозвращающие элементы</strong> (фликеры)</li>
+            <li>Не пользуйся телефоном при переходе дороги</li>
+        </ul>
+
+        <h3>Сигналы светофора:</h3>
+        <table>
+            <tr>
+                <th class="th-obzh">Сигнал</th>
+                <th class="th-obzh">Значение для пешехода</th>
+                <th class="th-obzh">Значение для водителя</th>
+            </tr>
+            <tr><td>🔴 Красный</td><td>СТОЙ! Переход запрещён</td><td>Стоп! Движение запрещено</td></tr>
+            <tr><td>🟡 Жёлтый</td><td>Внимание! Заканчивай переход</td><td>Внимание! Приготовиться</td></tr>
+            <tr><td>🟢 Зелёный</td><td>Иди! Переход разрешён</td><td>Движение разрешено</td></tr>
+            <tr><td>🟡 Мигающий зелёный</td><td>Заканчивай переход, скоро красный</td><td>—</td></tr>
+        </table>
+
+        <h3>Велосипедист на дороге:</h3>
+        <ul>
+            <li>До 14 лет — езда только по тротуарам, велодорожкам и во дворах</li>
+            <li>Обязательно носить <strong>шлем</strong></li>
+            <li>Не ехать в наушниках</li>
+            <li>Сигнализировать о поворотах рукой</li>
+            <li>При переходе улицы — спешиться и перейти как пешеход</li>
+        </ul>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Правило пешехода:</strong><br>
+        <strong>СТОП → СМОТРИ → ИДИ</strong><br>
+        Остановись у края тротуара → Посмотри НАЛЕВО, потом НАПРАВО →<br>
+        Убедись, что машины остановились → Только тогда переходи
+    </div>
+</div>
+
+<!-- 2. Пожарная безопасность -->
+<div class="card c-obzh">
+    <h2>📖 2. Пожарная безопасность</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Основные причины пожаров:</h3>
+        <ul>
+            <li>Неосторожное обращение с огнём (спички, зажигалки)</li>
+            <li>Неисправная электропроводка и электроприборы</li>
+            <li>Газовые приборы — утечка газа</li>
+            <li>Детская шалость с огнём</li>
+            <li>Нарушение правил хранения легковоспламеняющихся веществ</li>
+            <li>Удар молнии, поджог</li>
+        </ul>
+
+        <h3>Что НЕЛЬЗЯ делать при пожаре:</h3>
+        <ul>
+            <li>❌ Прятаться под кровать или в шкаф</li>
+            <li>❌ Пользоваться лифтом</li>
+            <li>❌ Открывать окна и двери (усиливает горение)</li>
+            <li>❌ Тушить электроприборы водой</li>
+            <li>❌ Возвращаться за вещами</li>
+            <li>❌ Паниковать и бежать наугад</li>
+        </ul>
+    </div>
+
+    <div class="info-box ib-red">
+        <div class="ibt ibt-red">🔥 Алгоритм действий при обнаружении пожара:</div>
+        <div class="algo-step">
+            <div class="step-num">1</div>
+            <div class="step-content"><strong>Сообщи!</strong> Позвони <strong>101</strong> (пожарная охрана) или <strong>112</strong> (единый номер экстренных служб). Назови адрес, что горит, своё имя.</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">2</div>
+            <div class="step-content"><strong>Предупреди!</strong> Разбуди/предупреди всех в здании. Кричи «Пожар!»</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">3</div>
+            <div class="step-content"><strong>Эвакуируйся!</strong> Покинь здание по лестнице (НЕ лифтом!). Закрой дверь в комнату — это замедлит распространение огня.</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">4</div>
+            <div class="step-content"><strong>Если дым — двигайся ползком!</strong> У пола меньше дыма. Прикрой нос и рот влажной тканью.</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">5</div>
+            <div class="step-content"><strong>Если выйти нельзя</strong> — иди к окну, подавай сигналы. Плотно закрой дверь, заткни щели тканью.</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">6</div>
+            <div class="step-content"><strong>На улице</strong> — встань на безопасном расстоянии. Жди спасателей. Не заходи обратно!</div>
+        </div>
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Телефоны экстренных служб:</h3>
+        <table>
+            <tr>
+                <th class="th-obzh">Номер</th>
+                <th class="th-obzh">Служба</th>
+                <th class="th-obzh">Когда звонить</th>
+            </tr>
+            <tr><td><strong>101</strong></td><td>Пожарная охрана / МЧС</td><td>Пожар, ЧС</td></tr>
+            <tr><td><strong>102</strong></td><td>Полиция</td><td>Преступление, опасность</td></tr>
+            <tr><td><strong>103</strong></td><td>Скорая помощь</td><td>Болезнь, травма</td></tr>
+            <tr><td><strong>104</strong></td><td>Газовая служба</td><td>Утечка газа</td></tr>
+            <tr><td><strong>112</strong></td><td>Единый номер экстренных служб</td><td>Любая ЧС, работает везде</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- 3. ЧС природного характера -->
+<div class="card c-obzh">
+    <h2>📖 3. Чрезвычайные ситуации природного характера</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Классификация природных ЧС:</h3>
+        <table>
+            <tr>
+                <th class="th-obzh">Вид ЧС</th>
+                <th class="th-obzh">Примеры</th>
+                <th class="th-obzh">Как действовать</th>
+            </tr>
+            <tr>
+                <td><strong>Геологические</strong></td>
+                <td>Землетрясение, оползень, обвал</td>
+                <td>При землетрясении — укрыться под стол/дверной проём; выйти на открытое место</td>
+            </tr>
+            <tr>
+                <td><strong>Метеорологические</strong></td>
+                <td>Ураган, буря, метель, гроза</td>
+                <td>При урагане — укрыться в здании, закрыть окна; при грозе — не прятаться под деревьями</td>
+            </tr>
+            <tr>
+                <td><strong>Гидрологические</strong></td>
+                <td>Наводнение, паводок, цунами</td>
+                <td>Эвакуироваться на возвышенность, взять документы и воду</td>
+            </tr>
+            <tr>
+                <td><strong>Природные пожары</strong></td>
+                <td>Лесной, торфяной, степной пожар</td>
+                <td>Уходить перпендикулярно направлению ветра и огня</td>
+            </tr>
+            <tr>
+                <td><strong>Биологические</strong></td>
+                <td>Эпидемии, нашествие насекомых</td>
+                <td>Выполнять санитарные нормы, вакцинация</td>
+            </tr>
+        </table>
+
+        <h3>Действия при землетрясении:</h3>
+        <ul>
+            <li>В помещении: <strong>укройся</strong> под стол, прижмись к несущей стене, защити голову</li>
+            <li>Держись подальше от окон, шкафов, полок</li>
+            <li>НЕ пользуйся лифтом и лестницей во время толчков</li>
+            <li>После окончания толчков — покинь здание и отойди от него</li>
+            <li>На улице: держись подальше от зданий, деревьев, линий электропередачи</li>
+        </ul>
+
+        <h3>Действия при наводнении:</h3>
+        <ul>
+            <li>Получи сигнал оповещения — немедленно собери <strong>тревожный чемоданчик</strong></li>
+            <li>Документы, деньги, медикаменты, запас воды и еды на 3 дня</li>
+            <li>Поднимись на верхние этажи или возвышенность</li>
+            <li>Выключи электричество и газ</li>
+            <li>Жди помощи — подавай сигналы (яркая ткань, фонарь)</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 4. Первая помощь -->
+<div class="card c-obzh">
+    <h2>📖 4. Первая помощь</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Виды ран и кровотечений:</h3>
+        <table>
+            <tr>
+                <th class="th-obzh">Вид кровотечения</th>
+                <th class="th-obzh">Признаки</th>
+                <th class="th-obzh">Помощь</th>
+            </tr>
+            <tr>
+                <td><strong>Капиллярное</strong></td>
+                <td>Кровь сочится медленно (ссадина)</td>
+                <td>Промыть, перевязать; остановится само</td>
+            </tr>
+            <tr>
+                <td><strong>Венозное</strong></td>
+                <td>Кровь тёмная, вытекает равномерно</td>
+                <td>Давящая повязка выше раны</td>
+            </tr>
+            <tr>
+                <td><strong>Артериальное</strong></td>
+                <td>Кровь алая, бьёт пульсирующей струёй</td>
+                <td>Жгут ВЫШЕ раны; записать время наложения. Вызвать 103!</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="info-box ib-red">
+        <div class="ibt ibt-red">🩹 Алгоритм помощи при ранении:</div>
+        <div class="algo-step">
+            <div class="step-num">1</div>
+            <div class="step-content">Вызови скорую помощь — <strong>103</strong> или <strong>112</strong></div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">2</div>
+            <div class="step-content">Надень перчатки (если есть) — защита от инфекции</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">3</div>
+            <div class="step-content">Промой рану чистой водой (не йодом внутрь раны!)</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">4</div>
+            <div class="step-content">Обработай края раны йодом или зелёнкой</div>
+        </div>
+        <div class="algo-step">
+            <div class="step-num">5</div>
+            <div class="step-content">Наложи стерильную повязку. При сильном кровотечении — давящая повязка или жгут</div>
+        </div>
+    </div>
+
+    <div class="info-box ib-orange">
+        <div class="ibt ibt-orange">🦴 Помощь при переломе:</div>
+        <ul>
+            <li>НЕ пытайся вправить кость!</li>
+            <li>Зафиксируй конечность шиной (доска, палка, зонтик)</li>
+            <li>Шина должна захватывать два соседних сустава</li>
+            <li>Приложи холод (лёд в ткани) — уменьшит отёк</li>
+            <li>При открытом переломе — стерильная повязка на рану, потом шина</li>
+            <li>Вызови 103</li>
+        </ul>
+    </div>
+
+    <div class="info-box ib-blue">
+        <div class="ibt ibt-blue">🌡️ Помощь при ожогах:</div>
+        <table>
+            <tr>
+                <th class="th-obzh">Степень</th>
+                <th class="th-obzh">Признаки</th>
+                <th class="th-obzh">Помощь</th>
+            </tr>
+            <tr>
+                <td>I степень</td>
+                <td>Покраснение, боль</td>
+                <td>Охладить водой 15–20 мин., не использовать масло!</td>
+            </tr>
+            <tr>
+                <td>II степень</td>
+                <td>Пузыри, сильная боль</td>
+                <td>Охладить водой, НЕ прокалывать пузыри, вызвать 103</td>
+            </tr>
+            <tr>
+                <td>III–IV степень</td>
+                <td>Глубокое поражение</td>
+                <td>Немедленно 103! Не снимать одежду, накрыть чистой тканью</td>
+            </tr>
+        </table>
+        <p style="margin-top:8px;"><strong>При ожоге НЕЛЬЗЯ:</strong> мазать маслом, кремом, мочой, прикладывать лёд, снимать прилипшую одежду!</p>
+    </div>
+
+    <div class="info-box ib-green">
+        <div class="ibt ibt-green">❄️ Помощь при обморожении:</div>
+        <ul>
+            <li>Занеси пострадавшего в тёплое помещение</li>
+            <li>Сними мокрую одежду и обувь</li>
+            <li>Укутай тёплым одеялом, дай тёплое питьё</li>
+            <li>НЕ растирай снегом или спиртом!</li>
+            <li>НЕ подноси к огню или батарее резко!</li>
+            <li>При сильном обморожении — вызови 103</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Видео ОБЖ -->
+<div class="card c-obzh">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: ОБЖ</h3>
+        <a href="https://www.youtube.com/watch?v=Jgu_H5gBxPs" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Правила дорожного движения для пешеходов — 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=2T9d0YNBT-c" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Пожарная безопасность — действия при пожаре</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=MGcNhijvRb8" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Природные ЧС — землетрясение, наводнение, ураган</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=xKHYPu2GKBU" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Первая помощь — основы | ОБЖ 6 класс</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: ОБЖ -->
+<div class="quiz-block qb-obzh">
+    <h2>🧪 Тест по ОБЖ — 10 вопросов</h2>
+
+    <div class="quiz-question" id="oq1">
+        <p>1. По какому номеру вызывают пожарную охрану?</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) 102</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) 101</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) 103</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) 104</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq2">
+        <p>2. При пожаре в здании лифтом пользоваться:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) Можно — так быстрее</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) Нельзя — лифт может остановиться</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) Можно только на первый этаж</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Можно если пожар не на вашем этаже</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq3">
+        <p>3. При движении в задымлённом помещении нужно:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) Бежать как можно быстрее</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) Двигаться ползком — внизу меньше дыма</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) Открыть все окна</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Укрыться под кроватью</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq4">
+        <p>4. При ожоге I степени нужно:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) Смазать маслом или кремом</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) Охладить водой 15–20 минут</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) Приложить лёд прямо к коже</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Прогреть феном</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq5">
+        <p>5. Артериальное кровотечение отличается:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) Тёмная кровь, вытекает медленно</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) Алая кровь, бьёт пульсирующей струёй</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) Кровь сочится медленно</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Кровь не течёт совсем</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq6">
+        <p>6. При землетрясении в помещении следует:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) Выпрыгнуть в окно</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Б) Спуститься на лифте</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">В) Укрыться под столом или встать в дверной проём</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Лечь на кровать</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq7">
+        <p>7. Пешеход должен переходить дорогу:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) В любом удобном месте</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) По пешеходному переходу на зелёный сигнал</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) Только по подземному переходу</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Между припаркованными машинами</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq8">
+        <p>8. При обморожении нельзя:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) Занести пострадавшего в тепло</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) Растирать снегом</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) Дать тёплое питьё</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Снять мокрую одежду</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq9">
+        <p>9. При наводнении нужно:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) Оставаться в подвале</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) Эвакуироваться на возвышенность</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) Переплыть реку</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) Спрятаться на чердаке без запаса воды</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="oq10">
+        <p>10. Единый номер экстренных служб в России:</p>
+        <button class="quiz-option" onclick="doObzh(this,false)">А) 911</button>
+        <button class="quiz-option" onclick="doObzh(this,true)">Б) 112</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">В) 999</button>
+        <button class="quiz-option" onclick="doObzh(this,false)">Г) 000</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="score-display" id="scoreObzh">
+        <p>Результат по ОБЖ:</p>
+        <div class="snum" style="color:#c0392b;" id="snumObzh">0/10</div>
+        <p id="scomObzh" style="font-size:1em; margin-top:7px;"></p>
+    </div>
+    <button class="check-btn" style="color:#c0392b;" onclick="showScore('scoreObzh','snumObzh','scomObzh',scoreObzh,10)">📊 Результат</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ИЗО                                                         -->
+<!-- ============================================================ -->
+<div class="section-divider"><span class="d-izo">🎨 ИЗО — Виды ИЗО, жанры, композиция, цветоведение</span></div>
+
+<div class="card c-izo">
+    <h2>📖 5. Виды изобразительного искусства</h2>
+
+    <div class="notebook">
+        <br>
+        <table>
+            <tr>
+                <th class="th-izo">Вид ИЗО</th>
+                <th class="th-izo">Что это</th>
+                <th class="th-izo">Техники и примеры</th>
+            </tr>
+            <tr>
+                <td><strong>Живопись</strong></td>
+                <td>Изображение красками на плоской поверхности</td>
+                <td>Акварель, масло, гуашь, темпера. Репин «Бурлаки на Волге»</td>
+            </tr>
+            <tr>
+                <td><strong>Графика</strong></td>
+                <td>Изображение линиями, пятнами (чаще на бумаге)</td>
+                <td>Карандаш, уголь, тушь, гравюра. Иллюстрации к книгам</td>
+            </tr>
+            <tr>
+                <td><strong>Скульптура</strong></td>
+                <td>Трёхмерное произведение</td>
+                <td>Лепка (глина), высекание (камень), отливка (металл). Микеланджело «Давид»</td>
+            </tr>
+            <tr>
+                <td><strong>Декоративно-прикладное искусство (ДПИ)</strong></td>
+                <td>Художественные изделия бытового назначения</td>
+                <td>Гжель, хохлома, Палех, вышивка, керамика</td>
+            </tr>
+            <tr>
+                <td><strong>Архитектура</strong></td>
+                <td>Искусство проектирования и строительства</td>
+                <td>Кремль, Эрмитаж, Нотр-Дам</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="card c-izo">
+    <h2>📖 6. Жанры живописи</h2>
+
+    <div class="genre-grid">
+        <div class="genre-card">
+            <div class="genre-icon">🖼️</div>
+            <div class="genre-name">Портрет</div>
+            <div class="genre-desc">Изображение человека или группы людей. Репин «Автопортрет»</div>
+        </div>
+        <div class="genre-card">
+            <div class="genre-icon">🌄</div>
+            <div class="genre-name">Пейзаж</div>
+            <div class="genre-desc">Изображение природы. Левитан «Золотая осень»</div>
+        </div>
+        <div class="genre-card">
+            <div class="genre-icon">🍎</div>
+            <div class="genre-name">Натюрморт</div>
+            <div class="genre-desc">Неодушевлённые предметы. Сезанн «Яблоки и апельсины»</div>
+        </div>
+        <div class="genre-card">
+            <div class="genre-icon">⚔️</div>
+            <div class="genre-name">Историческая</div>
+            <div class="genre-desc">Исторические события. Суриков «Боярыня Морозова»</div>
+        </div>
+        <div class="genre-card">
+            <div class="genre-icon">🐯</div>
+            <div class="genre-name">Анималистика</div>
+            <div class="genre-desc">Изображение животных. Серов «Девочка с персиками» (там — кошки)</div>
+        </div>
+        <div class="genre-card">
+            <div class="genre-icon">🏘️</div>
+            <div class="genre-name">Бытовой</div>
+            <div class="genre-desc">Сцены повседневной жизни. Федотов «Сватовство майора»</div>
+        </div>
+        <div class="genre-card">
+            <div class="genre-icon">🙏</div>
+            <div class="genre-name">Религиозный</div>
+            <div class="genre-desc">Иконы, библейские сюжеты. Рафаэль «Сикстинская мадонна»</div>
+        </div>
+        <div class="genre-card">
+            <div class="genre-icon">🏛️</div>
+            <div class="genre-name">Мифологический</div>
+            <div class="genre-desc">Сюжеты мифов. Боттичелли «Рождение Венеры»</div>
+        </div>
+    </div>
+</div>
+
+<div class="card c-izo">
+    <h2>📖 7. Основы композиции и цветоведение</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Композиция</h3>
+        <p><strong>Композиция</strong> — расположение, сочетание элементов произведения
+        в единое художественное целое.</p>
+
+        <h3>Основные правила композиции:</h3>
+        <ul>
+            <li><strong>Центр композиции</strong> — главный объект располагается ближе к центру</li>
+            <li><strong>Правило третей</strong> — изображение делится на 9 частей, главные объекты на линиях</li>
+            <li><strong>Равновесие</strong> — зрительный баланс левой и правой части</li>
+            <li><strong>Ритм</strong> — повторение элементов создаёт движение</li>
+            <li><strong>Контраст</strong> — противопоставление размеров, цветов, форм</li>
+            <li><strong>Формат</strong>: горизонтальный (покой, простор), вертикальный (величие, высота)</li>
+        </ul>
+
+        <h3>Цветоведение — основы:</h3>
+        <ul>
+            <li><strong>Основные цвета (3):</strong> красный, жёлтый, синий — нельзя получить смешением</li>
+            <li><strong>Составные цвета (3):</strong> оранжевый, зелёный, фиолетовый — смешение основных</li>
+            <li><strong>Дополнительные цвета</strong> — цвета, расположенные напротив на цветовом круге:
+            красный — зелёный; синий — оранжевый; жёлтый — фиолетовый</li>
+            <li><strong>Тёплые цвета:</strong> красный, оранжевый, жёлтый — ощущение тепла, близости</li>
+            <li><strong>Холодные цвета:</strong> синий, голубой, фиолетовый — ощущение прохлады, дали</li>
+            <li><strong>Хроматические</strong> — все цвета спектра</li>
+            <li><strong>Ахроматические</strong> — белый, серый, чёрный (без цвета)</li>
+        </ul>
+    </div>
+
+    <!-- Цветовой круг -->
+    <div class="color-circle-wrap">
+        <h3 style="color:#8e44ad; margin-bottom:12px;">🎨 Цветовой круг</h3>
+        <div class="color-wheel">
+            <div class="color-swatch" style="background:#e74c3c;">Красный<br><small>(осн.)</small></div>
+            <div class="color-swatch" style="background:#e67e22;">Оранжевый<br><small>(сост.)</small></div>
+            <div class="color-swatch" style="background:#f1c40f; color:#333;">Жёлтый<br><small>(осн.)</small></div>
+            <div class="color-swatch" style="background:#27ae60;">Зелёный<br><small>(сост.)</small></div>
+            <div class="color-swatch" style="background:#2980b9;">Синий<br><small>(осн.)</small></div>
+            <div class="color-swatch" style="background:#1abc9c;">Голубой</div>
+            <div class="color-swatch" style="background:#8e44ad;">Фиолет.<br><small>(сост.)</small></div>
+            <div class="color-swatch" style="background:#c0392b;">Пурпур.</div>
+        </div>
+        <p style="font-size:0.85em; color:#666; margin-top:8px;">
+            Тёплые: 🔴🟠🟡 | Холодные: 🔵🟢🟣
+        </p>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Запомни основные цвета:</strong><br>
+        <strong>К</strong>расный + <strong>Ж</strong>ёлтый = Оранжевый<br>
+        <strong>Ж</strong>ёлтый + <strong>С</strong>иний = Зелёный<br>
+        <strong>С</strong>иний + <strong>К</strong>расный = Фиолетовый<br><br>
+        КЖ — апельСин (оранжевый) 🍊<br>
+        ЖС — ёлка (зелёный) 🌲<br>
+        СК — слива (фиолетовый) 🍇
+    </div>
+</div>
+
+<!-- Видео ИЗО -->
+<div class="card c-izo">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: ИЗО</h3>
+        <a href="https://www.youtube.com/watch?v=9f7EY_7VqJI" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Виды изобразительного искусства — ИЗО 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=GJeP5t4eFCQ" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Жанры живописи — все виды с примерами картин</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=HVqUTF38e8g" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Цветоведение — цветовой круг, тёплые и холодные цвета</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: ИЗО -->
+<div class="quiz-block qb-izo">
+    <h2>🧪 Тест по ИЗО — 8 вопросов</h2>
+    <div class="quiz-question" id="iq1">
+        <p>1. Жанр живописи, изображающий природу:</p>
+        <button class="quiz-option" onclick="doIzo(this,false)">А) Натюрморт</button>
+        <button class="quiz-option" onclick="doIzo(this,true)">Б) Пейзаж</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Портрет</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Бытовой</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="iq2">
+        <p>2. Основные цвета в живописи:</p>
+        <button class="quiz-option" onclick="doIzo(this,true)">А) Красный, жёлтый, синий</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Б) Оранжевый, зелёный, фиолетовый</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Белый, серый, чёрный</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Красный, зелёный, синий</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="iq3">
+        <p>3. Смешивая жёлтый и синий, получим:</p>
+        <button class="quiz-option" onclick="doIzo(this,false)">А) Оранжевый</button>
+        <button class="quiz-option" onclick="doIzo(this,true)">Б) Зелёный</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Фиолетовый</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Коричневый</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="iq4">
+        <p>4. Натюрморт — это:</p>
+        <button class="quiz-option" onclick="doIzo(this,false)">А) Изображение природы</button>
+        <button class="quiz-option" onclick="doIzo(this,true)">Б) Изображение неодушевлённых предметов</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Изображение человека</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Изображение животных</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="iq5">
+        <p>5. К тёплым цветам относятся:</p>
+        <button class="quiz-option" onclick="doIzo(this,false)">А) Синий, голубой, фиолетовый</button>
+        <button class="quiz-option" onclick="doIzo(this,true)">Б) Красный, оранжевый, жёлтый</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Белый, серый, чёрный</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Зелёный, синий, красный</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="iq6">
+        <p>6. Скульптура — это вид ИЗО, при котором создаётся:</p>
+        <button class="quiz-option" onclick="doIzo(this,false)">А) Плоское изображение красками</button>
+        <button class="quiz-option" onclick="doIzo(this,true)">Б) Трёхмерное произведение</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Линейный рисунок на бумаге</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Декоративный орнамент</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="iq7">
+        <p>7. Гжель и хохлома — это примеры:</p>
+        <button class="quiz-option" onclick="doIzo(this,false)">А) Графики</button>
+        <button class="quiz-option" onclick="doIzo(this,true)">Б) Декоративно-прикладного искусства</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Скульптуры</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Архитектуры</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="iq8">
+        <p>8. Ахроматические цвета — это:</p>
+        <button class="quiz-option" onclick="doIzo(this,false)">А) Тёплые цвета спектра</button>
+        <button class="quiz-option" onclick="doIzo(this,true)">Б) Белый, серый, чёрный</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">В) Основные цвета</button>
+        <button class="quiz-option" onclick="doIzo(this,false)">Г) Холодные цвета</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="score-display" id="scoreIzo">
+        <p>Результат по ИЗО:</p>
+        <div class="snum" style="color:#8e44ad;" id="snumIzo">0/8</div>
+        <p id="scomIzo" style="font-size:1em; margin-top:7px;"></p>
+    </div>
+    <button class="check-btn" style="color:#8e44ad;" onclick="showScore('scoreIzo','snumIzo','scomIzo',scoreIzo,8)">📊 Результат</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  МУЗЫКА                                                       -->
+<!-- ============================================================ -->
+<div class="section-divider"><span class="d-muz">🎵 МУЗЫКА — Жанры, инструменты, композиторы</span></div>
+
+<div class="card c-muz">
+    <h2>📖 8. Музыкальные жанры</h2>
+    <div class="music-genre-grid">
+        <div class="mg-card"><div class="mg-icon">🎭</div><div class="mg-name">Опера</div><div class="mg-desc">Музыкально-театральное произведение; сочетает пение и оркестр</div></div>
+        <div class="mg-card"><div class="mg-icon">💃</div><div class="mg-name">Балет</div><div class="mg-desc">Спектакль, где действие передаётся танцем и музыкой</div></div>
+        <div class="mg-card"><div class="mg-icon">🎼</div><div class="mg-name">Симфония</div><div class="mg-desc">Крупное произведение для оркестра; обычно 4 части</div></div>
+        <div class="mg-card"><div class="mg-icon">🎹</div><div class="mg-name">Соната</div><div class="mg-desc">Произведение для 1–2 инструментов; обычно 3–4 части</div></div>
+        <div class="mg-card"><div class="mg-icon">🎵</div><div class="mg-name">Концерт</div><div class="mg-desc">Произведение для солиста с оркестром</div></div>
+        <div class="mg-card"><div class="mg-icon">🎶</div><div class="mg-name">Романс</div><div class="mg-desc">Небольшое лирическое произведение для голоса и аккомпанемента</div></div>
+        <div class="mg-card"><div class="mg-icon">⛪</div><div class="mg-name">Кантата</div><div class="mg-desc">Крупное вокально-инструментальное произведение</div></div>
+        <div class="mg-card"><div class="mg-icon">🎸</div><div class="mg-name">Этюд</div><div class="mg-desc">Произведение для развития техники игры</div></div>
+        <div class="mg-card"><div class="mg-icon">🎺</div><div class="mg-name">Марш</div><div class="mg-desc">Музыка для шествия; чёткий ритм</div></div>
+        <div class="mg-card"><div class="mg-icon">🌙</div><div class="mg-name">Ноктюрн</div><div class="mg-desc">«Ночная» лирическая пьеса</div></div>
+        <div class="mg-card"><div class="mg-icon">🔄</div><div class="mg-name">Фуга</div><div class="mg-desc">Полифоническое произведение; тема звучит у разных голосов</div></div>
+        <div class="mg-card"><div class="mg-icon">🌊</div><div class="mg-name">Прелюдия</div><div class="mg-desc">Небольшое вступительное произведение</div></div>
+    </div>
+</div>
+
+<div class="card c-muz">
+    <h2>📖 9. Музыкальные инструменты</h2>
+    <div class="instr-grid">
+        <div class="instr-card ic-str"><div class="instr-icon">🎻</div><div class="instr-name">Скрипка</div><div class="instr-type">Струнные смычковые</div></div>
+        <div class="instr-card ic-str"><div class="instr-icon">🎸</div><div class="instr-name">Виолончель</div><div class="instr-type">Струнные смычковые</div></div>
+        <div class="instr-card ic-str"><div class="instr-icon">🎸</div><div class="instr-name">Гитара</div><div class="instr-type">Струнные щипковые</div></div>
+        <div class="instr-card ic-str"><div class="instr-icon">🎸</div><div class="instr-name">Арфа</div><div class="instr-type">Струнные щипковые</div></div>
+        <div class="instr-card ic-wind"><div class="instr-icon">🎺</div><div class="instr-name">Труба</div><div class="instr-type">Духовые медные</div></div>
+        <div class="instr-card ic-wind"><div class="instr-icon">🎷</div><div class="instr-name">Саксофон</div><div class="instr-type">Духовые деревянные</div></div>
+        <div class="instr-card ic-wind"><div class="instr-icon">🪈</div><div class="instr-name">Флейта</div><div class="instr-type">Духовые деревянные</div></div>
+        <div class="instr-card ic-wind"><div class="instr-icon">🎵</div><div class="instr-name">Кларнет</div><div class="instr-type">Духовые деревянные</div></div>
+        <div class="instr-card ic-perc"><div class="instr-icon">🥁</div><div class="instr-name">Барабан</div><div class="instr-type">Ударные</div></div>
+        <div class="instr-card ic-perc"><div class="instr-icon">🔔</div><div class="instr-name">Ксилофон</div><div class="instr-type">Ударные</div></div>
+        <div class="instr-card ic-key"><div class="instr-icon">🎹</div><div class="instr-name">Фортепиано</div><div class="instr-type">Клавишные</div></div>
+        <div class="instr-card ic-key"><div class="instr-icon">🎹</div><div class="instr-name">Орган</div><div class="instr-type">Клавишно-духовые</div></div>
+    </div>
+</div>
+
+<div class="card c-muz">
+    <h2>📖 10. Великие композиторы</h2>
+
+    <div class="composer-card cc-bach">
+        <div class="comp-icon">🎼</div>
+        <div class="comp-info">
+            <h4>Иоганн Себастьян Бах (1685–1750) 🇩🇪</h4>
+            <p><strong>Эпоха:</strong> Барокко. <strong>Страна:</strong> Германия.<br>
+            <strong>Жанры:</strong> фуги, токкаты, кантаты, оратории, концерты.<br>
+            <strong>Шедевры:</strong> «Токката и фуга ре минор», «Бранденбургские концерты», «Хорошо темперированный клавир».<br>
+            <strong>Особенность:</strong> мастер полифонии — нескольких самостоятельных мелодий одновременно.</p>
+        </div>
+    </div>
+
+    <div class="composer-card cc-mozart">
+        <div class="comp-icon">🎵</div>
+        <div class="comp-info">
+            <h4>Вольфганг Амадей Моцарт (1756–1791) 🇦🇹</h4>
+            <p><strong>Эпоха:</strong> Классицизм. <strong>Страна:</strong> Австрия.<br>
+            <strong>Жанры:</strong> оперы, симфонии, концерты, сонаты, реквием.<br>
+            <strong>Шедевры:</strong> Опера «Волшебная флейта», «Дон Жуан»; Симфония №40; «Маленькая ночная серенада».<br>
+            <strong>Особенность:</strong> вундеркинд — начал сочинять в 5 лет; создал свыше 600 произведений.</p>
+        </div>
+    </div>
+
+    <div class="composer-card cc-beethoven">
+        <div class="comp-icon">🎹</div>
+        <div class="comp-info">
+            <h4>Людвиг ван Бетховен (1770–1827) 🇩🇪</h4>
+            <p><strong>Эпоха:</strong> Классицизм / Романтизм. <strong>Страна:</strong> Германия.<br>
+            <strong>Жанры:</strong> симфонии, сонаты, концерты, квартеты.<br>
+            <strong>Шедевры:</strong> Симфония №5 (та-та-та-ТАМ!), Симфония №9 «Ода к радости»; Соната №14 «Лунная».<br>
+            <strong>Особенность:</strong> создал 9-ю симфонию, будучи полностью глухим!</p>
+        </div>
+    </div>
+
+    <div class="composer-card cc-tchaik">
+        <div class="comp-icon">🩰</div>
+        <div class="comp-info">
+            <h4>Пётр Ильич Чайковский (1840–1893) 🇷🇺</h4>
+            <p><strong>Эпоха:</strong> Романтизм. <strong>Страна:</strong> Россия.<br>
+            <strong>Жанры:</strong> балеты, оперы, симфонии, концерты.<br>
+            <strong>Шедевры:</strong> Балеты «Лебединое озеро», «Щелкунчик», «Спящая красавица»; Опера «Евгений Онегин»; «Времена года».<br>
+            <strong>Особенность:</strong> создал классический русский балет; мелодичность музыки.</p>
+        </div>
+    </div>
+
+    <div class="composer-card cc-glinka">
+        <div class="comp-icon">🎭</div>
+        <div class="comp-info">
+            <h4>Михаил Иванович Глинка (1804–1857) 🇷🇺</h4>
+            <p><strong>Роль:</strong> «Отец русской классической музыки».<br>
+            <strong>Жанры:</strong> оперы, романсы, симфонические произведения.<br>
+            <strong>Шедевры:</strong> Опера «Жизнь за царя» («Иван Сусанин»); Опера «Руслан и Людмила»; «Вальс-фантазия».<br>
+            <strong>Особенность:</strong> первым создал национальную русскую классическую оперу.</p>
+        </div>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Запомни пятёрку великих:</strong><br>
+        🇩🇪 <strong>Б</strong>ах — Барокко, полифония, фуги<br>
+        🇦🇹 <strong>М</strong>оцарт — Классицизм, вундеркинд, 600+ произведений<br>
+        🇩🇪 <strong>Б</strong>етховен — глухой гений, «Лунная соната», «Ода к радости»<br>
+        🇷🇺 <strong>Ч</strong>айковский — балеты «Лебединое озеро», «Щелкунчик»<br>
+        🇷🇺 <strong>Г</strong>линка — «отец» русской музыки, «Иван Сусанин»<br><br>
+        <em>«<strong>Б</strong>ольшой <strong>М</strong>узыкант <strong>Б</strong>ыл — <strong>Ч</strong>удесно <strong>Г</strong>рал!»</em>
+    </div>
+</div>
+
+<!-- Видео Музыка -->
+<div class="card c-muz">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: Музыка</h3>
+        <a href="https://www.youtube.com/watch?v=dHPPRXJfDIY" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Музыкальные жанры — опера, симфония, балет | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=FzfR3s5YDwM" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Великие композиторы: Бах, Моцарт, Бетховен — кратко</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=c_KHlhQKgdQ" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Чайковский и Глинка — русская классическая музыка</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: Музыка -->
+<div class="quiz-block qb-muz">
+    <h2>🧪 Тест по Музыке — 8 вопросов</h2>
+    <div class="quiz-question" id="mq1">
+        <p>1. Кто из композиторов написал балет «Лебединое озеро»?</p>
+        <button class="quiz-option" onclick="doMuz(this,false)">А) Бах</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Б) Моцарт</button>
+        <button class="quiz-option" onclick="doMuz(this,true)">В) Чайковский</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) Глинка</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="mq2">
+        <p>2. «Отцом русской классической музыки» называют:</p>
+        <button class="quiz-option" onclick="doMuz(this,false)">А) Чайковского</button>
+        <button class="quiz-option" onclick="doMuz(this,true)">Б) Глинку</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">В) Мусоргского</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) Рахманинова</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="mq3">
+        <p>3. Симфония — это произведение для:</p>
+        <button class="quiz-option" onclick="doMuz(this,false)">А) Одного певца</button>
+        <button class="quiz-option" onclick="doMuz(this,true)">Б) Оркестра (обычно 4 части)</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">В) Хора без инструментов</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) Одного инструмента</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="mq4">
+        <p>4. Скрипка относится к группе инструментов:</p>
+        <button class="quiz-option" onclick="doMuz(this,false)">А) Ударные</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Б) Духовые</button>
+        <button class="quiz-option" onclick="doMuz(this,true)">В) Струнные смычковые</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) Клавишные</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="mq5">
+        <p>5. Бетховен написал свою 9-ю симфонию будучи:</p>
+        <button class="quiz-option" onclick="doMuz(this,false)">А) В молодом возрасте</button>
+        <button class="quiz-option" onclick="doMuz(this,true)">Б) Полностью глухим</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">В) В тюрьме</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) После путешествия в Россию</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="mq6">
+        <p>6. Опера — это жанр, в котором:</p>
+        <button class="quiz-option" onclick="doMuz(this,false)">А) Актёры только танцуют</button>
+        <button class="quiz-option" onclick="doMuz(this,true)">Б) Актёры поют под аккомпанемент оркестра</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">В) Исполняется только инструментальная музыка</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) Один инструмент солирует</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="mq7">
+        <p>7. Моцарт начал сочинять музыку в возрасте:</p>
+        <button class="quiz-option" onclick="doMuz(this,true)">А) 5 лет</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Б) 10 лет</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">В) 15 лет</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) 20 лет</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="mq8">
+        <p>8. Фуга — это произведение, основанное на:</p>
+        <button class="quiz-option" onclick="doMuz(this,false)">А) Одном простом мотиве для всего оркестра</button>
+        <button class="quiz-option" onclick="doMuz(this,true)">Б) Полифонии — нескольких самостоятельных мелодиях одновременно</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">В) Чередовании танцевальных ритмов</button>
+        <button class="quiz-option" onclick="doMuz(this,false)">Г) Пении солиста с хором</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="score-display" id="scoreMuz">
+        <p>Результат по Музыке:</p>
+        <div class="snum" style="color:#1a5276;" id="snumMuz">0/8</div>
+        <p id="scomMuz" style="font-size:1em; margin-top:7px;"></p>
+    </div>
+    <button class="check-btn" style="color:#1a5276;" onclick="showScore('scoreMuz','snumMuz','scomMuz',scoreMuz,8)">📊 Результат</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ТЕХНОЛОГИЯ                                                   -->
+<!-- ============================================================ -->
+<div class="section-divider"><span class="d-tech">⚙️ ТЕХНОЛОГИЯ — Материаловедение, технологии, проектирование</span></div>
+
+<div class="card c-tech">
+    <h2>📖 11. Материаловедение</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Основные конструкционные материалы:</h3>
+    </div>
+
+    <div class="material-card mc-wood">
+        <strong>🌲 Древесина и древесные материалы</strong><br>
+        <strong>Свойства:</strong> лёгкость, хорошая обработка, теплоизоляция, экологичность.<br>
+        <strong>Породы:</strong> хвойные (сосна, ель, лиственница) — смолистые, прочные; лиственные (берёза, дуб, бук) — твёрдые, красивые.<br>
+        <strong>Материалы:</strong> доска, брус, фанера, ДСП, МДФ.<br>
+        <strong>Применение:</strong> мебель, строительство, игрушки, бумага.
+    </div>
+
+    <div class="material-card mc-metal">
+        <strong>🔩 Металлы и сплавы</strong><br>
+        <strong>Чёрные металлы:</strong> чугун (хрупкий, дешёвый), сталь (прочная, упругая).<br>
+        <strong>Цветные металлы:</strong> алюминий (лёгкий), медь (пластичная, проводник), золото, серебро.<br>
+        <strong>Сплавы:</strong> бронза (медь+олово), латунь (медь+цинк).<br>
+        <strong>Свойства:</strong> прочность, твёрдость, электропроводность, теплопроводность, пластичность.<br>
+        <strong>Применение:</strong> машины, инструменты, провода, посуда.
+    </div>
+
+    <div class="material-card mc-fabric">
+        <strong>🧵 Текстильные материалы</strong><br>
+        <strong>Натуральные:</strong> хлопок (мягкий, гигроскопичный), лён (прочный, прохладный), шерсть (тёплая), шёлк (гладкий, блестящий).<br>
+        <strong>Искусственные:</strong> вискоза (из целлюлозы).<br>
+        <strong>Синтетические:</strong> капрон, нейлон, полиэстер — прочные, не мнутся.<br>
+        <strong>Применение:</strong> одежда, домашний текстиль.
+    </div>
+
+    <div class="material-card mc-paper">
+        <strong>📄 Бумага и картон</strong><br>
+        <strong>Виды бумаги:</strong> писчая, газетная, офсетная, чертёжная, обёрточная.<br>
+        <strong>Свойства:</strong> лёгкость, впитываемость, горючесть, легко рвётся.<br>
+        <strong>Производство:</strong> из древесной целлюлозы.<br>
+        <strong>Применение:</strong> книги, тетради, упаковка.
+    </div>
+
+    <div class="material-card mc-plast">
+        <strong>♻️ Пластмассы</strong><br>
+        <strong>Виды:</strong> полиэтилен, полипропилен, поливинилхлорид (ПВХ), оргстекло.<br>
+        <strong>Свойства:</strong> лёгкие, не ржавеют, электроизоляция, плохо проводят тепло, часто не разлагаются в природе.<br>
+        <strong>Применение:</strong> упаковка, трубы, корпуса приборов, игрушки.
+    </div>
+</div>
+
+<div class="card c-tech">
+    <h2>📖 12. Технологии обработки и проектная деятельность</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Основные виды обработки материалов:</h3>
+        <table>
+            <tr>
+                <th class="th-tech">Вид обработки</th>
+                <th class="th-tech">Описание</th>
+                <th class="th-tech">Инструменты</th>
+            </tr>
+            <tr>
+                <td><strong>Ручная</strong></td>
+                <td>Обработка вручную без машин</td>
+                <td>Пила, нож, молоток, рубанок, игла</td>
+            </tr>
+            <tr>
+                <td><strong>Механическая</strong></td>
+                <td>С применением станков и машин</td>
+                <td>Токарный станок, сверлильный станок, фрезер</td>
+            </tr>
+            <tr>
+                <td><strong>Тепловая</strong></td>
+                <td>Обработка теплом</td>
+                <td>Сварка, пайка, литьё, закалка, отжиг</td>
+            </tr>
+            <tr>
+                <td><strong>Химическая</strong></td>
+                <td>Воздействие химических веществ</td>
+                <td>Травление, покрытие, окраска</td>
+            </tr>
+            <tr>
+                <td><strong>Электрическая</strong></td>
+                <td>Обработка электрическим током</td>
+                <td>Электросварка, гальваника</td>
+            </tr>
+        </table>
+
+        <h3>Основные инструменты слесарных работ (по металлу):</h3>
+        <ul>
+            <li><strong>Разметка:</strong> чертилка, кернер, угольник, линейка, циркуль</li>
+            <li><strong>Резание:</strong> ножовка по металлу, зубило</li>
+            <li><strong>Опиливание:</strong> напильник (плоский, круглый, трёхгранный)</li>
+            <li><strong>Сверление:</strong> дрель, свёрла</li>
+            <li><strong>Соединение:</strong> молоток, гвозди, болты, гайки, заклёпки</li>
+        </ul>
+
+        <h3>Проектная деятельность — этапы:</h3>
+        <ol>
+            <li><strong>Организационно-подготовительный</strong> — выбор темы, постановка цели, изучение проблемы</li>
+            <li><strong>Конструкторский</strong> — разработка идей, создание эскиза и чертежа, выбор материалов</li>
+            <li><strong>Технологический</strong> — составление плана работы, изготовление изделия</li>
+            <li><strong>Заключительный</strong> — оценка качества, оформление документации, защита проекта</li>
+        </ol>
+
+        <h3>Ключевые термины технологии:</h3>
+        <table>
+            <tr>
+                <th class="th-tech">Термин</th>
+                <th class="th-tech">Определение</th>
+            </tr>
+            <tr><td><strong>Технология</strong></td><td>Совокупность методов обработки для изготовления изделий</td></tr>
+            <tr><td><strong>Чертёж</strong></td><td>Графический документ с размерами и формой изделия</td></tr>
+            <tr><td><strong>Эскиз</strong></td><td>Набросок — предварительный рисунок изделия</td></tr>
+            <tr><td><strong>Технологическая карта</strong></td><td>Документ с последовательностью операций изготовления</td></tr>
+            <tr><td><strong>Себестоимость</strong></td><td>Все затраты на производство изделия</td></tr>
+            <tr><td><strong>Стандарт (ГОСТ)</strong></td><td>Нормы и требования к качеству изделия</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- Видео Технология -->
+<div class="card c-tech">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: Технология</h3>
+        <a href="https://www.youtube.com/watch?v=lV2rshQ1OQk" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Материаловедение — древесина, металлы, ткань | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=5hHIPZbC_ug" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Проектная деятельность на уроках технологии</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: Технология -->
+<div class="quiz-block qb-tech">
+    <h2>🧪 Тест по Технологии — 8 вопросов</h2>
+    <div class="quiz-question" id="tq1">
+        <p>1. К хвойным породам древесины относится:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Дуб</button>
+        <button class="quiz-option" onclick="doTech(this,true)">Б) Сосна</button>
+        <button class="quiz-option" onclick="doTech(this,false)">В) Берёза</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Бук</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="tq2">
+        <p>2. Сталь — это:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Цветной металл</button>
+        <button class="quiz-option" onclick="doTech(this,true)">Б) Чёрный металл (сплав железа с углеродом)</button>
+        <button class="quiz-option" onclick="doTech(this,false)">В) Пластмасса</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Сплав меди и цинка</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="tq3">
+        <p>3. Технологическая карта — это:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Рисунок будущего изделия</button>
+        <button class="quiz-option" onclick="doTech(this,true)">Б) Документ с последовательностью операций изготовления</button>
+        <button class="quiz-option" onclick="doTech(this,false)">В) Карта маршрута изделия</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Список материалов для закупки</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="tq4">
+        <p>4. Первый этап проектной деятельности:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Изготовление изделия</button>
+        <button class="quiz-option" onclick="doTech(this,true)">Б) Организационно-подготовительный (выбор темы, цели)</button>
+        <button class="quiz-option" onclick="doTech(this,false)">В) Защита проекта</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Оценка качества</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="tq5">
+        <p>5. Хлопок — это волокно:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Синтетическое</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Б) Искусственное</button>
+        <button class="quiz-option" onclick="doTech(this,true)">В) Натуральное растительного происхождения</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Натуральное животного происхождения</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="tq6">
+        <p>6. Инструмент для разметки по металлу:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Напильник</button>
+        <button class="quiz-option" onclick="doTech(this,true)">Б) Чертилка</button>
+        <button class="quiz-option" onclick="doTech(this,false)">В) Зубило</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Ножовка</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="tq7">
+        <p>7. Фанера — это материал из:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Металлических пластин</button>
+        <button class="quiz-option" onclick="doTech(this,true)">Б) Склеенных слоёв древесного шпона</button>
+        <button class="quiz-option" onclick="doTech(this,false)">В) Прессованных опилок</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Полимеров</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="tq8">
+        <p>8. Себестоимость — это:</p>
+        <button class="quiz-option" onclick="doTech(this,false)">А) Цена продажи изделия</button>
+        <button class="quiz-option" onclick="doTech(this,true)">Б) Все затраты на производство изделия</button>
+        <button class="quiz-option" onclick="doTech(this,false)">В) Стоимость только материалов</button>
+        <button class="quiz-option" onclick="doTech(this,false)">Г) Прибыль от продажи</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="score-display" id="scoreTech">
+        <p>Результат по Технологии:</p>
+        <div class="snum" style="color:#1e8449;" id="snumTech">0/8</div>
+        <p id="scomTech" style="font-size:1em; margin-top:7px;"></p>
+    </div>
+    <button class="check-btn" style="color:#1e8449;" onclick="showScore('scoreTech','snumTech','scomTech',scoreTech,8)">📊 Результат</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ФИЗКУЛЬТУРА (теория)                                        -->
+<!-- ============================================================ -->
+<div class="section-divider"><span class="d-fiz">🏃 ФИЗКУЛЬТУРА (теория) — Олимпиада, виды спорта, ЗОЖ</span></div>
+
+<div class="card c-fiz">
+    <h2>📖 13. Олимпийские игры</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>История Олимпийских игр:</h3>
+        <ul>
+            <li><strong>Древние Олимпийские игры</strong> — проводились в Древней Греции с <strong>776 г. до н.э.</strong></li>
+            <li>Место проведения — Олимпия (отсюда название)</li>
+            <li>Проводились каждые <strong>4 года</strong> (олимпийский цикл)</li>
+            <li>Были запрещены римским императором Феодосием I в <strong>394 г. н.э.</strong></li>
+            <li><strong>Возрождение:</strong> Пьер де Кубертен основал МОК в 1894 г.</li>
+            <li>Первые современные Олимпийские игры — <strong>Афины, 1896 г.</strong></li>
+        </ul>
+
+        <h3>Символика Олимпийских игр:</h3>
+        <ul>
+            <li><strong>Олимпийские кольца</strong> — 5 колец: синее, жёлтое, чёрное, зелёное, красное.
+            Символизируют 5 континентов</li>
+            <li><strong>Олимпийский огонь</strong> — зажигается в Олимпии, доставляется эстафетой</li>
+            <li><strong>Девиз:</strong> «Citius! Altius! Fortius!» — «Быстрее! Выше! Сильнее!» (с 2021: «...Единее!»)</li>
+            <li><strong>Олимпийская клятва</strong> — клятва спортсменов об честной борьбе</li>
+            <li><strong>Олимпийский гимн</strong></li>
+        </ul>
+
+        <h3>Летние и зимние Олимпийские игры:</h3>
+        <table>
+            <tr>
+                <th class="th-fiz">Тип</th>
+                <th class="th-fiz">Периодичность</th>
+                <th class="th-fiz">Виды спорта</th>
+            </tr>
+            <tr>
+                <td>Летние ОИ</td>
+                <td>Каждые 4 года</td>
+                <td>Лёгкая атлетика, плавание, гимнастика, борьба, бокс, футбол и др.</td>
+            </tr>
+            <tr>
+                <td>Зимние ОИ</td>
+                <td>Каждые 4 года (через 2 года после летних)</td>
+                <td>Лыжи, биатлон, фигурное катание, хоккей, санный спорт и др.</td>
+            </tr>
+            <tr>
+                <td>Паралимпийские ОИ</td>
+                <td>Сразу после ОИ</td>
+                <td>Для спортсменов с ограниченными возможностями</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="card c-fiz">
+    <h2>📖 14. Виды спорта и правила игр</h2>
+
+    <div class="sport-grid">
+        <div class="sport-card">
+            <div class="sport-icon">⚽</div>
+            <div class="sport-name">Футбол</div>
+            <div class="sport-info">11 игроков; 2×45 мин; гол руками запрещён</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🏀</div>
+            <div class="sport-name">Баскетбол</div>
+            <div class="sport-info">5 игроков; 4×10 мин; мяч в корзину</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🏐</div>
+            <div class="sport-name">Волейбол</div>
+            <div class="sport-info">6 игроков; 3 касания; до 25 очков</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🎾</div>
+            <div class="sport-name">Теннис</div>
+            <div class="sport-info">1 или 2 игрока; ракетка; корт</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🏊</div>
+            <div class="sport-name">Плавание</div>
+            <div class="sport-info">4 стиля: кроль, брасс, баттерфляй, на спине</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🤸</div>
+            <div class="sport-name">Гимнастика</div>
+            <div class="sport-info">Художественная и спортивная; оценивают судьи</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🥊</div>
+            <div class="sport-name">Бокс</div>
+            <div class="sport-info">Перчатки; бьют только в голову и корпус</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🎿</div>
+            <div class="sport-name">Лыжи</div>
+            <div class="sport-info">Гонки, слалом, биатлон (лыжи+стрельба)</div>
+        </div>
+        <div class="sport-card">
+            <div class="sport-icon">🏒</div>
+            <div class="sport-name">Хоккей</div>
+            <div class="sport-info">6 игроков; 3×20 мин; шайба в ворота</div>
+        </div>
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Основы ЗОЖ (здорового образа жизни):</h3>
+        <ul>
+            <li><strong>Режим дня</strong> — сон 8–9 часов, чередование труда и отдыха</li>
+            <li><strong>Правильное питание</strong> — разнообразное, сбалансированное;
+            белки, жиры, углеводы, витамины, минералы</li>
+            <li><strong>Двигательная активность</strong> — не менее 60 мин. умеренной
+            активности в день</li>
+            <li><strong>Закаливание</strong> — постепенное приучение организма к холоду
+            (воздушные ванны, обливание, зарядка)</li>
+            <li><strong>Личная гигиена</strong> — чистота тела, рук, зубов, одежды</li>
+            <li><strong>Отказ от вредных привычек</strong> — курение и алкоголь разрушают
+            здоровье</li>
+            <li><strong>Психическое здоровье</strong> — позитивный настрой, умение справляться
+            со стрессом</li>
+        </ul>
+
+        <h3>Пульс и нагрузка:</h3>
+        <ul>
+            <li><strong>Пульс в покое</strong> у подростка — 60–90 ударов в минуту</li>
+            <li><strong>Максимальный пульс</strong> = 220 − возраст</li>
+            <li>Для 12-летнего: 220 − 12 = <strong>208 уд/мин</strong></li>
+            <li>Оптимальная зона нагрузки: <strong>60–80%</strong> от максимального пульса</li>
+        </ul>
+    </div>
+
+    <div class="mnemonic">
+        <strong>5 китов ЗОЖ:</strong><br>
+        🏃 <strong>Движение</strong> — спорт, прогулки<br>
+        🥗 <strong>Питание</strong> — правильное и сбалансированное<br>
+        😴 <strong>Сон</strong> — 8–9 часов<br>
+        🚫 <strong>Без вредных привычек</strong><br>
+        😊 <strong>Позитивный настрой</strong> — психическое здоровье
+    </div>
+</div>
+
+<!-- Видео Физкультура -->
+<div class="card c-fiz">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: Физкультура (теория)</h3>
+        <a href="https://www.youtube.com/watch?v=kO_BUKMhGM4" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Олимпийские игры — история и символика | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=X9-LdCbYqUs" target="_blank" class="video-link">
+            <span class="pi">▶️</span><span>Здоровый образ жизни — основы ЗОЖ для подростков</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: Физкультура -->
+<div class="quiz-block qb-fiz">
+    <h2>🧪 Тест по Физкультуре (теория) — 8 вопросов</h2>
+    <div class="quiz-question" id="fq1">
+        <p>1. Первые современные Олимпийские игры прошли в:</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) Лондоне, 1908</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">Б) Афинах, 1896</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">В) Париже, 1900</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) Риме, 1896</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="fq2">
+        <p>2. Олимпийский девиз (на латыни):</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) «Мир! Труд! Май!»</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">Б) «Citius! Altius! Fortius!» (Быстрее! Выше! Сильнее!)</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">В) «За честь и победу!»</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) «Спорт — жизнь!»</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="fq3">
+        <p>3. Сколько колец в олимпийском символе?</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) 4</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">Б) 5</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">В) 6</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) 7</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="fq4">
+        <p>4. В волейболе команда состоит из:</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) 5 игроков</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">Б) 6 игроков</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">В) 7 игроков</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) 11 игроков</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="fq5">
+        <p>5. Биатлон — это сочетание:</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) Плавание + бег</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">Б) Лыжные гонки + стрельба</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">В) Велогонка + плавание</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) Бег + прыжки</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="fq6">
+        <p>6. Максимальный пульс рассчитывается по формуле:</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) 180 + возраст</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">Б) 220 − возраст</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">В) 200 − возраст</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) 200 + возраст</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="fq7">
+        <p>7. ЗОЖ включает:</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) Только занятия спортом</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">Б) Движение, правильное питание, сон, отказ от вредных привычек и позитивный настрой</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">В) Только правильное питание</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) Только отказ от вредных привычек</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="quiz-question" id="fq8">
+        <p>8. В футбольной команде на поле:</p>
+        <button class="quiz-option" onclick="doFiz(this,false)">А) 9 игроков</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Б) 10 игроков</button>
+        <button class="quiz-option" onclick="doFiz(this,true)">В) 11 игроков</button>
+        <button class="quiz-option" onclick="doFiz(this,false)">Г) 12 игроков</button>
+        <div class="quiz-feedback"></div>
+    </div>
+    <div class="score-display" id="scoreFiz">
+        <p>Результат по Физкультуре:</p>
+        <div class="snum" style="color:#ca6f1e;" id="snumFiz">0/8</div>
+        <p id="scomFiz" style="font-size:1em; margin-top:7px;"></p>
+    </div>
+    <button class="check-btn" style="color:#ca6f1e;" onclick="showScore('scoreFiz','snumFiz','scomFiz',scoreFiz,8)">📊 Результат</button>
+</div>
+
+<!-- НАВИГАЦИЯ -->
+<div class="nav-buttons">
+    <a href="#" class="nav-btn" style="color:#1a237e;">← Английский и Литература</a>
+    <a href="#" class="nav-btn" style="color:#c0392b;">Далее: Итоговые тесты (День 20) →</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+    /* ---- Показать/скрыть решение ---- */
+    function toggleSol(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    /* ---- Счётчики тестов ---- */
+    let scoreObzh = 0; let answObzh = new Set();
+    let scoreIzo  = 0; let answIzo  = new Set();
+    let scoreMuz  = 0; let answMuz  = new Set();
+    let scoreTech = 0; let answTech = new Set();
+    let scoreFiz  = 0; let answFiz  = new Set();
+
+    /* ---- Обработчики тестов ---- */
+    function doObzh(btn, ok) { handleQ(btn, ok, answObzh, 'doObzh', function(){ scoreObzh++; }); }
+    function doIzo (btn, ok) { handleQ(btn, ok, answIzo,  'doIzo',  function(){ scoreIzo++;  }); }
+    function doMuz (btn, ok) { handleQ(btn, ok, answMuz,  'doMuz',  function(){ scoreMuz++;  }); }
+    function doTech(btn, ok) { handleQ(btn, ok, answTech, 'doTech', function(){ scoreTech++; }); }
+    function doFiz (btn, ok) { handleQ(btn, ok, answFiz,  'doFiz',  function(){ scoreFiz++;  }); }
+
+    function handleQ(btn, ok, answSet, fnName, incFn) {
+        const q = btn.parentElement;
+        if (answSet.has(q.id)) return;
+        answSet.add(q.id);
+        q.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+        if (ok) {
+            btn.classList.add('correct');
+            incFn();
+            showFB(q, true);
+        } else {
+            btn.classList.add('wrong');
+            q.querySelectorAll('.quiz-option').forEach(b => {
+                if ((b.getAttribute('onclick') || '').includes(fnName + '(this,true)'))
+                    b.classList.add('correct');
+            });
+            showFB(q, false);
+        }
+    }
+
+    function showFB(q, ok) {
+        const fb = q.querySelector('.quiz-feedback');
+        fb.style.display = 'block';
+        if (ok) {
+            fb.style.background = '#c8e6c9'; fb.style.color = '#2e7d32';
+            fb.textContent = '✅ Правильно!';
+        } else {
+            fb.style.background = '#ffcdd2'; fb.style.color = '#c62828';
+            fb.textContent = '❌ Неправильно. Правильный ответ выделен зелёным.';
+        }
+    }
+
+    function showScore(dispId, numId, comId, score, max) {
+        /* Получаем актуальное значение score через глобальные переменные */
+        const actualScore = getActualScore(dispId);
+        const d = document.getElementById(dispId);
+        d.style.display = 'block';
+        document.getElementById(numId).textContent = actualScore + '/' + max;
+        setComment(document.getElementById(comId), actualScore, max);
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function getActualScore(dispId) {
+        const map = {
+            'scoreObzh': () => scoreObzh,
+            'scoreIzo':  () => scoreIzo,
+            'scoreMuz':  () => scoreMuz,
+            'scoreTech': () => scoreTech,
+            'scoreFiz':  () => scoreFiz,
+        };
+        return map[dispId] ? map[dispId]() : 0;
+    }
+
+    function setComment(el, score, max) {
+        const p = score / max;
+        if (p >= 0.9)       { el.textContent = '🏆 Отлично! Ты прекрасно знаешь тему!';       el.style.color = '#2e7d32'; }
+        else if (p >= 0.7)  { el.textContent = '👍 Хорошо! Повтори ошибки.';                   el.style.color = '#1565c0'; }
+        else if (p >= 0.5)  { el.textContent = '📖 Неплохо, стоит повторить теорию.';          el.style.color = '#e65100'; }
+        else                { el.textContent = '📚 Нужно ещё раз изучить материал.';            el.style.color = '#c62828'; }
+    }
+</script>
+</body>
+</html>

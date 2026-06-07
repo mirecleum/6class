@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>День 22 — Повторение блок 2: Математика, Биология, География</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1628, #1a2a5e, #0f2027);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00b4d8, #48cae4, #90e0ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .day-info {
+            text-align: center;
+            font-size: 1.1em;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        .schedule-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .schedule-item {
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            background: rgba(0,180,216,0.15);
+            border: 2px solid rgba(0,180,216,0.3);
+        }
+        .schedule-item .time {
+            font-size: 0.85em;
+            color: #aaa;
+        }
+        .subject-block {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid;
+        }
+        .subject-block.math { border-left-color: #00b4d8; }
+        .subject-block.bio { border-left-color: #2ecc71; }
+        .subject-block.geo { border-left-color: #e67e22; }
+        .subject-block h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        .subject-block .duration {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notebook {
+            background: rgba(255,215,0,0.1);
+            border: 2px dashed #ffd93d;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .notebook h4 {
+            color: #ffd93d;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .notebook ul, .notebook ol {
+            padding-left: 25px;
+        }
+        .notebook li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .explanation-box {
+            background: rgba(0,180,216,0.1);
+            border: 1px solid rgba(0,180,216,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .explanation-box h4 {
+            color: #48cae4;
+            margin-bottom: 10px;
+        }
+        .exercise-box {
+            background: rgba(162,155,254,0.1);
+            border: 1px solid rgba(162,155,254,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .exercise-box h4 {
+            color: #a29bfe;
+            margin-bottom: 10px;
+        }
+        .exercise-box .task {
+            background: rgba(0,0,0,0.2);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        .solution {
+            display: none;
+            background: rgba(0,255,100,0.08);
+            border: 1px solid rgba(0,255,100,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+        .show-solution-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            margin-top: 8px;
+            transition: transform 0.2s;
+        }
+        .show-solution-btn:hover {
+            transform: scale(1.05);
+        }
+        .video-links {
+            background: rgba(255,0,0,0.08);
+            border: 1px solid rgba(255,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .video-links h4 {
+            color: #ff4444;
+            margin-bottom: 10px;
+        }
+        .video-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .video-links a:hover { color: #ff9999; }
+        .video-links a::before { content: '▶ '; }
+        .quiz-container {
+            background: rgba(255,165,0,0.08);
+            border: 2px solid rgba(255,165,0,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-container h3 {
+            color: #ffa500;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.4em;
+        }
+        .quiz-question {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .quiz-question p {
+            font-size: 1.05em;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 18px;
+            margin: 6px 0;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,165,0,0.5);
+        }
+        .quiz-option.correct {
+            background: rgba(0,255,100,0.2);
+            border-color: #00ff64;
+            color: #00ff64;
+        }
+        .quiz-option.wrong {
+            background: rgba(255,0,0,0.2);
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+        .quiz-option:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+        }
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct-fb {
+            background: rgba(0,255,100,0.1);
+            color: #00ff64;
+        }
+        .quiz-feedback.wrong-fb {
+            background: rgba(255,0,0,0.1);
+            color: #ff6b6b;
+        }
+        .quiz-score {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 12px;
+            display: none;
+        }
+        .quiz-reset-btn {
+            display: none;
+            margin: 15px auto;
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th, table td {
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+        }
+        table th {
+            background: rgba(255,255,255,0.1);
+            color: #ffd93d;
+        }
+        table tr:nth-child(even) {
+            background: rgba(255,255,255,0.03);
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .checklist li::before {
+            content: '☐ ';
+            font-size: 1.2em;
+        }
+        .checklist li.checked {
+            background: rgba(0,255,100,0.1);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        .checklist li.checked::before {
+            content: '☑ ';
+        }
+        .tip-box {
+            background: rgba(255,215,0,0.08);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .tip-box::before {
+            content: '💡 ';
+            font-size: 1.2em;
+        }
+        .formula-card {
+            background: rgba(0,180,216,0.08);
+            border: 2px solid rgba(0,180,216,0.25);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1.15em;
+        }
+        .formula-card .formula-title {
+            color: #48cae4;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        .formula-card .formula-text {
+            font-family: 'Georgia', serif;
+            font-size: 1.3em;
+            color: #fff;
+        }
+        .progress-tracker {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00b4d8, #48cae4, #90e0ef);
+            border-radius: 15px;
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85em;
+            color: #000;
+        }
+        .step-solution {
+            border-left: 3px solid #48cae4;
+            padding-left: 15px;
+            margin: 8px 0;
+        }
+        .step-solution .step-num {
+            color: #48cae4;
+            font-weight: bold;
+        }
+        .diagram-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5em; }
+            .subject-block { padding: 15px; }
+            .schedule-bar { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📐 День 22: Повторение блок 2</h1>
+        <div class="day-info">Неделя 4 | Математика + Биология + География | ~5,5 часов</div>
+
+        <div class="schedule-bar">
+            <div class="schedule-item">
+                <div>📐 Математика</div>
+                <div class="time">~2,5 часа</div>
+            </div>
+            <div class="schedule-item">
+                <div>🌿 Биология</div>
+                <div class="time">~1,5 часа</div>
+            </div>
+            <div class="schedule-item">
+                <div>🌍 География</div>
+                <div class="time">~1,5 часа</div>
+            </div>
+        </div>
+
+        <!-- Чек-лист дня -->
+        <div class="section">
+            <h3>✅ Чек-лист на день (кликай для отметки)</h3>
+            <ul class="checklist" id="dayChecklist">
+                <li onclick="toggleCheck(this)">Записать формулы и опорные конспекты в тетрадь</li>
+                <li onclick="toggleCheck(this)">Решить задания по математике с проверкой</li>
+                <li onclick="toggleCheck(this)">Пройти интерактивный тест по математике</li>
+                <li onclick="toggleCheck(this)">Повторить термины и схемы по биологии</li>
+                <li onclick="toggleCheck(this)">Пройти тест по биологии</li>
+                <li onclick="toggleCheck(this)">Повторить географию: карта, термины</li>
+                <li onclick="toggleCheck(this)">Пройти тест по географии</li>
+                <li onclick="toggleCheck(this)">Посмотреть видеоматериалы</li>
+                <li onclick="toggleCheck(this)">Записать темы с ошибками для дополнительного повторения</li>
+            </ul>
+        </div>
+
+        <!-- =============================== -->
+        <!-- МАТЕМАТИКА -->
+        <!-- =============================== -->
+        <div class="subject-block math">
+            <h2>📐 Математика — Полный повторительный тест</h2>
+            <div class="duration">⏱ Продолжительность: ~2,5 часа (150 минут)</div>
+
+            <!-- Запись в тетрадь — Формулы -->
+            <div class="notebook">
+                <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Все ключевые формулы и правила (6 класс)</h4>
+
+                <p><strong>1. ДРОБИ</strong></p>
+                <ul>
+                    <li><strong>Сложение/вычитание дробей с разными знаменателями:</strong> привести к общему знаменателю (НОК), сложить/вычесть числители</li>
+                    <li><strong>Умножение дробей:</strong> числитель × числитель, знаменатель × знаменатель → <em>a/b × c/d = ac/bd</em></li>
+                    <li><strong>Деление дробей:</strong> умножить на перевёрнутую → <em>a/b ÷ c/d = a/b × d/c</em></li>
+                    <li><strong>Смешанное число в неправильную дробь:</strong> целую часть × знаменатель + числитель → <em>2 ¾ = (2×4+3)/4 = 11/4</em></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>2. ОТНОШЕНИЯ И ПРОПОРЦИИ</strong></p>
+                <ul>
+                    <li><strong>Отношение</strong> — частное двух чисел: a : b = a/b</li>
+                    <li><strong>Пропорция:</strong> a/b = c/d → основное свойство: <em>a × d = b × c</em> (произведение крайних = произведению средних)</li>
+                    <li><strong>Прямая пропорциональность:</strong> ↑ одного → ↑ другого (больше товара — больше цена)</li>
+                    <li><strong>Обратная пропорциональность:</strong> ↑ одного → ↓ другого (больше скорость — меньше время)</li>
+                    <li><strong>Масштаб:</strong> отношение длины на карте к длине на местности</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>3. ПОЛОЖИТЕЛЬНЫЕ И ОТРИЦАТЕЛЬНЫЕ ЧИСЛА</strong></p>
+                <ul>
+                    <li><strong>Модуль числа |a|</strong> — расстояние от 0 на числовой прямой (всегда ≥ 0)</li>
+                    <li>|5| = 5, |−5| = 5, |0| = 0</li>
+                    <li><strong>Сложение:</strong> одинаковые знаки → складываем модули, ставим общий знак. Разные знаки → вычитаем меньший из большего, ставим знак большего</li>
+                    <li><strong>Вычитание:</strong> a − b = a + (−b) — заменяем вычитание сложением с противоположным</li>
+                    <li><strong>Умножение/деление:</strong> + × + = +, − × − = +, + × − = −, − × + = −</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>4. КООРДИНАТНАЯ ПЛОСКОСТЬ</strong></p>
+                <ul>
+                    <li>Точка задаётся парой чисел: <strong>(x; y)</strong> — сначала по горизонтали (ось X), потом по вертикали (ось Y)</li>
+                    <li><strong>I четверть:</strong> x > 0, y > 0 (+;+)</li>
+                    <li><strong>II четверть:</strong> x < 0, y > 0 (−;+)</li>
+                    <li><strong>III четверть:</strong> x < 0, y < 0 (−;−)</li>
+                    <li><strong>IV четверть:</strong> x > 0, y < 0 (+;−)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>5. ДЕЛИМОСТЬ</strong></p>
+                <ul>
+                    <li><strong>Признак делимости на 2:</strong> последняя цифра чётная (0, 2, 4, 6, 8)</li>
+                    <li><strong>На 3:</strong> сумма цифр делится на 3</li>
+                    <li><strong>На 5:</strong> последняя цифра 0 или 5</li>
+                    <li><strong>На 9:</strong> сумма цифр делится на 9</li>
+                    <li><strong>На 10:</strong> последняя цифра 0</li>
+                    <li><strong>НОД</strong> — наибольший общий делитель (для сокращения дробей)</li>
+                    <li><strong>НОК</strong> — наименьшее общее кратное (для приведения к общему знаменателю)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>6. ПРОЦЕНТЫ</strong></p>
+                <ul>
+                    <li><strong>Процент</strong> — одна сотая часть числа: 1% = 1/100</li>
+                    <li><strong>Найти p% от числа a:</strong> a × p / 100</li>
+                    <li><strong>Найти число по его p%:</strong> a / p × 100</li>
+                    <li><strong>Найти, сколько % составляет a от b:</strong> a / b × 100%</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>7. ПЛОЩАДЬ И ОБЪЁМ</strong></p>
+                <ul>
+                    <li><strong>Площадь круга:</strong> S = π × r² (π ≈ 3,14)</li>
+                    <li><strong>Длина окружности:</strong> C = 2 × π × r</li>
+                    <li><strong>Объём прямоугольного параллелепипеда:</strong> V = a × b × c</li>
+                </ul>
+            </div>
+
+            <!-- Формулы-карточки -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; margin: 20px 0;">
+                <div class="formula-card">
+                    <div class="formula-title">Произведение крайних = произведению средних</div>
+                    <div class="formula-text">a/b = c/d → a·d = b·c</div>
+                </div>
+                <div class="formula-card">
+                    <div class="formula-title">Деление дробей</div>
+                    <div class="formula-text">a/b ÷ c/d = a/b × d/c</div>
+                </div>
+                <div class="formula-card">
+                    <div class="formula-title">Площадь круга</div>
+                    <div class="formula-text">S = π · r²</div>
+                </div>
+                <div class="formula-card">
+                    <div class="formula-title">Длина окружности</div>
+                    <div class="formula-text">C = 2 · π · r</div>
+                </div>
+                <div class="formula-card">
+                    <div class="formula-title">Проценты от числа</div>
+                    <div class="formula-text">p% от a = a · p / 100</div>
+                </div>
+                <div class="formula-card">
+                    <div class="formula-title">Модуль числа</div>
+                    <div class="formula-text">|−7| = 7, |3| = 3</div>
+                </div>
+            </div>
+
+            <!-- Видеоматериалы -->
+            <div class="video-links">
+                <h4>🎬 Видеоматериалы для повторения</h4>
+                <a href="https://www.youtube.com/watch?v=LqmFKDH3hV0" target="_blank">Математика 6 класс — ВСЕ темы за год (полное повторение)</a>
+                <a href="https://www.youtube.com/watch?v=ZwL0s-MXxiE" target="_blank">Действия с дробями — повторение</a>
+                <a href="https://www.youtube.com/watch?v=2cLvjDIMPMo" target="_blank">Положительные и отрицательные числа — правила</a>
+                <a href="https://www.youtube.com/watch?v=mK7K0drxbO0" target="_blank">Пропорции — основное свойство, решение задач</a>
+                <a href="https://www.youtube.com/watch?v=q9W38hO5Y-4" target="_blank">Координатная плоскость — как строить точки</a>
+                <a href="https://www.youtube.com/watch?v=Gj5gxJx3K7E" target="_blank">Проценты — три типа задач</a>
+                <a href="https://www.youtube.com/watch?v=eTzHqCtgXD4" target="_blank">НОД и НОК — как находить</a>
+            </div>
+
+            <!-- Задания с подробными объяснениями -->
+            <div class="section">
+                <h3>📝 Задания с подробными решениями</h3>
+
+                <div class="exercise-box">
+                    <h4>Задание 1: Действия с дробями</h4>
+                    <div class="task">
+                        Вычисли:<br><br>
+                        а) 2/3 + 5/6<br>
+                        б) 7/8 − 1/4<br>
+                        в) 3/5 × 2/7<br>
+                        г) 5/6 ÷ 10/3<br>
+                        д) 2 ¾ + 1 ⅔<br>
+                        е) 3 ½ × 2 ⅖
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solM1')">Показать подробное решение</button>
+                    <div class="solution" id="solM1">
+                        <div class="step-solution">
+                            <p><span class="step-num">а) 2/3 + 5/6</span></p>
+                            <p>Шаг 1: Находим НОК(3, 6) = 6</p>
+                            <p>Шаг 2: 2/3 = 4/6 (умножили числитель и знаменатель на 2)</p>
+                            <p>Шаг 3: 4/6 + 5/6 = 9/6 = 3/2 = <strong>1 ½</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б) 7/8 − 1/4</span></p>
+                            <p>Шаг 1: НОК(8, 4) = 8</p>
+                            <p>Шаг 2: 1/4 = 2/8</p>
+                            <p>Шаг 3: 7/8 − 2/8 = <strong>5/8</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">в) 3/5 × 2/7</span></p>
+                            <p>Числитель × числитель = 3 × 2 = 6</p>
+                            <p>Знаменатель × знаменатель = 5 × 7 = 35</p>
+                            <p>Ответ: <strong>6/35</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">г) 5/6 ÷ 10/3</span></p>
+                            <p>Шаг 1: Переворачиваем вторую дробь: 5/6 × 3/10</p>
+                            <p>Шаг 2: Сокращаем: 5 и 10 (делим на 5), 6 и 3 (делим на 3)</p>
+                            <p>Шаг 3: 1/2 × 1/2 = <strong>1/4</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">д) 2 ¾ + 1 ⅔</span></p>
+                            <p>Шаг 1: Переводим в неправильные: 2 ¾ = 11/4, 1 ⅔ = 5/3</p>
+                            <p>Шаг 2: НОК(4, 3) = 12</p>
+                            <p>Шаг 3: 11/4 = 33/12, 5/3 = 20/12</p>
+                            <p>Шаг 4: 33/12 + 20/12 = 53/12 = <strong>4 5/12</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">е) 3 ½ × 2 ⅖</span></p>
+                            <p>Шаг 1: 3 ½ = 7/2, 2 ⅖ = 12/5</p>
+                            <p>Шаг 2: 7/2 × 12/5 = 84/10 = 42/5 = <strong>8 ⅖</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 2: Положительные и отрицательные числа</h4>
+                    <div class="task">
+                        Вычисли:<br><br>
+                        а) (−8) + (−5)<br>
+                        б) (−12) + 7<br>
+                        в) 3 − (−4)<br>
+                        г) (−6) × (−9)<br>
+                        д) (−15) ÷ 3<br>
+                        е) (−2) × 5 + (−3) × (−4)<br>
+                        ж) |−13| − |7|<br>
+                        з) −(−(−5))
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solM2')">Показать подробное решение</button>
+                    <div class="solution" id="solM2">
+                        <div class="step-solution">
+                            <p><span class="step-num">а) (−8) + (−5)</span></p>
+                            <p>Одинаковые знаки → складываем модули: 8 + 5 = 13, знак отрицательный</p>
+                            <p>Ответ: <strong>−13</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б) (−12) + 7</span></p>
+                            <p>Разные знаки → вычитаем: 12 − 7 = 5, знак большего модуля (−12) → минус</p>
+                            <p>Ответ: <strong>−5</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">в) 3 − (−4)</span></p>
+                            <p>Вычитание → сложение с противоположным: 3 + 4</p>
+                            <p>Ответ: <strong>7</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">г) (−6) × (−9)</span></p>
+                            <p>Минус × минус = плюс: 6 × 9 = 54</p>
+                            <p>Ответ: <strong>54</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">д) (−15) ÷ 3</span></p>
+                            <p>Минус ÷ плюс = минус: 15 ÷ 3 = 5</p>
+                            <p>Ответ: <strong>−5</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">е) (−2) × 5 + (−3) × (−4)</span></p>
+                            <p>Шаг 1: (−2) × 5 = −10</p>
+                            <p>Шаг 2: (−3) × (−4) = 12</p>
+                            <p>Шаг 3: −10 + 12 = <strong>2</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">ж) |−13| − |7|</span></p>
+                            <p>|−13| = 13, |7| = 7</p>
+                            <p>13 − 7 = <strong>6</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">з) −(−(−5))</span></p>
+                            <p>Изнутри: −5 → −(−5) = 5 → −5</p>
+                            <p>Ответ: <strong>−5</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 3: Пропорции</h4>
+                    <div class="task">
+                        Реши пропорции — найди x:<br><br>
+                        а) x/6 = 8/12<br>
+                        б) 5/x = 15/27<br>
+                        в) 3/7 = x/35<br>
+                        г) Из 150 учеников 60 занимаются спортом. Сколько процентов учеников занимаются спортом?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solM3')">Показать подробное решение</button>
+                    <div class="solution" id="solM3">
+                        <div class="step-solution">
+                            <p><span class="step-num">а) x/6 = 8/12</span></p>
+                            <p>Крайние = средние: x × 12 = 6 × 8</p>
+                            <p>12x = 48</p>
+                            <p>x = 48 ÷ 12 = <strong>4</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б) 5/x = 15/27</span></p>
+                            <p>5 × 27 = x × 15</p>
+                            <p>135 = 15x</p>
+                            <p>x = 135 ÷ 15 = <strong>9</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">в) 3/7 = x/35</span></p>
+                            <p>3 × 35 = 7 × x</p>
+                            <p>105 = 7x</p>
+                            <p>x = 105 ÷ 7 = <strong>15</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">г) Задача на проценты</span></p>
+                            <p>150 учеников → 100%</p>
+                            <p>60 учеников → x%</p>
+                            <p>x = 60 / 150 × 100 = 0,4 × 100 = <strong>40%</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 4: Проценты</h4>
+                    <div class="task">
+                        а) Найди 15% от 240<br>
+                        б) 36 — это 20% от какого числа?<br>
+                        в) В магазине скидка 25%. Куртка стоила 4000 руб. Сколько стоит со скидкой?<br>
+                        г) Цена выросла с 500 до 600 руб. На сколько процентов выросла цена?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solM4')">Показать подробное решение</button>
+                    <div class="solution" id="solM4">
+                        <div class="step-solution">
+                            <p><span class="step-num">а) 15% от 240</span></p>
+                            <p>240 × 15 / 100 = 240 × 0,15 = <strong>36</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б) 36 — это 20% от x</span></p>
+                            <p>x = 36 / 20 × 100 = 36 / 0,2 = <strong>180</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">в) Скидка 25% от 4000</span></p>
+                            <p>Шаг 1: Размер скидки: 4000 × 25 / 100 = 1000 руб.</p>
+                            <p>Шаг 2: Цена со скидкой: 4000 − 1000 = <strong>3000 руб.</strong></p>
+                            <p><em>Или быстрый способ: 4000 × 0,75 = 3000 (т.к. 100% − 25% = 75%)</em></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">г) На сколько % выросла цена</span></p>
+                            <p>Шаг 1: Разница: 600 − 500 = 100 руб.</p>
+                            <p>Шаг 2: 100 / 500 × 100% = <strong>20%</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 5: Координатная плоскость</h4>
+                    <div class="task">
+                        Определи, в какой четверти находятся точки:<br><br>
+                        а) A(3; 5)<br>
+                        б) B(−2; 4)<br>
+                        в) C(−6; −1)<br>
+                        г) D(7; −3)<br>
+                        д) E(0; 5) — на какой оси?<br>
+                        е) F(−4; 0) — на какой оси?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solM5')">Показать решение</button>
+                    <div class="solution" id="solM5">
+                        <p><strong>а) A(3; 5)</strong> — x > 0, y > 0 → <strong>I четверть</strong></p>
+                        <p><strong>б) B(−2; 4)</strong> — x < 0, y > 0 → <strong>II четверть</strong></p>
+                        <p><strong>в) C(−6; −1)</strong> — x < 0, y < 0 → <strong>III четверть</strong></p>
+                        <p><strong>г) D(7; −3)</strong> — x > 0, y < 0 → <strong>IV четверть</strong></p>
+                        <p><strong>д) E(0; 5)</strong> — x = 0 → точка лежит <strong>на оси Y (ординат)</strong></p>
+                        <p><strong>е) F(−4; 0)</strong> — y = 0 → точка лежит <strong>на оси X (абсцисс)</strong></p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 6: НОД и НОК</h4>
+                    <div class="task">
+                        а) Найди НОД(24, 36)<br>
+                        б) Найди НОК(12, 18)<br>
+                        в) Сократи дробь 48/60<br>
+                        г) Приведи к общему знаменателю: 5/12 и 7/18
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solM6')">Показать подробное решение</button>
+                    <div class="solution" id="solM6">
+                        <div class="step-solution">
+                            <p><span class="step-num">а) НОД(24, 36)</span></p>
+                            <p>24 = 2³ × 3</p>
+                            <p>36 = 2² × 3²</p>
+                            <p>НОД = 2² × 3 = 4 × 3 = <strong>12</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б) НОК(12, 18)</span></p>
+                            <p>12 = 2² × 3</p>
+                            <p>18 = 2 × 3²</p>
+                            <p>НОК = 2² × 3² = 4 × 9 = <strong>36</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">в) Сокращение 48/60</span></p>
+                            <p>НОД(48, 60) = 12</p>
+                            <p>48/60 = (48÷12)/(60÷12) = <strong>4/5</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">г) Общий знаменатель для 5/12 и 7/18</span></p>
+                            <p>НОК(12, 18) = 36</p>
+                            <p>5/12 = 15/36 (×3)</p>
+                            <p>7/18 = 14/36 (×2)</p>
+                            <p>Ответ: <strong>15/36 и 14/36</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 7: Длина окружности и площадь круга</h4>
+                    <div class="task">
+                        а) Найди длину окружности с радиусом r = 5 см (π ≈ 3,14)<br>
+                        б) Найди площадь круга с радиусом r = 10 см<br>
+                        в) Диаметр колеса 40 см. Какой путь пройдёт колесо за 100 оборотов?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solM7')">Показать подробное решение</button>
+                    <div class="solution" id="solM7">
+                        <div class="step-solution">
+                            <p><span class="step-num">а) C = 2πr</span></p>
+                            <p>C = 2 × 3,14 × 5 = <strong>31,4 см</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б) S = πr²</span></p>
+                            <p>S = 3,14 × 10² = 3,14 × 100 = <strong>314 см²</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">в) Задача про колесо</span></p>
+                            <p>Шаг 1: Диаметр = 40 см → радиус = 20 см</p>
+                            <p>Шаг 2: Длина окружности = 2 × 3,14 × 20 = 125,6 см</p>
+                            <p>Шаг 3: За 100 оборотов: 125,6 × 100 = 12560 см = <strong>125,6 м</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерактивный тест по математике -->
+            <div class="quiz-container" id="mathQuiz">
+                <h3>🧪 Интерактивный тест: Математика — полное повторение</h3>
+                <p style="text-align:center; color:#aaa; margin-bottom:20px;">20 вопросов • Все темы 6 класса</p>
+
+                <div class="quiz-question" id="mq1">
+                    <p>1. Вычисли: 3/4 + 1/6</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq1', false)">4/10</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq1', true)">11/12</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq1', false)">5/12</button>
+                    <div class="quiz-feedback" id="mq1-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq2">
+                    <p>2. Вычисли: 2/5 ÷ 4/15</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq2', false)">8/75</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq2', true)">3/2 = 1 ½</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq2', false)">2/3</button>
+                    <div class="quiz-feedback" id="mq2-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq3">
+                    <p>3. Вычисли: (−7) + (−3)</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq3', true)">−10</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq3', false)">−4</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq3', false)">10</button>
+                    <div class="quiz-feedback" id="mq3-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq4">
+                    <p>4. Вычисли: (−4) × (−8)</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq4', false)">−32</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq4', true)">32</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq4', false)">−12</button>
+                    <div class="quiz-feedback" id="mq4-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq5">
+                    <p>5. Найди 30% от 250</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq5', true)">75</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq5', false)">83</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq5', false)">50</button>
+                    <div class="quiz-feedback" id="mq5-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq6">
+                    <p>6. Реши пропорцию: x/8 = 3/4. Чему равен x?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq6', true)">6</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq6', false)">4</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq6', false)">12</button>
+                    <div class="quiz-feedback" id="mq6-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq7">
+                    <p>7. Модуль числа |−15| равен:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq7', true)">15</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq7', false)">−15</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq7', false)">0</button>
+                    <div class="quiz-feedback" id="mq7-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq8">
+                    <p>8. Точка (−3; 5) находится в:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq8', false)">I четверти</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq8', true)">II четверти</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq8', false)">III четверти</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq8', false)">IV четверти</button>
+                    <div class="quiz-feedback" id="mq8-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq9">
+                    <p>9. НОК(8, 12) = ?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq9', false)">4</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq9', true)">24</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq9', false)">96</button>
+                    <div class="quiz-feedback" id="mq9-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq10">
+                    <p>10. Сократи дробь 36/48:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq10', true)">3/4</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq10', false)">6/8</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq10', false)">9/16</button>
+                    <div class="quiz-feedback" id="mq10-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq11">
+                    <p>11. Вычисли: 5 − (−3)</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq11', true)">8</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq11', false)">2</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq11', false)">−8</button>
+                    <div class="quiz-feedback" id="mq11-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq12">
+                    <p>12. 45 — это 25% от какого числа?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq12', true)">180</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq12', false)">150</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq12', false)">200</button>
+                    <div class="quiz-feedback" id="mq12-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq13">
+                    <p>13. Делится ли 342 на 9?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq13', true)">Да (сумма цифр 3+4+2=9, делится на 9)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq13', false)">Нет</button>
+                    <div class="quiz-feedback" id="mq13-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq14">
+                    <p>14. Длина окружности при r = 7 см (π ≈ 3,14):</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq14', true)">43,96 см</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq14', false)">153,86 см</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq14', false)">21,98 см</button>
+                    <div class="quiz-feedback" id="mq14-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq15">
+                    <p>15. Вычисли: (−18) ÷ (−6)</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq15', true)">3</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq15', false)">−3</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq15', false)">12</button>
+                    <div class="quiz-feedback" id="mq15-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq16">
+                    <p>16. Переведи 2 ³⁄₅ в неправильную дробь:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq16', true)">13/5</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq16', false)">11/5</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq16', false)">23/5</button>
+                    <div class="quiz-feedback" id="mq16-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq17">
+                    <p>17. Масштаб 1:50000. Расстояние на карте 4 см. Реальное расстояние?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq17', true)">2 км (2000 м)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq17', false)">200 м</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq17', false)">20 км</button>
+                    <div class="quiz-feedback" id="mq17-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq18">
+                    <p>18. НОД(18, 24) = ?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq18', true)">6</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq18', false)">12</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq18', false)">3</button>
+                    <div class="quiz-feedback" id="mq18-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq19">
+                    <p>19. Площадь круга при r = 3 см (π ≈ 3,14):</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq19', false)">18,84 см²</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq19', true)">28,26 см²</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq19', false)">9,42 см²</button>
+                    <div class="quiz-feedback" id="mq19-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="mq20">
+                    <p>20. Вычисли: (−2)³ = ?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq20', true)">−8</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq20', false)">8</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'mq20', false)">−6</button>
+                    <div class="quiz-feedback" id="mq20-fb"></div>
+                </div>
+
+                <div class="quiz-score" id="mathScore"></div>
+                <button class="quiz-reset-btn" id="mathResetBtn" onclick="resetQuiz('math')">🔄 Пройти тест заново</button>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- БИОЛОГИЯ -->
+        <!-- =============================== -->
+        <div class="subject-block bio">
+            <h2>🌿 Биология — Повторение (6 класс)</h2>
+            <div class="duration">⏱ Продолжительность: ~1,5 часа (90 минут)</div>
+
+            <div class="notebook">
+                <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Ключевые темы биологии 6 класса</h4>
+
+                <p><strong>1. СТРОЕНИЕ КЛЕТКИ РАСТЕНИЯ</strong></p>
+                <table>
+                    <tr><th>Органоид</th><th>Функция</th></tr>
+                    <tr><td>Клеточная оболочка (стенка)</td><td>Защита, придаёт форму. Состоит из целлюлозы</td></tr>
+                    <tr><td>Клеточная мембрана</td><td>Избирательная проницаемость — пропускает нужные вещества</td></tr>
+                    <tr><td>Цитоплазма</td><td>Внутренняя среда клетки, связывает все органоиды</td></tr>
+                    <tr><td>Ядро</td><td>Хранит наследственную информацию (ДНК), управляет клеткой</td></tr>
+                    <tr><td>Вакуоль</td><td>Запас питательных веществ, клеточный сок. У старых клеток — крупная</td></tr>
+                    <tr><td>Хлоропласты</td><td>Фотосинтез (содержат хлорофилл — зелёный пигмент)</td></tr>
+                    <tr><td>Митохондрии</td><td>«Энергетические станции» — дыхание клетки</td></tr>
+                </table>
+
+                <p style="margin-top: 15px;"><strong>2. ТКАНИ РАСТЕНИЙ</strong></p>
+                <table>
+                    <tr><th>Ткань</th><th>Функция</th><th>Где находится</th></tr>
+                    <tr><td>Образовательная (меристема)</td><td>Рост, деление клеток</td><td>Кончик корня, верхушка побега</td></tr>
+                    <tr><td>Покровная</td><td>Защита</td><td>Кожица листа, пробка ствола</td></tr>
+                    <tr><td>Основная (паренхима)</td><td>Фотосинтез, запас веществ</td><td>Мякоть листа, сердцевина стебля</td></tr>
+                    <tr><td>Проводящая</td><td>Транспорт веществ</td><td>Сосуды и ситовидные трубки</td></tr>
+                    <tr><td>Механическая</td><td>Опора, прочность</td><td>Стебель, жилки листа</td></tr>
+                </table>
+
+                <p style="margin-top: 15px;"><strong>3. ОРГАНЫ РАСТЕНИЙ</strong></p>
+                <ul>
+                    <li><strong>Корень:</strong> закрепление, всасывание воды и минеральных солей. Виды корней: главный, боковые, придаточные. Типы корневых систем: стержневая (одуванчик) и мочковатая (пшеница)</li>
+                    <li><strong>Побег</strong> = стебель + листья + почки. Почки: вегетативные (листовые) и генеративные (цветочные)</li>
+                    <li><strong>Лист:</strong> фотосинтез, дыхание, испарение воды. Части: листовая пластинка, черешок. Простые и сложные листья. Жилкование: сетчатое, параллельное, дуговое</li>
+                    <li><strong>Стебель:</strong> опора, транспорт, запас. Слои (снаружи внутрь): кора → камбий → древесина → сердцевина</li>
+                    <li><strong>Цветок:</strong> орган полового размножения. Части: чашечка, венчик, тычинки (♂), пестик (♀). Опыление: самоопыление и перекрёстное (ветром, насекомыми)</li>
+                    <li><strong>Плод:</strong> защита и распространение семян. Сухие (коробочка, боб, стручок) и сочные (ягода, костянка, яблоко)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>4. ФОТОСИНТЕЗ</strong></p>
+                <ul>
+                    <li><strong>Формула:</strong> CO₂ + H₂O → (свет, хлорофилл) → C₆H₁₂O₆ + O₂</li>
+                    <li>Углекислый газ + вода → (на свету, в хлоропластах) → глюкоза + кислород</li>
+                    <li>Условия: свет, хлорофилл, углекислый газ, вода</li>
+                    <li>Значение: питание растений, выделение кислорода для всех живых организмов</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>5. КЛАССИФИКАЦИЯ РАСТЕНИЙ</strong></p>
+                <ul>
+                    <li>Царство → Отдел → Класс → Семейство → Род → Вид</li>
+                    <li><strong>Однодольные:</strong> 1 семядоля, параллельное/дуговое жилкование, мочковатая корневая система (злаки, лилейные)</li>
+                    <li><strong>Двудольные:</strong> 2 семядоли, сетчатое жилкование, стержневая корневая система (розоцветные, бобовые, крестоцветные, паслёновые, сложноцветные)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>6. ВАЖНЫЕ ПРОЦЕССЫ</strong></p>
+                <ul>
+                    <li><strong>Дыхание:</strong> поглощение O₂, выделение CO₂ (у всех живых клеток, круглосуточно)</li>
+                    <li><strong>Испарение воды (транспирация):</strong> через устьица листа. Охлаждение + движение воды от корней</li>
+                    <li><strong>Размножение:</strong> половое (семенами) и бесполое (вегетативное: черенками, клубнями, усами, отводками)</li>
+                </ul>
+            </div>
+
+            <div class="video-links">
+                <h4>🎬 Видеоматериалы для повторения</h4>
+                <a href="https://www.youtube.com/watch?v=yMHGl5YLwBc" target="_blank">Биология 6 класс — всё за год (повторение)</a>
+                <a href="https://www.youtube.com/watch?v=VrZqITkPuKg" target="_blank">Строение клетки растения — наглядно</a>
+                <a href="https://www.youtube.com/watch?v=Lk5G4jXkHbE" target="_blank">Фотосинтез — простое объяснение</a>
+                <a href="https://www.youtube.com/watch?v=m0FhP3tPKZY" target="_blank">Органы растений — корень, стебель, лист</a>
+                <a href="https://www.youtube.com/watch?v=LV3f_7GIQWI" target="_blank">Ткани растений — все типы</a>
+                <a href="https://www.youtube.com/watch?v=vP0O33OvD_A" target="_blank">Классы растений: однодольные и двудольные</a>
+            </div>
+
+            <!-- Задания по биологии -->
+            <div class="section">
+                <h3>📝 Задания для решения</h3>
+
+                <div class="exercise-box">
+                    <h4>Задание 1: Строение клетки</h4>
+                    <div class="task">
+                        Назови органоид по описанию:<br><br>
+                        1) Содержит хлорофилл, отвечает за фотосинтез → ?<br>
+                        2) Хранит наследственную информацию → ?<br>
+                        3) Заполнена клеточным соком, у старых клеток — крупная → ?<br>
+                        4) Состоит из целлюлозы, придаёт форму клетке → ?<br>
+                        5) «Энергетические станции» клетки → ?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solB1')">Показать решение</button>
+                    <div class="solution" id="solB1">
+                        <p>1) <strong>Хлоропласт</strong></p>
+                        <p>2) <strong>Ядро</strong></p>
+                        <p>3) <strong>Вакуоль</strong></p>
+                        <p>4) <strong>Клеточная оболочка (стенка)</strong></p>
+                        <p>5) <strong>Митохондрии</strong></p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 2: Однодольные vs двудольные</h4>
+                    <div class="task">
+                        Распредели признаки:<br><br>
+                        А — стержневая корневая система<br>
+                        Б — мочковатая корневая система<br>
+                        В — сетчатое жилкование<br>
+                        Г — параллельное жилкование<br>
+                        Д — 2 семядоли<br>
+                        Е — 1 семядоля<br><br>
+                        Однодольные: ?<br>
+                        Двудольные: ?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solB2')">Показать решение</button>
+                    <div class="solution" id="solB2">
+                        <p><strong>Однодольные:</strong> Б (мочковатая), Г (параллельное жилкование), Е (1 семядоля)</p>
+                        <p><strong>Двудольные:</strong> А (стержневая), В (сетчатое жилкование), Д (2 семядоли)</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 3: Фотосинтез</h4>
+                    <div class="task">
+                        Заполни пропуски:<br><br>
+                        Фотосинтез происходит в _____(1)_____ клетки.<br>
+                        Для фотосинтеза необходимы _____(2)_____ и _____(3)_____.<br>
+                        В результате образуются _____(4)_____ и _____(5)_____.<br>
+                        Фотосинтез идёт только на _____(6)_____.
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solB3')">Показать решение</button>
+                    <div class="solution" id="solB3">
+                        <p>1) <strong>хлоропластах</strong></p>
+                        <p>2) <strong>углекислый газ (CO₂)</strong></p>
+                        <p>3) <strong>вода (H₂O)</strong></p>
+                        <p>4) <strong>глюкоза (органические вещества)</strong></p>
+                        <p>5) <strong>кислород (O₂)</strong></p>
+                        <p>6) <strong>свету</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерактивный тест по биологии -->
+            <div class="quiz-container" id="bioQuiz">
+                <h3>🧪 Интерактивный тест: Биология</h3>
+                <p style="text-align:center; color:#aaa; margin-bottom:20px;">15 вопросов</p>
+
+                <div class="quiz-question" id="bq1">
+                    <p>1. Где происходит фотосинтез?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq1', false)">В митохондриях</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq1', true)">В хлоропластах</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq1', false)">В вакуолях</button>
+                    <div class="quiz-feedback" id="bq1-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq2">
+                    <p>2. Клеточная стенка растений состоит из:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq2', true)">Целлюлозы</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq2', false)">Хитина</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq2', false)">Белка</button>
+                    <div class="quiz-feedback" id="bq2-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq3">
+                    <p>3. Что выделяется при фотосинтезе?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq3', false)">Углекислый газ</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq3', true)">Кислород</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq3', false)">Азот</button>
+                    <div class="quiz-feedback" id="bq3-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq4">
+                    <p>4. Стержневая корневая система характерна для:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq4', true)">Двудольных растений</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq4', false)">Однодольных растений</button>
+                    <div class="quiz-feedback" id="bq4-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq5">
+                    <p>5. Побег — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq5', true)">Стебель + листья + почки</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq5', false)">Только стебель</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq5', false)">Корень + стебель</button>
+                    <div class="quiz-feedback" id="bq5-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq6">
+                    <p>6. Транспирация — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq6', true)">Испарение воды через устьица</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq6', false)">Поглощение воды корнями</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq6', false)">Фотосинтез</button>
+                    <div class="quiz-feedback" id="bq6-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq7">
+                    <p>7. Камбий — это ткань, которая отвечает за:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq7', true)">Рост стебля в толщину</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq7', false)">Фотосинтез</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq7', false)">Защиту</button>
+                    <div class="quiz-feedback" id="bq7-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq8">
+                    <p>8. Тычинка — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq8', true)">Мужской орган цветка</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq8', false)">Женский орган цветка</button>
+                    <div class="quiz-feedback" id="bq8-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq9">
+                    <p>9. Наследственная информация хранится в:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq9', true)">Ядре</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq9', false)">Цитоплазме</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq9', false)">Вакуоли</button>
+                    <div class="quiz-feedback" id="bq9-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq10">
+                    <p>10. К сочным плодам относится:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq10', true)">Ягода (помидор, виноград)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq10', false)">Коробочка (мак)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq10', false)">Боб (горох)</button>
+                    <div class="quiz-feedback" id="bq10-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq11">
+                    <p>11. Дыхание растений происходит:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq11', true)">Круглосуточно (днём и ночью)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq11', false)">Только днём</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq11', false)">Только ночью</button>
+                    <div class="quiz-feedback" id="bq11-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq12">
+                    <p>12. Параллельное жилкование листа характерно для:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq12', true)">Однодольных (пшеница, кукуруза)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq12', false)">Двудольных (берёза, яблоня)</button>
+                    <div class="quiz-feedback" id="bq12-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq13">
+                    <p>13. Покровная ткань выполняет функцию:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq13', true)">Защиты</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq13', false)">Роста</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq13', false)">Транспорта</button>
+                    <div class="quiz-feedback" id="bq13-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq14">
+                    <p>14. Вегетативное размножение — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq14', true)">Размножение частями растения (черенками, усами, клубнями)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq14', false)">Размножение семенами</button>
+                    <div class="quiz-feedback" id="bq14-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="bq15">
+                    <p>15. Правильный порядок классификации:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq15', true)">Царство → Отдел → Класс → Семейство → Род → Вид</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'bq15', false)">Вид → Род → Царство → Класс → Отдел → Семейство</button>
+                    <div class="quiz-feedback" id="bq15-fb"></div>
+                </div>
+
+                <div class="quiz-score" id="bioScore"></div>
+                <button class="quiz-reset-btn" id="bioResetBtn" onclick="resetQuiz('bio')">🔄 Пройти тест заново</button>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- ГЕОГРАФИЯ -->
+        <!-- =============================== -->
+        <div class="subject-block geo">
+            <h2>🌍 География — Повторение (6 класс)</h2>
+            <div class="duration">⏱ Продолжительность: ~1,5 часа (90 минут)</div>
+
+            <div class="notebook">
+                <h4>📝 ЗАПИШИ В ТЕТРАДЬ — Ключевые темы географии 6 класса</h4>
+
+                <p><strong>1. ПЛАН МЕСТНОСТИ И КАРТА</strong></p>
+                <ul>
+                    <li><strong>Масштаб</strong> — отношение расстояния на карте к расстоянию на местности. Виды: численный (1:100 000), именованный (в 1 см — 1 км), линейный</li>
+                    <li><strong>Условные знаки</strong> — специальные обозначения объектов на карте</li>
+                    <li><strong>Азимут</strong> — угол между направлением на север и направлением на объект (по часовой стрелке, от 0° до 360°)</li>
+                    <li><strong>Горизонтали (изогипсы)</strong> — линии на карте, соединяющие точки с одинаковой высотой</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>2. ГЕОГРАФИЧЕСКИЕ КООРДИНАТЫ</strong></p>
+                <ul>
+                    <li><strong>Широта</strong> — расстояние от экватора (0°–90° С или Ю). Параллели</li>
+                    <li><strong>Долгота</strong> — расстояние от Гринвичского меридиана (0°–180° В или З). Меридианы</li>
+                    <li><strong>Москва:</strong> 55° с.ш., 37° в.д.</li>
+                    <li>Экватор — 0° широты, Гринвичский меридиан — 0° долготы</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>3. ЛИТОСФЕРА</strong></p>
+                <ul>
+                    <li><strong>Литосфера</strong> — твёрдая оболочка Земли (земная кора + верхняя часть мантии)</li>
+                    <li><strong>Земная кора</strong>: океаническая (5–10 км, 2 слоя) и материковая (30–70 км, 3 слоя)</li>
+                    <li>Внутреннее строение: ядро → мантия → земная кора</li>
+                    <li><strong>Минерал</strong> — однородное природное тело. <strong>Горная порода</strong> — состоит из минералов</li>
+                    <li>По происхождению горные породы: магматические (гранит, базальт), осадочные (известняк, песчаник, глина), метаморфические (мрамор, кварцит)</li>
+                    <li><strong>Землетрясения</strong> — колебания земной коры. Очаг (гипоцентр) — внутри, эпицентр — на поверхности</li>
+                    <li><strong>Вулканы</strong> — действующие (Ключевская Сопка, Этна) и потухшие (Эльбрус, Килиманджаро)</li>
+                    <li><strong>Формы рельефа:</strong> горы (низкие до 1000 м, средние 1000–2000 м, высокие > 2000 м) и равнины (низменности до 200 м, возвышенности 200–500 м, плоскогорья > 500 м)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>4. ГИДРОСФЕРА</strong></p>
+                <ul>
+                    <li><strong>Гидросфера</strong> — водная оболочка Земли</li>
+                    <li><strong>Мировой океан:</strong> Тихий (самый большой), Атлантический, Индийский, Северный Ледовитый</li>
+                    <li><strong>Части Мирового океана:</strong> моря, заливы, проливы</li>
+                    <li><strong>Солёность</strong> — количество граммов солей в 1 литре воды. Средняя — 35‰ (промилле)</li>
+                    <li><strong>Течения:</strong> тёплые (Гольфстрим) и холодные (Перуанское)</li>
+                    <li><strong>Реки:</strong> исток, устье, русло, пойма, дельта. Бассейн реки. Водораздел</li>
+                    <li><strong>Озёра:</strong> сточные (есть река, вытекающая — Байкал) и бессточные (нет — Каспийское море)</li>
+                    <li><strong>Подземные воды:</strong> грунтовые (первый от поверхности водоносный слой) и межпластовые</li>
+                    <li><strong>Ледники:</strong> горные и покровные (Антарктида, Гренландия)</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>5. АТМОСФЕРА</strong></p>
+                <ul>
+                    <li><strong>Атмосфера</strong> — воздушная оболочка Земли</li>
+                    <li>Слои: тропосфера (погода, до 18 км) → стратосфера (озоновый слой) → мезосфера → термосфера → экзосфера</li>
+                    <li><strong>Температура:</strong> с высотой понижается на ~6°С на каждый 1 км</li>
+                    <li><strong>Атмосферное давление:</strong> нормальное — 760 мм рт. ст. С высотой понижается на ~12 мм на каждые 100 м</li>
+                    <li><strong>Ветер</strong> — движение воздуха из области высокого давления в область низкого. Виды: бриз, муссон</li>
+                    <li><strong>Осадки:</strong> дождь, снег, град. Измеряются осадкомером (в мм)</li>
+                    <li><strong>Погода</strong> — состояние атмосферы в данное время в данном месте</li>
+                    <li><strong>Климат</strong> — многолетний режим погоды</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>6. БИОСФЕРА</strong></p>
+                <ul>
+                    <li><strong>Биосфера</strong> — оболочка жизни. Включает части литосферы, гидросферы, атмосферы</li>
+                    <li><strong>Почва</strong> — верхний плодородный слой земной коры. Главное свойство — плодородие (гумус)</li>
+                    <li>В.В. Докучаев — основоположник науки о почвах</li>
+                    <li><strong>Природные зоны:</strong> арктические пустыни → тундра → тайга → смешанные леса → степи → пустыни → тропические леса</li>
+                </ul>
+            </div>
+
+            <div class="tip-box">
+                <strong>Запомни оболочки Земли:</strong> Литосфера (камень) + Гидросфера (вода) + Атмосфера (воздух) + Биосфера (жизнь) = <strong>Географическая оболочка</strong>
+            </div>
+
+            <div class="video-links">
+                <h4>🎬 Видеоматериалы для повторения</h4>
+                <a href="https://www.youtube.com/watch?v=ub-q3GwXr3s" target="_blank">География 6 класс — всё за год (повторение)</a>
+                <a href="https://www.youtube.com/watch?v=5m3ZdEy1fhY" target="_blank">Географические координаты — как определять</a>
+                <a href="https://www.youtube.com/watch?v=_ORkLyX3Z5U" target="_blank">Литосфера — строение Земли, рельеф</a>
+                <a href="https://www.youtube.com/watch?v=gv8xg_4MHq8" target="_blank">Гидросфера — реки, озёра, океаны</a>
+                <a href="https://www.youtube.com/watch?v=2HKH3CJr6Pg" target="_blank">Атмосфера — давление, ветер, осадки</a>
+                <a href="https://www.youtube.com/watch?v=d-xN9PrBqCA" target="_blank">Масштаб и план местности</a>
+            </div>
+
+            <!-- Задания по географии -->
+            <div class="section">
+                <h3>📝 Задания для решения</h3>
+
+                <div class="exercise-box">
+                    <h4>Задание 1: Определение координат</h4>
+                    <div class="task">
+                        Определи, о каком городе идёт речь:<br><br>
+                        а) 55° с.ш., 37° в.д. → ?<br>
+                        б) 59° с.ш., 30° в.д. → ?<br>
+                        в) Какие координаты у точки на экваторе и Гринвичском меридиане? → ?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solG1')">Показать решение</button>
+                    <div class="solution" id="solG1">
+                        <p>а) <strong>Москва</strong></p>
+                        <p>б) <strong>Санкт-Петербург</strong></p>
+                        <p>в) <strong>0° ш., 0° д.</strong> — точка в Гвинейском заливе (Атлантический океан)</p>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 2: Задачи на масштаб</h4>
+                    <div class="task">
+                        а) Масштаб карты 1:200 000. Расстояние на карте 3 см. Каково реальное расстояние?<br><br>
+                        б) Реальное расстояние 15 км. Масштаб 1:500 000. Какое расстояние на карте?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solG2')">Показать решение</button>
+                    <div class="solution" id="solG2">
+                        <div class="step-solution">
+                            <p><span class="step-num">а)</span></p>
+                            <p>1 см на карте = 200 000 см = 2000 м = 2 км</p>
+                            <p>3 см × 2 км = <strong>6 км</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б)</span></p>
+                            <p>15 км = 1 500 000 см</p>
+                            <p>1 500 000 ÷ 500 000 = <strong>3 см на карте</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 3: Задачи на температуру и давление</h4>
+                    <div class="task">
+                        а) Температура у подножия горы +24°С. Какова температура на вершине, если высота горы 3 км?<br><br>
+                        б) Давление у подножия горы 760 мм рт. ст. Какое давление на высоте 500 м?
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solG3')">Показать решение</button>
+                    <div class="solution" id="solG3">
+                        <div class="step-solution">
+                            <p><span class="step-num">а) Температура</span></p>
+                            <p>На каждый 1 км температура ↓ на 6°С</p>
+                            <p>3 км × 6°С = 18°С</p>
+                            <p>24°С − 18°С = <strong>+6°С на вершине</strong></p>
+                        </div>
+                        <div class="step-solution">
+                            <p><span class="step-num">б) Давление</span></p>
+                            <p>На каждые 100 м давление ↓ на ~12 мм</p>
+                            <p>500 м ÷ 100 м = 5 (раз по 100 м)</p>
+                            <p>5 × 12 = 60 мм</p>
+                            <p>760 − 60 = <strong>700 мм рт. ст.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercise-box">
+                    <h4>Задание 4: Термины</h4>
+                    <div class="task">
+                        Соедини термин с определением:<br><br>
+                        1) Эпицентр<br>
+                        2) Бассейн реки<br>
+                        3) Промилле (‰)<br>
+                        4) Гумус<br>
+                        5) Бриз<br><br>
+                        А) Территория, с которой река собирает воду<br>
+                        Б) Органическое вещество почвы, обеспечивающее плодородие<br>
+                        В) Точка на поверхности Земли над очагом землетрясения<br>
+                        Г) Ветер, меняющий направление дважды в сутки (день/ночь)<br>
+                        Д) Единица измерения солёности воды
+                    </div>
+                    <button class="show-solution-btn" onclick="toggleSolution('solG4')">Показать решение</button>
+                    <div class="solution" id="solG4">
+                        <p>1 — В (Эпицентр — точка на поверхности над очагом)</p>
+                        <p>2 — А (Бассейн реки — территория, с которой река собирает воду)</p>
+                        <p>3 — Д (Промилле — единица измерения солёности)</p>
+                        <p>4 — Б (Гумус — органическое вещество почвы)</p>
+                        <p>5 — Г (Бриз — ветер, меняющий направление день/ночь)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Интерактивный тест по географии -->
+            <div class="quiz-container" id="geoQuiz">
+                <h3>🧪 Интерактивный тест: География</h3>
+                <p style="text-align:center; color:#aaa; margin-bottom:20px;">15 вопросов</p>
+
+                <div class="quiz-question" id="gq1">
+                    <p>1. Какой океан самый большой?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq1', true)">Тихий</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq1', false)">Атлантический</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq1', false)">Индийский</button>
+                    <div class="quiz-feedback" id="gq1-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq2">
+                    <p>2. Широта отсчитывается от:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq2', true)">Экватора</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq2', false)">Гринвичского меридиана</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq2', false)">Северного полюса</button>
+                    <div class="quiz-feedback" id="gq2-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq3">
+                    <p>3. Литосфера — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq3', true)">Твёрдая оболочка Земли</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq3', false)">Водная оболочка</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq3', false)">Воздушная оболочка</button>
+                    <div class="quiz-feedback" id="gq3-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq4">
+                    <p>4. Гранит — это горная порода:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq4', true)">Магматическая</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq4', false)">Осадочная</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq4', false)">Метаморфическая</button>
+                    <div class="quiz-feedback" id="gq4-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq5">
+                    <p>5. На сколько понижается температура при подъёме на 1 км?</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq5', true)">На 6°С</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq5', false)">На 10°С</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq5', false)">На 3°С</button>
+                    <div class="quiz-feedback" id="gq5-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq6">
+                    <p>6. Нормальное атмосферное давление:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq6', true)">760 мм рт. ст.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq6', false)">720 мм рт. ст.</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq6', false)">800 мм рт. ст.</button>
+                    <div class="quiz-feedback" id="gq6-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq7">
+                    <p>7. Ветер дует из области:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq7', true)">Высокого давления в область низкого</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq7', false)">Низкого давления в область высокого</button>
+                    <div class="quiz-feedback" id="gq7-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq8">
+                    <p>8. Байкал — это озеро:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq8', true)">Сточное (из него вытекает река Ангара)</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq8', false)">Бессточное</button>
+                    <div class="quiz-feedback" id="gq8-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq9">
+                    <p>9. Средняя солёность Мирового океана:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq9', true)">35‰</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq9', false)">3,5‰</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq9', false)">350‰</button>
+                    <div class="quiz-feedback" id="gq9-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq10">
+                    <p>10. Азимут — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq10', true)">Угол между направлением на север и на объект</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq10', false)">Расстояние до объекта</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq10', false)">Высота над уровнем моря</button>
+                    <div class="quiz-feedback" id="gq10-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq11">
+                    <p>11. Главное свойство почвы:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq11', true)">Плодородие</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq11', false)">Прочность</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq11', false)">Водонепроницаемость</button>
+                    <div class="quiz-feedback" id="gq11-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq12">
+                    <p>12. Мрамор — это горная порода:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq12', false)">Магматическая</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq12', false)">Осадочная</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq12', true)">Метаморфическая</button>
+                    <div class="quiz-feedback" id="gq12-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq13">
+                    <p>13. Тропосфера — это слой атмосферы, где:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq13', true)">Формируется погода</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq13', false)">Находится озоновый слой</button>
+                    <div class="quiz-feedback" id="gq13-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq14">
+                    <p>14. Гольфстрим — это:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq14', true)">Тёплое течение</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq14', false)">Холодное течение</button>
+                    <div class="quiz-feedback" id="gq14-fb"></div>
+                </div>
+
+                <div class="quiz-question" id="gq15">
+                    <p>15. Горы выше 2000 м называются:</p>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq15', false)">Низкие</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq15', false)">Средние</button>
+                    <button class="quiz-option" onclick="checkAnswer(this, 'gq15', true)">Высокие</button>
+                    <div class="quiz-feedback" id="gq15-fb"></div>
+                </div>
+
+                <div class="quiz-score" id="geoScore"></div>
+                <button class="quiz-reset-btn" id="geoResetBtn" onclick="resetQuiz('geo')">🔄 Пройти тест заново</button>
+            </div>
+        </div>
+
+        <!-- Прогресс-трекер -->
+        <div class="progress-tracker">
+            <h3>📊 Прогресс дня 22</h3>
+            <p>Общий результат по всем тестам</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="totalProgress" style="width: 0%">0%</div>
+            </div>
+            <p id="totalScoreText" style="margin-top: 10px; color: #aaa;">Пройди все тесты, чтобы увидеть результат</p>
+        </div>
+
+        <!-- Итоги дня -->
+        <div class="section" style="border: 2px solid rgba(0,180,216,0.3); margin-top: 30px;">
+            <h3>🎯 Подведение итогов дня 22</h3>
+            <div class="tip-box">
+                <strong>После завершения всех заданий:</strong><br>
+                1. Проверь, все ли пункты чек-листа отмечены ✅<br>
+                2. Запиши в тетрадь формулы/правила, в которых ошибся<br>
+                3. Выпиши на отдельный лист «проблемные темы» для повторения<br>
+                4. Оцени свою готовность по каждому предмету по шкале 1–10<br>
+                5. Отдохни! Завтра — повторение блок 3 (Английский + Литература + Доп. предметы)
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleSolution(id) {
+            const sol = document.getElementById(id);
+            sol.style.display = sol.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleCheck(el) {
+            el.classList.toggle('checked');
+        }
+
+        const quizData = {
+            math: { total: 20, answered: 0, correct: 0, prefix: 'mq' },
+            bio: { total: 15, answered: 0, correct: 0, prefix: 'bq' },
+            geo: { total: 15, answered: 0, correct: 0, prefix: 'gq' }
+        };
+
+        function checkAnswer(button, questionId, isCorrect) {
+            const question = document.getElementById(questionId);
+            const buttons = question.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById(questionId + '-fb');
+
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                if (btn === button) {
+                    btn.classList.add(isCorrect ? 'correct' : 'wrong');
+                }
+            });
+
+            if (!isCorrect) {
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes('true')) {
+                        btn.classList.add('correct');
+                    }
+                });
+            }
+
+            feedback.textContent = isCorrect ? '✅ Правильно!' : '❌ Неправильно. Смотри правильный ответ выше.';
+            feedback.className = 'quiz-feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+
+            let quizName = '';
+            if (questionId.startsWith('mq')) quizName = 'math';
+            else if (questionId.startsWith('bq')) quizName = 'bio';
+            else if (questionId.startsWith('gq')) quizName = 'geo';
+
+            quizData[quizName].answered++;
+            if (isCorrect) quizData[quizName].correct++;
+
+            if (quizData[quizName].answered === quizData[quizName].total) {
+                const scoreDiv = document.getElementById(quizName + 'Score');
+                const resetBtn = document.getElementById(quizName + 'ResetBtn');
+                const percent = Math.round((quizData[quizName].correct / quizData[quizName].total) * 100);
+                let emoji = percent >= 90 ? '🌟' : percent >= 70 ? '👍' : percent >= 50 ? '📚' : '💪';
+                scoreDiv.innerHTML = `${emoji} Результат: ${quizData[quizName].correct} из ${quizData[quizName].total} (${percent}%)`;
+                scoreDiv.style.display = 'block';
+                resetBtn.style.display = 'block';
+                updateTotalProgress();
+            }
+        }
+
+        function resetQuiz(quizName) {
+            const data = quizData[quizName];
+            data.answered = 0;
+            data.correct = 0;
+
+            for (let i = 1; i <= data.total; i++) {
+                const qId = data.prefix + i;
+                const question = document.getElementById(qId);
+                if (!question) continue;
+                const buttons = question.querySelectorAll('.quiz-option');
+                buttons.forEach(btn => {
+                    btn.disabled = false;
+                    btn.classList.remove('correct', 'wrong');
+                });
+                const feedback = document.getElementById(qId + '-fb');
+                if (feedback) {
+                    feedback.className = 'quiz-feedback';
+                    feedback.textContent = '';
+                }
+            }
+
+            document.getElementById(quizName + 'Score').style.display = 'none';
+            document.getElementById(quizName + 'ResetBtn').style.display = 'none';
+            updateTotalProgress();
+        }
+
+        function updateTotalProgress() {
+            let totalCorrect = 0;
+            let totalQuestions = 0;
+            let allComplete = true;
+
+            for (const key in quizData) {
+                totalCorrect += quizData[key].correct;
+                totalQuestions += quizData[key].total;
+                if (quizData[key].answered < quizData[key].total) allComplete = false;
+            }
+
+            if (allComplete) {
+                const percent = Math.round((totalCorrect / totalQuestions) * 100);
+                document.getElementById('totalProgress').style.width = percent + '%';
+                document.getElementById('totalProgress').textContent = percent + '%';
+
+                let message = '';
+                if (percent >= 90) message = '🌟 Отлично! Ты готов к аттестации!';
+                else if (percent >= 70) message = '👍 Хорошо! Повтори темы с ошибками.';
+                else if (percent >= 50) message = '📚 Неплохо, но нужно ещё поработать.';
+                else message = '💪 Не сдавайся! Повтори материал и пройди тесты снова.';
+
+                document.getElementById('totalScoreText').textContent = `${totalCorrect} из ${totalQuestions} • ${message}`;
+            }
+        }
+    </script>
+</body>
+</html>

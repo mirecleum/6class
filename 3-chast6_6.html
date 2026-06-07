@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — Обществознание и География (6 класс)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6a3de8 0%, #3d9be9 50%, #2ecc71 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 920px; margin: 0 auto; }
+
+        /* ====== HEADER ====== */
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 { font-size: 1.85em; margin-bottom: 8px; color: #333; }
+        .header .subtitle { color: #666; font-size: 1.05em; }
+        .badges { display: flex; justify-content: center; gap: 15px; margin-top: 12px; flex-wrap: wrap; }
+        .badge {
+            display: inline-block; padding: 7px 18px;
+            border-radius: 25px; font-weight: bold;
+            font-size: 0.93em; color: white;
+        }
+        .badge-obs  { background: linear-gradient(135deg, #6a3de8, #9b59b6); }
+        .badge-geo  { background: linear-gradient(135deg, #2980b9, #2ecc71); }
+
+        /* ====== SECTION DIVIDER ====== */
+        .section-divider { text-align: center; margin: 40px 0 20px; }
+        .section-divider span {
+            color: white; padding: 10px 30px; border-radius: 30px;
+            font-size: 1.25em; font-weight: bold;
+            display: inline-block; box-shadow: 0 5px 20px rgba(0,0,0,0.18);
+        }
+        .div-obs { background: linear-gradient(135deg, #6a3de8, #9b59b6); }
+        .div-geo  { background: linear-gradient(135deg, #2980b9, #27ae60); }
+
+        /* ====== CARDS ====== */
+        .card {
+            background: white; border-radius: 15px;
+            padding: 25px; margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            margin-bottom: 15px; padding-bottom: 10px;
+            border-bottom: 3px solid; font-size: 1.4em;
+        }
+        .card-obs h2 { color: #6a3de8; border-bottom-color: #9b59b6; }
+        .card-obs h3 { color: #7d3c98; margin: 14px 0 8px; font-size: 1.15em; }
+        .card-obs h4 { color: #6a3de8; margin: 10px 0 6px; font-size: 1.02em; }
+        .card-geo h2 { color: #2980b9; border-bottom-color: #27ae60; }
+        .card-geo h3 { color: #1a6fa0; margin: 14px 0 8px; font-size: 1.15em; }
+        .card-geo h4 { color: #2980b9; margin: 10px 0 6px; font-size: 1.02em; }
+        .card p  { line-height: 1.7; margin: 6px 0; }
+        .card ul, .card ol { margin-left: 22px; }
+        .card li { line-height: 1.7; margin-bottom: 5px; }
+
+        /* ====== NOTEBOOK ====== */
+        .notebook {
+            background: #fffde7; border-left: 5px solid #ff9800;
+            padding: 22px 20px 18px; margin: 14px 0;
+            border-radius: 0 10px 10px 0; position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute; top: -12px; left: 10px;
+            background: #ff9800; color: white;
+            padding: 3px 12px; border-radius: 10px;
+            font-size: 0.78em; font-weight: bold;
+        }
+        .notebook ul, .notebook ol { margin-left: 20px; margin-top: 8px; }
+        .notebook li { margin-bottom: 6px; line-height: 1.7; }
+        .notebook p  { line-height: 1.7; margin: 5px 0; }
+
+        /* ====== RULE / INFO BOXES ====== */
+        .rule-box {
+            border: 2px solid; border-radius: 10px;
+            padding: 14px; margin: 12px 0;
+        }
+        .rb-obs { background: #f3e5f5; border-color: #9b59b6; }
+        .rb-geo  { background: #e3f2fd; border-color: #2196f3; }
+        .rb-green{ background: #e8f5e9; border-color: #4caf50; }
+        .rtitle  { font-weight: bold; font-size: 1.04em; margin-bottom: 7px; }
+        .rt-obs  { color: #6a3de8; }
+        .rt-geo  { color: #1565c0; }
+        .rt-green{ color: #2e7d32; }
+        .rule-box p, .rule-box li { line-height: 1.7; }
+        .rule-box ul, .rule-box ol { margin-left: 20px; margin-top: 4px; }
+
+        .example {
+            background: #e3f2fd; border-left: 4px solid #2196f3;
+            padding: 13px 15px; margin: 10px 0;
+            border-radius: 0 8px 8px 0; line-height: 1.8;
+        }
+        .example strong { color: #1565c0; }
+
+        .warning-box {
+            background: #fff3cd; border: 2px solid #ffc107;
+            border-radius: 10px; padding: 13px; margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВАЖНО ЗАПОМНИТЬ:";
+            font-weight: bold; color: #856404;
+            display: block; margin-bottom: 5px;
+        }
+
+        .mnemonic {
+            background: #e0f7fa; border: 2px dashed #00bcd4;
+            border-radius: 10px; padding: 13px; margin: 10px 0;
+            text-align: center; font-size: 1.02em; line-height: 1.8;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ ЛЕГКО:";
+            display: block; font-weight: bold;
+            color: #006064; margin-bottom: 5px;
+        }
+
+        /* ====== PRACTICE ====== */
+        .practice {
+            background: #fce4ec; border-left: 5px solid #e91e63;
+            padding: 22px 20px 18px; margin: 14px 0;
+            border-radius: 0 10px 10px 0; position: relative;
+        }
+        .practice::before {
+            content: "✏️ ПОРЕШАТЬ / ОТВЕТИТЬ";
+            position: absolute; top: -12px; left: 10px;
+            background: #e91e63; color: white;
+            padding: 3px 12px; border-radius: 10px;
+            font-size: 0.78em; font-weight: bold;
+        }
+        .practice ol, .practice ul { margin-left: 20px; margin-top: 8px; }
+        .practice li { margin-bottom: 9px; line-height: 1.7; }
+
+        .solution {
+            background: #f1f8e9; border: 1px dashed #8bc34a;
+            padding: 14px; margin: 4px 0 10px;
+            border-radius: 8px; display: none; line-height: 1.8;
+        }
+        .solution ol, .solution ul { margin-left: 20px; }
+        .solution li { margin-bottom: 7px; }
+        .solution p  { margin-bottom: 8px; }
+
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none; color: #1a5e2a;
+            padding: 8px 18px; border-radius: 20px;
+            cursor: pointer; font-weight: bold;
+            font-size: 0.93em; margin: 5px 0; transition: transform 0.2s;
+        }
+        .solution-btn:hover { transform: scale(1.05); }
+
+        /* ====== TABLES ====== */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.93em; }
+        th { color: white; padding: 10px 8px; text-align: left; }
+        .th-obs { background: linear-gradient(135deg, #6a3de8, #9b59b6); }
+        .th-geo  { background: linear-gradient(135deg, #2980b9, #27ae60); }
+        td { padding: 9px 8px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.6; }
+        tr:nth-child(even) { background: #fafafa; }
+        .tr-obs:hover { background: #f3e5f5; }
+        .tr-geo:hover  { background: #e3f2fd; }
+
+        /* ====== VIDEO ====== */
+        .video-section {
+            background: #fff3e0; padding: 18px;
+            border-radius: 10px; margin: 14px 0;
+        }
+        .video-section h3 { color: #e65100; margin-bottom: 10px; }
+        .video-link {
+            display: flex; align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white; padding: 11px 18px;
+            border-radius: 10px; text-decoration: none;
+            margin: 9px 0; transition: transform 0.2s;
+        }
+        .video-link:hover { transform: translateX(5px); color: white; }
+        .video-link .pi { font-size: 1.4em; margin-right: 10px; }
+
+        /* ====== QUIZ ====== */
+        .quiz-obs { background: linear-gradient(135deg, #6a3de8, #9b59b6); border-radius: 15px; padding: 25px; margin: 20px 0; }
+        .quiz-geo { background: linear-gradient(135deg, #2980b9, #27ae60); border-radius: 15px; padding: 25px; margin: 20px 0; }
+        .quiz-obs h2, .quiz-geo h2 {
+            color: white; border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px; margin-bottom: 15px; font-size: 1.3em;
+        }
+        .quiz-question {
+            background: white; border-radius: 10px;
+            padding: 18px; margin: 13px 0;
+        }
+        .quiz-question p {
+            font-weight: bold; color: #333;
+            margin-bottom: 11px; font-size: 1.01em; line-height: 1.5;
+        }
+        .quiz-option {
+            display: block; width: 100%; text-align: left;
+            padding: 9px 14px; margin: 5px 0;
+            border: 2px solid #e0e0e0; border-radius: 8px;
+            background: white; cursor: pointer; font-size: 0.96em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: #999; background: #f5f5f5; }
+        .quiz-option.correct { background: #c8e6c9; border-color: #4caf50; color: #2e7d32; }
+        .quiz-option.wrong   { background: #ffcdd2; border-color: #f44336; color: #c62828; }
+        .quiz-feedback { margin-top: 9px; padding: 9px; border-radius: 7px; display: none; font-weight: bold; }
+        .score-display {
+            text-align: center; background: white;
+            padding: 22px; border-radius: 14px; margin-top: 14px; display: none;
+        }
+        .score-display .snum { font-size: 2.8em; font-weight: bold; }
+        .snum-obs { color: #6a3de8; }
+        .snum-geo { color: #2980b9; }
+        .check-btn {
+            background: white; border: none; padding: 11px 32px;
+            border-radius: 25px; font-size: 1.05em; cursor: pointer;
+            font-weight: bold; margin-top: 14px; transition: transform 0.2s;
+        }
+        .check-btn:hover { transform: scale(1.05); }
+        .cbt-obs { color: #6a3de8; }
+        .cbt-geo { color: #2980b9; }
+
+        /* ====== SPECIAL ELEMENTS ====== */
+        /* Схемы нравственности */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px,1fr));
+            gap: 10px; margin: 14px 0;
+        }
+        .value-card {
+            border-radius: 10px; padding: 13px;
+            text-align: center; border: 2px solid;
+        }
+        .vc-purple { background: #f3e5f5; border-color: #9b59b6; }
+        .vc-blue   { background: #e3f2fd; border-color: #2196f3; }
+        .vc-green  { background: #e8f5e9; border-color: #4caf50; }
+        .vc-orange { background: #fff3e0; border-color: #ff9800; }
+        .vc-red    { background: #fce4ec; border-color: #e91e63; }
+        .value-card .vi { font-size: 1.8em; margin-bottom: 5px; }
+        .value-card .vt { font-weight: bold; font-size: 0.93em; color: #333; }
+        .value-card .vd { font-size: 0.82em; color: #555; margin-top: 4px; line-height: 1.4; }
+
+        /* Атмосфера — слои */
+        .atm-layers {
+            border-radius: 12px; overflow: hidden;
+            margin: 14px 0; border: 2px solid #90caf9;
+        }
+        .atm-layer {
+            padding: 10px 16px; display: flex;
+            align-items: center; gap: 12px;
+        }
+        .al-1 { background: #0d47a1; color: white; }
+        .al-2 { background: #1565c0; color: white; }
+        .al-3 { background: #1976d2; color: white; }
+        .al-4 { background: #1e88e5; color: white; }
+        .al-5 { background: #42a5f5; color: #0d2137; }
+        .al-6 { background: #90caf9; color: #0d2137; }
+        .al-name { font-weight: bold; min-width: 120px; font-size: 0.95em; }
+        .al-info { font-size: 0.88em; line-height: 1.5; }
+
+        /* Климатические пояса */
+        .climate-belt {
+            border-radius: 8px; padding: 8px 13px;
+            margin: 5px 0; display: flex; align-items: center; gap: 10px;
+        }
+        .cb-arctic   { background: #e3f2fd; border-left: 5px solid #90caf9; }
+        .cb-subarct  { background: #e8eaf6; border-left: 5px solid #7986cb; }
+        .cb-temperate{ background: #e8f5e9; border-left: 5px solid #66bb6a; }
+        .cb-subtrop  { background: #fff9c4; border-left: 5px solid #fdd835; }
+        .cb-tropical { background: #fff3e0; border-left: 5px solid #ffa726; }
+        .cb-subequat { background: #fce4ec; border-left: 5px solid #f06292; }
+        .cb-equator  { background: #ffccbc; border-left: 5px solid #ff7043; }
+        .cb-icon { font-size: 1.4em; }
+        .cb-text { font-size: 0.9em; line-height: 1.5; }
+        .cb-name { font-weight: bold; }
+
+        /* Природные зоны */
+        .zone-card {
+            border-radius: 9px; padding: 10px 13px;
+            margin: 6px 0; border-left: 5px solid;
+            font-size: 0.92em; line-height: 1.6;
+        }
+        .zc-1 { background: #e3f2fd; border-color: #1e88e5; }
+        .zc-2 { background: #e8eaf6; border-color: #5c6bc0; }
+        .zc-3 { background: #e8f5e9; border-color: #43a047; }
+        .zc-4 { background: #f9fbe7; border-color: #c0ca33; }
+        .zc-5 { background: #fff3e0; border-color: #fb8c00; }
+        .zc-6 { background: #fbe9e7; border-color: #ff5722; }
+
+        /* Карта-схема населения */
+        .pop-region {
+            background: white; border: 2px solid;
+            border-radius: 10px; padding: 12px;
+            margin: 6px 0;
+        }
+
+        /* NAV */
+        .nav-buttons {
+            display: flex; justify-content: space-between;
+            margin-top: 30px; flex-wrap: wrap; gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block; padding: 12px 24px;
+            background: white; text-decoration: none;
+            border-radius: 25px; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+        .nb-obs { color: #6a3de8; }
+        .nb-geo { color: #2980b9; }
+
+        .green  { color: #2e7d32; font-weight: bold; }
+        .purple { color: #6a3de8; font-weight: bold; }
+        .blue   { color: #1565c0; font-weight: bold; }
+
+        /* Двухколоночная сетка */
+        .two-col {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 15px; margin: 10px 0;
+        }
+        @media(max-width:600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .value-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* Термины в строку */
+        .term-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(195px,1fr));
+            gap: 10px; margin: 12px 0;
+        }
+        .term-card {
+            border-radius: 9px; padding: 10px 13px; border: 2px solid;
+        }
+        .tc-obs  { background: #f3e5f5; border-color: #9b59b6; }
+        .tc-geo  { background: #e3f2fd; border-color: #2196f3; }
+        .term    { font-weight: bold; font-size: 0.94em; }
+        .tdef    { font-size: 0.83em; color: #555; margin-top: 4px; line-height: 1.5; }
+
+        /* Схема иерархии */
+        .hierarchy {
+            background: #f3e5f5; border-radius: 12px;
+            padding: 18px; margin: 12px 0;
+        }
+        .h-level {
+            display: flex; align-items: center; gap: 10px;
+            margin: 6px 0;
+        }
+        .h-arrow { color: #9b59b6; font-size: 1.3em; margin-left: 10px; }
+        .h-box {
+            background: white; border: 2px solid #9b59b6;
+            border-radius: 8px; padding: 7px 13px;
+            font-weight: bold; font-size: 0.92em; color: #6a3de8;
+        }
+
+        /* Атмосфера SVG */
+        .atm-svg-wrap { text-align: center; margin: 15px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+    <h1>🤝🌍 Неделя 3 — Обществознание и География</h1>
+    <div class="subtitle">Нравственные основы жизни • Атмосфера, Биосфера, Население Земли</div>
+    <div class="badges">
+        <span class="badge badge-obs">⏱ Обществознание: 2 часа</span>
+        <span class="badge badge-geo">⏱ География: 3 часа</span>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ОБЩЕСТВОЗНАНИЕ                                              -->
+<!-- ============================================================ -->
+<div class="section-divider">
+    <span class="div-obs">🤝 ОБЩЕСТВОЗНАНИЕ — Нравственные основы жизни</span>
+</div>
+
+<!-- 1. Что такое мораль и нравственность -->
+<div class="card card-obs">
+    <h2>📖 1. Мораль и нравственность</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Ключевые понятия</h3>
+        <ul>
+            <li><strong>Мораль</strong> — система норм, принципов и ценностей, регулирующих
+            поведение людей в обществе на основе представлений о добре и зле.</li>
+            <li><strong>Нравственность</strong> — внутренние духовные качества человека,
+            его следование моральным нормам на практике.</li>
+            <li><strong>Нравственные нормы</strong> — правила поведения, основанные на
+            понятиях добра и зла, долга, чести, совести.</li>
+        </ul>
+
+        <h3>Чем мораль отличается от права?</h3>
+        <table>
+            <tr>
+                <th class="th-obs">Мораль</th>
+                <th class="th-obs">Право</th>
+            </tr>
+            <tr class="tr-obs">
+                <td>Неписаные правила</td>
+                <td>Записаны в законах</td>
+            </tr>
+            <tr class="tr-obs">
+                <td>Нарушение → осуждение обществом</td>
+                <td>Нарушение → юридическая ответственность</td>
+            </tr>
+            <tr class="tr-obs">
+                <td>Регулирует внутренний мир человека</td>
+                <td>Регулирует внешнее поведение</td>
+            </tr>
+            <tr class="tr-obs">
+                <td>Держится на совести</td>
+                <td>Держится на принуждении</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- 2. Золотое правило нравственности -->
+<div class="card card-obs">
+    <h2>📖 2. Золотое правило нравственности</h2>
+
+    <div class="rule-box rb-obs">
+        <div class="rtitle rt-obs">📌 Золотое правило нравственности</div>
+        <p style="font-size:1.1em; text-align:center; color:#6a3de8; font-weight:bold; margin:10px 0;">
+            «Поступай с другими так, как хочешь, чтобы поступали с тобой»
+        </p>
+        <p>Это правило встречается у всех народов и во всех мировых религиях.
+        Оно является основой человеческой нравственности.</p>
+        <ul style="margin-top:8px;">
+            <li><strong>Позитивная форма:</strong> «Делай другим то, что хочешь, чтобы делали тебе.»</li>
+            <li><strong>Негативная форма:</strong> «Не делай другим того, чего не хочешь для себя.»</li>
+        </ul>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Другие формулировки из разных культур:</strong><br>
+        🇨🇳 Конфуций: «Чего не желаешь себе, того не делай другим»<br>
+        ✝️ Христианство: «Возлюби ближнего своего, как самого себя»<br>
+        ☪️ Ислам: «Желай брату своему того, чего желаешь себе»<br>
+        ✡️ Иудаизм: «Что ненавистно тебе, не делай ближнему»
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Основные нравственные понятия:</h3>
+        <ul>
+            <li><strong>Добро</strong> — всё, что служит пользе людей, обществу, делает жизнь лучше</li>
+            <li><strong>Зло</strong> — всё, что причиняет вред, разрушает, противоречит добру</li>
+            <li><strong>Совесть</strong> — внутренний нравственный судья человека, чувство ответственности
+            за свои поступки перед собой и другими</li>
+            <li><strong>Долг</strong> — обязанность человека перед другими людьми, обществом, Родиной</li>
+            <li><strong>Честь</strong> — достоинство человека, его репутация; уважение к себе и другим</li>
+            <li><strong>Достоинство</strong> — осознание человеком своей ценности, самоуважение</li>
+            <li><strong>Стыд</strong> — чувство неловкости от совершения плохого поступка
+            или нарушения нравственных норм</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 3. Человек славен добрыми делами -->
+<div class="card card-obs">
+    <h2>📖 3. Человек славен добрыми делами</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Что значит быть добродетельным?</h3>
+        <p><strong>Добродетель</strong> — устойчивое положительное качество личности,
+        которое проявляется в добрых делах и поступках.</p>
+    </div>
+
+    <div class="value-grid">
+        <div class="value-card vc-purple">
+            <div class="vi">🤲</div>
+            <div class="vt">Доброта</div>
+            <div class="vd">Желание помогать другим, не ожидая награды</div>
+        </div>
+        <div class="value-card vc-blue">
+            <div class="vi">💪</div>
+            <div class="vt">Смелость</div>
+            <div class="vd">Способность действовать, преодолевая страх</div>
+        </div>
+        <div class="value-card vc-green">
+            <div class="vi">⚖️</div>
+            <div class="vt">Справедливость</div>
+            <div class="vd">Воздавать каждому по заслугам</div>
+        </div>
+        <div class="value-card vc-orange">
+            <div class="vi">🤝</div>
+            <div class="vt">Честность</div>
+            <div class="vd">Говорить правду, не обманывать</div>
+        </div>
+        <div class="value-card vc-red">
+            <div class="vi">❤️</div>
+            <div class="vt">Милосердие</div>
+            <div class="vd">Помощь страдающим, сострадание</div>
+        </div>
+        <div class="value-card vc-purple">
+            <div class="vi">🙏</div>
+            <div class="vt">Скромность</div>
+            <div class="vd">Не хвалиться, уважать других</div>
+        </div>
+        <div class="value-card vc-blue">
+            <div class="vi">📚</div>
+            <div class="vt">Трудолюбие</div>
+            <div class="vd">Старательно работать, не лениться</div>
+        </div>
+        <div class="value-card vc-green">
+            <div class="vi">🌟</div>
+            <div class="vt">Великодушие</div>
+            <div class="vd">Прощать обиды, понимать слабости других</div>
+        </div>
+    </div>
+
+    <div class="rule-box rb-obs">
+        <div class="rtitle rt-obs">📌 Добро и добрые дела</div>
+        <ul>
+            <li><strong>Добрые дела</strong> — конкретные поступки, приносящие пользу другим людям</li>
+            <li>Добро бескорыстно — не ожидает награды</li>
+            <li>Добрый человек думает не только о себе, но и об окружающих</li>
+            <li>Добро заразительно: один добрый поступок вдохновляет других</li>
+            <li>«Не место красит человека, а человек место» — пословица о важности добрых дел</li>
+        </ul>
+    </div>
+
+    <div class="example">
+        <strong>Примеры добрых дел в жизни шестиклассника:</strong><br>
+        • Помочь пожилому человеку донести сумки<br>
+        • Поддержать друга в трудный момент<br>
+        • Участвовать в благотворительных акциях<br>
+        • Убрать мусор на улице<br>
+        • Накормить бездомного животного<br>
+        • Помочь младшему сделать уроки<br>
+        • Сказать правду, даже если это неприятно
+    </div>
+</div>
+
+<!-- 4. Нравственный выбор -->
+<div class="card card-obs">
+    <h2>📖 4. Нравственный выбор и ответственность</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Что такое нравственный выбор?</h3>
+        <p><strong>Нравственный выбор</strong> — это выбор между добром и злом, между
+        правильным и неправильным поступком.</p>
+
+        <h3>Что влияет на нравственный выбор:</h3>
+        <ul>
+            <li><strong>Совесть</strong> — внутренний голос, указывающий на правильное</li>
+            <li><strong>Воспитание</strong> — ценности, заложенные родителями и обществом</li>
+            <li><strong>Пример</strong> — поведение людей вокруг (родителей, героев, друзей)</li>
+            <li><strong>Знание норм</strong> — понимание, что хорошо, а что плохо</li>
+        </ul>
+
+        <h3>Ответственность:</h3>
+        <p>За каждый поступок человек несёт <strong>ответственность</strong>:
+        перед собой (совесть), перед другими людьми (репутация),
+        перед обществом (общественное мнение), перед законом (юридическая ответственность).</p>
+
+        <h3>Добро и зло в литературных произведениях (6 класс):</h3>
+        <table>
+            <tr>
+                <th class="th-obs">Произведение</th>
+                <th class="th-obs">Нравственный урок</th>
+            </tr>
+            <tr class="tr-obs">
+                <td>«Уроки французского» Распутин</td>
+                <td>Доброта учителя, помощь нуждающемуся, человечность</td>
+            </tr>
+            <tr class="tr-obs">
+                <td>«Алые паруса» Грин</td>
+                <td>Вера в мечту, верность обещанию, чудо доброго поступка</td>
+            </tr>
+            <tr class="tr-obs">
+                <td>«Конь с розовой гривой» Астафьев</td>
+                <td>Честность, раскаяние, мудрость бабушки</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- 5. Повторение: человек и общество -->
+<div class="card card-obs">
+    <h2>📖 5. Повторение всего курса — ключевые темы</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Раздел 1: Человек и его природа</h3>
+        <ul>
+            <li>Человек — существо <strong>биосоциальное</strong>
+            (биологическое + социальное начало)</li>
+            <li><strong>Потребности:</strong> биологические (пища, сон, тепло),
+            социальные (общение, признание), духовные (знания, красота)</li>
+            <li><strong>Деятельность:</strong> игра → учение → труд → общение</li>
+            <li><strong>Личность</strong> — человек как член общества,
+            с определёнными взглядами и качествами</li>
+        </ul>
+
+        <h3>Раздел 2: Человек и общество</h3>
+        <ul>
+            <li><strong>Общество</strong> — группа людей, связанных совместной жизнью</li>
+            <li><strong>Социальные группы:</strong> семья, класс, нация, государство</li>
+            <li><strong>Социальные нормы:</strong> обычаи, традиции, законы, моральные нормы</li>
+            <li><strong>Семья</strong> — основная ячейка общества, виды: полная/неполная,
+            нуклеарная/расширенная</li>
+        </ul>
+
+        <h3>Раздел 3: Школа и образование</h3>
+        <ul>
+            <li>Образование — ценность для человека и общества</li>
+            <li>Самообразование — обучение без учителя</li>
+            <li>Ступени: дошкольное → начальное → основное → среднее → высшее</li>
+        </ul>
+
+        <h3>Раздел 4: Труд</h3>
+        <ul>
+            <li><strong>Труд</strong> — целенаправленная деятельность для получения результата</li>
+            <li>Виды: умственный / физический, оплачиваемый / безвозмездный</li>
+            <li>Значение: создаёт блага, формирует личность, объединяет людей</li>
+        </ul>
+
+        <h3>Раздел 5: Родина</h3>
+        <ul>
+            <li><strong>Родина</strong> — место рождения, страна, где живёт человек</li>
+            <li><strong>Патриотизм</strong> — любовь к Родине, гордость за неё</li>
+            <li>Гражданские обязанности: соблюдать законы, платить налоги, защищать страну</li>
+        </ul>
+    </div>
+
+    <div class="term-grid">
+        <div class="term-card tc-obs">
+            <div class="term">Социализация</div>
+            <div class="tdef">Процесс усвоения человеком норм и ценностей общества</div>
+        </div>
+        <div class="term-card tc-obs">
+            <div class="term">Гражданин</div>
+            <div class="tdef">Человек, принадлежащий к государству и имеющий права и обязанности</div>
+        </div>
+        <div class="term-card tc-obs">
+            <div class="term">Культура</div>
+            <div class="tdef">Всё, созданное человеком (материальная и духовная)</div>
+        </div>
+        <div class="term-card tc-obs">
+            <div class="term">Этикет</div>
+            <div class="tdef">Правила вежливого поведения в обществе</div>
+        </div>
+        <div class="term-card tc-obs">
+            <div class="term">Право</div>
+            <div class="tdef">Система обязательных норм, установленных государством</div>
+        </div>
+        <div class="term-card tc-obs">
+            <div class="term">Конституция</div>
+            <div class="tdef">Основной закон государства</div>
+        </div>
+    </div>
+</div>
+
+<!-- Практика: Обществознание -->
+<div class="card card-obs">
+    <h2>✏️ Практика: Обществознание</h2>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 1.</strong> Ответь на вопросы развёрнуто:</p>
+        <ol>
+            <li>Что такое «Золотое правило нравственности»? Приведи пример его применения
+            в повседневной жизни.</li>
+            <li>Чем мораль отличается от права? Приведи по одному примеру нормы морали
+            и нормы права.</li>
+            <li>Что такое совесть? Почему говорят, что совесть — «внутренний судья»?</li>
+            <li>Как связаны добродетель и добрые дела?</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('so1')">👁 Показать решение</button>
+    <div class="solution" id="so1">
+        <p><strong>1) Золотое правило нравственности:</strong><br>
+        «Поступай с другими так, как хочешь, чтобы поступали с тобой.»
+        Пример: если я не хочу, чтобы меня обзывали, я не буду обзывать других.
+        Если я хочу, чтобы мне помогали в трудную минуту, я буду помогать другим.</p>
+
+        <p><strong>2) Мораль и право:</strong><br>
+        Мораль — неписаные правила поведения, нарушение которых осуждается обществом.
+        Пример нормы морали: «Не лги».<br>
+        Право — обязательные нормы, закреплённые в законах, нарушение которых влечёт
+        юридическую ответственность. Пример: статья УК о краже.
+        Мораль держится на совести, право — на принуждении государства.</p>
+
+        <p><strong>3) Совесть — внутренний судья:</strong><br>
+        Совесть — это способность человека оценивать свои поступки с точки зрения добра
+        и зла. Она называется «внутренним судьёй», потому что действует изнутри:
+        человек сам судит себя, чувствует вину или удовлетворение от своих поступков,
+        даже если никто не видит и не знает о них.</p>
+
+        <p><strong>4) Добродетель и добрые дела:</strong><br>
+        Добродетель — это устойчивое качество личности (доброта, честность, смелость).
+        Добрые дела — конкретные поступки. Связь такова: добродетель — это источник
+        добрых дел. Добродетельный человек естественно совершает добрые поступки,
+        а регулярные добрые дела формируют и укрепляют добродетель.</p>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 2.</strong> Определи, какое нравственное качество проявляется
+        в каждой ситуации:</p>
+        <ol>
+            <li>Серёжа нашёл чужой кошелёк с деньгами и отнёс в полицию.</li>
+            <li>Маша, хотя и боялась, всё равно заступилась за малыша.</li>
+            <li>Никита не стал хвастаться своей победой в соревновании.</li>
+            <li>Лена отдала половину своего обеда бездомному котёнку.</li>
+            <li>Антон извинился перед другом, которого обидел.</li>
+            <li>Оля каждый день помогает маме без просьбы.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('so2')">👁 Показать решение</button>
+    <div class="solution" id="so2">
+        <ol>
+            <li>Серёжа — <span class="green">честность</span> (не присвоил чужое)</li>
+            <li>Маша — <span class="green">смелость / мужество</span> (преодолела страх)</li>
+            <li>Никита — <span class="green">скромность</span> (не хвастался)</li>
+            <li>Лена — <span class="green">милосердие / доброта</span> (пожалела живое существо)</li>
+            <li>Антон — <span class="green">великодушие / честность</span>
+            (признал ошибку и попросил прощения)</li>
+            <li>Оля — <span class="green">трудолюбие / доброта / уважение к родителям</span></li>
+        </ol>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 3.</strong> Мини-эссе (5–7 предложений):</p>
+        <p>«Человек славен добрыми делами» — как ты понимаешь эту мысль?
+        Приведи пример из жизни или литературы.</p>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('so3')">👁 Показать образец</button>
+    <div class="solution" id="so3">
+        <p><strong>Образец ответа:</strong></p>
+        <p>Я считаю, что эта мысль означает: настоящую ценность человека определяют не его
+        слова, а его поступки. Можно много говорить о добре, но истинная доброта проявляется
+        в конкретных делах — помощи, поддержке, честности.</p>
+        <p>Хороший пример — учительница Лидия Михайловна из рассказа В.Г. Распутина
+        «Уроки французского». Она нарушила правила, играя с учеником в «замеряшки»,
+        но сделала это из доброты — чтобы он мог купить еду. Её добрый поступок
+        остался в памяти мальчика на всю жизнь.</p>
+        <p>Добрые дела не требуют свидетелей и наград. Они совершаются потому, что человек
+        неравнодушен к другим. Именно такие поступки делают жизнь вокруг нас лучше
+        и остаются в памяти людей надолго. Поэтому говорят: «Не место красит человека,
+        а человек место».</p>
+    </div>
+</div>
+
+<!-- Видео: Обществознание -->
+<div class="card card-obs">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: Обществознание</h3>
+        <a href="https://www.youtube.com/watch?v=h7rXRtCz5hc" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Нравственность и мораль — что это такое | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=bWc7IhFkGN4" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Золотое правило нравственности — объяснение и примеры</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=9VG7TJkGrXY" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Добро и зло, добродетель — обществознание 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=UyFxR-Xqw9c" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Повторение всего курса обществознания 6 класс за 20 минут</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: Обществознание -->
+<div class="quiz-obs">
+    <h2>🧪 Тест по Обществознанию — 15 вопросов</h2>
+
+    <div class="quiz-question" id="oq1">
+        <p>1. «Золотое правило нравственности» гласит:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) «Победителей не судят»</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) «Поступай с другими так, как хочешь, чтобы поступали с тобой»</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) «Цель оправдывает средства»</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) «Каждый сам за себя»</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq2">
+        <p>2. Мораль — это:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Система законов, установленных государством</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Система норм, основанных на представлениях о добре и зле</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Правила дорожного движения</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Традиции одного народа</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq3">
+        <p>3. «Внутренний нравственный судья» человека — это:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Честь</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Б) Долг</button>
+        <button class="quiz-option" onclick="doObs(this,true)">В) Совесть</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Стыд</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq4">
+        <p>4. Что отличает мораль от права?</p>
+        <button class="quiz-option" onclick="doObs(this,true)">А) Мораль не закреплена в законах и держится на совести</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Б) Мораль обязательна к исполнению под страхом наказания</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Мораль устанавливается только государством</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Мораль существует только в религии</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq5">
+        <p>5. Добродетель — это:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Однократный добрый поступок</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Устойчивое положительное качество личности</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Желание получить награду за добро</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Выполнение приказов начальника</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq6">
+        <p>6. Что такое милосердие?</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Желание быть лучше других</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Сострадание и готовность помочь страдающим</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Строгое следование законам</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Равнодушие к чужим проблемам</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq7">
+        <p>7. Человек — существо:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Только биологическое</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Б) Только социальное</button>
+        <button class="quiz-option" onclick="doObs(this,true)">В) Биосоциальное</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Разумное животное без социальных потребностей</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq8">
+        <p>8. Основной закон государства называется:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Устав</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Конституция</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Кодекс</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Декларация</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq9">
+        <p>9. Какое качество проявляет ученик, который нашёл чужой телефон и вернул его?</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Скромность</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Честность</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Смелость</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Трудолюбие</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq10">
+        <p>10. Патриотизм — это:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Знание истории других стран</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Любовь к Родине и гордость за неё</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Желание уехать за границу</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Критика государственных законов</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq11">
+        <p>11. Семья в обществознании — это:</p>
+        <button class="quiz-option" onclick="doObs(this,true)">А) Основная ячейка общества</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Б) Форма государственного управления</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Профессиональное объединение</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Вид трудовой деятельности</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq12">
+        <p>12. Социализация — это:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Изучение социологии в школе</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Процесс усвоения человеком норм и ценностей общества</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Переезд в другой город</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Получение гражданства</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq13">
+        <p>13. Что является духовной потребностью человека?</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Потребность в пище</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Б) Потребность в тепле и жилье</button>
+        <button class="quiz-option" onclick="doObs(this,true)">В) Потребность в знаниях и красоте</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Потребность во сне</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq14">
+        <p>14. Этикет — это:</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Ярлык на товаре</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Правила вежливого поведения в обществе</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Вид наказания за плохое поведение</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Система законов государства</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="oq15">
+        <p>15. В рассказе «Уроки французского» Распутина учительница помогла ученику.
+        Какое качество она проявила прежде всего?</p>
+        <button class="quiz-option" onclick="doObs(this,false)">А) Строгость</button>
+        <button class="quiz-option" onclick="doObs(this,true)">Б) Милосердие и доброта</button>
+        <button class="quiz-option" onclick="doObs(this,false)">В) Честолюбие</button>
+        <button class="quiz-option" onclick="doObs(this,false)">Г) Равнодушие</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="score-display" id="scoreObs">
+        <p>Результат по Обществознанию:</p>
+        <div class="snum snum-obs" id="snumObs">0/15</div>
+        <p id="scomObs" style="font-size:1.05em; margin-top:8px;"></p>
+    </div>
+    <button class="check-btn cbt-obs" onclick="showObsScore()">📊 Показать результат</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ГЕОГРАФИЯ                                                   -->
+<!-- ============================================================ -->
+<div class="section-divider">
+    <span class="div-geo">🌍 ГЕОГРАФИЯ — Атмосфера, Биосфера, Население Земли</span>
+</div>
+
+<!-- 6. Атмосфера -->
+<div class="card card-geo">
+    <h2>📖 6. Атмосфера Земли</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Определение</h3>
+        <p><strong>Атмосфера</strong> — воздушная оболочка Земли, удерживаемая
+        силой земного притяжения. Толщина — около 1000 км.</p>
+
+        <h3>Состав атмосферы (сухой воздух):</h3>
+        <ul>
+            <li>Азот (N₂) — <strong>78%</strong></li>
+            <li>Кислород (O₂) — <strong>21%</strong></li>
+            <li>Аргон (Ar) — <strong>0,93%</strong></li>
+            <li>Углекислый газ (CO₂) — <strong>0,04%</strong></li>
+            <li>Прочие газы — остальное</li>
+        </ul>
+        <p>+ Водяной пар (0–4%), пыль, аэрозоли.</p>
+    </div>
+
+    <!-- Слои атмосферы -->
+    <h3>🔷 Слои атмосферы (снизу вверх):</h3>
+    <div class="atm-layers">
+        <div class="atm-layer al-6">
+            <div style="min-width:30px; font-size:1.2em;">🏔️</div>
+            <div>
+                <strong>Тропосфера</strong> (0–12 км) — <span class="al-info">нижний слой, формируется погода, содержит 80% массы атмосферы. Температура снижается на 6°C каждые 1 000 м</span>
+            </div>
+        </div>
+        <div class="atm-layer al-5">
+            <div style="min-width:30px; font-size:1.2em;">✈️</div>
+            <div>
+                <strong>Стратосфера</strong> (12–50 км) — <span class="al-info">содержит озоновый слой (20–30 км), защищающий от ультрафиолета. Летают самолёты.</span>
+            </div>
+        </div>
+        <div class="atm-layer al-4">
+            <div style="min-width:30px; font-size:1.2em;">🌠</div>
+            <div>
+                <strong>Мезосфера</strong> (50–80 км) — <span class="al-info">самый холодный слой (до −90°C). Здесь сгорают метеориты.</span>
+            </div>
+        </div>
+        <div class="atm-layer al-3">
+            <div style="min-width:30px; font-size:1.2em;">🛸</div>
+            <div>
+                <strong>Термосфера</strong> (80–700 км) — <span class="al-info">сильно разрежена, температура до +1500°C. Здесь полярные сияния. МКС летает здесь.</span>
+            </div>
+        </div>
+        <div class="atm-layer al-2">
+            <div style="min-width:30px; font-size:1.2em;">🚀</div>
+            <div>
+                <strong>Экзосфера</strong> (700+ км) — <span class="al-info">переходная зона в космос. Атомы улетают в открытый космос.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Погода и климат</h3>
+        <table>
+            <tr>
+                <th class="th-geo">Погода</th>
+                <th class="th-geo">Климат</th>
+            </tr>
+            <tr class="tr-geo">
+                <td>Состояние нижнего слоя атмосферы в данном месте в данное время</td>
+                <td>Многолетний режим погоды, характерный для данной местности</td>
+            </tr>
+            <tr class="tr-geo">
+                <td>Изменчива (каждый день разная)</td>
+                <td>Постоянен (определяет зону)</td>
+            </tr>
+            <tr class="tr-geo">
+                <td>Изучает метеорология</td>
+                <td>Изучает климатология</td>
+            </tr>
+        </table>
+
+        <h3>Элементы погоды:</h3>
+        <ul>
+            <li><strong>Температура воздуха</strong> — измеряется термометром в °C</li>
+            <li><strong>Атмосферное давление</strong> — давление воздуха на поверхность,
+            измеряется барометром в мм рт.ст. (норма 760 мм)</li>
+            <li><strong>Ветер</strong> — горизонтальное движение воздуха.
+            Направление (флюгер) + скорость (анемометр)</li>
+            <li><strong>Влажность</strong> — содержание водяного пара в воздухе.
+            Измеряется гигрометром в %</li>
+            <li><strong>Облачность</strong> — степень покрытия неба облаками (в баллах, 0–10)</li>
+            <li><strong>Осадки</strong> — вода в жидком или твёрдом виде.
+            Измеряется осадкомером в мм</li>
+        </ul>
+
+        <h3>Почему температура снижается с высотой?</h3>
+        <p>В тропосфере на каждые <strong>1 000 м подъёма</strong> температура снижается
+        примерно на <strong>6°C</strong> (вертикальный температурный градиент).</p>
+        <p><strong>Пример:</strong> у подножия горы +20°C, высота горы 3 000 м → на вершине:
+        20 − (3 × 6) = 20 − 18 = <strong>+2°C</strong></p>
+
+        <h3>Атмосферное давление и высота:</h3>
+        <p>С подъёмом на каждые <strong>10,5 м</strong> давление падает на <strong>1 мм рт.ст.</strong></p>
+        <p>На высоте 5 500 м давление вдвое меньше, чем у поверхности.</p>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Запомни слои атмосферы:</strong><br>
+        <strong>Т</strong>ро — <strong>С</strong>тра — <strong>М</strong>езо — <strong>Тер</strong>мо — <strong>Эк</strong>зо<br>
+        «<strong>Т</strong>ётя <strong>С</strong>вета <strong>М</strong>очила <strong>Тер</strong>расу <strong>Эк</strong>скаватором»
+    </div>
+
+    <h3>🔷 Климатические пояса Земли</h3>
+    <div class="card-geo">
+        <div class="climate-belt cb-arctic">
+            <div class="cb-icon">🧊</div>
+            <div class="cb-text"><span class="cb-name">Арктический (Антарктический)</span> — у полюсов, t° &lt; −40°C, осадков мало</div>
+        </div>
+        <div class="climate-belt cb-subarct">
+            <div class="cb-icon">🌨️</div>
+            <div class="cb-text"><span class="cb-name">Субарктический (Субантарктический)</span> — холодные лето и зима, тундра</div>
+        </div>
+        <div class="climate-belt cb-temperate">
+            <div class="cb-icon">🌤️</div>
+            <div class="cb-text"><span class="cb-name">Умеренный</span> — 4 сезона, умеренные температуры, большинство России</div>
+        </div>
+        <div class="climate-belt cb-subtrop">
+            <div class="cb-icon">☀️</div>
+            <div class="cb-text"><span class="cb-name">Субтропический</span> — жаркое лето, тёплая зима, Средиземноморье</div>
+        </div>
+        <div class="climate-belt cb-tropical">
+            <div class="cb-icon">🌵</div>
+            <div class="cb-text"><span class="cb-name">Тропический</span> — жарко круглый год, сухой сезон, пустыни и саванны</div>
+        </div>
+        <div class="climate-belt cb-subequat">
+            <div class="cb-icon">🌧️</div>
+            <div class="cb-text"><span class="cb-name">Субэкваториальный</span> — два сезона: дождливый и сухой</div>
+        </div>
+        <div class="climate-belt cb-equator">
+            <div class="cb-icon">🌴</div>
+            <div class="cb-text"><span class="cb-name">Экваториальный</span> — жарко и влажно круглый год, влажные тропические леса</div>
+        </div>
+    </div>
+
+    <div class="warning-box">
+        <p>Климатические пояса симметричны относительно экватора!<br>
+        Экватор → субэкватор → тропики → субтропики → умеренный → субарктика → арктика
+        (одинаково в обоих полушариях)</p>
+    </div>
+</div>
+
+<!-- 7. Биосфера -->
+<div class="card card-geo">
+    <h2>📖 7. Биосфера Земли</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Определение</h3>
+        <p><strong>Биосфера</strong> — оболочка Земли, заселённая живыми организмами
+        и преобразованная ими. Термин ввёл <strong>Э. Зюсс</strong> (1875),
+        учение разработал <strong>В.И. Вернадский</strong> (1926).</p>
+
+        <h3>Границы биосферы:</h3>
+        <ul>
+            <li><strong>Верхняя граница</strong> — в атмосфере, до 20–25 км
+            (озоновый слой — выше нет ультрафиолетовой защиты)</li>
+            <li><strong>Нижняя граница</strong> — в земной коре до 3–4 км,
+            в океане — до дна (11 км — Марианская впадина)</li>
+        </ul>
+
+        <h3>Природные зоны Земли</h3>
+        <p><strong>Природная зона</strong> — территория с однородным климатом,
+        почвами, растительностью и животным миром.</p>
+        <p>Природные зоны сменяются от экватора к полюсам —
+        это называется <strong>широтная зональность</strong>.</p>
+    </div>
+
+    <div class="zone-card zc-1">
+        <strong>🌴 Влажные экваториальные леса (сельва)</strong> —
+        экватор. Жарко + влажно, огромное биоразнообразие,
+        многоярусный лес. Амазония, Конго, Индонезия.
+    </div>
+    <div class="zone-card zc-2">
+        <strong>🦁 Саванны и редколесья</strong> —
+        субэкватор + тропики. Сезонный климат, высокие травы и редкие деревья.
+        Африка, Австралия, Южная Америка.
+    </div>
+    <div class="zone-card zc-3">
+        <strong>🌵 Тропические пустыни</strong> —
+        тропики. Скудные осадки (&lt;250 мм/год), экстремальная жара.
+        Сахара, Аравийская, Австралийская пустыни.
+    </div>
+    <div class="zone-card zc-4">
+        <strong>🌾 Степи и лесостепи</strong> —
+        умеренный пояс. Безлесные пространства, чернозём,
+        богатое разнотравье. Евразия, Северная Америка (прерии).
+    </div>
+    <div class="zone-card zc-3">
+        <strong>🌲 Леса умеренного пояса</strong> —
+        широколиственные и смешанные. Дуб, бук, ель, сосна.
+        Европа, Восточная Азия, Северная Америка.
+    </div>
+    <div class="zone-card zc-2">
+        <strong>🌲 Тайга</strong> —
+        хвойные леса. Ель, сосна, лиственница. Холодное лето.
+        Крупнейшая зона в России, Канаде.
+    </div>
+    <div class="zone-card zc-1">
+        <strong>🦌 Тундра</strong> —
+        субарктика. Вечная мерзлота, мхи и лишайники, суровый климат.
+        Северная Россия, Канада, Скандинавия.
+    </div>
+    <div class="zone-card zc-6">
+        <strong>🧊 Арктические пустыни</strong> —
+        Арктика и Антарктика. Лёд и снег круглый год,
+        жизни почти нет. Гренландия, Антарктида.
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Высотная поясность</h3>
+        <p>В горах природные зоны сменяются снизу вверх так же, как от экватора к полюсу.
+        Это называется <strong>высотная поясность</strong>.</p>
+        <p>Чем выше гора и чем ближе к экватору, тем больше поясов.</p>
+        <p><strong>Пример (Кавказ снизу вверх):</strong>
+        широколиственные леса → смешанные леса → хвойные леса (тайга) →
+        субальпийские луга → альпийские луга → вечные снега.</p>
+
+        <h3>Значение биосферы:</h3>
+        <ul>
+            <li>Создаёт кислород (фотосинтез)</li>
+            <li>Обеспечивает круговорот веществ</li>
+            <li>Формирует почвы</li>
+            <li>Регулирует климат</li>
+            <li>Источник ресурсов для человека</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 8. Население Земли -->
+<div class="card card-geo">
+    <h2>📖 8. Население Земли</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Численность и динамика</h3>
+        <ul>
+            <li>Население Земли: <strong>более 8 миллиардов человек</strong> (2023 г.)</li>
+            <li>В начале XIX века — около 1 млрд</li>
+            <li>В 1960 году — около 3 млрд</li>
+            <li>В 2000 году — около 6 млрд</li>
+            <li>Ежегодный прирост — около 80 млн человек</li>
+        </ul>
+
+        <h3>Ключевые понятия:</h3>
+        <ul>
+            <li><strong>Рождаемость</strong> — число рождений на 1000 чел. в год (‰)</li>
+            <li><strong>Смертность</strong> — число смертей на 1000 чел. в год (‰)</li>
+            <li><strong>Естественный прирост</strong> = Рождаемость − Смертность</li>
+            <li><strong>Миграция</strong> — перемещение людей из одного места в другое</li>
+            <li><strong>Иммиграция</strong> — въезд в страну</li>
+            <li><strong>Эмиграция</strong> — выезд из страны</li>
+            <li><strong>Плотность населения</strong> = Число жителей / Площадь территории (чел/км²)</li>
+        </ul>
+
+        <h3>Самые населённые страны мира:</h3>
+        <table>
+            <tr>
+                <th class="th-geo">Место</th>
+                <th class="th-geo">Страна</th>
+                <th class="th-geo">Население (прибл.)</th>
+            </tr>
+            <tr class="tr-geo"><td>1</td><td>🇮🇳 Индия</td><td>~1,43 млрд</td></tr>
+            <tr class="tr-geo"><td>2</td><td>🇨🇳 Китай</td><td>~1,41 млрд</td></tr>
+            <tr class="tr-geo"><td>3</td><td>🇺🇸 США</td><td>~340 млн</td></tr>
+            <tr class="tr-geo"><td>4</td><td>🇮🇩 Индонезия</td><td>~280 млн</td></tr>
+            <tr class="tr-geo"><td>5</td><td>🇵🇰 Пакистан</td><td>~230 млн</td></tr>
+            <tr class="tr-geo"><td>—</td><td>🇷🇺 Россия</td><td>~145 млн (9-е место)</td></tr>
+        </table>
+
+        <h3>Размещение населения</h3>
+        <p><strong>Неравномерное!</strong> 90% суши заселено очень слабо,
+        основная часть людей сосредоточена в «ойкумене» (обитаемой части Земли).</p>
+        <ul>
+            <li>Средняя плотность по суше: <strong>≈ 55 чел/км²</strong></li>
+            <li>Самые плотно заселённые: Бангладеш (~1100 чел/км²), Нидерланды</li>
+            <li>Самые слабо заселённые: Монголия (~2 чел/км²), Намибия</li>
+        </ul>
+
+        <h3>Где живёт большинство людей?</h3>
+        <ul>
+            <li>На <strong>равнинах и низменностях</strong> (до 500 м над уровнем моря)</li>
+            <li>В <strong>умеренном и субтропическом</strong> климатических поясах</li>
+            <li>Вблизи <strong>морей, рек и озёр</strong></li>
+            <li>В <strong>Азии</strong> — более 60% населения мира</li>
+        </ul>
+
+        <h3>Расы человечества:</h3>
+        <table>
+            <tr>
+                <th class="th-geo">Раса</th>
+                <th class="th-geo">Внешние признаки</th>
+                <th class="th-geo">Основной ареал</th>
+            </tr>
+            <tr class="tr-geo">
+                <td><strong>Европеоидная</strong></td>
+                <td>Светлая/смуглая кожа, прямые/волнистые волосы, узкий нос</td>
+                <td>Европа, Западная Азия, Северная Африка, Америка</td>
+            </tr>
+            <tr class="tr-geo">
+                <td><strong>Монголоидная</strong></td>
+                <td>Жёлтоватая кожа, прямые тёмные волосы, раскосые глаза</td>
+                <td>Азия, коренное население Америки</td>
+            </tr>
+            <tr class="tr-geo">
+                <td><strong>Негроидная</strong></td>
+                <td>Тёмная кожа, курчавые волосы, широкий нос, толстые губы</td>
+                <td>Африка южнее Сахары</td>
+            </tr>
+        </table>
+        <p><em>Все расы биологически равноценны, различия — результат адаптации к климату.</em></p>
+
+        <h3>Народы и языки:</h3>
+        <ul>
+            <li>На Земле около <strong>7 000 языков</strong></li>
+            <li>Самые распространённые: китайский, испанский, английский, хинди, арабский, русский</li>
+            <li>Крупнейшие языковые семьи: индоевропейская, сино-тибетская, нигеро-конголезская</li>
+        </ul>
+
+        <h3>Городское и сельское население:</h3>
+        <ul>
+            <li>Более <strong>55%</strong> населения мира живёт в городах (урбанизация)</li>
+            <li><strong>Урбанизация</strong> — процесс роста городов и городского населения</li>
+            <li>Мегаполисы с населением &gt;10 млн: Токио, Дели, Шанхай, Мехико, Сан-Паулу</li>
+        </ul>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Запомни формулу естественного прироста:</strong><br>
+        <strong>ЕП = Р − С</strong><br>
+        (Естественный Прирост = Рождаемость − Смертность)<br><br>
+        Если ЕП &gt; 0 → население растёт<br>
+        Если ЕП &lt; 0 → население убывает (депопуляция)<br>
+        Если ЕП = 0 → нулевой прирост
+    </div>
+</div>
+
+<!-- Практика: География -->
+<div class="card card-geo">
+    <h2>✏️ Практика: География</h2>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 4.</strong> Ответь на вопросы по Атмосфере:</p>
+        <ol>
+            <li>Какой газ составляет наибольшую долю в атмосфере?</li>
+            <li>В каком слое атмосферы формируется погода?</li>
+            <li>Температура у подножия горы +18°C. Высота вершины 4 500 м.
+            Какова температура на вершине?</li>
+            <li>В каком слое находится озоновый слой и какова его роль?</li>
+            <li>Чем отличаются погода и климат?</li>
+            <li>Назови 3 элемента погоды и приборы для их измерения.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sg1')">👁 Показать решение</button>
+    <div class="solution" id="sg1">
+        <p><strong>1)</strong> Наибольшая доля — <span class="green">азот (78%)</span>.</p>
+        <p><strong>2)</strong> Погода формируется в <span class="green">тропосфере</span>
+        (нижний слой, 0–12 км).</p>
+        <p><strong>3)</strong> Расчёт температуры на вершине:<br>
+        Снижение = 4 500 м / 1 000 м × 6°C = 4,5 × 6 = 27°C<br>
+        Температура на вершине: 18 − 27 = <span class="green">−9°C</span></p>
+        <p><strong>4)</strong> Озоновый слой — в <span class="green">стратосфере</span>
+        (на высоте 20–30 км). Роль: поглощает опасное ультрафиолетовое излучение Солнца,
+        защищая всё живое на Земле.</p>
+        <p><strong>5)</strong> <span class="green">Погода</span> — состояние атмосферы
+        в данном месте и в данный момент времени (изменчива).
+        <span class="green">Климат</span> — многолетний режим погоды, характерный
+        для данной местности (постоянен).</p>
+        <p><strong>6)</strong> Три элемента погоды:<br>
+        • Температура → <span class="green">термометр</span><br>
+        • Атмосферное давление → <span class="green">барометр</span><br>
+        • Направление ветра → <span class="green">флюгер</span></p>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 5.</strong> Природные зоны и биосфера:</p>
+        <ol>
+            <li>Расположи природные зоны в порядке от экватора к полюсу:
+            <em>тундра, саванна, тайга, влажные экваториальные леса, степь, арктическая пустыня.</em></li>
+            <li>Что такое высотная поясность? Чем она похожа на широтную зональность?</li>
+            <li>Кто ввёл термин «биосфера» и кто разработал учение о ней?</li>
+            <li>Назови природную зону, в которой находится большая часть России.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sg2')">👁 Показать решение</button>
+    <div class="solution" id="sg2">
+        <p><strong>1) Порядок от экватора к полюсу:</strong><br>
+        Влажные экваториальные леса →
+        Саванна →
+        Степь →
+        Тайга →
+        Тундра →
+        Арктическая пустыня</p>
+        <p><strong>2) Высотная поясность:</strong><br>
+        Смена природных зон в горах снизу вверх. Похожа на широтную зональность тем,
+        что зоны сменяются в том же порядке (леса → луга → снег), только
+        вертикально, а не горизонтально. Причина та же — изменение температуры.</p>
+        <p><strong>3)</strong> Термин «биосфера» ввёл
+        <span class="green">Эдуард Зюсс</span> (1875),
+        учение разработал <span class="green">В.И. Вернадский</span> (1926).</p>
+        <p><strong>4)</strong> Большая часть России расположена в зоне <span class="green">тайги</span>
+        (хвойные леса — крупнейшая природная зона мира).</p>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 6.</strong> Население Земли — задачи:</p>
+        <ol>
+            <li>Рождаемость в стране 20‰, смертность 12‰.
+            Каков естественный прирост населения?</li>
+            <li>Население страны 50 млн чел., площадь — 500 000 км².
+            Найди плотность населения.</li>
+            <li>В 1960 году население Земли было около 3 млрд.
+            Сейчас — около 8 млрд. На сколько процентов выросло население?</li>
+            <li>Назови три самые населённые страны мира.</li>
+            <li>Что такое урбанизация? Приведи пример страны с высоким
+            уровнем урбанизации.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sg3')">👁 Показать решение</button>
+    <div class="solution" id="sg3">
+        <p><strong>1) Естественный прирост:</strong><br>
+        ЕП = Р − С = 20 − 12 = <span class="green">8‰</span> (8 человек на 1000 жителей в год)</p>
+        <p><strong>2) Плотность населения:</strong><br>
+        Плотность = 50 000 000 / 500 000 = <span class="green">100 чел/км²</span></p>
+        <p><strong>3) Рост населения Земли:</strong><br>
+        Прирост = 8 − 3 = 5 млрд<br>
+        р = 5/3 × 100% ≈ <span class="green">167%</span> (население выросло примерно в 2,7 раза)</p>
+        <p><strong>4) Три самые населённые страны:</strong><br>
+        <span class="green">Индия (~1,43 млрд), Китай (~1,41 млрд), США (~340 млн)</span></p>
+        <p><strong>5) Урбанизация:</strong><br>
+        Процесс роста городов и доли городского населения.
+        Страны с высокой урбанизацией: <span class="green">Япония, США, Германия, Австралия</span>
+        (80–90% городского населения).</p>
+    </div>
+</div>
+
+<!-- Видео: География -->
+<div class="card card-geo">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: География</h3>
+        <a href="https://www.youtube.com/watch?v=FdG6NYQDL8w" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Атмосфера Земли — строение, состав, слои | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=qxCHJFb8LB4" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Климатические пояса Земли — все 7 поясов с примерами</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=w2TjNBbBaVA" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Биосфера и природные зоны Земли | 6 класс (подробно)</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=4kGPm_c3M-g" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Население Земли — численность, расы, размещение | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=OkVLGsLJuFs" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Повторение географии 6 класс — атмосфера, биосфера, население</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: География -->
+<div class="quiz-geo">
+    <h2>🧪 Тест по Географии — 15 вопросов</h2>
+
+    <div class="quiz-question" id="gq1">
+        <p>1. Воздушная оболочка Земли называется:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Гидросфера</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Атмосфера</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Биосфера</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Литосфера</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq2">
+        <p>2. Наибольшую долю в атмосфере составляет:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Кислород (21%)</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Азот (78%)</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Аргон (0,93%)</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Углекислый газ (0,04%)</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq3">
+        <p>3. В каком слое атмосферы формируется погода?</p>
+        <button class="quiz-option" onclick="doGeo(this,true)">А) Тропосфера</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Б) Стратосфера</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Мезосфера</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Термосфера</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq4">
+        <p>4. Температура у подножия горы +12°C. Высота горы 2000 м.
+        Температура на вершине:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) −2°C</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) 0°C</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) +6°C</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) −6°C</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq5">
+        <p>5. Озоновый слой находится в:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Тропосфере</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Стратосфере</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Мезосфере</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Термосфере</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq6">
+        <p>6. Многолетний режим погоды называется:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Погода</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Климат</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Атмосферное давление</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Метеорология</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq7">
+        <p>7. Термин «биосфера» ввёл:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) В.И. Вернадский</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Эдуард Зюсс</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Карл Линней</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Чарльз Дарвин</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq8">
+        <p>8. Какая природная зона расположена непосредственно за экватором
+        (субэкваториальный пояс)?</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Тайга</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Саванна</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Тундра</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Степь</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq9">
+        <p>9. Численность населения Земли в 2023 году составляет примерно:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) 6 млрд</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Б) 7 млрд</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">В) более 8 млрд</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) 10 млрд</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq10">
+        <p>10. Естественный прирост населения = ?</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Рождаемость × Смертность</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Рождаемость − Смертность</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Смертность − Рождаемость</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) (Рождаемость + Смертность) / 2</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq11">
+        <p>11. Самая населённая страна мира в 2023 году:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Китай</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Индия</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) США</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Индонезия</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq12">
+        <p>12. Урбанизация — это:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Движение населения из города в село</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Процесс роста городов и городского населения</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Изучение городской архитектуры</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Снос старых домов</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq13">
+        <p>13. Смена природных зон в горах снизу вверх называется:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Широтная зональность</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Высотная поясность</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Долготная зональность</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Вертикальная миграция</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq14">
+        <p>14. Население страны 30 млн чел., площадь 300 000 км².
+        Плотность населения:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) 10 чел/км²</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) 100 чел/км²</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) 1000 чел/км²</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) 1 чел/км²</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="gq15">
+        <p>15. Крупнейшая природная зона в России:</p>
+        <button class="quiz-option" onclick="doGeo(this,false)">А) Тундра</button>
+        <button class="quiz-option" onclick="doGeo(this,true)">Б) Тайга</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">В) Степь</button>
+        <button class="quiz-option" onclick="doGeo(this,false)">Г) Смешанные леса</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="score-display" id="scoreGeo">
+        <p>Результат по Географии:</p>
+        <div class="snum snum-geo" id="snumGeo">0/15</div>
+        <p id="scomGeo" style="font-size:1.05em; margin-top:8px;"></p>
+    </div>
+    <button class="check-btn cbt-geo" onclick="showGeoScore()">📊 Показать результат</button>
+</div>
+
+<!-- НАВИГАЦИЯ -->
+<div class="nav-buttons">
+    <a href="#" class="nav-btn nb-obs">← История и Биология</a>
+    <a href="#" class="nav-btn nb-geo">Далее: Английский и Литература →</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+    /* ---- Показать/скрыть решение ---- */
+    function toggleSol(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    /* ============ ТЕСТ: Обществознание ============ */
+    let scoreObs = 0, answObs = new Set();
+
+    function doObs(btn, ok) {
+        const q = btn.parentElement;
+        if (answObs.has(q.id)) return;
+        answObs.add(q.id);
+        q.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+        if (ok) {
+            btn.classList.add('correct'); scoreObs++;
+            showFB(q, true, 'doObs');
+        } else {
+            btn.classList.add('wrong');
+            markCorrect(q, 'doObs');
+            showFB(q, false, 'doObs');
+        }
+    }
+
+    function showObsScore() {
+        const d = document.getElementById('scoreObs');
+        d.style.display = 'block';
+        document.getElementById('snumObs').textContent = scoreObs + '/15';
+        setComment(document.getElementById('scomObs'), scoreObs, 15);
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ============ ТЕСТ: География ============ */
+    let scoreGeo = 0, answGeo = new Set();
+
+    function doGeo(btn, ok) {
+        const q = btn.parentElement;
+        if (answGeo.has(q.id)) return;
+        answGeo.add(q.id);
+        q.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+        if (ok) {
+            btn.classList.add('correct'); scoreGeo++;
+            showFB(q, true, 'doGeo');
+        } else {
+            btn.classList.add('wrong');
+            markCorrect(q, 'doGeo');
+            showFB(q, false, 'doGeo');
+        }
+    }
+
+    function showGeoScore() {
+        const d = document.getElementById('scoreGeo');
+        d.style.display = 'block';
+        document.getElementById('snumGeo').textContent = scoreGeo + '/15';
+        setComment(document.getElementById('scomGeo'), scoreGeo, 15);
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ============ Вспомогательные ============ */
+    function markCorrect(q, fnName) {
+        q.querySelectorAll('.quiz-option').forEach(b => {
+            const oc = b.getAttribute('onclick') || '';
+            if (oc.includes(fnName + '(this,true)')) b.classList.add('correct');
+        });
+    }
+
+    function showFB(q, ok) {
+        const fb = q.querySelector('.quiz-feedback');
+        fb.style.display = 'block';
+        if (ok) {
+            fb.style.background = '#c8e6c9';
+            fb.style.color = '#2e7d32';
+            fb.textContent = '✅ Правильно!';
+        } else {
+            fb.style.background = '#ffcdd2';
+            fb.style.color = '#c62828';
+            fb.textContent = '❌ Неправильно. Правильный ответ выделен зелёным.';
+        }
+    }
+
+    function setComment(el, score, max) {
+        const p = score / max;
+        if (p >= 0.93)      { el.textContent = '🏆 Отлично! Ты прекрасно знаешь материал!'; el.style.color = '#2e7d32'; }
+        else if (p >= 0.73) { el.textContent = '👍 Хороший результат! Разбери ошибки.';      el.style.color = '#1565c0'; }
+        else if (p >= 0.53) { el.textContent = '📖 Неплохо, но стоит повторить теорию.';     el.style.color = '#e65100'; }
+        else                { el.textContent = '📚 Нужно ещё раз изучить материал.';          el.style.color = '#c62828'; }
+    }
+</script>
+</body>
+</html>

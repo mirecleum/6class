@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — История и Биология (6 класс)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #228B22 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 920px; margin: 0 auto; }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .header h1 { font-size: 1.9em; margin-bottom: 8px; }
+        .header .subtitle { color: #666; font-size: 1.05em; }
+        .badges { display: flex; justify-content: center; gap: 15px; margin-top: 12px; flex-wrap: wrap; }
+        .badge {
+            display: inline-block;
+            padding: 7px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.95em;
+            color: white;
+        }
+        .badge-hist { background: linear-gradient(135deg, #8B4513, #D2691E); }
+        .badge-bio  { background: linear-gradient(135deg, #228B22, #32CD32); }
+
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        .section-divider span {
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .div-hist { background: linear-gradient(135deg, #8B4513, #D2691E); }
+        .div-bio  { background: linear-gradient(135deg, #228B22, #2ecc71); }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card-hist h2 { color: #8B4513; border-bottom-color: #D2691E; }
+        .card-hist h3 { color: #A0522D; }
+        .card-hist h4 { color: #8B4513; }
+        .card-bio  h2 { color: #228B22; border-bottom-color: #32CD32; }
+        .card-bio  h3 { color: #2e7d32; }
+        .card-bio  h4 { color: #1b5e20; }
+        .card h2 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+            font-size: 1.45em;
+        }
+        .card h3 { margin: 15px 0 8px; font-size: 1.18em; }
+        .card h4 { margin: 10px 0 6px; font-size: 1.03em; }
+        .card p  { line-height: 1.7; margin: 6px 0; }
+        .card ul, .card ol { margin-left: 22px; }
+        .card li { line-height: 1.7; margin-bottom: 5px; }
+
+        /* ---------- Тетрадь ---------- */
+        .notebook {
+            background: #fffde7;
+            border-left: 5px solid #ff9800;
+            padding: 22px 20px 18px;
+            margin: 14px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute; top: -12px; left: 10px;
+            background: #ff9800; color: white;
+            padding: 3px 12px; border-radius: 10px;
+            font-size: 0.78em; font-weight: bold;
+        }
+        .notebook ul, .notebook ol { margin-left: 20px; margin-top: 8px; }
+        .notebook li { margin-bottom: 6px; line-height: 1.7; }
+        .notebook p  { line-height: 1.7; margin: 5px 0; }
+
+        /* ---------- Блоки ---------- */
+        .rule-box {
+            border: 2px solid; border-radius: 10px;
+            padding: 14px; margin: 12px 0;
+        }
+        .rule-hist { background: #fdf3e7; border-color: #D2691E; }
+        .rule-bio  { background: #e8f5e9; border-color: #4caf50; }
+        .rule-box .rtitle { font-weight: bold; font-size: 1.05em; margin-bottom: 7px; }
+        .rule-hist .rtitle { color: #8B4513; }
+        .rule-bio  .rtitle  { color: #2e7d32; }
+        .rule-box p, .rule-box li { line-height: 1.7; }
+        .rule-box ul, .rule-box ol { margin-left: 20px; margin-top: 4px; }
+
+        .example {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 13px 15px; margin: 10px 0;
+            border-radius: 0 8px 8px 0; line-height: 1.8;
+        }
+        .example strong { color: #1565c0; }
+
+        .practice {
+            background: #fce4ec;
+            border-left: 5px solid #e91e63;
+            padding: 22px 20px 18px; margin: 14px 0;
+            border-radius: 0 10px 10px 0; position: relative;
+        }
+        .practice::before {
+            content: "✏️ ПОРЕШАТЬ / ОТВЕТИТЬ";
+            position: absolute; top: -12px; left: 10px;
+            background: #e91e63; color: white;
+            padding: 3px 12px; border-radius: 10px;
+            font-size: 0.78em; font-weight: bold;
+        }
+        .practice ol, .practice ul { margin-left: 20px; margin-top: 8px; }
+        .practice li { margin-bottom: 9px; line-height: 1.7; }
+
+        .solution {
+            background: #f1f8e9; border: 1px dashed #8bc34a;
+            padding: 14px; margin: 4px 0 10px;
+            border-radius: 8px; display: none; line-height: 1.8;
+        }
+        .solution ol, .solution ul { margin-left: 20px; }
+        .solution li { margin-bottom: 7px; }
+        .solution p  { margin-bottom: 8px; }
+
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none; color: #1a5e2a;
+            padding: 8px 18px; border-radius: 20px;
+            cursor: pointer; font-weight: bold;
+            font-size: 0.93em; margin: 5px 0;
+            transition: transform 0.2s;
+        }
+        .solution-btn:hover { transform: scale(1.05); }
+
+        .warning-box {
+            background: #fff3cd; border: 2px solid #ffc107;
+            border-radius: 10px; padding: 13px; margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВАЖНО ЗАПОМНИТЬ:";
+            font-weight: bold; color: #856404;
+            display: block; margin-bottom: 5px;
+        }
+
+        .mnemonic {
+            background: #e0f7fa; border: 2px dashed #00bcd4;
+            border-radius: 10px; padding: 13px; margin: 10px 0;
+            text-align: center; font-size: 1.03em; line-height: 1.8;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ ЛЕГКО:";
+            display: block; font-weight: bold;
+            color: #006064; margin-bottom: 5px;
+        }
+
+        /* ---------- Хронологическая таблица ---------- */
+        .timeline {
+            position: relative;
+            padding: 10px 0;
+            margin: 15px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 90px; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #8B4513, #D2691E);
+            border-radius: 3px;
+        }
+        .tl-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .tl-date {
+            min-width: 80px;
+            text-align: right;
+            font-weight: bold;
+            font-size: 0.88em;
+            color: #8B4513;
+            padding-right: 18px;
+            padding-top: 4px;
+            line-height: 1.4;
+        }
+        .tl-dot {
+            width: 14px; height: 14px;
+            background: #D2691E;
+            border: 3px solid white;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 4px;
+            box-shadow: 0 0 0 2px #D2691E;
+            z-index: 1;
+        }
+        .tl-content {
+            background: #fdf3e7;
+            border: 1px solid #e8c99a;
+            border-radius: 8px;
+            padding: 8px 13px;
+            margin-left: 14px;
+            flex: 1;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        .tl-content strong { color: #8B4513; }
+
+        /* ---------- Схемы Биология ---------- */
+        .bio-scheme {
+            background: #f1f8e9;
+            border: 2px solid #a5d6a7;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 14px 0;
+        }
+        .bio-scheme h4 { color: #2e7d32; margin-bottom: 10px; }
+
+        .scheme-flow {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+            justify-content: center;
+        }
+        .scheme-box {
+            background: white;
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 8px 13px;
+            text-align: center;
+            font-size: 0.92em;
+            font-weight: bold;
+            min-width: 90px;
+        }
+        .sb-green  { border-color: #4caf50; color: #2e7d32; }
+        .sb-blue   { border-color: #2196f3; color: #1565c0; }
+        .sb-orange { border-color: #ff9800; color: #e65100; }
+        .sb-purple { border-color: #9c27b0; color: #6a1b9a; }
+        .sb-red    { border-color: #f44336; color: #c62828; }
+        .scheme-arrow { font-size: 1.4em; color: #888; }
+
+        /* ---------- Классификация растений ---------- */
+        .classif-tree {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 14px 0;
+        }
+        .classif-level {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0 8px 20px;
+        }
+        .classif-item {
+            background: white;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 7px 13px;
+            font-size: 0.9em;
+            color: #1b5e20;
+        }
+        .classif-root {
+            background: #4caf50;
+            color: white;
+            border-radius: 10px;
+            padding: 8px 16px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.93em; }
+        th { color: white; padding: 10px 8px; text-align: left; }
+        .th-hist { background: linear-gradient(135deg, #8B4513, #A0522D); }
+        .th-bio  { background: linear-gradient(135deg, #228B22, #2e7d32); }
+        td { padding: 9px 8px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.6; }
+        tr:nth-child(even) { background: #fafafa; }
+        .tr-hist:hover { background: #fdf3e7; }
+        .tr-bio:hover  { background: #f1f8e9; }
+
+        /* ---------- Видео ---------- */
+        .video-section {
+            background: #fff3e0; padding: 18px;
+            border-radius: 10px; margin: 14px 0;
+        }
+        .video-section h3 { color: #e65100; margin-bottom: 10px; }
+        .video-link {
+            display: flex; align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white; padding: 11px 18px;
+            border-radius: 10px; text-decoration: none;
+            margin: 9px 0; transition: transform 0.2s;
+        }
+        .video-link:hover { transform: translateX(5px); color: white; }
+        .video-link .pi { font-size: 1.4em; margin-right: 10px; }
+
+        /* ---------- Тест ---------- */
+        .quiz-hist {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            border-radius: 15px; padding: 25px; margin: 20px 0;
+        }
+        .quiz-bio {
+            background: linear-gradient(135deg, #228B22, #2e7d32);
+            border-radius: 15px; padding: 25px; margin: 20px 0;
+        }
+        .quiz-hist h2, .quiz-bio h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px; margin-bottom: 15px; font-size: 1.35em;
+        }
+        .quiz-question {
+            background: white; border-radius: 10px;
+            padding: 18px; margin: 13px 0;
+        }
+        .quiz-question p {
+            font-weight: bold; color: #333;
+            margin-bottom: 11px; font-size: 1.02em; line-height: 1.5;
+        }
+        .quiz-option {
+            display: block; width: 100%; text-align: left;
+            padding: 9px 14px; margin: 5px 0;
+            border: 2px solid #e0e0e0; border-radius: 8px;
+            background: white; cursor: pointer; font-size: 0.97em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: #999; background: #f5f5f5; }
+        .quiz-option.correct { background: #c8e6c9; border-color: #4caf50; color: #2e7d32; }
+        .quiz-option.wrong   { background: #ffcdd2; border-color: #f44336; color: #c62828; }
+        .quiz-feedback {
+            margin-top: 9px; padding: 9px;
+            border-radius: 7px; display: none; font-weight: bold;
+        }
+        .score-display {
+            text-align: center; background: white;
+            padding: 22px; border-radius: 14px;
+            margin-top: 14px; display: none;
+        }
+        .score-display .snum { font-size: 2.8em; font-weight: bold; }
+        .snum-hist { color: #8B4513; }
+        .snum-bio  { color: #228B22; }
+        .check-btn {
+            background: white; border: none;
+            padding: 11px 32px; border-radius: 25px;
+            font-size: 1.05em; cursor: pointer;
+            font-weight: bold; margin-top: 14px;
+            transition: transform 0.2s;
+        }
+        .check-btn-hist { color: #8B4513; }
+        .check-btn-bio  { color: #228B22; }
+        .check-btn:hover { transform: scale(1.05); }
+
+        .nav-buttons {
+            display: flex; justify-content: space-between;
+            margin-top: 30px; flex-wrap: wrap; gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block; padding: 12px 24px;
+            background: white; text-decoration: none;
+            border-radius: 25px; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+        .nav-hist { color: #8B4513; }
+        .nav-bio  { color: #228B22; }
+
+        .green  { color: #2e7d32; font-weight: bold; }
+        .brown  { color: #8B4513; font-weight: bold; }
+        .highlight { background: #ffeb3b; padding: 2px 5px; border-radius: 3px; }
+
+        .term-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px; margin: 12px 0;
+        }
+        .term-card {
+            border-radius: 9px; padding: 10px 13px;
+            border: 2px solid;
+        }
+        .tc-hist { background: #fdf3e7; border-color: #D2691E; }
+        .tc-bio  { background: #e8f5e9; border-color: #4caf50; }
+        .term-card .term { font-weight: bold; font-size: 0.95em; }
+        .term-card .tdef { font-size: 0.85em; color: #555; margin-top: 4px; line-height: 1.5; }
+
+        @media(max-width:600px) {
+            .timeline::before { left: 70px; }
+            .tl-date { min-width: 60px; font-size: 0.8em; }
+            .scheme-flow { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <h1>🏰🌿 Неделя 3 — История и Биология</h1>
+    <div class="subtitle">Позднее Средневековье • Жизнедеятельность и классификация растений</div>
+    <div class="badges">
+        <span class="badge badge-hist">⏱ История: 3 часа</span>
+        <span class="badge badge-bio">⏱ Биология: 3 часа</span>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ИСТОРИЯ                                                     -->
+<!-- ============================================================ -->
+<div class="section-divider">
+    <span class="div-hist">🏰 ИСТОРИЯ — Позднее Средневековье. Повторение</span>
+</div>
+
+<!-- 1. Ключевые понятия -->
+<div class="card card-hist">
+    <h2>📖 1. Ключевые термины и понятия Средневековья</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Хронологические рамки</h3>
+        <p><strong>Средние века (Средневековье)</strong> — период истории между Древним миром и Новым временем.</p>
+        <ul>
+            <li><strong>Начало:</strong> 476 г. — падение Западной Римской империи</li>
+            <li><strong>Конец:</strong> 1492 г. — открытие Америки Х. Колумбом (или 1453 г. — падение Константинополя)</li>
+            <li><strong>Раннее Средневековье:</strong> V–X вв.</li>
+            <li><strong>Развитое Средневековье:</strong> XI–XIII вв.</li>
+            <li><strong>Позднее Средневековье:</strong> XIV–XV вв.</li>
+        </ul>
+    </div>
+
+    <div class="term-grid">
+        <div class="term-card tc-hist">
+            <div class="term">Феодализм</div>
+            <div class="tdef">Система, при которой феодалы владеют землёй и зависимыми крестьянами</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Феод</div>
+            <div class="tdef">Земельное владение, пожалованное сеньором вассалу за службу</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Сеньор / Вассал</div>
+            <div class="tdef">Господин / Зависимый рыцарь, получивший феод</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Коммуна</div>
+            <div class="tdef">Самоуправляемый город, купивший права у сеньора</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Цех</div>
+            <div class="tdef">Объединение ремесленников одной специальности</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Гильдия</div>
+            <div class="tdef">Объединение купцов для торговли и защиты интересов</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Крестовые походы</div>
+            <div class="tdef">Военные походы европейцев на Восток (1096–1291)</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Инквизиция</div>
+            <div class="tdef">Церковный суд для борьбы с ересями</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Реконкиста</div>
+            <div class="tdef">Отвоевание Пиренейского п-ва у арабов (718–1492)</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Парламент</div>
+            <div class="tdef">Представительный орган власти (Англия, 1265 г.)</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Столетняя война</div>
+            <div class="tdef">Война Англии и Франции (1337–1453)</div>
+        </div>
+        <div class="term-card tc-hist">
+            <div class="term">Жанна д'Арк</div>
+            <div class="tdef">Народная героиня Франции, возглавила борьбу против англичан</div>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Хронологическая таблица -->
+<div class="card card-hist">
+    <h2>📖 2. Хронологическая таблица — ключевые даты</h2>
+
+    <div class="notebook">
+        <br>
+        <p><em>Выучи эти даты — они чаще всего встречаются в тестах!</em></p>
+    </div>
+
+    <div class="timeline">
+
+        <div class="tl-item">
+            <div class="tl-date">476 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Падение Западной Римской империи</strong> — начало Средневековья.
+                Одоакр сверг последнего императора Ромула Августула.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">768–814 гг.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Правление Карла Великого.</strong> Объединил большую часть Западной Европы.
+                В 800 г. коронован императором.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1054 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Раскол церкви</strong> на католическую (Рим) и православную (Константинополь).
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1066 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Завоевание Англии нормандцами.</strong>
+                Вильгельм Завоеватель победил при Гастингсе. Начало нормандской династии.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1096–1099 гг.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Первый крестовый поход.</strong>
+                Захват Иерусалима (1099). Основание Иерусалимского королевства.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1215 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Великая хартия вольностей</strong> в Англии.
+                Ограничение власти короля, права баронов и церкви.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1265 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Первый английский парламент.</strong>
+                Симон де Монфор созвал представителей сословий.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1291 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Конец крестовых походов.</strong>
+                Падение Акры — последнего оплота крестоносцев.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1302 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Генеральные штаты во Франции</strong> — первый созыв представительного органа трёх сословий.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1337–1453 гг.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Столетняя война</strong> (Англия vs Франция).
+                Причина — спор за французский престол и Гасконь.
+                Итог: победа Франции, объединение страны.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1347–1353 гг.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>«Чёрная смерть»</strong> — эпидемия чумы в Европе.
+                Погибло около 1/3 населения Европы (≈25 млн чел.).
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1358 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Жакерия</strong> — крестьянское восстание во Франции.
+                Причина — тяжёлое положение крестьян в ходе Столетней войны.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1381 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Восстание Уота Тайлера</strong> в Англии.
+                Крестьяне требовали отмены крепостной зависимости.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1429–1431 гг.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Жанна д'Арк</strong> ведёт французские войска.
+                1429 — снятие осады Орлеана. 1431 — сожжена в Руане.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1453 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Падение Константинополя.</strong>
+                Турки-османы взяли столицу Византии. Конец Восточной Римской империи.
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-date">1492 г.</div>
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+                <strong>Открытие Америки Х. Колумбом</strong> — традиционная дата конца Средневековья.
+                Также: завершение Реконкисты в Испании.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mnemonic">
+        <strong>Запомни главные даты Позднего Средневековья:</strong><br>
+        <strong>1337</strong> — началась Столетняя война<br>
+        <strong>1347</strong> — «Чёрная смерть» (чума)<br>
+        <strong>1429</strong> — Жанна д'Арк освобождает Орлеан<br>
+        <strong>1453</strong> — два конца: войны и Византии<br>
+        <strong>1492</strong> — Колумб и конец Средневековья
+    </div>
+</div>
+
+<!-- 3. Позднее Средневековье — основные темы -->
+<div class="card card-hist">
+    <h2>📖 3. Ключевые темы Позднего Средневековья</h2>
+
+    <h3>🔷 Столетняя война (1337–1453)</h3>
+    <div class="notebook">
+        <br>
+        <table>
+            <tr>
+                <th class="th-hist">Причины</th>
+                <th class="th-hist">Основные этапы</th>
+                <th class="th-hist">Итоги</th>
+            </tr>
+            <tr class="tr-hist">
+                <td>
+                    • Спор за французский престол<br>
+                    • Борьба за Гасконь<br>
+                    • Соперничество в торговле
+                </td>
+                <td>
+                    • 1337–1360: успехи Англии (Креси, Пуатье)<br>
+                    • 1360–1415: перемирие<br>
+                    • 1415–1428: снова успехи Англии (Азенкур)<br>
+                    • 1429–1453: перелом — Жанна д'Арк → победа Франции
+                </td>
+                <td>
+                    • Франция победила<br>
+                    • Англия потеряла почти все владения во Франции<br>
+                    • Усилилась королевская власть во Франции<br>
+                    • Появление национального самосознания
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>🔷 Жанна д'Арк</h3>
+    <div class="rule-box rule-hist">
+        <div class="rtitle">📌 Жанна д'Арк (1412–1431) — «Орлеанская дева»</div>
+        <ul>
+            <li>Крестьянская девушка из Лотарингии, слышала «голоса святых»</li>
+            <li>В 1429 г. убедила дофина Карла дать ей армию</li>
+            <li>Сняла осаду Орлеана (май 1429) → переломный момент войны</li>
+            <li>Карл VII коронован в Реймсе (июль 1429)</li>
+            <li>Попала в плен к бургундцам, продана англичанам</li>
+            <li>Осуждена инквизицией как еретичка, сожжена в Руане (1431)</li>
+            <li>В 1456 г. — посмертная реабилитация, в 1920 г. — канонизирована</li>
+        </ul>
+    </div>
+
+    <h3>🔷 «Чёрная смерть» и народные восстания</h3>
+    <div class="notebook">
+        <br>
+        <p><strong>Чума 1347–1353 гг.:</strong> пришла из Азии через Крым. Погибло ~1/3 Европы.
+        Последствия: нехватка рабочих рук → крестьяне получили больше свободы,
+        ускорился переход к денежной ренте.</p>
+        <br>
+        <table>
+            <tr>
+                <th class="th-hist">Восстание</th>
+                <th class="th-hist">Где / Когда</th>
+                <th class="th-hist">Причины</th>
+                <th class="th-hist">Итог</th>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Жакерия</strong></td>
+                <td>Франция, 1358</td>
+                <td>Налоги, грабежи, последствия войны и чумы</td>
+                <td>Подавлено; небольшие уступки крестьянам</td>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Уота Тайлера</strong></td>
+                <td>Англия, 1381</td>
+                <td>Подушный налог, крепостная зависимость</td>
+                <td>Подавлено; Уот Тайлер убит</td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>🔷 Образование централизованных государств</h3>
+    <div class="notebook">
+        <br>
+        <table>
+            <tr>
+                <th class="th-hist">Страна</th>
+                <th class="th-hist">Особенности объединения</th>
+                <th class="th-hist">Итог</th>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Франция</strong></td>
+                <td>Объединение после Столетней войны. Людовик XI победил феодалов.</td>
+                <td>Сильная королевская власть к концу XV в.</td>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Англия</strong></td>
+                <td>Война Алой и Белой розы (1455–1485). Победа Тюдоров.</td>
+                <td>Генрих VII — основатель династии Тюдоров, абсолютная монархия</td>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Испания</strong></td>
+                <td>Реконкиста завершена 1492. Брак Фердинанда и Изабеллы объединил королевства.</td>
+                <td>Единая Испания, открытие Америки</td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>🔷 Падение Константинополя (1453)</h3>
+    <div class="rule-box rule-hist">
+        <div class="rtitle">📌 Падение Константинополя — 29 мая 1453 г.</div>
+        <ul>
+            <li>Турки-османы во главе с Мехмедом II захватили столицу Византии</li>
+            <li>Последний император Константин XI погиб в бою</li>
+            <li><strong>Последствия:</strong></li>
+            <ul>
+                <li>Конец Восточной Римской империи (просуществовала 1123 года!)</li>
+                <li>Турки контролируют торговые пути из Европы в Азию</li>
+                <li>Европейцы ищут новые морские пути → Великие географические открытия</li>
+                <li>Многие учёные из Византии бежали в Италию → толчок для Возрождения</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+
+<!-- 4. Культура Позднего Средневековья -->
+<div class="card card-hist">
+    <h2>📖 4. Культура и наука Средневековья</h2>
+    <div class="notebook">
+        <br>
+        <table>
+            <tr>
+                <th class="th-hist">Сфера</th>
+                <th class="th-hist">Достижения и представители</th>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Литература</strong></td>
+                <td>Данте «Божественная комедия», Петрарка — сонеты, Боккаччо «Декамерон»,
+                Чосер «Кентерберийские рассказы»</td>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Архитектура</strong></td>
+                <td>Готический стиль: Нотр-Дам де Пари, Кёльнский собор.
+                Черты: стрельчатые арки, витражи, устремлённость вверх</td>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Живопись</strong></td>
+                <td>Джотто — реализм в иконописи. Ян ван Эйк — масляные краски.
+                Начало Возрождения в Италии</td>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Наука / Университеты</strong></td>
+                <td>Болонский (1088), Парижский (1215), Оксфордский (1249) университеты.
+                Схоластика — философия на основе богословия. Роджер Бэкон — опытное знание</td>
+            </tr>
+            <tr class="tr-hist">
+                <td><strong>Книгопечатание</strong></td>
+                <td>Иоганн Гутенберг изобрёл книгопечатание (ок. 1450 г.) → распространение знаний</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Практика: История -->
+<div class="card card-hist">
+    <h2>✏️ Практика: История</h2>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 1. Хронологический диктант.</strong>
+        Запиши события в хронологическом порядке и укажи год:</p>
+        <ol>
+            <li>Великая хартия вольностей</li>
+            <li>Падение Западной Римской империи</li>
+            <li>Снятие осады Орлеана Жанной д'Арк</li>
+            <li>Первый крестовый поход</li>
+            <li>Падение Константинополя</li>
+            <li>Начало Столетней войны</li>
+            <li>Открытие Америки Колумбом</li>
+            <li>Эпидемия чумы («Чёрная смерть»)</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sh1')">👁 Показать решение</button>
+    <div class="solution" id="sh1">
+        <p>Правильный хронологический порядок:</p>
+        <ol>
+            <li><strong>476 г.</strong> — Падение Западной Римской империи</li>
+            <li><strong>1096–1099 гг.</strong> — Первый крестовый поход</li>
+            <li><strong>1215 г.</strong> — Великая хартия вольностей</li>
+            <li><strong>1337 г.</strong> — Начало Столетней войны</li>
+            <li><strong>1347–1353 гг.</strong> — Эпидемия чумы («Чёрная смерть»)</li>
+            <li><strong>1429 г.</strong> — Снятие осады Орлеана Жанной д'Арк</li>
+            <li><strong>1453 г.</strong> — Падение Константинополя</li>
+            <li><strong>1492 г.</strong> — Открытие Америки Колумбом</li>
+        </ol>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 2.</strong> Ответь на вопросы кратко (2–3 предложения):</p>
+        <ol>
+            <li>Почему Жанну д'Арк называют «Орлеанской девой»?</li>
+            <li>Каковы последствия падения Константинополя для Европы?</li>
+            <li>Чем Жакерия отличается от восстания Уота Тайлера?</li>
+            <li>Почему Столетняя война закончилась победой Франции?</li>
+            <li>Что такое феодальная лестница? Опиши её ступени.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sh2')">👁 Показать решение</button>
+    <div class="solution" id="sh2">
+        <p><strong>1) Жанна д'Арк — «Орлеанская дева»:</strong><br>
+        Это прозвище она получила после того, как в 1429 г. возглавила французские войска
+        и сняла осаду города Орлеана, который англичане держали несколько месяцев.
+        Этот подвиг стал переломным моментом в Столетней войне.</p>
+
+        <p><strong>2) Последствия падения Константинополя:</strong><br>
+        Турки перекрыли торговые пути из Европы в Азию, что вынудило европейцев искать
+        новые морские пути и привело к эпохе Великих географических открытий.
+        Многие учёные бежали из Византии в Италию, что дало толчок эпохе Возрождения.</p>
+
+        <p><strong>3) Жакерия vs восстание Уота Тайлера:</strong><br>
+        Жакерия (1358) — восстание французских крестьян, вызванное разорением в ходе
+        Столетней войны и чумы. Восстание Уота Тайлера (1381) — английское восстание против
+        подушного налога и крепостной зависимости. Оба подавлены, но восстание в Англии
+        отличалось более чёткими политическими требованиями.</p>
+
+        <p><strong>4) Победа Франции в Столетней войне:</strong><br>
+        Перелом наступил с появлением Жанны д'Арк (1429). Подъём народного духа,
+        коронация Карла VII, применение артиллерии (пушек) против английских замков
+        и внутренние проблемы Англии (война Алой и Белой розы) привели к изгнанию
+        англичан из Франции к 1453 г.</p>
+
+        <p><strong>5) Феодальная лестница (снизу вверх):</strong><br>
+        Крестьяне → Рыцари (мелкие феодалы) → Бароны и графы → Герцоги →
+        Король (верховный сюзерен). Принцип: «Вассал моего вассала — не мой вассал»
+        (кроме Англии). Каждый получал землю (феод) от стоящего выше в обмен на службу.</p>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 3. Соотнеси термин и определение:</strong></p>
+        <div class="two-col" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div>
+                <p><strong>Термины:</strong></p>
+                <ol>
+                    <li>Феод</li>
+                    <li>Инквизиция</li>
+                    <li>Реконкиста</li>
+                    <li>Цех</li>
+                    <li>Коммуна</li>
+                    <li>Схоластика</li>
+                </ol>
+            </div>
+            <div>
+                <p><strong>Определения:</strong></p>
+                <ol type="A">
+                    <li>Философия, основанная на богословии</li>
+                    <li>Самоуправляемый средневековый город</li>
+                    <li>Церковный суд против ересей</li>
+                    <li>Объединение ремесленников</li>
+                    <li>Земельное владение за службу</li>
+                    <li>Освобождение Испании от арабов</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sh3')">👁 Показать решение</button>
+    <div class="solution" id="sh3">
+        <p>1 — Д (Феод — земельное владение за службу)</p>
+        <p>2 — В (Инквизиция — церковный суд против ересей)</p>
+        <p>3 — Е (Реконкиста — освобождение Испании от арабов)</p>
+        <p>4 — Г (Цех — объединение ремесленников)</p>
+        <p>5 — Б (Коммуна — самоуправляемый средневековый город)</p>
+        <p>6 — А (Схоластика — философия, основанная на богословии)</p>
+    </div>
+</div>
+
+<!-- Видео: История -->
+<div class="card card-hist">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: История Средневековья</h3>
+        <a href="https://www.youtube.com/watch?v=UT_kOHDEn6A" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Столетняя война — причины, ход, итоги | 6 класс (кратко)</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=ywB4oPMNF_o" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Жанна д'Арк — история «Орлеанской девы» (подробно)</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=L5jxXRwzMaY" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Падение Константинополя 1453 — конец Средневековья</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=gO_aSVb4BuE" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Феодализм — что это? Феодальная лестница | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=hEwwy4VIkvo" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Повторение Средневековья — все темы за 30 минут</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: История -->
+<div class="quiz-hist">
+    <h2>🧪 Тест по Истории — 15 вопросов</h2>
+
+    <div class="quiz-question" id="hq1">
+        <p>1. Когда пала Западная Римская империя?</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) 395 г.</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) 476 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) 410 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) 500 г.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq2">
+        <p>2. Как называется земельное владение, пожалованное вассалу за службу?</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Аллод</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Феод</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Манор</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Домен</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq3">
+        <p>3. В каком году начался Первый крестовый поход?</p>
+        <button class="quiz-option" onclick="doHist(this,true)">А) 1096 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Б) 1054 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) 1099 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) 1187 г.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq4">
+        <p>4. Великая хартия вольностей была принята в:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) 1265 г.</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) 1215 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) 1302 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) 1381 г.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq5">
+        <p>5. Столетняя война — это война между:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Францией и Германией</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Англией и Францией</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Испанией и Португалией</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Англией и Шотландией</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq6">
+        <p>6. «Орлеанская дева» — это прозвище:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Изабеллы Кастильской</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Жанны д'Арк</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Маргариты Анжуйской</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Бланки Кастильской</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq7">
+        <p>7. «Чёрная смерть» — это название:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Столетней войны</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Б) Крестовых походов</button>
+        <button class="quiz-option" onclick="doHist(this,true)">В) Эпидемии чумы XIV века</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Крестьянских восстаний</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq8">
+        <p>8. Константинополь в 1453 г. захватил:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Тамерлан</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Мехмед II</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Салах ад-Дин</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Чингисхан</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq9">
+        <p>9. Реконкиста — это:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Крестовые походы в Палестину</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Отвоевание Пиренейского полуострова у арабов</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Восстание крестьян в Испании</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Объединение германских земель</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq10">
+        <p>10. Что такое «цех» в Средние века?</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Объединение купцов</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Объединение ремесленников одной специальности</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Городская площадь для торговли</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Рыцарский орден</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq11">
+        <p>11. Книгопечатание изобрёл:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Роджер Бэкон</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Иоганн Гутенберг</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Леонардо да Винчи</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Данте Алигьери</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq12">
+        <p>12. Жакерия — это восстание в:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Англии в 1381 г.</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Франции в 1358 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Германии в 1381 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Италии в 1302 г.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq13">
+        <p>13. Первый английский парламент созван в:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) 1215 г.</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) 1265 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) 1302 г.</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) 1337 г.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq14">
+        <p>14. Традиционная дата конца Средневековья:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) 1453 г. — падение Константинополя</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) 1492 г. — открытие Америки</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) 1517 г. — начало Реформации</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) 1500 г. — условная дата</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="hq15">
+        <p>15. Готический архитектурный стиль отличается:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Круглыми куполами и колоннами</button>
+        <button class="quiz-option" onclick="doHist(this,true)">Б) Стрельчатыми арками, витражами, устремлённостью вверх</button>
+        <button class="quiz-option" onclick="doHist(this,false)">В) Мозаичными полами и арабскими орнаментами</button>
+        <button class="quiz-option" onclick="doHist(this,false)">Г) Деревянными срубами и резьбой</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="score-display" id="scoreHist">
+        <p>Результат по Истории:</p>
+        <div class="snum snum-hist" id="snumHist">0/15</div>
+        <p id="scomHist" style="font-size:1.05em; margin-top:8px;"></p>
+    </div>
+    <button class="check-btn check-btn-hist" onclick="showHistScore()">📊 Показать результат</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  БИОЛОГИЯ                                                    -->
+<!-- ============================================================ -->
+<div class="section-divider">
+    <span class="div-bio">🌿 БИОЛОГИЯ — Жизнедеятельность и классификация растений</span>
+</div>
+
+<!-- 5. Жизнедеятельность растений -->
+<div class="card card-bio">
+    <h2>📖 5. Питание растений</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Два вида питания растений</h3>
+        <table>
+            <tr>
+                <th class="th-bio">Вид питания</th>
+                <th class="th-bio">Где происходит</th>
+                <th class="th-bio">Что поглощается</th>
+                <th class="th-bio">Что образуется</th>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Воздушное (фотосинтез)</strong></td>
+                <td>Листья (хлоропласты)</td>
+                <td>CO₂ + H₂O + свет</td>
+                <td>Глюкоза (C₆H₁₂O₆) + O₂</td>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Почвенное (минеральное)</strong></td>
+                <td>Корень (корневые волоски)</td>
+                <td>Вода + минеральные соли</td>
+                <td>Поступают в растение</td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>🌱 Фотосинтез — подробно</h3>
+    <div class="bio-scheme">
+        <h4>Схема фотосинтеза</h4>
+        <div class="scheme-flow">
+            <div class="scheme-box sb-blue">CO₂<br><small>(из воздуха)</small></div>
+            <div class="scheme-arrow">+</div>
+            <div class="scheme-box sb-blue">H₂O<br><small>(из почвы)</small></div>
+            <div class="scheme-arrow">+</div>
+            <div class="scheme-box sb-orange">☀️ Свет<br><small>(энергия)</small></div>
+            <div class="scheme-arrow">→</div>
+            <div class="scheme-box sb-green">Глюкоза<br><small>(органика)</small></div>
+            <div class="scheme-arrow">+</div>
+            <div class="scheme-box sb-green">O₂<br><small>(в атмосферу)</small></div>
+        </div>
+        <p style="font-size:0.93em; color:#555; margin-top:8px; text-align:center;">
+            <strong>Уравнение:</strong>
+            6CO₂ + 6H₂O + свет → C₆H₁₂O₆ + 6O₂
+        </p>
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Условия фотосинтеза:</h3>
+        <ul>
+            <li><strong>Свет</strong> (хлорофилл поглощает световую энергию)</li>
+            <li><strong>Вода</strong> (поступает через корни и стебель)</li>
+            <li><strong>Углекислый газ</strong> (поступает через устьица листьев)</li>
+            <li><strong>Хлоропласты</strong> (органоиды с хлорофиллом)</li>
+        </ul>
+
+        <h3>Значение фотосинтеза:</h3>
+        <ul>
+            <li>Источник органических веществ (пища для всех живых существ)</li>
+            <li>Поддержание состава атмосферы (выделение O₂)</li>
+            <li>Запасание солнечной энергии в химических связях</li>
+        </ul>
+
+        <h3>Минеральное (почвенное) питание:</h3>
+        <ul>
+            <li>Корни поглощают воду и растворённые соли через <strong>корневые волоски</strong></li>
+            <li>Важнейшие элементы: <strong>азот (N)</strong> — рост листьев,
+                <strong>фосфор (P)</strong> — развитие корней и плодов,
+                <strong>калий (K)</strong> — устойчивость к болезням</li>
+            <li>При недостатке азота — листья желтеют, рост замедляется</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <p><strong>Фотосинтез происходит ТОЛЬКО на свету!</strong></p>
+        <p>Дыхание происходит <strong>всегда</strong> — и днём, и ночью.</p>
+        <p>Фотосинтез — в хлоропластах. Дыхание — в митохондриях.</p>
+    </div>
+</div>
+
+<!-- 6. Дыхание растений -->
+<div class="card card-bio">
+    <h2>📖 6. Дыхание растений</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Что такое дыхание растений?</h3>
+        <p><strong>Дыхание</strong> — процесс расщепления органических веществ с выделением
+        энергии, необходимой для жизнедеятельности.</p>
+
+        <div class="bio-scheme">
+            <h4>Схема дыхания</h4>
+            <div class="scheme-flow">
+                <div class="scheme-box sb-orange">Глюкоза<br><small>(органика)</small></div>
+                <div class="scheme-arrow">+</div>
+                <div class="scheme-box sb-blue">O₂<br><small>(кислород)</small></div>
+                <div class="scheme-arrow">→</div>
+                <div class="scheme-box sb-red">CO₂<br><small>(углекислый газ)</small></div>
+                <div class="scheme-arrow">+</div>
+                <div class="scheme-box sb-blue">H₂O<br><small>(вода)</small></div>
+                <div class="scheme-arrow">+</div>
+                <div class="scheme-box sb-orange">⚡ Энергия</div>
+            </div>
+            <p style="font-size:0.93em; color:#555; text-align:center; margin-top:8px;">
+                <strong>Уравнение:</strong> C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + энергия
+            </p>
+        </div>
+
+        <h3>Сравнение фотосинтеза и дыхания:</h3>
+        <table>
+            <tr>
+                <th class="th-bio">Признак</th>
+                <th class="th-bio">Фотосинтез</th>
+                <th class="th-bio">Дыхание</th>
+            </tr>
+            <tr class="tr-bio">
+                <td>Когда</td>
+                <td>Только на свету</td>
+                <td>Всегда (днём и ночью)</td>
+            </tr>
+            <tr class="tr-bio">
+                <td>Органоиды</td>
+                <td>Хлоропласты</td>
+                <td>Митохондрии</td>
+            </tr>
+            <tr class="tr-bio">
+                <td>Поглощает</td>
+                <td>CO₂ и H₂O</td>
+                <td>O₂ и органику</td>
+            </tr>
+            <tr class="tr-bio">
+                <td>Выделяет</td>
+                <td>O₂ и органику (глюкозу)</td>
+                <td>CO₂, H₂O и энергию</td>
+            </tr>
+            <tr class="tr-bio">
+                <td>Где</td>
+                <td>В основном в листьях</td>
+                <td>Во всех клетках</td>
+            </tr>
+            <tr class="tr-bio">
+                <td>Суть</td>
+                <td>Создание органики (синтез)</td>
+                <td>Расщепление органики (распад)</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Как не перепутать фотосинтез и дыхание?</strong><br>
+        <strong>ФОТО</strong>синтез = <strong>СВЕТ</strong> → глюкоза + O₂ выделяется<br>
+        <strong>ДЫ</strong>хание = <strong>ДЫ</strong>шит всегда, O₂ поглощает<br><br>
+        Фотосинтез — это «завод», который ПРОИЗВОДИТ.<br>
+        Дыхание — это «мотор», который ПОТРЕБЛЯЕТ.
+    </div>
+</div>
+
+<!-- 7. Размножение растений -->
+<div class="card card-bio">
+    <h2>📖 7. Размножение растений</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Два основных способа размножения:</h3>
+
+        <div class="bio-scheme">
+            <h4>Классификация способов размножения растений</h4>
+            <div class="scheme-flow" style="justify-content:flex-start; gap:15px;">
+                <div class="scheme-box sb-green" style="min-width:130px;">
+                    РАЗМНОЖЕНИЕ<br>РАСТЕНИЙ
+                </div>
+                <div class="scheme-arrow">→</div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <div class="scheme-box sb-blue" style="min-width:220px;">
+                        ПОЛОВОЕ<br>
+                        <small>(с участием гамет)</small>
+                    </div>
+                    <div class="scheme-box sb-orange" style="min-width:220px;">
+                        БЕСПОЛОЕ<br>
+                        <small>(без участия гамет)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Половое размножение (семенное):</h3>
+        <ul>
+            <li>Участвуют <strong>гаметы</strong> — мужские (пыльца) и женские (яйцеклетки)</li>
+            <li>Происходит <strong>опыление</strong> → оплодотворение → образование семени → плода</li>
+            <li>Типы опыления: <strong>ветром</strong> (берёза, дуб, злаки),
+                <strong>насекомыми</strong> (яблоня, вишня, клевер)</li>
+        </ul>
+
+        <h3>Бесполое размножение:</h3>
+        <table>
+            <tr>
+                <th class="th-bio">Способ</th>
+                <th class="th-bio">Что используется</th>
+                <th class="th-bio">Примеры</th>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Вегетативное</strong></td>
+                <td>Части вегетативных органов</td>
+                <td>Черенки (роза, тополь), усы (клубника), луковицы (лук, тюльпан), клубни (картофель), корневища (пырей, ирис)</td>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Спорами</strong></td>
+                <td>Споры (одноклеточные)</td>
+                <td>Мхи, папоротники, хвощи, плауны</td>
+            </tr>
+        </table>
+
+        <h3>Двойное оплодотворение (у цветковых):</h3>
+        <ul>
+            <li>Открыл <strong>С.Г. Навашин</strong> в 1898 году</li>
+            <li>Один спермий + яйцеклетка → <strong>зародыш (2n)</strong></li>
+            <li>Второй спермий + центральная клетка → <strong>эндосперм (3n)</strong></li>
+            <li>Эндосперм — питательная ткань для зародыша</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 8. Классификация растений -->
+<div class="card card-bio">
+    <h2>📖 8. Классификация растений</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Систематика растений — основные таксоны:</h3>
+        <p>Царство → Отдел → Класс → Порядок → Семейство → Род → Вид</p>
+    </div>
+
+    <div class="classif-tree">
+        <div class="classif-root">🌿 ЦАРСТВО РАСТЕНИЯ</div>
+        <div style="margin-left:20px; margin-top:8px;">
+
+            <div style="margin-bottom:12px;">
+                <div class="classif-root" style="background:#81c784; font-size:0.9em;">
+                    Отдел: Водоросли (низшие растения)
+                </div>
+                <div class="classif-level">
+                    <div class="classif-item">Зелёные водоросли (хлорелла, улотрикс, спирогира)</div>
+                    <div class="classif-item">Красные водоросли (ламинария)</div>
+                    <div class="classif-item">Бурые водоросли</div>
+                </div>
+                <div style="font-size:0.85em; color:#555; margin-left:10px;">
+                    Особенность: нет тканей и органов, живут в воде
+                </div>
+            </div>
+
+            <div style="margin-bottom:12px;">
+                <div class="classif-root" style="background:#66bb6a; font-size:0.9em;">
+                    Отдел: Мохообразные
+                </div>
+                <div class="classif-level">
+                    <div class="classif-item">Печёночные мхи (маршанция)</div>
+                    <div class="classif-item">Листостебельные мхи (кукушкин лён, сфагнум)</div>
+                </div>
+                <div style="font-size:0.85em; color:#555; margin-left:10px;">
+                    Особенность: нет корней (ризоиды), размножаются спорами, влажные места
+                </div>
+            </div>
+
+            <div style="margin-bottom:12px;">
+                <div class="classif-root" style="background:#4caf50; font-size:0.9em;">
+                    Отделы: Плауны, Хвощи, Папоротники (споровые сосудистые)
+                </div>
+                <div class="classif-level">
+                    <div class="classif-item">Плаун булавовидный</div>
+                    <div class="classif-item">Хвощ полевой</div>
+                    <div class="classif-item">Папоротник щитовник</div>
+                    <div class="classif-item">Орляк обыкновенный</div>
+                </div>
+                <div style="font-size:0.85em; color:#555; margin-left:10px;">
+                    Особенность: есть корни, стебель, листья; размножаются спорами
+                </div>
+            </div>
+
+            <div style="margin-bottom:12px;">
+                <div class="classif-root" style="background:#388e3c; font-size:0.9em;">
+                    Отдел: Голосеменные (семенные, без плода)
+                </div>
+                <div class="classif-level">
+                    <div class="classif-item">Сосна обыкновенная</div>
+                    <div class="classif-item">Ель европейская</div>
+                    <div class="classif-item">Пихта сибирская</div>
+                    <div class="classif-item">Лиственница</div>
+                    <div class="classif-item">Можжевельник</div>
+                </div>
+                <div style="font-size:0.85em; color:#555; margin-left:10px;">
+                    Особенность: семена НЕ защищены плодом, лежат открыто на чешуях шишки
+                </div>
+            </div>
+
+            <div style="margin-bottom:12px;">
+                <div class="classif-root" style="background:#1b5e20; font-size:0.9em;">
+                    Отдел: Покрытосеменные (цветковые) — самый большой отдел!
+                </div>
+                <div class="classif-level">
+                    <div class="classif-item"><strong>Класс Однодольные:</strong><br>
+                    1 семядоля, параллельные жилки, мочковатый корень.<br>
+                    Примеры: пшеница, рожь, тюльпан, лук, кукуруза</div>
+                    <div class="classif-item"><strong>Класс Двудольные:</strong><br>
+                    2 семядоли, сетчатые жилки, стержневой корень.<br>
+                    Примеры: роза, яблоня, дуб, картофель, подсолнух</div>
+                </div>
+                <div style="font-size:0.85em; color:#555; margin-left:10px;">
+                    Особенность: семена защищены плодом, есть цветки, опыляются насекомыми/ветром
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Главные семейства двудольных:</h3>
+        <table>
+            <tr>
+                <th class="th-bio">Семейство</th>
+                <th class="th-bio">Формула цветка</th>
+                <th class="th-bio">Плод</th>
+                <th class="th-bio">Примеры</th>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Крестоцветные (Капустные)</strong></td>
+                <td>4 лепестка, 4 чашелистика, 6 тычинок</td>
+                <td>Стручок, стручочек</td>
+                <td>Капуста, редька, горчица, пастушья сумка</td>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Бобовые</strong></td>
+                <td>5 лепестков (мотылёк), 10 тычинок</td>
+                <td>Боб</td>
+                <td>Горох, фасоль, клевер, акация, соя</td>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Розоцветные</strong></td>
+                <td>5 лепестков, 5 чашелистиков, много тычинок</td>
+                <td>Различные (яблоко, костянка, многоорешек)</td>
+                <td>Яблоня, вишня, роза, земляника, шиповник</td>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Паслёновые</strong></td>
+                <td>5 сросшихся лепестков, 5 тычинок</td>
+                <td>Ягода, коробочка</td>
+                <td>Картофель, томат, перец, табак, белена</td>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Сложноцветные (Астровые)</strong></td>
+                <td>Соцветие-корзинка</td>
+                <td>Семянка с хохолком</td>
+                <td>Подсолнух, ромашка, одуванчик, хризантема</td>
+            </tr>
+        </table>
+
+        <h3>Главные семейства однодольных:</h3>
+        <table>
+            <tr>
+                <th class="th-bio">Семейство</th>
+                <th class="th-bio">Особенности</th>
+                <th class="th-bio">Примеры</th>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Злаки (Мятликовые)</strong></td>
+                <td>Полый стебель (соломина), соцветие — колос или метёлка, плод — зерновка</td>
+                <td>Пшеница, рожь, ячмень, кукуруза, бамбук</td>
+            </tr>
+            <tr class="tr-bio">
+                <td><strong>Лилейные</strong></td>
+                <td>Луковица, параллельные жилки, 6 листочков околоцветника</td>
+                <td>Тюльпан, лилия, ландыш, лук, чеснок</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Как запомнить однодольные и двудольные?</strong><br>
+        <strong>ОДНО</strong>дольные — <strong>ОДНА</strong> семядоля, жилки <strong>ПАРАЛЛЕЛЬНЫЕ</strong>,<br>
+        корень <strong>МОЧКОватый</strong> (как «мочка» уха).<br><br>
+        <strong>ДВУ</strong>дольные — <strong>ДВЕ</strong> семядоли, жилки <strong>СЕТЧАТЫЕ</strong>,<br>
+        корень <strong>СТЕРЖНЕВОЙ</strong> (как «стержень» ручки).
+    </div>
+</div>
+
+<!-- Практика: Биология -->
+<div class="card card-bio">
+    <h2>✏️ Практика: Биология</h2>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 4.</strong> Заполни таблицу сравнения фотосинтеза и дыхания:</p>
+        <table>
+            <tr>
+                <th class="th-bio">Признак</th>
+                <th class="th-bio">Фотосинтез</th>
+                <th class="th-bio">Дыхание</th>
+            </tr>
+            <tr>
+                <td>Условия</td><td>?</td><td>?</td>
+            </tr>
+            <tr>
+                <td>Что поглощается</td><td>?</td><td>?</td>
+            </tr>
+            <tr>
+                <td>Что выделяется</td><td>?</td><td>?</td>
+            </tr>
+            <tr>
+                <td>Место в клетке</td><td>?</td><td>?</td>
+            </tr>
+            <tr>
+                <td>Значение</td><td>?</td><td>?</td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sb1')">👁 Показать решение</button>
+    <div class="solution" id="sb1">
+        <table>
+            <tr>
+                <th class="th-bio">Признак</th>
+                <th class="th-bio">Фотосинтез</th>
+                <th class="th-bio">Дыхание</th>
+            </tr>
+            <tr>
+                <td>Условия</td>
+                <td class="green">Только на свету</td>
+                <td class="green">Всегда (днём и ночью)</td>
+            </tr>
+            <tr>
+                <td>Что поглощается</td>
+                <td class="green">CO₂ и H₂O</td>
+                <td class="green">O₂ и органика (глюкоза)</td>
+            </tr>
+            <tr>
+                <td>Что выделяется</td>
+                <td class="green">O₂ и глюкоза</td>
+                <td class="green">CO₂, H₂O, энергия</td>
+            </tr>
+            <tr>
+                <td>Место в клетке</td>
+                <td class="green">Хлоропласты</td>
+                <td class="green">Митохондрии</td>
+            </tr>
+            <tr>
+                <td>Значение</td>
+                <td class="green">Образование органики, выделение O₂ в атмосферу</td>
+                <td class="green">Обеспечение клеток энергией для жизни</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 5.</strong> Определи отдел растений по описанию:</p>
+        <ol>
+            <li>Нет корней (есть ризоиды), нет проводящей системы, размножаются спорами,
+            любят влагу.</li>
+            <li>Семена лежат открыто на чешуях шишки, плода нет,
+            большинство вечнозелёные.</li>
+            <li>Нет тканей и органов, тело — слоевище (таллом), живут в воде.</li>
+            <li>Семена в плоде, есть цветок, самый многочисленный отдел растений.</li>
+            <li>Есть корни, стебель, листья, размножаются спорами,
+            листья называются вайями.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sb2')">👁 Показать решение</button>
+    <div class="solution" id="sb2">
+        <ol>
+            <li><span class="green">Мохообразные</span> (нет корней, ризоиды, споры, влага)</li>
+            <li><span class="green">Голосеменные</span> (семена на шишке, без плода)</li>
+            <li><span class="green">Водоросли</span> (нет органов, таллом, водная среда)</li>
+            <li><span class="green">Покрытосеменные (Цветковые)</span> (семена в плоде, цветок)</li>
+            <li><span class="green">Папоротникообразные</span> (вайи = листья папоротника, споры)</li>
+        </ol>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 6.</strong> Определи класс (однодольные или двудольные) и семейство:</p>
+        <ol>
+            <li>Пшеница: стебель-соломина, плод — зерновка, жилки параллельные.</li>
+            <li>Картофель: плод — ягода, 5 сросшихся лепестков, 2 семядоли.</li>
+            <li>Яблоня: плод — яблоко, 5 лепестков, сетчатые жилки.</li>
+            <li>Подсолнух: соцветие-корзинка, плод — семянка, 2 семядоли.</li>
+            <li>Горох: плод — боб, мотыльковый цветок, 10 тычинок.</li>
+            <li>Тюльпан: луковица, 6 листочков околоцветника, параллельные жилки.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sb3')">👁 Показать решение</button>
+    <div class="solution" id="sb3">
+        <ol>
+            <li>Пшеница: <span class="green">Однодольные → Семейство Злаки (Мятликовые)</span></li>
+            <li>Картофель: <span class="green">Двудольные → Семейство Паслёновые</span></li>
+            <li>Яблоня: <span class="green">Двудольные → Семейство Розоцветные</span></li>
+            <li>Подсолнух: <span class="green">Двудольные → Семейство Сложноцветные (Астровые)</span></li>
+            <li>Горох: <span class="green">Двудольные → Семейство Бобовые</span></li>
+            <li>Тюльпан: <span class="green">Однодольные → Семейство Лилейные</span></li>
+        </ol>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 7.</strong> Ответь на вопросы:</p>
+        <ol>
+            <li>Что такое двойное оплодотворение и кто его открыл?</li>
+            <li>Какие органы растения участвуют в почвенном питании?</li>
+            <li>Почему нельзя держать много комнатных растений в спальне ночью?</li>
+            <li>Чем отличается вегетативное размножение от семенного?</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sb4')">👁 Показать решение</button>
+    <div class="solution" id="sb4">
+        <p><strong>1) Двойное оплодотворение:</strong><br>
+        Открыл С.Г. Навашин (1898). У цветковых растений пыльцевая трубка доставляет два спермия:
+        первый оплодотворяет яйцеклетку → зародыш (2n),
+        второй оплодотворяет центральную клетку → эндосперм (3n, питательная ткань).
+        Это уникальная особенность покрытосеменных.</p>
+
+        <p><strong>2) Органы почвенного питания:</strong><br>
+        <span class="green">Корень</span> и особенно <strong>корневые волоски</strong> —
+        тонкие выросты клеток корневой зоны всасывания, которые многократно увеличивают
+        площадь поглощения воды и минеральных солей.</p>
+
+        <p><strong>3) Растения в спальне ночью:</strong><br>
+        Ночью фотосинтез НЕ идёт (нет света), а дыхание продолжается.
+        При дыхании растения поглощают O₂ и выделяют CO₂.
+        Много растений в закрытой спальне повышают концентрацию CO₂ в воздухе,
+        что ухудшает качество воздуха. Днём растения компенсируют это фотосинтезом.</p>
+
+        <p><strong>4) Вегетативное vs семенное размножение:</strong><br>
+        <strong>Вегетативное</strong>: происходит без участия половых клеток, из частей
+        вегетативных органов (черенки, усы, луковицы). Потомство генетически идентично
+        родителю. Быстрее, но нет генетического разнообразия.<br>
+        <strong>Семенное (половое)</strong>: участвуют гаметы, семена содержат зародыш,
+        обеспечивают генетическое разнообразие, расселение на большие расстояния.</p>
+    </div>
+</div>
+
+<!-- Видео: Биология -->
+<div class="card card-bio">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: Биология растений</h3>
+        <a href="https://www.youtube.com/watch?v=GKgN9LRs4-0" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Фотосинтез — что это, условия, значение | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=2Xt8M9R3zFc" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Дыхание растений — сравнение с фотосинтезом</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=bvf2HUe1S6M" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Размножение растений — половое и бесполое | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=Kw0Q9C4YrEU" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Классификация растений — все отделы за 15 минут</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=3v_jXW9QHSE" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Семейства цветковых растений — однодольные и двудольные</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: Биология -->
+<div class="quiz-bio">
+    <h2>🧪 Тест по Биологии — 15 вопросов</h2>
+
+    <div class="quiz-question" id="bq1">
+        <p>1. В каком органоиде клетки происходит фотосинтез?</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Митохондрия</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Хлоропласт</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Ядро</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Вакуоль</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq2">
+        <p>2. Что выделяется в атмосферу при фотосинтезе?</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Углекислый газ</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Кислород</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Азот</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Водород</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq3">
+        <p>3. При дыхании растения поглощают:</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Углекислый газ и выделяют кислород</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Кислород и выделяют углекислый газ</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Свет и воду</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Глюкозу из почвы</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq4">
+        <p>4. Как называются части корня, поглощающие воду и соли?</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Корневой чехлик</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Корневые волоски</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Ризоиды</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Боковые корни</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq5">
+        <p>5. Двойное оплодотворение открыл:</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Карл Линней</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) С.Г. Навашин</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Чарльз Дарвин</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Грегор Мендель</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq6">
+        <p>6. У каких растений НЕТ корней, а есть ризоиды?</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Папоротники</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Мхи</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Хвощи</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Голосеменные</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq7">
+        <p>7. Семена голосеменных:</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Заключены в плод</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Лежат открыто на чешуях шишки</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Образуются в спорангиях</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Находятся в луковице</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq8">
+        <p>8. Однодольные растения отличаются от двудольных:</p>
+        <button class="quiz-option" onclick="doHist(this,false)">А) Наличием цветка</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Одной семядолей, параллельными жилками, мочковатым корнем</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Только отсутствием плода</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Размножением спорами</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq9">
+        <p>9. К семейству Бобовые относится:</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Картофель</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Б) Пшеница</button>
+        <button class="quiz-option" onclick="doBio(this,true)">В) Горох</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Яблоня</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq10">
+        <p>10. Соцветие-корзинка характерно для семейства:</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Розоцветные</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Б) Крестоцветные</button>
+        <button class="quiz-option" onclick="doBio(this,true)">В) Сложноцветные (Астровые)</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Паслёновые</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq11">
+        <p>11. Картофель размножается вегетативно с помощью:</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Черенков</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Б) Усов</button>
+        <button class="quiz-option" onclick="doBio(this,true)">В) Клубней</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Луковиц</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq12">
+        <p>12. Какой газ растения поглощают при фотосинтезе из воздуха?</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Кислород</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Углекислый газ (CO₂)</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Азот</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Водяной пар</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq13">
+        <p>13. Сфагнум — это представитель:</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Папоротников</button>
+        <button class="quiz-option" onclick="doBio(this,true)">Б) Мохообразных</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Водорослей</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Хвощей</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq14">
+        <p>14. Плод «зерновка» характерен для семейства:</p>
+        <button class="quiz-option" onclick="doBio(this,true)">А) Злаки (Мятликовые)</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Б) Лилейные</button>
+        <button class="quiz-option" onclick="doBio(this,false)">В) Бобовые</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Крестоцветные</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="bq15">
+        <p>15. В клетках каких органов растения происходит фотосинтез?</p>
+        <button class="quiz-option" onclick="doBio(this,false)">А) Только в цветках</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Б) Только в корнях</button>
+        <button class="quiz-option" onclick="doBio(this,true)">В) Во всех зелёных органах (листья, стебли, незрелые плоды)</button>
+        <button class="quiz-option" onclick="doBio(this,false)">Г) Только в семенах</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="score-display" id="scoreBio">
+        <p>Результат по Биологии:</p>
+        <div class="snum snum-bio" id="snumBio">0/15</div>
+        <p id="scomBio" style="font-size:1.05em; margin-top:8px;"></p>
+    </div>
+    <button class="check-btn check-btn-bio" onclick="showBioScore()">📊 Показать результат</button>
+</div>
+
+<!-- НАВИГАЦИЯ -->
+<div class="nav-buttons">
+    <a href="#" class="nav-btn nav-hist">← Математика (Проценты и Диаграммы)</a>
+    <a href="#" class="nav-btn nav-bio">Далее: Обществознание и География →</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+    /* ---- Показать/скрыть решение ---- */
+    function toggleSol(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    /* ---- Тест История ---- */
+    let scoreHist = 0;
+    let answHist  = new Set();
+
+    function doHist(btn, isCorrect) {
+        const q   = btn.parentElement;
+        const qId = q.id;
+        if (answHist.has(qId)) return;
+        answHist.add(qId);
+        q.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+        if (isCorrect) {
+            btn.classList.add('correct');
+            scoreHist++;
+            showFB(q, true);
+        } else {
+            btn.classList.add('wrong');
+            q.querySelectorAll('.quiz-option').forEach(b => {
+                if (b.getAttribute('onclick') && b.getAttribute('onclick').includes('doHist(this,true)'))
+                    b.classList.add('correct');
+            });
+            showFB(q, false);
+        }
+    }
+
+    function showHistScore() {
+        const d = document.getElementById('scoreHist');
+        d.style.display = 'block';
+        document.getElementById('snumHist').textContent = scoreHist + '/15';
+        const c = document.getElementById('scomHist');
+        setComment(c, scoreHist, 15);
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ---- Тест Биология ---- */
+    let scoreBio = 0;
+    let answBio  = new Set();
+
+    function doBio(btn, isCorrect) {
+        const q   = btn.parentElement;
+        const qId = q.id;
+        if (answBio.has(qId)) return;
+        answBio.add(qId);
+        q.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+        if (isCorrect) {
+            btn.classList.add('correct');
+            scoreBio++;
+            showFB(q, true);
+        } else {
+            btn.classList.add('wrong');
+            q.querySelectorAll('.quiz-option').forEach(b => {
+                if (b.getAttribute('onclick') && b.getAttribute('onclick').includes('doBio(this,true)'))
+                    b.classList.add('correct');
+            });
+            showFB(q, false);
+        }
+    }
+
+    function showBioScore() {
+        const d = document.getElementById('scoreBio');
+        d.style.display = 'block';
+        document.getElementById('snumBio').textContent = scoreBio + '/15';
+        const c = document.getElementById('scomBio');
+        setComment(c, scoreBio, 15);
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ---- Общие вспомогательные ---- */
+    function showFB(q, ok) {
+        const fb = q.querySelector('.quiz-feedback');
+        fb.style.display = 'block';
+        if (ok) {
+            fb.style.background = '#c8e6c9';
+            fb.style.color = '#2e7d32';
+            fb.textContent = '✅ Правильно!';
+        } else {
+            fb.style.background = '#ffcdd2';
+            fb.style.color = '#c62828';
+            fb.textContent = '❌ Неправильно. Правильный ответ выделен зелёным.';
+        }
+    }
+
+    function setComment(el, score, max) {
+        const pct = score / max;
+        if (pct >= 0.93) {
+            el.textContent = '🏆 Отлично! Ты прекрасно знаешь материал!';
+            el.style.color = '#2e7d32';
+        } else if (pct >= 0.73) {
+            el.textContent = '👍 Хороший результат! Разбери ошибки.';
+            el.style.color = '#1565c0';
+        } else if (pct >= 0.53) {
+            el.textContent = '📖 Неплохо, но стоит повторить теорию.';
+            el.style.color = '#e65100';
+        } else {
+            el.textContent = '📚 Нужно ещё раз изучить материал.';
+            el.style.color = '#c62828';
+        }
+    }
+</script>
+</body>
+</html>

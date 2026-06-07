@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 1 — История, Биология, Обществознание</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* ===== НАВИГАЦИЯ ===== */
+        .nav-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            background: white;
+            padding: 16px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            transition: all .25s;
+        }
+        .nav-btn.hist  { background: #744210; color: white; }
+        .nav-btn.bio   { background: #276749; color: white; }
+        .nav-btn.soc   { background: #553c9a; color: white; }
+        .nav-btn:hover { opacity: .85; transform: translateY(-2px); }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 8px;
+            padding-bottom: 14px;
+        }
+        .h1-hist  { color: #744210; border-bottom: 4px solid #dd6b20; }
+        .h1-bio   { color: #276749; border-bottom: 4px solid #38a169; }
+        .h1-soc   { color: #44337a; border-bottom: 4px solid #805ad5; }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 28px;
+            font-size: 1.05em;
+        }
+
+        /* ===== БЛОК УРОКА ===== */
+        .lesson-block {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 26px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .lb-hist   { border-left: 6px solid #dd6b20; }
+        .lb-bio    { border-left: 6px solid #38a169; }
+        .lb-soc    { border-left: 6px solid #805ad5; }
+        .lb-blue   { border-left: 6px solid #3182ce; }
+        .lb-red    { border-left: 6px solid #e53e3e; }
+        .lb-teal   { border-left: 6px solid #319795; }
+
+        h2 {
+            font-size: 1.45em;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2.hist-h { color: #7b341e; }
+        h2.bio-h  { color: #22543d; }
+        h2.soc-h  { color: #44337a; }
+
+        h3 {
+            font-size: 1.12em;
+            color: #2d3748;
+            margin: 18px 0 8px;
+            padding-bottom: 4px;
+            border-bottom: 2px dashed #e2e8f0;
+        }
+        h4 { font-size: 1em; color: #4a5568; margin: 12px 0 6px; }
+
+        /* ===== ТЕТРАДЬ ===== */
+        .notebook {
+            background: #fffff0;
+            border: 2px solid #ecc94b;
+            border-radius: 12px;
+            padding: 22px 22px 16px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -13px; left: 18px;
+            background: #ecc94b;
+            color: #744210;
+            padding: 2px 13px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.82em;
+        }
+
+        /* ===== ПРАВИЛА / ВЫДЕЛЕНИЯ ===== */
+        .rule-box {
+            border-radius: 10px;
+            padding: 13px 17px;
+            margin: 10px 0;
+        }
+        .rb-blue   { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .rb-green  { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .rb-yellow { background: #fffff0; border: 2px solid #f6e05e; }
+        .rb-red    { background: #fff5f5; border: 2px solid #fc8181; }
+        .rb-purple { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .rb-orange { background: #fffaf0; border: 2px solid #fbd38d; }
+
+        /* ===== ТАБЛИЦЫ ===== */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .94em; }
+        th { padding: 10px 12px; text-align: left; color: white; }
+        td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+        .th-hist { background: #c05621; }
+        .th-bio  { background: #276749; }
+        .th-soc  { background: #553c9a; }
+        .th-blue { background: #2b6cb0; }
+
+        /* ===== КАРТОЧКИ ===== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 14px 0;
+        }
+        .card {
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .card-title { font-weight: bold; font-size: 1em; margin-bottom: 6px; }
+        .card-body  { font-size: .88em; line-height: 1.5; }
+
+        .card-byz    { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .card-frank  { background: #fffff0; border: 2px solid #f6e05e; }
+        .card-arab   { background: #fff5f5; border: 2px solid #fc8181; }
+        .card-feod   { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .card-cell   { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .card-tissue { background: #fffaf0; border: 2px solid #fbd38d; }
+
+        /* ===== СХЕМА ===== */
+        .scheme {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 12px 0;
+            text-align: center;
+        }
+        .scheme-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .scheme-box {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: .9em;
+            font-weight: bold;
+        }
+        .sb-blue   { background: #bee3f8; color: #2a4365; }
+        .sb-green  { background: #c6f6d5; color: #22543d; }
+        .sb-purple { background: #e9d8fd; color: #44337a; }
+        .sb-orange { background: #feebc8; color: #7b341e; }
+        .sb-red    { background: #fed7d7; color: #742a2a; }
+        .sb-teal   { background: #b2f5ea; color: #234e52; }
+        .arrow { font-size: 1.4em; color: #718096; }
+
+        /* ===== УПРАЖНЕНИЯ ===== */
+        .exercise-block {
+            background: #faf5ff;
+            border: 2px solid #d6bcfa;
+            border-radius: 12px;
+            padding: 18px 18px 12px;
+            margin: 14px 0;
+            position: relative;
+        }
+        .exercise-block::before {
+            content: "✏️ ЗАДАНИЯ";
+            position: absolute;
+            top: -13px; left: 18px;
+            background: #805ad5;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: .82em;
+        }
+        .task {
+            background: white;
+            border-radius: 10px;
+            padding: 13px 15px;
+            margin: 10px 0;
+            border-left: 4px solid #805ad5;
+        }
+        .task-num { font-weight: bold; color: #805ad5; }
+
+        /* ===== КНОПКИ ===== */
+        .toggle-btn {
+            border: none;
+            padding: 7px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: .88em;
+            margin-top: 8px;
+            transition: background .3s;
+            color: white;
+        }
+        .tb-purple { background: #805ad5; }
+        .tb-purple:hover { background: #6b46c1; }
+        .tb-green  { background: #38a169; }
+        .tb-green:hover  { background: #2f855a; }
+        .tb-orange { background: #dd6b20; }
+        .tb-orange:hover { background: #c05621; }
+        .tb-blue   { background: #3182ce; }
+        .tb-blue:hover   { background: #2b6cb0; }
+
+        .answer {
+            display: none;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-top: 8px;
+            font-size: .93em;
+            line-height: 1.75;
+        }
+        .ans-green  { background: #f0fff4; border: 1px solid #9ae6b4; color: #22543d; }
+        .ans-blue   { background: #ebf8ff; border: 1px solid #90cdf4; color: #2a4365; }
+        .ans-purple { background: #faf5ff; border: 1px solid #d6bcfa; color: #44337a; }
+
+        /* ===== ВИДЕО ===== */
+        .video-block {
+            background: #fff5f5;
+            border: 2px solid #feb2b2;
+            border-radius: 12px;
+            padding: 13px 17px;
+            margin: 13px 0;
+        }
+        .video-block a { color: #c53030; text-decoration: none; font-weight: bold; }
+        .video-block a:hover { text-decoration: underline; }
+
+        /* ===== КАРТА ===== */
+        .map-block {
+            background: #e6fffa;
+            border: 2px solid #81e6d9;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin: 13px 0;
+        }
+        .map-block h4 { color: #234e52; margin-bottom: 8px; }
+
+        /* ===== ТЕРМИНЫ ===== */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .term-card {
+            background: white;
+            border-radius: 10px;
+            padding: 13px 15px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .term-word { font-weight: bold; color: #2b6cb0; font-size: 1em; }
+        .term-def  { font-size: .9em; color: #4a5568; margin-top: 4px; }
+
+        /* ===== ХРОНОЛОГИЯ ===== */
+        .timeline {
+            position: relative;
+            padding: 10px 0 10px 36px;
+            margin: 14px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 14px; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #dd6b20, #c05621);
+            border-radius: 2px;
+        }
+        .tl-item {
+            position: relative;
+            margin: 14px 0;
+            background: white;
+            border-radius: 10px;
+            padding: 12px 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            border-left: 3px solid #dd6b20;
+        }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -26px; top: 14px;
+            width: 16px; height: 16px;
+            background: #dd6b20;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #dd6b20;
+        }
+        .tl-year { font-weight: bold; color: #c05621; font-size: 1em; }
+        .tl-event { color: #2d3748; font-size: .93em; margin-top: 3px; }
+
+        /* ===== КЛЕТКА СХЕМА ===== */
+        .cell-scheme {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 14px 0;
+            justify-content: center;
+        }
+        .cell-part {
+            background: white;
+            border: 2px solid #9ae6b4;
+            border-radius: 10px;
+            padding: 12px 16px;
+            text-align: center;
+            min-width: 140px;
+            flex: 1;
+        }
+        .cell-part .cp-title { font-weight: bold; color: #22543d; margin-bottom: 5px; }
+        .cell-part .cp-body  { font-size: .85em; color: #4a5568; }
+
+        /* ===== ТЕСТ ===== */
+        .quiz-wrap {
+            background: #fffff0;
+            border: 2px solid #f6ad55;
+            border-radius: 14px;
+            padding: 26px;
+            margin: 26px 0;
+        }
+        .quiz-title { font-size: 1.5em; font-weight: bold; margin-bottom: 6px; }
+        .q-block {
+            background: white;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin: 12px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .q-block p { font-weight: bold; margin-bottom: 9px; color: #2d3748; }
+        .q-opt {
+            display: block;
+            padding: 8px 14px;
+            margin: 4px 0;
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .25s;
+            user-select: none;
+        }
+        .q-opt:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .q-opt input { margin-right: 8px; }
+        .check-btn {
+            padding: 12px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 16px;
+            color: white;
+            transition: background .3s;
+        }
+        .cb-hist { background: #dd6b20; }
+        .cb-hist:hover { background: #c05621; }
+        .cb-bio  { background: #38a169; }
+        .cb-bio:hover  { background: #2f855a; }
+        .cb-soc  { background: #805ad5; }
+        .cb-soc:hover  { background: #6b46c1; }
+
+        .result-box {
+            padding: 16px; border-radius: 10px;
+            margin-top: 16px; display: none; line-height: 1.9;
+        }
+
+        /* ===== РАЗДЕЛИТЕЛЬ ===== */
+        .separator {
+            border: none; height: 4px;
+            margin: 34px 0; border-radius: 2px;
+        }
+        .sep-hist   { background: linear-gradient(to right, #dd6b20, #f6ad55); }
+        .sep-bio    { background: linear-gradient(to right, #38a169, #9ae6b4); }
+        .sep-soc    { background: linear-gradient(to right, #805ad5, #d6bcfa); }
+
+        /* ===== ТЕГИ ===== */
+        .tag {
+            display: inline-block; padding: 3px 10px;
+            border-radius: 12px; font-size: .8em;
+            font-weight: bold; margin: 2px;
+        }
+        .tag-theory   { background: #bee3f8; color: #2a4365; }
+        .tag-practice { background: #c6f6d5; color: #22543d; }
+        .tag-test     { background: #fefcbf; color: #744210; }
+        .tag-map      { background: #b2f5ea; color: #234e52; }
+
+        .duration {
+            background: #e2e8f0; color: #4a5568;
+            padding: 5px 12px; border-radius: 20px;
+            font-size: .85em; float: right;
+        }
+
+        ul, ol { padding-left: 22px; margin: 8px 0; }
+        li { margin: 5px 0; }
+        strong { color: inherit; }
+        .hl-orange { background: #feebc8; padding: 1px 5px; border-radius: 4px; }
+        .hl-green  { background: #c6f6d5; padding: 1px 5px; border-radius: 4px; }
+        .hl-blue   { background: #bee3f8; padding: 1px 5px; border-radius: 4px; }
+        .hl-purple { background: #e9d8fd; padding: 1px 5px; border-radius: 4px; }
+
+        /* феодальная лестница */
+        .pyramid {
+            margin: 16px auto;
+            max-width: 480px;
+        }
+        .pyr-level {
+            text-align: center;
+            padding: 10px 20px;
+            margin: 4px auto;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: .95em;
+            color: white;
+        }
+        .pl1 { width: 100%; background: #c05621; }
+        .pl2 { width: 85%;  background: #dd6b20; }
+        .pl3 { width: 70%;  background: #ed8936; }
+        .pl4 { width: 55%;  background: #f6ad55; color: #744210; }
+        .pl5 { width: 40%;  background: #fbd38d; color: #744210; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- НАВИГАЦИЯ -->
+    <div class="nav-bar">
+        <span style="font-weight:bold;color:#718096;align-self:center;">Перейти к разделу:</span>
+        <button class="nav-btn hist" onclick="scrollTo('history')">⚔️ История</button>
+        <button class="nav-btn bio"  onclick="scrollTo('biology')">🌿 Биология</button>
+        <button class="nav-btn soc"  onclick="scrollTo('social')">👥 Обществознание</button>
+    </div>
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║              ИСТОРИЯ                        ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div id="history">
+        <h1 class="h1-hist">⚔️ История — Неделя 1</h1>
+        <p class="subtitle">6 класс | 3 часа | Раннее Средневековье</p>
+
+        <!-- ЗАНЯТИЕ 1 — ХРОНОЛОГИЯ И ВВЕДЕНИЕ -->
+        <div class="lesson-block lb-hist">
+            <h2 class="hist-h">📖 Занятие 1: Введение в Средневековье. Хронология.</h2>
+            <span class="duration">⏱ 40 мин</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-map">Карта</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=yWgT5bHckU0" target="_blank">Введение в историю Средних веков — 6 класс (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=8ekYBMzEq_A" target="_blank">Что такое Средневековье? Периодизация (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=_9GrHiJVNMk" target="_blank">Средние века: обзор эпохи (Arzamas Academy)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема: Средневековье. Общая характеристика.</h3>
+
+                <div class="rule-box rb-orange">
+                    <strong>📌 Хронологические рамки:</strong><br>
+                    <strong>Средние века (Средневековье)</strong> — период истории между Античностью и Новым временем.<br>
+                    ⏳ <strong>V–XV века н.э.</strong> (476 год — 1492 год)<br><br>
+                    <strong>Раннее Средневековье</strong> — V–X века<br>
+                    <strong>Высокое Средневековье</strong> — XI–XIII века<br>
+                    <strong>Позднее Средневековье</strong> — XIV–XV века
+                </div>
+
+                <div class="timeline">
+                    <div class="tl-item">
+                        <div class="tl-year">476 год</div>
+                        <div class="tl-event">Падение Западной Римской империи — начало Средневековья</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">V–VI века</div>
+                        <div class="tl-event">Великое переселение народов. Образование варварских королевств.</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">VII век</div>
+                        <div class="tl-event">Возникновение ислама. Арабские завоевания.</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">800 год</div>
+                        <div class="tl-event">Карл Великий коронован императором — расцвет Франкского государства</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">IX–X века</div>
+                        <div class="tl-event">Распад Франкской империи. Усиление феодальной раздробленности.</div>
+                    </div>
+                </div>
+
+                <div class="map-block">
+                    <h4>🗺️ Задание по карте (выполни в тетради):</h4>
+                    <p>На контурной карте Европы и Ближнего Востока обозначь:</p>
+                    <ol>
+                        <li>Территорию <span class="hl-blue">Византийской империи</span> (закрась синим)</li>
+                        <li>Территорию <span class="hl-orange">Франкского государства</span> (закрась оранжевым)</li>
+                        <li>Территорию <span class="hl-green">Арабского халифата</span> (закрась зелёным)</li>
+                        <li>Столицы: Константинополь, Рим, Мекка, Медина, Багдад</li>
+                    </ol>
+                    <p>📎 <a href="https://www.youtube.com/watch?v=6J2GRt8NXIM" target="_blank" style="color:#234e52;font-weight:bold;">Видео: Как работать с исторической картой (YouTube)</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЗАНЯТИЕ 2 — ГОСУДАРСТВА -->
+        <div class="lesson-block lb-blue">
+            <h2 class="hist-h">📖 Занятие 2: Byzantия, Франки, Арабский халифат</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=KkAHsqhSoVI" target="_blank">Византийская империя — кратко и понятно (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=mP5JRqfwT-M" target="_blank">Франкское государство. Карл Великий (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=3n7TKzLv_BQ" target="_blank">Возникновение ислама и Арабский халифат (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=7sMVmpNPfYE" target="_blank">Раннее Средневековье — все государства за 20 минут</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Три великих государства Раннего Средневековья</h3>
+
+                <div class="cards">
+                    <div class="card card-byz">
+                        <div class="card-title">🏛️ Византия</div>
+                        <div class="card-body">Восточная Римская империя<br>395–1453 гг.<br>Столица: Константинополь</div>
+                    </div>
+                    <div class="card card-frank">
+                        <div class="card-title">⚔️ Франкское государство</div>
+                        <div class="card-body">V–IX века<br>Столица: Ахен<br>Правители: Меровинги → Каролинги</div>
+                    </div>
+                    <div class="card card-arab">
+                        <div class="card-title">☪️ Арабский халифат</div>
+                        <div class="card-body">VII–IX века<br>Центр: Аравийский полуостров<br>Столица: Дамаск → Багдад</div>
+                    </div>
+                </div>
+
+                <!-- ВИЗАНТИЯ -->
+                <h3>🏛️ Византийская империя</h3>
+                <table>
+                    <tr><th class="th-blue" colspan="2">Основные характеристики Византии</th></tr>
+                    <tr><td><strong>Период</strong></td><td>395–1453 гг. (1058 лет!)</td></tr>
+                    <tr><td><strong>Столица</strong></td><td>Константинополь (ныне Стамбул)</td></tr>
+                    <tr><td><strong>Религия</strong></td><td>Христианство (православие)</td></tr>
+                    <tr><td><strong>Расцвет при</strong></td><td>Юстиниан I (527–565 гг.)</td></tr>
+                    <tr><td><strong>Главное достижение Юстиниана</strong></td><td>Свод законов (Кодекс Юстиниана), строительство храма Святой Софии</td></tr>
+                    <tr><td><strong>Экономика</strong></td><td>Ремесло, торговля, развитые города</td></tr>
+                    <tr><td><strong>Культура</strong></td><td>Сохранение античного наследия, греческий язык, мозаики</td></tr>
+                    <tr><td><strong>Падение</strong></td><td>1453 год — захват турками-османами</td></tr>
+                </table>
+
+                <div class="rule-box rb-blue">
+                    <strong>📌 Почему Византия сохранилась, когда Рим пал?</strong>
+                    <ul>
+                        <li>Сильная центральная власть императора</li>
+                        <li>Мощная армия и флот (греческий огонь)</li>
+                        <li>Развитая торговля и богатая казна</li>
+                        <li>Выгодное географическое положение</li>
+                    </ul>
+                </div>
+
+                <!-- ФРАНКИ -->
+                <h3>⚔️ Франкское государство</h3>
+                <table>
+                    <tr><th class="th-hist" colspan="2">Основные характеристики Франкского государства</th></tr>
+                    <tr><td><strong>Основатель</strong></td><td>Хлодвиг I (из рода Меровингов), ок. 481 г.</td></tr>
+                    <tr><td><strong>Религия</strong></td><td>Христианство (католичество) — принято при Хлодвиге</td></tr>
+                    <tr><td><strong>Великий правитель</strong></td><td>Карл Великий (768–814 гг.)</td></tr>
+                    <tr><td><strong>Коронация Карла</strong></td><td>800 год — папа Лев III короновал Карла императором</td></tr>
+                    <tr><td><strong>Достижения Карла</strong></td><td>Объединил Западную Европу, реформа образования (Каролингское возрождение), единые законы</td></tr>
+                    <tr><td><strong>Распад</strong></td><td>843 год — Верденский договор (раздел между внуками Карла → Франция, Германия, Италия)</td></tr>
+                </table>
+
+                <div class="scheme">
+                    <strong>Верденский договор 843 года — раздел империи:</strong>
+                    <div class="scheme-row" style="margin-top:12px;">
+                        <div class="scheme-box sb-blue">Карл Лысый<br>Западная Франция<br>(→ Франция)</div>
+                        <div class="scheme-box sb-purple">Лотарь I<br>Средняя часть<br>(→ Лотарингия, Италия)</div>
+                        <div class="scheme-box sb-orange">Людовик Немецкий<br>Восточная Франция<br>(→ Германия)</div>
+                    </div>
+                </div>
+
+                <!-- АРАБСКИЙ ХАЛИФАТ -->
+                <h3>☪️ Арабский халифат</h3>
+                <table>
+                    <tr><th class="th-hist" colspan="2">Основные характеристики Арабского халифата</th></tr>
+                    <tr><td><strong>Основатель ислама</strong></td><td>Мухаммед (570–632 гг.) — пророк</td></tr>
+                    <tr><td><strong>Дата возникновения ислама</strong></td><td>622 год — хиджра (переселение Мухаммеда из Мекки в Медину)</td></tr>
+                    <tr><td><strong>Священная книга</strong></td><td>Коран</td></tr>
+                    <tr><td><strong>Правитель халифата</strong></td><td>Халиф («наместник пророка»)</td></tr>
+                    <tr><td><strong>Расцвет</strong></td><td>VIII–IX века — при Аббасидах, столица Багдад</td></tr>
+                    <tr><td><strong>Территория</strong></td><td>От Испании до Индии (крупнейшее государство своего времени)</td></tr>
+                    <tr><td><strong>Достижения</strong></td><td>Алгебра (аль-Хорезми), медицина (Авиценна), астрономия, арабские цифры</td></tr>
+                    <tr><td><strong>Распад</strong></td><td>X–XI века — распался на отдельные государства</td></tr>
+                </table>
+
+                <div class="rule-box rb-yellow">
+                    <strong>📌 Пять столпов ислама (запомни!):</strong>
+                    <ol>
+                        <li><strong>Шахада</strong> — исповедание веры: «Нет бога кроме Аллаха»</li>
+                        <li><strong>Салят</strong> — молитва 5 раз в день</li>
+                        <li><strong>Саум</strong> — пост в месяц Рамадан</li>
+                        <li><strong>Закят</strong> — милостыня бедным</li>
+                        <li><strong>Хадж</strong> — паломничество в Мекку</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЗАНЯТИЕ 3 — ФЕОДАЛИЗМ -->
+        <div class="lesson-block lb-red">
+            <h2 class="hist-h">📖 Занятие 3: Феодализм</h2>
+            <span class="duration">⏱ 40 мин</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=JI5VQ_0_CXc" target="_blank">Феодализм — что это такое? Феодальная лестница (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=o64OJ8jtmYA" target="_blank">Феодальное общество. Крестьяне и рыцари (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=sHHBdF8NLNM" target="_blank">Средневековый замок и феодальные отношения (наглядно)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема: Феодализм — общественный строй Средневековья</h3>
+
+                <div class="rule-box rb-orange">
+                    <strong>📌 Феодализм</strong> — общественный строй, основанный на земельной собственности феодалов и зависимости крестьян от землевладельцев.<br><br>
+                    <strong>Феод</strong> — земельный надел, который сеньор давал вассалу за службу.<br>
+                    <strong>Феодал</strong> — землевладелец, получивший землю (феод) за военную службу.<br>
+                    <strong>Сеньор</strong> — тот, кто даёт феод.<br>
+                    <strong>Вассал</strong> — тот, кто получает феод и обязуется служить.
+                </div>
+
+                <h3>Феодальная лестница (иерархия)</h3>
+                <div class="pyramid">
+                    <div class="pyr-level pl5">👑 Король (сюзерен)</div>
+                    <div class="pyr-level pl4">🏰 Герцоги и графы</div>
+                    <div class="pyr-level pl3">🛡️ Бароны</div>
+                    <div class="pyr-level pl2">⚔️ Рыцари</div>
+                    <div class="pyr-level pl1">🌾 Крестьяне (вне лестницы)</div>
+                </div>
+
+                <div class="rule-box rb-red">
+                    <strong>⚠️ Главный принцип:</strong>
+                    «Вассал моего вассала — не мой вассал»<br>
+                    Каждый феодал подчиняется только своему непосредственному сеньору.
+                </div>
+
+                <h3>Крестьяне — основа средневекового общества</h3>
+                <table>
+                    <tr><th class="th-hist">Категория</th><th class="th-hist">Положение</th><th class="th-hist">Повинности</th></tr>
+                    <tr>
+                        <td><strong>Лично зависимые</strong> (крепостные)</td>
+                        <td>Принадлежат феодалу, не могут уйти с земли</td>
+                        <td>Барщина, оброк, различные поборы</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Лично свободные</strong></td>
+                        <td>Арендуют землю у феодала</td>
+                        <td>Платят оброк (часть урожая или деньги)</td>
+                    </tr>
+                </table>
+
+                <div class="rule-box rb-green">
+                    <strong>📌 Основные повинности крестьян:</strong><br>
+                    <strong>Барщина</strong> — работа крестьянина на земле феодала (2–3 дня в неделю)<br>
+                    <strong>Оброк</strong> — отчисление части урожая или денег феодалу<br>
+                    <strong>Десятина</strong> — налог в пользу церкви (1/10 дохода)
+                </div>
+
+                <h3>Средневековая церковь</h3>
+                <div class="rule-box rb-purple">
+                    <strong>Роль церкви в Средневековье:</strong>
+                    <ul>
+                        <li>Крупнейший землевладелец (до 1/3 земель Западной Европы)</li>
+                        <li>Центр образования и культуры</li>
+                        <li>Политическое влияние (папа мог отлучить королей от церкви)</li>
+                        <li>Хранительница знаний (монастырские библиотеки)</li>
+                    </ul>
+                    <strong>Папа Римский</strong> — глава Католической церкви, один из самых влиятельных людей Средневековья.
+                </div>
+
+                <!-- ТЕРМИНЫ -->
+                <h3>Ключевые термины (выучи все!)</h3>
+                <div class="terms-grid">
+                    <div class="term-card">
+                        <div class="term-word">Вассалитет</div>
+                        <div class="term-def">Система отношений между сеньором и вассалом, основанная на договоре службы за землю</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Оммаж</div>
+                        <div class="term-def">Церемония принесения вассальной клятвы верности сеньору</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Натуральное хозяйство</div>
+                        <div class="term-def">Хозяйство, в котором всё производится для собственного потребления, а не для продажи</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Коммуна</div>
+                        <div class="term-def">Городская организация самоуправления, добившаяся независимости от феодала</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Инвеститура</div>
+                        <div class="term-def">Введение вассала во владение феодом (землёй)</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Аллод</div>
+                        <div class="term-def">Земля в полной собственности, не требующая несения службы</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1.</span> Составьте в тетради схему «Три государства Раннего Средневековья» по плану:
+                    <ul>
+                        <li>Название → Территория → Столица → Религия → Великий правитель → Главное достижение</li>
+                    </ul>
+                    <em>Используй таблицы из конспекта выше.</em>
+                </div>
+
+                <div class="task">
+                    <span class="task-num">📝 Задание 2.</span> Ответьте на вопросы письменно в тетради:
+                    <ol>
+                        <li>Почему Byzantия пережила падение Западного Рима?</li>
+                        <li>Какой год считается началом мусульманского летосчисления и почему?</li>
+                        <li>Объясните принцип «Вассал моего вассала — не мой вассал».</li>
+                    </ol>
+                    <button class="toggle-btn tb-orange" onclick="tog('h_ans2')">▶ Показать примерные ответы</button>
+                    <div class="answer ans-green" id="h_ans2">
+1. Byzantия выжила благодаря сильной центральной власти императора,
+   богатой казне от торговли, мощной армии и удобному расположению
+   Константинополя между Европой и Азией.
+
+2. 622 год — год хиджры (переселения Мухаммеда из Мекки в Медину).
+   С этого события начинается мусульманское летосчисление, т.к.
+   именно тогда возникла первая мусульманская община.
+
+3. Каждый феодал обязан был слушаться ТОЛЬКО своего прямого сеньора.
+   Например, барон подчиняется герцогу, а не королю напрямую.
+   Это ослабляло королевскую власть, т.к. контролировать всю
+   «цепочку» было невозможно.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ТЕСТ ПО ИСТОРИИ -->
+        <div class="quiz-wrap">
+            <div class="quiz-title">🧪 Тест по истории Раннего Средневековья</div>
+            <p>10 вопросов | Время: ~10 минут</p>
+
+            <form id="histQuiz">
+                <div class="q-block">
+                    <p>1. В каком году пала Западная Римская империя?</p>
+                    <label class="q-opt"><input type="radio" name="hq1" value="a"> 395 год</label>
+                    <label class="q-opt"><input type="radio" name="hq1" value="b"> 476 год</label>
+                    <label class="q-opt"><input type="radio" name="hq1" value="c"> 800 год</label>
+                    <label class="q-opt"><input type="radio" name="hq1" value="d"> 622 год</label>
+                </div>
+                <div class="q-block">
+                    <p>2. Столица Byzantийской империи:</p>
+                    <label class="q-opt"><input type="radio" name="hq2" value="a"> Рим</label>
+                    <label class="q-opt"><input type="radio" name="hq2" value="b"> Афины</label>
+                    <label class="q-opt"><input type="radio" name="hq2" value="c"> Константинополь</label>
+                    <label class="q-opt"><input type="radio" name="hq2" value="d"> Александрия</label>
+                </div>
+                <div class="q-block">
+                    <p>3. Карл Великий был коронован императором в:</p>
+                    <label class="q-opt"><input type="radio" name="hq3" value="a"> 768 год</label>
+                    <label class="q-opt"><input type="radio" name="hq3" value="b"> 843 год</label>
+                    <label class="q-opt"><input type="radio" name="hq3" value="c"> 800 год</label>
+                    <label class="q-opt"><input type="radio" name="hq3" value="d"> 476 год</label>
+                </div>
+                <div class="q-block">
+                    <p>4. Что такое «хиджра»?</p>
+                    <label class="q-opt"><input type="radio" name="hq4" value="a"> Священная война мусульман</label>
+                    <label class="q-opt"><input type="radio" name="hq4" value="b"> Переселение Мухаммеда из Мекки в Медину (622 г.)</label>
+                    <label class="q-opt"><input type="radio" name="hq4" value="c"> Ежегодное паломничество в Мекку</label>
+                    <label class="q-opt"><input type="radio" name="hq4" value="d"> Налог в пользу мечети</label>
+                </div>
+                <div class="q-block">
+                    <p>5. Кто такой «вассал»?</p>
+                    <label class="q-opt"><input type="radio" name="hq5" value="a"> Тот, кто даёт землю другому</label>
+                    <label class="q-opt"><input type="radio" name="hq5" value="b"> Тот, кто получает землю (феод) и несёт службу</label>
+                    <label class="q-opt"><input type="radio" name="hq5" value="c"> Зависимый крестьянин</label>
+                    <label class="q-opt"><input type="radio" name="hq5" value="d"> Глава средневековой церкви</label>
+                </div>
+                <div class="q-block">
+                    <p>6. Верденский договор (843 г.) — это:</p>
+                    <label class="q-opt"><input type="radio" name="hq6" value="a"> Союз Byzantии и Франков против арабов</label>
+                    <label class="q-opt"><input type="radio" name="hq6" value="b"> Раздел Франкской империи между внуками Карла Великого</label>
+                    <label class="q-opt"><input type="radio" name="hq6" value="c"> Договор о мире между папой и императором</label>
+                    <label class="q-opt"><input type="radio" name="hq6" value="d"> Основание Священной Римской империи</label>
+                </div>
+                <div class="q-block">
+                    <p>7. «Барщина» — это:</p>
+                    <label class="q-opt"><input type="radio" name="hq7" value="a"> Отчисление части урожая феодалу</label>
+                    <label class="q-opt"><input type="radio" name="hq7" value="b"> Налог в пользу церкви</label>
+                    <label class="q-opt"><input type="radio" name="hq7" value="c"> Работа крестьянина на земле феодала</label>
+                    <label class="q-opt"><input type="radio" name="hq7" value="d"> Денежный выкуп за свободу</label>
+                </div>
+                <div class="q-block">
+                    <p>8. При каком императоре достигла расцвета Byzantия?</p>
+                    <label class="q-opt"><input type="radio" name="hq8" value="a"> Константин I</label>
+                    <label class="q-opt"><input type="radio" name="hq8" value="b"> Юстиниан I</label>
+                    <label class="q-opt"><input type="radio" name="hq8" value="c"> Карл Великий</label>
+                    <label class="q-opt"><input type="radio" name="hq8" value="d"> Хлодвиг I</label>
+                </div>
+                <div class="q-block">
+                    <p>9. Какая священная книга у мусульман?</p>
+                    <label class="q-opt"><input type="radio" name="hq9" value="a"> Библия</label>
+                    <label class="q-opt"><input type="radio" name="hq9" value="b"> Тора</label>
+                    <label class="q-opt"><input type="radio" name="hq9" value="c"> Коран</label>
+                    <label class="q-opt"><input type="radio" name="hq9" value="d"> Веды</label>
+                </div>
+                <div class="q-block">
+                    <p>10. Что такое «натуральное хозяйство»?</p>
+                    <label class="q-opt"><input type="radio" name="hq10" value="a"> Торговля природными ресурсами</label>
+                    <label class="q-opt"><input type="radio" name="hq10" value="b"> Хозяйство, где всё производится для собственного потребления</label>
+                    <label class="q-opt"><input type="radio" name="hq10" value="c"> Экологически чистое земледелие</label>
+                    <label class="q-opt"><input type="radio" name="hq10" value="d"> Использование природы без изменений</label>
+                </div>
+                <button type="button" class="check-btn cb-hist" onclick="checkQuiz('histQuiz', histAnswers, histExplain, 'histResult')">✅ Проверить ответы</button>
+            </form>
+            <div class="result-box" id="histResult"></div>
+        </div>
+    </div>
+
+    <hr class="separator sep-hist">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║              БИОЛОГИЯ                       ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div id="biology">
+        <h1 class="h1-bio">🌿 Биология — Неделя 1</h1>
+        <p class="subtitle">6 класс | 3 часа | Клетка. Ткани растений.</p>
+
+        <!-- ЗАНЯТИЕ 1 — КЛЕТКА -->
+        <div class="lesson-block lb-bio">
+            <h2 class="bio-h">📖 Занятие 1: Клеточное строение организмов</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Схемы</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=RDVjVDhIBl8" target="_blank">Строение растительной клетки — 6 класс (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=i_Iq4zrPaXQ" target="_blank">Клетка. Органоиды. Функции (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=wg5VGPsMpno" target="_blank">Растительная и животная клетка: отличия (наглядно)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=3DfhANRV3Kc" target="_blank">Клеточная теория — история открытия (Arzamas)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема: Клетка — единица жизни</h3>
+
+                <div class="rule-box rb-green">
+                    <strong>📌 Клеточная теория (1838–1839, Шлейден и Шванн):</strong>
+                    <ol>
+                        <li>Все живые организмы состоят из клеток</li>
+                        <li>Клетка — наименьшая единица живого</li>
+                        <li>Новые клетки образуются только из существующих клеток (делением)</li>
+                    </ol>
+                </div>
+
+                <h3>Строение растительной клетки</h3>
+                <div class="cell-scheme">
+                    <div class="cell-part">
+                        <div class="cp-title">🧱 Клеточная стенка</div>
+                        <div class="cp-body">Из целлюлозы. Придаёт форму, защищает. Есть только у растений!</div>
+                    </div>
+                    <div class="cell-part">
+                        <div class="cp-title">🫧 Клеточная мембрана</div>
+                        <div class="cp-body">Тонкая оболочка под стенкой. Регулирует обмен веществ.</div>
+                    </div>
+                    <div class="cell-part">
+                        <div class="cp-title">🟡 Цитоплазма</div>
+                        <div class="cp-body">Жидкое содержимое клетки. В ней находятся все органоиды.</div>
+                    </div>
+                    <div class="cell-part">
+                        <div class="cp-title">⭕ Ядро</div>
+                        <div class="cp-body">Управляет жизнедеятельностью клетки. Содержит ДНК — наследственную информацию.</div>
+                    </div>
+                    <div class="cell-part">
+                        <div class="cp-title">🟢 Хлоропласты</div>
+                        <div class="cp-body">Зелёные пластиды. Содержат хлорофилл. Место фотосинтеза. Только у растений!</div>
+                    </div>
+                    <div class="cell-part">
+                        <div class="cp-title">💧 Вакуоль</div>
+                        <div class="cp-body">Полость с клеточным соком. Накапливает воду и питательные вещества. Крупная у растений.</div>
+                    </div>
+                    <div class="cell-part">
+                        <div class="cp-title">⚡ Митохондрии</div>
+                        <div class="cp-body">«Станции энергии». Синтезируют АТФ — молекулу энергии. Есть у всех эукариот.</div>
+                    </div>
+                    <div class="cell-part">
+                        <div class="cp-title">🔵 Рибосомы</div>
+                        <div class="cp-body">Синтез белков. Самые маленькие органоиды. Есть у всех клеток.</div>
+                    </div>
+                </div>
+
+                <h3>Сравнение растительной и животной клетки</h3>
+                <table>
+                    <tr>
+                        <th class="th-bio">Признак</th>
+                        <th class="th-bio">Растительная клетка</th>
+                        <th class="th-bio">Животная клетка</th>
+                    </tr>
+                    <tr><td>Клеточная стенка (целлюлоза)</td><td>✅ Есть</td><td>❌ Нет</td></tr>
+                    <tr><td>Хлоропласты</td><td>✅ Есть</td><td>❌ Нет</td></tr>
+                    <tr><td>Крупная вакуоль</td><td>✅ Есть</td><td>❌ Мелкие или нет</td></tr>
+                    <tr><td>Ядро</td><td>✅ Есть</td><td>✅ Есть</td></tr>
+                    <tr><td>Цитоплазма</td><td>✅ Есть</td><td>✅ Есть</td></tr>
+                    <tr><td>Митохондрии</td><td>✅ Есть</td><td>✅ Есть</td></tr>
+                    <tr><td>Мембрана</td><td>✅ Есть</td><td>✅ Есть</td></tr>
+                    <tr><td>Центриоли</td><td>❌ Нет (у высших)</td><td>✅ Есть</td></tr>
+                    <tr><td>Запасное вещество</td><td>Крахмал</td><td>Гликоген</td></tr>
+                </table>
+
+                <h3>Жизнедеятельность клетки</h3>
+                <div class="scheme">
+                    <strong>Основные процессы в клетке:</strong>
+                    <div class="scheme-row">
+                        <div class="scheme-box sb-green">☀️ Фотосинтез<br>(в хлоропластах)<br>CO₂ + H₂O → глюкоза + O₂</div>
+                        <div class="arrow">⟵</div>
+                        <div class="scheme-box sb-blue">🔵 Клетка</div>
+                        <div class="arrow">⟶</div>
+                        <div class="scheme-box sb-orange">⚡ Дыхание<br>(в митохондриях)<br>глюкоза + O₂ → CO₂ + H₂O + энергия</div>
+                    </div>
+                    <div class="scheme-row" style="margin-top:16px;">
+                        <div class="scheme-box sb-purple">🔬 Деление клетки (митоз) → рост организма</div>
+                        <div class="arrow" style="margin:0 16px;">+</div>
+                        <div class="scheme-box sb-teal">💧 Осмос → движение воды через мембрану</div>
+                    </div>
+                </div>
+
+                <div class="rule-box rb-blue">
+                    <strong>📌 Хлорофилл</strong> — зелёный пигмент хлоропластов, поглощающий световую энергию для фотосинтеза.<br>
+                    <strong>Тургор</strong> — давление клеточного сока на стенку клетки, обеспечивает упругость тканей.<br>
+                    <strong>Плазмолиз</strong> — отставание цитоплазмы от клеточной стенки при потере воды.<br>
+                    <strong>Деплазмолиз</strong> — восстановление тургора при насыщении клетки водой.
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1: Схема клетки</span><br>
+                    Зарисуй в тетради схему растительной клетки и подпиши все части:
+                    клеточная стенка, мембрана, цитоплазма, ядро, ядрышко,
+                    хлоропласты, митохондрии, вакуоль, рибосомы.
+                </div>
+                <div class="task">
+                    <span class="task-num">📝 Задание 2: Установи соответствие</span><br>
+                    Соедини органоид с его функцией:<br>
+                    1) Ядро &nbsp; 2) Хлоропласты &nbsp; 3) Митохондрии &nbsp; 4) Рибосомы &nbsp; 5) Вакуоль<br>
+                    А) Фотосинтез &nbsp; Б) Синтез белка &nbsp; В) Запас клеточного сока &nbsp;
+                    Г) Дыхание, синтез АТФ &nbsp; Д) Хранение ДНК, управление клеткой
+                    <br><br>
+                    <button class="toggle-btn tb-green" onclick="tog('bio_ans1')">▶ Показать ответ</button>
+                    <div class="answer ans-green" id="bio_ans1">
+1-Д (Ядро — хранит ДНК, управляет)
+2-А (Хлоропласты — фотосинтез)
+3-Г (Митохондрии — дыхание, АТФ)
+4-Б (Рибосомы — синтез белка)
+5-В (Вакуоль — запас клеточного сока)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЗАНЯТИЕ 2 — ТКАНИ РАСТЕНИЙ -->
+        <div class="lesson-block lb-teal">
+            <h2 class="bio-h">📖 Занятие 2: Ткани растений</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Схемы + термины</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=INf4JUs3kbA" target="_blank">Ткани растений — виды и функции (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=_MCdMHuBQUY" target="_blank">Образовательная, покровная, проводящая ткани (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=pqy6XEtfFOQ" target="_blank">Ткани растений под микроскопом (наглядно)</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема: Ткани растений — группы клеток с общей функцией</h3>
+
+                <div class="rule-box rb-green">
+                    <strong>📌 Ткань</strong> — группа клеток, сходных по строению, происхождению и выполняемым функциям.
+                </div>
+
+                <table>
+                    <tr>
+                        <th class="th-bio">Вид ткани</th>
+                        <th class="th-bio">Строение клеток</th>
+                        <th class="th-bio">Функция</th>
+                        <th class="th-bio">Где находится</th>
+                    </tr>
+                    <tr>
+                        <td><strong>🌱 Образовательная</strong><br>(меристема)</td>
+                        <td>Мелкие, с тонкой стенкой, крупным ядром, постоянно делятся</td>
+                        <td>Рост растения (образование новых клеток)</td>
+                        <td>Верхушки корней и побегов, камбий</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🛡️ Покровная</strong><br>(кожица, пробка)</td>
+                        <td>Плотно прилегающие, с толстой оболочкой, без хлоропластов (у кожицы)</td>
+                        <td>Защита от механических повреждений, высыхания, болезней</td>
+                        <td>Поверхность листьев, стеблей, корней</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🚰 Проводящая</strong><br>(сосуды и ситовидные трубки)</td>
+                        <td>Вытянутые, соединённые в трубки</td>
+                        <td>Транспорт воды и веществ по растению</td>
+                        <td>Жилки листьев, сердцевина стебля</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🍃 Основная</strong><br>(паренхима)</td>
+                        <td>С хлоропластами (фотосинтезирующая) или крупными вакуолями (запасающая)</td>
+                        <td>Фотосинтез, запас питательных веществ</td>
+                        <td>Мякоть листа, плоды, клубни</td>
+                    </tr>
+                    <tr>
+                        <td><strong>💪 Механическая</strong><br>(волокна, склереиды)</td>
+                        <td>С очень толстыми одревесневшими стенками, часто мёртвые</td>
+                        <td>Опора, придание прочности</td>
+                        <td>Стебли, жилки листьев, скорлупа орехов</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🌬️ Воздухоносная</strong><br>(аэренхима)</td>
+                        <td>С большими межклетниками (воздушными полостями)</td>
+                        <td>Запас воздуха, газообмен</td>
+                        <td>Водные растения, болотные растения</td>
+                    </tr>
+                </table>
+
+                <h3>Проводящая ткань подробнее</h3>
+                <div class="scheme">
+                    <div class="scheme-row">
+                        <div class="scheme-box sb-blue">
+                            <strong>Ксилема (древесина)</strong><br>
+                            Мёртвые клетки — сосуды<br>
+                            ⬆️ Вода + минеральные соли<br>
+                            (от корня к листьям)
+                        </div>
+                        <div style="font-size:2em; margin: 0 20px;">🌿</div>
+                        <div class="scheme-box sb-green">
+                            <strong>Флоэма (луб)</strong><br>
+                            Живые клетки — ситовидные трубки<br>
+                            ⬇️ Органические вещества<br>
+                            (от листьев к корням)
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Устьица — специальные структуры покровной ткани</h3>
+                <div class="rule-box rb-blue">
+                    <strong>Устьице</strong> — пара замыкающих клеток с щелью между ними. Находятся преимущественно на нижней стороне листа.<br><br>
+                    <strong>Функции устьиц:</strong>
+                    <ul>
+                        <li>Газообмен (CO₂ входит, O₂ выходит при фотосинтезе)</li>
+                        <li>Транспирация — испарение воды</li>
+                    </ul>
+                    <strong>Механизм работы:</strong> при наполнении водой замыкающие клетки изгибаются → щель открывается; при потере воды → щель закрывается.
+                </div>
+
+                <h3>Ключевые термины биологии</h3>
+                <div class="terms-grid">
+                    <div class="term-card">
+                        <div class="term-word">Органоид</div>
+                        <div class="term-def">Постоянная структура клетки, выполняющая определённую функцию</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Фотосинтез</div>
+                        <div class="term-def">Процесс образования органических веществ из CO₂ и H₂O с использованием энергии света</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Меристема</div>
+                        <div class="term-def">Образовательная ткань, клетки которой постоянно делятся, обеспечивая рост растения</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Транспирация</div>
+                        <div class="term-def">Испарение воды растением через устьица и кутикулу листьев</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Камбий</div>
+                        <div class="term-def">Образовательная ткань, расположенная между корой и древесиной, обеспечивает рост стебля в толщину</div>
+                    </div>
+                    <div class="term-card">
+                        <div class="term-word">Целлюлоза</div>
+                        <div class="term-def">Полисахарид, основной компонент клеточной стенки растений, придаёт ей прочность</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1: Заполни таблицу</span><br>
+                    Перечерти в тетрадь и заполни без подсказки:
+                    <table style="margin-top:10px;">
+                        <tr><th class="th-bio">Ткань</th><th class="th-bio">Функция</th><th class="th-bio">Где находится</th></tr>
+                        <tr><td>Образовательная</td><td>?</td><td>?</td></tr>
+                        <tr><td>Покровная</td><td>?</td><td>?</td></tr>
+                        <tr><td>Проводящая</td><td>?</td><td>?</td></tr>
+                        <tr><td>Основная</td><td>?</td><td>?</td></tr>
+                        <tr><td>Механическая</td><td>?</td><td>?</td></tr>
+                    </table>
+                </div>
+                <div class="task">
+                    <span class="task-num">📝 Задание 2:</span>
+                    Объясни, почему растение, поставленное в подсоленную воду, вянет, а если потом поставить его в пресную воду — восстанавливается?
+                    <br><br>
+                    <button class="toggle-btn tb-green" onclick="tog('bio_ans2')">▶ Показать ответ</button>
+                    <div class="answer ans-green" id="bio_ans2">
+В солёной воде концентрация раствора ВНЕ клетки выше,
+чем ВНУТРИ → вода выходит из клеток по законам осмоса
+→ вакуоли уменьшаются → цитоплазма отходит от стенки
+(плазмолиз) → растение вянет.
+
+В пресной воде концентрация ВНЕ ниже, чем ВНУТРИ →
+вода входит обратно в клетки → вакуоли набухают →
+тургор восстанавливается (деплазмолиз) → растение
+выпрямляется.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ТЕСТ ПО БИОЛОГИИ -->
+        <div class="quiz-wrap">
+            <div class="quiz-title">🧪 Тест по биологии: Клетка и Ткани растений</div>
+            <p>10 вопросов | Время: ~8 минут</p>
+
+            <form id="bioQuiz">
+                <div class="q-block">
+                    <p>1. Какой органоид есть у растительной клетки, но отсутствует у животной?</p>
+                    <label class="q-opt"><input type="radio" name="bq1" value="a"> Митохондрии</label>
+                    <label class="q-opt"><input type="radio" name="bq1" value="b"> Хлоропласты</label>
+                    <label class="q-opt"><input type="radio" name="bq1" value="c"> Рибосомы</label>
+                    <label class="q-opt"><input type="radio" name="bq1" value="d"> Ядро</label>
+                </div>
+                <div class="q-block">
+                    <p>2. Где происходит фотосинтез?</p>
+                    <label class="q-opt"><input type="radio" name="bq2" value="a"> В митохондриях</label>
+                    <label class="q-opt"><input type="radio" name="bq2" value="b"> В ядре</label>
+                    <label class="q-opt"><input type="radio" name="bq2" value="c"> В хлоропластах</label>
+                    <label class="q-opt"><input type="radio" name="bq2" value="d"> В вакуоли</label>
+                </div>
+                <div class="q-block">
+                    <p>3. Функция ксилемы (древесины):</p>
+                    <label class="q-opt"><input type="radio" name="bq3" value="a"> Транспорт органических веществ от листьев к корням</label>
+                    <label class="q-opt"><input type="radio" name="bq3" value="b"> Транспорт воды и минеральных солей от корня к листьям</label>
+                    <label class="q-opt"><input type="radio" name="bq3" value="c"> Фотосинтез</label>
+                    <label class="q-opt"><input type="radio" name="bq3" value="d"> Защита от высыхания</label>
+                </div>
+                <div class="q-block">
+                    <p>4. Клеточная стенка растений состоит из:</p>
+                    <label class="q-opt"><input type="radio" name="bq4" value="a"> Хитина</label>
+                    <label class="q-opt"><input type="radio" name="bq4" value="b"> Целлюлозы</label>
+                    <label class="q-opt"><input type="radio" name="bq4" value="c"> Белка</label>
+                    <label class="q-opt"><input type="radio" name="bq4" value="d"> Гликогена</label>
+                </div>
+                <div class="q-block">
+                    <p>5. Какая ткань обеспечивает рост растения?</p>
+                    <label class="q-opt"><input type="radio" name="bq5" value="a"> Покровная</label>
+                    <label class="q-opt"><input type="radio" name="bq5" value="b"> Механическая</label>
+                    <label class="q-opt"><input type="radio" name="bq5" value="c"> Образовательная (меристема)</label>
+                    <label class="q-opt"><input type="radio" name="bq5" value="d"> Проводящая</label>
+                </div>
+                <div class="q-block">
+                    <p>6. Устьица — это структуры:</p>
+                    <label class="q-opt"><input type="radio" name="bq6" value="a"> Проводящей ткани</label>
+                    <label class="q-opt"><input type="radio" name="bq6" value="b"> Покровной ткани листа</label>
+                    <label class="q-opt"><input type="radio" name="bq6" value="c"> Образовательной ткани</label>
+                    <label class="q-opt"><input type="radio" name="bq6" value="d"> Механической ткани</label>
+                </div>
+                <div class="q-block">
+                    <p>7. Что такое «транспирация»?</p>
+                    <label class="q-opt"><input type="radio" name="bq7" value="a"> Поглощение воды корнями</label>
+                    <label class="q-opt"><input type="radio" name="bq7" value="b"> Испарение воды растением через листья</label>
+                    <label class="q-opt"><input type="radio" name="bq7" value="c"> Синтез органических веществ</label>
+                    <label class="q-opt"><input type="radio" name="bq7" value="d"> Деление клеток</label>
+                </div>
+                <div class="q-block">
+                    <p>8. Управляет жизнедеятельностью клетки и содержит ДНК:</p>
+                    <label class="q-opt"><input type="radio" name="bq8" value="a"> Вакуоль</label>
+                    <label class="q-opt"><input type="radio" name="bq8" value="b"> Хлоропласт</label>
+                    <label class="q-opt"><input type="radio" name="bq8" value="c"> Ядро</label>
+                    <label class="q-opt"><input type="radio" name="bq8" value="d"> Рибосома</label>
+                </div>
+                <div class="q-block">
+                    <p>9. Запасное вещество растительных клеток:</p>
+                    <label class="q-opt"><input type="radio" name="bq9" value="a"> Гликоген</label>
+                    <label class="q-opt"><input type="radio" name="bq9" value="b"> Крахмал</label>
+                    <label class="q-opt"><input type="radio" name="bq9" value="c"> Жир</label>
+                    <label class="q-opt"><input type="radio" name="bq9" value="d"> Белок</label>
+                </div>
+                <div class="q-block">
+                    <p>10. Авторы клеточной теории (1838–1839):</p>
+                    <label class="q-opt"><input type="radio" name="bq10" value="a"> Дарвин и Мендель</label>
+                    <label class="q-opt"><input type="radio" name="bq10" value="b"> Пастер и Кох</label>
+                    <label class="q-opt"><input type="radio" name="bq10" value="c"> Шлейден и Шванн</label>
+                    <label class="q-opt"><input type="radio" name="bq10" value="d"> Вирхов и Гук</label>
+                </div>
+                <button type="button" class="check-btn cb-bio" onclick="checkQuiz('bioQuiz', bioAnswers, bioExplain, 'bioResult')">✅ Проверить ответы</button>
+            </form>
+            <div class="result-box" id="bioResult"></div>
+        </div>
+    </div>
+
+    <hr class="separator sep-bio">
+
+    <!-- ╔══════════════════════════════════════════════╗
+         ║           ОБЩЕСТВОЗНАНИЕ                    ║
+         ╚══════════════════════════════════════════════╝ -->
+    <div id="social">
+        <h1 class="h1-soc">👥 Обществознание — Неделя 1</h1>
+        <p class="subtitle">6 класс | 2 часа | Человек-личность. Познание. Деятельность.</p>
+
+        <!-- ЗАНЯТИЕ 1 — ЛИЧНОСТЬ -->
+        <div class="lesson-block lb-soc">
+            <h2 class="soc-h">📖 Занятие 1: Человек — личность</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=z3CqrDLeFkY" target="_blank">Человек как личность — 6 класс Обществознание (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=P9v4r5mqzP0" target="_blank">Индивид, индивидуальность, личность — в чём разница? (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=jLqAMaTK2Ys" target="_blank">Социализация личности — кратко и понятно</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема: Человек — биосоциальное существо</h3>
+
+                <div class="scheme">
+                    <strong>Три понятия о человеке:</strong>
+                    <div class="scheme-row" style="margin-top:12px; align-items:flex-start;">
+                        <div class="scheme-box sb-blue" style="flex:1;padding:14px;">
+                            <strong>ИНДИВИД</strong><br>
+                            Отдельный человек как представитель биологического вида<br>
+                            <em>(любой человек — уже индивид)</em>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="scheme-box sb-purple" style="flex:1;padding:14px;">
+                            <strong>ИНДИВИДУАЛЬНОСТЬ</strong><br>
+                            Совокупность уникальных черт, отличающих одного человека от других<br>
+                            <em>(внешность, характер, таланты)</em>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="scheme-box sb-green" style="flex:1;padding:14px;">
+                            <strong>ЛИЧНОСТЬ</strong><br>
+                            Человек как социальное существо, участвующее в общественной жизни<br>
+                            <em>(формируется в обществе)</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-box rb-purple">
+                    <strong>📌 Личность</strong> — это человек, сформировавшийся в обществе, имеющий собственные взгляды, ценности и несущий ответственность за свои поступки.<br><br>
+                    <strong>Качества личности:</strong>
+                    <ul>
+                        <li>Самосознание (осознание себя)</li>
+                        <li>Ответственность за поступки</li>
+                        <li>Наличие собственных взглядов и убеждений</li>
+                        <li>Активная позиция в обществе</li>
+                    </ul>
+                </div>
+
+                <h3>Социализация — как человек становится личностью</h3>
+                <div class="rule-box rb-blue">
+                    <strong>Социализация</strong> — процесс усвоения человеком норм, ценностей и правил общества.<br><br>
+                    <strong>Агенты социализации:</strong>
+                    <ul>
+                        <li>👨‍👩‍👧 <strong>Семья</strong> — первичная социализация</li>
+                        <li>🏫 <strong>Школа</strong> — знания, правила, коллектив</li>
+                        <li>👫 <strong>Друзья (сверстники)</strong> — ценности группы</li>
+                        <li>📱 <strong>СМИ</strong> — информация, модели поведения</li>
+                        <li>⛪ <strong>Религиозные организации</strong></li>
+                    </ul>
+                </div>
+
+                <h3>Потребности человека (пирамида Маслоу)</h3>
+                <div class="pyramid">
+                    <div class="pyr-level pl5">🌟 Самореализация</div>
+                    <div class="pyr-level pl4">🏅 Уважение и признание</div>
+                    <div class="pyr-level pl3">👫 Любовь и принадлежность</div>
+                    <div class="pyr-level pl2">🛡️ Безопасность</div>
+                    <div class="pyr-level pl1">🍞 Физиологические (еда, сон, тепло)</div>
+                </div>
+
+                <table>
+                    <tr><th class="th-soc">Вид потребности</th><th class="th-soc">Примеры</th><th class="th-soc">Чем отличается от животных</th></tr>
+                    <tr>
+                        <td><strong>Биологические</strong> (природные)</td>
+                        <td>Еда, вода, сон, тепло, безопасность</td>
+                        <td>Есть и у животных</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Социальные</strong></td>
+                        <td>Общение, дружба, любовь, принадлежность к группе</td>
+                        <td>Связаны с жизнью в обществе</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Духовные</strong> (идеальные)</td>
+                        <td>Знания, красота, творчество, вера, самореализация</td>
+                        <td>Присущи только человеку</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1.</span>
+                    Распредели по видам потребностей (биологические / социальные / духовные):
+                    посещение театра, утоление жажды, чтение книги, желание иметь друзей,
+                    сон, занятие музыкой, защита от холода, общение в соцсетях, вера в Бога, поиск смысла жизни.
+                    <br><br>
+                    <button class="toggle-btn tb-purple" onclick="tog('soc_ans1')">▶ Показать ответ</button>
+                    <div class="answer ans-purple" id="soc_ans1">
+Биологические: утоление жажды, сон, защита от холода
+Социальные: желание иметь друзей, общение в соцсетях
+Духовные: посещение театра, чтение книги, занятие музыкой,
+           вера в Бога, поиск смысла жизни
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ЗАНЯТИЕ 2 — ПОЗНАНИЕ И ДЕЯТЕЛЬНОСТЬ -->
+        <div class="lesson-block lb-soc">
+            <h2 class="soc-h">📖 Занятие 2: Познание и Деятельность</h2>
+            <span class="duration">⏱ 1 час</span>
+            <span class="tag tag-theory">Теория</span>
+            <span class="tag tag-practice">Практика</span>
+
+            <div class="video-block">
+                <h3>🎬 Видеоматериалы</h3>
+                <ul>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=rGHbHlmrKig" target="_blank">Познание мира — чувственное и рациональное (Инфоурок)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=Kb1LHSLmJqk" target="_blank">Деятельность человека — виды и структура (TutorOnline)</a></li>
+                    <li>📹 <a href="https://www.youtube.com/watch?v=7Oq8NsLhOVs" target="_blank">Деятельность и поведение человека — обществознание 6 класс</a></li>
+                </ul>
+            </div>
+
+            <div class="notebook">
+                <h3>Тема 1: Познание</h3>
+
+                <div class="rule-box rb-purple">
+                    <strong>📌 Познание</strong> — процесс получения человеком знаний об окружающем мире.
+                </div>
+
+                <table>
+                    <tr><th class="th-soc" colspan="2">Два уровня познания</th></tr>
+                    <tr>
+                        <td><strong>🫀 Чувственное познание</strong></td>
+                        <td>
+                            Познание с помощью органов чувств<br>
+                            • <strong>Ощущение</strong> — отражение отдельных свойств предмета<br>
+                            &nbsp;&nbsp;<em>(видим красный цвет, чувствуем тепло)</em><br>
+                            • <strong>Восприятие</strong> — целостный образ предмета<br>
+                            &nbsp;&nbsp;<em>(видим целое яблоко, а не отдельные его части)</em><br>
+                            • <strong>Представление</strong> — образ предмета в памяти, когда его нет рядом
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>🧠 Рациональное познание</strong></td>
+                        <td>
+                            Познание с помощью мышления и разума<br>
+                            • <strong>Понятие</strong> — мысль, отражающая общие признаки предметов<br>
+                            &nbsp;&nbsp;<em>(«фрукт», «дерево»)</em><br>
+                            • <strong>Суждение</strong> — утверждение или отрицание о предмете<br>
+                            &nbsp;&nbsp;<em>(«Яблоко — это фрукт»)</em><br>
+                            • <strong>Умозаключение</strong> — вывод из нескольких суждений
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="rule-box rb-yellow">
+                    <strong>📌 Истина</strong> — знание, соответствующее действительности.<br>
+                    <strong>Абсолютная истина</strong> — полное, исчерпывающее знание.<br>
+                    <strong>Относительная истина</strong> — неполное знание, которое может быть уточнено.<br>
+                    <em>Большинство наших знаний — относительные истины!</em>
+                </div>
+
+                <h3>Тема 2: Деятельность человека</h3>
+
+                <div class="rule-box rb-purple">
+                    <strong>📌 Деятельность</strong> — активность человека, направленная на достижение сознательной цели.<br>
+                    Главное отличие от поведения животных: <strong>человек действует осознанно!</strong>
+                </div>
+
+                <h3>Структура деятельности</h3>
+                <div class="scheme">
+                    <div class="scheme-row">
+                        <div class="scheme-box sb-purple"><strong>Субъект</strong><br>Тот, кто действует<br>(человек, группа)</div>
+                        <div class="arrow">→</div>
+                        <div class="scheme-box sb-orange"><strong>Мотив</strong><br>Побудительная причина<br>(зачем?)</div>
+                        <div class="arrow">→</div>
+                        <div class="scheme-box sb-blue"><strong>Цель</strong><br>Желаемый результат<br>(чего хочу достичь?)</div>
+                    </div>
+                    <div class="scheme-row" style="margin-top:10px;">
+                        <div class="scheme-box sb-teal"><strong>Средства</strong><br>Инструменты<br>(с помощью чего?)</div>
+                        <div class="arrow">→</div>
+                        <div class="scheme-box sb-green"><strong>Действия</strong><br>Конкретные шаги<br>(что делаю?)</div>
+                        <div class="arrow">→</div>
+                        <div class="scheme-box sb-red"><strong>Результат</strong><br>Итог деятельности<br>(что получилось?)</div>
+                    </div>
+                </div>
+
+                <h3>Виды деятельности человека</h3>
+                <table>
+                    <tr><th class="th-soc">Вид</th><th class="th-soc">Характеристика</th><th class="th-soc">Примеры</th></tr>
+                    <tr>
+                        <td><strong>🎮 Игра</strong></td>
+                        <td>Деятельность по правилам, важен процесс, а не результат; характерна для детей</td>
+                        <td>Шахматы, прятки, компьютерная игра</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📚 Учение</strong></td>
+                        <td>Приобретение знаний, умений и навыков; готовит к труду</td>
+                        <td>Школа, чтение, курсы, самообразование</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⚒️ Труд</strong></td>
+                        <td>Создание материальных и духовных ценностей; важен результат</td>
+                        <td>Строительство, написание книги, лечение</td>
+                    </tr>
+                    <tr>
+                        <td><strong>💬 Общение</strong></td>
+                        <td>Обмен информацией, чувствами и деятельностью между людьми</td>
+                        <td>Разговор, письмо, жесты, мимика</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎨 Творчество</strong></td>
+                        <td>Создание чего-то нового, уникального</td>
+                        <td>Живопись, музыка, изобретения</td>
+                    </tr>
+                </table>
+
+                <div class="rule-box rb-green">
+                    <strong>📌 Ключевые термины:</strong><br>
+                    <strong>Мотив</strong> — внутренняя побудительная причина деятельности.<br>
+                    <strong>Потребность</strong> — нужда в чём-либо необходимом.<br>
+                    <strong>Цель</strong> — желаемый результат деятельности.<br>
+                    <strong>Самопознание</strong> — изучение человеком собственных качеств, способностей, характера.<br>
+                    <strong>Самооценка</strong> — оценка человеком самого себя (завышенная / адекватная / заниженная).
+                </div>
+            </div>
+
+            <div class="exercise-block">
+                <div class="task">
+                    <span class="task-num">📝 Задание 1: Анализ деятельности</span><br>
+                    Опиши структуру деятельности по схеме (субъект → мотив → цель → средства → действия → результат) для ситуации:<br>
+                    <em>«Ученик готовится к контрольной работе по математике»</em>
+                    <br><br>
+                    <button class="toggle-btn tb-purple" onclick="tog('soc_ans2')">▶ Показать примерный ответ</button>
+                    <div class="answer ans-purple" id="soc_ans2">
+Субъект:  Ученик (конкретный человек)
+Мотив:    Не получить плохую оценку / хочет знать математику
+Цель:     Успешно написать контрольную
+Средства: Учебник, тетрадь, калькулятор, объяснения учителя
+Действия: Повторяет правила, решает примеры, разбирает ошибки
+Результат: Хорошая оценка / усвоенные знания
+                    </div>
+                </div>
+                <div class="task">
+                    <span class="task-num">📝 Задание 2: Определи вид деятельности</span><br>
+                    1) Архитектор рисует проект здания<br>
+                    2) Первоклассник учится писать буквы<br>
+                    3) Дети играют в футбол во дворе<br>
+                    4) Врач осматривает пациента<br>
+                    5) Подруги обсуждают прочитанную книгу
+                    <br><br>
+                    <button class="toggle-btn tb-purple" onclick="tog('soc_ans3')">▶ Показать ответ</button>
+                    <div class="answer ans-purple" id="soc_ans3">
+1) Труд + Творчество (создаёт новое)
+2) Учение (приобретение навыков)
+3) Игра (по правилам, важен процесс)
+4) Труд (создание ценности — здоровье пациента)
+5) Общение (обмен информацией и впечатлениями)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ТЕСТ ПО ОБЩЕСТВОЗНАНИЮ -->
+        <div class="quiz-wrap">
+            <div class="quiz-title">🧪 Тест по обществознанию</div>
+            <p>10 вопросов | Время: ~8 минут</p>
+
+            <form id="socQuiz">
+                <div class="q-block">
+                    <p>1. Человек как социальное существо, несущее ответственность за свои поступки — это:</p>
+                    <label class="q-opt"><input type="radio" name="sq1" value="a"> Индивид</label>
+                    <label class="q-opt"><input type="radio" name="sq1" value="b"> Индивидуальность</label>
+                    <label class="q-opt"><input type="radio" name="sq1" value="c"> Личность</label>
+                    <label class="q-opt"><input type="radio" name="sq1" value="d"> Организм</label>
+                </div>
+                <div class="q-block">
+                    <p>2. Процесс усвоения человеком норм и ценностей общества называется:</p>
+                    <label class="q-opt"><input type="radio" name="sq2" value="a"> Социализация</label>
+                    <label class="q-opt"><input type="radio" name="sq2" value="b"> Познание</label>
+                    <label class="q-opt"><input type="radio" name="sq2" value="c"> Деятельность</label>
+                    <label class="q-opt"><input type="radio" name="sq2" value="d"> Адаптация</label>
+                </div>
+                <div class="q-block">
+                    <p>3. К духовным потребностям относится:</p>
+                    <label class="q-opt"><input type="radio" name="sq3" value="a"> Еда</label>
+                    <label class="q-opt"><input type="radio" name="sq3" value="b"> Безопасность</label>
+                    <label class="q-opt"><input type="radio" name="sq3" value="c"> Общение</label>
+                    <label class="q-opt"><input type="radio" name="sq3" value="d"> Творчество и самореализация</label>
+                </div>
+                <div class="q-block">
+                    <p>4. Восприятие — это:</p>
+                    <label class="q-opt"><input type="radio" name="sq4" value="a"> Образ предмета в памяти, когда его нет рядом</label>
+                    <label class="q-opt"><input type="radio" name="sq4" value="b"> Целостный образ предмета, воспринимаемого органами чувств</label>
+                    <label class="q-opt"><input type="radio" name="sq4" value="c"> Отражение отдельного свойства предмета</label>
+                    <label class="q-opt"><input type="radio" name="sq4" value="d"> Вывод из нескольких суждений</label>
+                </div>
+                <div class="q-block">
+                    <p>5. Главный агент первичной социализации:</p>
+                    <label class="q-opt"><input type="radio" name="sq5" value="a"> Школа</label>
+                    <label class="q-opt"><input type="radio" name="sq5" value="b"> СМИ</label>
+                    <label class="q-opt"><input type="radio" name="sq5" value="c"> Семья</label>
+                    <label class="q-opt"><input type="radio" name="sq5" value="d"> Сверстники</label>
+                </div>
+                <div class="q-block">
+                    <p>6. Деятельность, цель которой — создание материальных и духовных ценностей:</p>
+                    <label class="q-opt"><input type="radio" name="sq6" value="a"> Игра</label>
+                    <label class="q-opt"><input type="radio" name="sq6" value="b"> Общение</label>
+                    <label class="q-opt"><input type="radio" name="sq6" value="c"> Учение</label>
+                    <label class="q-opt"><input type="radio" name="sq6" value="d"> Труд</label>
+                </div>
+                <div class="q-block">
+                    <p>7. Структура деятельности включает:</p>
+                    <label class="q-opt"><input type="radio" name="sq7" value="a"> Только цель и результат</label>
+                    <label class="q-opt"><input type="radio" name="sq7" value="b"> Субъект, мотив, цель, средства, действия, результат</label>
+                    <label class="q-opt"><input type="radio" name="sq7" value="c"> Только мотив и действие</label>
+                    <label class="q-opt"><input type="radio" name="sq7" value="d"> Потребности и инстинкты</label>
+                </div>
+                <div class="q-block">
+                    <p>8. «Умозаключение» — это форма:</p>
+                    <label class="q-opt"><input type="radio" name="sq8" value="a"> Чувственного познания</label>
+                    <label class="q-opt"><input type="radio" name="sq8" value="b"> Рационального познания</label>
+                    <label class="q-opt"><input type="radio" name="sq8" value="c"> Практической деятельности</label>
+                    <label class="q-opt"><input type="radio" name="sq8" value="d"> Творческой деятельности</label>
+                </div>
+                <div class="q-block">
+                    <p>9. Что является отличительным признаком деятельности человека от поведения животных?</p>
+                    <label class="q-opt"><input type="radio" name="sq9" value="a"> Наличие потребностей</label>
+                    <label class="q-opt"><input type="radio" name="sq9" value="b"> Физическая активность</label>
+                    <label class="q-opt"><input type="radio" name="sq9" value="c"> Осознанность и наличие цели</label>
+                    <label class="q-opt"><input type="radio" name="sq9" value="d"> Движение</label>
+                </div>
+                <div class="q-block">
+                    <p>10. «Самооценка» — это:</p>
+                    <label class="q-opt"><input type="radio" name="sq10" value="a"> Оценка человека другими людьми</label>
+                    <label class="q-opt"><input type="radio" name="sq10" value="b"> Оценка человеком самого себя</label>
+                    <label class="q-opt"><input type="radio" name="sq10" value="c"> Итог деятельности</label>
+                    <label class="q-opt"><input type="radio" name="sq10" value="d"> Процесс социализации</label>
+                </div>
+                <button type="button" class="check-btn cb-soc" onclick="checkQuiz('socQuiz', socAnswers, socExplain, 'socResult')">✅ Проверить ответы</button>
+            </form>
+            <div class="result-box" id="socResult"></div>
+        </div>
+
+    </div><!-- /social -->
+
+</div><!-- /container -->
+
+<script>
+    /* ── Прокрутка ── */
+    function scrollTo(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ── Показать/скрыть ответ ── */
+    function tog(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    /* ══ Данные тестов ══ */
+    var histAnswers = { hq1:'b', hq2:'c', hq3:'c', hq4:'b', hq5:'b', hq6:'b', hq7:'c', hq8:'b', hq9:'c', hq10:'b' };
+    var histExplain = {
+        hq1:  '476 год — год падения Западной Римской империи.',
+        hq2:  'Столица Byzantии — Константинополь (ныне Стамбул, Турция).',
+        hq3:  '800 год — папа Лев III короновал Карла Великого.',
+        hq4:  'Хиджра (622 г.) — переселение Мухаммеда из Мекки в Медину; начало мусульманского летосчисления.',
+        hq5:  'Вассал получает феод (землю) и несёт военную службу сеньору.',
+        hq6:  '843 г. — Верденский договор разделил империю Карла между его тремя внуками.',
+        hq7:  'Барщина — работа крестьянина на земле феодала (2-3 дня в неделю).',
+        hq8:  'Юстиниан I (527-565 гг.) — время расцвета Byzantии: Кодекс законов, храм Святой Софии.',
+        hq9:  'Коран — священная книга мусульман.',
+        hq10: 'Натуральное хозяйство — всё производится для собственного потребления, не для продажи.'
+    };
+
+    var bioAnswers = { bq1:'b', bq2:'c', bq3:'b', bq4:'b', bq5:'c', bq6:'b', bq7:'b', bq8:'c', bq9:'b', bq10:'c' };
+    var bioExplain = {
+        bq1:  'Хлоропласты — только у растений (и некоторых водорослей). Митохондрии, рибосомы, ядро есть у обоих.',
+        bq2:  'Фотосинтез происходит в хлоропластах, где находится хлорофилл.',
+        bq3:  'Ксилема (сосуды) — движение воды снизу вверх (от корня к листьям). Флоэма — сверху вниз.',
+        bq4:  'Клеточная стенка растений состоит из целлюлозы. У грибов — хитин, у бактерий — муреин.',
+        bq5:  'Образовательная ткань (меристема) — клетки постоянно делятся → рост растения.',
+        bq6:  'Устьица — структуры покровной ткани листа; регулируют газообмен и испарение воды.',
+        bq7:  'Транспирация — испарение воды растением через устьица листьев.',
+        bq8:  'Ядро содержит ДНК и управляет всей жизнедеятельностью клетки.',
+        bq9:  'Крахмал — запасное вещество растений. У животных — гликоген.',
+        bq10: 'Матиас Шлейден (1838) и Теодор Шванн (1839) — авторы клеточной теории.'
+    };
+
+    var socAnswers = { sq1:'c', sq2:'a', sq3:'d', sq4:'b', sq5:'c', sq6:'d', sq7:'b', sq8:'b', sq9:'c', sq10:'b' };
+    var socExplain = {
+        sq1:  'Личность — человек как социальное существо, несущий ответственность за поступки.',
+        sq2:  'Социализация — усвоение норм и ценностей общества.',
+        sq3:  'Творчество и самореализация — духовные потребности, присущи только человеку.',
+        sq4:  'Восприятие — целостный образ предмета (все органы чувств вместе). Ощущение — одно свойство.',
+        sq5:  'Семья — первичный агент социализации (первые нормы и ценности).',
+        sq6:  'Труд — деятельность, направленная на создание материальных и духовных ценностей.',
+        sq7:  'Полная структура: субъект → мотив → цель → средства → действия → результат.',
+        sq8:  'Умозаключение — форма рационального познания (вывод из суждений).',
+        sq9:  'Осознанность и наличие цели — главное отличие деятельности человека от поведения животных.',
+        sq10: 'Самооценка — оценка человеком собственных качеств, способностей.'
+    };
+
+    /* ══ Универсальная проверка теста ══ */
+    function checkQuiz(formId, answers, explain, resultId) {
+        var prefix = Object.keys(answers)[0].replace(/\d+$/, '');
+        var total   = Object.keys(answers).length;
+        var score   = 0;
+        var html    = '';
+
+        for (var q in answers) {
+            var sel = document.querySelector('input[name="' + q + '"]:checked');
+            var num = q.replace(prefix, '');
+            if (sel && sel.value === answers[q]) {
+                score++;
+                html += '<br>✅ Вопрос ' + num + ': Верно! ' + explain[q];
+            } else if (sel) {
+                html += '<br>❌ Вопрос ' + num + ': Неверно. ' + explain[q];
+            } else {
+                html += '<br>⚠️ Вопрос ' + num + ': Нет ответа. ' + explain[q];
+            }
+        }
+
+        var pct = Math.round(score / total * 100);
+        var bg  = pct >= 80 ? '#c6f6d5' : pct >= 60 ? '#fefcbf' : '#fed7d7';
+        var em  = pct >= 80 ? '🎉' : pct >= 60 ? '👍' : '📚 Нужно повторить!';
+
+        var box = document.getElementById(resultId);
+        box.style.background = bg;
+        box.style.display    = 'block';
+        box.innerHTML = em + ' <strong>' + score + '/' + total + ' (' + pct + '%)</strong>' + html;
+        box.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

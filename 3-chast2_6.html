@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — Русский язык: Местоимение, Числительное, Синтаксис (6 класс)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 {
+            color: #0077b6;
+            font-size: 1.9em;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .header .time-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: #1a5e2a;
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 20px;
+            position: relative;
+        }
+        .section-divider span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            color: #0077b6;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #00b4d8;
+            font-size: 1.5em;
+        }
+        .card h3 {
+            color: #0096c7;
+            margin: 15px 0 10px;
+            font-size: 1.2em;
+        }
+        .card h4 {
+            color: #6c5ce7;
+            margin: 12px 0 8px;
+            font-size: 1.05em;
+        }
+        .notebook {
+            background: #fffde7;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: #ff9800;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .notebook ul, .notebook ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .notebook li {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+        .notebook p {
+            line-height: 1.7;
+            margin: 5px 0;
+        }
+        .rule-box {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .rule-box .rule-title {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        .example {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.7;
+        }
+        .example strong {
+            color: #1565c0;
+        }
+        .practice {
+            background: #fce4ec;
+            border-left: 5px solid #e91e63;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        .practice::before {
+            content: "✏️ ПОРЕШАТЬ";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: #e91e63;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .practice ol, .practice ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        .practice li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        .solution {
+            background: #f1f8e9;
+            border: 1px dashed #8bc34a;
+            padding: 15px;
+            margin: 5px 0 10px;
+            border-radius: 8px;
+            display: none;
+            line-height: 1.7;
+        }
+        .solution ol {
+            margin-left: 20px;
+        }
+        .solution li {
+            margin-bottom: 6px;
+        }
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none;
+            color: #1a5e2a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+        .solution-btn:hover {
+            transform: scale(1.05);
+        }
+        .video-link {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: transform 0.2s;
+        }
+        .video-link:hover {
+            transform: translateX(5px);
+            color: white;
+        }
+        .video-link .play-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        .video-section {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .video-section h3 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        th {
+            background: linear-gradient(135deg, #0077b6, #0096c7);
+            color: white;
+            padding: 10px 8px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+        tr:hover {
+            background: #e1f5fe;
+        }
+        .quiz-container {
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .quiz-container h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .quiz-question p {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+        .quiz-option.correct {
+            background: #c8e6c9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+        .quiz-option.wrong {
+            background: #ffcdd2;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        .quiz-feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+        }
+        .score-display {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        .score-display .score-number {
+            font-size: 3em;
+            color: #4a00e0;
+            font-weight: bold;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВНИМАНИЕ! Частая ошибка:";
+            font-weight: bold;
+            color: #856404;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .mnemonic {
+            background: #e0f7fa;
+            border: 2px dashed #00bcd4;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ ЛЕГКО:";
+            display: block;
+            font-weight: bold;
+            color: #006064;
+            margin-bottom: 5px;
+        }
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .accent {
+            color: #e91e63;
+            font-weight: bold;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: white;
+            color: #0077b6;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .check-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .check-btn:hover {
+            transform: scale(1.05);
+        }
+        .razryad-card {
+            background: #f3e5f5;
+            border: 2px solid #ce93d8;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .razryad-card h4 {
+            color: #7b1fa2;
+            margin-bottom: 5px;
+        }
+        .dictation-box {
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+        .dictation-box h3 {
+            color: #7b1fa2;
+        }
+        .compact-table td, .compact-table th {
+            padding: 6px 8px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ============================================ -->
+        <!-- HEADER -->
+        <!-- ============================================ -->
+        <div class="header">
+            <h1>📚 Неделя 3 — Русский язык</h1>
+            <div class="subtitle">Часть 2: Местоимение • Числительное • Синтаксис простого предложения</div>
+            <div class="time-badge">⏱ Время: ~4,5 часа</div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- ЧАСТЬ А: МЕСТОИМЕНИЕ -->
+        <!-- ============================================ -->
+        <div class="section-divider">
+            <span>🅰️ МЕСТОИМЕНИЕ</span>
+        </div>
+
+        <!-- Теория: определение -->
+        <div class="card">
+            <h2>📖 1. Что такое местоимение</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Определение</h3>
+                <p><strong>Местоимение</strong> — самостоятельная часть речи, которая <strong>указывает на предмет, признак или количество</strong>, но <strong>не называет</strong> их.</p>
+
+                <h3>Вместо какой части речи</h3>
+                <ul>
+                    <li>Вместо <strong>существительного</strong>: <em>он, кто, что, никто, себя…</em></li>
+                    <li>Вместо <strong>прилагательного</strong>: <em>мой, этот, какой, некоторый…</em></li>
+                    <li>Вместо <strong>числительного</strong>: <em>сколько, несколько, столько…</em></li>
+                </ul>
+
+                <h3>Синтаксическая роль</h3>
+                <p>Местоимение в предложении может быть <strong>подлежащим, дополнением, определением, обстоятельством</strong> — в зависимости от того, какую часть речи оно заменяет.</p>
+            </div>
+
+            <div class="example">
+                <strong>Примеры:</strong><br>
+                <em><strong>Он</strong> пришёл.</em> — подлежащее (вместо сущ.)<br>
+                <em>Я видел <strong>его</strong>.</em> — дополнение (вместо сущ.)<br>
+                <em><strong>Мой</strong> друг уехал.</em> — определение (вместо прилаг.)<br>
+                <em><strong>Сколько</strong> стоит?</em> — обстоятельство/дополнение (вместо числит.)
+            </div>
+        </div>
+
+        <!-- Теория: разряды -->
+        <div class="card">
+            <h2>📖 2. Разряды местоимений (9 разрядов)</h2>
+
+            <div class="notebook">
+                <br>
+                <table>
+                    <tr>
+                        <th>№</th>
+                        <th>Разряд</th>
+                        <th>Примеры</th>
+                        <th>На что указывают</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Личные</strong></td>
+                        <td>я, ты, он, она, оно, мы, вы, они</td>
+                        <td>На лицо или предмет</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Возвратное</strong></td>
+                        <td>себя</td>
+                        <td>На действие, направленное на самого себя</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Притяжательные</strong></td>
+                        <td>мой, твой, наш, ваш, свой, его, её, их</td>
+                        <td>На принадлежность</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Указательные</strong></td>
+                        <td>этот, тот, такой, таков, столько</td>
+                        <td>Указывают на предмет, признак, количество</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Вопросительные</strong></td>
+                        <td>кто, что, какой, который, чей, сколько</td>
+                        <td>Служат для вопроса</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Относительные</strong></td>
+                        <td>кто, что, какой, который, чей, сколько</td>
+                        <td>Связывают части сложного предложения (союзные слова)</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Неопределённые</strong></td>
+                        <td>некто, нечто, некоторый, несколько, кто-то, что-нибудь, кое-кто</td>
+                        <td>Указывают на неопределённые предметы, признаки</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Отрицательные</strong></td>
+                        <td>никто, ничто, никакой, ничей, некого, нечего</td>
+                        <td>Указывают на отсутствие предмета, признака</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Определительные</strong></td>
+                        <td>весь, всякий, каждый, сам, самый, любой, иной, другой</td>
+                        <td>Обобщённый признак предмета</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="mnemonic">
+                <strong>Запомни разряды по первым буквам:</strong><br>
+                <strong>Л</strong>ичные — <strong>В</strong>озвратное — <strong>П</strong>ритяжательные — <strong>У</strong>казательные<br>
+                <strong>В</strong>опросительные — <strong>О</strong>тносительные — <strong>Н</strong>еопределённые — <strong>О</strong>трицательные — <strong>О</strong>пределительные<br><br>
+                <em>«<strong>Л</strong>ев <strong>В</strong>ася <strong>П</strong>ришёл <strong>У</strong>тром, <strong>В</strong>зял <strong>О</strong>чки, <strong>Н</strong>о <strong>О</strong>н <strong>О</strong>шибся»</em>
+            </div>
+        </div>
+
+        <!-- Правописание местоимений -->
+        <div class="card">
+            <h2>📖 3. Правописание местоимений</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Правило 1: Личные местоимения с предлогами</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Н после предлога</div>
+                    <p>После предлогов у местоимений 3-го лица (он, она, оно, они) появляется буква <strong>Н</strong>:</p>
+                    <p><em>у <strong>н</strong>его, к <strong>н</strong>ей, с <strong>н</strong>ими, о <strong>н</strong>ём, за <strong>н</strong>ей</em></p>
+                    <p>Но: <em>его книга, её дом, их работа</em> — здесь это <strong>притяжательные</strong> местоимения, Н не добавляем!</p>
+                </div>
+
+                <h3>Правило 2: Неопределённые местоимения</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Через дефис и с приставкой</div>
+                    <p><strong>Через дефис</strong> пишутся суффиксы: <strong>-то, -либо, -нибудь</strong> и приставка <strong>кое-</strong></p>
+                    <p><em>кто-<strong>то</strong>, что-<strong>либо</strong>, какой-<strong>нибудь</strong>, <strong>кое-</strong>кто</em></p>
+                    <p><strong>НО:</strong> если между <em>кое-</em> и местоимением есть предлог — пишем в три слова:</p>
+                    <p><em><strong>кое у кого</strong>, <strong>кое с кем</strong>, <strong>кое о чём</strong></em></p>
+                    <p><strong>Слитно</strong> пишется приставка <strong>не-</strong> (под ударением): <strong>не́</strong>кто, <strong>не́</strong>что, <strong>не́</strong>который, <strong>не́</strong>сколько</p>
+                </div>
+
+                <h3>Правило 3: Отрицательные местоимения</h3>
+                <div class="rule-box">
+                    <div class="rule-title">НИ- и НЕ- в отрицательных местоимениях</div>
+                    <p><strong>Под ударением</strong> пишем <strong>НЕ́-</strong>: <em><strong>не́</strong>кого, <strong>не́</strong>чего</em></p>
+                    <p><strong>Без ударения</strong> пишем <strong>НИ-</strong>: <em><strong>ни</strong>кто́, <strong>ни</strong>что́, <strong>ни</strong>како́й, <strong>ни</strong>чей</em></p>
+                    <p><strong>Слитно</strong> — без предлога: <em><strong>никто</strong>, <strong>ничего</strong>, <strong>никакой</strong></em></p>
+                    <p><strong>В три слова</strong> — с предлогом: <em><strong>ни у кого</strong>, <strong>ни с чем</strong>, <strong>ни о каком</strong></em></p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                Не путай!<br>
+                <strong>Н<span class="accent">е́</span>кого</strong> спросить (ударение на НЕ, нет такого человека).<br>
+                <strong>Н<span class="accent">и</span>кого́</strong> не спросил (ударение на последнем слоге, полное отрицание).<br><br>
+                <strong>Н<span class="accent">е́</span>чего</strong> делать (ударение на НЕ, нет дела).<br>
+                <strong>Н<span class="accent">и</span>чего́</strong> не делал (ударение на последнем слоге).
+            </div>
+
+            <div class="example">
+                <strong>Примеры правописания:</strong><br>
+                ✅ <em>Кто-то позвонил.</em> (дефис: -то)<br>
+                ✅ <em>Кое-кто пришёл.</em> (дефис: кое-)<br>
+                ✅ <em>Кое у кого есть книга.</em> (предлог → три слова)<br>
+                ✅ <em>Никто не видел.</em> (без предлога → слитно, без ударения → ни-)<br>
+                ✅ <em>Ни у кого нет.</em> (с предлогом → три слова)<br>
+                ✅ <em>Нéкого позвать.</em> (ударение на НЕ → не-)<br>
+                ✅ <em>У неё красивый голос.</em> (после предлога → н+её)<br>
+                ✅ <em>Её голос красив.</em> (притяжательное, без предлога → без н)
+            </div>
+        </div>
+
+        <!-- Склонение личных местоимений -->
+        <div class="card">
+            <h2>📖 4. Склонение личных местоимений</h2>
+
+            <div class="notebook">
+                <br>
+                <table class="compact-table">
+                    <tr>
+                        <th>Падеж</th>
+                        <th>я</th>
+                        <th>ты</th>
+                        <th>он</th>
+                        <th>она</th>
+                        <th>оно</th>
+                        <th>мы</th>
+                        <th>вы</th>
+                        <th>они</th>
+                    </tr>
+                    <tr>
+                        <td><strong>И.п.</strong></td>
+                        <td>я</td>
+                        <td>ты</td>
+                        <td>он</td>
+                        <td>она</td>
+                        <td>оно</td>
+                        <td>мы</td>
+                        <td>вы</td>
+                        <td>они</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Р.п.</strong></td>
+                        <td>меня</td>
+                        <td>тебя</td>
+                        <td>его (него)</td>
+                        <td>её (неё)</td>
+                        <td>его (него)</td>
+                        <td>нас</td>
+                        <td>вас</td>
+                        <td>их (них)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Д.п.</strong></td>
+                        <td>мне</td>
+                        <td>тебе</td>
+                        <td>ему (нему)</td>
+                        <td>ей (ней)</td>
+                        <td>ему (нему)</td>
+                        <td>нам</td>
+                        <td>вам</td>
+                        <td>им (ним)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>В.п.</strong></td>
+                        <td>меня</td>
+                        <td>тебя</td>
+                        <td>его (него)</td>
+                        <td>её (неё)</td>
+                        <td>его (него)</td>
+                        <td>нас</td>
+                        <td>вас</td>
+                        <td>их (них)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Т.п.</strong></td>
+                        <td>мной</td>
+                        <td>тобой</td>
+                        <td>им (ним)</td>
+                        <td>ей (ней)</td>
+                        <td>им (ним)</td>
+                        <td>нами</td>
+                        <td>вами</td>
+                        <td>ими (ними)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>П.п.</strong></td>
+                        <td>обо мне</td>
+                        <td>о тебе</td>
+                        <td>о нём</td>
+                        <td>о ней</td>
+                        <td>о нём</td>
+                        <td>о нас</td>
+                        <td>о вас</td>
+                        <td>о них</td>
+                    </tr>
+                </table>
+                <p><em>В скобках — формы после предлога (с Н).</em></p>
+
+                <h3>Возвратное местоимение СЕБЯ:</h3>
+                <p>И.п. — <strong>нет!</strong> | Р.п. — себя | Д.п. — себе | В.п. — себя | Т.п. — собой | П.п. — о себе</p>
+            </div>
+        </div>
+
+        <!-- Практика: Местоимение -->
+        <div class="card">
+            <h2>✏️ Практика: Местоимение</h2>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 1:</strong> Определи разряд каждого выделенного местоимения:</p>
+                <ol>
+                    <li><strong>Никто</strong> не пришёл на собрание.</li>
+                    <li><strong>Мой</strong> брат учится в университете.</li>
+                    <li><strong>Кто</strong> сегодня дежурный?</li>
+                    <li>Он нашёл <strong>какую-то</strong> книгу.</li>
+                    <li><strong>Каждый</strong> ученик получил тетрадь.</li>
+                    <li>Расскажи мне о <strong>себе</strong>.</li>
+                    <li><strong>Этот</strong> дом построили недавно.</li>
+                    <li>Я знаю, <strong>кто</strong> это сделал.</li>
+                    <li><strong>Она</strong> любит читать.</li>
+                    <li>Мне <strong>нечего</strong> сказать.</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol_m1')">👁 Показать решение</button>
+            <div class="solution" id="sol_m1">
+                <ol>
+                    <li>Никто — <strong>отрицательное</strong></li>
+                    <li>Мой — <strong>притяжательное</strong></li>
+                    <li>Кто — <strong>вопросительное</strong> (есть вопрос)</li>
+                    <li>Какую-то — <strong>неопределённое</strong> (-то)</li>
+                    <li>Каждый — <strong>определительное</strong></li>
+                    <li>Себе — <strong>возвратное</strong></li>
+                    <li>Этот — <strong>указательное</strong></li>
+                    <li>Кто — <strong>относительное</strong> (связывает части сложного предложения, нет вопроса)</li>
+                    <li>Она — <strong>личное</strong></li>
+                    <li>Нечего — <strong>отрицательное</strong> (ударение на НЕ!)</li>
+                </ol>
+            </div>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 2:</strong> Раскрой скобки, запиши правильно:</p>
+                <ol>
+                    <li>(Ни)(с)(кем) не разговаривал.</li>
+                    <li>(Кое)(что) узнал.</li>
+                    <li>(Кое)(о)(чём) рассказал.</li>
+                    <li>Подошёл к (она).</li>
+                    <li>(Не)(кого) было спросить.</li>
+                    <li>(Ни)(чего) не понял.</li>
+                    <li>Что(нибудь) интересное.</li>
+                    <li>(Ни)(у)(кого) нет учебника.</li>
+                    <li>Думает только о (себя).</li>
+                    <li>Взял (он) книгу (= взял книгу, которая принадлежит ему).</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol_m2')">👁 Показать решение</button>
+            <div class="solution" id="sol_m2">
+                <ol>
+                    <li><strong>Ни с кем</strong> не разговаривал. (предлог → три слова, без ударения → ни-)</li>
+                    <li><strong>Кое-что</strong> узнал. (кое- → через дефис)</li>
+                    <li><strong>Кое о чём</strong> рассказал. (предлог между кое и чём → три слова)</li>
+                    <li>Подошёл к <strong>ней</strong>. (после предлога → Н)</li>
+                    <li><strong>Нéкого</strong> было спросить. (ударение на НЕ → слитно, не-)</li>
+                    <li><strong>Ничего́</strong> не понял. (без ударения → ни-, без предлога → слитно)</li>
+                    <li><strong>Что-нибудь</strong> интересное. (-нибудь → дефис)</li>
+                    <li><strong>Ни у кого</strong> нет учебника. (предлог → три слова)</li>
+                    <li>Думает только о <strong>себе</strong>. (П.п. возвратного)</li>
+                    <li>Взял <strong>его</strong> книгу. (притяжательное, без предлога → без Н)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Видео: Местоимение -->
+        <div class="card">
+            <div class="video-section">
+                <h3>🎬 Видеоматериалы: Местоимение</h3>
+
+                <a href="https://www.youtube.com/watch?v=r4GmzZJO-44" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Местоимение — разряды, правописание | 6 класс</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=R3w-Iztqg7U" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Разряды местоимений за 15 минут — вся теория</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=CvWXBYxJ3xQ" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>НЕ и НИ в отрицательных и неопределённых местоимениях</span>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ============================================ -->
+        <!-- ЧАСТЬ Б: ЧИСЛИТЕЛЬНОЕ -->
+        <!-- ============================================ -->
+        <div class="section-divider">
+            <span>🅱️ ИМЯ ЧИСЛИТЕЛЬНОЕ</span>
+        </div>
+
+        <div class="card">
+            <h2>📖 5. Что такое имя числительное</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Определение</h3>
+                <p><strong>Имя числительное</strong> — самостоятельная часть речи, которая обозначает <strong>количество предметов</strong> или <strong>порядок предметов при счёте</strong>.</p>
+
+                <h3>Два основных разряда по значению:</h3>
+                <table>
+                    <tr>
+                        <th>Разряд</th>
+                        <th>Вопрос</th>
+                        <th>Примеры</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Количественные</strong></td>
+                        <td>Сколько?</td>
+                        <td>пять, двадцать три, сто</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Порядковые</strong></td>
+                        <td>Какой? Который?</td>
+                        <td>пятый, двадцать третий, сотый</td>
+                    </tr>
+                </table>
+
+                <h3>Количественные делятся на:</h3>
+                <ul>
+                    <li><strong>Целые числа:</strong> один, пять, сто</li>
+                    <li><strong>Дробные:</strong> одна вторая, три пятых</li>
+                    <li><strong>Собирательные:</strong> двое, трое, четверо, пятеро, шестеро, семеро, оба (обе)</li>
+                </ul>
+
+                <h3>По строению числительные бывают:</h3>
+                <ul>
+                    <li><strong>Простые</strong> (одно слово, один корень): пять, десять, сорок</li>
+                    <li><strong>Сложные</strong> (одно слово, два корня): пят<strong>надцать</strong>, пят<strong>десят</strong>, пят<strong>сот</strong></li>
+                    <li><strong>Составные</strong> (два и более слов): двадцать пять, сто тридцать семь</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Склонение числительных -->
+        <div class="card">
+            <h2>📖 6. Склонение числительных</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Группа 1: Числительные 5–20 и 30</h3>
+                <p>Склоняются как существительные 3-го склонения (как «ночь»):</p>
+                <table class="compact-table">
+                    <tr>
+                        <th>Падеж</th>
+                        <th>Пример (пять)</th>
+                        <th>Пример (двенадцать)</th>
+                    </tr>
+                    <tr><td>И.п.</td><td>пять</td><td>двенадцать</td></tr>
+                    <tr><td>Р.п.</td><td>пят<strong>и</strong></td><td>двенадцат<strong>и</strong></td></tr>
+                    <tr><td>Д.п.</td><td>пят<strong>и</strong></td><td>двенадцат<strong>и</strong></td></tr>
+                    <tr><td>В.п.</td><td>пять</td><td>двенадцать</td></tr>
+                    <tr><td>Т.п.</td><td>пять<strong>ю</strong></td><td>двенадцать<strong>ю</strong></td></tr>
+                    <tr><td>П.п.</td><td>о пят<strong>и</strong></td><td>о двенадцат<strong>и</strong></td></tr>
+                </table>
+
+                <h3>Группа 2: Числительные 40, 90, 100</h3>
+                <p>Имеют только <strong>две формы</strong>:</p>
+                <table class="compact-table">
+                    <tr>
+                        <th>Падеж</th>
+                        <th>40</th>
+                        <th>90</th>
+                        <th>100</th>
+                    </tr>
+                    <tr><td>И.п., В.п.</td><td>сорок</td><td>девяносто</td><td>сто</td></tr>
+                    <tr><td>Р.п., Д.п., Т.п., П.п.</td><td>сорок<strong>а</strong></td><td>девяност<strong>а</strong></td><td>ст<strong>а</strong></td></tr>
+                </table>
+
+                <h3>Группа 3: Числительные 50–80</h3>
+                <p>Склоняются <strong>обе части</strong>:</p>
+                <table class="compact-table">
+                    <tr>
+                        <th>Падеж</th>
+                        <th>Пример (пятьдесят)</th>
+                    </tr>
+                    <tr><td>И.п.</td><td>пят<strong>ь</strong>десят</td></tr>
+                    <tr><td>Р.п.</td><td>пят<strong>и</strong>десят<strong>и</strong></td></tr>
+                    <tr><td>Д.п.</td><td>пят<strong>и</strong>десят<strong>и</strong></td></tr>
+                    <tr><td>В.п.</td><td>пят<strong>ь</strong>десят</td></tr>
+                    <tr><td>Т.п.</td><td>пят<strong>ью</strong>десять<strong>ю</strong></td></tr>
+                    <tr><td>П.п.</td><td>о пят<strong>и</strong>десят<strong>и</strong></td></tr>
+                </table>
+
+                <h3>Группа 4: Числительные 200, 300, 400, 500–900</h3>
+                <p>Тоже склоняются <strong>обе части</strong>:</p>
+                <table class="compact-table">
+                    <tr>
+                        <th>Падеж</th>
+                        <th>200</th>
+                        <th>500</th>
+                    </tr>
+                    <tr><td>И.п.</td><td>двести</td><td>пятьсот</td></tr>
+                    <tr><td>Р.п.</td><td>двухсот</td><td>пятисот</td></tr>
+                    <tr><td>Д.п.</td><td>двумстам</td><td>пятистам</td></tr>
+                    <tr><td>В.п.</td><td>двести</td><td>пятьсот</td></tr>
+                    <tr><td>Т.п.</td><td>двумястами</td><td>пятьюстами</td></tr>
+                    <tr><td>П.п.</td><td>о двухстах</td><td>о пятистах</td></tr>
+                </table>
+
+                <h3>Составные числительные:</h3>
+                <p>При склонении <strong>изменяется КАЖДОЕ слово</strong>!</p>
+            </div>
+
+            <div class="example">
+                <strong>Пример склонения составного числительного 365:</strong><br>
+                И.п. — триста шестьдесят пять<br>
+                Р.п. — трёхсот шестидесяти пяти<br>
+                Д.п. — трёмстам шестидесяти пяти<br>
+                В.п. — триста шестьдесят пять<br>
+                Т.п. — тремястами шестьюдесятью пятью<br>
+                П.п. — о трёхстах шестидесяти пяти
+            </div>
+        </div>
+
+        <!-- Правописание числительных -->
+        <div class="card">
+            <h2>📖 7. Правописание числительных</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Правило 1: Ь в числительных</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Где пишется мягкий знак?</div>
+                    <p><strong>На конце:</strong> 5–20, 30 → пят<strong>ь</strong>, шест<strong>ь</strong>, двадцат<strong>ь</strong>, тридцат<strong>ь</strong></p>
+                    <p><strong>В середине:</strong> 50–80, 500–900 → пят<strong>ь</strong>десят, шест<strong>ь</strong>сот, девят<strong>ь</strong>сот</p>
+                    <p><strong>НЕ ПИШЕТСЯ Ь:</strong> 15, 16, 17, 18, 19 — пят<strong>надцать</strong> (НЕ «пятьнадцать»!)</p>
+                </div>
+
+                <h3>Правило 2: Слитное написание</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Сложные числительные — одно слово!</div>
+                    <p>Числительные из двух корней пишутся <strong>слитно</strong>:</p>
+                    <p><em>одиннадцать, пятнадцать, шестьдесят, семьсот, двести</em></p>
+                </div>
+
+                <h3>Правило 3: Раздельное написание</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Составные числительные — раздельно!</div>
+                    <p>Каждое слово отдельно: <em>двадцать пять, сто тридцать семь, две тысячи двадцать четыре</em></p>
+                </div>
+            </div>
+
+            <div class="mnemonic">
+                <strong>Где Ь в числительных?</strong><br>
+                На конце: 5—20, 30 (пят<strong>Ь</strong>, двадцат<strong>Ь</strong>)<br>
+                В серёдке: 50—80, 500—900 (пят<strong>Ь</strong>десят, пят<strong>Ь</strong>сот)<br><br>
+                А вот 15—19 — Ь только на конце! (пят<strong>надцать</strong>, а НЕ пять<strong>надцать</strong>)
+            </div>
+
+            <div class="warning-box">
+                Числительные <strong>одиннадцать</strong> — пишется с двумя Н!<br>
+                Числительное <strong>миллион</strong> — одно Л, два Л!<br>
+                Числительное <strong>миллиард</strong> — два Л!
+            </div>
+        </div>
+
+        <!-- Практика: Числительное -->
+        <div class="card">
+            <h2>✏️ Практика: Числительное</h2>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 3:</strong> Запиши числа словами и поставь в нужный падеж:</p>
+                <ol>
+                    <li>В библиотеке более (700) книг.</li>
+                    <li>К (80) прибавить (15).</li>
+                    <li>Деревня находится в (90) километрах от города.</li>
+                    <li>Мы познакомились с (300) экспонатами музея.</li>
+                    <li>В школе учатся около (400) детей.</li>
+                    <li>Поезд прибыл с (50) пассажирами.</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol_ch1')">👁 Показать решение</button>
+            <div class="solution" id="sol_ch1">
+                <ol>
+                    <li>В библиотеке более <strong>семисот</strong> книг. (Р.п.)</li>
+                    <li>К <strong>восьмидесяти</strong> прибавить <strong>пятнадцать</strong>. (Д.п. + В.п.)</li>
+                    <li>Деревня находится в <strong>девяноста</strong> километрах от города. (П.п. → девяноста)</li>
+                    <li>Мы познакомились с <strong>тремястами</strong> экспонатами музея. (Т.п.)</li>
+                    <li>В школе учатся около <strong>четырёхсот</strong> детей. (Р.п.)</li>
+                    <li>Поезд прибыл с <strong>пятьюдесятью</strong> пассажирами. (Т.п.)</li>
+                </ol>
+            </div>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 4:</strong> Вставь Ь, где нужно:</p>
+                <ol>
+                    <li>Пят...надцать</li>
+                    <li>Сем...десят</li>
+                    <li>Шест...сот</li>
+                    <li>Восем...надцать</li>
+                    <li>Девят...сот</li>
+                    <li>Двадцат...</li>
+                    <li>Шест...надцать</li>
+                    <li>Восем...десят</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol_ch2')">👁 Показать решение</button>
+            <div class="solution" id="sol_ch2">
+                <ol>
+                    <li>Пят<strong>надцать</strong> — Ь только на конце, в середине НЕТ (15-19 — Ь на конце)</li>
+                    <li>Сем<strong>ь</strong>десят — Ь в середине (50-80)</li>
+                    <li>Шест<strong>ь</strong>сот — Ь в середине (500-900)</li>
+                    <li>Восем<strong>надцать</strong> — Ь только на конце (15-19)</li>
+                    <li>Девят<strong>ь</strong>сот — Ь в середине (500-900)</li>
+                    <li>Двадцат<strong>ь</strong> — Ь на конце (5-20, 30)</li>
+                    <li>Шест<strong>надцать</strong> — Ь только на конце (15-19)</li>
+                    <li>Восем<strong>ь</strong>десят — Ь в середине (50-80)</li>
+                </ol>
+            </div>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 5:</strong> Определи разряд числительного (количественное или порядковое), тип по строению (простое, сложное, составное):</p>
+                <ol>
+                    <li>Двенадцать месяцев</li>
+                    <li>Третий этаж</li>
+                    <li>Пятьсот рублей</li>
+                    <li>Двадцать пятый кабинет</li>
+                    <li>Трое друзей</li>
+                    <li>Одна вторая пути</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol_ch3')">👁 Показать решение</button>
+            <div class="solution" id="sol_ch3">
+                <ol>
+                    <li>Двенадцать — <strong>количественное</strong> (целое), <strong>сложное</strong> (два корня: две+надцать)</li>
+                    <li>Третий — <strong>порядковое</strong>, <strong>простое</strong></li>
+                    <li>Пятьсот — <strong>количественное</strong> (целое), <strong>сложное</strong> (пять+сот)</li>
+                    <li>Двадцать пятый — <strong>порядковое</strong>, <strong>составное</strong> (два слова)</li>
+                    <li>Трое — <strong>количественное</strong> (собирательное), <strong>простое</strong></li>
+                    <li>Одна вторая — <strong>количественное</strong> (дробное), <strong>составное</strong></li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Видео: Числительное -->
+        <div class="card">
+            <div class="video-section">
+                <h3>🎬 Видеоматериалы: Числительное</h3>
+
+                <a href="https://www.youtube.com/watch?v=KnILYwBqEWc" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Имя числительное — вся теория за 20 минут | 6 класс</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=7QGQwCIZnhk" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Склонение числительных — объяснение + практика</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=V8vTqnVfCNg" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Мягкий знак в числительных — простое правило</span>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- ============================================ -->
+        <!-- ЧАСТЬ В: СИНТАКСИС ПРОСТОГО ПРЕДЛОЖЕНИЯ -->
+        <!-- ============================================ -->
+        <div class="section-divider">
+            <span>🅲 СИНТАКСИС ПРОСТОГО ПРЕДЛОЖЕНИЯ</span>
+        </div>
+
+        <div class="card">
+            <h2>📖 8. Простое предложение — основные понятия</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Что такое предложение?</h3>
+                <p><strong>Предложение</strong> — основная единица синтаксиса, которая содержит <strong>грамматическую основу</strong> и выражает законченную мысль.</p>
+
+                <h3>Грамматическая основа = подлежащее + сказуемое</h3>
+                <ul>
+                    <li><strong>Подлежащее</strong> — главный член, обозначает предмет речи. Отвечает на вопросы <strong>кто? что?</strong> Чаще всего выражено существительным или местоимением в И.п.</li>
+                    <li><strong>Сказуемое</strong> — главный член, обозначает действие, состояние или признак подлежащего. Отвечает на вопросы <strong>что делает? каков? что это такое?</strong></li>
+                </ul>
+
+                <h3>Виды предложений:</h3>
+                <table>
+                    <tr>
+                        <th>Признак</th>
+                        <th>Виды</th>
+                        <th>Примеры</th>
+                    </tr>
+                    <tr>
+                        <td>По цели высказывания</td>
+                        <td>Повествовательное / Вопросительное / Побудительное</td>
+                        <td>Идёт дождь. / Идёт дождь? / Закрой окно!</td>
+                    </tr>
+                    <tr>
+                        <td>По интонации</td>
+                        <td>Восклицательное / Невосклицательное</td>
+                        <td>Как красиво! / На улице тепло.</td>
+                    </tr>
+                    <tr>
+                        <td>По наличию грамм. основы</td>
+                        <td>Двусоставное / Односоставное</td>
+                        <td>Мальчик читает. / Смеркалось.</td>
+                    </tr>
+                    <tr>
+                        <td>По наличию второстепенных членов</td>
+                        <td>Распространённое / Нераспространённое</td>
+                        <td>Мальчик читает книгу. / Мальчик читает.</td>
+                    </tr>
+                    <tr>
+                        <td>По наличию осложняющих элементов</td>
+                        <td>Осложнённое / Неосложнённое</td>
+                        <td>Мальчик, читая книгу, улыбался. / Мальчик читал.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Второстепенные члены -->
+        <div class="card">
+            <h2>📖 9. Второстепенные члены предложения</h2>
+
+            <div class="notebook">
+                <br>
+                <table>
+                    <tr>
+                        <th>Член предложения</th>
+                        <th>Вопросы</th>
+                        <th>Чем выражен</th>
+                        <th>Подчёркивание</th>
+                        <th>Пример</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Определение</strong></td>
+                        <td>Какой? Чей?</td>
+                        <td>Прилагательное, причастие, местоимение</td>
+                        <td>~~~~~~ (волнистая)</td>
+                        <td><em><u style="text-decoration: wavy underline;">Интересная</u> книга лежит на столе.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Дополнение</strong></td>
+                        <td>Вопросы косвенных падежей (кого? чего? кому? чему? и т.д.)</td>
+                        <td>Существительное, местоимение</td>
+                        <td>- - - - (пунктир)</td>
+                        <td><em>Я читаю <u style="text-decoration: dashed underline;">книгу</u>.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Обстоятельство</strong></td>
+                        <td>Где? Когда? Куда? Откуда? Как? Почему? Зачем?</td>
+                        <td>Наречие, сущ. с предлогом</td>
+                        <td>_._._ (точка-тире)</td>
+                        <td><em>Мы гуляли <u>в парке</u>.</em></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="example">
+                <strong>Полный разбор предложения:</strong><br><br>
+                <em>Маленький котёнок весело играл с клубком на ковре.</em><br><br>
+                <strong>Грамматическая основа:</strong> котёнок (подлежащее, ═══) играл (сказуемое, ═══)<br>
+                <strong>Определение:</strong> Маленький (какой? ~~~~~~)<br>
+                <strong>Обстоятельство образа действия:</strong> весело (как? _._._)<br>
+                <strong>Дополнение:</strong> с клубком (с чем? - - - -)<br>
+                <strong>Обстоятельство места:</strong> на ковре (где? _._._)<br><br>
+                <strong>Характеристика:</strong> повествовательное, невосклицательное, простое, двусоставное, распространённое, неосложнённое.
+            </div>
+        </div>
+
+        <!-- Однородные члены и обращение -->
+        <div class="card">
+            <h2>📖 10. Однородные члены и обращение</h2>
+
+            <div class="notebook">
+                <br>
+                <h3>Однородные члены предложения</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Признаки однородных членов:</div>
+                    <ul>
+                        <li>Отвечают на <strong>один и тот же вопрос</strong></li>
+                        <li>Относятся к <strong>одному и тому же слову</strong></li>
+                        <li>Являются <strong>одним и тем же членом предложения</strong></li>
+                        <li>Соединяются <strong>интонацией перечисления</strong> или <strong>союзами</strong> (и, а, но, или, да)</li>
+                    </ul>
+                </div>
+
+                <h3>Пунктуация при однородных членах:</h3>
+                <ul>
+                    <li>○, ○, ○ — запятая при перечислении без союзов</li>
+                    <li>○ и ○ — одиночный <strong>И</strong> → запятая НЕ ставится</li>
+                    <li>○, и ○, и ○ — повторяющийся <strong>И</strong> → запятая СТАВИТСЯ</li>
+                    <li>○, а ○ / ○, но ○ — перед <strong>А, НО</strong> → запятая ВСЕГДА</li>
+                    <li>○ или ○ — одиночный <strong>ИЛИ</strong> → запятая НЕ ставится</li>
+                </ul>
+
+                <h3>Обращение</h3>
+                <div class="rule-box">
+                    <div class="rule-title">Обращение — слово или сочетание слов, называющее того, к кому обращаются.</div>
+                    <p><strong>Обращение НЕ является членом предложения!</strong></p>
+                    <p><strong>Всегда выделяется запятыми</strong> (или восклицательным знаком):</p>
+                    <ul>
+                        <li><em><strong>Ребята</strong>, давайте жить дружно!</em></li>
+                        <li><em>Скажите, <strong>дорогие друзья</strong>, когда вы приедете?</em></li>
+                        <li><em>Спасибо тебе, <strong>мама</strong>.</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example">
+                <strong>Примеры с однородными членами:</strong><br>
+                1) <em>В парке росли <strong>берёзы, клёны</strong> и <strong>дубы</strong>.</em> (○, ○ и ○ — запятая перед последним не нужна)<br>
+                2) <em>Мальчик <strong>не плакал, а смеялся</strong>.</em> (перед А — запятая)<br>
+                3) <em>Она была <strong>и красива, и умна, и добра</strong>.</em> (повторяющийся И — запятые)<br>
+                4) <em>Девочка <strong>быстро, но аккуратно</strong> написала диктант.</em> (перед НО — запятая)
+            </div>
+
+            <div class="warning-box">
+                НЕ являются однородными:<br>
+                — Повторяющиеся слова для усиления: <em>Шёл, шёл и пришёл.</em><br>
+                — Фразеологизмы: <em>и день и ночь</em>, <em>ни свет ни заря</em> (без запятых!)
+            </div>
+        </div>
+
+        <!-- Практика: Синтаксис -->
+        <div class="card">
+            <h2>✏️ Практика: Синтаксис</h2>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 6:</strong> Подчеркни грамматическую основу и второстепенные члены, дай характеристику предложения:</p>
+                <ol>
+                    <li>Осенний ветер срывает с деревьев жёлтые листья.</li>
+                    <li>Ребята, берегите природу!</li>
+                    <li>На поляне росли красные и белые грибы.</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol_s1')">👁 Показать решение</button>
+            <div class="solution" id="sol_s1">
+                <p><strong>1) Осенний ветер срывает с деревьев жёлтые листья.</strong></p>
+                <ul>
+                    <li><u>ветер</u> — подлежащее (кто? что?)</li>
+                    <li><u><u>срывает</u></u> — сказуемое (что делает?)</li>
+                    <li><em>Осенний</em> — определение (какой? → ветер)</li>
+                    <li><em>с деревьев</em> — дополнение (с чего?)</li>
+                    <li><em>жёлтые</em> — определение (какие? → листья)</li>
+                    <li><em>листья</em> — дополнение (что?)</li>
+                </ul>
+                <p><strong>Характеристика:</strong> повествовательное, невосклицательное, простое, двусоставное, распространённое, неосложнённое.</p>
+
+                <br><p><strong>2) Ребята, берегите природу!</strong></p>
+                <ul>
+                    <li><em>Ребята</em> — <strong>обращение</strong> (НЕ член предложения!)</li>
+                    <li><u><u>берегите</u></u> — сказуемое (что делайте?)</li>
+                    <li><em>природу</em> — дополнение (что?)</li>
+                    <li>Подлежащего нет → <strong>односоставное</strong></li>
+                </ul>
+                <p><strong>Характеристика:</strong> побудительное, восклицательное, простое, односоставное, распространённое, осложнённое (обращение).</p>
+
+                <br><p><strong>3) На поляне росли красные и белые грибы.</strong></p>
+                <ul>
+                    <li><u>грибы</u> — подлежащее (что?)</li>
+                    <li><u><u>росли</u></u> — сказуемое (что делали?)</li>
+                    <li><em>На поляне</em> — обстоятельство места (где?)</li>
+                    <li><em>красные</em> и <em>белые</em> — однородные определения (какие?)</li>
+                </ul>
+                <p><strong>Характеристика:</strong> повествовательное, невосклицательное, простое, двусоставное, распространённое, осложнённое (однородные определения).</p>
+            </div>
+
+            <div class="practice">
+                <br>
+                <p><strong>Задание 7:</strong> Расставь запятые:</p>
+                <ol>
+                    <li>Мы собирали в лесу землянику чернику и малину.</li>
+                    <li>Бабушка расскажи мне сказку!</li>
+                    <li>Солнце светило но не грело.</li>
+                    <li>В зоопарке мы видели и слонов и жирафов и обезьян.</li>
+                    <li>Дорогие ребята я рад вас приветствовать!</li>
+                    <li>Мальчик был мал да удал.</li>
+                </ol>
+            </div>
+
+            <button class="solution-btn" onclick="toggleSolution('sol_s2')">👁 Показать решение</button>
+            <div class="solution" id="sol_s2">
+                <ol>
+                    <li>Мы собирали в лесу землянику<strong>,</strong> чернику и малину. (○, ○ и ○ — перед одиночным «и» запятая не нужна)</li>
+                    <li>Бабушка<strong>,</strong> расскажи мне сказку! (обращение выделяется запятой)</li>
+                    <li>Солнце светило<strong>,</strong> но не грело. (перед «но» всегда запятая)</li>
+                    <li>В зоопарке мы видели и слонов<strong>,</strong> и жирафов<strong>,</strong> и обезьян. (повторяющийся «и» — запятые)</li>
+                    <li>Дорогие ребята<strong>,</strong> я рад вас приветствовать! (обращение)</li>
+                    <li>Мальчик был мал<strong>,</strong> да удал. (да = но → запятая)</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Видео: Синтаксис -->
+        <div class="card">
+            <div class="video-section">
+                <h3>🎬 Видеоматериалы: Синтаксис</h3>
+
+                <a href="https://www.youtube.com/watch?v=fP4oi4FNwUQ" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Синтаксический разбор простого предложения | 6 класс</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=2DUyh2wN5dY" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Однородные члены предложения — знаки препинания</span>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=ypLbHj0FHYQ" target="_blank" class="video-link">
+                    <span class="play-icon">▶️</span>
+                    <span>Обращение — что это и как выделять на письме</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Диктант -->
+        <div class="card">
+            <div class="dictation-box">
+                <h3>📝 Итоговый мини-диктант (Местоимение + Числительное + Синтаксис)</h3>
+                <p><em>Прочитай, закрой и напиши по памяти. Проверь себя.</em></p>
+                <br>
+                <p>Никто из нас не знал, кто построил этот старинный замок. Кое-кто из местных жителей рассказывал легенды о нём, но никаких документов не сохранилось.</p>
+                <p>Замку было более пятисот лет. В семнадцатом веке здесь жили около двухсот человек. Каждый, кто попадал сюда, восхищался красотой этого места.</p>
+                <p>«Друзья, — сказал наш экскурсовод, — берегите эти памятники! Они хранят историю и культуру нашей страны.»</p>
+                <br>
+                <p><strong>Задания после диктанта:</strong></p>
+                <ol>
+                    <li>Найди и подчеркни все местоимения, определи их разряд.</li>
+                    <li>Найди все числительные, определи их разряд и падеж.</li>
+                    <li>Выполни синтаксический разбор второго предложения.</li>
+                    <li>Найди обращение и однородные члены.</li>
+                </ol>
+            </div>
+        </div>
+
+
+        <!-- ============================================ -->
+        <!-- ИНТЕРАКТИВНЫЙ ТЕСТ -->
+        <!-- ============================================ -->
+        <div class="quiz-container">
+            <h2>🧪 Интерактивный тест: Местоимение + Числительное + Синтаксис</h2>
+            <p style="color: white; margin-bottom: 10px;">15 вопросов — проверь себя!</p>
+
+            <!-- Вопрос 1 -->
+            <div class="quiz-question" id="qq1">
+                <p>1. К какому разряду относится местоимение «себя»?</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Личное</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) Возвратное</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Определительное</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Притяжательное</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="quiz-question" id="qq2">
+                <p>2. Как пишется: (ни)(с)(кем)?</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Нискем (слитно)</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) Ни с кем (в три слова)</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Ни-с-кем (через дефис)</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Не с кем</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 3 -->
+            <div class="quiz-question" id="qq3">
+                <p>3. «Что-нибудь» пишется:</p>
+                <button class="quiz-option" onclick="checkQ(this, true)">А) Через дефис</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Б) Слитно</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Раздельно</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 4 -->
+            <div class="quiz-question" id="qq4">
+                <p>4. «Я подошёл к (она)» — правильная форма:</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) к ей</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) к ней</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) к её</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) к неё</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 5 -->
+            <div class="quiz-question" id="qq5">
+                <p>5. Какой разряд у местоимения «каждый»?</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Указательное</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Б) Притяжательное</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">В) Определительное</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Неопределённое</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 6 -->
+            <div class="quiz-question" id="qq6">
+                <p>6. Где пишется Ь в числительном?</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Пят(?)надцать — в середине</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) Сем(?)десят — в середине</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Шест(?)надцать — в середине</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Один(?)надцать — в середине</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 7 -->
+            <div class="quiz-question" id="qq7">
+                <p>7. Числительное «девяносто» в Р.п.:</p>
+                <button class="quiz-option" onclick="checkQ(this, true)">А) девяноста</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Б) девяностов</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) девяности</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) девяносту</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 8 -->
+            <div class="quiz-question" id="qq8">
+                <p>8. «Трое друзей» — числительное «трое» является:</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Порядковым</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Б) Количественным (целое)</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">В) Количественным (собирательное)</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Количественным (дробное)</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 9 -->
+            <div class="quiz-question" id="qq9">
+                <p>9. «В библиотеке более (500) книг.» Правильная запись словами:</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) пятьсот</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) пятисот</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) пятиста</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) пятистах</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 10 -->
+            <div class="quiz-question" id="qq10">
+                <p>10. Что является грамматической основой в предложении «Осенние листья кружатся в воздухе»?</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) осенние листья</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) листья кружатся</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) кружатся в воздухе</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) осенние кружатся</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 11 -->
+            <div class="quiz-question" id="qq11">
+                <p>11. Какой второстепенный член предложения отвечает на вопрос «Какой?»?</p>
+                <button class="quiz-option" onclick="checkQ(this, true)">А) Определение</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Б) Дополнение</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Обстоятельство</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Подлежащее</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 12 -->
+            <div class="quiz-question" id="qq12">
+                <p>12. В каком предложении есть обращение?</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Маша пришла домой.</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) Маша, иди домой!</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Мама встретила Машу.</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Маша любит гулять.</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 13 -->
+            <div class="quiz-question" id="qq13">
+                <p>13. Где правильно расставлены запятые?</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Мы видели и слонов и жирафов и обезьян.</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) Мы видели и слонов, и жирафов, и обезьян.</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Мы видели, и слонов, и жирафов, и обезьян.</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Мы видели и слонов и жирафов, и обезьян.</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 14 -->
+            <div class="quiz-question" id="qq14">
+                <p>14. «Солнце светило, но не грело.» Перед «но» ставится запятая, потому что:</p>
+                <button class="quiz-option" onclick="checkQ(this, true)">А) Перед противительными союзами (а, но) всегда ставится запятая</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Б) Это сложное предложение</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) После «но» идёт обращение</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <!-- Вопрос 15 -->
+            <div class="quiz-question" id="qq15">
+                <p>15. Предложение «Смеркалось.» является:</p>
+                <button class="quiz-option" onclick="checkQ(this, false)">А) Двусоставным, нераспространённым</button>
+                <button class="quiz-option" onclick="checkQ(this, true)">Б) Односоставным, нераспространённым</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">В) Двусоставным, распространённым</button>
+                <button class="quiz-option" onclick="checkQ(this, false)">Г) Неполным предложением</button>
+                <div class="quiz-feedback"></div>
+            </div>
+
+            <div class="score-display" id="scoreDisplay2">
+                <p>Твой результат:</p>
+                <div class="score-number" id="scoreNumber2">0/15</div>
+                <p id="scoreComment2"></p>
+            </div>
+
+            <button class="check-btn" onclick="showScore2()">📊 Показать результат</button>
+        </div>
+
+        <!-- НАВИГАЦИЯ -->
+        <div class="nav-buttons">
+            <a href="#" class="nav-btn">← Часть 1: Глагол</a>
+            <a href="#" class="nav-btn">Далее: Математика (часть 1) →</a>
+        </div>
+    </div>
+
+    <script>
+        // === Кнопки показа решений ===
+        function toggleSolution(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'block') {
+                el.style.display = 'none';
+            } else {
+                el.style.display = 'block';
+            }
+        }
+
+        // === Интерактивный тест ===
+        let score2 = 0;
+        let answered2 = new Set();
+
+        function checkQ(button, isCorrect) {
+            const question = button.parentElement;
+            const qId = question.id;
+
+            if (answered2.has(qId)) return;
+            answered2.add(qId);
+
+            const buttons = question.querySelectorAll('.quiz-option');
+            buttons.forEach(btn => {
+                btn.style.pointerEvents = 'none';
+            });
+
+            if (isCorrect) {
+                button.classList.add('correct');
+                score2++;
+                const fb = question.querySelector('.quiz-feedback');
+                fb.style.display = 'block';
+                fb.style.background = '#c8e6c9';
+                fb.style.color = '#2e7d32';
+                fb.textContent = '✅ Правильно!';
+            } else {
+                button.classList.add('wrong');
+                buttons.forEach(btn => {
+                    // Найти правильный ответ
+                    const clickHandler = btn.getAttribute('onclick');
+                    if (clickHandler && clickHandler.includes('true')) {
+                        btn.classList.add('correct');
+                    }
+                });
+                const fb = question.querySelector('.quiz-feedback');
+                fb.style.display = 'block';
+                fb.style.background = '#ffcdd2';
+                fb.style.color = '#c62828';
+                fb.textContent = '❌ Неправильно. Правильный ответ выделен зелёным.';
+            }
+        }
+
+        function showScore2() {
+            const display = document.getElementById('scoreDisplay2');
+            display.style.display = 'block';
+            document.getElementById('scoreNumber2').textContent = score2 + '/15';
+
+            const comment = document.getElementById('scoreComment2');
+            if (score2 >= 14) {
+                comment.textContent = '🏆 Превосходно! Ты отлично знаешь материал!';
+                comment.style.color = '#4caf50';
+            } else if (score2 >= 11) {
+                comment.textContent = '👍 Хороший результат! Повтори ошибки.';
+                comment.style.color = '#2196f3';
+            } else if (score2 >= 8) {
+                comment.textContent = '📖 Неплохо, но стоит перечитать теорию.';
+                comment.style.color = '#ff9800';
+            } else if (score2 >= 5) {
+                comment.textContent = '📚 Нужно повторить материал более внимательно.';
+                comment.style.color = '#ff5722';
+            } else {
+                comment.textContent = '🔄 Рекомендуется заново изучить все три темы.';
+                comment.style.color = '#f44336';
+            }
+
+            display.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

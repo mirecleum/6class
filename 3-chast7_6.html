@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 3 — Английский язык и Литература (6 класс)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 40%, #c62828 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 920px; margin: 0 auto; }
+
+        /* ====== HEADER ====== */
+        .header {
+            background: white; border-radius: 20px;
+            padding: 30px; text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .header h1 { font-size: 1.85em; margin-bottom: 8px; color: #1a237e; }
+        .header .subtitle { color: #666; font-size: 1.05em; }
+        .badges { display: flex; justify-content: center; gap: 15px; margin-top: 12px; flex-wrap: wrap; }
+        .badge { display: inline-block; padding: 7px 18px; border-radius: 25px; font-weight: bold; font-size: 0.93em; color: white; }
+        .badge-eng { background: linear-gradient(135deg, #1a237e, #3949ab); }
+        .badge-lit { background: linear-gradient(135deg, #b71c1c, #e53935); }
+
+        /* ====== DIVIDERS ====== */
+        .section-divider { text-align: center; margin: 40px 0 20px; }
+        .section-divider span {
+            color: white; padding: 10px 30px; border-radius: 30px;
+            font-size: 1.25em; font-weight: bold;
+            display: inline-block; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .div-eng { background: linear-gradient(135deg, #1a237e, #3949ab); }
+        .div-lit { background: linear-gradient(135deg, #b71c1c, #e53935); }
+
+        /* ====== CARDS ====== */
+        .card {
+            background: white; border-radius: 15px;
+            padding: 25px; margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .card h2 { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 3px solid; font-size: 1.4em; }
+        .card-eng h2 { color: #1a237e; border-bottom-color: #3949ab; }
+        .card-eng h3 { color: #283593; margin: 14px 0 8px; font-size: 1.15em; }
+        .card-eng h4 { color: #1a237e; margin: 10px 0 6px; font-size: 1.02em; }
+        .card-lit h2 { color: #b71c1c; border-bottom-color: #e53935; }
+        .card-lit h3 { color: #c62828; margin: 14px 0 8px; font-size: 1.15em; }
+        .card-lit h4 { color: #b71c1c; margin: 10px 0 6px; font-size: 1.02em; }
+        .card p  { line-height: 1.7; margin: 6px 0; }
+        .card ul, .card ol { margin-left: 22px; }
+        .card li { line-height: 1.7; margin-bottom: 5px; }
+
+        /* ====== NOTEBOOK ====== */
+        .notebook {
+            background: #fffde7; border-left: 5px solid #ff9800;
+            padding: 22px 20px 18px; margin: 14px 0;
+            border-radius: 0 10px 10px 0; position: relative;
+        }
+        .notebook::before {
+            content: "📝 ЗАПИСАТЬ В ТЕТРАДЬ";
+            position: absolute; top: -12px; left: 10px;
+            background: #ff9800; color: white;
+            padding: 3px 12px; border-radius: 10px;
+            font-size: 0.78em; font-weight: bold;
+        }
+        .notebook ul, .notebook ol { margin-left: 20px; margin-top: 8px; }
+        .notebook li { margin-bottom: 6px; line-height: 1.7; }
+        .notebook p  { line-height: 1.7; margin: 5px 0; }
+
+        /* ====== RULE BOXES ====== */
+        .rule-box { border: 2px solid; border-radius: 10px; padding: 15px; margin: 12px 0; }
+        .rb-eng  { background: #e8eaf6; border-color: #3949ab; }
+        .rb-lit  { background: #ffebee; border-color: #e53935; }
+        .rb-green{ background: #e8f5e9; border-color: #4caf50; }
+        .rb-blue { background: #e3f2fd; border-color: #2196f3; }
+        .rtitle  { font-weight: bold; font-size: 1.04em; margin-bottom: 8px; }
+        .rt-eng  { color: #1a237e; }
+        .rt-lit  { color: #b71c1c; }
+        .rt-green{ color: #2e7d32; }
+        .rule-box p, .rule-box li { line-height: 1.7; }
+        .rule-box ul, .rule-box ol { margin-left: 20px; margin-top: 5px; }
+
+        .example {
+            background: #e3f2fd; border-left: 4px solid #2196f3;
+            padding: 13px 15px; margin: 10px 0;
+            border-radius: 0 8px 8px 0; line-height: 1.9;
+        }
+        .example strong { color: #1565c0; }
+
+        .warning-box {
+            background: #fff3cd; border: 2px solid #ffc107;
+            border-radius: 10px; padding: 13px; margin: 10px 0;
+        }
+        .warning-box::before {
+            content: "⚠️ ВНИМАНИЕ! Не перепутай:";
+            font-weight: bold; color: #856404;
+            display: block; margin-bottom: 5px;
+        }
+
+        .mnemonic {
+            background: #e0f7fa; border: 2px dashed #00bcd4;
+            border-radius: 10px; padding: 13px; margin: 10px 0;
+            text-align: center; font-size: 1.02em; line-height: 1.9;
+        }
+        .mnemonic::before {
+            content: "💡 ЗАПОМНИ ЛЕГКО:";
+            display: block; font-weight: bold;
+            color: #006064; margin-bottom: 5px;
+        }
+
+        /* ====== PRACTICE ====== */
+        .practice {
+            background: #fce4ec; border-left: 5px solid #e91e63;
+            padding: 22px 20px 18px; margin: 14px 0;
+            border-radius: 0 10px 10px 0; position: relative;
+        }
+        .practice::before {
+            content: "✏️ ВЫПОЛНИ ЗАДАНИЕ";
+            position: absolute; top: -12px; left: 10px;
+            background: #e91e63; color: white;
+            padding: 3px 12px; border-radius: 10px;
+            font-size: 0.78em; font-weight: bold;
+        }
+        .practice ol, .practice ul { margin-left: 20px; margin-top: 8px; }
+        .practice li { margin-bottom: 9px; line-height: 1.7; }
+        .practice p  { line-height: 1.7; margin: 5px 0; }
+
+        .solution {
+            background: #f1f8e9; border: 1px dashed #8bc34a;
+            padding: 14px; margin: 4px 0 10px;
+            border-radius: 8px; display: none; line-height: 1.8;
+        }
+        .solution ol, .solution ul { margin-left: 20px; }
+        .solution li { margin-bottom: 7px; }
+        .solution p  { margin-bottom: 8px; }
+
+        .solution-btn {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            border: none; color: #1a5e2a;
+            padding: 8px 18px; border-radius: 20px;
+            cursor: pointer; font-weight: bold;
+            font-size: 0.93em; margin: 5px 0; transition: transform 0.2s;
+        }
+        .solution-btn:hover { transform: scale(1.05); }
+
+        /* ====== TABLES ====== */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.93em; }
+        th { color: white; padding: 10px 8px; text-align: left; }
+        .th-eng { background: linear-gradient(135deg, #1a237e, #283593); }
+        .th-lit { background: linear-gradient(135deg, #b71c1c, #c62828); }
+        td { padding: 9px 8px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.6; }
+        tr:nth-child(even) { background: #fafafa; }
+        .tr-eng:hover { background: #e8eaf6; }
+        .tr-lit:hover  { background: #ffebee; }
+
+        /* ====== GRAMMAR TABLES ====== */
+        .grammar-table th { background: linear-gradient(135deg, #283593, #1565c0); }
+        .grammar-table td { text-align: center; padding: 8px; }
+        .grammar-table .formula {
+            font-family: 'Courier New', monospace;
+            font-weight: bold; font-size: 1em;
+            color: #1a237e;
+        }
+        .grammar-table .eng  { color: #1565c0; font-weight: bold; }
+        .grammar-table .rus  { color: #555; font-style: italic; font-size: 0.9em; }
+
+        /* Future Simple визуальная схема */
+        .fs-scheme {
+            background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+            border-radius: 12px; padding: 18px; margin: 14px 0;
+            text-align: center;
+        }
+        .fs-formula {
+            font-size: 1.3em; font-weight: bold;
+            color: #1a237e; font-family: 'Courier New', monospace;
+            background: white; padding: 10px 20px;
+            border-radius: 8px; display: inline-block;
+            margin: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Modal verbs */
+        .modal-card {
+            border-radius: 10px; padding: 14px;
+            margin: 8px 0; border-left: 5px solid;
+        }
+        .mc-can    { background: #e8f5e9; border-color: #4caf50; }
+        .mc-must   { background: #ffebee; border-color: #f44336; }
+        .mc-should { background: #fff3e0; border-color: #ff9800; }
+        .mc-title  { font-weight: bold; font-size: 1.05em; margin-bottom: 6px; }
+        .mc-can    .mc-title { color: #2e7d32; }
+        .mc-must   .mc-title { color: #c62828; }
+        .mc-should .mc-title { color: #e65100; }
+
+        /* Vocabulary cards */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+            gap: 8px; margin: 12px 0;
+        }
+        .vocab-card {
+            background: white; border: 2px solid #3949ab;
+            border-radius: 8px; padding: 9px;
+            text-align: center; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .vocab-card:hover { background: #e8eaf6; transform: scale(1.03); }
+        .vocab-card .eng-word { font-weight: bold; color: #1a237e; font-size: 0.95em; }
+        .vocab-card .transcr  { color: #888; font-size: 0.78em; font-style: italic; }
+        .vocab-card .rus-word { color: #333; font-size: 0.85em; margin-top: 3px; }
+
+        /* Литература — карточки произведений */
+        .book-card {
+            border-radius: 12px; padding: 18px;
+            margin: 12px 0; border: 2px solid;
+        }
+        .bc-1 { background: linear-gradient(135deg, #fff8e1, #fff3cd); border-color: #f39c12; }
+        .bc-2 { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-color: #27ae60; }
+        .bc-3 { background: linear-gradient(135deg, #fce4ec, #f8bbd0); border-color: #e91e63; }
+        .bc-4 { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-color: #2196f3; }
+        .book-card .book-title { font-size: 1.15em; font-weight: bold; margin-bottom: 6px; }
+        .book-card .book-author{ font-style: italic; color: #555; margin-bottom: 10px; font-size: 0.95em; }
+        .book-card ul { margin-left: 18px; }
+        .book-card li { margin-bottom: 5px; font-size: 0.93em; line-height: 1.6; }
+
+        /* Стихи */
+        .poem-box {
+            background: #f3e5f5; border: 2px solid #9c27b0;
+            border-radius: 10px; padding: 18px; margin: 12px 0;
+            font-style: italic; line-height: 2;
+        }
+        .poem-box .poem-title {
+            font-style: normal; font-weight: bold;
+            color: #6a1b9a; margin-bottom: 10px; font-size: 1.05em;
+        }
+
+        /* ====== VIDEO ====== */
+        .video-section {
+            background: #fff3e0; padding: 18px;
+            border-radius: 10px; margin: 14px 0;
+        }
+        .video-section h3 { color: #e65100; margin-bottom: 10px; }
+        .video-link {
+            display: flex; align-items: center;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white; padding: 11px 18px;
+            border-radius: 10px; text-decoration: none;
+            margin: 9px 0; transition: transform 0.2s;
+        }
+        .video-link:hover { transform: translateX(5px); color: white; }
+        .video-link .pi { font-size: 1.4em; margin-right: 10px; }
+
+        /* ====== QUIZ ====== */
+        .quiz-eng { background: linear-gradient(135deg, #1a237e, #283593); border-radius: 15px; padding: 25px; margin: 20px 0; }
+        .quiz-lit { background: linear-gradient(135deg, #b71c1c, #c62828); border-radius: 15px; padding: 25px; margin: 20px 0; }
+        .quiz-eng h2, .quiz-lit h2 {
+            color: white; border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px; margin-bottom: 15px; font-size: 1.3em;
+        }
+        .quiz-question {
+            background: white; border-radius: 10px;
+            padding: 18px; margin: 13px 0;
+        }
+        .quiz-question p {
+            font-weight: bold; color: #333;
+            margin-bottom: 11px; font-size: 1.01em; line-height: 1.5;
+        }
+        .quiz-option {
+            display: block; width: 100%; text-align: left;
+            padding: 9px 14px; margin: 5px 0;
+            border: 2px solid #e0e0e0; border-radius: 8px;
+            background: white; cursor: pointer; font-size: 0.96em;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: #999; background: #f5f5f5; }
+        .quiz-option.correct { background: #c8e6c9; border-color: #4caf50; color: #2e7d32; }
+        .quiz-option.wrong   { background: #ffcdd2; border-color: #f44336; color: #c62828; }
+        .quiz-feedback { margin-top: 9px; padding: 9px; border-radius: 7px; display: none; font-weight: bold; }
+        .score-display {
+            text-align: center; background: white;
+            padding: 22px; border-radius: 14px; margin-top: 14px; display: none;
+        }
+        .score-display .snum { font-size: 2.8em; font-weight: bold; }
+        .snum-eng { color: #1a237e; }
+        .snum-lit { color: #b71c1c; }
+        .check-btn {
+            background: white; border: none; padding: 11px 32px;
+            border-radius: 25px; font-size: 1.05em;
+            cursor: pointer; font-weight: bold;
+            margin-top: 14px; transition: transform 0.2s;
+        }
+        .check-btn:hover { transform: scale(1.05); }
+        .cbt-eng { color: #1a237e; }
+        .cbt-lit { color: #b71c1c; }
+
+        /* NAV */
+        .nav-buttons {
+            display: flex; justify-content: space-between;
+            margin-top: 30px; flex-wrap: wrap; gap: 10px;
+        }
+        .nav-btn {
+            display: inline-block; padding: 12px 24px;
+            background: white; text-decoration: none;
+            border-radius: 25px; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+        .nb-eng { color: #1a237e; }
+        .nb-lit { color: #b71c1c; }
+
+        .green  { color: #2e7d32; font-weight: bold; }
+        .blue   { color: #1565c0; font-weight: bold; }
+        .red    { color: #c62828; font-weight: bold; }
+        .eng-em { color: #1a237e; font-weight: bold; font-family: 'Courier New', monospace; }
+
+        .two-col {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 15px; margin: 10px 0;
+        }
+        @media(max-width:600px) {
+            .two-col { grid-template-columns: 1fr; }
+            .vocab-grid { grid-template-columns: repeat(2,1fr); }
+        }
+
+        /* Fill-in-the-blank input */
+        .fill-input {
+            border: none; border-bottom: 2px solid #3949ab;
+            outline: none; font-size: 1em; width: 120px;
+            padding: 2px 5px; color: #1a237e; font-weight: bold;
+            background: transparent;
+        }
+        .fill-input:focus { border-bottom-color: #f44336; }
+
+        .check-fills-btn {
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            color: white; border: none; padding: 10px 25px;
+            border-radius: 20px; cursor: pointer;
+            font-weight: bold; font-size: 0.95em;
+            margin: 10px 5px; transition: transform 0.2s;
+        }
+        .check-fills-btn:hover { transform: scale(1.05); }
+
+        .fill-result { margin-top: 10px; font-weight: bold; }
+        .fill-correct { color: #2e7d32; }
+        .fill-wrong   { color: #c62828; }
+
+        /* Герои произведений */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+            gap: 10px; margin: 12px 0;
+        }
+        .hero-card {
+            border-radius: 10px; padding: 12px;
+            text-align: center; border: 2px solid;
+        }
+        .hc-1 { background: #fff8e1; border-color: #f39c12; }
+        .hc-2 { background: #e8f5e9; border-color: #27ae60; }
+        .hc-3 { background: #fce4ec; border-color: #e91e63; }
+        .hc-4 { background: #e3f2fd; border-color: #2196f3; }
+        .hero-icon { font-size: 2em; margin-bottom: 5px; }
+        .hero-name { font-weight: bold; font-size: 0.92em; margin-bottom: 4px; }
+        .hero-desc { font-size: 0.8em; color: #555; line-height: 1.4; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+    <h1>🇬🇧📚 Неделя 3 — Английский язык и Литература</h1>
+    <div class="subtitle">Future Simple • Модальные глаголы • Лексика | Куприн • Грин • Астафьев • Распутин • Стихи о природе</div>
+    <div class="badges">
+        <span class="badge badge-eng">⏱ Английский: 2,5 часа</span>
+        <span class="badge badge-lit">⏱ Литература: 2,5 часа</span>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  АНГЛИЙСКИЙ ЯЗЫК                                             -->
+<!-- ============================================================ -->
+<div class="section-divider">
+    <span class="div-eng">🇬🇧 АНГЛИЙСКИЙ ЯЗЫК</span>
+</div>
+
+<!-- 1. Future Simple -->
+<div class="card card-eng">
+    <h2>📖 1. Future Simple (Простое будущее время)</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Когда используется Future Simple?</h3>
+        <ul>
+            <li>Действие, которое произойдёт в <strong>будущем</strong></li>
+            <li>Спонтанное решение (принятое в момент речи)</li>
+            <li>Предсказания, прогнозы</li>
+            <li>Обещания, угрозы</li>
+            <li>Факты о будущем</li>
+        </ul>
+        <h3>Слова-маркеры Future Simple:</h3>
+        <p><span class="eng-em">tomorrow, next week/month/year, in 2030, soon,
+        in the future, one day, tonight</span></p>
+    </div>
+
+    <!-- Схема образования -->
+    <div class="fs-scheme">
+        <h3 style="color:#1a237e; margin-bottom:12px;">Образование Future Simple</h3>
+        <div class="two-col" style="text-align:left; gap:20px;">
+            <div>
+                <p style="color:#2e7d32; font-weight:bold; margin-bottom:8px;">
+                    ✅ Утвердительное предложение:
+                </p>
+                <div class="fs-formula">Subject + will + V(base)</div>
+                <div class="example" style="margin-top:8px;">
+                    <span class="eng-em">I will go</span> to school tomorrow.<br>
+                    <span style="color:#555; font-size:0.9em;">Я пойду в школу завтра.</span><br><br>
+                    <span class="eng-em">She will visit</span> her granny next week.<br>
+                    <span style="color:#555; font-size:0.9em;">Она навестит бабушку на следующей неделе.</span>
+                </div>
+            </div>
+            <div>
+                <p style="color:#c62828; font-weight:bold; margin-bottom:8px;">
+                    ❌ Отрицательное предложение:
+                </p>
+                <div class="fs-formula">Subject + will not (won't) + V(base)</div>
+                <div class="example" style="margin-top:8px;">
+                    <span class="eng-em">I won't go</span> to the party.<br>
+                    <span style="color:#555; font-size:0.9em;">Я не пойду на вечеринку.</span><br><br>
+                    <span class="eng-em">They will not be</span> late.<br>
+                    <span style="color:#555; font-size:0.9em;">Они не опоздают.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col" style="text-align:left; gap:20px; margin-top:15px;">
+            <div>
+                <p style="color:#1565c0; font-weight:bold; margin-bottom:8px;">
+                    ❓ Вопросительное предложение:
+                </p>
+                <div class="fs-formula">Will + Subject + V(base)?</div>
+                <div class="example" style="margin-top:8px;">
+                    <span class="eng-em">Will you come</span> to my birthday?<br>
+                    <span style="color:#555; font-size:0.9em;">Ты придёшь на мой день рождения?</span><br><br>
+                    <span class="eng-em">Will she help</span> us?<br>
+                    <span style="color:#555; font-size:0.9em;">Она нам поможет?</span>
+                </div>
+            </div>
+            <div>
+                <p style="color:#6a1b9a; font-weight:bold; margin-bottom:8px;">
+                    💬 Краткие ответы:
+                </p>
+                <div class="fs-formula">Yes, I will. / No, I won't.</div>
+                <div class="example" style="margin-top:8px;">
+                    Will you call me? —<br>
+                    <span class="eng-em">Yes, I will.</span> /<br>
+                    <span class="eng-em">No, I won't.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Полная таблица спряжения (will):</h3>
+        <table class="grammar-table">
+            <tr>
+                <th>Местоимение</th>
+                <th>Утверждение</th>
+                <th>Сокращение</th>
+                <th>Отрицание</th>
+                <th>Сокращение</th>
+            </tr>
+            <tr class="tr-eng">
+                <td>I</td>
+                <td class="eng">I will go</td>
+                <td class="eng">I'll go</td>
+                <td class="eng">I will not go</td>
+                <td class="eng">I won't go</td>
+            </tr>
+            <tr class="tr-eng">
+                <td>You</td>
+                <td class="eng">You will go</td>
+                <td class="eng">You'll go</td>
+                <td class="eng">You will not go</td>
+                <td class="eng">You won't go</td>
+            </tr>
+            <tr class="tr-eng">
+                <td>He/She/It</td>
+                <td class="eng">He will go</td>
+                <td class="eng">He'll go</td>
+                <td class="eng">He will not go</td>
+                <td class="eng">He won't go</td>
+            </tr>
+            <tr class="tr-eng">
+                <td>We</td>
+                <td class="eng">We will go</td>
+                <td class="eng">We'll go</td>
+                <td class="eng">We will not go</td>
+                <td class="eng">We won't go</td>
+            </tr>
+            <tr class="tr-eng">
+                <td>They</td>
+                <td class="eng">They will go</td>
+                <td class="eng">They'll go</td>
+                <td class="eng">They will not go</td>
+                <td class="eng">They won't go</td>
+            </tr>
+        </table>
+        <p><em>⚡ Важно: <strong>will</strong> не изменяется по лицам и числам!</em></p>
+    </div>
+
+    <div class="warning-box">
+        <p><span class="eng-em">will</span> + глагол всегда в <strong>базовой форме</strong> (инфинитив без to)!</p>
+        <p>❌ She will <u>goes</u> → ✅ She will <u>go</u></p>
+        <p>❌ He will <u>played</u> → ✅ He will <u>play</u></p>
+        <p>❌ They will <u>to eat</u> → ✅ They will <u>eat</u></p>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Как не перепутать will и would?</strong><br>
+        <span class="eng-em">will</span> = будущее время (реальное)<br>
+        <span class="eng-em">would</span> = условное наклонение (нереальное)<br><br>
+        <em>«I <strong>will</strong> go» — я действительно пойду</em><br>
+        <em>«I <strong>would</strong> go if I could» — пошёл бы, но не могу</em>
+    </div>
+</div>
+
+<!-- 2. Практика Future Simple -->
+<div class="card card-eng">
+    <h2>✏️ Практика: Future Simple</h2>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 1.</strong> Раскрой скобки, поставив глагол в Future Simple:</p>
+        <ol>
+            <li>Tomorrow I __________ (visit) my grandparents.</li>
+            <li>She __________ (not/come) to the party tonight.</li>
+            <li>__________ you __________ (help) me with my homework?</li>
+            <li>They __________ (travel) to London next summer.</li>
+            <li>It __________ (be) cold tomorrow.</li>
+            <li>We __________ (not/watch) TV tonight.</li>
+            <li>__________ he __________ (play) football on Saturday?</li>
+            <li>I think she __________ (become) a famous singer.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('se1')">👁 Показать решение</button>
+    <div class="solution" id="se1">
+        <ol>
+            <li>Tomorrow I <span class="green">will visit</span> my grandparents.</li>
+            <li>She <span class="green">won't come</span> to the party tonight.</li>
+            <li><span class="green">Will</span> you <span class="green">help</span> me with my homework?</li>
+            <li>They <span class="green">will travel</span> to London next summer.</li>
+            <li>It <span class="green">will be</span> cold tomorrow.</li>
+            <li>We <span class="green">won't watch</span> TV tonight.</li>
+            <li><span class="green">Will</span> he <span class="green">play</span> football on Saturday?</li>
+            <li>I think she <span class="green">will become</span> a famous singer.</li>
+        </ol>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 2.</strong> Переведи на английский язык:</p>
+        <ol>
+            <li>Завтра я буду играть в футбол.</li>
+            <li>Она не придёт на урок в пятницу.</li>
+            <li>Ты поедешь в Москву на следующей неделе?</li>
+            <li>Они купят новый дом в следующем году.</li>
+            <li>Я думаю, что погода будет хорошей.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('se2')">👁 Показать решение</button>
+    <div class="solution" id="se2">
+        <ol>
+            <li><span class="green">Tomorrow I will play football.</span></li>
+            <li><span class="green">She won't come to the lesson on Friday.</span></li>
+            <li><span class="green">Will you go to Moscow next week?</span></li>
+            <li><span class="green">They will buy a new house next year.</span></li>
+            <li><span class="green">I think the weather will be good.</span></li>
+        </ol>
+    </div>
+</div>
+
+<!-- 3. Модальные глаголы -->
+<div class="card card-eng">
+    <h2>📖 2. Модальные глаголы: can, must, should</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Что такое модальные глаголы?</h3>
+        <p><strong>Модальные глаголы</strong> — особые глаголы, которые выражают
+        <em>возможность, необходимость, разрешение, обязанность</em>.
+        Они не используются самостоятельно, всегда идут с инфинитивом без <em>to</em>.</p>
+
+        <h3>Общие правила для всех модальных глаголов:</h3>
+        <ul>
+            <li>После модального глагола — <strong>инфинитив без to</strong></li>
+            <li>Не изменяются по лицам (нет -s в 3-м лице!)</li>
+            <li>Вопрос: модальный глагол выносится на первое место</li>
+            <li>Отрицание: добавляется <strong>not</strong></li>
+        </ul>
+    </div>
+
+    <div class="modal-card mc-can">
+        <div class="mc-title">🟢 CAN — умение, возможность, разрешение</div>
+        <table>
+            <tr>
+                <th class="th-eng" style="width:33%">Форма</th>
+                <th class="th-eng" style="width:33%">Пример</th>
+                <th class="th-eng" style="width:34%">Перевод</th>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">can + V</span></td>
+                <td><span class="eng-em">I can swim.</span></td>
+                <td>Я умею плавать.</td>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">cannot / can't + V</span></td>
+                <td><span class="eng-em">She can't drive.</span></td>
+                <td>Она не умеет водить.</td>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">Can + S + V?</span></td>
+                <td><span class="eng-em">Can he speak French?</span></td>
+                <td>Он умеет говорить по-французски?</td>
+            </tr>
+        </table>
+        <p style="margin-top:8px; font-size:0.9em;"><strong>Значения:</strong>
+        умение (<em>can swim</em>), возможность (<em>I can meet you</em>),
+        разрешение (<em>Can I go out?</em>)</p>
+        <p><strong>Прошедшее время: could</strong> | <strong>Будущее: will be able to</strong></p>
+    </div>
+
+    <div class="modal-card mc-must">
+        <div class="mc-title">🔴 MUST — обязанность, необходимость, запрет</div>
+        <table>
+            <tr>
+                <th class="th-eng" style="width:33%">Форма</th>
+                <th class="th-eng" style="width:33%">Пример</th>
+                <th class="th-eng" style="width:34%">Перевод</th>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">must + V</span></td>
+                <td><span class="eng-em">You must do homework.</span></td>
+                <td>Ты должен делать домашнее задание.</td>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">must not / mustn't + V</span></td>
+                <td><span class="eng-em">You mustn't run here.</span></td>
+                <td>Нельзя здесь бегать. (запрет)</td>
+            </tr>
+        </table>
+        <p style="margin-top:8px; font-size:0.9em;"><strong>Значения:</strong>
+        обязанность (<em>must study</em>), запрет (<em>mustn't smoke</em>),
+        уверенный вывод (<em>She must be tired</em>)</p>
+        <div class="warning-box" style="margin-top:8px;">
+            <p><span class="eng-em">must not</span> = ЗАПРЕЩЕНО (нельзя!)<br>
+            <span class="eng-em">don't have to</span> = не обязательно (но можно)</p>
+        </div>
+    </div>
+
+    <div class="modal-card mc-should">
+        <div class="mc-title">🟠 SHOULD — совет, рекомендация</div>
+        <table>
+            <tr>
+                <th class="th-eng" style="width:33%">Форма</th>
+                <th class="th-eng" style="width:33%">Пример</th>
+                <th class="th-eng" style="width:34%">Перевод</th>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">should + V</span></td>
+                <td><span class="eng-em">You should eat vegetables.</span></td>
+                <td>Тебе следует есть овощи.</td>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">should not / shouldn't + V</span></td>
+                <td><span class="eng-em">You shouldn't watch TV late.</span></td>
+                <td>Тебе не следует смотреть ТВ поздно.</td>
+            </tr>
+            <tr class="tr-eng">
+                <td><span class="eng-em">Should + S + V?</span></td>
+                <td><span class="eng-em">Should I call the doctor?</span></td>
+                <td>Мне следует позвонить врачу?</td>
+            </tr>
+        </table>
+        <p style="margin-top:8px; font-size:0.9em;"><strong>Значения:</strong>
+        совет (<em>should rest</em>), рекомендация (<em>should see a doctor</em>)</p>
+        <p><strong>should</strong> = «следует», слабее чем <strong>must</strong></p>
+    </div>
+
+    <div class="mnemonic">
+        <strong>Как запомнить разницу между must и should?</strong><br>
+        <span class="eng-em">MUST</span> = строгая обязанность / запрет
+        (как приказ родителей: «ДОЛЖЕН!»)<br>
+        <span class="eng-em">SHOULD</span> = мягкий совет
+        (как рекомендация врача: «следует...»)<br><br>
+        You <strong>must</strong> wear a seatbelt. — Ты ОБЯЗАН пристегнуться.<br>
+        You <strong>should</strong> eat less sugar. — Тебе СЛЕДУЕТ есть меньше сахара.
+    </div>
+</div>
+
+<!-- 4. Практика: модальные глаголы -->
+<div class="card card-eng">
+    <h2>✏️ Практика: Модальные глаголы</h2>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 3.</strong> Выбери правильный модальный глагол (can / must / should):</p>
+        <ol>
+            <li>You _______ brush your teeth twice a day. (совет)</li>
+            <li>I _______ play the guitar very well. (умение)</li>
+            <li>You _______ not run in the corridor! (запрет)</li>
+            <li>She _______ see a doctor — she looks very ill. (совет)</li>
+            <li>Students _______ wear a school uniform. (обязанность)</li>
+            <li>_______ you speak Spanish? (умение?)</li>
+            <li>You _______ not smoke — it's very dangerous. (запрет)</li>
+            <li>He _______ swim very fast. (умение)</li>
+            <li>You _______ eat more fruit and vegetables. (совет)</li>
+            <li>We _______ be quiet in the library. (обязанность)</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('se3')">👁 Показать решение</button>
+    <div class="solution" id="se3">
+        <ol>
+            <li>You <span class="green">should</span> brush your teeth twice a day.</li>
+            <li>I <span class="green">can</span> play the guitar very well.</li>
+            <li>You <span class="green">must</span> not run in the corridor!</li>
+            <li>She <span class="green">should</span> see a doctor — she looks very ill.</li>
+            <li>Students <span class="green">must</span> wear a school uniform.</li>
+            <li><span class="green">Can</span> you speak Spanish?</li>
+            <li>You <span class="green">must</span> not smoke — it's very dangerous.</li>
+            <li>He <span class="green">can</span> swim very fast.</li>
+            <li>You <span class="green">should</span> eat more fruit and vegetables.</li>
+            <li>We <span class="green">must</span> be quiet in the library.</li>
+        </ol>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 4.</strong> Переведи на английский:</p>
+        <ol>
+            <li>Ты умеешь готовить?</li>
+            <li>Она должна учить слова каждый день.</li>
+            <li>Тебе следует больше читать.</li>
+            <li>Нельзя разговаривать по телефону в кино.</li>
+            <li>Он не умеет кататься на коньках.</li>
+            <li>Следует ли мне взять зонт?</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('se4')">👁 Показать решение</button>
+    <div class="solution" id="se4">
+        <ol>
+            <li><span class="green">Can you cook?</span></li>
+            <li><span class="green">She must learn words every day.</span></li>
+            <li><span class="green">You should read more.</span></li>
+            <li><span class="green">You mustn't talk on the phone at the cinema.</span></li>
+            <li><span class="green">He can't skate.</span></li>
+            <li><span class="green">Should I take an umbrella?</span></li>
+        </ol>
+    </div>
+</div>
+
+<!-- 5. Лексика: Weather, Hobbies, School -->
+<div class="card card-eng">
+    <h2>📖 3. Лексика: Weather, Hobbies, School</h2>
+
+    <h3>🌤️ WEATHER (Погода)</h3>
+    <div class="vocab-grid">
+        <div class="vocab-card">
+            <div class="eng-word">sunny</div>
+            <div class="transcr">[ˈsʌni]</div>
+            <div class="rus-word">солнечный</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">cloudy</div>
+            <div class="transcr">[ˈklaʊdi]</div>
+            <div class="rus-word">облачный</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">rainy</div>
+            <div class="transcr">[ˈreɪni]</div>
+            <div class="rus-word">дождливый</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">windy</div>
+            <div class="transcr">[ˈwɪndi]</div>
+            <div class="rus-word">ветреный</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">snowy</div>
+            <div class="transcr">[ˈsnəʊi]</div>
+            <div class="rus-word">снежный</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">foggy</div>
+            <div class="transcr">[ˈfɒɡi]</div>
+            <div class="rus-word">туманный</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">stormy</div>
+            <div class="transcr">[ˈstɔːmi]</div>
+            <div class="rus-word">бурный/штормовой</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">hot</div>
+            <div class="transcr">[hɒt]</div>
+            <div class="rus-word">жаркий</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">cold</div>
+            <div class="transcr">[kəʊld]</div>
+            <div class="rus-word">холодный</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">warm</div>
+            <div class="transcr">[wɔːm]</div>
+            <div class="rus-word">тёплый</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">frost</div>
+            <div class="transcr">[frɒst]</div>
+            <div class="rus-word">мороз</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">thunder</div>
+            <div class="transcr">[ˈθʌndə]</div>
+            <div class="rus-word">гром</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">lightning</div>
+            <div class="transcr">[ˈlaɪtnɪŋ]</div>
+            <div class="rus-word">молния</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">rainbow</div>
+            <div class="transcr">[ˈreɪnbəʊ]</div>
+            <div class="rus-word">радуга</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">temperature</div>
+            <div class="transcr">[ˈtemprɪtʃə]</div>
+            <div class="rus-word">температура</div>
+        </div>
+    </div>
+
+    <div class="example">
+        <strong>Полезные фразы о погоде:</strong><br>
+        <span class="eng-em">What's the weather like today?</span> — Какая сегодня погода?<br>
+        <span class="eng-em">It's raining / snowing.</span> — Идёт дождь / снег.<br>
+        <span class="eng-em">It's sunny and warm.</span> — Солнечно и тепло.<br>
+        <span class="eng-em">The temperature is 20 degrees.</span> — Температура 20 градусов.<br>
+        <span class="eng-em">What will the weather be like tomorrow?</span> — Какая будет погода завтра?<br>
+        <span class="eng-em">It will be cold and frosty tomorrow.</span> — Завтра будет холодно и морозно.
+    </div>
+
+    <h3>🎨 HOBBIES (Хобби)</h3>
+    <div class="vocab-grid">
+        <div class="vocab-card">
+            <div class="eng-word">reading</div>
+            <div class="transcr">[ˈriːdɪŋ]</div>
+            <div class="rus-word">чтение</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">drawing</div>
+            <div class="transcr">[ˈdrɔːɪŋ]</div>
+            <div class="rus-word">рисование</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">cooking</div>
+            <div class="transcr">[ˈkʊkɪŋ]</div>
+            <div class="rus-word">кулинария</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">swimming</div>
+            <div class="transcr">[ˈswɪmɪŋ]</div>
+            <div class="rus-word">плавание</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">cycling</div>
+            <div class="transcr">[ˈsaɪklɪŋ]</div>
+            <div class="rus-word">езда на велосипеде</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">singing</div>
+            <div class="transcr">[ˈsɪŋɪŋ]</div>
+            <div class="rus-word">пение</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">dancing</div>
+            <div class="transcr">[ˈdɑːnsɪŋ]</div>
+            <div class="rus-word">танцы</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">photography</div>
+            <div class="transcr">[fəˈtɒɡrəfi]</div>
+            <div class="rus-word">фотография</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">gaming</div>
+            <div class="transcr">[ˈɡeɪmɪŋ]</div>
+            <div class="rus-word">игры (компьютерные)</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">knitting</div>
+            <div class="transcr">[ˈnɪtɪŋ]</div>
+            <div class="rus-word">вязание</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">hiking</div>
+            <div class="transcr">[ˈhaɪkɪŋ]</div>
+            <div class="rus-word">пешие прогулки</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">collecting</div>
+            <div class="transcr">[kəˈlektɪŋ]</div>
+            <div class="rus-word">коллекционирование</div>
+        </div>
+    </div>
+
+    <div class="example">
+        <strong>Полезные фразы о хобби:</strong><br>
+        <span class="eng-em">My hobby is reading.</span> — Моё хобби — чтение.<br>
+        <span class="eng-em">I'm interested in photography.</span> — Я увлекаюсь фотографией.<br>
+        <span class="eng-em">I enjoy swimming.</span> — Мне нравится плавать.<br>
+        <span class="eng-em">I'm keen on cycling.</span> — Я увлечён ездой на велосипеде.<br>
+        <span class="eng-em">In my free time I like drawing.</span> — В свободное время я люблю рисовать.
+    </div>
+
+    <h3>🏫 SCHOOL (Школа)</h3>
+    <div class="vocab-grid">
+        <div class="vocab-card">
+            <div class="eng-word">subject</div>
+            <div class="transcr">[ˈsʌbdʒɪkt]</div>
+            <div class="rus-word">предмет</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">lesson</div>
+            <div class="transcr">[ˈlesn]</div>
+            <div class="rus-word">урок</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">homework</div>
+            <div class="transcr">[ˈhəʊmwɜːk]</div>
+            <div class="rus-word">домашнее задание</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">classmate</div>
+            <div class="transcr">[ˈklɑːsmeɪt]</div>
+            <div class="rus-word">одноклассник</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">timetable</div>
+            <div class="transcr">[ˈtaɪmteɪbl]</div>
+            <div class="rus-word">расписание</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">examination</div>
+            <div class="transcr">[ɪɡˌzæmɪˈneɪʃn]</div>
+            <div class="rus-word">экзамен</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">mark / grade</div>
+            <div class="transcr">[mɑːk]</div>
+            <div class="rus-word">оценка</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">library</div>
+            <div class="transcr">[ˈlaɪbrəri]</div>
+            <div class="rus-word">библиотека</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">laboratory</div>
+            <div class="transcr">[ləˈbɒrətri]</div>
+            <div class="rus-word">лаборатория</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">uniform</div>
+            <div class="transcr">[ˈjuːnɪfɔːm]</div>
+            <div class="rus-word">форма</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">canteen</div>
+            <div class="transcr">[kænˈtiːn]</div>
+            <div class="rus-word">столовая</div>
+        </div>
+        <div class="vocab-card">
+            <div class="eng-word">headmaster</div>
+            <div class="transcr">[ˌhedˈmɑːstə]</div>
+            <div class="rus-word">директор школы</div>
+        </div>
+    </div>
+
+    <!-- Интерактивный словарный тест -->
+    <div class="practice" style="margin-top:20px;">
+        <br>
+        <p><strong>Задание 5.</strong> Вставь нужное слово из лексики (Weather / Hobbies / School):</p>
+        <ol>
+            <li>It will be __________ tomorrow, so take your umbrella! (дождливо)</li>
+            <li>My favourite __________ at school is Maths. (предмет)</li>
+            <li>In summer I enjoy __________ in the river. (плавание)</li>
+            <li>Look at that beautiful __________! It appeared after the rain. (радуга)</li>
+            <li>We have lunch in the school __________. (столовая)</li>
+            <li>I'm __________ on photography. (увлечён)</li>
+            <li>Today the __________ is minus 10 degrees. (температура)</li>
+            <li>She got a good __________ for her essay. (оценка)</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('se5')">👁 Показать решение</button>
+    <div class="solution" id="se5">
+        <ol>
+            <li>It will be <span class="green">rainy</span> tomorrow, so take your umbrella!</li>
+            <li>My favourite <span class="green">subject</span> at school is Maths.</li>
+            <li>In summer I enjoy <span class="green">swimming</span> in the river.</li>
+            <li>Look at that beautiful <span class="green">rainbow</span>! It appeared after the rain.</li>
+            <li>We have lunch in the school <span class="green">canteen</span>.</li>
+            <li>I'm <span class="green">keen</span> on photography.</li>
+            <li>Today the <span class="green">temperature</span> is minus 10 degrees.</li>
+            <li>She got a good <span class="green">mark / grade</span> for her essay.</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Видео: Английский -->
+<div class="card card-eng">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: Английский язык</h3>
+        <a href="https://www.youtube.com/watch?v=4fBpPGMdPms" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Future Simple (will) — объяснение + упражнения | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=0k8JOI82sDQ" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Модальные глаголы can, must, should — разница и примеры</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=vKQmrMOhk8M" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Лексика Weather — погода на английском | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=gIoFSWUjkpM" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Hobbies and free time activities — хобби на английском</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: Английский -->
+<div class="quiz-eng">
+    <h2>🧪 Тест по Английскому языку — 15 вопросов</h2>
+
+    <div class="quiz-question" id="eq1">
+        <p>1. Выбери правильную форму Future Simple:</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) She wills go to school.</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) She will go to school.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) She will goes to school.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) She will went to school.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq2">
+        <p>2. Как образуется отрицание в Future Simple?</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) Subject + don't/doesn't + V</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) Subject + will not (won't) + V</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) Subject + not will + V</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) Subject + will + not + Ving</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq3">
+        <p>3. Переведи: «Они не придут завтра.»</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) They don't come tomorrow.</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) They won't come tomorrow.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) They will not came tomorrow.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) They not will come tomorrow.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq4">
+        <p>4. Какой модальный глагол выражает умение?</p>
+        <button class="quiz-option" onclick="doEng(this,true)">А) can</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Б) must</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) should</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) would</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq5">
+        <p>5. «You _____ not smoke — it's forbidden!» (запрет)</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) should</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) must</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) can</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) will</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq6">
+        <p>6. «You _____ eat more vegetables.» (совет)</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) must</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) can</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) should</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) won't</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq7">
+        <p>7. Переведи слово «foggy»:</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) Ветреный</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) Туманный</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) Облачный</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) Снежный</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq8">
+        <p>8. Как сказать «расписание» по-английски?</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) homework</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Б) subject</button>
+        <button class="quiz-option" onclick="doEng(this,true)">В) timetable</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) canteen</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq9">
+        <p>9. «Will you come to my party?» — краткий положительный ответ:</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) Yes, I do.</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) Yes, I will.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) Yes, I can.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) Yes, I am.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq10">
+        <p>10. Что означает «I'm keen on cycling»?</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) Я не люблю велосипед.</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) Я увлечён ездой на велосипеде.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) Я умею кататься на велосипеде.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) Я должен ездить на велосипеде.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq11">
+        <p>11. Выбери предложение с правильным использованием модального глагола:</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) She cans sing very well.</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) She can sing very well.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) She can to sing very well.</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) She can sings very well.</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq12">
+        <p>12. «What's the weather like today?» — это вопрос о:</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) Времени</button>
+        <button class="quiz-option" onclick="doEng(this,true)">Б) Погоде</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) Здоровье</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) Настроении</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq13">
+        <p>13. Слово-маркер Future Simple из списка:</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) yesterday</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Б) last week</button>
+        <button class="quiz-option" onclick="doEng(this,true)">В) next year</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) two days ago</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq14">
+        <p>14. «Mustn't» отличается от «don't have to» тем, что:</p>
+        <button class="quiz-option" onclick="doEng(this,true)">А) mustn't = запрещено, don't have to = не обязательно</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Б) Они означают одно и то же</button>
+        <button class="quiz-option" onclick="doEng(this,false)">В) mustn't = не обязательно, don't have to = запрещено</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) Оба означают совет</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="eq15">
+        <p>15. Как переводится «rainbow»?</p>
+        <button class="quiz-option" onclick="doEng(this,false)">А) Гром</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Б) Молния</button>
+        <button class="quiz-option" onclick="doEng(this,true)">В) Радуга</button>
+        <button class="quiz-option" onclick="doEng(this,false)">Г) Мороз</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="score-display" id="scoreEng">
+        <p>Результат по Английскому:</p>
+        <div class="snum snum-eng" id="snumEng">0/15</div>
+        <p id="scomEng" style="font-size:1.05em; margin-top:8px;"></p>
+    </div>
+    <button class="check-btn cbt-eng" onclick="showEngScore()">📊 Показать результат</button>
+</div>
+
+
+<!-- ============================================================ -->
+<!--  ЛИТЕРАТУРА                                                   -->
+<!-- ============================================================ -->
+<div class="section-divider">
+    <span class="div-lit">📚 ЛИТЕРАТУРА — Куприн, Грин, Астафьев, Распутин. Стихи о природе</span>
+</div>
+
+<!-- 6. Куприн -->
+<div class="card card-lit">
+    <h2>📖 4. А.И. Куприн — обзор творчества</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Биография (кратко)</h3>
+        <ul>
+            <li><strong>Александр Иванович Куприн</strong> (1870–1938)</li>
+            <li>Русский писатель, мастер рассказа и повести</li>
+            <li>Известен реалистическими произведениями о людях разных профессий</li>
+            <li>Главные темы: природа, человеческое благородство, любовь, честь</li>
+        </ul>
+    </div>
+
+    <div class="book-card bc-1">
+        <div class="book-title">🐘 «Слон» (1907)</div>
+        <div class="book-author">А.И. Куприн</div>
+        <ul>
+            <li><strong>Главные герои:</strong> маленькая Надя, её папа, слон Томми</li>
+            <li><strong>Краткое содержание:</strong> Девочка Надя тяжело больна и не хочет жить.
+            Единственное её желание — увидеть живого слона. Любящий отец устраивает
+            так, что слона приводят прямо к ней домой. Радость исцеляет девочку.</li>
+            <li><strong>Главная мысль:</strong> Любовь и забота близких творят чудеса.
+            Желание жить — это главное лекарство.</li>
+            <li><strong>Нравственный урок:</strong> Доброта и самопожертвование ради
+            любимых людей способны победить болезнь.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 7. Грин — Алые паруса -->
+<div class="card card-lit">
+    <h2>📖 5. А.С. Грин «Алые паруса» (1923)</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Об авторе</h3>
+        <ul>
+            <li><strong>Александр Степанович Грин</strong> (настоящая фамилия — Гриневский, 1880–1932)</li>
+            <li>Русский писатель-романтик, создатель вымышленной страны Гринландии</li>
+            <li>«Алые паруса» — феерия (сказка-мечта)</li>
+        </ul>
+    </div>
+
+    <div class="book-card bc-2">
+        <div class="book-title">⛵ «Алые паруса»</div>
+        <div class="book-author">А.С. Грин • Жанр: феерия (романтическая сказка)</div>
+        <ul>
+            <li><strong>Главные герои:</strong> Ассоль, Артур Грэй</li>
+            <li><strong>Место действия:</strong> вымышленный приморский город Каперна</li>
+            <li><strong>Краткое содержание:</strong> Волшебник Эгль предсказывает маленькой Ассоль,
+            что за ней однажды приплывёт принц на корабле с алыми парусами.
+            Все в деревне смеются над ней, называют сумасшедшей.
+            Молодой капитан Артур Грэй случайно узнаёт о мечте девушки
+            и решает воплотить её в жизнь — заказывает алые паруса для своего корабля
+            и приплывает за Ассоль.</li>
+            <li><strong>Главная мысль:</strong> Делать чудеса своими руками — значит быть добрым
+            и внимательным к мечтам других людей.</li>
+        </ul>
+    </div>
+
+    <div class="hero-grid">
+        <div class="hero-card hc-2">
+            <div class="hero-icon">👧</div>
+            <div class="hero-name">Ассоль</div>
+            <div class="hero-desc">Мечтательная девушка, верящая в чудо. Символ чистой мечты и надежды</div>
+        </div>
+        <div class="hero-card hc-4">
+            <div class="hero-icon">⚓</div>
+            <div class="hero-name">Артур Грэй</div>
+            <div class="hero-desc">Молодой капитан. Человек, который делает чудеса своими руками</div>
+        </div>
+        <div class="hero-card hc-1">
+            <div class="hero-icon">🧙</div>
+            <div class="hero-name">Эгль</div>
+            <div class="hero-desc">Волшебник, подаривший Ассоль мечту — предсказание об алых парусах</div>
+        </div>
+        <div class="hero-card hc-3">
+            <div class="hero-icon">👨</div>
+            <div class="hero-name">Лонгрен</div>
+            <div class="hero-desc">Отец Ассоль, мастер по игрушкам. Любящий и преданный отец</div>
+        </div>
+    </div>
+
+    <div class="rule-box rb-lit">
+        <div class="rtitle rt-lit">📌 Ключевые темы и символы «Алых парусов»</div>
+        <ul>
+            <li><strong>Мечта и вера</strong> — Ассоль верит в чудо вопреки насмешкам</li>
+            <li><strong>Алые паруса</strong> — символ исполнения мечты, торжества надежды</li>
+            <li><strong>Добрый поступок</strong> — Грэй не просто полюбил Ассоль,
+            он воплотил её мечту</li>
+            <li><strong>Противостояние Ассоль и Каперны</strong> — мечтатель vs равнодушное общество</li>
+            <li><strong>«Чудеса надо делать своими руками»</strong> — главная идея произведения</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 8. Астафьев — Конь с розовой гривой -->
+<div class="card card-lit">
+    <h2>📖 6. В.П. Астафьев «Конь с розовой гривой» (1963)</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Об авторе</h3>
+        <ul>
+            <li><strong>Виктор Петрович Астафьев</strong> (1924–2001)</li>
+            <li>Русский писатель, участник Великой Отечественной войны</li>
+            <li>Тема детства, деревенская проза, нравственность</li>
+        </ul>
+    </div>
+
+    <div class="book-card bc-3">
+        <div class="book-title">🐴 «Конь с розовой гривой»</div>
+        <div class="book-author">В.П. Астафьев • Жанр: рассказ, автобиографический</div>
+        <ul>
+            <li><strong>Место и время:</strong> сибирская деревня, 1930-е годы</li>
+            <li><strong>Главные герои:</strong> Витя (рассказчик), бабушка Катерина Петровна,
+            Санька Левонтьев, левонтьевские ребята</li>
+            <li><strong>Краткое содержание:</strong>
+            Бабушка просит внука Витю набрать земляники и продать её в городе,
+            обещая купить ему пряничного коня с розовой гривой.
+            Левонтьевские ребята уговаривают Витю съесть ягоды и набить корзину
+            травой, прикрыв её сверху ягодами. Бабушка обнаруживает обман,
+            но всё равно покупает Вите коня. Мальчик мучается от стыда и в конце концов
+            просит прощения. Бабушка прощает его.</li>
+            <li><strong>Главная мысль:</strong> Совесть и умение признавать свои ошибки —
+            важнейшие нравственные качества. Настоящая любовь прощает.</li>
+        </ul>
+    </div>
+
+    <div class="hero-grid">
+        <div class="hero-card hc-3">
+            <div class="hero-icon">👦</div>
+            <div class="hero-name">Витя</div>
+            <div class="hero-desc">Рассказчик. Совершает ошибку под влиянием друзей, но совесть не даёт ему покоя</div>
+        </div>
+        <div class="hero-card hc-1">
+            <div class="hero-icon">👵</div>
+            <div class="hero-name">Бабушка</div>
+            <div class="hero-desc">Строгая, но мудрая и добрая. Преподаёт внуку главный жизненный урок</div>
+        </div>
+        <div class="hero-card hc-4">
+            <div class="hero-icon">👦</div>
+            <div class="hero-name">Санька</div>
+            <div class="hero-desc">Друг Вити из «левонтьевской» семьи. Влияет на Витю, склоняет к обману</div>
+        </div>
+    </div>
+
+    <div class="rule-box rb-lit">
+        <div class="rtitle rt-lit">📌 Нравственные проблемы рассказа</div>
+        <ul>
+            <li><strong>Обман и совесть</strong> — Витя обманул бабушку, но не может найти покоя</li>
+            <li><strong>Влияние среды</strong> — Витя поддался на уговоры друзей</li>
+            <li><strong>Прощение</strong> — бабушка прощает внука, но урок остаётся на всю жизнь</li>
+            <li><strong>Конь с розовой гривой</strong> — символ раскаяния, памяти детства,
+            бабушкиной доброты и мудрости</li>
+            <li>Произведение показывает: <em>совершить ошибку может каждый,
+            но важно иметь силы признать её и попросить прощения</em></li>
+        </ul>
+    </div>
+</div>
+
+<!-- 9. Распутин — Уроки французского -->
+<div class="card card-lit">
+    <h2>📖 7. В.Г. Распутин «Уроки французского» (1973)</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Об авторе</h3>
+        <ul>
+            <li><strong>Валентин Григорьевич Распутин</strong> (1937–2015)</li>
+            <li>Русский писатель, «деревенская проза», нравственность</li>
+            <li>Основные темы: милосердие, сострадание, человеческое достоинство</li>
+        </ul>
+    </div>
+
+    <div class="book-card bc-4">
+        <div class="book-title">📕 «Уроки французского»</div>
+        <div class="book-author">В.Г. Распутин • Жанр: автобиографический рассказ</div>
+        <ul>
+            <li><strong>Место и время:</strong> послевоенная Сибирь, 1948 год</li>
+            <li><strong>Главные герои:</strong> мальчик (рассказчик), учительница
+            французского языка Лидия Михайловна</li>
+            <li><strong>Краткое содержание:</strong>
+            Одиннадцатилетний мальчик из деревни приезжает учиться в районный центр.
+            Он голодает, играет в «чику» на деньги, чтобы купить еду.
+            Учительница Лидия Михайловна, понимая положение ученика,
+            пытается помочь ему — сначала присылает посылку с едой,
+            которую он возвращает. Тогда она предлагает ему играть в «замеряшки»
+            на деньги, нарушая правила педагогики.
+            Директор узнаёт об этом и увольняет учительницу.
+            Позже она присылает мальчику посылку с яблоками — символ доброты.</li>
+            <li><strong>Главная мысль:</strong> Настоящий учитель учит не только предмету,
+            но и доброте, человечности. Милосердие важнее правил.</li>
+        </ul>
+    </div>
+
+    <div class="hero-grid">
+        <div class="hero-card hc-4">
+            <div class="hero-icon">👦</div>
+            <div class="hero-name">Мальчик</div>
+            <div class="hero-desc">Умный, гордый, голодающий. Не принимает милостыню, но принимает игру как равный</div>
+        </div>
+        <div class="hero-card hc-2">
+            <div class="hero-icon">👩‍🏫</div>
+            <div class="hero-name">Лидия Михайловна</div>
+            <div class="hero-desc">Добрая учительница. Рискует карьерой ради помощи ученику. Символ настоящего учителя</div>
+        </div>
+        <div class="hero-card hc-3">
+            <div class="hero-icon">👨‍💼</div>
+            <div class="hero-name">Директор Василий Андреевич</div>
+            <div class="hero-desc">Формалист. Увольняет учительницу, не понимая её мотивов</div>
+        </div>
+    </div>
+
+    <div class="rule-box rb-lit">
+        <div class="rtitle rt-lit">📌 Ключевые темы рассказа</div>
+        <ul>
+            <li><strong>Доброта и милосердие</strong> — главная тема произведения</li>
+            <li><strong>Гордость и самолюбие</strong> — мальчик отказывается от подачек</li>
+            <li><strong>Настоящий учитель</strong> — Лидия Михайловна учит не только языку,
+            но жизни</li>
+            <li><strong>«Уроки французского» — это уроки доброты</strong></li>
+            <li><strong>Посылка с яблоками</strong> — символ доброты, оставшейся в памяти
+            на всю жизнь</li>
+            <li>Рассказ написан от первого лица — автобиографичность</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 10. Стихи о природе -->
+<div class="card card-lit">
+    <h2>📖 8. Стихи о природе — 6 класс</h2>
+
+    <div class="notebook">
+        <br>
+        <h3>Основные авторы и стихотворения</h3>
+        <table>
+            <tr>
+                <th class="th-lit">Автор</th>
+                <th class="th-lit">Стихотворение</th>
+                <th class="th-lit">Тема и настроение</th>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Ф.И. Тютчев</strong></td>
+                <td>«Есть в осени первоначальной...»</td>
+                <td>Красота ранней осени, хрупкость красоты, созерцательное</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>А.А. Фет</strong></td>
+                <td>«Учись у них — у дуба, у берёзы...»</td>
+                <td>Стойкость природы в испытаниях, урок для человека</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>С.А. Есенин</strong></td>
+                <td>«Ещё земли печален вид...»<br>«Мелколесье. Степь и дали...»</td>
+                <td>Весеннее пробуждение природы, любовь к Родине</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>А.К. Толстой</strong></td>
+                <td>«Где гнутся над омутом лозы...»</td>
+                <td>Таинственность и красота летней природы</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Н.А. Некрасов</strong></td>
+                <td>«Зелёный шум»</td>
+                <td>Весеннее обновление природы, радость жизни</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Стихотворение Тютчева -->
+    <div class="poem-box">
+        <div class="poem-title">Ф.И. Тютчев «Есть в осени первоначальной...»</div>
+        Есть в осени первоначальной<br>
+        Короткая, но дивная пора —<br>
+        Весь день стоит как бы хрустальный,<br>
+        И лучезарны вечера...<br><br>
+        Где бодрый серп гулял и падал колос,<br>
+        Теперь уж пусто всё — простор везде,<br>
+        Лишь паутины тонкий волос<br>
+        Блестит на праздной борозде.<br><br>
+        Пустеет воздух, птиц не слышно боле,<br>
+        Но далеко ещё до первых зимних бурь —<br>
+        И льётся чистая и тёплая лазурь<br>
+        На отдыхающее поле...
+    </div>
+
+    <!-- Стихотворение Фета -->
+    <div class="poem-box">
+        <div class="poem-title">А.А. Фет «Учись у них — у дуба, у берёзы...»</div>
+        Учись у них — у дуба, у берёзы.<br>
+        Кругом зима. Жестокая пора!<br>
+        Напрасные на них застыли слёзы,<br>
+        И треснула, сжимаяся, кора.<br><br>
+        Всё злей метель и с каждою минутой<br>
+        Сердито рвёт последние листы,<br>
+        И за сердце хватает холод лютый;<br>
+        Они стоят, молчат; молчи и ты!<br><br>
+        Но верь весне. Её промчится гений,<br>
+        Опять теплом и жизнию дыша.<br>
+        Для ясных дней, для новых откровений<br>
+        Переболит скорбящая душа.
+    </div>
+
+    <div class="notebook">
+        <br>
+        <h3>Литературные термины — повторение</h3>
+        <table>
+            <tr>
+                <th class="th-lit">Термин</th>
+                <th class="th-lit">Определение</th>
+                <th class="th-lit">Пример</th>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Эпитет</strong></td>
+                <td>Художественное определение</td>
+                <td>«хрустальный» день, «золотая» осень</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Метафора</strong></td>
+                <td>Скрытое сравнение</td>
+                <td>«паутины тонкий волос», «жестокая пора»</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Олицетворение</strong></td>
+                <td>Перенесение свойств живого на неживое</td>
+                <td>«метель сердито рвёт», «весна промчится»</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Сравнение</strong></td>
+                <td>Сопоставление через «как», «словно», «будто»</td>
+                <td>«день стоит как бы хрустальный»</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Аллитерация</strong></td>
+                <td>Повторение согласных звуков</td>
+                <td>«лесом лазурным, лёгким»</td>
+            </tr>
+            <tr class="tr-lit">
+                <td><strong>Антитеза</strong></td>
+                <td>Противопоставление</td>
+                <td>зима — весна, холод — тепло</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Практика: Литература -->
+<div class="card card-lit">
+    <h2>✏️ Практика: Литература</h2>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 6.</strong> Соотнеси произведение с главной мыслью:</p>
+        <div class="two-col">
+            <div>
+                <p><strong>Произведения:</strong></p>
+                <ol>
+                    <li>«Алые паруса» — Грин</li>
+                    <li>«Конь с розовой гривой» — Астафьев</li>
+                    <li>«Уроки французского» — Распутин</li>
+                    <li>«Слон» — Куприн</li>
+                </ol>
+            </div>
+            <div>
+                <p><strong>Главные мысли:</strong></p>
+                <ol type="А">
+                    <li>Настоящий учитель учит доброте и человечности</li>
+                    <li>Любовь и забота близких исцеляют</li>
+                    <li>Чудеса надо делать своими руками</li>
+                    <li>Совесть — главный нравственный судья</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sl1')">👁 Показать решение</button>
+    <div class="solution" id="sl1">
+        <ol>
+            <li>«Алые паруса» — <span class="green">В) Чудеса надо делать своими руками</span></li>
+            <li>«Конь с розовой гривой» — <span class="green">Г) Совесть — главный нравственный судья</span></li>
+            <li>«Уроки французского» — <span class="green">А) Настоящий учитель учит доброте</span></li>
+            <li>«Слон» — <span class="green">Б) Любовь и забота близких исцеляют</span></li>
+        </ol>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 7.</strong> Ответь на вопросы (2–4 предложения):</p>
+        <ol>
+            <li>Почему Ассоль из «Алых парусов» верила в чудо, несмотря на насмешки?</li>
+            <li>Какой нравственный урок преподала бабушка Вите в рассказе Астафьева?</li>
+            <li>Почему директор уволил Лидию Михайловну? Справедливо ли это?</li>
+            <li>Что символизируют алые паруса? Объясни смысл образа.</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sl2')">👁 Показать решение</button>
+    <div class="solution" id="sl2">
+        <p><strong>1) Ассоль и её вера:</strong><br>
+        Ассоль верила в чудо, потому что с детства слышала предсказание волшебника Эгля.
+        Её вера была частью её натуры — чистой, мечтательной, не испорченной равнодушием
+        окружающих. Она не принимала жестокость Каперны и жила в своём мире красоты и надежды.
+        Любовь отца Лонгрена также поддерживала её веру в хорошее.</p>
+
+        <p><strong>2) Урок бабушки:</strong><br>
+        Бабушка не просто наказала Витю — она дала ему возможность самому почувствовать
+        угрызения совести и попросить прощения. Купив ему коня несмотря на обман,
+        она показала, что любовь прощает, но ошибки нужно признавать.
+        Главный урок: будь честен, особенно с теми, кто тебя любит.</p>
+
+        <p><strong>3) Увольнение Лидии Михайловны:</strong><br>
+        Директор уволил её, потому что она играла с учеником в азартные игры на деньги,
+        что формально нарушало педагогическую этику.
+        Но это было несправедливо: учительница делала это из милосердия,
+        чтобы помочь голодающему ребёнку сохранить достоинство.
+        Форма нарушила букву закона, но не его дух.</p>
+
+        <p><strong>4) Смысл образа алых парусов:</strong><br>
+        Алые паруса — символ мечты, надежды и её исполнения.
+        Алый цвет — цвет любви, радости, торжества жизни.
+        Грэй, заказав алые паруса, не просто выполнил предсказание —
+        он показал, что добрые люди способны делать чудеса своими руками.
+        Паруса стали символом того, что мечты сбываются, если верить в них.</p>
+    </div>
+
+    <div class="practice">
+        <br>
+        <p><strong>Задание 8.</strong> Найди в стихотворении Тютчева
+        «Есть в осени первоначальной...» и назови:</p>
+        <ol>
+            <li>Два эпитета</li>
+            <li>Одну метафору</li>
+            <li>Одно олицетворение</li>
+            <li>Настроение стихотворения (1–2 слова)</li>
+            <li>Основная тема стихотворения</li>
+        </ol>
+    </div>
+
+    <button class="solution-btn" onclick="toggleSol('sl3')">👁 Показать решение</button>
+    <div class="solution" id="sl3">
+        <p><strong>1) Эпитеты:</strong>
+        <span class="green">«хрустальный» (день)</span>,
+        <span class="green">«лучезарны» (вечера)</span>,
+        «тонкий» (волос), «чистая и тёплая» (лазурь)</p>
+        <p><strong>2) Метафора:</strong>
+        <span class="green">«паутины тонкий волос»</span>
+        (паутина сравнивается с волосом без слова «как»)</p>
+        <p><strong>3) Олицетворение:</strong>
+        <span class="green">«бодрый серп гулял»</span>
+        (серп наделён свойством живого — «гулял»)</p>
+        <p><strong>4) Настроение:</strong>
+        <span class="green">созерцательное, светлое, немного грустное (элегическое)</span></p>
+        <p><strong>5) Основная тема:</strong>
+        <span class="green">красота ранней осени, хрупкость и недолговечность прекрасного</span></p>
+    </div>
+</div>
+
+<!-- Видео: Литература -->
+<div class="card card-lit">
+    <div class="video-section">
+        <h3>🎬 Видеоматериалы: Литература</h3>
+        <a href="https://www.youtube.com/watch?v=AXrNBz6P4fE" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>«Алые паруса» Грина — краткое содержание, анализ | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=xQVXHN8koKw" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>«Конь с розовой гривой» Астафьева — пересказ и анализ</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=OEo_AoF3soI" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>«Уроки французского» Распутина — краткое содержание, главная мысль</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=NKlZbJpg1p4" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Стихи о природе — Тютчев, Фет, Есенин | Анализ | 6 класс</span>
+        </a>
+        <a href="https://www.youtube.com/watch?v=TuW7R9v_mUI" target="_blank" class="video-link">
+            <span class="pi">▶️</span>
+            <span>Литературные термины — эпитет, метафора, олицетворение | Примеры</span>
+        </a>
+    </div>
+</div>
+
+<!-- ТЕСТ: Литература -->
+<div class="quiz-lit">
+    <h2>🧪 Тест по Литературе — 15 вопросов</h2>
+
+    <div class="quiz-question" id="lq1">
+        <p>1. Автор произведения «Алые паруса»:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) А.И. Куприн</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) А.С. Грин</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) В.П. Астафьев</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) В.Г. Распутин</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq2">
+        <p>2. Как зовут главную героиню «Алых парусов»?</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Аня</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Ассоль</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Катя</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Надя</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq3">
+        <p>3. Что символизируют алые паруса в произведении Грина?</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Опасность и войну</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Мечту, надежду и её исполнение</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Богатство капитана</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Морскую стихию</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq4">
+        <p>4. В рассказе «Конь с розовой гривой» Витя обманул бабушку —
+        набил корзину:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Листьями и грибами</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Травой вместо земляники</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Камнями</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Черникой вместо земляники</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq5">
+        <p>5. Автор «Коня с розовой гривой»:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) В.Г. Распутин</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) В.П. Астафьев</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) А.И. Куприн</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) А.С. Грин</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq6">
+        <p>6. Почему Лидию Михайловну уволили из школы?</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Она плохо преподавала французский</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Директор застал её играющей с учеником на деньги</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Она опаздывала на уроки</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Она отправляла посылки ученику</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq7">
+        <p>7. Что прислала Лидия Михайловна в конце рассказа Распутина?</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Книги</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Посылку с яблоками</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Деньги</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Письмо</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq8">
+        <p>8. Жанр «Алых парусов»:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Роман</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Феерия</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Поэма</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Рассказ</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq9">
+        <p>9. Эпитет — это:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Скрытое сравнение без союза «как»</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Художественное определение, придающее образность</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Перенесение свойств живого на неживое</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Сопоставление через «как», «словно»</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq10">
+        <p>10. «Бодрый серп гулял» — это пример:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Сравнения</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Б) Эпитета</button>
+        <button class="quiz-option" onclick="doLit(this,true)">В) Олицетворения</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Антитезы</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq11">
+        <p>11. Чья дочка заболела и хотела увидеть слона в рассказе Куприна?</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Ассоль</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Надя</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Лена</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Маша</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq12">
+        <p>12. Кто предсказал Ассоль появление корабля с алыми парусами?</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Лонгрен (отец)</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Волшебник Эгль</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Капитан Грэй</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Соседи</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq13">
+        <p>13. Стихотворение «Есть в осени первоначальной...» написал:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) А.А. Фет</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Ф.И. Тютчев</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) С.А. Есенин</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Н.А. Некрасов</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq14">
+        <p>14. Главная мысль рассказа «Уроки французского»:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Нужно хорошо учить французский язык</button>
+        <button class="quiz-option" onclick="doLit(this,true)">Б) Настоящий учитель учит доброте и человечности</button>
+        <button class="quiz-option" onclick="doLit(this,false)">В) Азартные игры — это плохо</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Нельзя принимать помощь от учителей</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="quiz-question" id="lq15">
+        <p>15. «День стоит как бы хрустальный» — это пример:</p>
+        <button class="quiz-option" onclick="doLit(this,false)">А) Метафоры</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Б) Олицетворения</button>
+        <button class="quiz-option" onclick="doLit(this,true)">В) Сравнения</button>
+        <button class="quiz-option" onclick="doLit(this,false)">Г) Антитезы</button>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <div class="score-display" id="scoreLit">
+        <p>Результат по Литературе:</p>
+        <div class="snum snum-lit" id="snumLit">0/15</div>
+        <p id="scomLit" style="font-size:1.05em; margin-top:8px;"></p>
+    </div>
+    <button class="check-btn cbt-lit" onclick="showLitScore()">📊 Показать результат</button>
+</div>
+
+<!-- НАВИГАЦИЯ -->
+<div class="nav-buttons">
+    <a href="#" class="nav-btn nb-eng">← Обществознание и География</a>
+    <a href="#" class="nav-btn nb-lit">Далее: ОБЖ, ИЗО, Музыка, Технология, Физкультура →</a>
+</div>
+
+</div><!-- /container -->
+
+<script>
+    /* ---- Показать/скрыть решение ---- */
+    function toggleSol(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    /* ============ ТЕСТ: Английский ============ */
+    let scoreEng = 0, answEng = new Set();
+    function doEng(btn, ok) {
+        const q = btn.parentElement;
+        if (answEng.has(q.id)) return;
+        answEng.add(q.id);
+        lockOptions(q);
+        if (ok) { btn.classList.add('correct'); scoreEng++; showFB(q, true); }
+        else     { btn.classList.add('wrong'); markCorrect(q,'doEng'); showFB(q, false); }
+    }
+    function showEngScore() {
+        const d = document.getElementById('scoreEng');
+        d.style.display = 'block';
+        document.getElementById('snumEng').textContent = scoreEng + '/15';
+        setComment(document.getElementById('scomEng'), scoreEng, 15);
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ============ ТЕСТ: Литература ============ */
+    let scoreLit = 0, answLit = new Set();
+    function doLit(btn, ok) {
+        const q = btn.parentElement;
+        if (answLit.has(q.id)) return;
+        answLit.add(q.id);
+        lockOptions(q);
+        if (ok) { btn.classList.add('correct'); scoreLit++; showFB(q, true); }
+        else     { btn.classList.add('wrong'); markCorrect(q,'doLit'); showFB(q, false); }
+    }
+    function showLitScore() {
+        const d = document.getElementById('scoreLit');
+        d.style.display = 'block';
+        document.getElementById('snumLit').textContent = scoreLit + '/15';
+        setComment(document.getElementById('scomLit'), scoreLit, 15);
+        d.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ============ Вспомогательные ============ */
+    function lockOptions(q) {
+        q.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+    }
+    function markCorrect(q, fnName) {
+        q.querySelectorAll('.quiz-option').forEach(b => {
+            const oc = b.getAttribute('onclick') || '';
+            if (oc.includes(fnName + '(this,true)')) b.classList.add('correct');
+        });
+    }
+    function showFB(q, ok) {
+        const fb = q.querySelector('.quiz-feedback');
+        fb.style.display = 'block';
+        if (ok) {
+            fb.style.background = '#c8e6c9'; fb.style.color = '#2e7d32';
+            fb.textContent = '✅ Правильно!';
+        } else {
+            fb.style.background = '#ffcdd2'; fb.style.color = '#c62828';
+            fb.textContent = '❌ Неправильно. Правильный ответ выделен зелёным.';
+        }
+    }
+    function setComment(el, score, max) {
+        const p = score / max;
+        if (p >= 0.93)      { el.textContent = '🏆 Отлично!';                          el.style.color = '#2e7d32'; }
+        else if (p >= 0.73) { el.textContent = '👍 Хорошо! Разбери ошибки.';           el.style.color = '#1565c0'; }
+        else if (p >= 0.53) { el.textContent = '📖 Неплохо, повтори теорию.';          el.style.color = '#e65100'; }
+        else                { el.textContent = '📚 Нужно ещё раз изучить материал.';   el.style.color = '#c62828'; }
+    }
+</script>
+</body>
+</html>

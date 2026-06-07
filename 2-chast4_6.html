@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неделя 2 — Биология + География, 6 класс</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8; color: #2d3748; line-height: 1.75; padding: 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+
+        /* Навигация */
+        .nav {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px;
+            background: white; padding: 14px; border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.08);
+            position: sticky; top: 8px; z-index: 100;
+        }
+        .nav span { font-weight: bold; color: #718096; align-self: center; }
+        .nbtn { padding: 9px 18px; border: none; border-radius: 8px; cursor: pointer;
+                font-weight: bold; font-size: .88em; color: white; transition: all .25s; }
+        .nb-bio { background: #276749; } .nb-bio:hover { background: #22543d; }
+        .nb-geo { background: #2b6cb0; } .nb-geo:hover { background: #2c5282; }
+        .nbtn:hover { transform: translateY(-2px); }
+
+        /* Заголовки */
+        h1 { text-align: center; font-size: 1.9em; margin-bottom: 8px; padding-bottom: 13px; }
+        .h1-bio { color: #22543d; border-bottom: 4px solid #38a169; }
+        .h1-geo { color: #2a4365; border-bottom: 4px solid #3182ce; }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 26px; font-size: 1em; }
+        h2 { font-size: 1.42em; margin-bottom: 13px; display: flex; align-items: center; gap: 10px; }
+        h2.hc-bio { color: #22543d; } h2.hc-geo { color: #2a4365; }
+        h3 { font-size: 1.1em; color: #2d3748; margin: 17px 0 7px;
+             padding-bottom: 4px; border-bottom: 2px dashed #e2e8f0; }
+
+        /* Блоки */
+        .lesson { background: white; border-radius: 16px; padding: 26px;
+                  margin-bottom: 24px; box-shadow: 0 4px 15px rgba(0,0,0,.07); }
+        .l-bio  { border-left: 6px solid #38a169; }
+        .l-bio2 { border-left: 6px solid #68d391; }
+        .l-bio3 { border-left: 6px solid #9ae6b4; }
+        .l-geo  { border-left: 6px solid #3182ce; }
+        .l-geo2 { border-left: 6px solid #63b3ed; }
+        .l-geo3 { border-left: 6px solid #90cdf4; }
+
+        /* Тетрадь */
+        .nb { background: #fffff0; border: 2px solid #ecc94b; border-radius: 12px;
+              padding: 20px 20px 13px; margin: 13px 0; position: relative; }
+        .nb::before { content: "📓 ЗАПИСАТЬ В ТЕТРАДЬ";
+                      position: absolute; top: -13px; left: 18px;
+                      background: #ecc94b; color: #744210;
+                      padding: 2px 13px; border-radius: 8px;
+                      font-weight: bold; font-size: .82em; }
+
+        /* Правила */
+        .rule { border-radius: 10px; padding: 13px 17px; margin: 10px 0; }
+        .r-g { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .r-b { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .r-y { background: #fffff0; border: 2px solid #f6e05e; }
+        .r-r { background: #fff5f5; border: 2px solid #fc8181; }
+        .r-p { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .r-o { background: #fffaf0; border: 2px solid #fbd38d; }
+        .r-t { background: #e6fffa; border: 2px solid #81e6d9; }
+
+        /* Таблицы */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .92em; }
+        th { padding: 10px 12px; text-align: left; color: white; }
+        td { padding: 9px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+        tr:nth-child(even) { background: #f7fafc; }
+        tr:hover { background: #ebf8ff; }
+        .th-g  { background: #276749; }
+        .th-g2 { background: #2f855a; }
+        .th-b  { background: #2b6cb0; }
+        .th-b2 { background: #2c5282; }
+        .th-t  { background: #2c7a7b; }
+
+        /* Схемы */
+        .scheme { background: #f7fafc; border: 2px solid #e2e8f0;
+                  border-radius: 12px; padding: 15px; margin: 12px 0; text-align: center; }
+        .sch-row { display: flex; justify-content: center; align-items: stretch;
+                   gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+        .sb { padding: 10px 13px; border-radius: 8px; font-size: .86em;
+              font-weight: bold; flex: 1; min-width: 110px; }
+        .sb-g  { background: #c6f6d5; color: #22543d; }
+        .sb-b  { background: #bee3f8; color: #2a4365; }
+        .sb-p  { background: #e9d8fd; color: #44337a; }
+        .sb-o  { background: #feebc8; color: #7b341e; }
+        .sb-r  { background: #fed7d7; color: #742a2a; }
+        .sb-t  { background: #b2f5ea; color: #234e52; }
+        .sb-y  { background: #fefcbf; color: #744210; }
+        .arr { font-size: 1.4em; color: #718096; flex: none; align-self: center; }
+
+        /* Карточки */
+        .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+                 gap: 12px; margin: 12px 0; }
+        .card { border-radius: 12px; padding: 14px; }
+        .ct { font-weight: bold; font-size: .95em; margin-bottom: 5px; }
+        .cb { font-size: .85em; line-height: 1.55; }
+        .c-g  { background: #f0fff4; border: 2px solid #9ae6b4; }
+        .c-b  { background: #ebf8ff; border: 2px solid #90cdf4; }
+        .c-o  { background: #fffaf0; border: 2px solid #fbd38d; }
+        .c-p  { background: #faf5ff; border: 2px solid #d6bcfa; }
+        .c-r  { background: #fff5f5; border: 2px solid #fc8181; }
+        .c-t  { background: #e6fffa; border: 2px solid #81e6d9; }
+        .c-y  { background: #fffff0; border: 2px solid #f6e05e; }
+
+        /* Органы растений — SVG блок */
+        .plant-svg { display: flex; justify-content: center; margin: 16px 0; }
+
+        /* Упражнения */
+        .exer { background: #faf5ff; border: 2px solid #d6bcfa; border-radius: 12px;
+                padding: 18px 18px 12px; margin: 13px 0; position: relative; }
+        .exer::before { content: "✏️ ЗАДАНИЯ";
+                        position: absolute; top: -13px; left: 18px;
+                        background: #805ad5; color: white;
+                        padding: 2px 12px; border-radius: 8px;
+                        font-weight: bold; font-size: .82em; }
+        .task { background: white; border-radius: 10px; padding: 12px 14px;
+                margin: 9px 0; border-left: 4px solid #805ad5; }
+        .tn { font-weight: bold; color: #805ad5; }
+
+        /* Кнопки */
+        .btn { border: none; padding: 7px 15px; border-radius: 6px; cursor: pointer;
+               font-size: .87em; margin-top: 8px; transition: all .25s; color: white; }
+        .btn-g { background: #38a169; } .btn-g:hover { background: #2f855a; }
+        .btn-b { background: #3182ce; } .btn-b:hover { background: #2b6cb0; }
+        .btn-p { background: #805ad5; } .btn-p:hover { background: #6b46c1; }
+        .btn-t { background: #319795; } .btn-t:hover { background: #2c7a7b; }
+
+        .ans { display: none; border-radius: 8px; padding: 12px 14px;
+               margin-top: 8px; font-size: .91em; line-height: 1.8; }
+        .ans-g { background: #f0fff4; border: 1px solid #9ae6b4; color: #22543d; }
+        .ans-b { background: #ebf8ff; border: 1px solid #90cdf4; color: #2a4365; }
+
+        /* Видео */
+        .vid { background: #fff5f5; border: 2px solid #feb2b2;
+               border-radius: 12px; padding: 13px 17px; margin: 12px 0; }
+        .vid a { color: #c53030; text-decoration: none; font-weight: bold; }
+        .vid a:hover { text-decoration: underline; }
+
+        /* Карта */
+        .map-block { background: #e6fffa; border: 2px solid #81e6d9;
+                     border-radius: 12px; padding: 14px 17px; margin: 12px 0; }
+
+        /* Термины */
+        .terms { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+                 gap: 10px; margin: 11px 0; }
+        .term { background: white; border-radius: 10px; padding: 11px 14px;
+                border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,.05); }
+        .tw { font-weight: bold; color: #2b6cb0; font-size: .93em; }
+        .td { font-size: .86em; color: #4a5568; margin-top: 3px; }
+
+        /* Тест */
+        .quiz { background: #fffff0; border: 2px solid #f6ad55;
+                border-radius: 14px; padding: 24px; margin: 22px 0; }
+        .qt { font-size: 1.42em; font-weight: bold; margin-bottom: 6px; }
+        .qb { background: white; border-radius: 10px; padding: 15px 17px;
+              margin: 11px 0; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+        .qb p { font-weight: bold; margin-bottom: 8px; }
+        .qo { display: block; padding: 8px 13px; margin: 4px 0; background: #f7fafc;
+              border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer;
+              transition: all .25s; user-select: none; }
+        .qo:hover { background: #ebf8ff; border-color: #90cdf4; }
+        .qo input { margin-right: 8px; }
+        .chk { padding: 11px 28px; border: none; border-radius: 8px; font-size: .97em;
+               font-weight: bold; cursor: pointer; margin-top: 13px; color: white;
+               transition: background .3s; }
+        .chk-bio { background: #38a169; } .chk-bio:hover { background: #2f855a; }
+        .chk-geo { background: #3182ce; } .chk-geo:hover { background: #2b6cb0; }
+        .res { padding: 15px; border-radius: 10px; margin-top: 15px;
+               display: none; line-height: 1.9; }
+
+        /* Разделитель */
+        .sep { border: none; height: 4px; margin: 32px 0; border-radius: 2px; }
+        .sep-bio { background: linear-gradient(to right,#38a169,#68d391,#9ae6b4); }
+        .sep-geo { background: linear-gradient(to right,#3182ce,#63b3ed,#90cdf4); }
+
+        /* Теги */
+        .tag { display: inline-block; padding: 3px 10px; border-radius: 12px;
+               font-size: .8em; font-weight: bold; margin: 2px; }
+        .t-th { background: #bee3f8; color: #2a4365; }
+        .t-pr { background: #c6f6d5; color: #22543d; }
+        .t-te { background: #fefcbf; color: #744210; }
+        .t-mp { background: #b2f5ea; color: #234e52; }
+        .dur  { background: #e2e8f0; color: #4a5568; padding: 5px 12px;
+                border-radius: 20px; font-size: .85em; float: right; }
+
+        ul, ol { padding-left: 22px; margin: 8px 0; }
+        li { margin: 5px 0; }
+        .hl  { background: #fefcbf; padding: 1px 5px; border-radius: 4px; }
+        .red { color: #e53e3e; font-weight: bold; }
+        .grn { color: #276749; font-weight: bold; }
+        .blu { color: #2b6cb0; font-weight: bold; }
+
+        /* Орган-схема */
+        .organ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 14px; margin: 14px 0;
+        }
+        .organ-card {
+            border-radius: 14px; padding: 16px;
+            border: 2px solid;
+        }
+        .organ-title {
+            font-weight: bold; font-size: 1.05em; margin-bottom: 10px;
+            padding-bottom: 6px; border-bottom: 2px dashed currentColor;
+        }
+        .organ-row { display: flex; gap: 6px; margin: 5px 0; flex-wrap: wrap; }
+        .organ-tag { padding: 3px 10px; border-radius: 10px; font-size: .83em; font-weight: bold; }
+
+        /* Водные объекты */
+        .water-scheme {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 12px; margin: 14px 0;
+        }
+        .water-card {
+            background: white; border-radius: 12px; padding: 14px;
+            border-left: 5px solid #3182ce;
+            box-shadow: 0 2px 8px rgba(0,0,0,.06);
+        }
+        .water-title { font-weight: bold; color: #2b6cb0; margin-bottom: 6px; }
+        .water-body  { font-size: .88em; color: #4a5568; line-height: 1.6; }
+
+        /* Горный разрез */
+        .rock-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+            gap: 10px; margin: 12px 0;
+        }
+        .rock-card {
+            border-radius: 10px; padding: 12px; text-align: center;
+            border: 2px solid;
+        }
+        .rock-title { font-weight: bold; font-size: .93em; margin-bottom: 5px; }
+        .rock-body  { font-size: .83em; line-height: 1.5; }
+
+        @media(max-width:600px) {
+            .water-scheme { grid-template-columns: 1fr; }
+            .organ-grid   { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- Навигация -->
+<div class="nav">
+    <span>📌 Перейти:</span>
+    <button class="nbtn nb-bio" onclick="goTo('bio')">🌿 Биология</button>
+    <button class="nbtn nb-geo" onclick="goTo('geo')">🌍 География</button>
+</div>
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║              БИОЛОГИЯ                       ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="bio">
+    <h1 class="h1-bio">🌿 Биология — Неделя 2</h1>
+    <p class="subtitle">6 класс | 3 часа | Органы растений: корень, побег, лист, цветок, плод</p>
+
+    <!-- ══ ЗАНЯТИЕ 1: КОРЕНЬ ══ -->
+    <div class="lesson l-bio">
+        <h2 class="hc-bio">📖 Занятие 1: Корень — строение и функции</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Схемы</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=8uyMMhPEFh0" target="_blank">Строение корня растения — зоны корня (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=FW5RoChRpj4" target="_blank">Типы корневых систем: стержневая и мочковатая (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=XLCYKvJR_Hk" target="_blank">Функции корня — видоизменения корней (Матёрый биолог)</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Корень — подземный орган растения</h3>
+
+            <div class="rule r-g">
+                <strong>📌 Корень</strong> — вегетативный орган растения, обычно подземный.<br><br>
+                <strong>Функции корня:</strong>
+                <ul>
+                    <li>🌱 <strong>Закрепление</strong> в почве (якорная функция)</li>
+                    <li>💧 <strong>Поглощение воды</strong> и минеральных солей из почвы</li>
+                    <li>🍠 <strong>Запас питательных</strong> веществ (корнеплоды)</li>
+                    <li>🤝 <strong>Симбиоз</strong> с грибами (микориза) и бактериями (клубеньки бобовых)</li>
+                    <li>🌬️ <strong>Вегетативное размножение</strong> (у некоторых растений)</li>
+                </ul>
+            </div>
+
+            <h3>Зоны корня (сверху вниз)</h3>
+
+            <!-- Схема корня SVG -->
+            <div class="plant-svg">
+                <svg width="220" height="380" viewBox="0 0 220 380">
+                    <!-- Корень -->
+                    <defs>
+                        <linearGradient id="rootGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#c6f6d5"/>
+                            <stop offset="100%" stop-color="#9ae6b4"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Основное тело -->
+                    <rect x="80" y="20" width="60" height="320" rx="30" fill="url(#rootGrad)" stroke="#38a169" stroke-width="2"/>
+                    <!-- Корневой чехлик -->
+                    <ellipse cx="110" cy="345" rx="30" ry="15" fill="#feebc8" stroke="#dd6b20" stroke-width="2"/>
+                    <!-- Корневые волоски -->
+                    <g stroke="#276749" stroke-width="1.5" opacity="0.7">
+                        <line x1="80"  y1="140" x2="45"  y2="130"/>
+                        <line x1="80"  y1="155" x2="40"  y2="160"/>
+                        <line x1="80"  y1="170" x2="48"  y2="178"/>
+                        <line x1="140" y1="140" x2="175" y2="130"/>
+                        <line x1="140" y1="155" x2="180" y2="160"/>
+                        <line x1="140" y1="170" x2="172" y2="178"/>
+                    </g>
+                    <!-- Зоны — подписи -->
+                    <text x="115" y="55"  fill="#744210" font-size="10" font-weight="bold" text-anchor="middle">Зона</text>
+                    <text x="115" y="67"  fill="#744210" font-size="10" font-weight="bold" text-anchor="middle">проведения</text>
+                    <text x="115" y="115" fill="#2a4365" font-size="10" font-weight="bold" text-anchor="middle">Зона роста</text>
+                    <text x="115" y="127" fill="#2a4365" font-size="10" font-weight="bold" text-anchor="middle">(растяжения)</text>
+                    <text x="115" y="165" fill="#22543d" font-size="10" font-weight="bold" text-anchor="middle">Зона</text>
+                    <text x="115" y="177" fill="#22543d" font-size="10" font-weight="bold" text-anchor="middle">всасывания</text>
+                    <text x="115" y="255" fill="#553c9a" font-size="10" font-weight="bold" text-anchor="middle">Зона деления</text>
+                    <text x="115" y="330" fill="#7b341e" font-size="10" font-weight="bold" text-anchor="middle">Корневой</text>
+                    <text x="115" y="342" fill="#7b341e" font-size="10" font-weight="bold" text-anchor="middle">чехлик</text>
+                    <!-- Разделители зон -->
+                    <line x1="80"  y1="85"  x2="140" y2="85"  stroke="#718096" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="80"  y1="135" x2="140" y2="135" stroke="#718096" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="80"  y1="205" x2="140" y2="205" stroke="#718096" stroke-width="1" stroke-dasharray="4,2"/>
+                    <line x1="80"  y1="295" x2="140" y2="295" stroke="#718096" stroke-width="1" stroke-dasharray="4,2"/>
+                </svg>
+            </div>
+
+            <table>
+                <tr>
+                    <th class="th-g">Зона корня</th>
+                    <th class="th-g">Строение клеток</th>
+                    <th class="th-g">Функция</th>
+                </tr>
+                <tr>
+                    <td><strong>Корневой чехлик</strong></td>
+                    <td>Мёртвые клетки, постоянно обновляются</td>
+                    <td>Защита кончика корня от повреждений при росте в почве</td>
+                </tr>
+                <tr>
+                    <td><strong>Зона деления</strong> (меристема)</td>
+                    <td>Мелкие, с тонкими стенками, постоянно делятся</td>
+                    <td>Образование новых клеток → рост корня в длину</td>
+                </tr>
+                <tr>
+                    <td><strong>Зона роста</strong> (растяжения)</td>
+                    <td>Клетки вытягиваются, заполняются соком</td>
+                    <td>Удлинение корня — «двигатель» роста вглубь почвы</td>
+                </tr>
+                <tr>
+                    <td><strong>Зона всасывания</strong></td>
+                    <td>Клетки с <strong>корневыми волосками</strong> (выросты клеток длиной 0,1–8 мм)</td>
+                    <td>Поглощение воды и минеральных солей из почвы</td>
+                </tr>
+                <tr>
+                    <td><strong>Зона проведения</strong></td>
+                    <td>Проводящие ткани (ксилема и флоэма)</td>
+                    <td>Транспорт воды вверх к стеблю и листьям</td>
+                </tr>
+            </table>
+
+            <h3>Типы корневых систем</h3>
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-g" style="flex:1.3;">
+                        <strong>🌳 Стержневая</strong><br><br>
+                        Хорошо выражен главный (стержневой) корень<br>
+                        От него отходят боковые корни<br><br>
+                        У двудольных растений:<br>
+                        <em>дуб, морковь, фасоль, одуванчик</em>
+                    </div>
+                    <div class="arr">⟷</div>
+                    <div class="sb sb-b" style="flex:1.3;">
+                        <strong>🌾 Мочковатая</strong><br><br>
+                        Главный корень не выражен или отмирает<br>
+                        Много одинаковых придаточных корней<br><br>
+                        У однодольных растений:<br>
+                        <em>пшеница, рожь, лук, чеснок</em>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Видоизменения корней</h3>
+            <div class="cards">
+                <div class="card c-o">
+                    <div class="ct">🥕 Корнеплод</div>
+                    <div class="cb">Утолщённый сочный корень для запаса питательных веществ.<br><em>Морковь, свёкла, редис, репа</em></div>
+                </div>
+                <div class="card c-p">
+                    <div class="ct">🥔 Корневые клубни</div>
+                    <div class="cb">Утолщённые боковые или придаточные корни.<br><em>Георгин, батат, чистяк</em></div>
+                </div>
+                <div class="card c-b">
+                    <div class="ct">🍄 Микориза</div>
+                    <div class="cb">Симбиоз корней с грибами. Гриб помогает поглощать воду, растение даёт сахара.<br><em>Дуб + белый гриб</em></div>
+                </div>
+                <div class="card c-g">
+                    <div class="ct">🌱 Клубеньки</div>
+                    <div class="cb">Симбиоз с бактериями, фиксирующими азот из воздуха.<br><em>Горох, клевер, соя</em></div>
+                </div>
+                <div class="card c-t">
+                    <div class="ct">🌴 Воздушные корни</div>
+                    <div class="cb">Растут вниз от ствола, поглощают влагу из воздуха.<br><em>Баньян, орхидея</em></div>
+                </div>
+                <div class="card c-r">
+                    <div class="ct">🌊 Дыхательные корни</div>
+                    <div class="cb">Растут вверх, снабжают корни кислородом в заболоченных местах.<br><em>Мангровые деревья</em></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание 1: Зоны корня</span><br>
+                Зарисуй корень в тетради и обозначь все 5 зон. Укажи, в какой зоне находятся корневые волоски и почему именно там.
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 2: Установи соответствие</span><br>
+                Растение → тип корневой системы:<br>
+                Пшеница / Дуб / Лук / Морковь / Кукуруза / Одуванчик
+                <br><br>
+                <button class="btn btn-g" onclick="tog('bio_a1')">▶ Ответ</button>
+                <div class="ans ans-g" id="bio_a1">
+Пшеница — мочковатая (однодольное)
+Дуб — стержневая (двудольное)
+Лук — мочковатая (однодольное)
+Морковь — стержневая (двудольное + корнеплод)
+Кукуруза — мочковатая (однодольное)
+Одуванчик — стержневая (двудольное)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ ЗАНЯТИЕ 2: ПОБЕГ И ЛИСТ ══ -->
+    <div class="lesson l-bio2">
+        <h2 class="hc-bio">📖 Занятие 2: Побег. Стебель. Лист.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-pr">Схемы</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=NCGRrWQkXYI" target="_blank">Побег растения — строение и типы почек (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=8Ah7nR4jSlg" target="_blank">Внутреннее строение стебля — ксилема и флоэма (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=eTjXkL3eLKo" target="_blank">Строение листа. Фотосинтез в листе (Матёрый биолог)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=Y4gWHMuAVqA" target="_blank">Видоизменения побегов и листьев</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Побег = Стебель + Листья + Почки</h3>
+
+            <div class="rule r-g">
+                <strong>📌 Побег</strong> — надземная часть растения, состоящая из стебля, листьев и почек.<br><br>
+                <strong>Части побега:</strong>
+                <ul>
+                    <li><strong>Стебель</strong> — ось побега</li>
+                    <li><strong>Листья</strong> — боковые органы стебля</li>
+                    <li><strong>Почки</strong> — зачатки новых побегов</li>
+                    <li><strong>Узел</strong> — место прикрепления листа к стеблю</li>
+                    <li><strong>Междоузлие</strong> — участок стебля между узлами</li>
+                </ul>
+            </div>
+
+            <h3>Типы почек</h3>
+            <table>
+                <tr>
+                    <th class="th-g">Тип почки</th>
+                    <th class="th-g">Расположение</th>
+                    <th class="th-g">Что из неё развивается</th>
+                </tr>
+                <tr>
+                    <td><strong>Верхушечная</strong></td>
+                    <td>На верхушке стебля</td>
+                    <td>Обеспечивает рост стебля в длину</td>
+                </tr>
+                <tr>
+                    <td><strong>Пазушная (боковая)</strong></td>
+                    <td>В пазухе листа (угол между листом и стеблем)</td>
+                    <td>Боковые побеги → ветвление</td>
+                </tr>
+                <tr>
+                    <td><strong>Вегетативная</strong></td>
+                    <td>Любое положение</td>
+                    <td>Только побег с листьями</td>
+                </tr>
+                <tr>
+                    <td><strong>Генеративная (цветочная)</strong></td>
+                    <td>Любое положение</td>
+                    <td>Цветок или соцветие</td>
+                </tr>
+                <tr>
+                    <td><strong>Смешанная</strong></td>
+                    <td>Любое положение</td>
+                    <td>Побег с листьями И цветком</td>
+                </tr>
+            </table>
+
+            <h3>Внутреннее строение стебля</h3>
+            <div class="scheme">
+                <strong>Слои стебля — от поверхности к центру:</strong>
+                <div class="sch-row" style="margin-top:12px; align-items:stretch;">
+                    <div class="sb sb-o">
+                        <strong>Кожица / Пробка</strong><br>
+                        Покровная ткань<br>
+                        Защита от высыхания и повреждений
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-g">
+                        <strong>Кора</strong><br>
+                        Луб (флоэма)<br>
+                        Транспорт органич. веществ вниз
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-y">
+                        <strong>Камбий</strong><br>
+                        1–2 слоя клеток<br>
+                        Рост стебля в толщину (годичные кольца!)
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-b">
+                        <strong>Древесина</strong><br>
+                        Ксилема<br>
+                        Транспорт воды вверх + опора
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-p">
+                        <strong>Сердцевина</strong><br>
+                        Основная ткань<br>
+                        Запас питательных веществ
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule r-y">
+                <strong>📌 Годичные кольца!</strong><br>
+                Каждый год камбий образует новый слой древесины.<br>
+                Весной — широкие светлые клетки; осенью — узкие тёмные клетки → видно кольцо.<br>
+                <strong>Количество годичных колец = возраст дерева!</strong>
+            </div>
+
+            <h3>Строение листа</h3>
+            <div class="organ-grid">
+                <div class="organ-card" style="background:#f0fff4; border-color:#9ae6b4; color:#22543d;">
+                    <div class="organ-title">🌿 Внешнее строение листа</div>
+                    <ul style="font-size:.88em; list-style:none; padding:0;">
+                        <li>🔹 <strong>Листовая пластинка</strong> — основная часть</li>
+                        <li>🔹 <strong>Черешок</strong> — соединяет со стеблем</li>
+                        <li>🔹 <strong>Основание</strong> — место прикрепления</li>
+                        <li>🔹 <strong>Прилистники</strong> — выросты у основания (не у всех)</li>
+                    </ul>
+                    <div style="margin-top:8px; font-size:.83em; color:#276749;">
+                        ❗ Лист без черешка = <strong>сидячий</strong> (алоэ, агава)
+                    </div>
+                </div>
+                <div class="organ-card" style="background:#ebf8ff; border-color:#90cdf4; color:#2a4365;">
+                    <div class="organ-title">🔬 Внутреннее строение</div>
+                    <ul style="font-size:.88em; list-style:none; padding:0;">
+                        <li>🔹 <strong>Кожица</strong> (сверху и снизу) — с устьицами</li>
+                        <li>🔹 <strong>Столбчатая паренхима</strong> — 1–3 ряда, хлоропласты → фотосинтез</li>
+                        <li>🔹 <strong>Губчатая паренхима</strong> — рыхлая, воздушные полости → газообмен</li>
+                        <li>🔹 <strong>Жилки</strong> — проводящие пучки (ксилема + флоэма)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Функции листа</h3>
+            <div class="cards">
+                <div class="card c-g">
+                    <div class="ct">☀️ Фотосинтез</div>
+                    <div class="cb">Образование органических веществ из CO₂ и H₂O с использованием света. Происходит в хлоропластах.</div>
+                </div>
+                <div class="card c-b">
+                    <div class="ct">💧 Транспирация</div>
+                    <div class="cb">Испарение воды через устьица. Создаёт «тягу» для подъёма воды по стеблю.</div>
+                </div>
+                <div class="card c-o">
+                    <div class="ct">🌬️ Газообмен</div>
+                    <div class="cb">Через устьица: CO₂ входит (при фотосинтезе), O₂ выходит. При дыхании — наоборот.</div>
+                </div>
+                <div class="card c-p">
+                    <div class="ct">🌱 Вегетативное размножение</div>
+                    <div class="cb">У некоторых растений из листа вырастают дочерние растения.<br><em>Фиалка, бегония, каланхоэ</em></div>
+                </div>
+            </div>
+
+            <h3>Видоизменения листьев и побегов</h3>
+            <table>
+                <tr><th class="th-g2">Видоизменение</th><th class="th-g2">Что изменилось</th><th class="th-g2">Примеры</th></tr>
+                <tr><td><strong>Колючки</strong> (листовые)</td><td>Лист → колючка для защиты</td><td>Кактус, барбарис</td></tr>
+                <tr><td><strong>Усики</strong> (листовые)</td><td>Лист → усик для прикрепления</td><td>Горох (усики — видоизм. листочки)</td></tr>
+                <tr><td><strong>Сочные листья</strong></td><td>Лист → резервуар воды</td><td>Алоэ, агава</td></tr>
+                <tr><td><strong>Ловчие листья</strong></td><td>Лист → ловушка для насекомых</td><td>Росянка, венерина мухоловка</td></tr>
+                <tr><td><strong>Луковица</strong> (побег)</td><td>Сочные листья + стебель-донце</td><td>Лук, тюльпан, чеснок</td></tr>
+                <tr><td><strong>Корневище</strong> (побег)</td><td>Подземный побег с почками</td><td>Ландыш, пырей, ирис</td></tr>
+                <tr><td><strong>Клубень</strong> (побег)</td><td>Подземный стебель, запас крахмала</td><td>Картофель (глазки = почки!)</td></tr>
+                <tr><td><strong>Усы / столоны</strong> (побег)</td><td>Горизонтальный наземный побег для размножения</td><td>Земляника, хлорофитум</td></tr>
+            </table>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание: Определи видоизменение</span><br>
+                Что перед тобой — видоизменённый лист или побег? Объясни:<br>
+                Картофель / Кактус-колючка / Горох-усик / Луковица лука / Корневище ландыша / Росянка
+                <br><br>
+                <button class="btn btn-g" onclick="tog('bio_a2')">▶ Ответ</button>
+                <div class="ans ans-g" id="bio_a2">
+Картофель — видоизменённый ПОБЕГ (клубень; глазки = почки)
+Кактус-колючка — видоизменённый ЛИСТ (защита)
+Горох-усик — видоизменённый ЛИСТ (прикрепление)
+Луковица лука — видоизменённый ПОБЕГ (донце=стебель, чешуи=листья)
+Корневище ландыша — видоизменённый ПОБЕГ (подземный)
+Росянка — видоизменённый ЛИСТ (ловчий аппарат)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ ЗАНЯТИЕ 3: ЦВЕТОК И ПЛОД ══ -->
+    <div class="lesson l-bio3">
+        <h2 class="hc-bio">📖 Занятие 3: Цветок. Плод. Семя.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-te">Тест</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=GoGxkRCJUwI" target="_blank">Строение цветка — все части (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=5VnEyPL19Xw" target="_blank">Опыление и оплодотворение растений (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=TvCyeWgNXfY" target="_blank">Плод — типы и распространение семян (Матёрый биолог)</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Цветок — орган полового размножения</h3>
+
+            <div class="rule r-g">
+                <strong>📌 Цветок</strong> — видоизменённый побег, орган семенного (полового) размножения покрытосеменных растений.
+            </div>
+
+            <h3>Строение цветка</h3>
+            <!-- SVG цветка -->
+            <div class="plant-svg">
+                <svg width="340" height="280" viewBox="0 0 340 280">
+                    <!-- Цветоложе и цветоножка -->
+                    <rect x="162" y="210" width="16" height="60" rx="4" fill="#8fbc8f"/>
+                    <ellipse cx="170" cy="212" rx="28" ry="8" fill="#68d391"/>
+                    <!-- Лепестки -->
+                    <ellipse cx="170" cy="130" rx="30" ry="50" fill="#f687b3" opacity=".85"/>
+                    <ellipse cx="220" cy="155" rx="30" ry="50" fill="#f687b3" opacity=".85" transform="rotate(60,220,155)"/>
+                    <ellipse cx="210" cy="105" rx="30" ry="50" fill="#f687b3" opacity=".85" transform="rotate(-60,210,105)"/>
+                    <ellipse cx="130" cy="105" rx="30" ry="50" fill="#f687b3" opacity=".85" transform="rotate(60,130,105)"/>
+                    <ellipse cx="120" cy="155" rx="30" ry="50" fill="#f687b3" opacity=".85" transform="rotate(-60,120,155)"/>
+                    <!-- Чашелистики -->
+                    <ellipse cx="170" cy="195" rx="16" ry="30" fill="#38a169" opacity=".7"/>
+                    <ellipse cx="140" cy="190" rx="14" ry="28" fill="#38a169" opacity=".7" transform="rotate(-30,140,190)"/>
+                    <ellipse cx="200" cy="190" rx="14" ry="28" fill="#38a169" opacity=".7" transform="rotate(30,200,190)"/>
+                    <!-- Тычинки -->
+                    <g stroke="#ecc94b" stroke-width="2" fill="#ecc94b">
+                        <line x1="158" y1="150" x2="152" y2="120"/><circle cx="152" cy="118" r="5"/>
+                        <line x1="163" y1="150" x2="160" y2="117"/><circle cx="160" cy="115" r="5"/>
+                        <line x1="168" y1="150" x2="168" y2="115"/><circle cx="168" cy="113" r="5"/>
+                        <line x1="173" y1="150" x2="176" y2="117"/><circle cx="176" cy="115" r="5"/>
+                        <line x1="178" y1="150" x2="184" y2="120"/><circle cx="184" cy="118" r="5"/>
+                    </g>
+                    <!-- Пестик -->
+                    <rect x="164" y="140" width="12" height="30" rx="3" fill="#805ad5"/>
+                    <ellipse cx="170" cy="138" rx="10" ry="7" fill="#553c9a"/>
+                    <!-- Подписи -->
+                    <text x="60"  y="95"  fill="#702459" font-size="11" font-weight="bold">Лепесток</text>
+                    <line x1="95" y1="95" x2="150" y2="130" stroke="#702459" stroke-width="1" stroke-dasharray="3,2"/>
+                    <text x="222" y="122" fill="#744210" font-size="11" font-weight="bold">Тычинка</text>
+                    <line x1="222" y1="124" x2="190" y2="128" stroke="#744210" stroke-width="1" stroke-dasharray="3,2"/>
+                    <text x="222" y="150" fill="#553c9a" font-size="11" font-weight="bold">Пестик</text>
+                    <line x1="222" y1="152" x2="186" y2="150" stroke="#553c9a" stroke-width="1" stroke-dasharray="3,2"/>
+                    <text x="210" y="195" fill="#22543d" font-size="11" font-weight="bold">Чашелистик</text>
+                    <line x1="210" y1="197" x2="198" y2="192" stroke="#22543d" stroke-width="1" stroke-dasharray="3,2"/>
+                    <text x="80"  y="220" fill="#276749" font-size="11" font-weight="bold">Цветоложе</text>
+                    <line x1="120" y1="217" x2="155" y2="213" stroke="#276749" stroke-width="1" stroke-dasharray="3,2"/>
+                </svg>
+            </div>
+
+            <table>
+                <tr>
+                    <th class="th-g">Часть цветка</th>
+                    <th class="th-g">Строение</th>
+                    <th class="th-g">Функция</th>
+                </tr>
+                <tr>
+                    <td><strong>🟢 Чашечка</strong> (чашелистики)</td>
+                    <td>Зелёные листочки внизу цветка</td>
+                    <td>Защита бутона до распускания</td>
+                </tr>
+                <tr>
+                    <td><strong>🌸 Венчик</strong> (лепестки)</td>
+                    <td>Окрашенные лепестки</td>
+                    <td>Привлечение опылителей (насекомых)</td>
+                </tr>
+                <tr>
+                    <td><strong>🟡 Тычинки</strong></td>
+                    <td>Тычиночная нить + пыльник с пыльцой</td>
+                    <td>Образование <strong>пыльцы</strong> (мужские гаметы)</td>
+                </tr>
+                <tr>
+                    <td><strong>🟣 Пестик</strong></td>
+                    <td>Рыльце + столбик + завязь с семязачатками</td>
+                    <td>Содержит <strong>яйцеклетку</strong>; после оплодотворения → плод</td>
+                </tr>
+                <tr>
+                    <td><strong>🟤 Цветоложе</strong></td>
+                    <td>Расширенная часть цветоножки</td>
+                    <td>Несёт все части цветка</td>
+                </tr>
+                <tr>
+                    <td><strong>Нектарники</strong></td>
+                    <td>Желёзки на цветоложе</td>
+                    <td>Выделяют нектар → приманивают опылителей</td>
+                </tr>
+            </table>
+
+            <div class="rule r-b">
+                <strong>📌 Опыление → Оплодотворение → Плод:</strong><br><br>
+                <strong>Опыление</strong> — перенос пыльцы с тычинки на рыльце пестика<br>
+                ✅ <strong>Самоопыление</strong> — пыльца попадает на рыльце того же цветка (горох, пшеница)<br>
+                ✅ <strong>Перекрёстное опыление</strong> — пыльца переносится на другой цветок (ветром, насекомыми)<br><br>
+                <strong>Оплодотворение</strong> — слияние мужской (пыльца) и женской (яйцеклетка) гамет<br><br>
+                <strong>Результат:</strong><br>
+                Завязь → <strong>плод</strong><br>
+                Семязачатки → <strong>семена</strong>
+            </div>
+
+            <h3>Плод — строение и классификация</h3>
+            <div class="rule r-g">
+                <strong>📌 Плод</strong> — орган цветкового растения, развивающийся из завязи пестика после оплодотворения и содержащий семена.<br><br>
+                <strong>Строение плода:</strong><br>
+                <strong>Околоплодник</strong> (перикарп) — стенка плода. Состоит из:
+                <ul>
+                    <li>Экзокарп — наружный слой (кожица)</li>
+                    <li>Мезокарп — средний слой (мякоть)</li>
+                    <li>Эндокарп — внутренний слой (косточка у вишни)</li>
+                </ul>
+            </div>
+
+            <table>
+                <tr><th class="th-g2">Тип плода</th><th class="th-g2">Характеристика</th><th class="th-g2">Примеры</th></tr>
+                <tr>
+                    <td colspan="3"><strong>Сочные плоды</strong></td>
+                </tr>
+                <tr>
+                    <td>Ягода</td>
+                    <td>Сочный мезокарп, много семян, тонкая кожица</td>
+                    <td>Томат, виноград, смородина, крыжовник, баклажан</td>
+                </tr>
+                <tr>
+                    <td>Костянка</td>
+                    <td>Сочный мезокарп, одно семя в твёрдом эндокарпе (косточке)</td>
+                    <td>Вишня, слива, персик, абрикос, черешня</td>
+                </tr>
+                <tr>
+                    <td>Яблоко</td>
+                    <td>Мясистое цветоложе + завязь, много семян</td>
+                    <td>Яблоко, груша, рябина, боярышник</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><strong>Сухие плоды</strong></td>
+                </tr>
+                <tr>
+                    <td>Орех</td>
+                    <td>Твёрдый деревянистый околоплодник, одно семя</td>
+                    <td>Лесной орех, дуб (жёлудь), каштан</td>
+                </tr>
+                <tr>
+                    <td>Стручок / Боб</td>
+                    <td>Раскрывается, много семян</td>
+                    <td>Горох (боб), капуста (стручок), редис</td>
+                </tr>
+                <tr>
+                    <td>Семянка / Зерновка</td>
+                    <td>Мелкий односемянный нераскрывающийся плод</td>
+                    <td>Семянка — подсолнух; Зерновка — пшеница, рожь</td>
+                </tr>
+                <tr>
+                    <td>Коробочка</td>
+                    <td>Раскрывается створками или дырочками</td>
+                    <td>Мак, лён, хлопок, тюльпан</td>
+                </tr>
+            </table>
+
+            <div class="rule r-y">
+                <strong>📌 Способы распространения семян:</strong>
+                <ul>
+                    <li>💨 <strong>Ветром</strong> — крылатки, парашютики: одуванчик, клён, берёза</li>
+                    <li>🐦 <strong>Животными и птицами</strong> — сочные плоды: рябина, черника; или цепляются: репейник</li>
+                    <li>💧 <strong>Водой</strong> — лёгкие плоды с воздушными полостями: кокос, лотос</li>
+                    <li>💥 <strong>Саморазбрасыванием</strong> — упругие створки: горох, недотрога, фасоль</li>
+                    <li>🐜 <strong>Муравьями</strong> — мирмекохория: фиалка, чистотел</li>
+                </ul>
+            </div>
+
+            <h3>Ключевые термины биологии — Неделя 2</h3>
+            <div class="terms">
+                <div class="term"><div class="tw">Вегетативный орган</div><div class="td">Орган, не участвующий в половом размножении (корень, стебель, лист)</div></div>
+                <div class="term"><div class="tw">Генеративный орган</div><div class="td">Орган полового размножения (цветок, плод, семя)</div></div>
+                <div class="term"><div class="tw">Корневой волосок</div><div class="td">Вырост клетки зоны всасывания, увеличивает площадь поглощения</div></div>
+                <div class="term"><div class="tw">Камбий</div><div class="td">Образовательная ткань между корой и древесиной; рост в толщину</div></div>
+                <div class="term"><div class="tw">Годичное кольцо</div><div class="td">Слой древесины, образованный камбием за один год; = возраст дерева</div></div>
+                <div class="term"><div class="tw">Опыление</div><div class="td">Перенос пыльцы с тычинки на рыльце пестика</div></div>
+                <div class="term"><div class="tw">Оплодотворение</div><div class="td">Слияние мужской и женской гамет; приводит к образованию зиготы</div></div>
+                <div class="term"><div class="tw">Околоплодник</div><div class="td">Стенка плода (перикарп), развивающаяся из стенки завязи</div></div>
+                <div class="term"><div class="tw">Микориза</div><div class="td">Симбиоз корней растения с грибом; улучшает питание обоих</div></div>
+                <div class="term"><div class="tw">Транспирация</div><div class="td">Испарение воды растением через устьица листьев</div></div>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание 1: Определи тип плода</span><br>
+                Томат / Вишня / Горох / Подсолнух / Яблоко / Мак / Пшеница / Слива
+                <br><br>
+                <button class="btn btn-g" onclick="tog('bio_a3')">▶ Ответ</button>
+                <div class="ans ans-g" id="bio_a3">
+Томат — ягода (сочный, много семян)
+Вишня — костянка (косточка внутри)
+Горох — боб (сухой, раскрывается)
+Подсолнух — семянка (сухой, одно семя)
+Яблоко — яблоко (мясистое цветоложе)
+Мак — коробочка (сухой, раскрывается)
+Пшеница — зерновка (сухой, одно семя)
+Слива — костянка (косточка внутри)
+                </div>
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 2: Нарисуй схему цветка</span><br>
+                Зарисуй в тетради схему цветка и подпиши все части:
+                чашелистик, лепесток, тычинка (тычиночная нить + пыльник), пестик (рыльце + столбик + завязь), цветоложе, цветоножку.
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ БИОЛОГИЯ -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест по биологии — Органы растений</div>
+        <p>15 вопросов | Корень · Побег · Лист · Цветок · Плод</p>
+        <form id="bioQuiz">
+            <div class="qb"><p>1. В какой зоне корня находятся корневые волоски?</p>
+                <label class="qo"><input type="radio" name="b1" value="a"> Зона деления</label>
+                <label class="qo"><input type="radio" name="b1" value="b"> Зона роста</label>
+                <label class="qo"><input type="radio" name="b1" value="c"> Зона всасывания</label>
+                <label class="qo"><input type="radio" name="b1" value="d"> Зона проведения</label>
+            </div>
+            <div class="qb"><p>2. Стержневая корневая система характерна для:</p>
+                <label class="qo"><input type="radio" name="b2" value="a"> Пшеницы</label>
+                <label class="qo"><input type="radio" name="b2" value="b"> Лука</label>
+                <label class="qo"><input type="radio" name="b2" value="c"> Одуванчика</label>
+                <label class="qo"><input type="radio" name="b2" value="d"> Ржи</label>
+            </div>
+            <div class="qb"><p>3. Камбий обеспечивает рост стебля:</p>
+                <label class="qo"><input type="radio" name="b3" value="a"> В длину</label>
+                <label class="qo"><input type="radio" name="b3" value="b"> В толщину</label>
+                <label class="qo"><input type="radio" name="b3" value="c"> Через деление листьев</label>
+                <label class="qo"><input type="radio" name="b3" value="d"> Через корневые волоски</label>
+            </div>
+            <div class="qb"><p>4. Клубень картофеля — это видоизменённый:</p>
+                <label class="qo"><input type="radio" name="b4" value="a"> Корень</label>
+                <label class="qo"><input type="radio" name="b4" value="b"> Лист</label>
+                <label class="qo"><input type="radio" name="b4" value="c"> Побег</label>
+                <label class="qo"><input type="radio" name="b4" value="d"> Цветок</label>
+            </div>
+            <div class="qb"><p>5. Какой орган цветка образует пыльцу?</p>
+                <label class="qo"><input type="radio" name="b5" value="a"> Пестик</label>
+                <label class="qo"><input type="radio" name="b5" value="b"> Лепесток</label>
+                <label class="qo"><input type="radio" name="b5" value="c"> Тычинка</label>
+                <label class="qo"><input type="radio" name="b5" value="d"> Чашелистик</label>
+            </div>
+            <div class="qb"><p>6. Вишня — это плод типа:</p>
+                <label class="qo"><input type="radio" name="b6" value="a"> Ягода</label>
+                <label class="qo"><input type="radio" name="b6" value="b"> Костянка</label>
+                <label class="qo"><input type="radio" name="b6" value="c"> Яблоко</label>
+                <label class="qo"><input type="radio" name="b6" value="d"> Орех</label>
+            </div>
+            <div class="qb"><p>7. Что развивается из завязи пестика после оплодотворения?</p>
+                <label class="qo"><input type="radio" name="b7" value="a"> Семя</label>
+                <label class="qo"><input type="radio" name="b7" value="b"> Плод</label>
+                <label class="qo"><input type="radio" name="b7" value="c"> Лист</label>
+                <label class="qo"><input type="radio" name="b7" value="d"> Корень</label>
+            </div>
+            <div class="qb"><p>8. Годичные кольца образует:</p>
+                <label class="qo"><input type="radio" name="b8" value="a"> Кора</label>
+                <label class="qo"><input type="radio" name="b8" value="b"> Сердцевина</label>
+                <label class="qo"><input type="radio" name="b8" value="c"> Камбий</label>
+                <label class="qo"><input type="radio" name="b8" value="d"> Кожица</label>
+            </div>
+            <div class="qb"><p>9. Микориза — это симбиоз корня с:</p>
+                <label class="qo"><input type="radio" name="b9" value="a"> Бактерией</label>
+                <label class="qo"><input type="radio" name="b9" value="b"> Грибом</label>
+                <label class="qo"><input type="radio" name="b9" value="c"> Водорослью</label>
+                <label class="qo"><input type="radio" name="b9" value="d"> Простейшим</label>
+            </div>
+            <div class="qb"><p>10. Луковица — это видоизменённый:</p>
+                <label class="qo"><input type="radio" name="b10" value="a"> Корень</label>
+                <label class="qo"><input type="radio" name="b10" value="b"> Лист</label>
+                <label class="qo"><input type="radio" name="b10" value="c"> Побег</label>
+                <label class="qo"><input type="radio" name="b10" value="d"> Плод</label>
+            </div>
+            <div class="qb"><p>11. Транспорт воды от корня к листьям осуществляет:</p>
+                <label class="qo"><input type="radio" name="b11" value="a"> Флоэма (луб)</label>
+                <label class="qo"><input type="radio" name="b11" value="b"> Ксилема (древесина)</label>
+                <label class="qo"><input type="radio" name="b11" value="c"> Кора</label>
+                <label class="qo"><input type="radio" name="b11" value="d"> Сердцевина</label>
+            </div>
+            <div class="qb"><p>12. Семена одуванчика распространяются:</p>
+                <label class="qo"><input type="radio" name="b12" value="a"> Водой</label>
+                <label class="qo"><input type="radio" name="b12" value="b"> Животными</label>
+                <label class="qo"><input type="radio" name="b12" value="c"> Ветром</label>
+                <label class="qo"><input type="radio" name="b12" value="d"> Саморазбрасыванием</label>
+            </div>
+            <div class="qb"><p>13. В какой части листа происходит наиболее интенсивный фотосинтез?</p>
+                <label class="qo"><input type="radio" name="b13" value="a"> Губчатая паренхима</label>
+                <label class="qo"><input type="radio" name="b13" value="b"> Кожица</label>
+                <label class="qo"><input type="radio" name="b13" value="c"> Столбчатая паренхима</label>
+                <label class="qo"><input type="radio" name="b13" value="d"> Жилки</label>
+            </div>
+            <div class="qb"><p>14. Какой плод у томата?</p>
+                <label class="qo"><input type="radio" name="b14" value="a"> Костянка</label>
+                <label class="qo"><input type="radio" name="b14" value="b"> Ягода</label>
+                <label class="qo"><input type="radio" name="b14" value="c"> Боб</label>
+                <label class="qo"><input type="radio" name="b14" value="d"> Яблоко</label>
+            </div>
+            <div class="qb"><p>15. Верхушечная почка обеспечивает рост стебля:</p>
+                <label class="qo"><input type="radio" name="b15" value="a"> В толщину</label>
+                <label class="qo"><input type="radio" name="b15" value="b"> В длину</label>
+                <label class="qo"><input type="radio" name="b15" value="c"> Корней</label>
+                <label class="qo"><input type="radio" name="b15" value="d"> Боковых побегов</label>
+            </div>
+            <button type="button" class="chk chk-bio" onclick="runQuiz('bioQuiz',bioAns,bioExp,'bioRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="bioRes"></div>
+    </div>
+</div><!-- /bio -->
+
+<hr class="sep sep-bio">
+
+<!-- ╔══════════════════════════════════════════════╗
+     ║              ГЕОГРАФИЯ                      ║
+     ╚══════════════════════════════════════════════╝ -->
+<div id="geo">
+    <h1 class="h1-geo">🌍 География — Неделя 2</h1>
+    <p class="subtitle">6 класс | 3 часа | Литосфера · Гидросфера · Мировой океан · Воды суши</p>
+
+    <!-- ══ ЗАНЯТИЕ 1: ЛИТОСФЕРА ══ -->
+    <div class="lesson l-geo">
+        <h2 class="hc-geo">📖 Занятие 1: Литосфера — строение Земли и горные породы</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-mp">Схемы</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=9DXlGTqxw8s" target="_blank">Строение Земли — ядро, мантия, кора (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=FzT2b_BBNMM" target="_blank">Горные породы и минералы — классификация (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=K2xA3VVLQHE" target="_blank">Движение литосферных плит — дрейф континентов</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=vFmkK-PJUSk" target="_blank">Землетрясения и вулканы — строение и причины</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Внутреннее строение Земли</h3>
+
+            <!-- Схема строения Земли SVG -->
+            <div class="plant-svg">
+                <svg width="320" height="320" viewBox="0 0 320 320">
+                    <!-- Ядро внутреннее -->
+                    <circle cx="160" cy="160" r="55" fill="#e53e3e"/>
+                    <text x="160" y="150" fill="white" font-size="12" font-weight="bold" text-anchor="middle">Внутреннее</text>
+                    <text x="160" y="165" fill="white" font-size="12" font-weight="bold" text-anchor="middle">ядро</text>
+                    <text x="160" y="180" fill="#fed7d7" font-size="10" text-anchor="middle">твёрдое</text>
+                    <!-- Ядро внешнее -->
+                    <circle cx="160" cy="160" r="90" fill="none" stroke="#fc8181" stroke-width="28" opacity="0.7"/>
+                    <text x="250" y="135" fill="#c53030" font-size="11" font-weight="bold">Внешнее</text>
+                    <text x="250" y="148" fill="#c53030" font-size="11" font-weight="bold">ядро</text>
+                    <text x="250" y="161" fill="#c53030" font-size="10">жидкое</text>
+                    <line x1="248" y1="142" x2="215" y2="130" stroke="#c53030" stroke-width="1" stroke-dasharray="3,2"/>
+                    <!-- Мантия -->
+                    <circle cx="160" cy="160" r="138" fill="none" stroke="#f6ad55" stroke-width="46" opacity="0.6"/>
+                    <text x="10" y="100" fill="#c05621" font-size="11" font-weight="bold">Мантия</text>
+                    <text x="10" y="114" fill="#c05621" font-size="10">вязкая,</text>
+                    <text x="10" y="127" fill="#c05621" font-size="10">горячая</text>
+                    <line x1="58" y1="110" x2="80" y2="120" stroke="#c05621" stroke-width="1" stroke-dasharray="3,2"/>
+                    <!-- Кора -->
+                    <circle cx="160" cy="160" r="155" fill="none" stroke="#68d391" stroke-width="10" opacity="0.85"/>
+                    <text x="155" y="12" fill="#22543d" font-size="11" font-weight="bold" text-anchor="middle">Земная кора</text>
+                    <text x="155" y="25" fill="#22543d" font-size="10" text-anchor="middle">5–70 км</text>
+                </svg>
+            </div>
+
+            <table>
+                <tr>
+                    <th class="th-b">Слой</th>
+                    <th class="th-b">Состав</th>
+                    <th class="th-b">Толщина</th>
+                    <th class="th-b">Температура</th>
+                </tr>
+                <tr>
+                    <td><strong>🟢 Земная кора</strong></td>
+                    <td>Гранит (континент.) + базальт (океан.)</td>
+                    <td>5–70 км</td>
+                    <td>до +1000°С</td>
+                </tr>
+                <tr>
+                    <td><strong>🟡 Мантия</strong></td>
+                    <td>Силикаты, оксиды магния и железа. Вещество вязкое (магма)</td>
+                    <td>2900 км</td>
+                    <td>+1000–3700°С</td>
+                </tr>
+                <tr>
+                    <td><strong>🔴 Внешнее ядро</strong></td>
+                    <td>Жидкое железо и никель</td>
+                    <td>2200 км</td>
+                    <td>+3700–5000°С</td>
+                </tr>
+                <tr>
+                    <td><strong>🔴 Внутреннее ядро</strong></td>
+                    <td>Твёрдое железо и никель</td>
+                    <td>1300 км (R)</td>
+                    <td>до +6000°С</td>
+                </tr>
+            </table>
+
+            <div class="rule r-b">
+                <strong>📌 Литосфера</strong> — твёрдая оболочка Земли, включающая земную кору и верхнюю часть мантии.<br>
+                Толщина: 50–200 км.<br><br>
+                <strong>Литосферные плиты</strong> — крупные блоки литосферы, медленно движущиеся по пластичному веществу мантии.<br>
+                Скорость движения: 1–6 см/год (как растут ногти!)<br><br>
+                <strong>Крупнейшие плиты:</strong> Евразийская, Северо-Американская, Южно-Американская, Африканская, Антарктическая, Тихоокеанская, Индо-Австралийская.
+            </div>
+
+            <h3>Земная кора — два типа</h3>
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-g" style="flex:1.4; text-align:left; padding:14px;">
+                        <strong>🏔️ Континентальная кора</strong><br><br>
+                        Под материками<br>
+                        Толщина: 35–70 км (под горами — до 70 км)<br>
+                        Состав: осадочный + гранитный + базальтовый слои<br>
+                        Возраст: до 4 млрд лет
+                    </div>
+                    <div class="arr">⟷</div>
+                    <div class="sb sb-b" style="flex:1.4; text-align:left; padding:14px;">
+                        <strong>🌊 Океаническая кора</strong><br><br>
+                        Под океанами<br>
+                        Толщина: 5–10 км<br>
+                        Состав: осадочный + базальтовый слои<br>
+                        Возраст: до 200 млн лет (молодая!)
+                    </div>
+                </div>
+            </div>
+
+            <h3>Горные породы и минералы</h3>
+            <div class="rock-grid">
+                <div class="rock-card" style="background:#fff5f5; border-color:#fc8181; color:#742a2a;">
+                    <div class="rock-title">🔥 Магматические</div>
+                    <div class="rock-body">
+                        Образуются из застывшей магмы<br><br>
+                        <strong>Глубинные:</strong> гранит, габбро<br>
+                        <strong>Излившиеся:</strong> базальт, пемза
+                    </div>
+                </div>
+                <div class="rock-card" style="background:#ebf8ff; border-color:#90cdf4; color:#2a4365;">
+                    <div class="rock-title">🌊 Осадочные</div>
+                    <div class="rock-body">
+                        Образуются на поверхности<br><br>
+                        <strong>Обломочные:</strong> песок, глина, гравий<br>
+                        <strong>Химические:</strong> соль, известняк<br>
+                        <strong>Органические:</strong> уголь, нефть, торф
+                    </div>
+                </div>
+                <div class="rock-card" style="background:#faf5ff; border-color:#d6bcfa; color:#44337a;">
+                    <div class="rock-title">🔄 Метаморфические</div>
+                    <div class="rock-body">
+                        Образуются из других пород под давлением и температурой<br><br>
+                        Мрамор (← известняк)<br>
+                        Кварцит (← песчаник)<br>
+                        Гнейс (← гранит)
+                    </div>
+                </div>
+            </div>
+
+            <h3>Землетрясения и вулканы</h3>
+            <div class="rule r-r">
+                <strong>📌 Землетрясение</strong> — подземные толчки и колебания земной поверхности.<br>
+                <strong>Очаг (гипоцентр)</strong> — место, где произошёл разрыв пород.<br>
+                <strong>Эпицентр</strong> — точка на поверхности над очагом (максимальное разрушение).<br>
+                <strong>Сила:</strong> измеряется в баллах (1–12 по шкале Рихтера) или магнитудой.<br><br>
+                <strong>📌 Вулкан</strong> — место выхода магмы на поверхность.<br>
+                <strong>Кратер</strong> — выходное отверстие вулкана.<br>
+                <strong>Лава</strong> = магма, вышедшая на поверхность (потеряла газы).<br>
+                <strong>Основные вулканические пояса:</strong> «Тихоокеанское огненное кольцо», Средиземноморский пояс.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ ЗАНЯТИЕ 2: ГИДРОСФЕРА. МИРОВОЙ ОКЕАН ══ -->
+    <div class="lesson l-geo2">
+        <h2 class="hc-geo">📖 Занятие 2: Гидросфера. Мировой океан.</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-mp">Карта</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=oMnQ5ZBf4lk" target="_blank">Гидросфера — состав и значение (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=uOdJbQ0GQQI" target="_blank">Мировой океан — части и свойства воды (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=JLBpDL8OCPA" target="_blank">Течения Мирового океана — тёплые и холодные (Матёрый географ)</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Гидросфера — водная оболочка Земли</h3>
+
+            <div class="rule r-b">
+                <strong>📌 Гидросфера</strong> — водная оболочка Земли, включающая все воды: океаны, моря, реки, озёра, льды, подземные воды и водяной пар в атмосфере.<br><br>
+                <strong>Состав гидросферы:</strong>
+                <ul>
+                    <li>🌊 Мировой океан — <strong>96,5%</strong> всей воды</li>
+                    <li>🧊 Ледники — 1,74%</li>
+                    <li>🏔️ Подземные воды — 1,69%</li>
+                    <li>🏞️ Воды суши (реки, озёра) — 0,013%</li>
+                </ul>
+                <strong>Круговорот воды</strong> — непрерывный процесс перемещения воды между океаном, атмосферой и сушей (испарение → конденсация → осадки → сток).
+            </div>
+
+            <h3>Мировой океан — части и характеристики</h3>
+            <table>
+                <tr>
+                    <th class="th-b">Океан</th>
+                    <th class="th-b">Площадь</th>
+                    <th class="th-b">Макс. глубина</th>
+                    <th class="th-b">Особенности</th>
+                </tr>
+                <tr>
+                    <td><strong>Тихий</strong></td>
+                    <td>179 млн км²</td>
+                    <td>11 022 м (Марианская впадина)</td>
+                    <td>Самый большой и глубокий. Тихоокеанское огненное кольцо.</td>
+                </tr>
+                <tr>
+                    <td><strong>Атлантический</strong></td>
+                    <td>92 млн км²</td>
+                    <td>8 742 м (жёлоб Пуэрто-Рико)</td>
+                    <td>S-образный. Срединно-Атлантический хребет. Течение Гольфстрим.</td>
+                </tr>
+                <tr>
+                    <td><strong>Индийский</strong></td>
+                    <td>76 млн км²</td>
+                    <td>7 729 м (Зондский жёлоб)</td>
+                    <td>Муссонные течения. Тёплый.</td>
+                </tr>
+                <tr>
+                    <td><strong>Северный Ледовитый</strong></td>
+                    <td>14 млн км²</td>
+                    <td>5 527 м</td>
+                    <td>Самый маленький и мелкий. Покрыт льдами. Арктика.</td>
+                </tr>
+                <tr>
+                    <td><strong>Южный</strong></td>
+                    <td>20 млн км²</td>
+                    <td>8 428 м</td>
+                    <td>Выделен в 2000 г. Антарктические воды. Мощные ветры и течения.</td>
+                </tr>
+            </table>
+
+            <h3>Части Мирового океана</h3>
+            <div class="water-scheme">
+                <div class="water-card">
+                    <div class="water-title">🌊 Море</div>
+                    <div class="water-body">
+                        Часть океана, обособленная сушей или подводными хребтами.<br><br>
+                        <strong>Внутренние:</strong> Средиземное, Чёрное, Балтийское<br>
+                        <strong>Окраинные:</strong> Баренцево, Охотское, Японское<br>
+                        <strong>Межостровные:</strong> Карибское<br><br>
+                        Имеет своё течение, солёность, флору и фауну.
+                    </div>
+                </div>
+                <div class="water-card">
+                    <div class="water-title">🔵 Залив</div>
+                    <div class="water-body">
+                        Часть океана (моря), вдающаяся в сушу.<br><br>
+                        Бискайский залив, Мексиканский залив, Персидский залив, Финский залив<br><br>
+                        Менее связан с открытым океаном, чем море.
+                    </div>
+                </div>
+                <div class="water-card">
+                    <div class="water-title">〰️ Пролив</div>
+                    <div class="water-body">
+                        Узкое водное пространство, соединяющее два водоёма.<br><br>
+                        Гибралтарский, Берингов, Дрейка, Ла-Манш, Босфор<br><br>
+                        Стратегически важны для судоходства.
+                    </div>
+                </div>
+                <div class="water-card">
+                    <div class="water-title">🏝️ Остров и полуостров</div>
+                    <div class="water-body">
+                        <strong>Остров</strong> — участок суши, окружённый водой со всех сторон. Гренландия, Мадагаскар, Сахалин.<br><br>
+                        <strong>Полуостров</strong> — участок суши, окружённый водой с трёх сторон. Крым, Кольский, Аравийский.
+                    </div>
+                </div>
+            </div>
+
+            <h3>Свойства воды в океане</h3>
+            <table>
+                <tr><th class="th-b2">Свойство</th><th class="th-b2">Характеристика</th><th class="th-b2">Примеры/Факты</th></tr>
+                <tr>
+                    <td><strong>🧂 Солёность</strong></td>
+                    <td>Количество г соли в 1 кг воды. Единица: ‰ (промилле)</td>
+                    <td>Средняя солёность Мирового океана: <strong>35 ‰</strong><br>Самое солёное: Красное море (42 ‰)<br>Самое пресное: Балтийское море (7–8 ‰)</td>
+                </tr>
+                <tr>
+                    <td><strong>🌡️ Температура</strong></td>
+                    <td>Зависит от широты и глубины. Убывает с глубиной.</td>
+                    <td>У экватора: +28°С; у полюсов: −2°С<br>Ниже 200 м — постоянные +2–4°С</td>
+                </tr>
+                <tr>
+                    <td><strong>🌊 Волны</strong></td>
+                    <td>Движение воды, вызванное ветром. Не переносит воду!</td>
+                    <td>Высота волны зависит от силы ветра. Цунами — сейсмические волны.</td>
+                </tr>
+                <tr>
+                    <td><strong>🔄 Течения</strong></td>
+                    <td>Постоянные горизонтальные движения масс воды</td>
+                    <td><strong>Тёплые:</strong> Гольфстрим, Куросио<br><strong>Холодные:</strong> Перуанское, Бенгельское</td>
+                </tr>
+                <tr>
+                    <td><strong>🌙 Приливы и отливы</strong></td>
+                    <td>Периодический подъём и опускание уровня воды под влиянием притяжения Луны (и Солнца)</td>
+                    <td>Дважды в сутки. Самые высокие: залив Фанди (до 18 м!)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ══ ЗАНЯТИЕ 3: ВОДЫ СУШИ ══ -->
+    <div class="lesson l-geo3">
+        <h2 class="hc-geo">📖 Занятие 3: Воды суши — реки, озёра, ледники, подземные воды</h2>
+        <span class="dur">⏱ 1 час</span>
+        <span class="tag t-th">Теория</span>
+        <span class="tag t-te">Тест</span>
+
+        <div class="vid">
+            <h3>🎬 Видеоматериалы</h3>
+            <ul>
+                <li>📹 <a href="https://www.youtube.com/watch?v=JR8YOCCr6pQ" target="_blank">Реки — бассейн, водораздел, режим (Инфоурок)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=RtS0OG_mwgI" target="_blank">Озёра — происхождение котловин, типы озёр (TutorOnline)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=cX4VNJZ8G50" target="_blank">Ледники — горные и покровные (наглядно)</a></li>
+                <li>📹 <a href="https://www.youtube.com/watch?v=FIqJIWMoFus" target="_blank">Подземные воды — грунтовые и артезианские</a></li>
+            </ul>
+        </div>
+
+        <div class="nb">
+            <h3>Реки — главные артерии суши</h3>
+
+            <div class="rule r-b">
+                <strong>📌 Река</strong> — постоянный водный поток, текущий в выработанном им углублении — русле.
+            </div>
+
+            <h3>Части реки и речная система</h3>
+            <div class="scheme">
+                <div class="sch-row">
+                    <div class="sb sb-b">
+                        <strong>Исток</strong><br>
+                        Место начала реки<br>
+                        (родник, озеро, ледник)
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-g">
+                        <strong>Верхнее течение</strong><br>
+                        Горный характер<br>
+                        Быстрое течение
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-y">
+                        <strong>Среднее течение</strong><br>
+                        Переходное<br>
+                        Развиваются долины
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-o">
+                        <strong>Нижнее течение</strong><br>
+                        Равнинный характер<br>
+                        Медленное течение
+                    </div>
+                    <div class="arr">→</div>
+                    <div class="sb sb-t">
+                        <strong>Устье</strong><br>
+                        Место впадения<br>
+                        Дельта или эстуарий
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <tr><th class="th-b">Термин</th><th class="th-b">Определение</th><th class="th-b">Пример</th></tr>
+                <tr>
+                    <td><strong>Приток</strong></td>
+                    <td>Река, впадающая в другую (главную) реку</td>
+                    <td>Ока — приток Волги</td>
+                </tr>
+                <tr>
+                    <td><strong>Речная система</strong></td>
+                    <td>Главная река + все её притоки</td>
+                    <td>Речная система Волги</td>
+                </tr>
+                <tr>
+                    <td><strong>Бассейн реки</strong></td>
+                    <td>Территория, с которой река собирает воду</td>
+                    <td>Бассейн Амазонки — 7 млн км²</td>
+                </tr>
+                <tr>
+                    <td><strong>Водораздел</strong></td>
+                    <td>Граница между бассейнами двух рек (обычно возвышенность)</td>
+                    <td>Уральские горы — водораздел рек Европы и Азии</td>
+                </tr>
+                <tr>
+                    <td><strong>Падение реки</strong></td>
+                    <td>Разность высот истока и устья (м)</td>
+                    <td>Волга: 228 − 0 = 228 м</td>
+                </tr>
+                <tr>
+                    <td><strong>Уклон реки</strong></td>
+                    <td>Падение / длину реки (см/км)</td>
+                    <td>Чем больше уклон → быстрее течение</td>
+                </tr>
+                <tr>
+                    <td><strong>Режим реки</strong></td>
+                    <td>Изменение уровня воды в течение года</td>
+                    <td>Половодье, паводок, межень, ледостав</td>
+                </tr>
+            </table>
+
+            <h3>Крупнейшие реки мира (запомни!)</h3>
+            <table>
+                <tr><th class="th-b2">Река</th><th class="th-b2">Длина</th><th class="th-b2">Материк</th><th class="th-b2">Впадает в</th></tr>
+                <tr><td><strong>Нил</strong></td><td>6853 км</td><td>Африка</td><td>Средиземное море</td></tr>
+                <tr><td><strong>Амазонка</strong></td><td>6400 км</td><td>Ю. Америка</td><td>Атлантический океан</td></tr>
+                <tr><td><strong>Янцзы</strong></td><td>6300 км</td><td>Евразия (Азия)</td><td>Восточно-Китайское море</td></tr>
+                <tr><td><strong>Миссисипи</strong></td><td>6100 км</td><td>С. Америка</td><td>Мексиканский залив</td></tr>
+                <tr><td><strong>Волга</strong></td><td>3531 км</td><td>Евразия (Европа)</td><td>Каспийское море</td></tr>
+                <tr><td><strong>Лена</strong></td><td>4400 км</td><td>Евразия (Азия)</td><td>Море Лаптевых</td></tr>
+            </table>
+
+            <h3>Озёра</h3>
+            <div class="rule r-b">
+                <strong>📌 Озеро</strong> — природный замкнутый водоём суши, не имеющий прямой связи с океаном.<br><br>
+                <strong>По происхождению котловин:</strong>
+                <ul>
+                    <li><strong>Тектонические</strong> — в разломах коры: Байкал, Танганьика, Каспийское море</li>
+                    <li><strong>Вулканические</strong> — в кратерах: Кроноцкое (Камчатка)</li>
+                    <li><strong>Ледниковые</strong> — котловины выпаханы ледниками: Ладожское, Онежское, Великие Американские</li>
+                    <li><strong>Пойменные (старицы)</strong> — отшнуровавшиеся излучины рек</li>
+                </ul>
+            </div>
+
+            <table>
+                <tr><th class="th-b">Озеро</th><th class="th-b">Особенность</th><th class="th-b">Площадь / Глубина</th></tr>
+                <tr><td><strong>Каспийское море</strong></td><td>Самое большое озеро Земли (замкнутое море)</td><td>371 000 км² / 1025 м</td></tr>
+                <tr><td><strong>Байкал</strong></td><td>Самое глубокое озеро (тектоническое), 20% пресной воды Земли</td><td>31 500 км² / <strong>1642 м</strong></td></tr>
+                <tr><td><strong>Виктория</strong></td><td>Крупнейшее озеро Африки, исток Нила</td><td>68 800 км² / 80 м</td></tr>
+                <tr><td><strong>Мёртвое море</strong></td><td>Самое солёное (300‰), самое низкое место суши (−430 м)</td><td>810 км² / 300 м</td></tr>
+            </table>
+
+            <h3>Ледники и подземные воды</h3>
+            <div class="scheme">
+                <div class="sch-row" style="align-items:stretch;">
+                    <div class="sb sb-t" style="flex:1.5; text-align:left; padding:14px;">
+                        <strong>🧊 Ледники</strong><br><br>
+                        Скопления льда на суше, движущиеся под действием силы тяжести.<br><br>
+                        <strong>Горные:</strong> в горных долинах (Альпы, Кавказ)<br>
+                        <strong>Покровные:</strong> Антарктида (26,5 млн км³), Гренландия<br><br>
+                        <strong>Значение:</strong> запасают 69% пресной воды, питают реки, влияют на климат
+                    </div>
+                    <div class="arr">+</div>
+                    <div class="sb sb-p" style="flex:1.5; text-align:left; padding:14px;">
+                        <strong>💧 Подземные воды</strong><br><br>
+                        Воды, накопленные в горных породах под землёй.<br><br>
+                        <strong>Грунтовые:</strong> 1-й водоносный слой, без давления<br>
+                        <strong>Артезианские:</strong> глубокие, под давлением (фонтанируют при вскрытии)<br><br>
+                        <strong>Применение:</strong> водоснабжение, минеральные воды, термальные источники
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-block">
+                <h4>🗺️ Задание по карте (выполни в тетради):</h4>
+                <ol>
+                    <li>Обозначь все 5 (или 4) океана и их названия</li>
+                    <li>Нанеси на карту: Гольфстрим (тёплое), Перуанское (холодное) течения</li>
+                    <li>Найди и подпиши: Байкал, Каспийское море, озеро Виктория, Мёртвое море</li>
+                    <li>Отметь крупнейшие реки: Нил, Амазонка, Волга, Лена, Янцзы</li>
+                </ol>
+            </div>
+
+            <h3>Ключевые термины географии — Неделя 2</h3>
+            <div class="terms">
+                <div class="term"><div class="tw">Литосфера</div><div class="td">Твёрдая оболочка Земли (кора + верхняя мантия), толщина 50–200 км</div></div>
+                <div class="term"><div class="tw">Магма</div><div class="td">Расплавленное вещество мантии; на поверхности называется лавой</div></div>
+                <div class="term"><div class="tw">Эпицентр</div><div class="td">Точка на поверхности Земли над очагом землетрясения</div></div>
+                <div class="term"><div class="tw">Гидросфера</div><div class="td">Водная оболочка Земли; 96,5% — воды Мирового океана</div></div>
+                <div class="term"><div class="tw">Солёность</div><div class="td">Количество граммов соли в 1 кг воды; средняя = 35‰</div></div>
+                <div class="term"><div class="tw">Бассейн реки</div><div class="td">Территория, с которой река и её притоки собирают воду</div></div>
+                <div class="term"><div class="tw">Режим реки</div><div class="td">Изменения уровня и расхода воды по сезонам года</div></div>
+                <div class="term"><div class="tw">Артезианские воды</div><div class="td">Подземные воды под давлением; при вскрытии фонтанируют</div></div>
+                <div class="term"><div class="tw">Цунами</div><div class="td">Сейсмические волны в океане, возникающие при подводных землетрясениях</div></div>
+                <div class="term"><div class="tw">Промилле (‰)</div><div class="td">Единица измерения солёности: 1‰ = 1 г соли в 1 кг воды</div></div>
+            </div>
+        </div>
+
+        <div class="exer">
+            <div class="task">
+                <span class="tn">📝 Задание 1: Задачи</span><br>
+                а) Чему равно падение реки, если исток на высоте 850 м, а устье — на высоте 125 м?<br>
+                б) Длина реки 2600 км, падение 520 м. Чему равен уклон (в см/км)?<br>
+                в) Солёность Красного моря 42‰. Сколько граммов соли в 5 кг его воды?<br><br>
+                <button class="btn btn-b" onclick="tog('geo_a1')">▶ Решение</button>
+                <div class="ans ans-b" id="geo_a1">
+а) Падение = 850 − 125 = <strong>725 м</strong>
+
+б) Уклон = падение / длину = 52 000 см / 2600 км = <strong>20 см/км</strong>
+   (переводим 520 м → 52 000 см)
+
+в) 42‰ = 42 г/кг
+   В 5 кг: 42 × 5 = <strong>210 г соли</strong>
+                </div>
+            </div>
+            <div class="task">
+                <span class="tn">📝 Задание 2: Заполни таблицу «Крупнейшие озёра»</span><br>
+                Перечерти и заполни в тетради:<br>
+                <table style="margin-top:8px;">
+                    <tr><th class="th-b">Озеро</th><th class="th-b">Материк</th><th class="th-b">Тип котловины</th><th class="th-b">Рекорд</th></tr>
+                    <tr><td>Каспийское</td><td>?</td><td>?</td><td>?</td></tr>
+                    <tr><td>Байкал</td><td>?</td><td>?</td><td>?</td></tr>
+                    <tr><td>Виктория</td><td>?</td><td>?</td><td>?</td></tr>
+                    <tr><td>Мёртвое море</td><td>?</td><td>?</td><td>?</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТЕСТ ГЕОГРАФИЯ -->
+    <div class="quiz">
+        <div class="qt">🧪 Тест по географии — Литосфера и Гидросфера</div>
+        <p>15 вопросов | Строение Земли · Горные породы · Океан · Воды суши</p>
+        <form id="geoQuiz">
+            <div class="qb"><p>1. Самая тонкая оболочка Земли:</p>
+                <label class="qo"><input type="radio" name="g1" value="a"> Мантия</label>
+                <label class="qo"><input type="radio" name="g1" value="b"> Земная кора</label>
+                <label class="qo"><input type="radio" name="g1" value="c"> Внешнее ядро</label>
+                <label class="qo"><input type="radio" name="g1" value="d"> Внутреннее ядро</label>
+            </div>
+            <div class="qb"><p>2. Магматические породы образуются из:</p>
+                <label class="qo"><input type="radio" name="g2" value="a"> Осадков на дне водоёмов</label>
+                <label class="qo"><input type="radio" name="g2" value="b"> Застывшей магмы</label>
+                <label class="qo"><input type="radio" name="g2" value="c"> Изменения других пород под давлением</label>
+                <label class="qo"><input type="radio" name="g2" value="d"> Обломков горных пород</label>
+            </div>
+            <div class="qb"><p>3. Мрамор — это порода:</p>
+                <label class="qo"><input type="radio" name="g3" value="a"> Магматическая</label>
+                <label class="qo"><input type="radio" name="g3" value="b"> Осадочная</label>
+                <label class="qo"><input type="radio" name="g3" value="c"> Метаморфическая</label>
+                <label class="qo"><input type="radio" name="g3" value="d"> Вулканическая излившаяся</label>
+            </div>
+            <div class="qb"><p>4. Самый большой океан Земли:</p>
+                <label class="qo"><input type="radio" name="g4" value="a"> Атлантический</label>
+                <label class="qo"><input type="radio" name="g4" value="b"> Индийский</label>
+                <label class="qo"><input type="radio" name="g4" value="c"> Тихий</label>
+                <label class="qo"><input type="radio" name="g4" value="d"> Северный Ледовитый</label>
+            </div>
+            <div class="qb"><p>5. Средняя солёность Мирового океана:</p>
+                <label class="qo"><input type="radio" name="g5" value="a"> 10 ‰</label>
+                <label class="qo"><input type="radio" name="g5" value="b"> 35 ‰</label>
+                <label class="qo"><input type="radio" name="g5" value="c"> 100 ‰</label>
+                <label class="qo"><input type="radio" name="g5" value="d"> 3,5 ‰</label>
+            </div>
+            <div class="qb"><p>6. Гольфстрим — это течение:</p>
+                <label class="qo"><input type="radio" name="g6" value="a"> Холодное, Тихий океан</label>
+                <label class="qo"><input type="radio" name="g6" value="b"> Тёплое, Атлантический океан</label>
+                <label class="qo"><input type="radio" name="g6" value="c"> Тёплое, Индийский океан</label>
+                <label class="qo"><input type="radio" name="g6" value="d"> Холодное, Атлантический океан</label>
+            </div>
+            <div class="qb"><p>7. Самое глубокое озеро Земли:</p>
+                <label class="qo"><input type="radio" name="g7" value="a"> Каспийское</label>
+                <label class="qo"><input type="radio" name="g7" value="b"> Байкал</label>
+                <label class="qo"><input type="radio" name="g7" value="c"> Виктория</label>
+                <label class="qo"><input type="radio" name="g7" value="d"> Верхнее</label>
+            </div>
+            <div class="qb"><p>8. Место начала реки называется:</p>
+                <label class="qo"><input type="radio" name="g8" value="a"> Устье</label>
+                <label class="qo"><input type="radio" name="g8" value="b"> Дельта</label>
+                <label class="qo"><input type="radio" name="g8" value="c"> Исток</label>
+                <label class="qo"><input type="radio" name="g8" value="d"> Русло</label>
+            </div>
+            <div class="qb"><p>9. Самая длинная река мира:</p>
+                <label class="qo"><input type="radio" name="g9" value="a"> Амазонка</label>
+                <label class="qo"><input type="radio" name="g9" value="b"> Нил</label>
+                <label class="qo"><input type="radio" name="g9" value="c"> Янцзы</label>
+                <label class="qo"><input type="radio" name="g9" value="d"> Волга</label>
+            </div>
+            <div class="qb"><p>10. Что такое «эпицентр» землетрясения?</p>
+                <label class="qo"><input type="radio" name="g10" value="a"> Место разрыва пород под землёй</label>
+                <label class="qo"><input type="radio" name="g10" value="b"> Точка на поверхности над очагом</label>
+                <label class="qo"><input type="radio" name="g10" value="c"> Место извержения вулкана</label>
+                <label class="qo"><input type="radio" name="g10" value="d"> Центр сейсмического пояса</label>
+            </div>
+            <div class="qb"><p>11. 96,5% гидросферы составляют:</p>
+                <label class="qo"><input type="radio" name="g11" value="a"> Реки и озёра</label>
+                <label class="qo"><input type="radio" name="g11" value="b"> Ледники</label>
+                <label class="qo"><input type="radio" name="g11" value="c"> Воды Мирового океана</label>
+                <label class="qo"><input type="radio" name="g11" value="d"> Подземные воды</label>
+            </div>
+            <div class="qb"><p>12. Приливы и отливы вызваны главным образом притяжением:</p>
+                <label class="qo"><input type="radio" name="g12" value="a"> Солнца</label>
+                <label class="qo"><input type="radio" name="g12" value="b"> Луны</label>
+                <label class="qo"><input type="radio" name="g12" value="c"> Марса</label>
+                <label class="qo"><input type="radio" name="g12" value="d"> Вращением Земли</label>
+            </div>
+            <div class="qb"><p>13. Байкал — озеро по происхождению котловины:</p>
+                <label class="qo"><input type="radio" name="g13" value="a"> Ледниковое</label>
+                <label class="qo"><input type="radio" name="g13" value="b"> Вулканическое</label>
+                <label class="qo"><input type="radio" name="g13" value="c"> Тектоническое</label>
+                <label class="qo"><input type="radio" name="g13" value="d"> Запрудное</label>
+            </div>
+            <div class="qb"><p>14. Водораздел — это:</p>
+                <label class="qo"><input type="radio" name="g14" value="a"> Место слияния двух рек</label>
+                <label class="qo"><input type="radio" name="g14" value="b"> Граница между бассейнами рек</label>
+                <label class="qo"><input type="radio" name="g14" value="c"> Наиболее широкая часть реки</label>
+                <label class="qo"><input type="radio" name="g14" value="d"> Место наводнения</label>
+            </div>
+            <div class="qb"><p>15. Лава — это:</p>
+                <label class="qo"><input type="radio" name="g15" value="a"> Магма в недрах Земли</label>
+                <label class="qo"><input type="radio" name="g15" value="b"> Магма, вышедшая на поверхность</label>
+                <label class="qo"><input type="radio" name="g15" value="c"> Горячий газ из вулкана</label>
+                <label class="qo"><input type="radio" name="g15" value="d"> Вид горной породы</label>
+            </div>
+            <button type="button" class="chk chk-geo" onclick="runQuiz('geoQuiz',geoAns,geoExp,'geoRes')">✅ Проверить</button>
+        </form>
+        <div class="res" id="geoRes"></div>
+    </div>
+</div><!-- /geo -->
+
+</div><!-- /container -->
+
+<script>
+function goTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+function tog(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+/* ══ Данные тестов ══ */
+var bioAns = {
+    b1:'c', b2:'c', b3:'b', b4:'c', b5:'c',
+    b6:'b', b7:'b', b8:'c', b9:'b', b10:'c',
+    b11:'b', b12:'c', b13:'c', b14:'b', b15:'b'
+};
+var bioExp = {
+    b1:'Зона всасывания — здесь клетки имеют корневые волоски для поглощения воды и минеральных солей.',
+    b2:'Одуванчик — двудольное растение, у него стержневая корневая система.',
+    b3:'Камбий — образовательная ткань между корой и древесиной; каждый год добавляет новый слой = рост в толщину.',
+    b4:'Клубень картофеля — видоизменённый ПОБЕГ (стебель). «Глазки» клубня = почки!',
+    b5:'Тычинка содержит пыльник с пыльцой — это мужской орган цветка.',
+    b6:'Вишня — костянка: сочный мезокарп и твёрдое ядро (косточка) с семенем внутри.',
+    b7:'Из завязи пестика развивается плод, из семязачатков — семена.',
+    b8:'Камбий образует новый слой древесины каждый год — это и есть годичное кольцо.',
+    b9:'Микориза — симбиоз корней с грибом: гриб получает сахара, растение — воду и минералы.',
+    b10:'Луковица — видоизменённый ПОБЕГ: донце = стебель, сочные чешуи = листья, почки.',
+    b11:'Ксилема (древесина) — проводит воду и минеральные соли снизу вверх (от корня к листьям).',
+    b12:'Одуванчик — семянка с парашютиком (хохолком): распространяется ветром (анемохория).',
+    b13:'Столбчатая паренхима — 1–3 ряда клеток с максимальным числом хлоропластов → фотосинтез.',
+    b14:'Томат — ягода: сочный, много семян, тонкая кожица (хотя в быту называем «овощем»).',
+    b15:'Верхушечная почка обеспечивает рост стебля в длину (апикальный рост).'
+};
+
+var geoAns = {
+    g1:'b', g2:'b', g3:'c', g4:'c', g5:'b',
+    g6:'b', g7:'b', g8:'c', g9:'b', g10:'b',
+    g11:'c', g12:'b', g13:'c', g14:'b', g15:'b'
+};
+var geoExp = {
+    g1:'Земная кора — самая тонкая: 5–70 км (океаническая 5–10 км, континентальная 35–70 км).',
+    g2:'Магматические породы образуются из застывшей магмы: гранит (глубинный), базальт (излившийся).',
+    g3:'Мрамор — метаморфическая порода (образовалась из известняка под давлением и температурой).',
+    g4:'Тихий океан — крупнейший: 179 млн км², самый глубокий (Марианская впадина — 11 022 м).',
+    g5:'Средняя солёность Мирового океана = 35‰ (35 граммов соли на 1 кг воды).',
+    g6:'Гольфстрим — тёплое течение Атлантического океана; отапливает Западную Европу.',
+    g7:'Байкал — самое глубокое озеро: 1642 м; содержит 20% мировых запасов пресной воды.',
+    g8:'Исток — место, где начинается река (родник, ледник, озеро). Устье — место впадения.',
+    g9:'Нил (6853 км) — самая длинная река. Амазонка — самая полноводная по объёму воды.',
+    g10:'Эпицентр — точка на поверхности прямо над очагом (гипоцентром) землетрясения.',
+    g11:'Мировой океан — 96,5% всей воды Земли. Ледники — 1,74%, реки и озёра — 0,013%.',
+    g12:'Приливы и отливы вызваны главным образом притяжением Луны (и в меньшей мере Солнца).',
+    g13:'Байкал — тектоническое озеро: котловина образовалась в разломе земной коры.',
+    g14:'Водораздел — возвышенность или граница, разделяющая бассейны двух рек.',
+    g15:'Лава = магма, вышедшая на поверхность Земли (потеряла газы при извержении вулкана).'
+};
+
+/* Универсальная проверка */
+function runQuiz(formId, answers, explain, resId) {
+    var keys  = Object.keys(answers);
+    var pfx   = keys[0].replace(/\d+$/, '');
+    var total = keys.length;
+    var score = 0, html = '';
+
+    keys.forEach(function(q) {
+        var sel = document.querySelector('input[name="'+q+'"]:checked');
+        var n   = q.replace(pfx, '');
+        if (sel && sel.value === answers[q]) {
+            score++;
+            html += '<br>✅ ' + n + ': Верно! ' + explain[q];
+        } else if (sel) {
+            html += '<br>❌ ' + n + ': Неверно. ' + explain[q];
+        } else {
+            html += '<br>⚠️ ' + n + ': Нет ответа. ' + explain[q];
+        }
+    });
+
+    var pct = Math.round(score / total * 100);
+    var bg  = pct >= 80 ? '#c6f6d5' : pct >= 60 ? '#fefcbf' : '#fed7d7';
+    var em  = pct >= 80 ? '🎉 Отлично!' : pct >= 60 ? '👍 Хорошо!' : '📚 Повтори материал!';
+
+    var box = document.getElementById(resId);
+    box.style.background = bg;
+    box.style.display    = 'block';
+    box.innerHTML = em + ' <strong>' + score + '/' + total + ' (' + pct + '%)</strong>' + html;
+    box.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
